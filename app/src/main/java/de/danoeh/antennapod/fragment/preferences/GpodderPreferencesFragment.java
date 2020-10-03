@@ -22,7 +22,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-
 public class GpodderPreferencesFragment extends PreferenceFragmentCompat {
     private static final String PREF_GPODNET_LOGIN = "pref_gpodnet_authenticate";
     private static final String PREF_GPODNET_SETLOGIN_INFORMATION = "pref_gpodnet_setlogin_information";
@@ -55,6 +54,7 @@ public class GpodderPreferencesFragment extends PreferenceFragmentCompat {
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void syncStatusChanged(SyncServiceEvent event) {
+        updateGpodnetPreferenceScreen();
         if (!GpodnetPreferences.loggedIn()) {
             return;
         }
@@ -70,6 +70,10 @@ public class GpodderPreferencesFragment extends PreferenceFragmentCompat {
     private void setupGpodderScreen() {
         final Activity activity = getActivity();
 
+        findPreference(PREF_GPODNET_LOGIN).setOnPreferenceClickListener(preference -> {
+            new GpodderAuthenticationFragment().show(getChildFragmentManager(), GpodderAuthenticationFragment.TAG);
+            return true;
+        });
         findPreference(PREF_GPODNET_SETLOGIN_INFORMATION)
                 .setOnPreferenceClickListener(preference -> {
                     AuthenticationDialog dialog = new AuthenticationDialog(activity,
