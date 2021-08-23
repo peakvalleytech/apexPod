@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 
+<<<<<<< HEAD:app/src/main/java/de/danoeh/apexpod/fragment/AudioPlayerFragment.java
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.CastEnabledActivity;
 import de.danoeh.apexpod.activity.MainActivity;
@@ -61,6 +63,7 @@ import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
 import de.danoeh.apexpod.ui.common.PlaybackSpeedIndicatorView;
 import de.danoeh.apexpod.view.ChapterSeekBar;
 import de.danoeh.apexpod.view.PlayButton;
+
 import io.reactivex.Maybe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -92,6 +95,7 @@ public class AudioPlayerFragment extends Fragment implements
     private ProgressBar progressIndicator;
     private CardView cardViewSeek;
     private TextView txtvSeek;
+    private ImageView imgvRepeat;
 
     private PlaybackController controller;
     private Disposable disposable;
@@ -132,6 +136,8 @@ public class AudioPlayerFragment extends Fragment implements
         progressIndicator = root.findViewById(R.id.progLoading);
         cardViewSeek = root.findViewById(R.id.cardViewSeek);
         txtvSeek = root.findViewById(R.id.txtvSeek);
+        imgvRepeat = root.findViewById(R.id.repeat_episode);
+        imgvRepeat.setVisibility(UserPreferences.repeatEpisode() ? View.VISIBLE : View.GONE);
 
         setupLengthTextView();
         setupControlButtons();
@@ -513,21 +519,28 @@ public class AudioPlayerFragment extends Fragment implements
         if (feedItem != null && FeedItemMenuHandler.onMenuItemClicked(this, item.getItemId(), feedItem)) {
             return true;
         }
-
-        final int itemId = item.getItemId();
-        if (itemId == R.id.disable_sleeptimer_item || itemId == R.id.set_sleeptimer_item) {
-            new SleepTimerDialog().show(getChildFragmentManager(), "SleepTimerDialog");
-            return true;
-        } else if (itemId == R.id.audio_controls) {
-            PlaybackControlsDialog dialog = PlaybackControlsDialog.newInstance();
-            dialog.show(getChildFragmentManager(), "playback_controls");
-            return true;
-        } else if (itemId == R.id.open_feed_item) {
-            if (feedItem != null) {
-                Intent intent = MainActivity.getIntentToOpenFeed(getContext(), feedItem.getFeedId());
-                startActivity(intent);
-            }
-            return true;
+        switch (item.getItemId()) {
+            case R.id.disable_sleeptimer_item: // Fall-through
+            case R.id.set_sleeptimer_item:
+                new SleepTimerDialog().show(getChildFragmentManager(), "SleepTimerDialog");
+                return true;
+            case R.id.audio_controls:
+                PlaybackControlsDialog dialog = PlaybackControlsDialog.newInstance();
+                dialog.setOnRepeatChanged(repeat -> {
+                    if (repeat) {
+                        imgvRepeat.setVisibility(View.VISIBLE);
+                    } else {
+                        imgvRepeat.setVisibility(View.GONE);
+                    }
+                });
+                dialog.show(getChildFragmentManager(), "playback_controls");
+                return true;
+            case R.id.open_feed_item:
+                if (feedItem != null) {
+                    Intent intent = MainActivity.getIntentToOpenFeed(getContext(), feedItem.getFeedId());
+                    startActivity(intent);
+                }
+                return true;
         }
         return false;
     }
