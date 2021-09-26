@@ -26,7 +26,6 @@ public class PlaybackControlsDialog extends DialogFragment {
     private AlertDialog dialog;
     private PlaybackSpeedSeekBar speedSeekBar;
     private TextView txtvPlaybackSpeed;
-    private Consumer<Boolean> onRepeatChanged;
 
     public static PlaybackControlsDialog newInstance() {
         Bundle arguments = new Bundle();
@@ -116,7 +115,6 @@ public class PlaybackControlsDialog extends DialogFragment {
         });
         repeatEpisode.setOnCheckedChangeListener((buttonView, isChecked) -> {
             UserPreferences.setShouldRepeatEpisode(isChecked);
-            onRepeatChanged.accept(isChecked);
         });
     }
 
@@ -143,9 +141,5 @@ public class PlaybackControlsDialog extends DialogFragment {
             controller.setAudioTrack((selectedAudioTrack + 1) % audioTracks.size());
             new Handler(Looper.getMainLooper()).postDelayed(this::setupAudioTracks, 500);
         });
-    }
-
-    public void setOnRepeatChanged(Consumer<Boolean> onRepeatChanged) {
-        this.onRepeatChanged = onRepeatChanged;
     }
 }
