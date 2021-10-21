@@ -284,7 +284,7 @@
   <string name="playback_error_unknown">Akats ezezaguna</string>
   <string name="no_media_playing_label">Ez dago ezer erreproduzitzen</string>
   <string name="player_go_to_picture_in_picture">Picture-in-picture modua</string>
-  <string name="unknown_media_key">AntennaPod - Media tekla ezezaguna: %1$d</string>
+  <string name="unknown_media_key">ApexPod - Media tekla ezezaguna: %1$d</string>
   <string name="error_file_not_found">Ez da artxibategirik aurkitu</string>
   <string name="no_media_label">Elementuak ez du multimedia fitxategirik</string>
   <!--Queue operations-->
@@ -405,7 +405,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Aldatu harpidetzen ordena</string>
   <string name="pref_nav_drawer_feed_counter_title">Doitu harpidetzen kontagailua</string>
   <string name="pref_nav_drawer_feed_counter_sum">Aldatu harpidetzen kontagailuan erakutsitako informazioa aldatzea. Harpidetzen ordenari ere eragiten dio, \'Harpidetzaren ordena\' \'kontagailu\' moduan badago.</string>
-  <string name="pref_set_theme_sum">Aldatu AntennaPoden itxura</string>
+  <string name="pref_set_theme_sum">Aldatu ApexPoden itxura</string>
   <string name="pref_automatic_download_title">Deskarga automatikoa</string>
   <string name="pref_automatic_download_sum">Konfiguratu saioen deskarga automatikoa</string>
   <string name="pref_autodl_wifi_filter_title">Gaitu Wifi iragazkia</string>
@@ -481,7 +481,7 @@
   <string name="pref_no_browser_found">Ez da web nabigatzailea aurkitu</string>
   <string name="pref_cast_title">Chromecasterako euskarria</string>
   <string name="pref_cast_message_play_flavor">Gaitu Cast gailuetan urrutira erreproduzitzeko euskarria (chromecast, altabozak edo Android TB modukoak)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecastek AntennaPod bertsio honetan desgaiturik dauden hirugarrenen liburutegiak behar ditu</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecastek ApexPod bertsio honetan desgaiturik dauden hirugarrenen liburutegiak behar ditu</string>
   <string name="pref_enqueue_downloaded_title">Gehitu deskargatutakoak ilarara</string>
   <string name="pref_enqueue_downloaded_summary">Gehitu deskargatutako saioak ilarara</string>
   <string name="media_player_builtin">Integratutako Android erreproduzigailua (zaharkituta)</string>
@@ -501,7 +501,7 @@
   <string name="back_button_open_drawer">Nabigatze kaxa ireki</string>
   <string name="back_button_double_tap">Sakatu bi aldiz irteteko</string>
   <string name="back_button_show_prompt">Baieztatu irteteko</string>
-  <string name="close_prompt">Ziur AntennaPod itxi nahi duzula?</string>
+  <string name="close_prompt">Ziur ApexPod itxi nahi duzula?</string>
   <string name="double_tap_toast">Sakatu botoia berriz irteteko</string>
   <string name="back_button_go_to_page">Jo orrialdera...</string>
   <string name="back_button_go_to_page_title">Aukeratu orrialdea</string>
@@ -521,7 +521,7 @@
   <string name="pref_contribute">Lagundu</string>
   <!--About screen-->
   <string name="about_pref">Honi buruz</string>
-  <string name="antennapod_version">AntennaPod bertsioa</string>
+  <string name="antennapod_version">ApexPod bertsioa</string>
   <string name="contributors">Laguntzaileak</string>
   <string name="contributors_summary">Denek lagun dezakete gure foroan kodea, itzulpenak edo erabiltzaileei laguntza emanez.</string>
   <string name="developers">Garatzaileak</string>
@@ -529,7 +529,7 @@
   <string name="special_thanks">Esker bereziak</string>
   <string name="privacy_policy">Pribatutasun politika</string>
   <string name="licenses">Baimenak</string>
-  <string name="licenses_summary">AntennaPod-ek beste software ezin hobeak erabiltzen ditu</string>
+  <string name="licenses_summary">ApexPod-ek beste software ezin hobeak erabiltzen ditu</string>
   <!--Search-->
   <string name="search_status_no_results">Ez da emaitzarik aurkitu</string>
   <string name="type_to_search">Idatzi kontsulta bilatzeko</string>
@@ -552,7 +552,7 @@
   <string name="opml_export_summary">Zure harpidetzak podcast-en beste aplikazio batera transferitu</string>
   <string name="opml_import_summary">Ekarri zure harpidetzak podcast-en beste aplikazio batetik</string>
   <string name="database_export_summary">Bidali beste gailu batera harpidetzak, ikusitako saioak eta irakur zerrenda</string>
-  <string name="database_import_summary">Ekarri AntennaPodera datu basea beste gailu batetik</string>
+  <string name="database_import_summary">Ekarri ApexPodera datu basea beste gailu batetik</string>
   <string name="opml_import_label">Inportatu OPMLtik</string>
   <string name="opml_add_podcast_label">Podcasten zerrenda inportatu (OPML)</string>
   <string name="opml_reader_error">Errorea OPML dokkumentua irakurtzean:</string>
@@ -571,8 +571,8 @@
   <string name="opml_import_ask_read_permission">Kanpo biltegirako sarrera behar duzu OPML artxibategiak irakurtzeko</string>
   <string name="import_select_file">Aukeratu inportatzeko fitxategia</string>
   <string name="successful_import_label">Inportate arrakastatsua</string>
-  <string name="import_ok">Sakatu OK AntennaPod berrabiarazteko</string>
-  <string name="import_no_downgrade">Datu-basea AntennaPod-en bertsio berriago batekin esportatu zen. Uneko aplikazioak ez daki nola inportatu.</string>
+  <string name="import_ok">Sakatu OK ApexPod berrabiarazteko</string>
+  <string name="import_no_downgrade">Datu-basea ApexPod-en bertsio berriago batekin esportatu zen. Uneko aplikazioak ez daki nola inportatu.</string>
   <string name="favorites_export_label">Gogokoak esportatu</string>
   <string name="favorites_export_summary">Gorde diren gogokoak esportatu artxibatzeko</string>
   <!--Sleep timer-->
@@ -609,16 +609,16 @@
   <string name="create_account">Kontua sortu</string>
   <string name="username_label">Erabioltzailea</string>
   <string name="password_label">Pasahitza</string>
-  <string name="gpodnet_description">Gpodder.net AntennaPod proiektutik independentea den sinkronizazio zerbitzu bat da.</string>
+  <string name="gpodnet_description">Gpodder.net ApexPod proiektutik independentea den sinkronizazio zerbitzu bat da.</string>
   <string name="gpodnetauth_server_official">gpodder.net zerbitzari ofiziala</string>
   <string name="gpodnetauth_server_custom">Zerbitzari pertsonalizatua</string>
   <string name="gpodnetauth_host">Ostalari izena</string>
   <string name="gpodnetauth_select_server">Aukeratu zerbitzaria</string>
   <string name="gpodnetauth_device_name">Gailuaren izena</string>
-  <string name="gpodnetauth_device_name_default">AntennaPod aktibatuta %1$s</string>
+  <string name="gpodnetauth_device_name_default">ApexPod aktibatuta %1$s</string>
   <string name="gpodnetauth_existing_devices">Dauden gailuak</string>
   <string name="gpodnetauth_create_device">Sortu gailua</string>
-  <string name="gpodnetauth_finish_descr">Zorionak! Zure gpodder.net kontua zure gailuarekin lotuta dago orain. Hemendik aurrera, AntennaPodek automatikoki sinkronizatuko ditu zure gailuaren harpidetzak bzure gpodder.net kontuarekin.</string>
+  <string name="gpodnetauth_finish_descr">Zorionak! Zure gpodder.net kontua zure gailuarekin lotuta dago orain. Hemendik aurrera, ApexPodek automatikoki sinkronizatuko ditu zure gailuaren harpidetzak bzure gpodder.net kontuarekin.</string>
   <string name="gpodnetauth_finish_butsyncnow">Hasi sinkronizazioa orain</string>
   <string name="gpodnetsync_error_title">Sinkronizatze errorea gpodder.net-en</string>
   <string name="gpodnetsync_error_descr">Sinkronizazio errorea izan da:\u0020</string>
@@ -627,13 +627,13 @@
   <string name="gpodnetsync_username_characters_error">Erabiltzaile-izenek letrak, digitu, erdiko gidoi eta gidoi baxuak baino ezin dituzte eduki.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Aukeratu datu karpeta</string>
-  <string name="choose_data_directory_message">Aukeratu datuen karpetaren erroa. AntennaPod-ek azpidirektorio egokiak sortuko ditu.</string>
+  <string name="choose_data_directory_message">Aukeratu datuen karpetaren erroa. ApexPod-ek azpidirektorio egokiak sortuko ditu.</string>
   <string name="choose_data_directory_available_space">%1$s  %2$s -tik libre</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Bolumena jaitsi beharrean erreprodukzioa geldiarazi beste aplikazio batek soinuak erreproduzitzen dituenean</string>
   <string name="pref_pausePlaybackForFocusLoss_title">Gelditu etenaldiak daudenean</string>
   <string name="pref_resumeAfterCall_sum">Jarraitu erreprodukzioa dei baten ondoren</string>
   <string name="pref_resumeAfterCall_title">Berrekin dei baten ondoren</string>
-  <string name="pref_restart_required">Beharrezkoa da AntennaPod berrabiaraztea aldaketak gauzatzeko.</string>
+  <string name="pref_restart_required">Beharrezkoa da ApexPod berrabiaraztea aldaketak gauzatzeko.</string>
   <!--Online feed view-->
   <string name="subscribe_label">Harpidetu</string>
   <string name="subscribing_label">Harpidetzen...</string>
@@ -668,12 +668,12 @@
   <string name="episode_filters_hint">Hitz solteak \n\"hitz anizkunak\"</string>
   <string name="keep_updated">Eguneratuta eduki</string>
   <string name="keep_updated_summary">Sartu podcast hau (auto-) freskatzeko podcast guztiak</string>
-  <string name="auto_download_disabled_globally">Deskarga automatikoa desgaituta dago AntennaPod-en lehentasun orokorretan</string>
+  <string name="auto_download_disabled_globally">Deskarga automatikoa desgaituta dago ApexPod-en lehentasun orokorretan</string>
   <string name="statistics_listened_for">Zenbat denboran entzuna:</string>
   <string name="statistics_episodes_on_device">Gailuko saioak:</string>
   <string name="statistics_space_used">Erabilitako espazioa:</string>
   <string name="statistics_view_all">Podcast guztietarako ikusi »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">Berariazko erabilerako aplikazioen harpidetzak inportatuz …</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Bilatu podcasta</string>
@@ -694,7 +694,7 @@
   <string name="local_folder">Tokiko karpeta</string>
   <string name="reconnect_local_folder">Birkonektatu tokiko karpeta</string>
   <string name="reconnect_local_folder_warning">Baimenik izan ezean, hau erabil dezakezu karpeta berdina birkonektatzeko. Ez aukeratu beste karpetarik.</string>
-  <string name="local_feed_description">Podcast birtual hau AntennaPod-i karpeta bat gehituta sortu da</string>
+  <string name="local_feed_description">Podcast birtual hau ApexPod-i karpeta bat gehituta sortu da</string>
   <string name="unable_to_start_system_file_manager">Ezin da sistemaren fitxategi kudeatzailea abiarazi</string>
   <string name="filter">Iragazia</string>
   <string name="hide_is_favorite_label">Gogokoa da</string>
@@ -723,8 +723,8 @@
   <string name="sort_short_long">Motza \u2192 luzea</string>
   <string name="sort_long_short">Luzea \u2192 motza</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">Gustuko duzu AntennaPod?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">Oso eskertuta egongo ginateke AntennaPod baloratzeko denbora pixka bat eskainiko bazenigu.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">Gustuko duzu ApexPod?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">Oso eskertuta egongo ginateke ApexPod baloratzeko denbora pixka bat eskainiko bazenigu.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Bakean utz nazazu</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Gogoratu geroago</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Tira, egin dezagun!</string>

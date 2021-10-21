@@ -340,7 +340,7 @@
   <string name="playback_error_unknown">خطاء غير معروف</string>
   <string name="no_media_playing_label">لا وسائط تشغل</string>
   <string name="player_go_to_picture_in_picture">نمط صورة-في-صورة</string>
-  <string name="unknown_media_key">AntennaPod - مفتاح وسائط غير معروف: %1$d</string>
+  <string name="unknown_media_key">ApexPod - مفتاح وسائط غير معروف: %1$d</string>
   <string name="error_file_not_found">ملف غير موجود</string>
   <string name="no_media_label">لا يوجد ملف وسائط بالعنصر</string>
   <!--Queue operations-->
@@ -468,7 +468,7 @@
   <string name="pref_nav_drawer_feed_order_sum">غير ترتيب إشتراكاتك</string>
   <string name="pref_nav_drawer_feed_counter_title">حدد عداد الاشتراكات</string>
   <string name="pref_nav_drawer_feed_counter_sum">غير المعلومات المعروضة بعداد الإشتراكات. إيضا يغير ترتيب الإشتراكات إذا كان ترتيبها يحدد بالـ\'العداد\'</string>
-  <string name="pref_set_theme_sum">تغيير مظهر AntennaPod.</string>
+  <string name="pref_set_theme_sum">تغيير مظهر ApexPod.</string>
   <string name="pref_automatic_download_title">تنزيل تلقائي</string>
   <string name="pref_automatic_download_sum">حدد معطيات التحميل التلقائي للحلقات.</string>
   <string name="pref_autodl_wifi_filter_title">تمكين اختيار شبكة الWi-Fi المستخدمة</string>
@@ -542,7 +542,7 @@
   <string name="pref_no_browser_found">لم يتم العثور على متصفح ويب.</string>
   <string name="pref_cast_title">دعم Chromecast</string>
   <string name="pref_cast_message_play_flavor">فعل تحكم التشغيل بأجهزة الكاست (مثل كرومكاست, سماعات الصوت, وتلفزيون اندرويد)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">يتطلب Chromecast مكتبات برمجية مملوكة لجهات خارجية معطلة في هذا الإصدار من AntennaPod</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">يتطلب Chromecast مكتبات برمجية مملوكة لجهات خارجية معطلة في هذا الإصدار من ApexPod</string>
   <string name="pref_enqueue_downloaded_title">الـ Enqueue المنزلة</string>
   <string name="pref_enqueue_downloaded_summary">أضف الحلقات المنزلة الى لائحة الاستماع</string>
   <string name="media_player_builtin">المشغل الخاص بالأندرويد (مهمل)</string>
@@ -562,7 +562,7 @@
   <string name="back_button_open_drawer">أفتح درج التنقل</string>
   <string name="back_button_double_tap">النقر مرتين للخروج</string>
   <string name="back_button_show_prompt">التاكيد للخروج</string>
-  <string name="close_prompt">هل أنت متأكد أنك تريد غلق AntennaPod?</string>
+  <string name="close_prompt">هل أنت متأكد أنك تريد غلق ApexPod?</string>
   <string name="double_tap_toast">انقر زر الرجوع للخروج</string>
   <string name="back_button_go_to_page">اذهب الى صفحة...</string>
   <string name="back_button_go_to_page_title">اختر صفحة</string>
@@ -582,15 +582,15 @@
   <string name="pref_contribute">ساهم</string>
   <!--About screen-->
   <string name="about_pref">حول</string>
-  <string name="antennapod_version">اصدار AntennaPod</string>
+  <string name="antennapod_version">اصدار ApexPod</string>
   <string name="contributors">المساهمون</string>
-  <string name="contributors_summary">يمكن للجميع المساعدة في تحسين AntennaPod - من خلال البرمجة أو الترجمات أو من خلال مساعدة المستخدمين في منتدانا</string>
+  <string name="contributors_summary">يمكن للجميع المساعدة في تحسين ApexPod - من خلال البرمجة أو الترجمات أو من خلال مساعدة المستخدمين في منتدانا</string>
   <string name="developers">المطورين</string>
   <string name="translators">المترجمين</string>
   <string name="special_thanks">شكر خاص</string>
   <string name="privacy_policy">سياسة الخصوصية</string>
   <string name="licenses">رخص البرمجيات</string>
-  <string name="licenses_summary">يعتمد AntennaPod على برامج عظيمة أخرى</string>
+  <string name="licenses_summary">يعتمد ApexPod على برامج عظيمة أخرى</string>
   <!--Search-->
   <string name="search_status_no_results">لم يتم العثور على نتائج</string>
   <string name="type_to_search">اكتب شيئاً للبحث</string>
@@ -612,8 +612,8 @@
   <string name="html_export_summary">عرض إشتراكاتك لصديق</string>
   <string name="opml_export_summary">نقل إشتراكاتك لبرنامج بوكاست آخر</string>
   <string name="opml_import_summary">إستيراد اشتراكاتك من برنامج آخر</string>
-  <string name="database_export_summary">نقل الاشتراكات والحلقات المسموعة ولائحة الإستماع لـ AntennaPod على جهاز آخر</string>
-  <string name="database_import_summary">استوراد قاعدة بيانات AntennaPod من جهاز آخر</string>
+  <string name="database_export_summary">نقل الاشتراكات والحلقات المسموعة ولائحة الإستماع لـ ApexPod على جهاز آخر</string>
+  <string name="database_import_summary">استوراد قاعدة بيانات ApexPod من جهاز آخر</string>
   <string name="opml_import_label">استيراد (OPML)</string>
   <string name="opml_add_podcast_label">استورد قائمة بودكاستات (OPML)</string>
   <string name="opml_reader_error">حدث خطأ أثناء قراءة مستند OPML:</string>
@@ -632,8 +632,8 @@
   <string name="opml_import_ask_read_permission">الوصول الى مساحة التخزين الخارجية مطلوب لقراءة ملف الـ OPML</string>
   <string name="import_select_file">أختر ملف للاستيراد</string>
   <string name="successful_import_label">استيراد ناجح</string>
-  <string name="import_ok">الرجاء الضغط على \"حسناً\" لإعادة تشغيل AntennaPod</string>
-  <string name="import_no_downgrade">تم تصدير قاعدة البيانات هذه بإصدار حديث  من AntennaPod. التثبيت الحالي الخاص بك لا يعرف حتى الآن كيفية التعامل مع هذا الملف.</string>
+  <string name="import_ok">الرجاء الضغط على \"حسناً\" لإعادة تشغيل ApexPod</string>
+  <string name="import_no_downgrade">تم تصدير قاعدة البيانات هذه بإصدار حديث  من ApexPod. التثبيت الحالي الخاص بك لا يعرف حتى الآن كيفية التعامل مع هذا الملف.</string>
   <string name="favorites_export_label">تصدير الحلقات المفضلة</string>
   <string name="favorites_export_summary">تصدير الحلقات المفضلة لملف</string>
   <!--Sleep timer-->
@@ -682,16 +682,16 @@
   <string name="create_account">إنشاء حساب</string>
   <string name="username_label">إسم المستخدم</string>
   <string name="password_label">كلمة المرور</string>
-  <string name="gpodnet_description">Gpodder.net هي خدمة مزامنة بودكاست مفتوحة المصدر مستقلة عن مشروع AntennaPod.</string>
+  <string name="gpodnet_description">Gpodder.net هي خدمة مزامنة بودكاست مفتوحة المصدر مستقلة عن مشروع ApexPod.</string>
   <string name="gpodnetauth_server_official">خادوم gpodder.net الرسمي</string>
   <string name="gpodnetauth_server_custom">خادوم مخصص</string>
   <string name="gpodnetauth_host">اسم المضيف</string>
   <string name="gpodnetauth_select_server">أختر خادوم</string>
   <string name="gpodnetauth_device_name">أسم الجهاز</string>
-  <string name="gpodnetauth_device_name_default">AntennaPod على %1$s</string>
+  <string name="gpodnetauth_device_name_default">ApexPod على %1$s</string>
   <string name="gpodnetauth_existing_devices">أجهزة موجودة</string>
   <string name="gpodnetauth_create_device">أنشئ جهاز</string>
-  <string name="gpodnetauth_finish_descr">تهانينا! حسابك في gpodder.net مربوط الآن مغ جهازك. سيزامن AntennaPod من الآن وصاعدا إشتراكاتك على جهازك مع حسابك على gpodder.net.</string>
+  <string name="gpodnetauth_finish_descr">تهانينا! حسابك في gpodder.net مربوط الآن مغ جهازك. سيزامن ApexPod من الآن وصاعدا إشتراكاتك على جهازك مع حسابك على gpodder.net.</string>
   <string name="gpodnetauth_finish_butsyncnow">ابدأ المزامنة الآن</string>
   <string name="gpodnetsync_error_title">خظأ في التزامن مع gpodder.net</string>
   <string name="gpodnetsync_error_descr">حدث خطأ أثناء التزامن: \u0020</string>
@@ -700,13 +700,13 @@
   <string name="gpodnetsync_username_characters_error">يشترط أن تحتوي أسماء المستخدمين على أحرف وأرقام وواصلات وشرطات سفلية فقط.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">إختيار مجلد البيانات</string>
-  <string name="choose_data_directory_message">الرجاء اختيار قاعدة مجلد البيانات الخاص بك. سيقوم AntennaPod بإنشاء المجلدات الفرعية المناسبة.</string>
+  <string name="choose_data_directory_message">الرجاء اختيار قاعدة مجلد البيانات الخاص بك. سيقوم ApexPod بإنشاء المجلدات الفرعية المناسبة.</string>
   <string name="choose_data_directory_available_space">%1$sمن %2$sفاضي  </string>
   <string name="pref_pausePlaybackForFocusLoss_sum">توقف التشغيل بدل اخفات الصوت عندما برنامج يشغل صوت</string>
   <string name="pref_pausePlaybackForFocusLoss_title">توقف للمقاطعات</string>
   <string name="pref_resumeAfterCall_sum">واصل التشغيل عندما تنتهى مكالمة هاتفية</string>
   <string name="pref_resumeAfterCall_title">استكمل التشغيل بعد المكالمة</string>
-  <string name="pref_restart_required">يجب إعادة تشغيل AntennaPod حتى يظهر تأثير هذا التغيير</string>
+  <string name="pref_restart_required">يجب إعادة تشغيل ApexPod حتى يظهر تأثير هذا التغيير</string>
   <!--Online feed view-->
   <string name="subscribe_label">أشترك</string>
   <string name="subscribing_label">جاري الإشتراك...</string>
@@ -741,12 +741,12 @@
   <string name="episode_filters_hint">كلمات مفردة \n \"كلمات متعددة\"</string>
   <string name="keep_updated">محدث بإستمرار</string>
   <string name="keep_updated_summary">قم بإضافة هذا البودكاست عند تحديث (أو التحديث التلقائي) جميع ملفات البودكاستات</string>
-  <string name="auto_download_disabled_globally">التنزيل التلقائي معطل في الإعدادات الرئيسية لـ AntennaPod</string>
+  <string name="auto_download_disabled_globally">التنزيل التلقائي معطل في الإعدادات الرئيسية لـ ApexPod</string>
   <string name="statistics_listened_for">استمعت لفترة:</string>
   <string name="statistics_episodes_on_device">حلقات مسجلة على هذا الجهاز:</string>
   <string name="statistics_space_used">المساحة المستخدمة:</string>
   <string name="statistics_view_all">عرض لجميع البودكاستات »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">استيراد الاشتراكات من التطبيقات ذات الغرض الواحد ...</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">أبحث عن بودكاست...</string>
@@ -767,7 +767,7 @@
   <string name="local_folder">مجلد محلي</string>
   <string name="reconnect_local_folder">إعادة توصيل المجلد المحلي</string>
   <string name="reconnect_local_folder_warning">في حالة رفض الإذن ، يمكنك استخدام هذا لإعادة الاتصال بالمجلد نفسه. لا تقم بتحديد مجلد آخر.</string>
-  <string name="local_feed_description">هذا البودكاست الإفتراضي تم خلقه بإضافة مجلد محلي إلى AntennaPod</string>
+  <string name="local_feed_description">هذا البودكاست الإفتراضي تم خلقه بإضافة مجلد محلي إلى ApexPod</string>
   <string name="unable_to_start_system_file_manager">غير قادر على تشغيل مدير ملفات النظام</string>
   <string name="filter">مصفى</string>
   <string name="hide_is_favorite_label">في المفضلة</string>
@@ -796,8 +796,8 @@
   <string name="sort_short_long">قصيرة \u2192 طويلة</string>
   <string name="sort_long_short">طويلة \u2192 قصيرة</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">أعجبك AntennaPod?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">سنكون ممتنين إذا قمت بتقييم AntennaPod.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">أعجبك ApexPod?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">سنكون ممتنين إذا قمت بتقييم ApexPod.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">أتركني وشأني</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">ذكرني في وقت لاحق</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">أكيد، لنفعل ذلك!</string>

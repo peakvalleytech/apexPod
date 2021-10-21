@@ -479,7 +479,7 @@
   <string name="pref_no_browser_found">مرورگر وب پیدا نشد.</string>
   <string name="pref_cast_title">پشتیبانی از کروم‌کست</string>
   <string name="pref_cast_message_play_flavor">پشتیبانی از پخش از راه دور رسانه را در دستگاه های Cast فعال کنید (مانند Chromecast ، بلندگوهای صوتی یا Android TV)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">کروم‌کست نیازمند کتاب‌خانه‌های غیرآزاد است که در این نسخه از AntennaPod غیر فعال هستند</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">کروم‌کست نیازمند کتاب‌خانه‌های غیرآزاد است که در این نسخه از ApexPod غیر فعال هستند</string>
   <string name="pref_enqueue_downloaded_title">در صف نهادن بارگیری‌شده‌ها</string>
   <string name="pref_enqueue_downloaded_summary">قسمتهای بارگیری شده را به صف اضافه کنید</string>
   <string name="media_player_builtin">پخش‌کننده پیش‌فرض اندروید</string>
@@ -519,7 +519,7 @@
   <string name="pref_contribute">مشارکت</string>
   <!--About screen-->
   <string name="about_pref">درباره</string>
-  <string name="antennapod_version">نسخه AntennaPod</string>
+  <string name="antennapod_version">نسخه ApexPod</string>
   <string name="contributors">همکاران</string>
   <string name="contributors_summary">هر کس می تواند به بهتر شدن آنتن پاد کمک کند - با کد ، ترجمه یا با کمک به کاربران در انجمن ما</string>
   <string name="developers">توسعه‌دهندگان</string>
@@ -570,7 +570,7 @@
   <string name="import_select_file">فایل را برای وارد کردن انتخاب کنید</string>
   <string name="successful_import_label">وارد کردن موفقیت آمیز</string>
   <string name="import_ok">لطفاً OK را فشار دهید تا آنتن پاد دوباره راه اندازی شود</string>
-  <string name="import_no_downgrade">پایگاه داده با نسخه‌از جدیدتر از AntennaPod خروجی گرفته شده است. نسخه نصب شده فعلی شما هنوز نمی‌داند که چگونه باید با این پرونده کار کند.</string>
+  <string name="import_no_downgrade">پایگاه داده با نسخه‌از جدیدتر از ApexPod خروجی گرفته شده است. نسخه نصب شده فعلی شما هنوز نمی‌داند که چگونه باید با این پرونده کار کند.</string>
   <string name="favorites_export_label">خارج کردن علاقه مندی ها</string>
   <string name="favorites_export_summary">موارد مورد علاقه ذخیره شده خارج شد</string>
   <!--Sleep timer-->
@@ -607,13 +607,13 @@
   <string name="create_account">ایجاد حساب کاربری</string>
   <string name="username_label">نام کاربری</string>
   <string name="password_label">گذرواژه</string>
-  <string name="gpodnet_description">Gpodder.net یک سرویس همگام سازی پادکست منبع باز است که مستقل از پروژه AntennaPod است. </string>
+  <string name="gpodnet_description">Gpodder.net یک سرویس همگام سازی پادکست منبع باز است که مستقل از پروژه ApexPod است. </string>
   <string name="gpodnetauth_server_official">سرور رسمی gpodder.net</string>
   <string name="gpodnetauth_server_custom">سرور دلخواه</string>
   <string name="gpodnetauth_host">نام میزبان</string>
   <string name="gpodnetauth_select_server">انتخاب سرور</string>
   <string name="gpodnetauth_device_name">نام دستگاه</string>
-  <string name="gpodnetauth_device_name_default">AntennaPod برروی %1$s</string>
+  <string name="gpodnetauth_device_name_default">ApexPod برروی %1$s</string>
   <string name="gpodnetauth_existing_devices">دستگاههای موجود</string>
   <string name="gpodnetauth_create_device">ایجاد دستگاه</string>
   <string name="gpodnetauth_finish_descr">تبریک می گویم! حساب gpodder.net شما اکنون با دستگاه شما پیوند داده شده است. آنتن پاد از این پس اشتراک های دستگاه شما را با حساب gpodder.net خود به طور خودکار همگام سازی می کند.</string>
@@ -671,7 +671,7 @@
   <string name="statistics_episodes_on_device">قسمت های موجود در دستگاه:</string>
   <string name="statistics_space_used">فضای مورد استفاده:</string>
   <string name="statistics_view_all">مشاهده همه پادکست ها »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">وارد کردن اشتراک از برنامه های تک منظوره</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">جستجوی پادکست ...</string>

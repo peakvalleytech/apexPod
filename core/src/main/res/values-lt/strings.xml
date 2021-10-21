@@ -312,7 +312,7 @@
   <string name="playback_error_unknown">Nežinoma klaida</string>
   <string name="no_media_playing_label">Atkūrimas nevyksta</string>
   <string name="player_go_to_picture_in_picture">„Picture-in-picture“ režimas</string>
-  <string name="unknown_media_key">„AntennaPod“ – nežinomas medijos klavišas: %1$d</string>
+  <string name="unknown_media_key">„ApexPod“ – nežinomas medijos klavišas: %1$d</string>
   <string name="error_file_not_found">Failas nerastas</string>
   <string name="no_media_label">Elementas neturi medijos failo</string>
   <!--Queue operations-->
@@ -435,7 +435,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Keiskite prenumeratų tvarką</string>
   <string name="pref_nav_drawer_feed_counter_title">Nustatyti prenumeratų skaitiklį</string>
   <string name="pref_nav_drawer_feed_counter_sum">Keisti prenumeratų skaitiklyje atvaizduojamą informaciją. Gali paveikti prenumeratų rikiavimą, jei prenumeratų tvarka nustatyta rikiuoti pagal skaitiklio reikšmę.</string>
-  <string name="pref_set_theme_sum">Keisti AntennaPod išvaizdą.</string>
+  <string name="pref_set_theme_sum">Keisti ApexPod išvaizdą.</string>
   <string name="pref_automatic_download_title">Automatinis atsiuntimas</string>
   <string name="pref_automatic_download_sum">Konfigūruoti automatinį epizodų atsiuntimą.</string>
   <string name="pref_autodl_wifi_filter_title">Įjungti belaidžių tinklų filtrą</string>
@@ -509,7 +509,7 @@
   <string name="pref_no_browser_found">Nerasta jokia interneto naršyklė.</string>
   <string name="pref_cast_title">„Chromecast“ palaikymas</string>
   <string name="pref_cast_message_play_flavor">Įjungti nuotolinio medijos atkūrimo „Cast“ įrenginiuose (pvz. „Chromecast“, garso kolonėlės ar „Android TV“) palaikymą</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">„Chromecast“ palaikymui reikalingos nuosavybinės trečiųjų šalių bibliotekos, kurios yra negalimos šioje „AntennaPod“ versijoje.</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">„Chromecast“ palaikymui reikalingos nuosavybinės trečiųjų šalių bibliotekos, kurios yra negalimos šioje „ApexPod“ versijoje.</string>
   <string name="pref_enqueue_downloaded_title">Atsiuntimus pridėti į eilę</string>
   <string name="pref_enqueue_downloaded_summary">Parsiuntus epizodus, pridėti juos į eilę</string>
   <string name="media_player_builtin">Įtaisytoji „Android“ leistuvė (nebenaudojama)</string>
@@ -529,7 +529,7 @@
   <string name="back_button_open_drawer">Atverti naršymo stalčių</string>
   <string name="back_button_double_tap">Palietus dukart - išeiti</string>
   <string name="back_button_show_prompt">Patvirtinti išėjimą</string>
-  <string name="close_prompt">Ar tikrai norite užverti „AntennaPod“?</string>
+  <string name="close_prompt">Ar tikrai norite užverti „ApexPod“?</string>
   <string name="double_tap_toast">Jei norite išeiti, dar kartą palieskite grįžimo mygtuką</string>
   <string name="back_button_go_to_page">Eiti į puslapį…</string>
   <string name="back_button_go_to_page_title">Pažymėti puslapį</string>
@@ -549,15 +549,15 @@
   <string name="pref_contribute">Prisidėti</string>
   <!--About screen-->
   <string name="about_pref">Apie</string>
-  <string name="antennapod_version">„AntennaPod“ versija</string>
+  <string name="antennapod_version">„ApexPod“ versija</string>
   <string name="contributors">Autoriai</string>
-  <string name="contributors_summary">Visi gali padėti padaryti „AntennaPod“ geresnę - programiniu kodu, vertimais ar pagalba naudotojams mūsų forume</string>
+  <string name="contributors_summary">Visi gali padėti padaryti „ApexPod“ geresnę - programiniu kodu, vertimais ar pagalba naudotojams mūsų forume</string>
   <string name="developers">Kūrėjai</string>
   <string name="translators">Vertėjai</string>
   <string name="special_thanks">Ypatinga padėka</string>
   <string name="privacy_policy">Privatumo politika</string>
   <string name="licenses">Licencijos</string>
-  <string name="licenses_summary">„AntennaPod“ naudojama kita puiki programinė įranga</string>
+  <string name="licenses_summary">„ApexPod“ naudojama kita puiki programinė įranga</string>
   <!--Search-->
   <string name="search_status_no_results">Nieko nerasta</string>
   <string name="type_to_search">Įveskite užklausą paieškai pradėti</string>
@@ -579,8 +579,8 @@
   <string name="html_export_summary">Parodyti prenumeratas draugui</string>
   <string name="opml_export_summary">Perkelti prenumeratas į kitą tinklalaidžių programėlę</string>
   <string name="opml_import_summary">Importuoti prenumeratas iš kitos tinklalaidžių programėlės</string>
-  <string name="database_export_summary">Perkelti prenumeratas, perklausytus epizodus ir eilę į „AntennaPod“ kitame įrenginyje</string>
-  <string name="database_import_summary">Importuoti „AntennaPod“ duomenų bazę iš kito įrenginio</string>
+  <string name="database_export_summary">Perkelti prenumeratas, perklausytus epizodus ir eilę į „ApexPod“ kitame įrenginyje</string>
+  <string name="database_import_summary">Importuoti „ApexPod“ duomenų bazę iš kito įrenginio</string>
   <string name="opml_import_label">OPML importas</string>
   <string name="opml_add_podcast_label">Importuoti tinklalaidžių sąrašą (OPML)</string>
   <string name="opml_reader_error">Skaitant OPML failą įvyko klaida:</string>
@@ -599,8 +599,8 @@
   <string name="opml_import_ask_read_permission">Norint nuskaityti OPML failą reikalinga prieiga prie išorinės laikmenos</string>
   <string name="import_select_file">Pasirinkite failą, kurį norite importuoti</string>
   <string name="successful_import_label">Sėkmingai importuota</string>
-  <string name="import_ok">Spauskite „OK“, kad paleisti „AntennaPod“ iš naujo</string>
-  <string name="import_no_downgrade">Ši duomenų bazė buvo eksportuota naudojant naujesnę „AntennaPod“ versija. Dabartinė įdiegtis nežino, kaip apdorotį šį failą.</string>
+  <string name="import_ok">Spauskite „OK“, kad paleisti „ApexPod“ iš naujo</string>
+  <string name="import_no_downgrade">Ši duomenų bazė buvo eksportuota naudojant naujesnę „ApexPod“ versija. Dabartinė įdiegtis nežino, kaip apdorotį šį failą.</string>
   <string name="favorites_export_label">Mėgstamųjų eksportas</string>
   <string name="favorites_export_summary">Mėgstamieji išsaugoti faile</string>
   <!--Sleep timer-->
@@ -643,16 +643,16 @@
   <string name="create_account">Sukurti paskyrą</string>
   <string name="username_label">Vartotojo vardas</string>
   <string name="password_label">Slaptažodis</string>
-  <string name="gpodnet_description">„Gpodder.net“ ir atvirojo kodo tinklalaidžių sinchronizavimo paslauga, nepriklausoma nuo „AntennaPod“ projekto.</string>
+  <string name="gpodnet_description">„Gpodder.net“ ir atvirojo kodo tinklalaidžių sinchronizavimo paslauga, nepriklausoma nuo „ApexPod“ projekto.</string>
   <string name="gpodnetauth_server_official">Oficialus „gpodder.net“ serveris</string>
   <string name="gpodnetauth_server_custom">Tinkintas serveris</string>
   <string name="gpodnetauth_host">Serverio adresas</string>
   <string name="gpodnetauth_select_server">Pasirinkti serverį</string>
   <string name="gpodnetauth_device_name">Įrenginio pavadinimas</string>
-  <string name="gpodnetauth_device_name_default">„AntennaPod“ %1$s įrenginyje</string>
+  <string name="gpodnetauth_device_name_default">„ApexPod“ %1$s įrenginyje</string>
   <string name="gpodnetauth_existing_devices">Esami įrenginiai</string>
   <string name="gpodnetauth_create_device">Sukurti įrenginį</string>
-  <string name="gpodnetauth_finish_descr">Sveikiname! Jūsų „gpodder.net“ paskyra susieta su šiuo įrenginiu. Nuo šiol „AntennaPod“ automatiškai sinchronizuos prenumeratas šiame įrenginyje su Jūsų „gpodder.net“ paskyra.</string>
+  <string name="gpodnetauth_finish_descr">Sveikiname! Jūsų „gpodder.net“ paskyra susieta su šiuo įrenginiu. Nuo šiol „ApexPod“ automatiškai sinchronizuos prenumeratas šiame įrenginyje su Jūsų „gpodder.net“ paskyra.</string>
   <string name="gpodnetauth_finish_butsyncnow">Pradėti sinchronizavimą dabar</string>
   <string name="gpodnetsync_error_title">„gpodder.net“ sinchronizavimo klaida</string>
   <string name="gpodnetsync_error_descr">Sinchronizavimo metu įvyko klaida:\u0020</string>
@@ -661,13 +661,13 @@
   <string name="gpodnetsync_username_characters_error">Naudotojo vardą sudaryti gali tik raidės, skaitmenys, brūkšniai ir pabraukimo brūkšniai.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Pasirinkite duomenų aplanką</string>
-  <string name="choose_data_directory_message">Prašome pasirinkti pamatinį duomenų aplanką. „AntennaPod“ sukurs reikiamus poaplankius.</string>
+  <string name="choose_data_directory_message">Prašome pasirinkti pamatinį duomenų aplanką. „ApexPod“ sukurs reikiamus poaplankius.</string>
   <string name="choose_data_directory_available_space">%1$s iš %2$s laisva</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Kai kita programėlė nori atkurti garsus, pristabdyti atkūrimą vietoje garsio sumažinimo</string>
   <string name="pref_pausePlaybackForFocusLoss_title">Pristabdyti pertraukus</string>
   <string name="pref_resumeAfterCall_sum">Pratęsti atkūrimą užbaigus pokalbį telefonu</string>
   <string name="pref_resumeAfterCall_title">Pratęsti po skambučio</string>
-  <string name="pref_restart_required">Kad pakeitimas įsigaliotų, reikia paleisti „AntennaPod“ iš naujo.</string>
+  <string name="pref_restart_required">Kad pakeitimas įsigaliotų, reikia paleisti „ApexPod“ iš naujo.</string>
   <!--Online feed view-->
   <string name="subscribe_label">Prenumeruoti</string>
   <string name="subscribing_label">Prenumeruojama...</string>
@@ -702,12 +702,12 @@
   <string name="episode_filters_hint">Pavieniai žodžiai\n\"frazės kabutėse\"</string>
   <string name="keep_updated">Pastoviai atnaujinti</string>
   <string name="keep_updated_summary">Įtraukti šią tinklalaidę į (automatinį) visų tinklalaidžių atnaujinimą</string>
-  <string name="auto_download_disabled_globally">Automatinis atsiuntimas išjungtas pagrindiniuose „AntennaPod“ nustatymuose</string>
+  <string name="auto_download_disabled_globally">Automatinis atsiuntimas išjungtas pagrindiniuose „ApexPod“ nustatymuose</string>
   <string name="statistics_listened_for">Perklausų trukmė:</string>
   <string name="statistics_episodes_on_device">Epizodai įrenginyje:</string>
   <string name="statistics_space_used">Naudojama disko vieta:</string>
   <string name="statistics_view_all">Žiūrėti visoms tinklalaidėms »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">Įkeliamos prenumeratos iš specializuotų programėlių...</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Ieškoti tinklalaidės...</string>
@@ -728,7 +728,7 @@
   <string name="local_folder">Vietinis aplankas</string>
   <string name="reconnect_local_folder">Prijungti vietinį aplanką iš naujo</string>
   <string name="reconnect_local_folder_warning">Atmetus leidimą, galite naudoti tai prijungti tam pačiam aplankui. Nenustatykite kito aplanko.</string>
-  <string name="local_feed_description">Ši virtuali tinklalaidė sukurta į „AntennaPod“ pridėjus aplanką.</string>
+  <string name="local_feed_description">Ši virtuali tinklalaidė sukurta į „ApexPod“ pridėjus aplanką.</string>
   <string name="unable_to_start_system_file_manager">Nepavyko paleisti sistemos failų tvarkytuvės</string>
   <string name="filter">Filtruoti</string>
   <string name="hide_is_favorite_label">Mėgstami</string>
@@ -757,8 +757,8 @@
   <string name="sort_short_long">Trumpi \u2192 Ilgi</string>
   <string name="sort_long_short">Ilgi \u2192 Trumpi</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">Patinka „AntennaPod“?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">Būtume dėkingi, jei skirtumėte laiko įvertinti „AntennaPod“.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">Patinka „ApexPod“?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">Būtume dėkingi, jei skirtumėte laiko įvertinti „ApexPod“.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Palikite mane ramybėje</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Priminti vėliau</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Žinoma, padarykime tai!</string>

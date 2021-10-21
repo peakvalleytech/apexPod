@@ -312,7 +312,7 @@
   <string name="playback_error_unknown">Neznáma chyba</string>
   <string name="no_media_playing_label">Neprebieha žiadne prehrávanie</string>
   <string name="player_go_to_picture_in_picture">Režim obraz v obraze</string>
-  <string name="unknown_media_key">AntennaPod - Neznámy kľúč médií: %1$d</string>
+  <string name="unknown_media_key">ApexPod - Neznámy kľúč médií: %1$d</string>
   <string name="error_file_not_found">Súbor nenájdený</string>
   <string name="no_media_label">Položka neobsahuje mediálny súbor</string>
   <!--Queue operations-->
@@ -435,7 +435,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Upraviť poradie vašich odberov</string>
   <string name="pref_nav_drawer_feed_counter_title">Nastaviť počítadlo odberov</string>
   <string name="pref_nav_drawer_feed_counter_sum">Zmeniť informáciu zobrazenú počítadlom odberov. Tiež ovplyvňuje zoradenie, ak je nastavené na „podľa počítadla“.</string>
-  <string name="pref_set_theme_sum">Zmeniť vzhľad AntennaPod.</string>
+  <string name="pref_set_theme_sum">Zmeniť vzhľad ApexPod.</string>
   <string name="pref_automatic_download_title">Automatické sťahovanie</string>
   <string name="pref_automatic_download_sum">Nastavenie automatického sťahovania epizód.</string>
   <string name="pref_autodl_wifi_filter_title">Zapnúť Wi-Fi filter</string>
@@ -509,7 +509,7 @@
   <string name="pref_no_browser_found">Webový prohliadač nenájdený.</string>
   <string name="pref_cast_title">Chromecast podpora</string>
   <string name="pref_cast_message_play_flavor">Povoliť podporu vzdialeného prehrávania médií na Cast prístrojoch (ako napríklad Chromecast, Audio Speakers nebo Android TV)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast vyžaduje proprietárne knižnice tretích strán, ktoré sú v tejto verzi AntennaPod vypnuté</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast vyžaduje proprietárne knižnice tretích strán, ktoré sú v tejto verzi ApexPod vypnuté</string>
   <string name="pref_enqueue_downloaded_title">Zaradiť stiahnuté</string>
   <string name="pref_enqueue_downloaded_summary">Pridať stiahnuté epizódy do poradia</string>
   <string name="media_player_builtin">Vstavaný prehrávač Androidu (zastarané)</string>
@@ -529,7 +529,7 @@
   <string name="back_button_open_drawer">Otvoriť hamburgerové menu</string>
   <string name="back_button_double_tap">Zatvoriť aplikáciu dvojitým dotykom</string>
   <string name="back_button_show_prompt">Potvrdiť ukončenie aplikáce</string>
-  <string name="close_prompt">Skutočně chcete zatvoriť AntennaPod?</string>
+  <string name="close_prompt">Skutočně chcete zatvoriť ApexPod?</string>
   <string name="double_tap_toast">Pre ukončenie aplikácie sa opäť dotknite tlačidla späť</string>
   <string name="back_button_go_to_page">Prejsť na stránku…</string>
   <string name="back_button_go_to_page_title">Vybrať stránku</string>
@@ -549,15 +549,15 @@
   <string name="pref_contribute">Pomôžte</string>
   <!--About screen-->
   <string name="about_pref">O aplikácii</string>
-  <string name="antennapod_version">Verzia AntennaPod</string>
+  <string name="antennapod_version">Verzia ApexPod</string>
   <string name="contributors">Prispievatelia</string>
-  <string name="contributors_summary">Každý môže pomôcť zlepšiť AntennaPod - programovaním, prekladmi alebo pomáhaním používateľom na našom fóre</string>
+  <string name="contributors_summary">Každý môže pomôcť zlepšiť ApexPod - programovaním, prekladmi alebo pomáhaním používateľom na našom fóre</string>
   <string name="developers">Vývojári</string>
   <string name="translators">Prekladatelia</string>
   <string name="special_thanks">Špeciálne poďakovanie</string>
   <string name="privacy_policy">Zásady ochrany osobných údajov</string>
   <string name="licenses">Licencie</string>
-  <string name="licenses_summary">AntennaPod používa ďalší skvelý softvér</string>
+  <string name="licenses_summary">ApexPod používa ďalší skvelý softvér</string>
   <!--Search-->
   <string name="search_status_no_results">Neboli nájdené žiadne výsledky</string>
   <string name="type_to_search">Zadajte dopyt, ktorý chcete vyhľadať</string>
@@ -579,8 +579,8 @@
   <string name="html_export_summary">Ukázať svoje odbery priateľovi</string>
   <string name="opml_export_summary">Preniesť svoje odbery do inej podcastovej aplikácie</string>
   <string name="opml_import_summary">Importovať svoje odbery z inej podcastovej aplikácie</string>
-  <string name="database_export_summary">Preniesť odbery, počúvané epizódy a poradie do AntennaPodu v inom zariadení</string>
-  <string name="database_import_summary">Importovať databázu AntennaPod z iného zariadenia</string>
+  <string name="database_export_summary">Preniesť odbery, počúvané epizódy a poradie do ApexPodu v inom zariadení</string>
+  <string name="database_import_summary">Importovať databázu ApexPod z iného zariadenia</string>
   <string name="opml_import_label">Importovať súbor OPML</string>
   <string name="opml_add_podcast_label">Importovať zoznam podcastov (OPML)</string>
   <string name="opml_reader_error">Pri načítaní súboru OPML sa vyskytla chyba:</string>
@@ -599,8 +599,8 @@
   <string name="opml_import_ask_read_permission">Na načítanie súboru OPML je potrebný prístup k externému úložisku</string>
   <string name="import_select_file">Vyberte súbor, ktorý chcete importovať</string>
   <string name="successful_import_label">Import úspešný</string>
-  <string name="import_ok">Reštartujte AntennaPod stlačením tlačidla OK</string>
-  <string name="import_no_downgrade">Táto databáza bola exportovaná s novšou verziou programu AntennaPod. Vaša aktuálna inštalácia zatiaľ nevie, ako s týmto súborom zaobchádzať.</string>
+  <string name="import_ok">Reštartujte ApexPod stlačením tlačidla OK</string>
+  <string name="import_no_downgrade">Táto databáza bola exportovaná s novšou verziou programu ApexPod. Vaša aktuálna inštalácia zatiaľ nevie, ako s týmto súborom zaobchádzať.</string>
   <string name="favorites_export_label">Export obľúbených položiek</string>
   <string name="favorites_export_summary">Exportovať uložené obľúbené položky do súboru</string>
   <!--Sleep timer-->
@@ -643,16 +643,16 @@
   <string name="create_account">Vytvoriť účet</string>
   <string name="username_label">Používateľské meno</string>
   <string name="password_label">Heslo</string>
-  <string name="gpodnet_description">Gpodder.net je služba synchronizácie podcastov, s otvoreným zdrojovým kódom, ktorá je nezávislá na projekte AntennaPod.</string>
+  <string name="gpodnet_description">Gpodder.net je služba synchronizácie podcastov, s otvoreným zdrojovým kódom, ktorá je nezávislá na projekte ApexPod.</string>
   <string name="gpodnetauth_server_official">Oficiálny server gpodder.net</string>
   <string name="gpodnetauth_server_custom">Vlastný server</string>
   <string name="gpodnetauth_host">Názov hostiteľa</string>
   <string name="gpodnetauth_select_server">Vybrať server</string>
   <string name="gpodnetauth_device_name">Názov zariadenia</string>
-  <string name="gpodnetauth_device_name_default">AntennaPod na %1$s</string>
+  <string name="gpodnetauth_device_name_default">ApexPod na %1$s</string>
   <string name="gpodnetauth_existing_devices">Existujúce zariadenia</string>
   <string name="gpodnetauth_create_device">Vytvoriť zariadenie</string>
-  <string name="gpodnetauth_finish_descr">Gratulujeme! Váš gpodder.net účet je teraz prepojený s vašim zariadením. AntennaPod bude odteraz automaticky synchronizovať odbery vo vašom zariadení s vašim gpodder.net účtom.</string>
+  <string name="gpodnetauth_finish_descr">Gratulujeme! Váš gpodder.net účet je teraz prepojený s vašim zariadením. ApexPod bude odteraz automaticky synchronizovať odbery vo vašom zariadení s vašim gpodder.net účtom.</string>
   <string name="gpodnetauth_finish_butsyncnow">Spustiť synchronizáciu teraz</string>
   <string name="gpodnetsync_error_title">chyba synchronizácie s gpodder.net</string>
   <string name="gpodnetsync_error_descr">Počas synchronizácie sa vyskytla chyba:\u0020</string>
@@ -661,13 +661,13 @@
   <string name="gpodnetsync_username_characters_error">Používateľské mená môžu obsahovať iba písmena, číslice, spojovníky a podčiarkovníky.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Zvoľte priečinok s údajmi</string>
-  <string name="choose_data_directory_message">Zvoľte koreňový priečinok s údajmi. AntennaPod vytvorí príslušné podadresáre.</string>
+  <string name="choose_data_directory_message">Zvoľte koreňový priečinok s údajmi. ApexPod vytvorí príslušné podadresáre.</string>
   <string name="choose_data_directory_available_space">%1$s z %2$s voľných</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Keď chce iná aplikácia prehrávať zvuky, namiesto zníženia hlasitosti pozastavte prehrávanie</string>
   <string name="pref_pausePlaybackForFocusLoss_title">Pozastaviť pre prerušenia</string>
   <string name="pref_resumeAfterCall_sum">Po dokončení telefonického hovoru pokračovať v prehrávaní</string>
   <string name="pref_resumeAfterCall_title">Pokračovať po telefonáte</string>
-  <string name="pref_restart_required">Aby sa táto zmena prejavila, musí byť AntennaPod reštartovaná.</string>
+  <string name="pref_restart_required">Aby sa táto zmena prejavila, musí byť ApexPod reštartovaná.</string>
   <!--Online feed view-->
   <string name="subscribe_label">Prihlásiť sa na odber</string>
   <string name="subscribing_label">Prihlasovanie na odber…</string>
@@ -702,12 +702,12 @@
   <string name="episode_filters_hint">Jednotlivé slová \n„Viaceré slová“</string>
   <string name="keep_updated">Priebežne aktualizovať</string>
   <string name="keep_updated_summary">Zahrnúť tento podcast pri (automatickej) obnove všetkých podcastov</string>
-  <string name="auto_download_disabled_globally">Automatické sťahovanie je zakázané v hlavných nastaveniach AntennaPodu</string>
+  <string name="auto_download_disabled_globally">Automatické sťahovanie je zakázané v hlavných nastaveniach ApexPodu</string>
   <string name="statistics_listened_for">Počúvané:</string>
   <string name="statistics_episodes_on_device">Epizód v zariadení:</string>
   <string name="statistics_space_used">Použitý priestor:</string>
   <string name="statistics_view_all">Zobraziť všetky podcasty »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">Imporovať odbery z jednoúčelových aplikácií…</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Hľadať podcast…</string>
@@ -728,7 +728,7 @@
   <string name="local_folder">Lokálny priečinok</string>
   <string name="reconnect_local_folder">Znova pripojiť lokálny priečinok</string>
   <string name="reconnect_local_folder_warning">V prípade zamietnutia povolenia môžete toto použiť na opätovné pripojenie k presne rovnakému priečinku. Nevyberajte iný priečinok.</string>
-  <string name="local_feed_description">Tento virtuálny podcast bol vytvorený pridaním priečinka do programu AntennaPod.</string>
+  <string name="local_feed_description">Tento virtuálny podcast bol vytvorený pridaním priečinka do programu ApexPod.</string>
   <string name="unable_to_start_system_file_manager">Nie je možné spustiť systémového správcu súborov</string>
   <string name="filter">Filter</string>
   <string name="hide_is_favorite_label">Je v obľúbených</string>
@@ -757,8 +757,8 @@
   <string name="sort_short_long">Krátke \u2192 Dlhé</string>
   <string name="sort_long_short">Dlhé \u2192 Krátke</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">Páči sa vám AntennaPod?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">Boli by sme radi, keby ste si našli čas a ohodnotili AntennaPod.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">Páči sa vám ApexPod?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">Boli by sme radi, keby ste si našli čas a ohodnotili ApexPod.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Dajte mi pokoj</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Pripomenúť neskôr</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Jasné, ideme na to!</string>

@@ -279,7 +279,7 @@
   <string name="playback_error_unknown">Tundmatu tõrge</string>
   <string name="no_media_playing_label">Mingit faili ei esitata</string>
   <string name="player_go_to_picture_in_picture">Pilt-pildis režiim</string>
-  <string name="unknown_media_key">AntennaPod - Tundmatu meedia võti: %1$d</string>
+  <string name="unknown_media_key">ApexPod - Tundmatu meedia võti: %1$d</string>
   <string name="error_file_not_found">Faili ei leitud</string>
   <string name="no_media_label">Element ei sisalda meediafaili</string>
   <!--Queue operations-->
@@ -395,7 +395,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Muuda oma tellimuste järjekorda</string>
   <string name="pref_nav_drawer_feed_counter_title">Määra tellimuste loendur</string>
   <string name="pref_nav_drawer_feed_counter_sum">Muuda, millist infot kuvatakse tellimuste loenduris. See mõjutab ka tellimuste järjekorda, kui \"Tellimuste järjekorra\" aluseks on \"Loendur\".</string>
-  <string name="pref_set_theme_sum">AntennaPodi välimuse muutmine</string>
+  <string name="pref_set_theme_sum">ApexPodi välimuse muutmine</string>
   <string name="pref_automatic_download_title">Automaatne allalaadimine</string>
   <string name="pref_automatic_download_sum">Saadete automaatse allalaadimise seadistamine.</string>
   <string name="pref_autodl_wifi_filter_title">Luba Wifi filter</string>
@@ -469,7 +469,7 @@
   <string name="pref_no_browser_found">Veebilehitsejat ei leitud.</string>
   <string name="pref_cast_title">Chromecasti tugi</string>
   <string name="pref_cast_message_play_flavor">Luba meedia esitamine kaugseadmetest (Chromecast, kõlarid või Android TV)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast vajab kolmanda osapoole omanduslikke teeke, mis on selles AntennaPodi versioonis välja lülitatud</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast vajab kolmanda osapoole omanduslikke teeke, mis on selles ApexPodi versioonis välja lülitatud</string>
   <string name="pref_enqueue_downloaded_title">Järjekord allalaaditud</string>
   <string name="pref_enqueue_downloaded_summary">Allalaaditud saadete lisamine järjekorda</string>
   <string name="media_player_builtin">Sisseehitatud Androidi esitaja (aegunud)</string>
@@ -489,7 +489,7 @@
   <string name="back_button_open_drawer">Avab navigeerimise sahtli</string>
   <string name="back_button_double_tap">Topeltkoputus väljub</string>
   <string name="back_button_show_prompt">Väljumine kinnitusega</string>
-  <string name="close_prompt">Kas tahad kindlasti sulgeda AntennaPodi?</string>
+  <string name="close_prompt">Kas tahad kindlasti sulgeda ApexPodi?</string>
   <string name="double_tap_toast">Koputa nuppu väljumiseks uuesti</string>
   <string name="back_button_go_to_page">Mine lehele...</string>
   <string name="back_button_go_to_page_title">Vali leht</string>
@@ -507,15 +507,15 @@
   <string name="new_episode_notification_disabled">Teavitus keelatud</string>
   <!--About screen-->
   <string name="about_pref">Info</string>
-  <string name="antennapod_version">AntennaPodi versioon</string>
+  <string name="antennapod_version">ApexPodi versioon</string>
   <string name="contributors">Kaastöölised</string>
-  <string name="contributors_summary">Igaüks võib aidata teha AntennaPodi paremaks - kirjutades koodi, tõlkides või aidates foorumis teisi kasutajaid</string>
+  <string name="contributors_summary">Igaüks võib aidata teha ApexPodi paremaks - kirjutades koodi, tõlkides või aidates foorumis teisi kasutajaid</string>
   <string name="developers">Arendajad</string>
   <string name="translators">Tõlkijad</string>
   <string name="special_thanks">Eritänu</string>
   <string name="privacy_policy">Privaatsus</string>
   <string name="licenses">Litsentsid</string>
-  <string name="licenses_summary">AntennaPod kasutab teiste suurepärast tarkvara</string>
+  <string name="licenses_summary">ApexPod kasutab teiste suurepärast tarkvara</string>
   <!--Search-->
   <string name="search_status_no_results">Ei leitud midagi</string>
   <string name="search_label">Otsi</string>
@@ -536,8 +536,8 @@
   <string name="html_export_summary">Näita oma tellimusi sõbrale</string>
   <string name="opml_export_summary">Tellimuste liigutamine teise taskuhäälingu äppi</string>
   <string name="opml_import_summary">Tellimuste importimine teisest taskuhäälingu äpist</string>
-  <string name="database_export_summary">Tellimuste, kuulatud saadete ja ooterjärjekorra liigutamine AntennaPodi mõnes teises seadmes</string>
-  <string name="database_import_summary">AntennaPodi andmebaasi import teisest seadmest</string>
+  <string name="database_export_summary">Tellimuste, kuulatud saadete ja ooterjärjekorra liigutamine ApexPodi mõnes teises seadmes</string>
+  <string name="database_import_summary">ApexPodi andmebaasi import teisest seadmest</string>
   <string name="opml_import_label">OPML import</string>
   <string name="opml_add_podcast_label">Impordi taskuhäälingute nimekiri (OPML)</string>
   <string name="opml_reader_error">OPML dokumendi lugemisel tekkis tõrge:</string>
@@ -556,8 +556,8 @@
   <string name="opml_import_ask_read_permission">OPML faili lugemiseks on vajalik ligipääs välisele salvestusruumile</string>
   <string name="import_select_file">Vali fail, mida importida</string>
   <string name="successful_import_label">Importimine oli edukas</string>
-  <string name="import_ok">Vajuta OK, et AntennaPod taaskäivitada</string>
-  <string name="import_no_downgrade">See andmebaas on eksporditud AntennaPodi uuemast versioonist. Sinu praegune äpp ei oska seda faili käsitseda.</string>
+  <string name="import_ok">Vajuta OK, et ApexPod taaskäivitada</string>
+  <string name="import_no_downgrade">See andmebaas on eksporditud ApexPodi uuemast versioonist. Sinu praegune äpp ei oska seda faili käsitseda.</string>
   <string name="favorites_export_label">Lemmikute eksport</string>
   <string name="favorites_export_summary">Ekspordi salvestatud lemmikud faili</string>
   <!--Sleep timer-->
@@ -594,16 +594,16 @@
   <string name="create_account">Loo konto</string>
   <string name="username_label">Kasutajanimi</string>
   <string name="password_label">Parool</string>
-  <string name="gpodnet_description">Gpodder.net on avatud lähtekoodiga sünkroniseerimise teenus, mis on sõltumatu AntennaPod projektist.</string>
+  <string name="gpodnet_description">Gpodder.net on avatud lähtekoodiga sünkroniseerimise teenus, mis on sõltumatu ApexPod projektist.</string>
   <string name="gpodnetauth_server_official">Ametlik gpodder.net server</string>
   <string name="gpodnetauth_server_custom">Muu server</string>
   <string name="gpodnetauth_host">Hostinimi</string>
   <string name="gpodnetauth_select_server">Vali server</string>
   <string name="gpodnetauth_device_name">Seadme nimi</string>
-  <string name="gpodnetauth_device_name_default">AntennaPod %1$s seadmel</string>
+  <string name="gpodnetauth_device_name_default">ApexPod %1$s seadmel</string>
   <string name="gpodnetauth_existing_devices">Olemasolevad seadmed</string>
   <string name="gpodnetauth_create_device">Loo uus seade</string>
-  <string name="gpodnetauth_finish_descr">Palju õnne! Sinu gpodder.net konto on nüüd lingitud sinu seadmega. AntennaPod süngib nüüdsest tellimused sinu seadmes gpodder.net-i kontoga.</string>
+  <string name="gpodnetauth_finish_descr">Palju õnne! Sinu gpodder.net konto on nüüd lingitud sinu seadmega. ApexPod süngib nüüdsest tellimused sinu seadmes gpodder.net-i kontoga.</string>
   <string name="gpodnetauth_finish_butsyncnow">Alusta kohe sünkroonimist</string>
   <string name="gpodnetsync_error_title">gpodder.net sünkroonimise viga</string>
   <string name="gpodnetsync_error_descr">Sünkroonimise ajal tekkis viga:\u0020</string>
@@ -612,13 +612,13 @@
   <string name="gpodnetsync_username_characters_error">Kasutajanimi võib sisaldada ainult tähti, numbreid, side- ja allkriipsu.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Vali andmete kaust</string>
-  <string name="choose_data_directory_message">Palun vali oma andmete kaust. AntennaPod loob vajalikud alamkaustad.</string>
+  <string name="choose_data_directory_message">Palun vali oma andmete kaust. ApexPod loob vajalikud alamkaustad.</string>
   <string name="choose_data_directory_available_space">vaba on %1$s %2$s-st</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Kui teine äpp tahab helisid mängida, pausi esitus, selle asemel et vähendada helitugevust</string>
   <string name="pref_pausePlaybackForFocusLoss_title">Peata kõne korral</string>
   <string name="pref_resumeAfterCall_sum">Taasta esitamine pärast telefonikõne lõppu</string>
   <string name="pref_resumeAfterCall_title">Taasta pärast kõne lõppu</string>
-  <string name="pref_restart_required">Selle muudatuse mõjumiseks tuleb AntennaPod taaskäivitada.</string>
+  <string name="pref_restart_required">Selle muudatuse mõjumiseks tuleb ApexPod taaskäivitada.</string>
   <!--Online feed view-->
   <string name="subscribe_label">Telli</string>
   <string name="subscribing_label">Tellimine...</string>
@@ -650,12 +650,12 @@
   <string name="episode_filters_hint">Üksikud sõnad \n\"Mitu sõna\"</string>
   <string name="keep_updated">Hoia uuendatuna</string>
   <string name="keep_updated_summary">Uuenda koos teiste taskuhäälingute (automaatse) värskendamisega ka seda</string>
-  <string name="auto_download_disabled_globally">Automaatne allalaadimine on keelatud AntennaPodi peamistes seadetes</string>
+  <string name="auto_download_disabled_globally">Automaatne allalaadimine on keelatud ApexPodi peamistes seadetes</string>
   <string name="statistics_listened_for">Kuulatud:</string>
   <string name="statistics_episodes_on_device">Saated seadmes:</string>
   <string name="statistics_space_used">Kasutatud kettaruum:</string>
   <string name="statistics_view_all">Vaata kõiki taskuhäälinguid »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">Tellimuste importimine teistest äppidest...</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Otsi taskuhäälingut...</string>
@@ -676,7 +676,7 @@
   <string name="local_folder">Kohalik kaust</string>
   <string name="reconnect_local_folder">Ühenda kohalik kaust uuesti</string>
   <string name="reconnect_local_folder_warning">Ligipääsuõiguste keelamise puhul võid kasutada seda, et täpselt sama kausta uuesti ühendada. Ära valli mõnda teist kausta.</string>
-  <string name="local_feed_description">See virtuaalne taskuhääling loodi kausta lisamisega AntennaPodi.</string>
+  <string name="local_feed_description">See virtuaalne taskuhääling loodi kausta lisamisega ApexPodi.</string>
   <string name="unable_to_start_system_file_manager">Süsteemi failihalduri käivitamine ebaõnnestus</string>
   <string name="filter">Filter</string>
   <string name="hide_is_favorite_label">On lemmik</string>
@@ -705,8 +705,8 @@
   <string name="sort_short_long">Lühike \u2192 pikk</string>
   <string name="sort_long_short">Pikk \u2192 lühike</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">Kas sulle meeldib AntennaPod?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">Oleks suur asi, kui sa saaksid võtta aega, et anda AntennaPodile hinnang.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">Kas sulle meeldib ApexPod?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">Oleks suur asi, kui sa saaksid võtta aega, et anda ApexPodile hinnang.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Jäta mind rahule</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Tuleta hiljem meelde</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Jah, otseloomulikult!</string>

@@ -551,7 +551,7 @@
   <string name="about_pref">על אודות</string>
   <string name="antennapod_version">גרסת אנטנה־פּוֹד</string>
   <string name="contributors">מתנדבים</string>
-  <string name="contributors_summary">כל אחד ואחת יכולים לסייע בשיפור AntennaPod באמצעות תרומת קוד, תרגום או באמצעות סיוע למשתמשים שלנו בפורום</string>
+  <string name="contributors_summary">כל אחד ואחת יכולים לסייע בשיפור ApexPod באמצעות תרומת קוד, תרגום או באמצעות סיוע למשתמשים שלנו בפורום</string>
   <string name="developers">מפתחים</string>
   <string name="translators">מתרגמים</string>
   <string name="special_thanks">תודות מיוחדות</string>
@@ -707,7 +707,7 @@
   <string name="statistics_episodes_on_device">פרקים על המכשיר הזה:</string>
   <string name="statistics_space_used">מקום תפוס:</string>
   <string name="statistics_view_all">להציג לכל הפודקאסטים »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">מתבצע ייבוא מינויים מיישומונים ממוקדי מטרה…</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">חיפוש פודקאסט…</string>
