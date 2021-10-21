@@ -14,9 +14,9 @@ import org.junit.runner.RunWith;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import de.danoeh.antennapod.R;
-import de.danoeh.antennapod.activity.MainActivity;
-import de.danoeh.antennapod.fragment.EpisodesFragment;
+import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.activity.MainActivity;
+import de.danoeh.apexpod.fragment.EpisodesFragment;
 import de.test.antennapod.EspressoTestUtils;
 import de.test.antennapod.ui.UITestUtils;
 

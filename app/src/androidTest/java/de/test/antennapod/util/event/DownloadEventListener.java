@@ -2,7 +2,7 @@ package de.test.antennapod.util.event;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import de.danoeh.antennapod.core.event.DownloadEvent;
+import de.danoeh.apexpod.core.event.DownloadEvent;
 import io.reactivex.functions.Consumer;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

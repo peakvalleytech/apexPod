@@ -1,4 +1,4 @@
-package de.danoeh.antennapod.dialog;
+package de.danoeh.apexpod.dialog;
 
 import android.app.Activity;
 

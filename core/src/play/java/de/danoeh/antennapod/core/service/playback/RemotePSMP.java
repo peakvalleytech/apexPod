@@ -1,4 +1,4 @@
-package de.danoeh.antennapod.core.service.playback;
+package de.danoeh.apexpod.core.service.playback;
 
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -15,7 +15,7 @@ import com.google.android.libraries.cast.companionlibrary.cast.exceptions.CastEx
 import com.google.android.libraries.cast.companionlibrary.cast.exceptions.NoConnectionException;
 import com.google.android.libraries.cast.companionlibrary.cast.exceptions.TransientNetworkDisconnectionException;
 
-import de.danoeh.antennapod.core.cast.MediaInfoCreator;
+import de.danoeh.apexpod.core.cast.MediaInfoCreator;
 
 import java.util.Collections;
 import java.util.List;
@@ -23,17 +23,17 @@ import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import de.danoeh.antennapod.core.R;
-import de.danoeh.antennapod.core.cast.CastConsumer;
-import de.danoeh.antennapod.core.cast.CastManager;
-import de.danoeh.antennapod.core.cast.CastUtils;
-import de.danoeh.antennapod.core.cast.DefaultCastConsumer;
-import de.danoeh.antennapod.core.storage.DBReader;
-import de.danoeh.antennapod.model.playback.RemoteMedia;
-import de.danoeh.antennapod.model.feed.FeedMedia;
-import de.danoeh.antennapod.model.playback.MediaType;
-import de.danoeh.antennapod.core.util.RewindAfterPauseUtils;
-import de.danoeh.antennapod.model.playback.Playable;
+import de.danoeh.apexpod.core.R;
+import de.danoeh.apexpod.core.cast.CastConsumer;
+import de.danoeh.apexpod.core.cast.CastManager;
+import de.danoeh.apexpod.core.cast.CastUtils;
+import de.danoeh.apexpod.core.cast.DefaultCastConsumer;
+import de.danoeh.apexpod.core.storage.DBReader;
+import de.danoeh.apexpod.model.playback.RemoteMedia;
+import de.danoeh.apexpod.model.feed.FeedMedia;
+import de.danoeh.apexpod.model.playback.MediaType;
+import de.danoeh.apexpod.core.util.RewindAfterPauseUtils;
+import de.danoeh.apexpod.model.playback.Playable;
 
 /**
  * Implementation of PlaybackServiceMediaPlayer suitable for remote playback on Cast Devices.

@@ -40,7 +40,7 @@
             android:background="?android:attr/windowBackground"
             android:elevation="8dp"
             android:visibility="gone"
-            app:layout_behavior="de.danoeh.antennapod.view.LockableBottomSheetBehavior" />
+            app:layout_behavior="de.danoeh.apexpod.view.LockableBottomSheetBehavior" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

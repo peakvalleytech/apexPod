@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import de.danoeh.antennapod.model.feed.Feed;
-import de.danoeh.antennapod.model.feed.FeedFunding;
-import de.danoeh.antennapod.model.feed.FeedItem;
-import de.danoeh.antennapod.parser.feed.namespace.PodcastIndex;
-import de.danoeh.antennapod.core.util.DateFormatter;
+import de.danoeh.apexpod.model.feed.Feed;
+import de.danoeh.apexpod.model.feed.FeedFunding;
+import de.danoeh.apexpod.model.feed.FeedItem;
+import de.danoeh.apexpod.parser.feed.namespace.PodcastIndex;
+import de.danoeh.apexpod.core.util.DateFormatter;
 
 /**
  * Creates RSS 2.0 feeds. See FeedGenerator for more information.

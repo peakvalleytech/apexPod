@@ -1,11 +1,11 @@
-package de.danoeh.antennapod.fragment;
+package de.danoeh.apexpod.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
 import androidx.mediarouter.app.MediaRouteControllerDialog;
 import androidx.mediarouter.app.MediaRouteControllerDialogFragment;
 
-import de.danoeh.antennapod.dialog.CustomMRControllerDialog;
+import de.danoeh.apexpod.dialog.CustomMRControllerDialog;
 
 public class CustomMRControllerDialogFragment extends MediaRouteControllerDialogFragment {
     @Override

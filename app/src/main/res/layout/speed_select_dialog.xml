@@ -23,12 +23,12 @@
                 android:id="@+id/add_current_speed_chip"/>
     </LinearLayout>
 
-    <de.danoeh.antennapod.view.PlaybackSpeedSeekBar
+    <de.danoeh.apexpod.view.PlaybackSpeedSeekBar
             android:id="@+id/speed_seek_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp">
-    </de.danoeh.antennapod.view.PlaybackSpeedSeekBar>
+    </de.danoeh.apexpod.view.PlaybackSpeedSeekBar>
 
     <TextView
             android:text="@string/speed_presets"

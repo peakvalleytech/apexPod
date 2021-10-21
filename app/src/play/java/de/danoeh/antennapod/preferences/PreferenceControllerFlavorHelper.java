@@ -1,4 +1,4 @@
-package de.danoeh.antennapod.preferences;
+package de.danoeh.apexpod.preferences;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
@@ -7,10 +7,10 @@ import androidx.appcompat.app.AlertDialog;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
-import de.danoeh.antennapod.PodcastApp;
-import de.danoeh.antennapod.R;
-import de.danoeh.antennapod.core.preferences.UserPreferences;
-import de.danoeh.antennapod.fragment.preferences.PlaybackPreferencesFragment;
+import de.danoeh.apexpod.PodcastApp;
+import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.core.preferences.UserPreferences;
+import de.danoeh.apexpod.fragment.preferences.PlaybackPreferencesFragment;
 
 /**
  * Implements functions from PreferenceController that are flavor dependent.

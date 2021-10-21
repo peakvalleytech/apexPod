@@ -13,7 +13,7 @@ android {
     defaultConfig {
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [eventBusIndex: 'de.danoeh.antennapod.core.ApCoreEventBusIndex']
+                arguments = [eventBusIndex: 'de.danoeh.apexpod.core.ApCoreEventBusIndex']
             }
         }
     }

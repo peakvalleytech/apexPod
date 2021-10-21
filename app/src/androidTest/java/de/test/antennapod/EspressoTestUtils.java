@@ -20,14 +20,14 @@ import android.view.View;
 
 import junit.framework.AssertionFailedError;
 
-import de.danoeh.antennapod.R;
-import de.danoeh.antennapod.activity.MainActivity;
-import de.danoeh.antennapod.core.preferences.UserPreferences;
-import de.danoeh.antennapod.core.service.download.DownloadService;
-import de.danoeh.antennapod.core.service.playback.PlaybackService;
-import de.danoeh.antennapod.core.storage.PodDBAdapter;
-import de.danoeh.antennapod.dialog.RatingDialog;
-import de.danoeh.antennapod.fragment.NavDrawerFragment;
+import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.activity.MainActivity;
+import de.danoeh.apexpod.core.preferences.UserPreferences;
+import de.danoeh.apexpod.core.service.download.DownloadService;
+import de.danoeh.apexpod.core.service.playback.PlaybackService;
+import de.danoeh.apexpod.core.storage.PodDBAdapter;
+import de.danoeh.apexpod.dialog.RatingDialog;
+import de.danoeh.apexpod.fragment.NavDrawerFragment;
 import org.awaitility.Awaitility;
 import org.awaitility.core.ConditionTimeoutException;
 import org.hamcrest.Matcher;

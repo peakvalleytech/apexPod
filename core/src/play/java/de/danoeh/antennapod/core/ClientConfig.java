@@ -1,17 +1,17 @@
-package de.danoeh.antennapod.core;
+package de.danoeh.apexpod.core;
 
 import android.content.Context;
 import android.util.Log;
-import de.danoeh.antennapod.core.cast.CastManager;
-import de.danoeh.antennapod.core.preferences.PlaybackPreferences;
-import de.danoeh.antennapod.core.preferences.SleepTimerPreferences;
-import de.danoeh.antennapod.core.preferences.UsageStatistics;
-import de.danoeh.antennapod.core.preferences.UserPreferences;
-import de.danoeh.antennapod.core.service.download.AntennapodHttpClient;
-import de.danoeh.antennapod.core.storage.PodDBAdapter;
-import de.danoeh.antennapod.core.util.NetworkUtils;
-import de.danoeh.antennapod.core.util.gui.NotificationUtils;
-import de.danoeh.antennapod.net.ssl.SslProviderInstaller;
+import de.danoeh.apexpod.core.cast.CastManager;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
+import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
+import de.danoeh.apexpod.core.preferences.UsageStatistics;
+import de.danoeh.apexpod.core.preferences.UserPreferences;
+import de.danoeh.apexpod.core.service.download.AntennapodHttpClient;
+import de.danoeh.apexpod.core.storage.PodDBAdapter;
+import de.danoeh.apexpod.core.util.NetworkUtils;
+import de.danoeh.apexpod.core.util.gui.NotificationUtils;
+import de.danoeh.apexpod.net.ssl.SslProviderInstaller;
 
 import java.io.File;
 

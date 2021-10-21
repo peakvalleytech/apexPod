@@ -73,7 +73,7 @@
 
             <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/quickFeedDiscovery"
-                    android:name="de.danoeh.antennapod.fragment.QuickFeedDiscoveryFragment"
+                    android:name="de.danoeh.apexpod.fragment.QuickFeedDiscoveryFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

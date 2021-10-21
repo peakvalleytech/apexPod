@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="de.danoeh.antennapod"
+    package="de.danoeh.apexpod"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -29,11 +29,11 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
-        android:name="de.danoeh.antennapod.PodcastApp"
+        android:name="de.danoeh.apexpod.PodcastApp"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
-        android:backupAgent=".core.backup.OpmlBackupAgent"
+        android:backupAgent="de.danoeh.apexpod.core.backup.OpmlBackupAgent"
         android:restoreAnyVersion="true"
         android:theme="@style/Theme.AntennaPod.Splash"
         android:usesCleartextTraffic="true"
@@ -60,7 +60,7 @@
         <meta-data android:name="com.samsung.android.multidisplay.keep_process_alive" android:value="true"/>
 
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="de.danoeh.apexpod.activity.SplashActivity"
             android:label="@string/app_name"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true">
@@ -82,7 +82,7 @@
         </activity>
 
         <activity
-            android:name=".activity.MainActivity"
+            android:name="de.danoeh.apexpod.activity.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|density|uiMode|keyboard|navigation"
             android:windowSoftInputMode="stateAlwaysHidden"
             android:launchMode="singleTask"
@@ -111,27 +111,27 @@
                     android:scheme="https" />
             </intent-filter>
             <intent-filter>
-                <action android:name="de.danoeh.antennapod.intents.MAIN_ACTIVITY" />
+                <action android:name="de.danoeh.apexpod.intents.MAIN_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".activity.DownloadAuthenticationActivity"
+            android:name="de.danoeh.apexpod.activity.DownloadAuthenticationActivity"
             android:theme="@style/Theme.AntennaPod.Dark.Translucent"
             android:launchMode="singleInstance"/>
 
         <activity
-            android:name=".activity.PreferenceActivity"
+            android:name="de.danoeh.apexpod.activity.PreferenceActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/settings_label">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.danoeh.antennapod.activity.MainActivity"/>
+                android:value="de.danoeh.apexpod.activity.MainActivity"/>
         </activity>
 
         <activity
-            android:name=".activity.WidgetConfigActivity"
+            android:name="de.danoeh.apexpod.activity.WidgetConfigActivity"
             android:label="@string/widget_settings"
             android:exported="true">
             <intent-filter>
@@ -140,26 +140,26 @@
         </activity>
 
         <receiver
-            android:name=".core.receiver.PlayerWidget"
+            android:name="de.danoeh.apexpod.core.receiver.PlayerWidget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
             <intent-filter>
-                <action android:name="de.danoeh.antennapod.FORCE_WIDGET_UPDATE"/>
+                <action android:name="de.danoeh.apexpod.FORCE_WIDGET_UPDATE"/>
             </intent-filter>
             <intent-filter>
-                <action android:name="de.danoeh.antennapod.STOP_WIDGET_UPDATE"/>
+                <action android:name="de.danoeh.apexpod.STOP_WIDGET_UPDATE"/>
             </intent-filter>
             <meta-data
                     android:name="android.appwidget.provider"
                     android:resource="@xml/player_widget_info"/>
         </receiver>
 
-        <activity android:name=".activity.StorageErrorActivity">
+        <activity android:name="de.danoeh.apexpod.activity.StorageErrorActivity">
         </activity>
         <activity
-            android:name=".activity.OpmlImportActivity"
+            android:name="de.danoeh.apexpod.activity.OpmlImportActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/opml_import_label"
             android:exported="true">
@@ -196,37 +196,37 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".activity.BugReportActivity"
+                android:name="de.danoeh.apexpod.activity.BugReportActivity"
                 android:label="@string/bug_report_title">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value="de.danoeh.antennapod.activity.PreferenceActivity"/>
+                    android:value="de.danoeh.apexpod.activity.PreferenceActivity"/>
         </activity>
 
         <activity
-            android:name=".activity.VideoplayerActivity"
+            android:name="de.danoeh.apexpod.activity.VideoplayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"
             android:supportsPictureInPicture="true"
             android:screenOrientation="sensorLandscape"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.danoeh.antennapod.activity.MainActivity"/>
+                android:value="de.danoeh.apexpod.activity.MainActivity"/>
             <intent-filter>
-                <action android:name="de.danoeh.antennapod.intents.VIDEO_PLAYER" />
+                <action android:name="de.danoeh.apexpod.intents.VIDEO_PLAYER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".activity.OnlineFeedViewActivity"
+            android:name="de.danoeh.apexpod.activity.OnlineFeedViewActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/Theme.AntennaPod.Dark.Translucent"
             android:label="@string/add_feed_label"
             android:exported="true">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.danoeh.antennapod.activity.MainActivity"/>
+                android:value="de.danoeh.apexpod.activity.MainActivity"/>
 
             <!-- URLs ending with '.xml' or '.rss' -->
             <intent-filter>
@@ -325,7 +325,7 @@
         </activity>
 
         <receiver
-            android:name=".receiver.ConnectivityActionReceiver"
+            android:name="de.danoeh.apexpod.receiver.ConnectivityActionReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
@@ -333,7 +333,7 @@
         </receiver>
 
         <receiver
-            android:name=".receiver.PowerConnectionReceiver"
+            android:name="de.danoeh.apexpod.receiver.PowerConnectionReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
@@ -342,7 +342,7 @@
         </receiver>
 
         <receiver
-            android:name=".receiver.SPAReceiver"
+            android:name="de.danoeh.apexpod.receiver.SPAReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="de.danoeh.antennapdsp.intent.SP_APPS_QUERY_FEEDS_RESPONSE"/>

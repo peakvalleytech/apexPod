@@ -1,4 +1,4 @@
-package de.danoeh.antennapod.core.service.playback;
+package de.danoeh.apexpod.core.service.playback;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -23,13 +23,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-import de.danoeh.antennapod.core.cast.CastConsumer;
-import de.danoeh.antennapod.core.cast.CastManager;
-import de.danoeh.antennapod.core.cast.DefaultCastConsumer;
-import de.danoeh.antennapod.core.event.MessageEvent;
-import de.danoeh.antennapod.model.playback.MediaType;
-import de.danoeh.antennapod.core.preferences.UserPreferences;
-import de.danoeh.antennapod.core.util.NetworkUtils;
+import de.danoeh.apexpod.core.cast.CastConsumer;
+import de.danoeh.apexpod.core.cast.CastManager;
+import de.danoeh.apexpod.core.cast.DefaultCastConsumer;
+import de.danoeh.apexpod.core.event.MessageEvent;
+import de.danoeh.apexpod.model.playback.MediaType;
+import de.danoeh.apexpod.core.preferences.UserPreferences;
+import de.danoeh.apexpod.core.util.NetworkUtils;
 import org.greenrobot.eventbus.EventBus;
 
 /**
