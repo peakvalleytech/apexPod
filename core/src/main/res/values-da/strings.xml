@@ -284,7 +284,7 @@
   <string name="playback_error_unknown">Ukendt fejl</string>
   <string name="no_media_playing_label">Ingen medier afspiller</string>
   <string name="player_go_to_picture_in_picture">Billed-i-billed-tilstand</string>
-  <string name="unknown_media_key">AntennaPod - Ukendt medienøgle: %1$d</string>
+  <string name="unknown_media_key">ApexPod - Ukendt medienøgle: %1$d</string>
   <string name="error_file_not_found">Fil ikke fundet</string>
   <string name="no_media_label">Element indeholder ikke en mediefil.</string>
   <!--Queue operations-->
@@ -405,7 +405,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Ændr rækkefølgen af dine abonnementer</string>
   <string name="pref_nav_drawer_feed_counter_title">Indstil abonnementstæller</string>
   <string name="pref_nav_drawer_feed_counter_sum">Ændr informationen vist af abonnementstælleren. Påvirker også rækkefølgen af abonnementer, hvis abonnementsrækkefølgen er sat til \'Tæller\'.</string>
-  <string name="pref_set_theme_sum">Ændr AntennaPods udseende.</string>
+  <string name="pref_set_theme_sum">Ændr ApexPods udseende.</string>
   <string name="pref_automatic_download_title">Automatisk overførsel</string>
   <string name="pref_automatic_download_sum">Konfigurer automatisk overførsel af udsendelser</string>
   <string name="pref_autodl_wifi_filter_title">Slå wi-fi-filter til</string>
@@ -479,7 +479,7 @@
   <string name="pref_no_browser_found">Ingen webbrowser fundet</string>
   <string name="pref_cast_title">Chromecast-understøttelse</string>
   <string name="pref_cast_message_play_flavor">Aktiver understøttelse af fjernafspilning på Cast-enheder (såsom Chromecast, højttalere med indbygget Chromecast, eller Android TV)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast kræver tredjeparts proprietære biblioteker, som er slået fra i denne version af AntennaPod</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast kræver tredjeparts proprietære biblioteker, som er slået fra i denne version af ApexPod</string>
   <string name="pref_enqueue_downloaded_title">Sæt overførte udsendelser i kø</string>
   <string name="pref_enqueue_downloaded_summary">Føj downloadede udsendelser til køen</string>
   <string name="media_player_builtin">Indbygget Android-afspiller (deprekeret)</string>
@@ -499,7 +499,7 @@
   <string name="back_button_open_drawer">Åbn navigationsskuffen</string>
   <string name="back_button_double_tap">Dobbelttryk for at afslutte</string>
   <string name="back_button_show_prompt">Bekræft for at afslutte</string>
-  <string name="close_prompt">Er du sikker på at du vil lukke AntennaPod?</string>
+  <string name="close_prompt">Er du sikker på at du vil lukke ApexPod?</string>
   <string name="double_tap_toast">Tryk på tilbageknappen igen for at afslutte</string>
   <string name="back_button_go_to_page">Gå til side ...</string>
   <string name="back_button_go_to_page_title">Vælg side</string>
@@ -519,15 +519,15 @@
   <string name="pref_contribute">Bidrag</string>
   <!--About screen-->
   <string name="about_pref">Om</string>
-  <string name="antennapod_version">AntennaPod-version</string>
+  <string name="antennapod_version">ApexPod-version</string>
   <string name="contributors">Bidragydere</string>
-  <string name="contributors_summary">Alle kan hjælpe med at lave AntennaPod bedre - med kode, oversættelse eller ved at hjælpe brugere i vores forum</string>
+  <string name="contributors_summary">Alle kan hjælpe med at lave ApexPod bedre - med kode, oversættelse eller ved at hjælpe brugere i vores forum</string>
   <string name="developers">Udviklere</string>
   <string name="translators">Oversættere</string>
   <string name="special_thanks">Særlig tak</string>
   <string name="privacy_policy">Privatlivspolitik</string>
   <string name="licenses">Licenser</string>
-  <string name="licenses_summary">AntennaPod bruger anden fantastisk software</string>
+  <string name="licenses_summary">ApexPod bruger anden fantastisk software</string>
   <!--Search-->
   <string name="search_status_no_results">Fandt ingen resultater</string>
   <string name="type_to_search">Indtast en forespørgsel for at søge</string>
@@ -549,8 +549,8 @@
   <string name="html_export_summary">Vis abonnementer</string>
   <string name="opml_export_summary">Flyt abonnementer til anden podcast program</string>
   <string name="opml_import_summary">Importér dine abonnementer fra et andet podcast-program</string>
-  <string name="database_export_summary">Flyt abonnementer, aflyttede udsendelser og kø til AntennaPod på en anden enhed</string>
-  <string name="database_import_summary">Importér AntennaPod-database fra en anden enhed</string>
+  <string name="database_export_summary">Flyt abonnementer, aflyttede udsendelser og kø til ApexPod på en anden enhed</string>
+  <string name="database_import_summary">Importér ApexPod-database fra en anden enhed</string>
   <string name="opml_import_label">OPML-import</string>
   <string name="opml_add_podcast_label">Importér podcastliste (OPML)</string>
   <string name="opml_reader_error">Der opstod en fejl, da OPML-dokumentet blev forsøgt indlæst:</string>
@@ -569,8 +569,8 @@
   <string name="opml_import_ask_read_permission">Adgang til eksternt lager er påkrævet for at læse OPML-filen</string>
   <string name="import_select_file">Vælg fil der skal importeres</string>
   <string name="successful_import_label">Importeret</string>
-  <string name="import_ok">Tryk venligst OK for at genstarte AntennaPod</string>
-  <string name="import_no_downgrade">Databasen blev eksporteret fra en nyere version af AntennaPod. Din nuværende installation ved endnu ikke hvordan den skal håndtere denne fil.</string>
+  <string name="import_ok">Tryk venligst OK for at genstarte ApexPod</string>
+  <string name="import_no_downgrade">Databasen blev eksporteret fra en nyere version af ApexPod. Din nuværende installation ved endnu ikke hvordan den skal håndtere denne fil.</string>
   <string name="favorites_export_label">Eksport af foretrukne</string>
   <string name="favorites_export_summary">Eksportér gemte foretrukne til fil</string>
   <!--Sleep timer-->
@@ -607,16 +607,16 @@
   <string name="create_account">Opret konto</string>
   <string name="username_label">Brugernavn</string>
   <string name="password_label">Adgangskode</string>
-  <string name="gpodnet_description">Gpodder.net er en open-source podcast-synkroniseringstjeneste, som er uafhængig af AntennaPod-projektet.</string>
+  <string name="gpodnet_description">Gpodder.net er en open-source podcast-synkroniseringstjeneste, som er uafhængig af ApexPod-projektet.</string>
   <string name="gpodnetauth_server_official">Officiel gpodder.net server</string>
   <string name="gpodnetauth_server_custom">Brugerdefineret server</string>
   <string name="gpodnetauth_host">Værtsnavn</string>
   <string name="gpodnetauth_select_server">Vælg server</string>
   <string name="gpodnetauth_device_name">Enhedsnavn</string>
-  <string name="gpodnetauth_device_name_default">AntennaPod på %1$s</string>
+  <string name="gpodnetauth_device_name_default">ApexPod på %1$s</string>
   <string name="gpodnetauth_existing_devices">Eksisterende enheder</string>
   <string name="gpodnetauth_create_device">Opret ny enhed</string>
-  <string name="gpodnetauth_finish_descr">Tillykke! Din gpodder.net-konto er nu forbundet med din enhed. AntennaPod vil fra nu af automatisk synkronisere dine abonnementer på din enhed med din gpodder.net-konto.</string>
+  <string name="gpodnetauth_finish_descr">Tillykke! Din gpodder.net-konto er nu forbundet med din enhed. ApexPod vil fra nu af automatisk synkronisere dine abonnementer på din enhed med din gpodder.net-konto.</string>
   <string name="gpodnetauth_finish_butsyncnow">Start synkronisering nu</string>
   <string name="gpodnetsync_error_title">gpodder.net-synkroniseringsfejl</string>
   <string name="gpodnetsync_error_descr">En fejl opstod under synkronisering:\u0020</string>
@@ -625,13 +625,13 @@
   <string name="gpodnetsync_username_characters_error">Brugernavne kan kun indeholde bogstaver, tal, bindestreger og understreger.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Vælg datamappe</string>
-  <string name="choose_data_directory_message">Vælg venligst roden af din datamappe. AntennaPod vil oprette passende undermapper.</string>
+  <string name="choose_data_directory_message">Vælg venligst roden af din datamappe. ApexPod vil oprette passende undermapper.</string>
   <string name="choose_data_directory_available_space">%1$s af %2$s ledig</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Sæt afspilning på pause i stedet for at sænke lydniveauet, når en anden app vil afspille lyde</string>
   <string name="pref_pausePlaybackForFocusLoss_title">Sæt på pause ved afbrydelser</string>
   <string name="pref_resumeAfterCall_sum">Genoptag afspilning når et telefonkald afsluttes</string>
   <string name="pref_resumeAfterCall_title">Genoptag efter opkald</string>
-  <string name="pref_restart_required">AntennaPod skal genstartes for at denne indstilling kan træde i kraft</string>
+  <string name="pref_restart_required">ApexPod skal genstartes for at denne indstilling kan træde i kraft</string>
   <!--Online feed view-->
   <string name="subscribe_label">Abonner</string>
   <string name="subscribing_label">Abonnerer ...</string>
@@ -666,12 +666,12 @@
   <string name="episode_filters_hint">Enkelte ord\n\"Flere ord\"</string>
   <string name="keep_updated">Hold opdateret</string>
   <string name="keep_updated_summary">Inkludere denne podcast når alle podcast genindlæses</string>
-  <string name="auto_download_disabled_globally">Automatisk download slået fra i de generelle AntennaPod indstilinger</string>
+  <string name="auto_download_disabled_globally">Automatisk download slået fra i de generelle ApexPod indstilinger</string>
   <string name="statistics_listened_for">Lyttet i:</string>
   <string name="statistics_episodes_on_device">Udsendelser på enheden:</string>
   <string name="statistics_space_used">Plads brugt:</string>
   <string name="statistics_view_all">Vis for alle podcasts »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">Importerer abonnementer fra enkeltformålsapps…</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Søg efter podcast ...</string>
@@ -692,7 +692,7 @@
   <string name="local_folder">Lokal mappe</string>
   <string name="reconnect_local_folder">Genforbind lokal mappe</string>
   <string name="reconnect_local_folder_warning">I tilfælde af nægtelse af tilladelse kan du bruge denne til at forbinde til præcis den samme mappe. Vælg ikke en anden mappe.</string>
-  <string name="local_feed_description">Denne virtuelle podcast blev oprettet ved at en mappe blev føjet til AntennaPod.</string>
+  <string name="local_feed_description">Denne virtuelle podcast blev oprettet ved at en mappe blev føjet til ApexPod.</string>
   <string name="unable_to_start_system_file_manager">Kunne ikke starte system filhåndtering</string>
   <string name="filter">Filtrér</string>
   <string name="hide_is_favorite_label">Er foretrukken</string>
@@ -721,8 +721,8 @@
   <string name="sort_short_long">Kort \u2192 Lang</string>
   <string name="sort_long_short">Lang \u2192 Kort</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">Kan du lide AntennaPod?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">Vi vil sætte pris på, hvis du vil bedømme AntennaPod.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">Kan du lide ApexPod?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">Vi vil sætte pris på, hvis du vil bedømme ApexPod.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Lad mig være</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Påmind mig senere</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Klart, lad os gøre det!</string>

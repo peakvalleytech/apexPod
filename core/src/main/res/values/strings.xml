@@ -4,7 +4,7 @@
     tools:ignore="MissingTranslation">
 
     <!-- Activity and fragment titles -->
-    <string name="app_name" translatable="false">AntennaPod</string>
+    <string name="app_name" translatable="false">ApexPod</string>
     <string name="provider_authority" translatable="false">de.danoeh.apexpod.provider</string>
     <string name="feed_update_receiver_name">Update Subscriptions</string>
     <string name="feeds_label">Podcasts</string>
@@ -304,7 +304,7 @@
     <string name="no_media_playing_label">No media playing</string>
     <string name="position_default_label" translatable="false">00:00:00</string>
     <string name="player_go_to_picture_in_picture">Picture-in-picture mode</string>
-    <string name="unknown_media_key">AntennaPod - Unknown media key: %1$d</string>
+    <string name="unknown_media_key">ApexPod - Unknown media key: %1$d</string>
     <string name="error_file_not_found">File not found</string>
     <string name="no_media_label">Item does not contain a media file</string>
 
@@ -429,7 +429,7 @@
     <string name="pref_nav_drawer_feed_order_sum">Change the order of your subscriptions</string>
     <string name="pref_nav_drawer_feed_counter_title">Set Subscription Counter</string>
     <string name="pref_nav_drawer_feed_counter_sum">Change the information displayed by the subscription counter. Also affects the sorting of subscriptions if \'Subscription Order\' is set to \'Counter\'.</string>
-    <string name="pref_set_theme_sum">Change the appearance of AntennaPod.</string>
+    <string name="pref_set_theme_sum">Change the appearance of ApexPod.</string>
     <string name="pref_automatic_download_title">Automatic Download</string>
     <string name="pref_automatic_download_sum">Configure the automatic download of episodes.</string>
     <string name="pref_autodl_wifi_filter_title">Enable Wi-Fi filter</string>
@@ -456,8 +456,8 @@
     <string name="synchronization_full_sync_title">Force full synchronization</string>
     <string name="synchronization_login_status"><![CDATA[Logged in as <i>%1$s</i> on <i>%2$s</i>. <br/><br/>You can choose your synchronization provider again once you have logged out]]></string>
     <string name="synchronization_summary_unchoosen">You can choose from multiple providers to synchronize your subscriptions and episode play state with</string>
-    <string name="synchronization_summary_nextcloud">Gpoddersync is an open-source Nextcloud app that you can easily install on your own server. The app is independent of the AntennaPod project.</string>
-    <string name="synchronization_nextcloud_authenticate_browser">Grant access using the opened web browser and come back to AntennaPod.</string>
+    <string name="synchronization_summary_nextcloud">Gpoddersync is an open-source Nextcloud app that you can easily install on your own server. The app is independent of the ApexPod project.</string>
+    <string name="synchronization_nextcloud_authenticate_browser">Grant access using the opened web browser and come back to ApexPod.</string>
     <string name="synchronization_choose_title">Choose synchronization provider</string>
     <string name="synchronization_force_sync_summary">Re-synchronize all subscriptions and episode states</string>
     <string name="synchronization_sync_summary">Synchronize subscription and episode state changes</string>
@@ -506,7 +506,7 @@
     <string name="pref_no_browser_found">No web browser found.</string>
     <string name="pref_cast_title">Chromecast support</string>
     <string name="pref_cast_message_play_flavor">Enable support for remote media playback on Cast devices (such as Chromecast, Audio Speakers or Android TV)</string>
-    <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast requires third party proprietary libraries that are disabled in this version of AntennaPod</string>
+    <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast requires third party proprietary libraries that are disabled in this version of ApexPod</string>
     <string name="pref_enqueue_downloaded_title">Enqueue Downloaded</string>
     <string name="pref_enqueue_downloaded_summary">Add downloaded episodes to the queue</string>
     <string name="media_player_builtin">Built-in Android player (deprecated) </string>
@@ -526,7 +526,7 @@
     <string name="back_button_open_drawer">Open navigation drawer</string>
     <string name="back_button_double_tap">Double tap to exit</string>
     <string name="back_button_show_prompt">Confirm to exit</string>
-    <string name="close_prompt">Are you sure you want to close AntennaPod?</string>
+    <string name="close_prompt">Are you sure you want to close ApexPod?</string>
     <string name="double_tap_toast">Tap back button again to exit</string>
     <string name="back_button_go_to_page">Go to page…</string>
     <string name="back_button_go_to_page_title">Select page</string>
@@ -547,15 +547,15 @@
 
     <!-- About screen -->
     <string name="about_pref">About</string>
-    <string name="antennapod_version">AntennaPod version</string>
+    <string name="antennapod_version">ApexPod version</string>
     <string name="contributors">Contributors</string>
-    <string name="contributors_summary">Everyone can help to make AntennaPod better - with code, translations or by helping users in our forum</string>
+    <string name="contributors_summary">Everyone can help to make ApexPod better - with code, translations or by helping users in our forum</string>
     <string name="developers">Developers</string>
     <string name="translators">Translators</string>
     <string name="special_thanks">Special thanks</string>
     <string name="privacy_policy">Privacy policy</string>
     <string name="licenses">Licenses</string>
-    <string name="licenses_summary">AntennaPod uses other great software</string>
+    <string name="licenses_summary">ApexPod uses other great software</string>
 
     <!-- Search -->
     <string name="search_status_no_results">No results were found</string>
@@ -581,8 +581,8 @@
     <string name="html_export_summary">Show your subscriptions to a friend</string>
     <string name="opml_export_summary">Transfer your subscriptions to another podcast app</string>
     <string name="opml_import_summary">Import your subscriptions from another podcast app</string>
-    <string name="database_export_summary">Transfer subscriptions, listened episodes and queue to AntennaPod on another device</string>
-    <string name="database_import_summary">Import AntennaPod database from another device</string>
+    <string name="database_export_summary">Transfer subscriptions, listened episodes and queue to ApexPod on another device</string>
+    <string name="database_import_summary">Import ApexPod database from another device</string>
     <string name="opml_import_label">OPML Import</string>
     <string name="opml_add_podcast_label">Import podcast list (OPML)</string>
     <string name="opml_reader_error">An error has occurred while reading the OPML document:</string>
@@ -601,8 +601,8 @@
     <string name="opml_import_ask_read_permission">Access to external storage is required to read the OPML file</string>
     <string name="import_select_file">Select file to import</string>
     <string name="successful_import_label">Import successful</string>
-    <string name="import_ok">Please press OK to restart AntennaPod</string>
-    <string name="import_no_downgrade">This database was exported with a newer version of AntennaPod. Your current installation does not yet know how to handle this file.</string>
+    <string name="import_ok">Please press OK to restart ApexPod</string>
+    <string name="import_no_downgrade">This database was exported with a newer version of ApexPod. Your current installation does not yet know how to handle this file.</string>
     <string name="favorites_export_label">Favorites export</string>
     <string name="favorites_export_summary">Export saved favorites to file</string>
 
@@ -641,16 +641,16 @@
     <string name="create_account">Create account</string>
     <string name="username_label">Username</string>
     <string name="password_label">Password</string>
-    <string name="gpodnet_description">Gpodder.net is an open-source podcast synchronization service that is independent of the AntennaPod project.</string>
+    <string name="gpodnet_description">Gpodder.net is an open-source podcast synchronization service that is independent of the ApexPod project.</string>
     <string name="gpodnetauth_server_official">Official gpodder.net server</string>
     <string name="gpodnetauth_server_custom">Custom server</string>
     <string name="gpodnetauth_host">Hostname</string>
     <string name="gpodnetauth_select_server">Select server</string>
     <string name="gpodnetauth_device_name">Device name</string>
-    <string name="gpodnetauth_device_name_default">AntennaPod on %1$s</string>
+    <string name="gpodnetauth_device_name_default">ApexPod on %1$s</string>
     <string name="gpodnetauth_existing_devices">Existing devices</string>
     <string name="gpodnetauth_create_device">Create device</string>
-    <string name="gpodnetauth_finish_descr">Congratulations! Your gpodder.net account is now linked with your device. AntennaPod will from now on automatically sync subscriptions on your device with your gpodder.net account.</string>
+    <string name="gpodnetauth_finish_descr">Congratulations! Your gpodder.net account is now linked with your device. ApexPod will from now on automatically sync subscriptions on your device with your gpodder.net account.</string>
     <string name="gpodnetauth_finish_butsyncnow">Start sync now</string>
 
     <string name="gpodnetsync_error_title">gpodder.net sync error</string>
@@ -661,13 +661,13 @@
 
     <!-- Directory chooser -->
     <string name="choose_data_directory">Choose Data Folder</string>
-    <string name="choose_data_directory_message">Please choose the base of your data folder. AntennaPod will create the appropriate sub-directories.</string>
+    <string name="choose_data_directory_message">Please choose the base of your data folder. ApexPod will create the appropriate sub-directories.</string>
     <string name="choose_data_directory_available_space">%1$s of %2$s free</string>
     <string name="pref_pausePlaybackForFocusLoss_sum">Pause playback instead of lowering volume when another app wants to play sounds</string>
     <string name="pref_pausePlaybackForFocusLoss_title">Pause for Interruptions</string>
     <string name="pref_resumeAfterCall_sum">Resume playback after a phone call completes</string>
     <string name="pref_resumeAfterCall_title">Resume after Call</string>
-    <string name="pref_restart_required">AntennaPod has to be restarted for this change to take effect.</string>
+    <string name="pref_restart_required">ApexPod has to be restarted for this change to take effect.</string>
 
     <!-- Online feed view -->
     <string name="subscribe_label">Subscribe</string>
@@ -705,13 +705,13 @@
     <string name="episode_filters_hint">Single words \n\"Multiple Words\"</string>
     <string name="keep_updated">Keep Updated</string>
     <string name="keep_updated_summary">Include this podcast when (auto-)refreshing all podcasts</string>
-    <string name="auto_download_disabled_globally">Auto download is disabled in the main AntennaPod settings</string>
+    <string name="auto_download_disabled_globally">Auto download is disabled in the main ApexPod settings</string>
     <string name="statistics_listened_for">Listened for:</string>
     <string name="statistics_episodes_on_device">Episodes on the device:</string>
     <string name="statistics_space_used">Space used:</string>
     <string name="statistics_view_all">View for all podcasts »</string>
 
-    <!-- AntennaPodSP -->
+    <!-- ApexPodSP -->
     <string name="sp_apps_importing_feeds_msg">Importing subscriptions from single-purpose apps&#8230;</string>
 
     <!-- Add podcast fragment -->
@@ -735,7 +735,7 @@
     <string name="local_folder">Local folder</string>
     <string name="reconnect_local_folder">Re-connect local folder</string>
     <string name="reconnect_local_folder_warning">In case of permission denials, you can use this to re-connect to the exact same folder. Do not select another folder.</string>
-    <string name="local_feed_description">This virtual podcast was created by adding a folder to AntennaPod.</string>
+    <string name="local_feed_description">This virtual podcast was created by adding a folder to ApexPod.</string>
     <string name="unable_to_start_system_file_manager">Unable to start system file manager</string>
 
     <string name="filter">Filter</string>
@@ -768,8 +768,8 @@
     <string name="sort_long_short">Long \u2192 Short</string>
 
     <!-- Rating dialog -->
-    <string name="rating_title" tools:ignore="UnusedResources">Like AntennaPod?</string>
-    <string name="rating_message" tools:ignore="UnusedResources">We would appreciate it if you take the time to rate AntennaPod.</string>
+    <string name="rating_title" tools:ignore="UnusedResources">Like ApexPod?</string>
+    <string name="rating_message" tools:ignore="UnusedResources">We would appreciate it if you take the time to rate ApexPod.</string>
     <string name="rating_never_label" tools:ignore="UnusedResources">Leave me alone</string>
     <string name="rating_later_label" tools:ignore="UnusedResources">Remind me later</string>
     <string name="rating_now_label" tools:ignore="UnusedResources">Sure, let\'s do this!</string>

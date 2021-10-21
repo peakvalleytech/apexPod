@@ -238,7 +238,7 @@
   <string name="pref_mobileUpdate_title">मोबाइल अपडेट</string>
   <string name="user_interface_label">यूजर इंटरफेस</string>
   <string name="pref_set_theme_title">थीम का चयन करें</string>
-  <string name="pref_set_theme_sum">AntennaPod का प्रकटन बदलें.</string>
+  <string name="pref_set_theme_sum">ApexPod का प्रकटन बदलें.</string>
   <string name="pref_automatic_download_title">स्वचालित डाउनलोड</string>
   <string name="pref_automatic_download_sum">एपिसोड के स्वत: डाउनलोड विन्यस्त करें.</string>
   <string name="pref_autodl_wifi_filter_title">वाई-फाई फिल्टर सक्षम करें</string>
@@ -298,7 +298,7 @@
   <string name="gpodnetauth_device_errorAlreadyUsed">डिवाइस आईडी पहले से ही उपयोग में</string>
   <string name="gpodnetauth_device_butChoose">चुनें</string>
   <string name="gpodnetauth_finish_title">लॉगिन सफल!</string>
-  <string name="gpodnetauth_finish_descr">बधाई हो! आपकी gpodder.net खाता अब आपके डिवाइस के साथ जुड़ा हुआ है. AntennaPod अब से स्वचालित रूप से आपके gpodder.net खाते के साथ अपने डिवाइस पर सदस्यता सिंक जाएगा.</string>
+  <string name="gpodnetauth_finish_descr">बधाई हो! आपकी gpodder.net खाता अब आपके डिवाइस के साथ जुड़ा हुआ है. ApexPod अब से स्वचालित रूप से आपके gpodder.net खाते के साथ अपने डिवाइस पर सदस्यता सिंक जाएगा.</string>
   <string name="gpodnetauth_finish_butsyncnow">अब सिंक प्रारंभ करें</string>
   <string name="gpodnetauth_finish_butgomainscreen">मुख्य स्क्रीन पर जाएं</string>
   <string name="gpodnetsync_auth_error_title">gpodder.net प्रमाणन त्रुटि</string>
@@ -324,7 +324,7 @@
   <!--Content descriptions for image buttons-->
   <!--Feed information screen-->
   <!--Progress information-->
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <!--Add podcast fragment-->
   <string name="browse_gpoddernet_label">gpodder.net ब्राउज़ करें</string>
   <!--Episodes apply actions-->

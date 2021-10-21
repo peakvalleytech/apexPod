@@ -314,7 +314,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Camuda l\'orde de les soscripciones</string>
   <string name="pref_nav_drawer_feed_counter_title">Contador de les soscripciones</string>
   <string name="pref_nav_drawer_feed_counter_sum">Camuda la información qu\'amuesa\'l contador de soscripciones. Tamién afeuta al orde de les soscripciones si «Orde de les soscripciones» s\'afita a «Contador».</string>
-  <string name="pref_set_theme_sum">Camuda l\'aspeutu d\'AntennaPod.</string>
+  <string name="pref_set_theme_sum">Camuda l\'aspeutu d\'ApexPod.</string>
   <string name="pref_automatic_download_title">Descarga automática</string>
   <string name="pref_automatic_download_sum">Configura la descarga automática d\'episodios.</string>
   <string name="pref_autodl_wifi_filter_title">Activar la peñera de redes Wi-Fi</string>
@@ -377,7 +377,7 @@
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Afita un proxy de rede</string>
   <string name="pref_no_browser_found">Nun s\'atopó nengún restolador web.</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast rique biblioteques privatives de terceros que tán desactivaes nesta versión d\'AntennaPod</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast rique biblioteques privatives de terceros que tán desactivaes nesta versión d\'ApexPod</string>
   <string name="pref_enqueue_downloaded_title">Amestar lo baxao a la cola</string>
   <string name="pref_enqueue_downloaded_summary">Amiesta los episodios baxaos a la cola</string>
   <string name="pref_videoBehavior_title">Dempués de colar de los vídeos</string>
@@ -391,7 +391,7 @@
   <string name="back_button_open_drawer">Apertura del caxón de navegación</string>
   <string name="back_button_double_tap">Dos calcos pa colar</string>
   <string name="back_button_show_prompt">Confirmación pa colar</string>
-  <string name="close_prompt">¿De xuru que quies zarrar AntennaPod?</string>
+  <string name="close_prompt">¿De xuru que quies zarrar ApexPod?</string>
   <string name="double_tap_toast">Volvi tocar el botón Atrás pa colar</string>
   <string name="back_button_go_to_page">Dir pa la páxina…</string>
   <string name="pref_delete_removes_from_queue_title">«Desaniciar» quita de la cola</string>
@@ -405,15 +405,15 @@
   <string name="pref_contribute">Collaborar</string>
   <!--About screen-->
   <string name="about_pref">Tocante a</string>
-  <string name="antennapod_version">Versión d\'AntennaPod</string>
+  <string name="antennapod_version">Versión d\'ApexPod</string>
   <string name="contributors">Collaboradores</string>
-  <string name="contributors_summary">Tol mundu pue ayudar a ameyorar AntennaPod con códigu, traducciones o echando un gabitu a los usuarios nel nuesu foru</string>
+  <string name="contributors_summary">Tol mundu pue ayudar a ameyorar ApexPod con códigu, traducciones o echando un gabitu a los usuarios nel nuesu foru</string>
   <string name="developers">Desendolcadores</string>
   <string name="translators">Traductores</string>
   <string name="special_thanks">Agradecimientu especial</string>
   <string name="privacy_policy">Política de privacidá</string>
   <string name="licenses">Llicencies</string>
-  <string name="licenses_summary">AntennaPod usa otros programes maraviyosos</string>
+  <string name="licenses_summary">ApexPod usa otros programes maraviyosos</string>
   <!--Search-->
   <string name="search_status_no_results">Nun s\'atoparon resultaos</string>
   <string name="search_label">Buscar</string>
@@ -430,8 +430,8 @@
   <string name="html_export_summary">Enseña les soscripciones a los collacios</string>
   <string name="opml_export_summary">Tresfier les soscripciones a otra aplicación de podcasts</string>
   <string name="opml_import_summary">Importa les soscripciones d\'otra aplicación de podcasts</string>
-  <string name="database_export_summary">Tresfier les soscripciones, los episodios sentíos y la cola al AntennaPod d\'otru preséu</string>
-  <string name="database_import_summary">Importa la base de datos del AntennaPod d\'otru preséu</string>
+  <string name="database_export_summary">Tresfier les soscripciones, los episodios sentíos y la cola al ApexPod d\'otru preséu</string>
+  <string name="database_import_summary">Importa la base de datos del ApexPod d\'otru preséu</string>
   <string name="opml_add_podcast_label">Importar una llista de podcasts (OPML)</string>
   <string name="select_all_label">Esbillar too</string>
   <string name="deselect_all_label">Deseleicionar too</string>
@@ -442,8 +442,8 @@
   <string name="export_success_title">La esportación fízose correutamente</string>
   <string name="export_success_sum">El ficheru esportáu escribióse en:\n\n%1$s</string>
   <string name="successful_import_label">La importación fízose correutamente</string>
-  <string name="import_ok">Primi «D\'acuerdu» pa reaniciar AntennaPod</string>
-  <string name="import_no_downgrade">Esta base de datos esportóse con una versión nueva d\'AntennaPod. La instalación actual entá nun sabe cómo remanar esti ficheru.</string>
+  <string name="import_ok">Primi «D\'acuerdu» pa reaniciar ApexPod</string>
+  <string name="import_no_downgrade">Esta base de datos esportóse con una versión nueva d\'ApexPod. La instalación actual entá nun sabe cómo remanar esti ficheru.</string>
   <string name="favorites_export_label">Esportación de los favoritos</string>
   <string name="favorites_export_summary">Esporta los favoritos a un ficheru</string>
   <!--Sleep timer-->
@@ -475,16 +475,16 @@
   <string name="create_account">Crear una cuenta</string>
   <string name="username_label">Nome d\'usuariu</string>
   <string name="password_label">Contraseña</string>
-  <string name="gpodnet_description">Gpodder.net ye un serviciu de sincronización de podcasts de códigu abiertu que ye independiente del proyeutu AntennaPod.</string>
+  <string name="gpodnet_description">Gpodder.net ye un serviciu de sincronización de podcasts de códigu abiertu que ye independiente del proyeutu ApexPod.</string>
   <string name="gpodnetauth_server_official">Sirvidor oficial de gpodder.net</string>
   <string name="gpodnetauth_server_custom">Sirvidor personalizáu</string>
   <string name="gpodnetauth_host">Agospiador</string>
   <string name="gpodnetauth_select_server">Esbillar el sirvidor</string>
   <string name="gpodnetauth_device_name">Nome del preséu</string>
-  <string name="gpodnetauth_device_name_default">AntennaPod en «%1$s»</string>
+  <string name="gpodnetauth_device_name_default">ApexPod en «%1$s»</string>
   <string name="gpodnetauth_existing_devices">Preseos esistentes</string>
   <string name="gpodnetauth_create_device">Crear el preséu</string>
-  <string name="gpodnetauth_finish_descr">¡Norabona! La to cuenta de gpodder.net ta enllaciada col preséu. Dende agora, AntennaPod va sincronizar automáticamente les soscripciones del preséu con esta cuenta.</string>
+  <string name="gpodnetauth_finish_descr">¡Norabona! La to cuenta de gpodder.net ta enllaciada col preséu. Dende agora, ApexPod va sincronizar automáticamente les soscripciones del preséu con esta cuenta.</string>
   <string name="gpodnetauth_finish_butsyncnow">Sincronizar agora</string>
   <string name="gpodnetsync_error_descr">Asocedió un fallu demientres la sincronización:\u0020</string>
   <string name="gpodnetsync_pref_report_successful">Sincronización correuta</string>
@@ -492,11 +492,11 @@
   <string name="gpodnetsync_username_characters_error">Los nomes d\'usuariu namás puen contener lletres, díxitos, guiones y guiones baxos.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Carpeta de datos</string>
-  <string name="choose_data_directory_message">Escueyi la carpeta de datos. AntennaPod va crear los sodireutorios afayadizos.</string>
+  <string name="choose_data_directory_message">Escueyi la carpeta de datos. ApexPod va crear los sodireutorios afayadizos.</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Posa la reproducción en cuentes de baxar el volume cuando otra aplicación quier reproducir soníos</string>
   <string name="pref_resumeAfterCall_sum">Sigue cola reproducción dempués de colgar les llamaes telefóniques</string>
   <string name="pref_resumeAfterCall_title">Siguir dempués de les llamaes</string>
-  <string name="pref_restart_required">Tienes de reaniciar AntennaPod pa qu\'esti cambéu faiga efeutu.</string>
+  <string name="pref_restart_required">Tienes de reaniciar ApexPod pa qu\'esti cambéu faiga efeutu.</string>
   <!--Online feed view-->
   <string name="subscribe_label">Soscribise</string>
   <string name="subscribing_label">Soscribiéndote…</string>
@@ -528,12 +528,12 @@
   <string name="episode_filters_hint">Pallabres individuales\n\"Pallabres múltiples\"</string>
   <string name="keep_updated">Anovamientu automáticu</string>
   <string name="keep_updated_summary">Inclúi esti podcast al refrescar (automáticamente) tolos podcasts</string>
-  <string name="auto_download_disabled_globally">La descarga automática ta desactivada nos axustes principales d\'AntennaPod</string>
+  <string name="auto_download_disabled_globally">La descarga automática ta desactivada nos axustes principales d\'ApexPod</string>
   <string name="statistics_listened_for">Sintióse demientres:</string>
   <string name="statistics_episodes_on_device">Episodios nel preséu:</string>
   <string name="statistics_space_used">Espaciu n\'usu:</string>
   <string name="statistics_view_all">Ver lo de tolos podcasts »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Buscar podcasts…</string>
   <string name="search_itunes_label">Buscar n\'iTunes</string>
@@ -551,7 +551,7 @@
   <!--Local feeds-->
   <string name="add_local_folder">Amestar una carpeta llocal</string>
   <string name="local_folder">Carpeta llocal</string>
-  <string name="local_feed_description">Esti podcast virtual creóse por amestar una carpeta a AntennaPod.</string>
+  <string name="local_feed_description">Esti podcast virtual creóse por amestar una carpeta a ApexPod.</string>
   <string name="unable_to_start_system_file_manager">Nun ye posible aniciar el xestor de ficheros del sistema</string>
   <string name="filter">Peñera</string>
   <string name="hide_is_favorite_label">Ta en Favoritos</string>
@@ -573,7 +573,7 @@
   <string name="sort_new_old">Nuevo \u2192 Vieyo</string>
   <string name="sort_old_new">Vieyo \u2192 Nuevo</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">¿Préstate AntennaPod?</string>
+  <string name="rating_title" tools:ignore="UnusedResources">¿Préstate ApexPod?</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Non, nin</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Recordámelo dempués</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Sí, ho</string>

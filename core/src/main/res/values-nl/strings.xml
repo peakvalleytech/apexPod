@@ -284,7 +284,7 @@
   <string name="playback_error_unknown">Onbekende fout</string>
   <string name="no_media_playing_label">Er wordt geen media afgespeeld</string>
   <string name="player_go_to_picture_in_picture">Beeld-in-beeldmodus</string>
-  <string name="unknown_media_key">AntennaPod - onbekende mediatoets: %1$d</string>
+  <string name="unknown_media_key">ApexPod - onbekende mediatoets: %1$d</string>
   <string name="error_file_not_found">Bestand niet aangetroffen</string>
   <string name="no_media_label">Het item bevat geen mediabestand</string>
   <!--Queue operations-->
@@ -405,7 +405,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Stel de volgorde van je abonnementen in</string>
   <string name="pref_nav_drawer_feed_counter_title">Teller instellen</string>
   <string name="pref_nav_drawer_feed_counter_sum">Wijzig de door de teller getoonde informatie. Is ook van toepassing op de sortering als \'Abonnementsvolgorde\' is ingesteld op \'Teller\'.</string>
-  <string name="pref_set_theme_sum">Pas het uiterlijk van AntennaPod aan.</string>
+  <string name="pref_set_theme_sum">Pas het uiterlijk van ApexPod aan.</string>
   <string name="pref_automatic_download_title">Automatisch downloaden</string>
   <string name="pref_automatic_download_sum">Stel het automatisch downloaden van afleveringen in.</string>
   <string name="pref_autodl_wifi_filter_title">Wifi-filter inschakelen</string>
@@ -479,7 +479,7 @@
   <string name="pref_no_browser_found">Geen browser aangetroffen.</string>
   <string name="pref_cast_title">Chromecast-ondersteuning</string>
   <string name="pref_cast_message_play_flavor">Ondersteuning activeren voor draadloos afspelen via Cast-apparaten (zoals Chromecast, luidsprekers of Android TV)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Voor Chromecast is software van derden vereist die niet beschikbaar is in deze versie van AntennaPod</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Voor Chromecast is software van derden vereist die niet beschikbaar is in deze versie van ApexPod</string>
   <string name="pref_enqueue_downloaded_title">Gedownloade afleveringen in wachtrij</string>
   <string name="pref_enqueue_downloaded_summary">Voeg gedownloade afleveringen toe aan de wachtrij</string>
   <string name="media_player_builtin">Ingebouwde Android-speler (verouderd)</string>
@@ -499,7 +499,7 @@
   <string name="back_button_open_drawer">Navigatiemenu openen</string>
   <string name="back_button_double_tap">Dubbeltik om af te sluiten</string>
   <string name="back_button_show_prompt">Afsluiten bevestigen</string>
-  <string name="close_prompt">Weet je zeker dat je AntennaPod wilt afsluiten?</string>
+  <string name="close_prompt">Weet je zeker dat je ApexPod wilt afsluiten?</string>
   <string name="double_tap_toast">Druk nogmaals op de terugknop om af te sluiten</string>
   <string name="back_button_go_to_page">Ga naar pagina...</string>
   <string name="back_button_go_to_page_title">Kies een pagina</string>
@@ -518,16 +518,16 @@
   <string name="pref_feed_settings_dialog_msg">Deze instellingen moet per podcast worden in- of uitgeschakeld. Pas aan door de podcastpagina te openen.</string>
   <string name="pref_contribute">Bijdragen</string>
   <!--About screen-->
-  <string name="about_pref">Over AntennaPod</string>
-  <string name="antennapod_version">AntennaPod-versie</string>
+  <string name="about_pref">Over ApexPod</string>
+  <string name="antennapod_version">ApexPod-versie</string>
   <string name="contributors">Bijdragers</string>
-  <string name="contributors_summary">Iedereen kan helpen AntennaPod te verbeteren middels programmeren, vertalen of het helpen van gebruikers op het forum</string>
+  <string name="contributors_summary">Iedereen kan helpen ApexPod te verbeteren middels programmeren, vertalen of het helpen van gebruikers op het forum</string>
   <string name="developers">Ontwikkelaars</string>
   <string name="translators">Vertalers</string>
   <string name="special_thanks">Met dank aan</string>
   <string name="privacy_policy">Privacybeleid</string>
   <string name="licenses">Licenties</string>
-  <string name="licenses_summary">AntennaPod maakt gebruik van andere geweldige software</string>
+  <string name="licenses_summary">ApexPod maakt gebruik van andere geweldige software</string>
   <!--Search-->
   <string name="search_status_no_results">Er zijn geen resultaten gevonden</string>
   <string name="type_to_search">Typ een zoekopdracht</string>
@@ -569,7 +569,7 @@
   <string name="opml_import_ask_read_permission">Toegang tot externe locaties is nodig om het OPML-bestand te kunnen lezen</string>
   <string name="import_select_file">Kies een te importeren bestand</string>
   <string name="successful_import_label">Importeren voltooid</string>
-  <string name="import_ok">Druk op \'Oké\' om AntennaPod opnieuw te starten.</string>
+  <string name="import_ok">Druk op \'Oké\' om ApexPod opnieuw te starten.</string>
   <string name="import_no_downgrade">Deze databank is geëxporteerd door een nieuwere versie van Antennapod. Je huidige versie weet nog niet hoe daar mee om te gaan.</string>
   <string name="favorites_export_label">Favorieten exporteren</string>
   <string name="favorites_export_summary">Exporteer opgeslagen favorieten naar een bestand</string>
@@ -607,16 +607,16 @@
   <string name="create_account">Account aanmaken</string>
   <string name="username_label">Gebruikersnaam</string>
   <string name="password_label">Wachtwoord</string>
-  <string name="gpodnet_description">Gpodder.net is een open source podcast-synchronisatiedienst die niet betrokken is bij het AntennaPod-project.</string>
+  <string name="gpodnet_description">Gpodder.net is een open source podcast-synchronisatiedienst die niet betrokken is bij het ApexPod-project.</string>
   <string name="gpodnetauth_server_official">Officiële gpodder.net-server</string>
   <string name="gpodnetauth_server_custom">Aangepaste server</string>
   <string name="gpodnetauth_host">Hostnaam</string>
   <string name="gpodnetauth_select_server">Server kiezen</string>
   <string name="gpodnetauth_device_name">Apparaatnaam</string>
-  <string name="gpodnetauth_device_name_default">AntennaPod op %1$s</string>
+  <string name="gpodnetauth_device_name_default">ApexPod op %1$s</string>
   <string name="gpodnetauth_existing_devices">Bestaande apparaten</string>
   <string name="gpodnetauth_create_device">Apparaat toevoegen</string>
-  <string name="gpodnetauth_finish_descr">Gefeliciteerd! Je gpodder.net-account is nu gekoppeld aan je apparaat. AntennaPod zal voortaan abonnementen automatisch synchroniseren met je gpodder.net-account.</string>
+  <string name="gpodnetauth_finish_descr">Gefeliciteerd! Je gpodder.net-account is nu gekoppeld aan je apparaat. ApexPod zal voortaan abonnementen automatisch synchroniseren met je gpodder.net-account.</string>
   <string name="gpodnetauth_finish_butsyncnow">Nu synchroniseren</string>
   <string name="gpodnetsync_error_title">gpodder.net - synchronisatiefout</string>
   <string name="gpodnetsync_error_descr">Er is een fout opgetreden tijdens het synchroniseren:\u0020</string>
@@ -625,13 +625,13 @@
   <string name="gpodnetsync_username_characters_error">Gebruikersnamen mogen alleen letters, cijfers en (onderliggende) streepjes bevatten.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Kies de gegevensmap</string>
-  <string name="choose_data_directory_message">Kies de hoofdmap voor je gegevens. AntennaPod zal de benodigde submappen aanmaken.</string>
+  <string name="choose_data_directory_message">Kies de hoofdmap voor je gegevens. ApexPod zal de benodigde submappen aanmaken.</string>
   <string name="choose_data_directory_available_space">%1$s van %2$s beschikbaar</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Het afspelen onderbreken in plaats van het volume te verlagen als een andere app geluiden wil afspelen</string>
   <string name="pref_pausePlaybackForFocusLoss_title">Pauzeren bij onderbrekingen</string>
   <string name="pref_resumeAfterCall_sum">Afspelen hervatten na beëindigen van telefoongesprek</string>
   <string name="pref_resumeAfterCall_title">Hervatten na gesprek</string>
-  <string name="pref_restart_required">AntennaPod moet opnieuw worden gestart om deze wijziging toe te passen.</string>
+  <string name="pref_restart_required">ApexPod moet opnieuw worden gestart om deze wijziging toe te passen.</string>
   <!--Online feed view-->
   <string name="subscribe_label">Abonneren</string>
   <string name="subscribing_label">Bezig met abonneren...</string>
@@ -666,12 +666,12 @@
   <string name="episode_filters_hint">Losse woorden \n\"Meerdere tussen aanhalingstekens\"</string>
   <string name="keep_updated">Bijgewerkt houden</string>
   <string name="keep_updated_summary">Deze podcast meenemen bij het (automatisch) verversen van alle podcasts</string>
-  <string name="auto_download_disabled_globally">Automatisch downloaden is uitgeschakeld in de AntennaPod-instellingen</string>
+  <string name="auto_download_disabled_globally">Automatisch downloaden is uitgeschakeld in de ApexPod-instellingen</string>
   <string name="statistics_listened_for">Luisterduur:</string>
   <string name="statistics_episodes_on_device">Afleveringen op apparaat:</string>
   <string name="statistics_space_used">Gebruikte ruimte:</string>
   <string name="statistics_view_all">Alle podcasts tonen »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">Bezig met importeren van abonnementen uit eenmalige apps...</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Podcast zoeken...</string>
@@ -692,7 +692,7 @@
   <string name="local_folder">Lokale map</string>
   <string name="reconnect_local_folder">Lokale map opnieuw koppelen</string>
   <string name="reconnect_local_folder_warning">Als je geen rechten hebt, gebruik dan dit om de map opnieuw te koppelen. Kies geen andere map.</string>
-  <string name="local_feed_description">De virtuele podcast is aangemaakt door een aan AntennaPod toegevoegde map.</string>
+  <string name="local_feed_description">De virtuele podcast is aangemaakt door een aan ApexPod toegevoegde map.</string>
   <string name="unable_to_start_system_file_manager">De bestandsbeheerder-app kan niet worden geopend</string>
   <string name="filter">Filter</string>
   <string name="hide_is_favorite_label">Gemarkeerd als favoriet</string>
@@ -721,8 +721,8 @@
   <string name="sort_short_long">Kort \u2192 Lang</string>
   <string name="sort_long_short">Lang \u2192 Kort</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">Wat vind je van AntennaPod?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">We stellen het op prijs als je even de tijd neemt om AntennaPod te beoordelen.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">Wat vind je van ApexPod?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">We stellen het op prijs als je even de tijd neemt om ApexPod te beoordelen.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Nee, bedankt</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Herinner me later</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Ja, doen we!</string>

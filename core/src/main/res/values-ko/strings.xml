@@ -598,7 +598,7 @@
   <string name="statistics_episodes_on_device">장치에 들어 있는 에피소드:</string>
   <string name="statistics_space_used">사용한 용량:</string>
   <string name="statistics_view_all">모든 팟캐스트에 대한 뷰 »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">단일 용도 앱에서 구독 정보를 가져옵니다...</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">팟캐스트 검색…</string>

@@ -252,7 +252,7 @@
   <string name="playback_error_unknown">Bilinmeyen Hata</string>
   <string name="no_media_playing_label">Çalınan medya yok</string>
   <string name="player_go_to_picture_in_picture">Resim içinde Resim modu</string>
-  <string name="unknown_media_key">AntennaPod - Bilinmeyen medya anahtarı: %1$d</string>
+  <string name="unknown_media_key">ApexPod - Bilinmeyen medya anahtarı: %1$d</string>
   <string name="error_file_not_found">File not found</string>
   <string name="no_media_label">Öğe, bir medya dosyası içermiyor</string>
   <!--Queue operations-->
@@ -356,7 +356,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Abonelik sırasını değiştir</string>
   <string name="pref_nav_drawer_feed_counter_title">Abonelik sayacını ayarla</string>
   <string name="pref_nav_drawer_feed_counter_sum">Change the information displayed by the subscription counter. Also affects the sorting of subscriptions if \'Subscription Order\' is set to \'Counter\'.</string>
-  <string name="pref_set_theme_sum">AntennaPod\'un görüntüsünü değiştir.</string>
+  <string name="pref_set_theme_sum">ApexPod\'un görüntüsünü değiştir.</string>
   <string name="pref_automatic_download_title">Otomatk indirme</string>
   <string name="pref_automatic_download_sum">Bölümlerin otomatik indirilmesini yapılandır.</string>
   <string name="pref_autodl_wifi_filter_title">Wi-Fi filtresini etkinleştir</string>
@@ -426,7 +426,7 @@
   <string name="pref_no_browser_found">No web browser found.</string>
   <string name="pref_cast_title">Chromecast support</string>
   <string name="pref_cast_message_play_flavor">Enable support for remote media playback on Cast devices (such as Chromecast, Audio Speakers or Android TV)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast requires third party proprietary libraries that are disabled in this version of AntennaPod</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast requires third party proprietary libraries that are disabled in this version of ApexPod</string>
   <string name="pref_enqueue_downloaded_title">Enqueue Downloaded</string>
   <string name="pref_enqueue_downloaded_summary">Add downloaded episodes to the queue</string>
   <string name="media_player_exoplayer_recommended">ExoPlayer (tavsiye edilen)</string>
@@ -444,7 +444,7 @@
   <string name="back_button_open_drawer">Open navigation drawer</string>
   <string name="back_button_double_tap">Double tap to exit</string>
   <string name="back_button_show_prompt">Confirm to exit</string>
-  <string name="close_prompt">Are you sure you want to close AntennaPod?</string>
+  <string name="close_prompt">Are you sure you want to close ApexPod?</string>
   <string name="double_tap_toast">Tap back button again to exit</string>
   <string name="back_button_go_to_page">Go to page…</string>
   <string name="back_button_go_to_page_title">Select page</string>
@@ -460,15 +460,15 @@
   <string name="not_kept_updated">Not kept updated</string>
   <!--About screen-->
   <string name="about_pref">Hakkında</string>
-  <string name="antennapod_version">AntennaPod version</string>
+  <string name="antennapod_version">ApexPod version</string>
   <string name="contributors">Contributors</string>
-  <string name="contributors_summary">Everyone can help to make AntennaPod better - with code, translations or by helping users in our forum</string>
+  <string name="contributors_summary">Everyone can help to make ApexPod better - with code, translations or by helping users in our forum</string>
   <string name="developers">Developers</string>
   <string name="translators">Translators</string>
   <string name="special_thanks">Special thanks</string>
   <string name="privacy_policy">Privacy policy</string>
   <string name="licenses">Licenses</string>
-  <string name="licenses_summary">AntennaPod uses other great software</string>
+  <string name="licenses_summary">ApexPod uses other great software</string>
   <!--Search-->
   <string name="search_status_no_results">Sonuç bulunamadı</string>
   <string name="search_label">Ara</string>
@@ -489,8 +489,8 @@
   <string name="html_export_summary">Show your subscriptions to a friend</string>
   <string name="opml_export_summary">Transfer your subscriptions to another podcast app</string>
   <string name="opml_import_summary">Import your subscriptions from another podcast app</string>
-  <string name="database_export_summary">Transfer subscriptions, listened episodes and queue to AntennaPod on another device</string>
-  <string name="database_import_summary">Import AntennaPod database from another device</string>
+  <string name="database_export_summary">Transfer subscriptions, listened episodes and queue to ApexPod on another device</string>
+  <string name="database_import_summary">Import ApexPod database from another device</string>
   <string name="opml_import_label">OPML içe aktar</string>
   <string name="opml_add_podcast_label">Import podcast list (OPML)</string>
   <string name="opml_reader_error">An error has occurred while reading the OPML document:</string>
@@ -509,8 +509,8 @@
   <string name="opml_import_ask_read_permission">Access to external storage is required to read the OPML file</string>
   <string name="import_select_file">Select file to import</string>
   <string name="successful_import_label">Import successful</string>
-  <string name="import_ok">Please press OK to restart AntennaPod</string>
-  <string name="import_no_downgrade">This database was exported with a newer version of AntennaPod. Your current installation does not yet know how to handle this file.</string>
+  <string name="import_ok">Please press OK to restart ApexPod</string>
+  <string name="import_no_downgrade">This database was exported with a newer version of ApexPod. Your current installation does not yet know how to handle this file.</string>
   <string name="favorites_export_label">Favorites export</string>
   <string name="favorites_export_summary">Export saved favorites to file</string>
   <!--Sleep timer-->
@@ -544,7 +544,7 @@
   <string name="gpodnetauth_login_butLabel">Giriş</string>
   <string name="username_label">Kullanıcı adı</string>
   <string name="password_label">Parola</string>
-  <string name="gpodnetauth_finish_descr">Tebrikler! gpodder.net hesabınız cihazınızla ilişkilendirildi. AntennaPod bundan sonra gpodder.net hesabınızla üyeliklerinizi otomatik olarak senkronize edecek.</string>
+  <string name="gpodnetauth_finish_descr">Tebrikler! gpodder.net hesabınız cihazınızla ilişkilendirildi. ApexPod bundan sonra gpodder.net hesabınızla üyeliklerinizi otomatik olarak senkronize edecek.</string>
   <string name="gpodnetauth_finish_butsyncnow">Senkronizasyonu başlat</string>
   <string name="gpodnetsync_error_title">gpodder.net senkronizasyon hatası</string>
   <string name="gpodnetsync_error_descr">Senkronize edilirken bir hata oluştu:\u0020</string>
@@ -553,13 +553,13 @@
   <string name="gpodnetsync_username_characters_error">Usernames may only contain letters, digits, hyphens and underscores.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Veri dizinini seç</string>
-  <string name="choose_data_directory_message">Lütfen verileriniz için ana klasörü seçin. AntennaPod gerekli alt-klasörleri oluşturacaktır.</string>
+  <string name="choose_data_directory_message">Lütfen verileriniz için ana klasörü seçin. ApexPod gerekli alt-klasörleri oluşturacaktır.</string>
   <string name="choose_data_directory_available_space">%1$s of %2$s free</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Başka bir uygulama ses çalmak istediğinde sesi kısmak yerine yürütmeyi duraklat</string>
   <string name="pref_pausePlaybackForFocusLoss_title">Kesintiler için duraklat</string>
   <string name="pref_resumeAfterCall_sum">Bir telefon konuşması tamamlandıktan sonra çalmaya kaldığı yerden devam et</string>
   <string name="pref_resumeAfterCall_title">Konuşmadan sonra devam et</string>
-  <string name="pref_restart_required">Bu değişikliğin geçerli olması için AntennaPod yeniden başlatılmalıdır.</string>
+  <string name="pref_restart_required">Bu değişikliğin geçerli olması için ApexPod yeniden başlatılmalıdır.</string>
   <!--Online feed view-->
   <string name="subscribe_label">Üye ol</string>
   <string name="subscribing_label">Subscribing…</string>
@@ -588,12 +588,12 @@
   <string name="episode_filters_hint">Single words \n\"Multiple Words\"</string>
   <string name="keep_updated">Keep Updated</string>
   <string name="keep_updated_summary">Include this podcast when (auto-)refreshing all podcasts</string>
-  <string name="auto_download_disabled_globally">Auto download is disabled in the main AntennaPod settings</string>
+  <string name="auto_download_disabled_globally">Auto download is disabled in the main ApexPod settings</string>
   <string name="statistics_listened_for">Listened for:</string>
   <string name="statistics_episodes_on_device">Episodes on the device:</string>
   <string name="statistics_space_used">Space used:</string>
   <string name="statistics_view_all">View for all podcasts »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">Üyelikler tek-amaçlı uygulamalardan içe aktarılıyor...</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Search podcast…</string>
@@ -614,7 +614,7 @@
   <string name="local_folder">Yerel klasör</string>
   <string name="reconnect_local_folder">Re-connect local folder</string>
   <string name="reconnect_local_folder_warning">In case of permission denials, you can use this to re-connect to the exact same folder. Do not select another folder.</string>
-  <string name="local_feed_description">This virtual podcast was created by adding a folder to AntennaPod.</string>
+  <string name="local_feed_description">This virtual podcast was created by adding a folder to ApexPod.</string>
   <string name="unable_to_start_system_file_manager">Sistem dosya yöneticisi başlatılamıyor</string>
   <string name="filter">Filter</string>
   <string name="hide_is_favorite_label">Favori</string>
@@ -643,8 +643,8 @@
   <string name="sort_short_long">Short \u2192 Long</string>
   <string name="sort_long_short">Long \u2192 Short</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">AntennaPod\'u beğendiniz mi?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">Eğer AntennaPod\'a oy vermek için biraz zamanını ayırırsanız memnun oluruz.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">ApexPod\'u beğendiniz mi?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">Eğer ApexPod\'a oy vermek için biraz zamanını ayırırsanız memnun oluruz.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Bir daha gösterme</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Daha sonra hatırlat</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Evet, şimdi yapalım!</string>

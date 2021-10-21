@@ -300,7 +300,7 @@
   <string name="playback_error_unknown">Fazi dianav</string>
   <string name="no_media_playing_label">N\'eus netra o vezañ lennet</string>
   <string name="player_go_to_picture_in_picture">Mod skeudenn-ouzh-skeudenn</string>
-  <string name="unknown_media_key">AntennaPod - stokell vedia dianav: %1$d</string>
+  <string name="unknown_media_key">ApexPod - stokell vedia dianav: %1$d</string>
   <string name="error_file_not_found">N\'eo ket bet kavet ar restr</string>
   <string name="no_media_label">N\'eus restr media ebet gant an elfenn</string>
   <!--Queue operations-->
@@ -424,7 +424,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Kemmañ urzh ar c\'houmanantoù</string>
   <string name="pref_nav_drawer_feed_counter_title">Despizañ ar c\'honter koumanant</string>
   <string name="pref_nav_drawer_feed_counter_sum">Kemmañ an titour diskouezet war ar c\'honter koumanantoù. Kemmañ a ra ivez urzh ar podskignadoù mard eo urzh ar podskignadoù lakaet da \"Konter\".</string>
-  <string name="pref_set_theme_sum">Kemmañ neuz AntennaPod</string>
+  <string name="pref_set_theme_sum">Kemmañ neuz ApexPod</string>
   <string name="pref_automatic_download_title">Pellgargañ emgefreek</string>
   <string name="pref_automatic_download_sum">Kefluniañ pellgargañ emgefreek ar rannoù.</string>
   <string name="pref_autodl_wifi_filter_title">Gweredekaat ar sil Wi-Fi</string>
@@ -498,7 +498,7 @@
   <string name="pref_no_browser_found">N\'eus bet kavet merdeer ebet.</string>
   <string name="pref_cast_title">Skor Chromecast</string>
   <string name="pref_cast_message_play_flavor">Gweredekaat al lenn a-bell war ar binviji Cast (evel ChromeCast, Audio Speaker pe Android TV)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast a c\'houlenn levraouegoù diavaez a zo diweredekaet en handelv-mañ eus AntennaPod</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast a c\'houlenn levraouegoù diavaez a zo diweredekaet en handelv-mañ eus ApexPod</string>
   <string name="pref_enqueue_downloaded_title">Ouzhpennañ el lost ur wech pellgarget</string>
   <string name="pref_enqueue_downloaded_summary">Ouzhpennañ ar rannoù pellgarget el lost</string>
   <string name="media_player_builtin">Lenner genidik Android (dizaliet)</string>
@@ -518,7 +518,7 @@
   <string name="back_button_open_drawer">Digeriñ ar stalaf merdeiñ</string>
   <string name="back_button_double_tap">Stokit 2 wech da guitaat</string>
   <string name="back_button_show_prompt">Kadarnaat e fell deoc\'h kuitaat</string>
-  <string name="close_prompt">Sur oc\'h e fell deoc\'h kuitaat AntennaPod?</string>
+  <string name="close_prompt">Sur oc\'h e fell deoc\'h kuitaat ApexPod?</string>
   <string name="double_tap_toast">Stokañ ur wech ouzhpenn evit kuitaa</string>
   <string name="back_button_go_to_page">Mont d\'ar bajenn...</string>
   <string name="back_button_go_to_page_title">Diuzañ ur bajen</string>
@@ -538,15 +538,15 @@
   <string name="pref_contribute">Kemer perzh</string>
   <!--About screen-->
   <string name="about_pref">A-zivout</string>
-  <string name="antennapod_version">Handelv AntennaPod</string>
+  <string name="antennapod_version">Handelv ApexPod</string>
   <string name="contributors">Kendaolerien</string>
-  <string name="contributors_summary">An holl a c\'hall skoazellañ da wellaat AntennaPod - en ur c\'houleviñ, en ur dreiñ pe en ur sikour an implijerien en hor forom</string>
+  <string name="contributors_summary">An holl a c\'hall skoazellañ da wellaat ApexPod - en ur c\'houleviñ, en ur dreiñ pe en ur sikour an implijerien en hor forom</string>
   <string name="developers">Diorroerien</string>
   <string name="translators">Troerien</string>
   <string name="special_thanks">Trugarekadennoù ispisial</string>
   <string name="privacy_policy">Reolenn a-fet buhez prevez</string>
   <string name="licenses">Lañvazioù</string>
-  <string name="licenses_summary">AntennaPod a ra gant meziantoù all</string>
+  <string name="licenses_summary">ApexPod a ra gant meziantoù all</string>
   <!--Search-->
   <string name="search_status_no_results">N\'eus bet kavet disoc\'h ebet</string>
   <string name="search_label">Klask</string>
@@ -567,8 +567,8 @@
   <string name="html_export_summary">Diskouez ho koumanantoù d\'ur v⋅mignon⋅ez</string>
   <string name="opml_export_summary">Treuzkas ho koumanantoù d\'un arload podskignad all</string>
   <string name="opml_import_summary">Enporzhiañ ho koumanantoù adalek un arload podskignad all</string>
-  <string name="database_export_summary">Treuzkas ar c\'houmanantoù, ar rannoù lennet hag el lost da AntennaPod war ur benveg all</string>
-  <string name="database_import_summary">Enporzhiañ stlennvon AntennaPod adalek ur benveg all</string>
+  <string name="database_export_summary">Treuzkas ar c\'houmanantoù, ar rannoù lennet hag el lost da ApexPod war ur benveg all</string>
+  <string name="database_import_summary">Enporzhiañ stlennvon ApexPod adalek ur benveg all</string>
   <string name="opml_import_label">Enporzhiañ ur restr OPML</string>
   <string name="opml_add_podcast_label">Enporzhiañ ul listenn podskignadoù (OPML)</string>
   <string name="opml_reader_error">Degouezhet ez eus bet ur fazi en ul lenn ar restr OPML</string>
@@ -587,7 +587,7 @@
   <string name="opml_import_ask_read_permission">Ret eo aotren haeziñ ar c\'hadaviñ diavaez evit lenn ar restr OPML</string>
   <string name="import_select_file">Diuzit ar restr da enporzhiañ</string>
   <string name="successful_import_label">Enporzhiet gant berzh</string>
-  <string name="import_ok">Pouezit war OK evit adloc\'hañ AntennaPod</string>
+  <string name="import_ok">Pouezit war OK evit adloc\'hañ ApexPod</string>
   <string name="import_no_downgrade">Enporzhiet eo bet ar stlennvon gant un handelv nevesoc\'h eus AntennPod. Ho staliadur bremanel na oar ket c\'hoazh penaos merañ ar restr-mañ.</string>
   <string name="favorites_export_label">Ezporzhiañ ar sinedoù</string>
   <string name="favorites_export_summary">Ezporzhiañ ar sinedoù en ur restr</string>
@@ -634,13 +634,13 @@
   <string name="create_account">Krouiñ ur gont</string>
   <string name="username_label">Anv arveriad</string>
   <string name="password_label">Ger-tremen</string>
-  <string name="gpodnet_description">Gpodder.net a zo ur servij mammenn digor evit sinkronaat podskignadoù hag a zo dizalc\'h eus ar raktres AntennaPod.</string>
+  <string name="gpodnet_description">Gpodder.net a zo ur servij mammenn digor evit sinkronaat podskignadoù hag a zo dizalc\'h eus ar raktres ApexPod.</string>
   <string name="gpodnetauth_server_official">Dafariad gpodder.net ofisiel</string>
   <string name="gpodnetauth_server_custom">Dafariad personelaet</string>
   <string name="gpodnetauth_host">Anv ostiz</string>
   <string name="gpodnetauth_select_server">Dibab un dafariad</string>
   <string name="gpodnetauth_device_name">Anv ar benveg</string>
-  <string name="gpodnetauth_device_name_default">AntennaPod war %1$s</string>
+  <string name="gpodnetauth_device_name_default">ApexPod war %1$s</string>
   <string name="gpodnetauth_existing_devices">Binviji a zo anezho</string>
   <string name="gpodnetauth_create_device">Krouiñ ur benveg</string>
   <string name="gpodnetauth_finish_descr">Gourc\'hemennoù! Liammet eo ho kont gpodder.net gant ho penveg. Goubredet e vo ent emgefreek ar c\'houmanantoù war ho penveg gant ho kont gpodder.net.</string>
@@ -652,13 +652,13 @@
   <string name="gpodnetsync_username_characters_error">Gallout a rit lakaat lizherennoù, niveroù pe tiredoù en anv arveriad hepken.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Dibab teuliad ar roadennoù</string>
-  <string name="choose_data_directory_message">Dibabit an teuliad lec\'h ma vo enrollet ar roadennoù. Krouet e vo an is-teuliadoù rekiz gant AntennaPod.</string>
+  <string name="choose_data_directory_message">Dibabit an teuliad lec\'h ma vo enrollet ar roadennoù. Krouet e vo an is-teuliadoù rekiz gant ApexPod.</string>
   <string name="choose_data_directory_available_space">%1$s war %2$s dieub</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Ehaniñ al lenn kentoc\'h eget izelaat ar son pa fell d\'un arload all ober sonioù</string>
   <string name="pref_pausePlaybackForFocusLoss_title">Ehaniñ pa vez arsavet</string>
   <string name="pref_resumeAfterCall_sum">Adstagañ gant al lenn ur wech echu gant ur bellgomzadenn</string>
   <string name="pref_resumeAfterCall_title">Adstagañ goude ur bellgomzadenn</string>
-  <string name="pref_restart_required">Ret eo adloc\'hañ AntennaPod evit ma vefe arloet ar c\'hemm.</string>
+  <string name="pref_restart_required">Ret eo adloc\'hañ ApexPod evit ma vefe arloet ar c\'hemm.</string>
   <!--Online feed view-->
   <string name="subscribe_label">Koumanantiñ</string>
   <string name="subscribing_label">O koumanantiñ...</string>
@@ -693,12 +693,12 @@
   <string name="episode_filters_hint">Gerioù o-unan \n\"Meur a c\'her\"</string>
   <string name="keep_updated">Leuskel hizivaet</string>
   <string name="keep_updated_summary">Ebarzhiñ ar podskignad pa vez hizivaet an holl bodskignadoù</string>
-  <string name="auto_download_disabled_globally">N\'eo ket gweredekaet al lenn emgefreek e arventennoù pennañ AntennaPod</string>
+  <string name="auto_download_disabled_globally">N\'eo ket gweredekaet al lenn emgefreek e arventennoù pennañ ApexPod</string>
   <string name="statistics_listened_for">Padelezh selaou:</string>
   <string name="statistics_episodes_on_device">Rannoù war ar benveg:</string>
   <string name="statistics_space_used">Plas implijet:</string>
   <string name="statistics_view_all">Diskouez an holl bodskignadoù »</string>
-  <!--AntennaPodSP-->
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">Oc\'h enporzhiañ ar c\'houmanantoù diwar arloadoù gant un arver unel...</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Klask ur podskignad...</string>
@@ -719,7 +719,7 @@
   <string name="local_folder">Teuliad lec\'hel</string>
   <string name="reconnect_local_folder">Adkennaskañ un teuliad lec\'hel</string>
   <string name="reconnect_local_folder_warning">Gallout a rit implijout an dra-se evit adkennaskañ ar memes teuliad pa vez nac\'het an aotre. Arabat dibab un teuliad all.</string>
-  <string name="local_feed_description">Krouet eo bet ar podskignad galloudel-mañ en ur ouzhpennañ un teuliad da AntennaPod.</string>
+  <string name="local_feed_description">Krouet eo bet ar podskignad galloudel-mañ en ur ouzhpennañ un teuliad da ApexPod.</string>
   <string name="unable_to_start_system_file_manager">N\'haller ket loc\'hañ merour restroù ar reizhiad</string>
   <string name="filter">Sil</string>
   <string name="hide_is_favorite_label">Ur sined eo</string>
@@ -748,8 +748,8 @@
   <string name="sort_short_long">Berr \u2192 Hir</string>
   <string name="sort_long_short">Hir \u2192 Berr</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">Plijout a ra AntennaPod deoc\'h?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">Laouen e vefemp ma \'z afec\'h da notenniñ AntennaPod.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">Plijout a ra ApexPod deoc\'h?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">Laouen e vefemp ma \'z afec\'h da notenniñ ApexPod.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Laoskit ac\'hanon e peoc\'h</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Adlakaat da soñj diwezhatoc\'h</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Deomp dezhi!</string>

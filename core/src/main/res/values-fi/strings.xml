@@ -242,7 +242,7 @@
   <string name="playback_error_unknown">Tuntematon virhe</string>
   <string name="no_media_playing_label">Mediaa ei toisteta</string>
   <string name="player_go_to_picture_in_picture">Kuva-kuvassa-tila</string>
-  <string name="unknown_media_key">AntennaPod - Tuntematon media avain: %1$d</string>
+  <string name="unknown_media_key">ApexPod - Tuntematon media avain: %1$d</string>
   <string name="error_file_not_found">Tiedostoa ei löytynyt</string>
   <!--Queue operations-->
   <string name="lock_queue">Lukitse jono</string>
@@ -338,7 +338,7 @@
   <string name="pref_nav_drawer_feed_order_sum">Vaihda tilauksiesi järjestystä</string>
   <string name="pref_nav_drawer_feed_counter_title">Aseta tilauslaskuri</string>
   <string name="pref_nav_drawer_feed_counter_sum">Vaihda tilauslaskurin näyttämiä tietoja. Tämä vaikuttaa myös tilauksien järjestykseen, jos \"Tilausjärjestys\" on \"Laskuri\".</string>
-  <string name="pref_set_theme_sum">Muuta AntennaPodin ulkonäköä</string>
+  <string name="pref_set_theme_sum">Muuta ApexPodin ulkonäköä</string>
   <string name="pref_automatic_download_title">Automaattinen lataus</string>
   <string name="pref_automatic_download_sum">Aseta jaksojen automaattinen lataus</string>
   <string name="pref_autodl_wifi_filter_title">Aseta Wi-Fi-suodatin</string>
@@ -385,7 +385,7 @@
   <string name="pref_no_browser_found">Selainta ei löydetty</string>
   <string name="pref_cast_title">Chromecast-tuki</string>
   <string name="pref_cast_message_play_flavor">Aseta ulkoisten mediaohjelmien soitto Cast laitteilla (kuten Chromecast, Audio Speakers tai Android TV)</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast tarvitsee kolmannen osapuolen suljettuja kirjastoja, jotka on poistettu tässä AntennaPodissa.</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast tarvitsee kolmannen osapuolen suljettuja kirjastoja, jotka on poistettu tässä ApexPodissa.</string>
   <string name="pref_enqueue_downloaded_title">Lisää ladatut jonoon</string>
   <string name="pref_enqueue_downloaded_summary">Lisää ladatut jaksot jonoon</string>
   <string name="pref_skip_silence_title">Skippaa tyhjät kohdat audiossa</string>
@@ -400,7 +400,7 @@
   <string name="back_button_open_drawer">Avaa navigaatiohylly</string>
   <string name="back_button_double_tap">Tuplanaputa sulkemiseen</string>
   <string name="back_button_show_prompt">Varmista poistuminen</string>
-  <string name="close_prompt">Haluatko varmasti sulkea AntennaPodin?</string>
+  <string name="close_prompt">Haluatko varmasti sulkea ApexPodin?</string>
   <string name="double_tap_toast">Napauta Takaisin nappia sulkemiseen</string>
   <string name="back_button_go_to_page">Mene sivulle...</string>
   <string name="back_button_go_to_page_title">Valitse sivu</string>
@@ -455,7 +455,7 @@
   <string name="gpodnetauth_login_butLabel">Sisäänkirjautuminen</string>
   <string name="username_label">Käyttäjätunnus</string>
   <string name="password_label">Salasana</string>
-  <string name="gpodnetauth_finish_descr">Onneksi olkoon! Sinun gpodder.net tili on liitetty laitteeseesi. AntennaPod alkaa automaattisesti synkronoimaan gpodder.net tiliisi.</string>
+  <string name="gpodnetauth_finish_descr">Onneksi olkoon! Sinun gpodder.net tili on liitetty laitteeseesi. ApexPod alkaa automaattisesti synkronoimaan gpodder.net tiliisi.</string>
   <string name="gpodnetauth_finish_butsyncnow">Aloita synkrointi nyt</string>
   <string name="gpodnetsync_error_title">gpodder.net synkrointivirhe</string>
   <string name="gpodnetsync_error_descr">Synkronointivirhe:\u0020</string>
@@ -464,13 +464,13 @@
   <string name="gpodnetsync_username_characters_error">Käyttäjätunnukset saavat sisältää vain kirjaimia, numeroita, viivoja ja aliviivoja.</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">Valitse datahakemisto</string>
-  <string name="choose_data_directory_message">Valitse datahakemiston juuri. AntennaPod luo tarvittavat alihakemistot</string>
+  <string name="choose_data_directory_message">Valitse datahakemiston juuri. ApexPod luo tarvittavat alihakemistot</string>
   <string name="choose_data_directory_available_space">%1$s / %2$s vapaana</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">Pysäytä soitto äänenvoimakkuuden hiljentämisen sijasta kun toinen sovellus haluaa soittaa ääniä.</string>
   <string name="pref_pausePlaybackForFocusLoss_title">Pysäytä keskeytyksiin</string>
   <string name="pref_resumeAfterCall_sum">Jatka soittoa kun puhelinkeskustelu päättyy</string>
   <string name="pref_resumeAfterCall_title">Jatka puhelinsoiton jälkeen</string>
-  <string name="pref_restart_required">AntennaPod täytyy uudelleenkäynnistää tämän asetuksen voimaantuloon.</string>
+  <string name="pref_restart_required">ApexPod täytyy uudelleenkäynnistää tämän asetuksen voimaantuloon.</string>
   <!--Online feed view-->
   <string name="subscribe_label">Tilaa</string>
   <!--Content descriptions for image buttons-->
@@ -490,8 +490,8 @@
   <string name="episode_filters_exclude">Poista</string>
   <string name="episode_filters_hint">Yksittäiset sanat \n\"Monta sanaa\"</string>
   <string name="keep_updated">Pidä päivitettynä</string>
-  <string name="auto_download_disabled_globally">Automaattinen lataaminen on pysäytetty AntennaPodin asetuksissa</string>
-  <!--AntennaPodSP-->
+  <string name="auto_download_disabled_globally">Automaattinen lataaminen on pysäytetty ApexPodin asetuksissa</string>
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">Tuodaan tilauksia sovelluksista</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">Etsi podcastia...</string>
@@ -518,8 +518,8 @@
   <string name="sort_duration_short_long">Kesto (Lyhyt \u2192 Long)</string>
   <string name="sort_duration_long_short">Kesto (Pitkä \u2192 Short)</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">Tykkää AntennaPod?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">Olisimme kiitollisia jos käytä aikaa AntennaPodin arvosteluun.</string>
+  <string name="rating_title" tools:ignore="UnusedResources">Tykkää ApexPod?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">Olisimme kiitollisia jos käytä aikaa ApexPodin arvosteluun.</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">Jätä minut rauhaan</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">Muistuta minua myöhemmin</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">Miksei, tehdään tämä!</string>

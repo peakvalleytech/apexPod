@@ -223,7 +223,7 @@
   <string name="playback_error_unknown">不明なエラー</string>
   <string name="no_media_playing_label">再生するメディアがありません</string>
   <string name="player_go_to_picture_in_picture">ピクチャ-イン-ピクチャ モード</string>
-  <string name="unknown_media_key">AntennaPod - 不明なメディアキー: %1$d</string>
+  <string name="unknown_media_key">ApexPod - 不明なメディアキー: %1$d</string>
   <string name="error_file_not_found">ファイルが見つかりません</string>
   <!--Queue operations-->
   <string name="lock_queue">キューをロック</string>
@@ -318,7 +318,7 @@
   <string name="pref_nav_drawer_feed_order_sum">購読の注文を変更します</string>
   <string name="pref_nav_drawer_feed_counter_title">購読カウンターをセット</string>
   <string name="pref_nav_drawer_feed_counter_sum">購読カウンターに表示される情報を変更します。 \'購読順\' が \'カウンター\' に設定されている場合は、購読の並び替えにも影響します。</string>
-  <string name="pref_set_theme_sum">AntennaPodの外観を変更します。</string>
+  <string name="pref_set_theme_sum">ApexPodの外観を変更します。</string>
   <string name="pref_automatic_download_title">自動ダウンロード</string>
   <string name="pref_automatic_download_sum">エピソードの自動ダウンロードを構成します。</string>
   <string name="pref_autodl_wifi_filter_title">Wi-Fiフィルターを有効にする</string>
@@ -377,7 +377,7 @@
   <string name="pref_no_browser_found">Webブラウザーが見つかりません。</string>
   <string name="pref_cast_title">Chromecast サポート</string>
   <string name="pref_cast_message_play_flavor">(Chromecast、オーディオスピーカー、Android TV など) キャストデバイス上でリモートメディア再生のサポートを有効にします</string>
-  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast は AntennaPod のこのバージョンで無効になっているサードパーティ独自のライブラリーが必要です</string>
+  <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast は ApexPod のこのバージョンで無効になっているサードパーティ独自のライブラリーが必要です</string>
   <string name="pref_enqueue_downloaded_title">ダウンロードのキューに入れる</string>
   <string name="pref_enqueue_downloaded_summary">ダウンロードしたエピソードをキューに追加します</string>
   <string name="pref_skip_silence_title">音声の無音をスキップ</string>
@@ -392,20 +392,20 @@
   <string name="back_button_open_drawer">ナビゲーションドロワーを開く</string>
   <string name="back_button_double_tap">ダブルタップすると終了します</string>
   <string name="back_button_show_prompt">終了の確認</string>
-  <string name="close_prompt">AntennaPodを終了してもよろしいですか?</string>
+  <string name="close_prompt">ApexPodを終了してもよろしいですか?</string>
   <string name="double_tap_toast">戻るボタンをもう一度タップすると終了します</string>
   <string name="back_button_go_to_page">ページ移動…</string>
   <string name="back_button_go_to_page_title">ページの選択</string>
   <string name="pref_delete_removes_from_queue_title">キューから削除済を削除</string>
   <string name="pref_delete_removes_from_queue_sum">削除した時に、自動的にキューからエピソードを削除します</string>
   <!--About screen-->
-  <string name="about_pref">AntennaPodについて</string>
-  <string name="antennapod_version">AntennaPod バージョン</string>
+  <string name="about_pref">ApexPodについて</string>
+  <string name="antennapod_version">ApexPod バージョン</string>
   <string name="developers">開発者</string>
   <string name="translators">翻訳者</string>
   <string name="privacy_policy">プライバシーポリシー</string>
   <string name="licenses">ライセンス</string>
-  <string name="licenses_summary">AntennaPod は他の優れたソフトウェアを使用しています</string>
+  <string name="licenses_summary">ApexPod は他の優れたソフトウェアを使用しています</string>
   <!--Search-->
   <string name="search_status_no_results">見つかりませんでした</string>
   <string name="search_label">検索</string>
@@ -419,8 +419,8 @@
   <string name="html_export_summary">あなたの購読を友達に表示</string>
   <string name="opml_export_summary">購読を別のポッドキャストアプリに転送する</string>
   <string name="opml_import_summary">別のポッドキャストアプリから購読をインポートする</string>
-  <string name="database_export_summary">購読、再生したエピソード、キューを別のデバイスのAntennaPodに転送する</string>
-  <string name="database_import_summary">AntennaPod データベースを別のデバイスからインポートする</string>
+  <string name="database_export_summary">購読、再生したエピソード、キューを別のデバイスのApexPodに転送する</string>
+  <string name="database_import_summary">ApexPod データベースを別のデバイスからインポートする</string>
   <string name="opml_import_label">OPMLインポート</string>
   <string name="opml_reader_error">OPMLドキュメントの読み込み中にエラーが発生しました:</string>
   <string name="opml_import_error_no_file">ファイルが選択されていません!</string>
@@ -436,7 +436,7 @@
   <string name="export_success_sum">エクスポートしたファイルを書き込みました:\n\n%1$s</string>
   <string name="opml_import_ask_read_permission">OPML ファイルを読み込むために、外部ストレージへのアクセスが必要です</string>
   <string name="import_select_file">インポートするファイルを選択してください</string>
-  <string name="import_no_downgrade">このデータベースは、AntennaPodの新しいバージョンでエクスポートされました。 現在インストールされたアプリでは、このファイルの処理方法がまだわかりません。</string>
+  <string name="import_no_downgrade">このデータベースは、ApexPodの新しいバージョンでエクスポートされました。 現在インストールされたアプリでは、このファイルの処理方法がまだわかりません。</string>
   <!--Sleep timer-->
   <string name="set_sleeptimer_label">スリープタイマーをセット</string>
   <string name="disable_sleeptimer_label">スリープタイマーを無効にする</string>
@@ -465,7 +465,7 @@
   <string name="gpodnetauth_login_butLabel">ログイン</string>
   <string name="username_label">ユーザー名</string>
   <string name="password_label">パスワード</string>
-  <string name="gpodnetauth_finish_descr">おめでとうございます! あなたのgpodder.netアカウントが今お使いの端末とリンクされました。 AntennaPodは今から自動的にgpodder.netアカウントを使用して端末の購読を同期します。</string>
+  <string name="gpodnetauth_finish_descr">おめでとうございます! あなたのgpodder.netアカウントが今お使いの端末とリンクされました。 ApexPodは今から自動的にgpodder.netアカウントを使用して端末の購読を同期します。</string>
   <string name="gpodnetauth_finish_butsyncnow">今すぐ同期を開始</string>
   <string name="gpodnetsync_error_title">gpodder.net 同期エラー</string>
   <string name="gpodnetsync_error_descr">同期中にエラーが発生しました:\u0020</string>
@@ -474,13 +474,13 @@
   <string name="gpodnetsync_username_characters_error">ユーザー名には文字、数字、ハイフン、下線のみ含めることができます。</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">データ フォルダーを選択</string>
-  <string name="choose_data_directory_message">基本のデータフォルダーを選択してください。 AntennaPodは、適切なサブディレクトリを作成します。</string>
+  <string name="choose_data_directory_message">基本のデータフォルダーを選択してください。 ApexPodは、適切なサブディレクトリを作成します。</string>
   <string name="choose_data_directory_available_space">%1$s / %2$s 空き</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">他のアプリがサウンドを再生したい時に、音量を下げる代わりに再生の一時停止します</string>
   <string name="pref_pausePlaybackForFocusLoss_title">割り込み時に一時停止</string>
   <string name="pref_resumeAfterCall_sum">着信が完了した後に再生を再開します</string>
   <string name="pref_resumeAfterCall_title">着信後に再開</string>
-  <string name="pref_restart_required">この変更を有効にするには AntennaPod を再起動する必要があります。</string>
+  <string name="pref_restart_required">この変更を有効にするには ApexPod を再起動する必要があります。</string>
   <!--Online feed view-->
   <string name="subscribe_label">購読</string>
   <string name="subscribing_label">購読中…</string>
@@ -503,8 +503,8 @@
   <string name="episode_filters_hint">単一の単語 \n\"複数の 単語\"</string>
   <string name="keep_updated">更新済を保持</string>
   <string name="keep_updated_summary">すべてのポッドキャストを (自動)更新する時にこのポッドキャストを含めます</string>
-  <string name="auto_download_disabled_globally">メインの AntennaPod 設定で自動ダウンロードが無効になっています</string>
-  <!--AntennaPodSP-->
+  <string name="auto_download_disabled_globally">メインの ApexPod 設定で自動ダウンロードが無効になっています</string>
+  <!--ApexPodSP-->
   <string name="sp_apps_importing_feeds_msg">単一目的のアプリから購読をインポート中…</string>
   <!--Add podcast fragment-->
   <string name="search_podcast_hint">ポッドキャストの検索…</string>
@@ -532,8 +532,8 @@
   <string name="sort_duration_short_long">期間 (短 \u2192 長)</string>
   <string name="sort_duration_long_short">期間 (長 \u2192 短)</string>
   <!--Rating dialog-->
-  <string name="rating_title" tools:ignore="UnusedResources">AntennaPod は気に入りましたか?</string>
-  <string name="rating_message" tools:ignore="UnusedResources">AntennaPodを評価する時間をいただければ幸いです。</string>
+  <string name="rating_title" tools:ignore="UnusedResources">ApexPod は気に入りましたか?</string>
+  <string name="rating_message" tools:ignore="UnusedResources">ApexPodを評価する時間をいただければ幸いです。</string>
   <string name="rating_never_label" tools:ignore="UnusedResources">構わないで</string>
   <string name="rating_later_label" tools:ignore="UnusedResources">後で確認する</string>
   <string name="rating_now_label" tools:ignore="UnusedResources">もちろん、します!</string>
