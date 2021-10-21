@@ -20,7 +20,7 @@
  * original can be found at http://www.github.com/googlecast/CastCompanionLibrary-android
  */
 
-package de.danoeh.antennapod.core.cast;
+package de.danoeh.apexpod.core.cast;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
@@ -57,8 +57,8 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import de.danoeh.antennapod.core.ClientConfig;
-import de.danoeh.antennapod.core.R;
+import de.danoeh.apexpod.core.ClientConfig;
+import de.danoeh.apexpod.core.R;
 
 import static com.google.android.gms.cast.RemoteMediaPlayer.RESUME_STATE_PLAY;
 import static com.google.android.gms.cast.RemoteMediaPlayer.RESUME_STATE_UNCHANGED;

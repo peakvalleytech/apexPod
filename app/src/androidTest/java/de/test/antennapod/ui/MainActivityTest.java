@@ -18,10 +18,10 @@ import org.junit.runner.RunWith;
 
 import java.io.IOException;
 
-import de.danoeh.antennapod.R;
-import de.danoeh.antennapod.activity.MainActivity;
-import de.danoeh.antennapod.model.feed.Feed;
-import de.danoeh.antennapod.core.storage.PodDBAdapter;
+import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.activity.MainActivity;
+import de.danoeh.apexpod.model.feed.Feed;
+import de.danoeh.apexpod.core.storage.PodDBAdapter;
 import de.test.antennapod.EspressoTestUtils;
 
 import static androidx.test.espresso.Espresso.onView;

@@ -1,4 +1,4 @@
-package de.danoeh.antennapod.activity;
+package de.danoeh.apexpod.activity;
 
 import android.content.SharedPreferences;
 import android.media.AudioManager;
@@ -11,14 +11,14 @@ import android.view.MenuItem;
 
 import com.google.android.gms.cast.ApplicationMetadata;
 
-import de.danoeh.antennapod.R;
-import de.danoeh.antennapod.core.cast.CastButtonVisibilityManager;
-import de.danoeh.antennapod.core.cast.CastConsumer;
-import de.danoeh.antennapod.core.cast.CastManager;
-import de.danoeh.antennapod.core.cast.DefaultCastConsumer;
-import de.danoeh.antennapod.core.cast.SwitchableMediaRouteActionProvider;
-import de.danoeh.antennapod.core.preferences.UserPreferences;
-import de.danoeh.antennapod.core.service.playback.PlaybackService;
+import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.core.cast.CastButtonVisibilityManager;
+import de.danoeh.apexpod.core.cast.CastConsumer;
+import de.danoeh.apexpod.core.cast.CastManager;
+import de.danoeh.apexpod.core.cast.DefaultCastConsumer;
+import de.danoeh.apexpod.core.cast.SwitchableMediaRouteActionProvider;
+import de.danoeh.apexpod.core.preferences.UserPreferences;
+import de.danoeh.apexpod.core.service.playback.PlaybackService;
 
 import java.util.ArrayList;
 import java.util.List;

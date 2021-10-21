@@ -1,0 +1,166 @@
+package de.danoeh.apexpod.dialog;
+
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.snackbar.Snackbar;
+import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.core.preferences.UserPreferences;
+import de.danoeh.apexpod.core.util.playback.PlaybackController;
+import de.danoeh.apexpod.view.ItemOffsetDecoration;
+import de.danoeh.apexpod.view.PlaybackSpeedSeekBar;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+
+public class VariableSpeedDialog extends BottomSheetDialogFragment {
+    private SpeedSelectionAdapter adapter;
+    private final DecimalFormat speedFormat;
+    private PlaybackController controller;
+    private final List<Float> selectedSpeeds;
+    private PlaybackSpeedSeekBar speedSeekBar;
+    private Chip addCurrentSpeedChip;
+
+    public VariableSpeedDialog() {
+        DecimalFormatSymbols format = new DecimalFormatSymbols(Locale.US);
+        format.setDecimalSeparator('.');
+        speedFormat = new DecimalFormat("0.00", format);
+        selectedSpeeds = new ArrayList<>(UserPreferences.getPlaybackSpeedArray());
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        controller = new PlaybackController(getActivity()) {
+            @Override
+            public void onPlaybackSpeedChange() {
+                updateSpeed();
+            }
+
+            @Override
+            public void loadMediaInfo() {
+                updateSpeed();
+            }
+        };
+        controller.init();
+        updateSpeed();
+    }
+
+    private void updateSpeed() {
+        speedSeekBar.updateSpeed(controller.getCurrentPlaybackSpeedMultiplier());
+        addCurrentSpeedChip.setText(speedFormat.format(controller.getCurrentPlaybackSpeedMultiplier()));
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        controller.release();
+        controller = null;
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View root = View.inflate(getContext(), R.layout.speed_select_dialog, null);
+        speedSeekBar = root.findViewById(R.id.speed_seek_bar);
+        speedSeekBar.setProgressChangedListener(multiplier -> {
+            if (controller != null) {
+                controller.setPlaybackSpeed(multiplier);
+            }
+        });
+        RecyclerView selectedSpeedsGrid = root.findViewById(R.id.selected_speeds_grid);
+        selectedSpeedsGrid.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        selectedSpeedsGrid.addItemDecoration(new ItemOffsetDecoration(getContext(), 4));
+        adapter = new SpeedSelectionAdapter();
+        adapter.setHasStableIds(true);
+        selectedSpeedsGrid.setAdapter(adapter);
+
+        addCurrentSpeedChip = root.findViewById(R.id.add_current_speed_chip);
+        addCurrentSpeedChip.setCloseIconVisible(true);
+        addCurrentSpeedChip.setCloseIconResource(R.drawable.ic_add);
+        addCurrentSpeedChip.setOnCloseIconClickListener(v -> addCurrentSpeed());
+        addCurrentSpeedChip.setOnClickListener(v -> addCurrentSpeed());
+        return root;
+    }
+
+    private void addCurrentSpeed() {
+        float newSpeed = controller.getCurrentPlaybackSpeedMultiplier();
+        if (selectedSpeeds.contains(newSpeed)) {
+            Snackbar.make(addCurrentSpeedChip,
+                    getString(R.string.preset_already_exists, newSpeed), Snackbar.LENGTH_LONG).show();
+        } else {
+            selectedSpeeds.add(newSpeed);
+            Collections.sort(selectedSpeeds);
+            UserPreferences.setPlaybackSpeedArray(selectedSpeeds);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    public class SpeedSelectionAdapter extends RecyclerView.Adapter<SpeedSelectionAdapter.ViewHolder> {
+
+        @Override
+        @NonNull
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            Chip chip = new Chip(getContext());
+            if (Build.VERSION.SDK_INT >= 17) {
+                chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            }
+            return new ViewHolder(chip);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            float speed = selectedSpeeds.get(position);
+
+            holder.chip.setText(speedFormat.format(speed));
+            holder.chip.setOnLongClickListener(v -> {
+                selectedSpeeds.remove(speed);
+                UserPreferences.setPlaybackSpeedArray(selectedSpeeds);
+                notifyDataSetChanged();
+                return true;
+            });
+            holder.chip.setOnClickListener(v -> {
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    if (controller != null) {
+                        dismiss();
+                        controller.setPlaybackSpeed(speed);
+                    }
+                }, 200);
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return selectedSpeeds.size();
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return selectedSpeeds.get(position).hashCode();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            Chip chip;
+
+            ViewHolder(Chip itemView) {
+                super(itemView);
+                chip = itemView;
+            }
+        }
+    }
+}
