@@ -13,7 +13,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_launcher_foreground_no_finish"/>
+            android:src="@drawable/ic_launcher_no_bg"/>
     </item>
 
 </layer-list>
