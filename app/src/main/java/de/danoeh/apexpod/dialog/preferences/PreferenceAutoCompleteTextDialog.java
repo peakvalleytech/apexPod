@@ -1,4 +1,4 @@
-package de.danoeh.antennapod.dialog.preferences;
+package de.danoeh.apexpod.dialog.preferences;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -14,15 +14,17 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.List;
 
-import de.danoeh.antennapod.R;
-import de.danoeh.antennapod.databinding.TagDialogBinding;
+
+import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.databinding.TagDialogBinding;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class PreferenceAutoCompleteTextDialog extends DialogFragment {
     public static final String TAG = "PrefAutoCompleteTextDlg";
-    private @NonNull TagDialogBinding viewBinding;
+    private @NonNull
+    TagDialogBinding viewBinding;
     private String title;
     private AutoCompleteTextCallback autoCompleteTextCallback;
     private OnTextInputListener onTextInputListener;

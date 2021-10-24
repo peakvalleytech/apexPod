@@ -17,14 +17,16 @@ import java.util.Locale;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
+import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
+import de.danoeh.apexpod.core.storage.NavDrawerData;
 import de.danoeh.apexpod.databinding.PlaybackSpeedFeedSettingDialogBinding;
 import de.danoeh.apexpod.dialog.RemoveFeedDialog;
-import de.danoeh.apexpod.fragment.preferences.dialog.PreferenceListDialog;
+import de.danoeh.apexpod.dialog.preferences.PreferenceListDialog;
 import de.danoeh.apexpod.fragment.preferences.dialog.PreferenceSwitchDialog;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedPreferences;
-import de.danoeh.antennapod.dialog.preferences.PreferenceAutoCompleteTextDialog;
+import de.danoeh.apexpod.dialog.preferences.PreferenceAutoCompleteTextDialog;
 
 public class FeedMultiSelectActionHandler {
     private static final String TAG = "FeedSelectHandler";
@@ -159,7 +161,7 @@ public class FeedMultiSelectActionHandler {
         List<NavDrawerData.DrawerItem> items = data.items;
         List<String> folders = new ArrayList<String>();
         for (NavDrawerData.DrawerItem item : items) {
-            if (item.type == NavDrawerData.DrawerItem.Type.FOLDER) {
+            if (item.type == NavDrawerData.DrawerItem.Type.TAG) {
                 folders.add(item.getTitle());
             }
         }
