@@ -1,8 +1,5 @@
-<<<<<<< HEAD:app/src/main/java/de/danoeh/apexpod/fragment/preferences/dialog/PreferenceSwitchDialog.java
-package de.danoeh.apexpod.fragment.preferences.dialog;
-=======
-package de.danoeh.antennapod.dialog.preferences;
->>>>>>> Move dialogs from fragments package to dialogs pacakge.:app/src/main/java/de/danoeh/antennapod/dialog/preferences/PreferenceSwitchDialog.java
+package de.danoeh.apexpod.dialog.preferences;
+
 
 import android.content.Context;
 import android.view.LayoutInflater;
