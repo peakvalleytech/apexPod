@@ -946,8 +946,20 @@ public class LocalPSMP extends PlaybackServiceMediaPlayer {
                 // Load next episode if previous episode was in the queue and if there
                 // is an episode in the queue left.
                 // Start playback immediately if continuous playback is enabled
-                nextMedia = callback.getNextInQueue(currentMedia);
-                boolean playNextEpisode = isPlaying && nextMedia != null;
+
+                // Repeat episode implementation
+                if (UserPreferences.getShouldRepeatEpisode()
+                        && !wasSkipped) {
+                    nextMedia = currentMedia;
+                    nextMedia.setPosition(0);
+                } else {
+                    nextMedia = callback.getNextInQueue(currentMedia);
+                }
+
+                boolean playNextEpisode = isPlaying
+                        && nextMedia != null
+                        && UserPreferences.isFollowQueue();
+
                 if (playNextEpisode) {
                     Log.d(TAG, "Playback of next episode will start immediately.");
                 } else if (nextMedia == null) {

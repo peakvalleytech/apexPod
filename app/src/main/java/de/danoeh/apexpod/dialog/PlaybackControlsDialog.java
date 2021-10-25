@@ -5,9 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -15,6 +12,10 @@ import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.util.playback.PlaybackController;
 import de.danoeh.apexpod.view.PlaybackSpeedSeekBar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
 
 import java.util.List;
 import java.util.Locale;
@@ -86,6 +87,8 @@ public class PlaybackControlsDialog extends DialogFragment {
 
         final CheckBox stereoToMono = dialog.findViewById(R.id.stereo_to_mono);
         stereoToMono.setChecked(UserPreferences.stereoToMono());
+        final CheckBox repeatEpisode = dialog.findViewById(R.id.repeat_episode);
+        repeatEpisode.setChecked(UserPreferences.getShouldRepeatEpisode());
         if (controller != null && !controller.canDownmix()) {
             stereoToMono.setEnabled(false);
             String sonicOnly = getString(R.string.sonic_only);
@@ -108,6 +111,9 @@ public class PlaybackControlsDialog extends DialogFragment {
             if (controller != null) {
                 controller.setDownmix(isChecked);
             }
+        });
+        repeatEpisode.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            UserPreferences.setShouldRepeatEpisode(isChecked);
         });
     }
 

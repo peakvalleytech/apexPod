@@ -1,6 +1,7 @@
 package de.danoeh.apexpod.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+import androidx.preference.PreferenceManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -61,6 +64,7 @@ import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
 import de.danoeh.apexpod.ui.common.PlaybackSpeedIndicatorView;
 import de.danoeh.apexpod.view.ChapterSeekBar;
 import de.danoeh.apexpod.view.PlayButton;
+
 import io.reactivex.Maybe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -70,7 +74,8 @@ import io.reactivex.schedulers.Schedulers;
  * Shows the audio player.
  */
 public class AudioPlayerFragment extends Fragment implements
-        ChapterSeekBar.OnSeekBarChangeListener, Toolbar.OnMenuItemClickListener {
+        ChapterSeekBar.OnSeekBarChangeListener, Toolbar.OnMenuItemClickListener,
+        SharedPreferences.OnSharedPreferenceChangeListener {
     public static final String TAG = "AudioPlayerFragment";
     public static final int POS_COVER = 0;
     public static final int POS_DESCRIPTION = 1;
@@ -92,6 +97,7 @@ public class AudioPlayerFragment extends Fragment implements
     private ProgressBar progressIndicator;
     private CardView cardViewSeek;
     private TextView txtvSeek;
+    private ImageView imgvRepeat;
 
     private PlaybackController controller;
     private Disposable disposable;
@@ -132,6 +138,8 @@ public class AudioPlayerFragment extends Fragment implements
         progressIndicator = root.findViewById(R.id.progLoading);
         cardViewSeek = root.findViewById(R.id.cardViewSeek);
         txtvSeek = root.findViewById(R.id.txtvSeek);
+        imgvRepeat = root.findViewById(R.id.repeat_episode);
+        imgvRepeat.setVisibility(UserPreferences.getShouldRepeatEpisode() ? View.VISIBLE : View.GONE);
 
         setupLengthTextView();
         setupControlButtons();
@@ -153,6 +161,9 @@ public class AudioPlayerFragment extends Fragment implements
                 });
             }
         });
+
+        PreferenceManager.getDefaultSharedPreferences(getContext()).registerOnSharedPreferenceChangeListener(this);
+
 
         return root;
     }
@@ -513,9 +524,10 @@ public class AudioPlayerFragment extends Fragment implements
         if (feedItem != null && FeedItemMenuHandler.onMenuItemClicked(this, item.getItemId(), feedItem)) {
             return true;
         }
-
-        final int itemId = item.getItemId();
-        if (itemId == R.id.disable_sleeptimer_item || itemId == R.id.set_sleeptimer_item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.disable_sleeptimer_item) {
+            // Fall-through)
+        } else if (itemId == R.id.set_sleeptimer_item) {
             new SleepTimerDialog().show(getChildFragmentManager(), "SleepTimerDialog");
             return true;
         } else if (itemId == R.id.audio_controls) {
@@ -529,7 +541,19 @@ public class AudioPlayerFragment extends Fragment implements
             }
             return true;
         }
+
         return false;
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (UserPreferences.PREF_REPEAT_EPISODE.equals(key)) {
+            if (UserPreferences.getShouldRepeatEpisode()) {
+                imgvRepeat.setVisibility(View.VISIBLE);
+            } else {
+                imgvRepeat.setVisibility(View.GONE);
+            }
+        }
     }
 
     private static class AudioPlayerPagerAdapter extends FragmentStateAdapter {
