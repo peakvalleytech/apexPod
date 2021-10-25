@@ -2,8 +2,8 @@
 <PreferenceScreen
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference
-            android:layout="@layout/about_teaser"/>
+<!--    <Preference-->
+<!--            android:layout="@layout/about_teaser"/>-->
     <Preference
             android:key="about_version"
             android:title="@string/antennapod_version"
