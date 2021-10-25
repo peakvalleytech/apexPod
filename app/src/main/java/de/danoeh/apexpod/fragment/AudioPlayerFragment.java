@@ -36,7 +36,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 
-<<<<<<< HEAD:app/src/main/java/de/danoeh/apexpod/fragment/AudioPlayerFragment.java
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.CastEnabledActivity;
 import de.danoeh.apexpod.activity.MainActivity;
