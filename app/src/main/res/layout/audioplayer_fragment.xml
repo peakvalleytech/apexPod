@@ -80,7 +80,7 @@
         android:layoutDirection="ltr"
         android:orientation="vertical">
 
-        <de.danoeh.antennapod.view.ChapterSeekBar
+        <de.danoeh.apexpod.view.ChapterSeekBar
             android:id="@+id/sbPosition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
                 android:layout_marginRight="@dimen/audioplayer_playercontrols_margin"
                 android:scaleType="fitCenter">
 
-                <de.danoeh.antennapod.view.PlayButton
+                <de.danoeh.apexpod.view.PlayButton
                     android:id="@+id/butPlay"
                     android:layout_width="@dimen/audioplayer_playercontrols_length_big"
                     android:layout_height="@dimen/audioplayer_playercontrols_length_big"
@@ -166,7 +166,7 @@
 
             </RelativeLayout>
 
-            <de.danoeh.antennapod.ui.common.CircularProgressBar
+            <de.danoeh.apexpod.ui.common.CircularProgressBar
                 android:layout_width="@dimen/audioplayer_playercontrols_length_big"
                 android:layout_height="@dimen/audioplayer_playercontrols_length_big"
                 android:layout_centerHorizontal="true"
@@ -216,7 +216,7 @@
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="12sp" />
 
-            <de.danoeh.antennapod.ui.common.PlaybackSpeedIndicatorView
+            <de.danoeh.apexpod.ui.common.PlaybackSpeedIndicatorView
                 android:id="@+id/butPlaybackSpeed"
                 android:layout_width="@dimen/audioplayer_playercontrols_length"
                 android:layout_height="@dimen/audioplayer_playercontrols_length"
