@@ -52,18 +52,18 @@
     <PreferenceCategory
             android:key="project"
             android:title="@string/project_pref">
-        <Preference
-            android:key="prefDocumentation"
-            android:title="@string/documentation_support"
-            android:icon="@drawable/ic_questionmark" />
-        <Preference
-            android:key="prefViewForum"
-            android:title="@string/visit_user_forum"
-            android:icon="@drawable/ic_chat" />
-        <Preference
-            android:key="prefContribute"
-            android:title="@string/pref_contribute"
-            android:icon="@drawable/ic_contribute" />
+<!--        <Preference-->
+<!--            android:key="prefDocumentation"-->
+<!--            android:title="@string/documentation_support"-->
+<!--            android:icon="@drawable/ic_questionmark" />-->
+<!--        <Preference-->
+<!--            android:key="prefViewForum"-->
+<!--            android:title="@string/visit_user_forum"-->
+<!--            android:icon="@drawable/ic_chat" />-->
+<!--        <Preference-->
+<!--            android:key="prefContribute"-->
+<!--            android:title="@string/pref_contribute"-->
+<!--            android:icon="@drawable/ic_contribute" />-->
         <Preference
             android:key="prefSendBugReport"
             android:title="@string/bug_report_title"
