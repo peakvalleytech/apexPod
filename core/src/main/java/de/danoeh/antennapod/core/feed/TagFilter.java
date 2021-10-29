@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import de.danoeh.antennapod.core.storage.NavDrawerData;
-import de.danoeh.antennapod.model.feed.FeedPreferences;
+import de.danoeh.apexpod.core.storage.NavDrawerData;
+import de.danoeh.apexpod.model.feed.FeedPreferences;
 
 public class TagFilter {
 
@@ -32,9 +32,9 @@ public class TagFilter {
     /**
      * Run a list of feed items through the filter.
      */
-    public List<NavDrawerData.DrawerItem> filter(List<NavDrawerData.FolderDrawerItem> folders) {
+    public List<NavDrawerData.DrawerItem> filter(List<NavDrawerData.TagDrawerItem> folders) {
         Set<NavDrawerData.DrawerItem> items = new HashSet<>();
-        for (NavDrawerData.FolderDrawerItem folder : folders) {
+        for (NavDrawerData.TagDrawerItem folder : folders) {
             if (tagIds.size() == 0 && folder.name.equals(FeedPreferences.TAG_ROOT)) {
                 items.addAll(folder.children);
                 return new ArrayList<>(items);

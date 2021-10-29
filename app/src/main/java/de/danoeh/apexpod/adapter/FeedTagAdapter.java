@@ -12,15 +12,15 @@ import com.google.android.material.chip.Chip;
 
 import java.util.List;
 
-import de.danoeh.antennapod.R;
+import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
 
 public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewHolder> {
-    private List<NavDrawerData.FolderDrawerItem> feedFolders;
-    private NavDrawerData.FolderDrawerItem defaultAll;
+    private List<NavDrawerData.TagDrawerItem> feedFolders;
+    private NavDrawerData.TagDrawerItem defaultAll;
 
-    public FeedTagAdapter(Context context, List<NavDrawerData.FolderDrawerItem> feedFolders) {
-        this.defaultAll = new NavDrawerData.FolderDrawerItem(context.getString(R.string.tag_all));
+    public FeedTagAdapter(Context context, List<NavDrawerData.TagDrawerItem> feedFolders) {
+        this.defaultAll = new NavDrawerData.TagDrawerItem("All");//context.getString(R.string.tag_all));
         this.feedFolders = feedFolders;
         defaultAll.id = RecyclerView.NO_ID;
         init();
@@ -60,20 +60,20 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
         }
     }
 
-    public List<NavDrawerData.FolderDrawerItem> getFeedFolders() {
+    public List<NavDrawerData.TagDrawerItem> getFeedFolders() {
         return feedFolders;
     }
 
-    public void addItem(NavDrawerData.FolderDrawerItem folderDrawerItem) {
-        feedFolders.add(folderDrawerItem);
+    public void addItem(NavDrawerData.TagDrawerItem tagDrawerItem) {
+        feedFolders.add(tagDrawerItem);
         if (feedFolders.size() > 1) {
             feedFolders.remove(defaultAll);
         }
         notifyDataSetChanged();
     }
 
-    public void removeItem(NavDrawerData.FolderDrawerItem folderDrawerItem) {
-        this.feedFolders.remove(folderDrawerItem);
+    public void removeItem(NavDrawerData.TagDrawerItem tagDrawerItem) {
+        this.feedFolders.remove(tagDrawerItem);
         if (feedFolders.size() == 0) {
             feedFolders.add(defaultAll);
         }
@@ -94,8 +94,8 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
             chip = itemView.findViewById(R.id.feedChip);
         }
 
-        public void bind(NavDrawerData.FolderDrawerItem folderDrawerItem) {
-            chip.setText(folderDrawerItem.name);
+        public void bind(NavDrawerData.TagDrawerItem tagDrawerItem) {
+            chip.setText(tagDrawerItem.name);
         }
     }
 }

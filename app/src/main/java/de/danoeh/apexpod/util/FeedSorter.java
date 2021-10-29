@@ -1,11 +1,11 @@
-package de.danoeh.antennapod.util;
+package de.danoeh.apexpod.util;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import de.danoeh.antennapod.core.preferences.UserPreferences;
-import de.danoeh.antennapod.core.storage.NavDrawerData;
+import de.danoeh.apexpod.core.preferences.UserPreferences;
+import de.danoeh.apexpod.core.storage.NavDrawerData;
 
 public class FeedSorter {
     public static List<NavDrawerData.DrawerItem> sortFeeds(List<NavDrawerData.DrawerItem> items) {
