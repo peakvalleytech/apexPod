@@ -101,18 +101,20 @@ public class MainPreferencesFragment extends PreferenceFragmentCompat {
                     return true;
                 }
         );
-        findPreference(PREF_DOCUMENTATION).setOnPreferenceClickListener(preference -> {
-            IntentUtils.openInBrowser(getContext(), "https://antennapod.org/documentation/");
-            return true;
-        });
-        findPreference(PREF_VIEW_FORUM).setOnPreferenceClickListener(preference -> {
-            IntentUtils.openInBrowser(getContext(), "https://forum.antennapod.org/");
-            return true;
-        });
-        findPreference(PREF_CONTRIBUTE).setOnPreferenceClickListener(preference -> {
-            IntentUtils.openInBrowser(getContext(), "https://antennapod.org/contribute/");
-            return true;
-        });
+        // TODO: May be supported in the future
+//        findPreference(PREF_DOCUMENTATION).setOnPreferenceClickListener(preference -> {
+//            IntentUtils.openInBrowser(getContext(), "https://antennapod.org/documentation/");
+//            return true;
+//        });
+//        findPreference(PREF_VIEW_FORUM).setOnPreferenceClickListener(preference -> {
+//            IntentUtils.openInBrowser(getContext(), "https://forum.antennapod.org/");
+//            return true;
+//        });
+        // TODO: May be supported in the future
+//        findPreference(PREF_CONTRIBUTE).setOnPreferenceClickListener(preference -> {
+//            IntentUtils.openInBrowser(getContext(), "https://antennapod.org/contribute/");
+//            return true;
+//        });
         findPreference(PREF_SEND_BUG_REPORT).setOnPreferenceClickListener(preference -> {
             startActivity(new Intent(getActivity(), BugReportActivity.class));
             return true;
