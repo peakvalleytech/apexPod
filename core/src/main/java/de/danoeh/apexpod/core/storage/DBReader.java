@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.core.storage;
+package de.danoeh.antennapod.core.storage;
 
 import android.database.Cursor;
 import androidx.annotation.NonNull;
@@ -15,25 +15,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.danoeh.apexpod.model.feed.Chapter;
-import de.danoeh.apexpod.model.feed.Feed;
-import de.danoeh.apexpod.model.feed.FeedItem;
-import de.danoeh.apexpod.model.feed.FeedItemFilter;
-import de.danoeh.apexpod.model.feed.FeedMedia;
-import de.danoeh.apexpod.model.feed.FeedPreferences;
-import de.danoeh.apexpod.core.feed.SubscriptionsFilter;
-import de.danoeh.apexpod.core.preferences.UserPreferences;
-import de.danoeh.apexpod.core.service.download.DownloadStatus;
-import de.danoeh.apexpod.core.storage.mapper.ChapterCursorMapper;
-import de.danoeh.apexpod.core.storage.mapper.FeedCursorMapper;
-import de.danoeh.apexpod.core.storage.mapper.FeedItemCursorMapper;
-import de.danoeh.apexpod.core.storage.mapper.FeedMediaCursorMapper;
-import de.danoeh.apexpod.core.storage.mapper.FeedPreferencesCursorMapper;
-import de.danoeh.apexpod.core.util.LongIntMap;
-import de.danoeh.apexpod.core.util.LongList;
-import de.danoeh.apexpod.core.util.comparator.DownloadStatusComparator;
-import de.danoeh.apexpod.core.util.comparator.FeedItemPubdateComparator;
-import de.danoeh.apexpod.core.util.comparator.PlaybackCompletionDateComparator;
+import de.danoeh.antennapod.model.feed.Chapter;
+import de.danoeh.antennapod.model.feed.Feed;
+import de.danoeh.antennapod.model.feed.FeedItem;
+import de.danoeh.antennapod.model.feed.FeedItemFilter;
+import de.danoeh.antennapod.model.feed.FeedMedia;
+import de.danoeh.antennapod.model.feed.FeedPreferences;
+import de.danoeh.antennapod.core.feed.SubscriptionsFilter;
+import de.danoeh.antennapod.core.preferences.UserPreferences;
+import de.danoeh.antennapod.core.service.download.DownloadStatus;
+import de.danoeh.antennapod.core.storage.mapper.ChapterCursorMapper;
+import de.danoeh.antennapod.core.storage.mapper.FeedCursorMapper;
+import de.danoeh.antennapod.core.storage.mapper.FeedItemCursorMapper;
+import de.danoeh.antennapod.core.storage.mapper.FeedMediaCursorMapper;
+import de.danoeh.antennapod.core.storage.mapper.FeedPreferencesCursorMapper;
+import de.danoeh.antennapod.core.util.LongIntMap;
+import de.danoeh.antennapod.core.util.LongList;
+import de.danoeh.antennapod.core.util.comparator.DownloadStatusComparator;
+import de.danoeh.antennapod.core.util.comparator.FeedItemPubdateComparator;
+import de.danoeh.antennapod.core.util.comparator.PlaybackCompletionDateComparator;
 
 /**
  * Provides methods for reading data from the AntennaPod database.
@@ -575,6 +575,7 @@ public final class DBReader {
     @Nullable
     private static FeedItem getFeedItemByGuidOrEpisodeUrl(final String guid, final String episodeUrl,
             PodDBAdapter adapter) {
+        Log.d(TAG, "Loading feeditem with guid " + guid + " or episode url " + episodeUrl);
         try (Cursor cursor = adapter.getFeedItemCursor(guid, episodeUrl)) {
             if (!cursor.moveToNext()) {
                 return null;
@@ -632,6 +633,8 @@ public final class DBReader {
      *          Does NOT load additional attributes like feed or queue state.
      */
     public static FeedItem getFeedItemByGuidOrEpisodeUrl(final String guid, final String episodeUrl) {
+        Log.d(TAG, "getFeedItem() called with: " + "guid = [" + guid + "], episodeUrl = [" + episodeUrl + "]");
+
         PodDBAdapter adapter = PodDBAdapter.getInstance();
         adapter.open();
         try {
@@ -878,7 +881,7 @@ public final class DBReader {
         int numDownloadedItems = adapter.getNumberOfDownloadedEpisodes();
 
         List<NavDrawerData.DrawerItem> items = new ArrayList<>();
-        Map<String, NavDrawerData.TagDrawerItem> folders = new HashMap<>();
+        Map<String, NavDrawerData.FolderDrawerItem> folders = new HashMap<>();
         for (Feed feed : feeds) {
             for (String tag : feed.getPreferences().getTags()) {
                 NavDrawerData.FeedDrawerItem drawerItem = new NavDrawerData.FeedDrawerItem(feed, feed.getId(),
@@ -887,18 +890,18 @@ public final class DBReader {
                     items.add(drawerItem);
                     continue;
                 }
-                NavDrawerData.TagDrawerItem folder;
+                NavDrawerData.FolderDrawerItem folder;
                 if (folders.containsKey(tag)) {
                     folder = folders.get(tag);
                 } else {
-                    folder = new NavDrawerData.TagDrawerItem(tag);
+                    folder = new NavDrawerData.FolderDrawerItem(tag);
                     folders.put(tag, folder);
                 }
                 drawerItem.id |= folder.id;
                 folder.children.add(drawerItem);
             }
         }
-        List<NavDrawerData.TagDrawerItem> foldersSorted = new ArrayList<>(folders.values());
+        List<NavDrawerData.FolderDrawerItem> foldersSorted = new ArrayList<>(folders.values());
         Collections.sort(foldersSorted, (o1, o2) -> o1.getTitle().compareToIgnoreCase(o2.getTitle()));
         items.addAll(foldersSorted);
 

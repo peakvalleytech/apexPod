@@ -35,7 +35,7 @@ public class FeedPreferences implements Serializable {
     private int feedSkipIntro;
     private int feedSkipEnding;
     private boolean showEpisodeNotification;
-    private final Set<String> tags = new HashSet<>();
+    private Set<String> tags = new HashSet<>();
 
     public FeedPreferences(long feedID, boolean autoDownload, AutoDeleteAction autoDeleteAction,
                            VolumeAdaptionSetting volumeAdaptionSetting, String username, String password) {
@@ -218,5 +218,9 @@ public class FeedPreferences implements Serializable {
 
     public void setShowEpisodeNotification(boolean showEpisodeNotification) {
         this.showEpisodeNotification = showEpisodeNotification;
+    }
+
+    public void addTags(Set<String> tags) {
+        this.tags.addAll(tags);
     }
 }
