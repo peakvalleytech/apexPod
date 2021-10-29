@@ -32,6 +32,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.joanzapata.iconify.Iconify;
 import com.leinardi.android.speeddial.SpeedDialView;
 
+import de.danoeh.antennapod.core.feed.TagFilter;
+import de.danoeh.apexpod.adapter.FeedTagAdapter;
 import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -65,6 +67,8 @@ import de.danoeh.apexpod.dialog.RenameFeedDialog;
 import de.danoeh.apexpod.dialog.SubscriptionsFilterDialog;
 import de.danoeh.apexpod.fragment.actions.FeedMultiSelectActionHandler;
 import de.danoeh.apexpod.model.feed.Feed;
+import de.danoeh.apexpod.model.feed.FeedPreferences;
+import de.danoeh.apexpod.util.FeedSorter;
 import de.danoeh.apexpod.view.EmptyViewHandler;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -108,7 +112,7 @@ public class SubscriptionFragment extends Fragment
     private SpeedDialView speedDialView;
 
     private List<NavDrawerData.DrawerItem> tagFilteredFeeds;
-    private NavDrawerData.FolderDrawerItem rootFolder;
+    private NavDrawerData.TagDrawerItem rootFolder;
     private RecyclerView tagRecycler;
     private FeedTagAdapter feedTagAdapter;
     private ChipGroup folderChipGroup;
@@ -334,15 +338,15 @@ public class SubscriptionFragment extends Fragment
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            if (listItems != null && listItems.size() > result.size()) {
-                                // We have fewer items. This can result in items being selected that are no longer visible.
-                                subscriptionAdapter.endSelectMode();
-                            }
+//                            if (listItems != null && listItems.size() > result.size()) {
+//                                // We have fewer items. This can result in items being selected that are no longer visible.
+//                                subscriptionAdapter.endSelectMode();
+//                            }
                             Pair<List<NavDrawerData.DrawerItem>,
-                                    List<NavDrawerData.FolderDrawerItem>> feedsAndTags =
+                                    List<NavDrawerData.TagDrawerItem>> feedsAndTags =
                                     extractFeedsAndTags(result);
                             tagFilteredFeeds = feedsAndTags.first;
-                            List<NavDrawerData.FolderDrawerItem> tags = feedsAndTags.second;
+                            List<NavDrawerData.TagDrawerItem> tags = feedsAndTags.second;
 
                             initTagViews(tags);
 
@@ -455,7 +459,110 @@ public class SubscriptionFragment extends Fragment
         }
         subscriptionAdapter.setItems(feedsOnly);
     }
+    public Pair<List<NavDrawerData.DrawerItem>, List<NavDrawerData.TagDrawerItem>>
+    extractFeedsAndTags(List<NavDrawerData.DrawerItem> drawerItems) {
+        List<NavDrawerData.DrawerItem> feeds = new ArrayList<>();
+        List<NavDrawerData.TagDrawerItem> tags = new ArrayList<>();
+        for (NavDrawerData.DrawerItem drawerItem : drawerItems) {
+            if (drawerItem.type.equals(NavDrawerData.DrawerItem.Type.TAG)) {
+                tags.add((NavDrawerData.TagDrawerItem) drawerItem);
+                if (((NavDrawerData.TagDrawerItem) drawerItem).name.equals(FeedPreferences.TAG_ROOT)) {
+                    rootFolder = (NavDrawerData.TagDrawerItem) drawerItem;
+                }
+            } else {
+                feeds.add(drawerItem);
+            }
+        }
 
+        List<NavDrawerData.DrawerItem> tagFilteredFeeds = getTagFilteredFeeds(tags);
+
+        Pair<List<NavDrawerData.DrawerItem>, List<NavDrawerData.TagDrawerItem>> feedsAndTags =
+                new Pair(tagFilteredFeeds, tags);
+        return feedsAndTags;
+    }
+    private List<NavDrawerData.DrawerItem> getTagFilteredFeeds(List<NavDrawerData.TagDrawerItem> tags) {
+        Set<String> tagFilterIds = getTagFilterIds();
+        TagFilter tagFilter = new TagFilter(tagFilterIds);
+        List<NavDrawerData.DrawerItem> tagFilteredFeeds = tagFilter.filter(tags);
+
+        return tagFilteredFeeds;
+    }
+    private void initTagViews(List<NavDrawerData.TagDrawerItem> tags) {
+        feedTagAdapter = new FeedTagAdapter(getContext(), new ArrayList<>());
+        Set<String> tagFilterIds = getTagFilterIds();
+
+        for (NavDrawerData.TagDrawerItem folder : tags) {
+            if (tagFilterIds.contains(String.valueOf(folder.id))) {
+                feedTagAdapter.addItem(folder);
+            }
+        }
+
+        tagRecycler.setAdapter(feedTagAdapter);
+
+        initTagChipView(tags, tagFilterIds);
+    }
+
+    private void initTagChipView(List<NavDrawerData.TagDrawerItem> feedFolders, Set<String> tagFilterIds) {
+        Chip rootChip = null;
+        folderChipGroup.removeAllViews();
+        for (NavDrawerData.TagDrawerItem folderItem : feedFolders) {
+            Chip folderChip = new Chip(getActivity());
+            if (folderItem.name.equals(FeedPreferences.TAG_ROOT)) {
+                folderChip.setText("All");
+                rootChip = folderChip;
+            } else {
+                folderChip.setText(folderItem.name);
+            }
+            folderChip.setCheckable(true);
+            Chip finalRootChip = rootChip;
+            folderChip.setOnClickListener(v ->  {
+                tagChipOnClickListener(folderItem, folderChip, finalRootChip);
+            });
+
+            folderChip.setChecked(tagFilterIds.contains(String.valueOf(folderItem.id)));
+
+            folderChipGroup.addView(folderChip);
+        }
+    }
+
+    private void tagChipOnClickListener(NavDrawerData.TagDrawerItem folderItem,
+                                        Chip folderChip,
+                                        Chip finalRootChip) {
+        if (folderItem.name.equals(FeedPreferences.TAG_ROOT)) {
+            if (folderChip.isChecked()) {
+                feedTagAdapter.clear();
+                clearTagFilterIds();
+                folderChipGroup.clearCheck();
+                activateAllChip(folderChip, true);
+                updateDisplayedSubscriptions(false);
+            }
+        } else {
+            if (folderChip.isChecked()) {
+                addTagFilterId(folderItem.id);
+                feedTagAdapter.addItem(folderItem);
+            } else {
+                removeTagFilterId(folderItem.id);
+                feedTagAdapter.removeItem(folderItem);
+            }
+
+            boolean tagsSelected = !feedTagAdapter.isEmpyty();
+            updateDisplayedSubscriptions(tagsSelected);
+            activateAllChip(finalRootChip, !tagsSelected);
+        }
+    }
+
+    private void updateDisplayedSubscriptions(boolean tagsSelected) {
+        if (tagsSelected)  {
+            Set<NavDrawerData.DrawerItem> allChildren = new HashSet<>();
+            for (NavDrawerData.TagDrawerItem item : feedTagAdapter.getFeedFolders()) {
+                allChildren.addAll(item.children);
+            }
+            tagFilteredFeeds = new ArrayList(allChildren);
+        } else {
+            tagFilteredFeeds = new ArrayList(rootFolder.children);
+        }
+        subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
+    }
     private List<NavDrawerData.DrawerItem> sortFeeds(List<NavDrawerData.DrawerItem> items) {
         return FeedSorter.sortFeeds(items);
     }
