@@ -131,7 +131,7 @@ public class PodDBAdapter {
     public static final String TABLE_NAME_SIMPLECHAPTERS = "SimpleChapters";
     public static final String TABLE_NAME_FAVORITES = "Favorites";
     public static final String TABLE_NAME_PLAYLIST = "Playlists";
-    public static final String TABLE_NAME_PLAYLIST_ITEMS = "Playlists";
+    public static final String TABLE_NAME_PLAYLIST_ITEMS = "PlaylistsItems";
 
 
     // SQL Statements for creating new tables
@@ -198,16 +198,14 @@ public class PodDBAdapter {
 
     private static final String CREATE_TABLE_PLAYLISTS = "CREATE TABLE "
             + TABLE_NAME_PLAYLIST +
-            "(" + KEY_ID + "INTEGER PRIMARY KEY," +
-            KEY_PLAYLIST_NAME + "INTEGER" +
-            KEY_FEEDITEM + "INTEGER," +
-            KEY_FEED + " INTEGER)";
+            "(" + KEY_ID + " INTEGER PRIMARY KEY autoincrement," +
+            KEY_PLAYLIST_NAME + " INTEGER)";
 
     private static final String CREATE_TABLE_PLAYLIST_ITEMS = "CREATE TABLE "
             + TABLE_NAME_PLAYLIST_ITEMS +
-            "(" + KEY_ID + "INTEGER PRIMARY KEY," +
+            "(" + KEY_ID + " INTEGER PRIMARY KEY autoincrement," +
             KEY_PLAYLIST + " INTEGER," +
-            KEY_FEEDITEM + "INTEGER";
+            KEY_FEEDITEM + " INTEGER)";
 
     private static final String CREATE_TABLE_SIMPLECHAPTERS = "CREATE TABLE "
             + TABLE_NAME_SIMPLECHAPTERS + " (" + TABLE_PRIMARY_KEY + KEY_TITLE
@@ -343,8 +341,8 @@ public class PodDBAdapter {
     private static Context context;
     private static PodDBAdapter instance;
 
-    private final SQLiteDatabase db;
-    private final PodDBHelper dbHelper;
+    protected final SQLiteDatabase db;
+    protected final PodDBHelper dbHelper;
 
     public static void init(Context context) {
         PodDBAdapter.context = context.getApplicationContext();
@@ -357,7 +355,10 @@ public class PodDBAdapter {
         return instance;
     }
 
-    private PodDBAdapter() {
+    /**
+     * Changed to public so that it can be extended
+     */
+    public PodDBAdapter() {
         dbHelper = new PodDBHelper(PodDBAdapter.context, DATABASE_NAME, null);
         db = openDb();
     }
