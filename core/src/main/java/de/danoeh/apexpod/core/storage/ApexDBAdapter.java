@@ -23,9 +23,8 @@ public class ApexDBAdapter extends PodDBAdapter {
     }
     public List<Playlist> getAllPlaylist() {
         String query = "SELECT * FROM playlists";
-        List<Playlist> playlists;
+        List<Playlist> playlists = new ArrayList<>();
         try (Cursor cursor = db.rawQuery(query, null)) {
-            playlists = new ArrayList<>();
             while (cursor.moveToNext()) {
                 int idIndex = cursor.getColumnIndex(("id"));
                 int nameColIndex = cursor.getColumnIndex("name");
@@ -64,7 +63,5 @@ public class ApexDBAdapter extends PodDBAdapter {
         }
         return rowsAffected;
     }
-
-
 
 }
