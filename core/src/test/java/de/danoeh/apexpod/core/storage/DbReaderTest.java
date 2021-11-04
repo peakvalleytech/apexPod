@@ -161,21 +161,21 @@ public class DbReaderTest {
         return queue;
     }
 
-    private List<FeedItem> savePlaylist(int numItems) {
-        if (numItems <= 0) {
-            throw new IllegalArgumentException("numItems<=0");
-        }
-        List<Feed> feeds = saveFeedlist(numItems, numItems, false);
-        List<FeedItem> allItems = new ArrayList<>();
-        for (Feed f : feeds) {
-            allItems.addAll(f.getItems());
-        }
-        List<FeedItem> playlist = createQueueFromFeeds(numItems, allItems);
-        PodDBAdapter adapter = PodDBAdapter.getInstance();
-        adapter.open();
-        adapter.setPlaylist(playlist);
-        adapter.close();
-    }
+//    private List<FeedItem> savePlaylist(int numItems) {
+//        if (numItems <= 0) {
+//            throw new IllegalArgumentException("numItems<=0");
+//        }
+//        List<Feed> feeds = saveFeedlist(numItems, numItems, false);
+//        List<FeedItem> allItems = new ArrayList<>();
+//        for (Feed f : feeds) {
+//            allItems.addAll(f.getItems());
+//        }
+//        List<FeedItem> playlist = createQueueFromFeeds(numItems, allItems);
+//        PodDBAdapter adapter = PodDBAdapter.getInstance();
+//        adapter.open();
+//        adapter.setPlaylist(playlist);
+//        adapter.close();
+//    }
 
     @NonNull
     private List<FeedItem> createQueueFromFeeds(int numItems, List<FeedItem> allItems) {

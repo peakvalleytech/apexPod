@@ -34,6 +34,7 @@ import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
+import de.danoeh.apexpod.model.Playlist;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.view.EmptyViewHandler;
 import de.danoeh.apexpod.view.EpisodeItemListRecyclerView;
@@ -226,9 +227,9 @@ public class PlaylistFragment extends Fragment {
 
     @NonNull
     private List<FeedItem> loadData() {
-        List<FeedItem> history = DBReader.getPlaybackHistory();
-        DBReader.loadAdditionalFeedItemListData(history);
-        return history;
+        List<Playlist> playlists = DBReader.getPlaylists();
+        DBReader.loadAdditionalFeedItemListData(PlaylistFragment.this.playlists);
+        return PlaylistFragment.this.playlists;
     }
 
     private static class PlayListsListAdapter extends RecyclerView.Adapter<PlayListsListAdapter.PlayListsListViewHolder> {
