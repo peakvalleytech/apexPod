@@ -154,6 +154,8 @@ dependencies {
     implementation 'com.github.skydoves:balloon:1.1.5'
     implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.3'
     implementation 'com.annimon:stream:1.2.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+
 
     // Non-free dependencies:
     playImplementation 'com.google.android.play:core:1.8.0'

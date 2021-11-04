@@ -59,6 +59,7 @@ import de.danoeh.apexpod.fragment.EpisodesFragment;
 import de.danoeh.apexpod.fragment.FeedItemlistFragment;
 import de.danoeh.apexpod.fragment.NavDrawerFragment;
 import de.danoeh.apexpod.fragment.PlaybackHistoryFragment;
+import de.danoeh.apexpod.fragment.PlaylistFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
 import de.danoeh.apexpod.fragment.SearchFragment;
 import de.danoeh.apexpod.fragment.SubscriptionFragment;
@@ -265,6 +266,9 @@ public class MainActivity extends CastEnabledActivity {
         switch (tag) {
             case QueueFragment.TAG:
                 fragment = new QueueFragment();
+                break;
+            case PlaylistFragment.TAG:
+                fragment = new PlaylistFragment();
                 break;
             case EpisodesFragment.TAG:
                 fragment = new EpisodesFragment();
