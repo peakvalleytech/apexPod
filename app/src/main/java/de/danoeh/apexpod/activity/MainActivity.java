@@ -58,6 +58,7 @@ import de.danoeh.apexpod.fragment.DownloadsFragment;
 import de.danoeh.apexpod.fragment.EpisodesFragment;
 import de.danoeh.apexpod.fragment.FeedItemlistFragment;
 import de.danoeh.apexpod.fragment.NavDrawerFragment;
+import de.danoeh.apexpod.fragment.PlayListItemFragment;
 import de.danoeh.apexpod.fragment.PlaybackHistoryFragment;
 import de.danoeh.apexpod.fragment.PlaylistFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
@@ -270,6 +271,9 @@ public class MainActivity extends CastEnabledActivity {
             case PlaylistFragment.TAG:
                 fragment = new PlaylistFragment();
                 break;
+            case PlayListItemFragment.TAG:
+                fragment = new PlayListItemFragment();
+                break;
             case EpisodesFragment.TAG:
                 fragment = new EpisodesFragment();
                 break;
@@ -317,7 +321,7 @@ public class MainActivity extends CastEnabledActivity {
         }
         FragmentTransaction t = fragmentManager.beginTransaction();
         t.replace(R.id.main_view, fragment, MAIN_FRAGMENT_TAG);
-        fragmentManager.popBackStack();
+//        fragmentManager.popBackStack();
         // TODO: we have to allow state loss here
         // since this function can get called from an AsyncTask which
         // could be finishing after our app has already committed state
