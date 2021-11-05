@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -81,13 +82,20 @@ public class PlaylistFragment extends Fragment {
         if (savedInstanceState != null) {
             displayUpArrow = savedInstanceState.getBoolean(KEY_UP_ARROW);
         }
-        ((MainActivity) getActivity()).setupToolbarToggle(toolbar, displayUpArrow);
+        MainActivity activity = ((MainActivity) getActivity());
+        activity.setupToolbarToggle(toolbar, displayUpArrow);
         toolbar.inflateMenu(R.menu.playback_history);
         refreshToolbarState();
 
         recyclerView = root.findViewById(R.id.recyclerView);
         recyclerView.setRecycledViewPool(((MainActivity) getActivity()).getRecycledViewPool());
         adapter = new PlayListsListAdapter(playlists);
+        adapter.setOnItemClickListener(new PlayListsListAdapter.OnItemClickedListener() {
+            @Override
+            public void onItemClicked(Playlist playlist) {
+                activity.loadFragment(PlayListItemFragment.TAG, null);
+            }
+        });
         recyclerView.setAdapter(adapter);
         progressBar = root.findViewById(R.id.progLoading);
 
@@ -190,6 +198,10 @@ public class PlaylistFragment extends Fragment {
 
     private static class PlayListsListAdapter extends RecyclerView.Adapter<PlayListsListAdapter.PlayListsListViewHolder> {
         List<Playlist> playlists;
+        public interface OnItemClickedListener {
+            void onItemClicked(Playlist playlist);
+        }
+        OnItemClickedListener onItemClickListener;
         public PlayListsListAdapter(List<Playlist> playlists) {
             super();
             this.playlists = playlists;
@@ -205,6 +217,9 @@ public class PlaylistFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull PlayListsListViewHolder holder, int position) {
             holder.nameTextView.setText(playlists.get(position).getName());
+            holder.itemView.setOnClickListener(v -> {
+                onItemClickListener.onItemClicked(playlists.get(position));
+            });
         }
 
         @Override
@@ -220,5 +235,8 @@ public class PlaylistFragment extends Fragment {
             }
         }
 
+        public void setOnItemClickListener(OnItemClickedListener onItemClickListener) {
+            this.onItemClickListener = onItemClickListener;
+        }
     }
 }
