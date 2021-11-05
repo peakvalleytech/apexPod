@@ -17,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Utility methods for DB* tests.
  */
-abstract class DbTestUtils {
+public abstract class DbTestUtils {
 
     /**
      * Use this method when tests don't involve chapters.

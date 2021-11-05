@@ -333,7 +333,7 @@ public class PodDBAdapter {
                     + TABLE_NAME_FEED_ITEMS + "." + KEY_DESCRIPTION
             + " FROM " + TABLE_NAME_FEED_ITEMS
             + JOIN_FEED_ITEM_AND_MEDIA;
-    private static final String SELECT_FEED_ITEMS_AND_MEDIA =
+    public static final String SELECT_FEED_ITEMS_AND_MEDIA =
             "SELECT " + KEYS_FEED_ITEM_WITHOUT_DESCRIPTION + ", " + KEYS_FEED_MEDIA
             + " FROM " + TABLE_NAME_FEED_ITEMS
             + JOIN_FEED_ITEM_AND_MEDIA;
@@ -343,6 +343,10 @@ public class PodDBAdapter {
 
     protected final SQLiteDatabase db;
     protected final PodDBHelper dbHelper;
+
+    public SQLiteDatabase getDb() {
+        return db;
+    }
 
     public static void init(Context context) {
         PodDBAdapter.context = context.getApplicationContext();

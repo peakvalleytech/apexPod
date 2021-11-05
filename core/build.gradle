@@ -1,4 +1,5 @@
 apply plugin: "com.android.library"
+apply plugin: 'kotlin-android'
 apply from: "../common.gradle"
 apply from: "../playFlavor.gradle"
 
@@ -75,4 +76,9 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test:runner:$runnerVersion"
     androidTestImplementation "androidx.test:rules:$rulesVersion"
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

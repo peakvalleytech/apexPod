@@ -4,6 +4,7 @@ plugins {
     id('com.github.triplet.play') version '3.6.0-agp4.2' apply false
 }
 apply from: "../common.gradle"
+apply plugin: 'kotlin-android'
 apply from: "../playFlavor.gradle"
 
 android {
@@ -170,6 +171,8 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$runnerVersion"
     androidTestImplementation "androidx.test:rules:$rulesVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 if (project.hasProperty("antennaPodPlayPublisherCredentials")) {
@@ -193,4 +196,7 @@ preBuild.dependsOn copyLicense
 apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 resourcePlaceholders {
     files = ['xml/shortcuts.xml']
+}
+repositories {
+    mavenCentral()
 }

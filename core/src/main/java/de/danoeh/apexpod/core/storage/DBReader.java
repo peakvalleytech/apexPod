@@ -198,7 +198,7 @@ public final class DBReader {
     }
 
     @NonNull
-    private static List<FeedItem> extractItemlistFromCursor(PodDBAdapter adapter, Cursor cursor) {
+    public static List<FeedItem> extractItemlistFromCursor(PodDBAdapter adapter, Cursor cursor) {
         List<FeedItem> result = new ArrayList<>(cursor.getCount());
         if (cursor.moveToFirst()) {
             int indexMediaId = cursor.getColumnIndexOrThrow(PodDBAdapter.SELECT_KEY_MEDIA_ID);

@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.core.storage;
+package de.danoeh.apexpod.core.storage.database;
 
 import android.content.Context;
 
@@ -10,9 +10,9 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import de.danoeh.apexpod.core.preferences.UserPreferences;
+import de.danoeh.apexpod.core.storage.ApexDBAdapter;
 import de.danoeh.apexpod.model.Playlist;
 
-import static de.danoeh.apexpod.core.storage.DbTestUtils.saveFeedlist;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
