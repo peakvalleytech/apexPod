@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -26,6 +28,7 @@ import java.util.List;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.EpisodeItemListAdapter;
+import de.danoeh.apexpod.adapter.PlayListsListAdapter;
 import de.danoeh.apexpod.core.event.DownloadEvent;
 import de.danoeh.apexpod.core.event.DownloaderUpdate;
 import de.danoeh.apexpod.core.event.FeedItemEvent;
@@ -67,7 +70,7 @@ public class PlaylistFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        playlistRepository =  new PlaylistRepositoryImpl(getContext());
+
         setRetainInstance(true);
     }
 
@@ -84,7 +87,6 @@ public class PlaylistFragment extends Fragment {
         }
         MainActivity activity = ((MainActivity) getActivity());
         activity.setupToolbarToggle(toolbar, displayUpArrow);
-        toolbar.inflateMenu(R.menu.playback_history);
         refreshToolbarState();
 
         recyclerView = root.findViewById(R.id.recyclerView);
@@ -93,14 +95,16 @@ public class PlaylistFragment extends Fragment {
         adapter.setOnItemClickListener(new PlayListsListAdapter.OnItemClickedListener() {
             @Override
             public void onItemClicked(Playlist playlist) {
-                activity.loadFragment(PlayListItemFragment.TAG, null);
+                Bundle args = new Bundle();
+                args.putSerializable(PlayListItemFragment.ARG_PLAYLIST, playlist);
+                activity.loadFragment(PlayListItemFragment.TAG, args);
             }
         });
         recyclerView.setAdapter(adapter);
         progressBar = root.findViewById(R.id.progLoading);
 
         emptyView = new EmptyViewHandler(getActivity());
-        emptyView.setIcon(R.drawable.ic_history);
+        emptyView.setIcon(R.drawable.ic_playlist);
         emptyView.setTitle(R.string.no_history_head_label);
         emptyView.setMessage(R.string.no_history_label);
         emptyView.attachToRecyclerView(recyclerView);
@@ -133,32 +137,6 @@ public class PlaylistFragment extends Fragment {
         boolean hasHistory = playlists != null && !playlists.isEmpty();
     }
 
-    public boolean onMenuItemClick(MenuItem item) {
-        if (item.getItemId() == R.id.clear_history_item) {
-            DBWriter.clearPlaybackHistory();
-            return true;
-        }
-        return false;
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onHistoryUpdated(PlaybackHistoryEvent event) {
-        loadItems();
-        refreshToolbarState();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onPlayerStatusChanged(PlayerStatusEvent event) {
-        loadItems();
-        refreshToolbarState();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onUnreadItemsChanged(UnreadItemsUpdateEvent event) {
-        loadItems();
-        refreshToolbarState();
-    }
-
     private void onFragmentLoaded() {
         adapter.notifyDataSetChanged();
         refreshToolbarState();
@@ -177,7 +155,6 @@ public class PlaylistFragment extends Fragment {
                     progressBar.setVisibility(View.GONE);
                     playlists = result;
                     adapter.playlists = playlists;
-
                     adapter.notifyDataSetChanged();
                     refreshToolbarState();
                     onFragmentLoaded();
@@ -186,57 +163,9 @@ public class PlaylistFragment extends Fragment {
 
     @NonNull
     private List<Playlist> loadData() {
-//        List<Playlist> playlists = playlistRepository.getPlaylists();
-        List<Playlist> playlists = new ArrayList<>();
-        playlists.add(new Playlist("Playlist 1"));
-        playlists.add(new Playlist("Playlist 2"));
-        playlists.add(new Playlist("Playlist 3"));
-        playlists.add(new Playlist("Playlist 4"));
-//        DBReader.loadAdditionalFeedItemListData(PlaylistFragment.this.playlists);
+
+        playlistRepository =  new PlaylistRepositoryImpl(getContext());
+        List<Playlist> playlists = playlistRepository.getPlaylists();
         return playlists;
-    }
-
-    private static class PlayListsListAdapter extends RecyclerView.Adapter<PlayListsListAdapter.PlayListsListViewHolder> {
-        List<Playlist> playlists;
-        public interface OnItemClickedListener {
-            void onItemClicked(Playlist playlist);
-        }
-        OnItemClickedListener onItemClickListener;
-        public PlayListsListAdapter(List<Playlist> playlists) {
-            super();
-            this.playlists = playlists;
-        }
-
-        @NonNull
-        @Override
-        public PlayListsListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View root = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_playlist, parent, false);
-            return new PlayListsListViewHolder(root);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull PlayListsListViewHolder holder, int position) {
-            holder.nameTextView.setText(playlists.get(position).getName());
-            holder.itemView.setOnClickListener(v -> {
-                onItemClickListener.onItemClicked(playlists.get(position));
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return playlists.size();
-        }
-
-        class PlayListsListViewHolder extends RecyclerView.ViewHolder {
-            TextView nameTextView;
-            public PlayListsListViewHolder(@NonNull View itemView) {
-                super(itemView);
-                nameTextView = itemView.findViewById(R.id.name);
-            }
-        }
-
-        public void setOnItemClickListener(OnItemClickedListener onItemClickListener) {
-            this.onItemClickListener = onItemClickListener;
-        }
     }
 }

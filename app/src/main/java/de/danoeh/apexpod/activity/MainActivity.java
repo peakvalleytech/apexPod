@@ -65,6 +65,7 @@ import de.danoeh.apexpod.fragment.QueueFragment;
 import de.danoeh.apexpod.fragment.SearchFragment;
 import de.danoeh.apexpod.fragment.SubscriptionFragment;
 import de.danoeh.apexpod.fragment.TransitionEffect;
+import de.danoeh.apexpod.model.Playlist;
 import de.danoeh.apexpod.preferences.PreferenceUpgrader;
 import de.danoeh.apexpod.ui.appstartintent.MainActivityStarter;
 import de.danoeh.apexpod.ui.common.ThemeUtils;
@@ -272,7 +273,8 @@ public class MainActivity extends CastEnabledActivity {
                 fragment = new PlaylistFragment();
                 break;
             case PlayListItemFragment.TAG:
-                fragment = new PlayListItemFragment();
+                Playlist playList = (Playlist) args.getSerializable(PlayListItemFragment.ARG_PLAYLIST);
+                fragment = PlayListItemFragment.newInstance(playList);
                 break;
             case EpisodesFragment.TAG:
                 fragment = new EpisodesFragment();

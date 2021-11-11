@@ -17,12 +17,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import de.danoeh.apexpod.model.Playlist;
 import de.danoeh.apexpod.model.feed.FeedFunding;
 import de.danoeh.apexpod.core.storage.mapper.FeedItemFilterQuery;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -339,7 +341,7 @@ public class PodDBAdapter {
             + JOIN_FEED_ITEM_AND_MEDIA;
 
     private static Context context;
-    private static PodDBAdapter instance;
+    protected static PodDBAdapter instance;
 
     protected final SQLiteDatabase db;
     protected final PodDBHelper dbHelper;
