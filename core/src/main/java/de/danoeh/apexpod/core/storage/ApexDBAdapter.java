@@ -64,4 +64,22 @@ public class ApexDBAdapter extends PodDBAdapter {
         return rowsAffected;
     }
 
+    public List<Playlist> getPlaylListsByFeedId(long feedId) {
+        String query = "SELECT * FROM playlists " +
+                "INNER JOIN " + TABLE_NAME_PLAYLIST_ITEMS +
+                " ON " + TABLE_NAME_PLAYLIST + "." + PodDBAdapter.KEY_ID + " = " +
+                TABLE_NAME_PLAYLIST_ITEMS + "." + PodDBAdapter.KEY_PLAYLIST +
+                " AND " + TABLE_NAME_PLAYLIST_ITEMS + "." + PodDBAdapter.KEY_FEEDITEM + " = ?";
+        List<Playlist> playlists = new ArrayList<>();
+        try (Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(feedId)})) {
+            while (cursor.moveToNext()) {
+                int idIndex = 0;
+                int nameColIndex = cursor.getColumnIndex("name");
+                Playlist playlist = new Playlist(cursor.getString(nameColIndex));
+                playlist.setId(cursor.getLong(idIndex));
+                playlists.add(playlist);
+            }
+        }
+        return playlists;
+    }
 }
