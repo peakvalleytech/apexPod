@@ -99,15 +99,14 @@ public class PlayListItemDaoTest {
         if (numItems <= 0) {
             throw new IllegalArgumentException("numItems<=0");
         }
+
         List<Feed> feeds = saveFeedlist(numItems, numItems, false);
         List<FeedItem> allItems = new ArrayList<>();
         for (Feed f : feeds) {
             allItems.addAll(f.getItems());
         }
 
-        List<FeedItem> queue = createPlaylistFromFeeds(numItems, allItems);
-        adapter.setQueue(queue);
-        return queue;
+        return createPlaylistFromFeeds(numItems, allItems);
     }
 
     @NonNull

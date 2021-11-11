@@ -373,6 +373,7 @@ public class PlayListItemFragment extends Fragment implements Toolbar.OnMenuItem
         super.onCreateView(inflater, container, savedInstanceState);
         View root = inflater.inflate(R.layout.queue_fragment, container, false);
         toolbar = root.findViewById(R.id.toolbar);
+        toolbar.setTitle("Playlist");
         toolbar.setOnMenuItemClickListener(this);
         displayUpArrow = getParentFragmentManager().getBackStackEntryCount() != 0;
         if (savedInstanceState != null) {
@@ -493,7 +494,7 @@ public class PlayListItemFragment extends Fragment implements Toolbar.OnMenuItem
             info += getString(R.string.time_left_label);
             info += Converter.getDurationStringLocalized(getActivity(), timeLeft);
         }
-        infoBar.setText(info);
+        infoBar.setText("Playlist 1 - 4 episodes");
     }
 
     private void loadItems(final boolean restoreScrollPosition) {

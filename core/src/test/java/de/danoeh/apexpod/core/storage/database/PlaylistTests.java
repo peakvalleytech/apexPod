@@ -12,6 +12,8 @@ import org.robolectric.RobolectricTestRunner;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.ApexDBAdapter;
 import de.danoeh.apexpod.model.Playlist;
+import de.danoeh.apexpod.model.feed.Feed;
+import de.danoeh.apexpod.model.feed.FeedItem;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -19,11 +21,15 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import static de.danoeh.apexpod.core.storage.DbTestUtils.saveFeedlist;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(RobolectricTestRunner.class)
 public class PlaylistTests {
     private ApexDBAdapter adapter;
+    private PlayListItemDao playListItemDao;
     @Before
     public void setUp() {
         Context context = InstrumentationRegistry.getInstrumentation().getContext();
@@ -33,6 +39,7 @@ public class PlaylistTests {
         ApexDBAdapter.deleteDatabase();
         adapter = ApexDBAdapter.getInstance();
         adapter.open();
+        playListItemDao = new PlayListItemDao();
     }
     @Test
     public void getPlaylistsEmpty() {
@@ -75,4 +82,70 @@ public class PlaylistTests {
     public void addToPlaylist() {
 
     }
+
+    @Test
+    public void getAllByFeedItemId_should_return_no_playlist() {
+        List<Feed> feeds = saveFeedlist(5, 1, false);
+        List<FeedItem> allItems = new ArrayList<>();
+        for (Feed f : feeds) {
+            allItems.addAll(f.getItems());
+        }
+        Playlist playlist = new Playlist("PlayList 1");
+        adapter.open();
+        adapter.createPlaylist(playlist);
+        List<Playlist> playlists = adapter.getAllPlaylist();
+        playlist = playlists.get(0);
+        List<Playlist> playlistsWithFeedItem = adapter.getPlaylListsByFeedId(playlist.getId());
+        assertEquals(0, playlistsWithFeedItem.size());
+    }
+
+    @Test
+    public void getAllByFeedItemId_when_items_appear_in_one_lists() {
+        List<Feed> feeds = saveFeedlist(5, 1, false);
+        List<FeedItem> allItems = new ArrayList<>();
+        for (Feed f : feeds) {
+            allItems.addAll(f.getItems());
+        }
+        Playlist playlist = new Playlist("PlayList 1");
+        adapter.createPlaylist(playlist);
+        List<Playlist> playlists = adapter.getAllPlaylist();
+        playlist = playlists.get(0);
+        playListItemDao.addItemsByPlayistId(playlist.getId(), allItems);
+        for (FeedItem feedItem : allItems) {
+            List<Playlist> playlistsWithFeedItem = adapter.getPlaylListsByFeedId(feedItem.getId());
+            assertEquals(1, playlistsWithFeedItem.size());
+            for (Playlist pI : playlistsWithFeedItem) {
+                assertTrue(playlists.contains(pI));
+            }
+        }
+    }
+
+    @Test
+    public void getAllByFeedItemId_when_items_appear_in_multiple_lists() {
+        List<Feed> feeds = saveFeedlist(5, 1, false);
+        List<FeedItem> allItems = new ArrayList<>();
+        for (Feed f : feeds) {
+            allItems.addAll(f.getItems());
+        }
+        Playlist playList1 = new Playlist("PlayList 1");
+        Playlist playlist2 = new Playlist("PlayList 2");
+        adapter.createPlaylist(playList1);
+        adapter.createPlaylist(playlist2);
+        List<Playlist> playLists = adapter.getAllPlaylist();
+        playList1 = playLists.get(0);
+        playlist2 = playLists.get(1);
+        playListItemDao.addItemsByPlayistId(playList1.getId(), allItems);
+        playListItemDao.addItemsByPlayistId(playlist2.getId(), allItems);
+        for (FeedItem feedItem : allItems) {
+            List<Playlist> playlistsWithFeedItem = adapter.getPlaylListsByFeedId(feedItem.getId());
+            assertEquals(2, playlistsWithFeedItem.size());
+            for (Playlist pI : playlistsWithFeedItem) {
+                assertTrue(playLists.contains(pI));
+            }
+        }
+    }
+
+
+
+
 }
