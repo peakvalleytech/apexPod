@@ -32,7 +32,7 @@ public class PlaylistRepositoryImpl implements PlaylistRepository {
         dbAdapter.deletePlaylist(id);
     }
 
-    public void getPlayListsByFeedItemId(long id) {
-
+    public List<Playlist> getPlayListsByFeedItemId(long id) {
+        return dbAdapter.getPlaylListsByFeedId(id);
     }
 }

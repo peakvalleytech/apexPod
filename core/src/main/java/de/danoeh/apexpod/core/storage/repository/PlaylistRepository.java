@@ -13,5 +13,5 @@ public interface PlaylistRepository {
 
     public void deletePlaylist(long id);
 
-    public void getPlayListsByFeedItemId(long id);
+    public List<Playlist> getPlayListsByFeedItemId(long id);
 }

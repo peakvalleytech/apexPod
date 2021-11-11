@@ -26,6 +26,7 @@ import de.danoeh.apexpod.core.storage.ApexDBAdapter;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
+import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
 import de.danoeh.apexpod.databinding.EditPlaylistsDialogBinding;
 import de.danoeh.apexpod.databinding.EditTagsDialogBinding;
 import de.danoeh.apexpod.model.Playlist;
@@ -38,15 +39,18 @@ import io.reactivex.schedulers.Schedulers;
 
 public class AddToPlayListDialog extends DialogFragment {
     public static final String TAG = "TagSettingsDialog";
-    private static final String ARG_FEED_PREFERENCES = "feed_preferences";
+    private static final String ARG_FEEDITEM = "feeditem";
     private List<Playlist> displayedPlayLists;
+    private List<Playlist> createdPlayLists;
     private EditPlaylistsDialogBinding viewBinding;
     private PlaystListSelectionAdapter adapter;
-
-    public static AddToPlayListDialog newInstance(long feedItemId) {
+    private ApexDBAdapter dbAdapter;
+    private PlayListItemDao playListItemDao;
+    FeedItem feedItem;
+    public static AddToPlayListDialog newInstance(FeedItem feedItemId) {
         AddToPlayListDialog fragment = new AddToPlayListDialog();
         Bundle args = new Bundle();
-        args.putSerializable(ARG_FEED_PREFERENCES, preferences);
+        args.putSerializable(ARG_FEEDITEM, feedItemId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,9 +58,11 @@ public class AddToPlayListDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        FeedPreferences preferences = (FeedPreferences) getArguments().getSerializable(ARG_FEED_PREFERENCES);
-//        displayedPlayLists = new ArrayList<Playlist>(preferences.getTags());
-        displayedPlayLists.remove(FeedPreferences.TAG_ROOT);
+        dbAdapter = ApexDBAdapter.getInstance();
+        playListItemDao = new PlayListItemDao();
+        feedItem = (FeedItem) getArguments().getSerializable(ARG_FEEDITEM);
+
+        displayedPlayLists = dbAdapter.getPlaylListsByFeedId(feedItem.getId());
 
         viewBinding = EditPlaylistsDialogBinding.inflate(getLayoutInflater());
         viewBinding.playlistsRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -89,9 +95,6 @@ public class AddToPlayListDialog extends DialogFragment {
             String playListName = viewBinding.newPlaylistEditText.getText().toString().trim();
             isValidInput(playListName);
             addPlayList(playListName);
-            preferences.getTags().clear();
-            preferences.getTags().addAll(displayedPlayLists);
-            DBWriter.setFeedPreferences(preferences);
         });
         dialog.setNegativeButton(R.string.cancel_label, null);
         return dialog.create();
@@ -105,6 +108,7 @@ public class AddToPlayListDialog extends DialogFragment {
                     for (Playlist p : playlists) {
                         playListTitles.add(p.getName());
                     }
+                    createdPlayLists = playlists;
                     return playListTitles;
                 })
                 .subscribeOn(Schedulers.io())
@@ -132,9 +136,24 @@ public class AddToPlayListDialog extends DialogFragment {
     }
 
     private void addPlayList(String playListName) {
-        Playlist playList = new Playlist(playListName);
-        displayedPlayLists.add(playList);
+        Playlist playList = null;
         viewBinding.newPlaylistEditText.setText("");
+        boolean playlistExists = false;
+        for (Playlist pIter : createdPlayLists) {
+            if (pIter.getName().equals(playListName)) {
+                playlistExists = true;
+                playList = pIter;
+            }
+        }
+        if (!playlistExists) {
+            playList = new Playlist(playListName);
+            long id = dbAdapter.createPlaylist(playList);
+            playList.setId(id);
+        }
+        displayedPlayLists.add(playList);
+        ArrayList<FeedItem> feedItems = new ArrayList<>();
+        feedItems.add(feedItem);
+        playListItemDao.addItemsByPlayistId(playList.getId(), feedItems);
         adapter.notifyDataSetChanged();
     }
 
@@ -153,7 +172,11 @@ public class AddToPlayListDialog extends DialogFragment {
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             holder.chip.setText(displayedPlayLists.get(position).getName());
             holder.chip.setOnCloseIconClickListener(v -> {
+                Playlist playlist = displayedPlayLists.get(position);
                 displayedPlayLists.remove(position);
+                ArrayList<FeedItem> feedItems = new ArrayList<>();
+                feedItems.add(feedItem);
+                playListItemDao.deleteItemsByPlayListId(playlist.getId(), feedItems);
                 notifyDataSetChanged();
             });
         }

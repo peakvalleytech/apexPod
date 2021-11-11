@@ -36,18 +36,21 @@ public class ApexDBAdapter extends PodDBAdapter {
         return playlists;
     }
 
-    public void createPlaylist(Playlist playlist) {
+    public long createPlaylist(Playlist playlist) {
+        long id = 0;
         ContentValues values = new ContentValues();
         try {
             db.beginTransactionNonExclusive();
             values.put(KEY_PLAYLIST_NAME, playlist.getName());
-            db.insertWithOnConflict(TABLE_NAME_PLAYLIST, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+            id = db.insertWithOnConflict(TABLE_NAME_PLAYLIST, null, values, SQLiteDatabase.CONFLICT_REPLACE);
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             Log.e(TAG, Log.getStackTraceString(e));
         } finally {
             db.endTransaction();
         }
+
+        return  id;
     }
 
     public int deletePlaylist(long id) {
