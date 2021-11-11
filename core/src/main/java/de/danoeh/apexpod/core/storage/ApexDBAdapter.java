@@ -21,9 +21,11 @@ public class ApexDBAdapter extends PodDBAdapter {
         }
         return instance;
     }
+
     public List<Playlist> getAllPlaylist() {
         String query = "SELECT * FROM playlists";
         List<Playlist> playlists = new ArrayList<>();
+        open();
         try (Cursor cursor = db.rawQuery(query, null)) {
             while (cursor.moveToNext()) {
                 int idIndex = cursor.getColumnIndex(("id"));
@@ -32,7 +34,9 @@ public class ApexDBAdapter extends PodDBAdapter {
                 playlist.setId(cursor.getLong(idIndex));
                 playlists.add(playlist);
             }
+
         }
+        close();
         return playlists;
     }
 

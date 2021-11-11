@@ -12,9 +12,11 @@ import de.danoeh.apexpod.model.feed.FeedItem
 
 class PlayListItemDao() {
     private lateinit var db: SQLiteDatabase
+    lateinit var dbAdapter: ApexDBAdapter
 
     init {
-        val dbAdapter: ApexDBAdapter = ApexDBAdapter.getInstance()
+//        val dbAdapter: ApexDBAdapter = ApexDBAdapter.getInstance()
+        dbAdapter = ApexDBAdapter.getInstance()
         db = dbAdapter.db
     }
     fun addItemsByPlayistId(id: Long, items : List<FeedItem>) {
@@ -49,9 +51,11 @@ class PlayListItemDao() {
         try {
             db.beginTransactionNonExclusive()
             cursor = db.rawQuery(query, arrayOf(id.toString()))
-            items = DBReader.extractItemlistFromCursor(ApexDBAdapter.getInstance(), cursor)
-            db.setTransactionSuccessful()
+            items = DBReader.extractItemlistFromCursor(PodDBAdapter.getInstance(), cursor)
+            DBReader.loadAdditionalFeedItemListData(items)
 
+            db.setTransactionSuccessful()
+            db.endTransaction()
         } catch (e : SQLException) {
             android.util.Log.e(this.javaClass.canonicalName, android.util.Log.getStackTraceString(e))
             throw(e)
@@ -62,7 +66,25 @@ class PlayListItemDao() {
 
         return items
     }
-    fun deleteItemsByPlayListId(id: Long, items : List<FeedItem>) {
 
+    fun deleteItemsByPlayListId(id: Long, items : List<FeedItem>) {
+        val query : String = "DELETE FROM " + PodDBAdapter.TABLE_NAME_PLAYLIST_ITEMS +
+                " WHERE " + "";
+        var cursor : Cursor? = null
+        var items : List<FeedItem>? = null
+        try {
+            db.beginTransactionNonExclusive()
+            cursor = db.rawQuery(query, arrayOf(id.toString()))
+            items = DBReader.extractItemlistFromCursor(PodDBAdapter.getInstance(), cursor)
+            DBReader.loadAdditionalFeedItemListData(items)
+
+            db.setTransactionSuccessful()
+            db.endTransaction()
+        } catch (e : SQLException) {
+            android.util.Log.e(this.javaClass.canonicalName, android.util.Log.getStackTraceString(e))
+            throw(e)
+        } finally {
+            cursor?.close()
+        }
     }
 }

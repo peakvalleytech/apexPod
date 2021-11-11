@@ -38,7 +38,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class AddToPlayListDialog extends DialogFragment {
-    public static final String TAG = "TagSettingsDialog";
+    public static final String TAG = "AddToPlayListDialog";
     private static final String ARG_FEEDITEM = "feeditem";
     private List<Playlist> displayedPlayLists;
     private List<Playlist> createdPlayLists;
@@ -73,7 +73,6 @@ public class AddToPlayListDialog extends DialogFragment {
 
         viewBinding.newPlaylistButton.setOnClickListener(v -> {
                     String playListName = viewBinding.newPlaylistEditText.getText().toString().trim();
-                    isValidInput(playListName);
                     addPlayList(playListName);
                 });
 
@@ -90,10 +89,9 @@ public class AddToPlayListDialog extends DialogFragment {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
         dialog.setView(viewBinding.getRoot());
-        dialog.setTitle(R.string.feed_tags_label);
+        dialog.setTitle(R.string.playlists_label);
         dialog.setPositiveButton(android.R.string.ok, (d, input) -> {
             String playListName = viewBinding.newPlaylistEditText.getText().toString().trim();
-            isValidInput(playListName);
             addPlayList(playListName);
         });
         dialog.setNegativeButton(R.string.cancel_label, null);
@@ -103,7 +101,7 @@ public class AddToPlayListDialog extends DialogFragment {
     private void loadPlaylists() {
         Observable.fromCallable(
                 () -> {
-                    List<Playlist> playlists = ApexDBAdapter.getInstance().getAllPlaylist();
+                    List<Playlist> playlists = dbAdapter.getAllPlaylist();
                     ArrayList<String> playListTitles = new ArrayList<String>();
                     for (Playlist p : playlists) {
                         playListTitles.add(p.getName());
@@ -136,6 +134,9 @@ public class AddToPlayListDialog extends DialogFragment {
     }
 
     private void addPlayList(String playListName) {
+        if (!isValidInput(playListName)) {
+            return;
+        }
         Playlist playList = null;
         viewBinding.newPlaylistEditText.setText("");
         boolean playlistExists = false;

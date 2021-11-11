@@ -2,11 +2,12 @@ package de.danoeh.apexpod.model;
 
 import androidx.annotation.Nullable;
 
+import java.io.Serializable;
 import java.util.List;
 
 import de.danoeh.apexpod.model.feed.FeedItem;
 
-public class Playlist {
+public class Playlist implements Serializable {
     private long id;
     private String name;
 

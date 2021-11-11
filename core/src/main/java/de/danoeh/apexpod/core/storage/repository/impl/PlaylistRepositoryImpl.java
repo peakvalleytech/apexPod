@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import de.danoeh.apexpod.core.storage.ApexDBAdapter;
+import de.danoeh.apexpod.core.storage.PodDBAdapter;
 import de.danoeh.apexpod.core.storage.repository.PlaylistRepository;
 import de.danoeh.apexpod.model.Playlist;
 
@@ -12,7 +13,6 @@ public class PlaylistRepositoryImpl implements PlaylistRepository {
         ApexDBAdapter dbAdapter;
 
     public PlaylistRepositoryImpl(Context context) {
-        ApexDBAdapter.init(context);
         dbAdapter = ApexDBAdapter.getInstance();
     }
 
