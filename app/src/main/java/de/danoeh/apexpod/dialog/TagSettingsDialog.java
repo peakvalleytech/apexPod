@@ -94,13 +94,16 @@ public class TagSettingsDialog extends DialogFragment {
                 () -> {
                     NavDrawerData data = DBReader.getNavDrawerData();
                     List<NavDrawerData.DrawerItem> items = data.items;
-                    List<String> folders = new ArrayList<String>();
+                    List<String> tags = new ArrayList<String>();
                     for (NavDrawerData.DrawerItem item : items) {
                         if (item.type == NavDrawerData.DrawerItem.Type.TAG) {
-                            folders.add(item.getTitle());
+                            NavDrawerData.TagDrawerItem tag = (NavDrawerData.TagDrawerItem) item;
+                            if (!tag.name.equals((FeedPreferences.TAG_ROOT))) {
+                                tags.add(item.getTitle());
+                            }
                         }
                     }
-                    return folders;
+                    return tags;
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
