@@ -106,6 +106,7 @@ public class AddToPlayListDialog extends DialogFragment {
                     for (Playlist p : playlists) {
                         playListTitles.add(p.getName());
                     }
+
                     createdPlayLists = playlists;
                     return playListTitles;
                 })
