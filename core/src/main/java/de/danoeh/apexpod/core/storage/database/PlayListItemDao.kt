@@ -67,24 +67,17 @@ class PlayListItemDao() {
         return items
     }
 
-    fun deleteItemsByPlayListId(id: Long, items : List<FeedItem>) {
-        val query : String = "DELETE FROM " + PodDBAdapter.TABLE_NAME_PLAYLIST_ITEMS +
-                " WHERE " + "";
-        var cursor : Cursor? = null
-        var items : List<FeedItem>? = null
+    fun deleteItemByPlayListId(id: Long, item: FeedItem) {
         try {
             db.beginTransactionNonExclusive()
-            cursor = db.rawQuery(query, arrayOf(id.toString()))
-            items = DBReader.extractItemlistFromCursor(PodDBAdapter.getInstance(), cursor)
-            DBReader.loadAdditionalFeedItemListData(items)
-
+            db.delete(PodDBAdapter.TABLE_NAME_PLAYLIST_ITEMS, PodDBAdapter.KEY_PLAYLIST + " = ?" +
+            " AND " + PodDBAdapter.KEY_FEEDITEM + " IN (?)", arrayOf<String>(id.toString(), item.id.toString()) )
             db.setTransactionSuccessful()
-            db.endTransaction()
         } catch (e : SQLException) {
             android.util.Log.e(this.javaClass.canonicalName, android.util.Log.getStackTraceString(e))
             throw(e)
         } finally {
-            cursor?.close()
+            db.endTransaction()
         }
     }
 }

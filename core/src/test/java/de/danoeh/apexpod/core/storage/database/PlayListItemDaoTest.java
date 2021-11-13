@@ -92,7 +92,15 @@ public class PlayListItemDaoTest {
 
     @Test
     public void deleteItems() {
-
+        Playlist playlist = new Playlist("Playlist 1");
+        long playlistId = adapter.createPlaylist(playlist);
+        List<FeedItem> feedItems = createFeedItems(5);
+        playListItemDao.addItemsByPlayistId(playlistId, feedItems);
+        for (FeedItem item : feedItems) {
+            playListItemDao.deleteItemByPlayListId(playlistId, item);
+        }
+        List<FeedItem> playlistItems = playListItemDao.getItemsByPlayListId(playlistId);
+        assertEquals(0, playlistItems.size());
     }
 
     private List<FeedItem> createFeedItems(int numItems) {

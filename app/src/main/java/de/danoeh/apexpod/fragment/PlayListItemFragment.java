@@ -60,6 +60,8 @@ import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
+import de.danoeh.apexpod.core.storage.repository.PlaylistRepository;
+import de.danoeh.apexpod.core.storage.repository.impl.PlaylistRepositoryImpl;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
@@ -107,6 +109,8 @@ public class PlayListItemFragment extends Fragment implements
     private Disposable disposable;
     private SharedPreferences prefs;
 
+    PlaylistRepository playlistRepository;
+    PlayListItemDao playListItemDao;
     private SpeedDialView speedDialView;
     public static PlayListItemFragment newInstance(Playlist playlist) {
         PlayListItemFragment fragment = new PlayListItemFragment();
@@ -115,12 +119,30 @@ public class PlayListItemFragment extends Fragment implements
         fragment.setArguments(args);
         return fragment;
     }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.playlists, menu);
+        menu.findItem(R.id.delete_playlist).setOnMenuItemClickListener(item -> {
+            if (playlistRepository != null) {
+                playlistRepository.deletePlaylist(playList.getId());
+                for (FeedItem feedItem : playListItems) {
+                    playListItemDao.deleteItemByPlayListId(playList.getId(), feedItem);
+                }
+            }
+            return true;
+        });
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         playList = (Playlist) getArguments().getSerializable(ARG_PLAYLIST);
         prefs = getActivity().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        playlistRepository = new PlaylistRepositoryImpl(getContext());
+        playListItemDao = new PlayListItemDao();
     }
 
     @Override
@@ -238,10 +260,6 @@ public class PlayListItemFragment extends Fragment implements
 //                R.id.refresh_item, updateRefreshMenuItemChecker);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-    }
 
 //    public boolean onMenuItemClick(MenuItem item) {
 //        final int itemId = item.getItemId();

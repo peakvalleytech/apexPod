@@ -2,6 +2,7 @@ package de.danoeh.apexpod.core.storage.database;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
@@ -73,9 +74,13 @@ public class PlaylistTests {
     @Test
     public void deletePlaylist() {
         Playlist playlist = new Playlist("Playlist 1");
-        adapter.createPlaylist(playlist);
-        int rowsAffected = adapter.deletePlaylist(1);
+        long playlistId = adapter.createPlaylist(playlist);
+        List<FeedItem> playlistItems = createFeedItems();
+        playListItemDao.addItemsByPlayistId(playlistId, playlistItems);
+        int rowsAffected = adapter.deletePlaylist(playlistId);
         assertEquals(1, rowsAffected);
+        List<Playlist> playlists = adapter.getAllPlaylist();
+        assertEquals(0, playlists.size());
     }
 
     @Test
@@ -85,11 +90,7 @@ public class PlaylistTests {
 
     @Test
     public void getAllByFeedItemId_should_return_no_playlist() {
-        List<Feed> feeds = saveFeedlist(5, 1, false);
-        List<FeedItem> allItems = new ArrayList<>();
-        for (Feed f : feeds) {
-            allItems.addAll(f.getItems());
-        }
+        List<FeedItem> allItems = createFeedItems();
         Playlist playlist = new Playlist("PlayList 1");
         adapter.open();
         adapter.createPlaylist(playlist);
@@ -101,11 +102,7 @@ public class PlaylistTests {
 
     @Test
     public void getAllByFeedItemId_when_items_appear_in_one_lists() {
-        List<Feed> feeds = saveFeedlist(5, 1, false);
-        List<FeedItem> allItems = new ArrayList<>();
-        for (Feed f : feeds) {
-            allItems.addAll(f.getItems());
-        }
+        List<FeedItem> allItems = createFeedItems();
         Playlist playlist = new Playlist("PlayList 1");
         adapter.createPlaylist(playlist);
         List<Playlist> playlists = adapter.getAllPlaylist();
@@ -120,13 +117,19 @@ public class PlaylistTests {
         }
     }
 
-    @Test
-    public void getAllByFeedItemId_when_items_appear_in_multiple_lists() {
+    @NonNull
+    private List<FeedItem> createFeedItems() {
         List<Feed> feeds = saveFeedlist(5, 1, false);
         List<FeedItem> allItems = new ArrayList<>();
         for (Feed f : feeds) {
             allItems.addAll(f.getItems());
         }
+        return allItems;
+    }
+
+    @Test
+    public void getAllByFeedItemId_when_items_appear_in_multiple_lists() {
+        List<FeedItem> allItems = createFeedItems();
         Playlist playList1 = new Playlist("PlayList 1");
         Playlist playlist2 = new Playlist("PlayList 2");
         adapter.createPlaylist(playList1);
