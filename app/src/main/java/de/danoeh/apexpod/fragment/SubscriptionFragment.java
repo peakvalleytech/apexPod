@@ -14,11 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -201,12 +203,14 @@ public class SubscriptionFragment extends Fragment
             return true;
         });
 
-        Button expandTagsButton = root.findViewById(R.id.expandTagsButton);
+        ImageButton expandTagsButton = root.findViewById(R.id.expandTagsButton);
         expandTagsButton.setOnClickListener(v -> {
             if (folderChipGroup.getVisibility() == View.GONE) {
                 folderChipGroup.setVisibility(View.VISIBLE);
+                expandTagsButton.setBackground(AppCompatResources.getDrawable(getActivity(), R.drawable.ic_arrow_up));
             } else {
                 folderChipGroup.setVisibility(View.GONE);
+                expandTagsButton.setBackground(AppCompatResources.getDrawable(getActivity(), R.drawable.ic_arrow_down));
             }
         });
 
