@@ -3,50 +3,26 @@ package de.danoeh.apexpod.fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.adapter.EpisodeItemListAdapter;
 import de.danoeh.apexpod.adapter.PlayListsListAdapter;
-import de.danoeh.apexpod.core.event.DownloadEvent;
-import de.danoeh.apexpod.core.event.DownloaderUpdate;
-import de.danoeh.apexpod.core.event.FeedItemEvent;
-import de.danoeh.apexpod.core.event.PlaybackHistoryEvent;
-import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
-import de.danoeh.apexpod.core.event.PlayerStatusEvent;
-import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
-import de.danoeh.apexpod.core.storage.DBReader;
-import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.repository.PlaylistRepository;
 import de.danoeh.apexpod.core.storage.repository.impl.PlaylistRepositoryImpl;
-import de.danoeh.apexpod.core.util.FeedItemUtil;
-import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
 import de.danoeh.apexpod.model.Playlist;
-import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.view.EmptyViewHandler;
-import de.danoeh.apexpod.view.EpisodeItemListRecyclerView;
-import de.danoeh.apexpod.view.viewholder.EpisodeItemViewHolder;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -114,17 +90,12 @@ public class PlaylistFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        EventBus.getDefault().register(this);
         loadItems();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
-        if (disposable != null) {
-            disposable.dispose();
-        }
     }
 
     @Override
