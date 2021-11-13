@@ -318,9 +318,9 @@ public class MainActivity extends CastEnabledActivity {
     private void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         // clear back stack
-        for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++) {
-            fragmentManager.popBackStack();
-        }
+//        for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++) {
+//            fragmentManager.popBackStack();
+//        }
         FragmentTransaction t = fragmentManager.beginTransaction();
         t.replace(R.id.main_view, fragment, MAIN_FRAGMENT_TAG);
 //        fragmentManager.popBackStack();
