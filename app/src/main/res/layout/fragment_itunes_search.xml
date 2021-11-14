@@ -31,19 +31,16 @@
             android:textAlignment="textEnd" />
     </LinearLayout>
 
-    <GridView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@id/browsing"
-        android:id="@+id/gridView"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:columnWidth="400dp"
-        android:gravity="center"
         android:horizontalSpacing="8dp"
-        android:numColumns="auto_fit"
         android:paddingBottom="@dimen/list_vertical_padding"
         android:paddingTop="@dimen/list_vertical_padding"
-        android:stretchMode="columnWidth"
         android:verticalSpacing="8dp"
         tools:listitem="@layout/gpodnet_podcast_listitem" />
 

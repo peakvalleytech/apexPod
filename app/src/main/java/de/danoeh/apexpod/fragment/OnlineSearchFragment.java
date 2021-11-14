@@ -8,6 +8,7 @@ import android.widget.AbsListView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +23,7 @@ import android.widget.TextView;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
-import de.danoeh.apexpod.adapter.itunes.ItunesAdapter;
+import de.danoeh.apexpod.adapter.discovery.PodcastSearchResultAdapter;
 import de.danoeh.apexpod.discovery.PodcastSearchResult;
 import de.danoeh.apexpod.discovery.PodcastSearcher;
 import de.danoeh.apexpod.discovery.PodcastSearcherRegistry;
@@ -42,9 +43,9 @@ public class OnlineSearchFragment extends Fragment {
     /**
      * Adapter responsible with the search results
      */
-    private ItunesAdapter adapter;
+    private PodcastSearchResultAdapter adapter;
     private PodcastSearcher searchProvider;
-    private GridView gridView;
+    private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private TextView txtvError;
     private Button butRetry;
@@ -96,18 +97,18 @@ public class OnlineSearchFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_itunes_search, container, false);
         root.findViewById(R.id.spinner_country).setVisibility(INVISIBLE);
-        gridView = root.findViewById(R.id.gridView);
-        adapter = new ItunesAdapter(getActivity(), new ArrayList<>());
-        gridView.setAdapter(adapter);
+        recyclerView = root.findViewById(R.id.recyclerView);
+        adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), new ArrayList<>());
+        recyclerView.setAdapter(adapter);
 
         //Show information about the podcast when the list item is clicked
-        gridView.setOnItemClickListener((parent, view1, position, id) -> {
-            PodcastSearchResult podcast = searchResults.get(position);
-            Intent intent = new Intent(getActivity(), OnlineFeedViewActivity.class);
-            intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcast.feedUrl);
-            intent.putExtra(MainActivity.EXTRA_STARTED_FROM_SEARCH, true);
-            startActivity(intent);
-        });
+//        recyclerView.setOnItemClickListener((parent, view1, position, id) -> {
+//            PodcastSearchResult podcast = searchResults.get(position);
+//            Intent intent = new Intent(getActivity(), OnlineFeedViewActivity.class);
+//            intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcast.feedUrl);
+//            intent.putExtra(MainActivity.EXTRA_STARTED_FROM_SEARCH, true);
+//            startActivity(intent);
+//        });
         progressBar = root.findViewById(R.id.progressBar);
         txtvError = root.findViewById(R.id.txtvError);
         butRetry = root.findViewById(R.id.butRetry);
@@ -116,20 +117,20 @@ public class OnlineSearchFragment extends Fragment {
         txtvPoweredBy.setText(getString(R.string.search_powered_by, searchProvider.getName()));
         setupToolbar(root.findViewById(R.id.toolbar));
 
-        gridView.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-                if (scrollState == SCROLL_STATE_TOUCH_SCROLL) {
-                    InputMethodManager imm = (InputMethodManager)
-                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                }
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-            }
-        });
+//        recyclerView.setOnScrollListener(new AbsListView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(AbsListView view, int scrollState) {
+//                if (scrollState == SCROLL_STATE_TOUCH_SCROLL) {
+//                    InputMethodManager imm = (InputMethodManager)
+//                            getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+//                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+//                }
+//            }
+//
+//            @Override
+//            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//            }
+//        });
         return root;
     }
 
@@ -194,10 +195,12 @@ public class OnlineSearchFragment extends Fragment {
         disposable = searchProvider.search(query).subscribe(result -> {
             searchResults = result;
             progressBar.setVisibility(View.GONE);
-            adapter.clear();
-            adapter.addAll(searchResults);
-            adapter.notifyDataSetInvalidated();
-            gridView.setVisibility(!searchResults.isEmpty() ? View.VISIBLE : View.GONE);
+//            adapter.clear();
+//            adapter.addAll(searchResults);
+//            adapter.notifyDataSetInvalidated();
+            adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(),  getContext(), result);
+            recyclerView.setAdapter(adapter);
+            recyclerView.setVisibility(!searchResults.isEmpty() ? View.VISIBLE : View.GONE);
             txtvEmpty.setVisibility(searchResults.isEmpty() ? View.VISIBLE : View.GONE);
             txtvEmpty.setText(getString(R.string.no_results_for_query, query));
         }, error -> {
@@ -211,7 +214,7 @@ public class OnlineSearchFragment extends Fragment {
     }
 
     private void showOnlyProgressBar() {
-        gridView.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.GONE);
         txtvError.setVisibility(View.GONE);
         butRetry.setVisibility(View.GONE);
         txtvEmpty.setVisibility(View.GONE);
