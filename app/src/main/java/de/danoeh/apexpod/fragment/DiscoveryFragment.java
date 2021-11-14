@@ -11,18 +11,24 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
 
 import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
-import de.danoeh.apexpod.adapter.itunes.ItunesAdapter;
+import de.danoeh.apexpod.adapter.discovery.PodcastSearchResultAdapter;
 import de.danoeh.apexpod.core.event.DiscoveryDefaultUpdateEvent;
 import de.danoeh.apexpod.discovery.ItunesTopListLoader;
 import de.danoeh.apexpod.discovery.PodcastSearchResult;
@@ -48,8 +54,8 @@ public class DiscoveryFragment extends Fragment {
     /**
      * Adapter responsible with the search results.
      */
-    private ItunesAdapter adapter;
-    private GridView gridView;
+    private PodcastSearchResultAdapter adapter;
+    private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private TextView txtvError;
     private Button butRetry;
@@ -69,16 +75,13 @@ public class DiscoveryFragment extends Fragment {
      */
     private void updateData(List<PodcastSearchResult> result) {
         this.searchResults = result;
-        adapter.clear();
         if (result != null && result.size() > 0) {
-            gridView.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.VISIBLE);
             txtvEmpty.setVisibility(View.GONE);
-            for (PodcastSearchResult p : result) {
-                adapter.add(p);
-            }
-            adapter.notifyDataSetInvalidated();
+            adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), result);
+            recyclerView.setAdapter(adapter);
         } else {
-            gridView.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
             txtvEmpty.setVisibility(View.VISIBLE);
         }
     }
@@ -99,23 +102,25 @@ public class DiscoveryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_itunes_search, container, false);
-        gridView = root.findViewById(R.id.gridView);
-        adapter = new ItunesAdapter(getActivity(), new ArrayList<>());
-        gridView.setAdapter(adapter);
-
+        recyclerView = root.findViewById(R.id.recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), new ArrayList<>());
+        recyclerView.setAdapter(adapter);
         Toolbar toolbar = root.findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         //Show information about the podcast when the list item is clicked
-        gridView.setOnItemClickListener((parent, view1, position, id) -> {
-            PodcastSearchResult podcast = searchResults.get(position);
-            if (podcast.feedUrl == null) {
-                return;
-            }
-            Intent intent = new Intent(getActivity(), OnlineFeedViewActivity.class);
-            intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcast.feedUrl);
-            startActivity(intent);
-        });
+//        recyclerView.setOnItemClickListener((parent, view1, position, id) -> {
+//            PodcastSearchResult podcast = searchResults.get(position);
+//            if (podcast.feedUrl == null) {
+//                return;
+//            }
+//            Intent intent = new Intent(getActivity(), OnlineFeedViewActivity.class);
+//            intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcast.feedUrl);
+//            startActivity(intent);
+//        });
+
 
         List<String> countryCodeArray = new ArrayList<String>(Arrays.asList(Locale.getISOCountries()));
         HashMap<String, String> countryCodeNames = new HashMap<String, String>();
@@ -191,14 +196,14 @@ public class DiscoveryFragment extends Fragment {
             disposable.dispose();
         }
 
-        gridView.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.GONE);
         txtvError.setVisibility(View.GONE);
         butRetry.setVisibility(View.GONE);
         txtvEmpty.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
 
         if (country.equals(ItunesTopListLoader.DISCOVER_HIDE_FAKE_COUNTRY_CODE)) {
-            gridView.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
             txtvError.setVisibility(View.VISIBLE);
             txtvError.setText(getResources().getString(R.string.discover_is_hidden));
             butRetry.setVisibility(View.GONE);
