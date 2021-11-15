@@ -62,16 +62,14 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/quickSubBtn"
+
+    <include
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/feedInfoLayout"
-        android:background="@drawable/ic_check"
-        android:focusable="false"
+        android:id="@+id/quickSubBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/secondary_action" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
