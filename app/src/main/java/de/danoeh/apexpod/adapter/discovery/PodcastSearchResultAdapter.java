@@ -2,6 +2,7 @@ package de.danoeh.apexpod.adapter.discovery;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +76,9 @@ public class PodcastSearchResultAdapter extends
 
         TextView authorView;
 
-        ImageView quickSubBtn;
+        View quickSubBtn;
+
+        ImageView quickSubIcon;
 
         public PodcastRecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,9 +86,11 @@ public class PodcastSearchResultAdapter extends
             titleView = itemView.findViewById(R.id.txtvTitle);
             authorView = itemView.findViewById(R.id.txtvAuthor);
             quickSubBtn = itemView.findViewById(R.id.quickSubBtn);
+            quickSubIcon = itemView.findViewById(R.id.secondaryActionIcon);
         }
 
         public void onBind(@NonNull PodcastSearchResult podcastSearchResult) {
+            quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_add));
             titleView.setText(podcastSearchResult.title);
         if (podcastSearchResult.author != null && ! podcastSearchResult.author.trim().isEmpty()) {
             authorView.setText(podcastSearchResult.author);
@@ -119,7 +124,7 @@ public class PodcastSearchResultAdapter extends
             itemView.setBackgroundResource(ThemeUtils.getDrawableFromAttr(activity, R.attr.selectableItemBackground));
 
         quickSubBtn.setOnClickListener(v -> {
-            quickSubBtn.setBackground(AppCompatResources.getDrawable(context,R.drawable.arrow));
+            quickSubIcon.setBackground(AppCompatResources.getDrawable(activity,R.drawable.ic_check_circle_black_24dp));
         });
         }
     }
