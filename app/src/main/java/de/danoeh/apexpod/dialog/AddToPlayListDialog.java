@@ -23,15 +23,10 @@ import java.util.List;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.storage.ApexDBAdapter;
-import de.danoeh.apexpod.core.storage.DBReader;
-import de.danoeh.apexpod.core.storage.DBWriter;
-import de.danoeh.apexpod.core.storage.NavDrawerData;
 import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
 import de.danoeh.apexpod.databinding.EditPlaylistsDialogBinding;
-import de.danoeh.apexpod.databinding.EditTagsDialogBinding;
 import de.danoeh.apexpod.model.Playlist;
 import de.danoeh.apexpod.model.feed.FeedItem;
-import de.danoeh.apexpod.model.feed.FeedPreferences;
 import de.danoeh.apexpod.view.ItemOffsetDecoration;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -40,8 +35,8 @@ import io.reactivex.schedulers.Schedulers;
 public class AddToPlayListDialog extends DialogFragment {
     public static final String TAG = "AddToPlayListDialog";
     private static final String ARG_FEEDITEM = "feeditem";
-    private List<Playlist> displayedPlayLists;
-    private List<Playlist> createdPlayLists;
+    private List<Playlist> displayedPlayLists = new ArrayList<>();
+    private List<Playlist> createdPlayLists = new ArrayList<>();
     private EditPlaylistsDialogBinding viewBinding;
     private PlaystListSelectionAdapter adapter;
     private ApexDBAdapter dbAdapter;
@@ -141,7 +136,6 @@ public class AddToPlayListDialog extends DialogFragment {
         Playlist playList = null;
         viewBinding.newPlaylistEditText.setText("");
         boolean playlistExists = false;
-        // TODO: 11/17/2021 NPE occurs when adding to an empty list using dialog buttons
         for (Playlist pIter : createdPlayLists) {
             if (pIter.getName().equals(playListName)) {
                 playlistExists = true;
@@ -161,7 +155,6 @@ public class AddToPlayListDialog extends DialogFragment {
     }
 
     public class PlaystListSelectionAdapter extends RecyclerView.Adapter<PlaystListSelectionAdapter.ViewHolder> {
-
         @Override
         @NonNull
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

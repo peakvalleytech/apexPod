@@ -83,8 +83,8 @@ public class PlaylistFragment extends Fragment {
 
         emptyView = new EmptyViewHandler(getActivity());
         emptyView.setIcon(R.drawable.ic_playlist);
-        emptyView.setTitle(R.string.no_history_head_label);
-        emptyView.setMessage(R.string.no_history_label);
+        emptyView.setTitle(R.string.no_playlists_label);
+        emptyView.setMessage(R.string.no_playlists_sub_label);
         emptyView.attachToRecyclerView(recyclerView);
         return root;
     }

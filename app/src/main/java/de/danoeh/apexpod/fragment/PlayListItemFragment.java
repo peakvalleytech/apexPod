@@ -7,23 +7,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -36,42 +31,33 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.Callable;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.EpisodeItemListAdapter;
 import de.danoeh.apexpod.adapter.PlayListItemRecyclerAdapter;
-import de.danoeh.apexpod.adapter.QueueRecyclerAdapter;
 import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.core.event.DownloadEvent;
 import de.danoeh.apexpod.core.event.DownloaderUpdate;
 import de.danoeh.apexpod.core.event.FeedItemEvent;
 import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
 import de.danoeh.apexpod.core.event.PlayerStatusEvent;
-import de.danoeh.apexpod.core.event.QueueEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
-import de.danoeh.apexpod.core.feed.util.PlaybackSpeedUtils;
 import de.danoeh.apexpod.core.menuhandler.MenuItemUtils;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.service.download.DownloadService;
-import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
 import de.danoeh.apexpod.core.storage.repository.PlaylistRepository;
 import de.danoeh.apexpod.core.storage.repository.impl.PlaylistRepositoryImpl;
-import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
-import de.danoeh.apexpod.dialog.AddToPlayListDialog;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
-import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
 import de.danoeh.apexpod.model.Playlist;
 import de.danoeh.apexpod.model.feed.FeedItem;
-import de.danoeh.apexpod.model.feed.FeedItemFilter;
 import de.danoeh.apexpod.model.feed.SortOrder;
 import de.danoeh.apexpod.view.EmptyViewHandler;
 import de.danoeh.apexpod.view.EpisodeItemListRecyclerView;
@@ -375,7 +361,6 @@ public class PlayListItemFragment extends Fragment implements
         }
         ((MainActivity) getActivity()).setupToolbarToggle(toolbar, displayUpArrow);
         toolbar.inflateMenu(R.menu.playlists);
-        Fragment thisFragment = this;
         toolbar.getMenu().findItem(R.id.delete_playlist).setOnMenuItemClickListener(item -> {
             ConfirmationDialog confirmationDialog = new ConfirmationDialog(getContext(), R.string.delete_playlist, R.string.delete_playlist_confirmation_msg) {
                 @Override
