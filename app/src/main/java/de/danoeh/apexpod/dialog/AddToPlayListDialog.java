@@ -141,6 +141,7 @@ public class AddToPlayListDialog extends DialogFragment {
         Playlist playList = null;
         viewBinding.newPlaylistEditText.setText("");
         boolean playlistExists = false;
+        // TODO: 11/17/2021 NPE occurs when adding to an empty list using dialog buttons
         for (Playlist pIter : createdPlayLists) {
             if (pIter.getName().equals(playListName)) {
                 playlistExists = true;
@@ -176,9 +177,7 @@ public class AddToPlayListDialog extends DialogFragment {
             holder.chip.setOnCloseIconClickListener(v -> {
                 Playlist playlist = displayedPlayLists.get(position);
                 displayedPlayLists.remove(position);
-                ArrayList<FeedItem> feedItems = new ArrayList<>();
-                feedItems.add(feedItem);
-                playListItemDao.deleteItemsByPlayListId(playlist.getId(), feedItems);
+                playListItemDao.deleteItemByPlayListId(playlist.getId(), feedItem);
                 notifyDataSetChanged();
             });
         }
