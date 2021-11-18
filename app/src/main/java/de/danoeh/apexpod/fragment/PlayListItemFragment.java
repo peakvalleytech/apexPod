@@ -121,18 +121,30 @@ public class PlayListItemFragment extends Fragment implements
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.delete_playlist) {
+            ConfirmationDialog confirmationDialog = new ConfirmationDialog(getContext(), R.string.delete_playlist, R.string.delete_playlist_confirmation_msg) {
+                @Override
+                public void onConfirmButtonPressed(DialogInterface dialog) {
+                    if (playlistRepository != null) {
+                        playlistRepository.deletePlaylist(playList.getId());
+                        for (FeedItem feedItem : playListItems) {
+                            playListItemDao.deleteItemByPlayListId(playList.getId(), feedItem);
+                        }
+                    }
+                }
+            };
+
+            confirmationDialog.createNewDialog().show();
+        }
+        return true;
+    }
+    @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.playlists, menu);
-        menu.findItem(R.id.delete_playlist).setOnMenuItemClickListener(item -> {
-            if (playlistRepository != null) {
-                playlistRepository.deletePlaylist(playList.getId());
-                for (FeedItem feedItem : playListItems) {
-                    playListItemDao.deleteItemByPlayListId(playList.getId(), feedItem);
-                }
-            }
-            return true;
-        });
+        inflater.inflate(R.menu.playback_history, menu);
+//        menu.findItem(R.id.delete_playlist)
     }
 
     @Override
@@ -143,6 +155,7 @@ public class PlayListItemFragment extends Fragment implements
         prefs = getActivity().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         playlistRepository = new PlaylistRepositoryImpl(getContext());
         playListItemDao = new PlayListItemDao();
+        hasOptionsMenu();
     }
 
     @Override
@@ -361,7 +374,24 @@ public class PlayListItemFragment extends Fragment implements
             displayUpArrow = savedInstanceState.getBoolean(KEY_UP_ARROW);
         }
         ((MainActivity) getActivity()).setupToolbarToggle(toolbar, displayUpArrow);
-//        toolbar.inflateMenu(R.menu.queue);
+        toolbar.inflateMenu(R.menu.playlists);
+        Fragment thisFragment = this;
+        toolbar.getMenu().findItem(R.id.delete_playlist).setOnMenuItemClickListener(item -> {
+            ConfirmationDialog confirmationDialog = new ConfirmationDialog(getContext(), R.string.delete_playlist, R.string.delete_playlist_confirmation_msg) {
+                @Override
+                public void onConfirmButtonPressed(DialogInterface dialog) {
+                    if (playlistRepository != null) {
+                        playlistRepository.deletePlaylist(playList.getId());
+                        for (FeedItem feedItem : playListItems) {
+                            playListItemDao.deleteItemByPlayListId(playList.getId(), feedItem);
+                        }
+                    }
+                    ((MainActivity) getActivity()).loadFragment(PlaylistFragment.TAG, savedInstanceState);              }
+            };
+
+            confirmationDialog.createNewDialog().show();
+            return true;
+        });
         refreshToolbarState();
 
         infoBar = root.findViewById(R.id.info_bar);
