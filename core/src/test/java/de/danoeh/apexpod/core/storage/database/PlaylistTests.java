@@ -84,11 +84,6 @@ public class PlaylistTests {
     }
 
     @Test
-    public void addToPlaylist() {
-
-    }
-
-    @Test
     public void getAllByFeedItemId_should_return_no_playlist() {
         List<FeedItem> allItems = createFeedItems();
         Playlist playlist = new Playlist("PlayList 1");
@@ -147,8 +142,4 @@ public class PlaylistTests {
             }
         }
     }
-
-
-
-
 }

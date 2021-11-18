@@ -80,15 +80,12 @@ public class PlayListItemDaoTest {
             assertTrue(playlistItems.get(i).getId() != 0);
             assertEquals(playlistItems.get(i).getId(), playlistItems.get(i).getId());
         }
-
     }
 
     @Test
     public void getItemsOfNonExistentPlaylistShouldReturnNull() {
 
     }
-
-
 
     @Test
     public void deleteItems() {
