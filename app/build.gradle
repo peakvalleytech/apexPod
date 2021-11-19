@@ -4,6 +4,7 @@ plugins {
     id('com.github.triplet.play') version '3.6.0-agp4.2' apply false
 }
 apply from: "../common.gradle"
+apply plugin: 'kotlin-android'
 apply from: "../playFlavor.gradle"
 
 android {
@@ -155,6 +156,8 @@ dependencies {
     implementation 'com.github.skydoves:balloon:1.1.5'
     implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.3'
     implementation 'com.annimon:stream:1.2.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+
 
     // Non-free dependencies:
     playImplementation 'com.google.android.play:core:1.8.0'
@@ -169,6 +172,8 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$runnerVersion"
     androidTestImplementation "androidx.test:rules:$rulesVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 if (project.hasProperty("antennaPodPlayPublisherCredentials")) {
@@ -192,4 +197,7 @@ preBuild.dependsOn copyLicense
 apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 resourcePlaceholders {
     files = ['xml/shortcuts.xml']
+}
+repositories {
+    mavenCentral()
 }
