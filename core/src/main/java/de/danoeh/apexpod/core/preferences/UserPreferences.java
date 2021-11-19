@@ -998,7 +998,7 @@ public class UserPreferences {
             case "prompt": return BackButtonBehavior.SHOW_PROMPT;
             case "page": return BackButtonBehavior.GO_TO_PAGE;
             case "default": // Deliberate fall-through
-            default: return BackButtonBehavior.DEFAULT;
+            default: return BackButtonBehavior.DOUBLE_TAP;
         }
     }
 
