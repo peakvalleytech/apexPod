@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import de.danoeh.apexpod.adapter.SubscriptionsRecyclerAdapter;
+
 public class FeedsItemMoveCallback extends ItemTouchHelper.Callback {
     private final ItemTouchHelperContract adapter;
 

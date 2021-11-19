@@ -29,6 +29,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import de.danoeh.antennapod.adapter.FeedsItemMoveCallback;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.core.feed.LocalFeedUpdater;
