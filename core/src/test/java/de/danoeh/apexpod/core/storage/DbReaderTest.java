@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
+import androidx.annotation.NonNull;
 import androidx.test.platform.app.InstrumentationRegistry;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
@@ -152,7 +153,32 @@ public class DbReaderTest {
         for (Feed f : feeds) {
             allItems.addAll(f.getItems());
         }
-        // take random items from every feed
+        List<FeedItem> queue = createQueueFromFeeds(numItems, allItems);
+        PodDBAdapter adapter = PodDBAdapter.getInstance();
+        adapter.open();
+        adapter.setQueue(queue);
+        adapter.close();
+        return queue;
+    }
+
+//    private List<FeedItem> savePlaylist(int numItems) {
+//        if (numItems <= 0) {
+//            throw new IllegalArgumentException("numItems<=0");
+//        }
+//        List<Feed> feeds = saveFeedlist(numItems, numItems, false);
+//        List<FeedItem> allItems = new ArrayList<>();
+//        for (Feed f : feeds) {
+//            allItems.addAll(f.getItems());
+//        }
+//        List<FeedItem> playlist = createQueueFromFeeds(numItems, allItems);
+//        PodDBAdapter adapter = PodDBAdapter.getInstance();
+//        adapter.open();
+//        adapter.setPlaylist(playlist);
+//        adapter.close();
+//    }
+
+    @NonNull
+    private List<FeedItem> createQueueFromFeeds(int numItems, List<FeedItem> allItems) {
         Random random = new Random();
         List<FeedItem> queue = new ArrayList<>();
         while (queue.size() < numItems) {
@@ -161,10 +187,6 @@ public class DbReaderTest {
                 queue.add(allItems.get(index));
             }
         }
-        PodDBAdapter adapter = PodDBAdapter.getInstance();
-        adapter.open();
-        adapter.setQueue(queue);
-        adapter.close();
         return queue;
     }
 

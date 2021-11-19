@@ -1,4 +1,5 @@
 apply plugin: "com.android.library"
+apply plugin: 'kotlin-android'
 apply from: "../../common.gradle"
 apply from: "../../playFlavor.gradle"
 
@@ -9,4 +10,9 @@ dependencies {
 
     playImplementation "com.google.android.gms:play-services-base:$playServicesVersion"
     freeImplementation "org.conscrypt:conscrypt-android:$conscryptVersion"
+    implementation "androidx.core:core-ktx:$core_ktx_version+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

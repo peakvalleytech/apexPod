@@ -34,6 +34,11 @@
         custom:showAsAction="collapseActionView"
         android:title="@string/remove_from_queue_label">
     </item>
+    <item
+        android:id="@+id/remove_from_playlist"
+        custom:showAsAction="collapseActionView"
+        android:title="Remove from Playlist">
+    </item>
 
     <item
         android:id="@+id/add_to_favorites_item"

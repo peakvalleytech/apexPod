@@ -151,6 +151,7 @@
 
     <string-array name="nav_drawer_titles">
         <item>@string/queue_label</item>
+        <item>@string/playlists_label</item>
         <item>@string/episodes_label</item>
         <item>@string/subscriptions_label</item>
         <item>@string/downloads_label</item>
@@ -273,4 +274,5 @@
         <item>EpisodesFragment</item>
         <item>SubscriptionFragment</item>
     </string-array>
+    <string name="playlists_label">Playlists</string>
 </resources>

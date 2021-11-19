@@ -17,12 +17,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import de.danoeh.apexpod.model.Playlist;
 import de.danoeh.apexpod.model.feed.FeedFunding;
 import de.danoeh.apexpod.core.storage.mapper.FeedItemFilterQuery;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -118,6 +120,8 @@ public class PodDBAdapter {
     public static final String KEY_FEED_SKIP_ENDING = "feed_skip_ending";
     public static final String KEY_FEED_TAGS = "tags";
     public static final String KEY_EPISODE_NOTIFICATION = "episode_notification";
+    public static final String KEY_PLAYLIST_NAME = "name";
+    public static final String KEY_PLAYLIST = "playlist";
 
     // Table names
     public static final String TABLE_NAME_FEEDS = "Feeds";
@@ -128,6 +132,9 @@ public class PodDBAdapter {
     public static final String TABLE_NAME_QUEUE = "Queue";
     public static final String TABLE_NAME_SIMPLECHAPTERS = "SimpleChapters";
     public static final String TABLE_NAME_FAVORITES = "Favorites";
+    public static final String TABLE_NAME_PLAYLIST = "Playlists";
+    public static final String TABLE_NAME_PLAYLIST_ITEMS = "PlaylistsItems";
+
 
     // SQL Statements for creating new tables
     private static final String TABLE_PRIMARY_KEY = KEY_ID
@@ -190,6 +197,17 @@ public class PodDBAdapter {
     private static final String CREATE_TABLE_QUEUE = "CREATE TABLE "
             + TABLE_NAME_QUEUE + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
             + KEY_FEEDITEM + " INTEGER," + KEY_FEED + " INTEGER)";
+
+    private static final String CREATE_TABLE_PLAYLISTS = "CREATE TABLE "
+            + TABLE_NAME_PLAYLIST +
+            "(" + KEY_ID + " INTEGER PRIMARY KEY autoincrement," +
+            KEY_PLAYLIST_NAME + " INTEGER)";
+
+    private static final String CREATE_TABLE_PLAYLIST_ITEMS = "CREATE TABLE "
+            + TABLE_NAME_PLAYLIST_ITEMS +
+            "(" + KEY_ID + " INTEGER PRIMARY KEY autoincrement," +
+            KEY_PLAYLIST + " INTEGER," +
+            KEY_FEEDITEM + " INTEGER)";
 
     private static final String CREATE_TABLE_SIMPLECHAPTERS = "CREATE TABLE "
             + TABLE_NAME_SIMPLECHAPTERS + " (" + TABLE_PRIMARY_KEY + KEY_TITLE
@@ -317,16 +335,20 @@ public class PodDBAdapter {
                     + TABLE_NAME_FEED_ITEMS + "." + KEY_DESCRIPTION
             + " FROM " + TABLE_NAME_FEED_ITEMS
             + JOIN_FEED_ITEM_AND_MEDIA;
-    private static final String SELECT_FEED_ITEMS_AND_MEDIA =
+    public static final String SELECT_FEED_ITEMS_AND_MEDIA =
             "SELECT " + KEYS_FEED_ITEM_WITHOUT_DESCRIPTION + ", " + KEYS_FEED_MEDIA
             + " FROM " + TABLE_NAME_FEED_ITEMS
             + JOIN_FEED_ITEM_AND_MEDIA;
 
     private static Context context;
-    private static PodDBAdapter instance;
+    protected static PodDBAdapter instance;
 
-    private final SQLiteDatabase db;
-    private final PodDBHelper dbHelper;
+    protected final SQLiteDatabase db;
+    protected final PodDBHelper dbHelper;
+
+    public SQLiteDatabase getDb() {
+        return db;
+    }
 
     public static void init(Context context) {
         PodDBAdapter.context = context.getApplicationContext();
@@ -339,7 +361,10 @@ public class PodDBAdapter {
         return instance;
     }
 
-    private PodDBAdapter() {
+    /**
+     * Changed to public so that it can be extended
+     */
+    public PodDBAdapter() {
         dbHelper = new PodDBHelper(PodDBAdapter.context, DATABASE_NAME, null);
         db = openDb();
     }
@@ -1433,6 +1458,8 @@ public class PodDBAdapter {
             db.execSQL(CREATE_TABLE_QUEUE);
             db.execSQL(CREATE_TABLE_SIMPLECHAPTERS);
             db.execSQL(CREATE_TABLE_FAVORITES);
+            db.execSQL(CREATE_TABLE_PLAYLISTS);
+            db.execSQL(CREATE_TABLE_PLAYLIST_ITEMS);
 
             db.execSQL(CREATE_INDEX_FEEDITEMS_FEED);
             db.execSQL(CREATE_INDEX_FEEDITEMS_PUBDATE);
