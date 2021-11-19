@@ -150,6 +150,7 @@
     </string-array>
 
     <string-array name="nav_drawer_titles">
+        <item>@string/main_fragment_label</item>
         <item>@string/queue_label</item>
         <item>@string/playlists_label</item>
         <item>@string/episodes_label</item>
@@ -275,4 +276,5 @@
         <item>SubscriptionFragment</item>
     </string-array>
     <string name="playlists_label">Playlists</string>
+    <string name="main_fragment_label">Home</string>
 </resources>
