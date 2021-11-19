@@ -6,12 +6,25 @@
     <Preference
             android:title="@string/choose_data_directory"
             android:key="prefChooseDataDir"/>
-    <SwitchPreferenceCompat
-            android:defaultValue="false"
-            android:enabled="true"
-            android:key="prefAutoDelete"
-            android:summary="@string/pref_auto_delete_sum"
-            android:title="@string/pref_auto_delete_title"/>
+
+    <de.danoeh.apexpod.preferences.MasterSwitchPreference
+        android:key="prefAutoDelete"
+        android:title="@string/pref_auto_delete_title"
+        search:summary="@string/pref_auto_delete_sum"
+        android:defaultValue="false"/>
+<!--    <SwitchPreferenceCompat-->
+<!--            android:defaultValue="false"-->
+<!--            android:enabled="true"-->
+<!--            android:key="prefAutoDelete"-->
+<!--            android:summary="@string/pref_auto_delete_sum"-->
+<!--            android:title="@string/pref_auto_delete_title"/>-->
+    <ListPreference
+        android:defaultValue="-1"
+        android:entries="@array/episode_cleanup_entries"
+        android:key="prefEpisodeCleanup"
+        android:title="@string/pref_episode_cleanup_title"
+        android:summary="@string/pref_episode_cleanup_summary"
+        android:entryValues="@array/episode_cleanup_values"/>
     <SwitchPreferenceCompat
             android:defaultValue="true"
             android:enabled="true"

@@ -371,8 +371,8 @@
     <string name="preference_search_no_results">No results</string>
     <string name="preference_search_clear_history">Clear history</string>
     <string name="media_player">Media player</string>
-    <string name="pref_episode_cleanup_title">Episode Cleanup</string>
-    <string name="pref_episode_cleanup_summary">Episodes that should be eligible for removal if Auto Download needs space for new episodes</string>
+    <string name="pref_episode_cleanup_title">Duration</string>
+    <string name="pref_episode_cleanup_summary">How long to wait before episode becomes illigble for automatic deletion</string>
     <string name="pref_pauseOnDisconnect_sum">Pause playback when headphones or bluetooth are disconnected</string>
     <string name="pref_unpauseOnHeadsetReconnect_sum">Resume playback when the headphones are reconnected</string>
     <string name="pref_unpauseOnBluetoothReconnect_sum">Resume playback when bluetooth reconnects</string>
