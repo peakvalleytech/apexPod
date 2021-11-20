@@ -37,7 +37,6 @@ import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.leinardi.android.speeddial.SpeedDialView;
 
-import de.danoeh.apexpod.core.menuhandler.MenuItemUtils;
 import org.apache.commons.lang3.Validate;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -62,7 +61,6 @@ import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.feed.FeedEvent;
 import de.danoeh.apexpod.core.glide.ApGlideSettings;
 import de.danoeh.apexpod.core.glide.FastBlurTransformation;
-import de.danoeh.apexpod.core.service.download.DownloadService;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
@@ -74,8 +72,8 @@ import de.danoeh.apexpod.core.util.gui.MoreContentListFooterUtil;
 import de.danoeh.apexpod.dialog.FilterDialog;
 import de.danoeh.apexpod.dialog.RemoveFeedDialog;
 import de.danoeh.apexpod.dialog.RenameFeedDialog;
-import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
+import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
 import de.danoeh.apexpod.menuhandler.FeedMenuHandler;
 import de.danoeh.apexpod.model.feed.Feed;
@@ -190,8 +188,6 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
                         .setIcon(AppCompatDrawableManager.get().getDrawable(themedContext, R.drawable.ic_sort));
                 toolbar.getMenu().findItem(R.id.filter_items)
                         .setIcon(AppCompatDrawableManager.get().getDrawable(themedContext, R.drawable.ic_filter));
-                toolbar.getMenu().findItem(R.id.refresh_item)
-                        .setIcon(AppCompatDrawableManager.get().getDrawable(themedContext, R.drawable.ic_refresh));
                 toolbar.getMenu().findItem(R.id.action_search)
                         .setIcon(AppCompatDrawableManager.get().getDrawable(themedContext, R.drawable.ic_search));
             }
@@ -284,23 +280,12 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
         super.onSaveInstanceState(outState);
     }
 
-    private final MenuItemUtils.UpdateRefreshMenuItemChecker updateRefreshMenuItemChecker = new MenuItemUtils.UpdateRefreshMenuItemChecker() {
-        @Override
-        public boolean isRefreshing() {
-            return feed != null && DownloadService.isRunning && DownloadRequester.getInstance().isDownloadingFile(feed);
-        }
-    };
-
     private void refreshToolbarState() {
         if (feed == null) {
             return;
         }
         toolbar.getMenu().findItem(R.id.share_link_item).setVisible(feed.getLink() != null);
         toolbar.getMenu().findItem(R.id.visit_website_item).setVisible(feed.getLink() != null);
-
-        isUpdatingFeed = MenuItemUtils.updateRefreshMenuItem(toolbar.getMenu(),
-                R.id.refresh_item, updateRefreshMenuItemChecker);
-        FeedMenuHandler.onPrepareOptionsMenu(toolbar.getMenu(), feed);
     }
 
     @Override
@@ -475,9 +460,6 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
     }
 
     private void updateSyncProgressBarVisibility() {
-        if (isUpdatingFeed != updateRefreshMenuItemChecker.isRefreshing()) {
-            refreshToolbarState();
-        }
         if (!DownloadRequester.getInstance().isDownloadingFeeds()) {
             nextPageLoader.getRoot().setVisibility(View.GONE);
         }

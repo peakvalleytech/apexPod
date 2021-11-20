@@ -2,17 +2,10 @@ package de.danoeh.apexpod.fragment;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SimpleItemAnimator;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,14 +13,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import de.danoeh.apexpod.adapter.EpisodeItemListAdapter;
-import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
-import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
-import de.danoeh.apexpod.core.event.PlayerStatusEvent;
-import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
-import de.danoeh.apexpod.core.menuhandler.MenuItemUtils;
-import de.danoeh.apexpod.view.EpisodeItemListRecyclerView;
-import de.danoeh.apexpod.view.viewholder.EpisodeItemViewHolder;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -37,18 +28,23 @@ import java.util.List;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
+import de.danoeh.apexpod.adapter.EpisodeItemListAdapter;
 import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.core.event.DownloadEvent;
 import de.danoeh.apexpod.core.event.DownloaderUpdate;
 import de.danoeh.apexpod.core.event.FeedItemEvent;
-import de.danoeh.apexpod.model.feed.FeedItem;
-import de.danoeh.apexpod.core.service.download.DownloadService;
+import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
+import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
+import de.danoeh.apexpod.core.event.PlayerStatusEvent;
+import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.storage.DBWriter;
-import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
+import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.view.EmptyViewHandler;
+import de.danoeh.apexpod.view.EpisodeItemListRecyclerView;
+import de.danoeh.apexpod.view.viewholder.EpisodeItemViewHolder;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -111,24 +107,13 @@ public abstract class EpisodesListFragment extends Fragment {
         }
     }
 
-    private final MenuItemUtils.UpdateRefreshMenuItemChecker updateRefreshMenuItemChecker =
-            () -> DownloadService.isRunning && DownloadRequester.getInstance().isDownloadingFeeds();
-
-    @Override
-    public void onPrepareOptionsMenu(@NonNull Menu menu) {
-        isUpdatingFeeds = MenuItemUtils.updateRefreshMenuItem(menu, R.id.refresh_item, updateRefreshMenuItemChecker);
-    }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (super.onOptionsItemSelected(item)) {
             return true;
         }
         final int itemId = item.getItemId();
-        if (itemId == R.id.refresh_item) {
-            AutoUpdateManager.runImmediate(requireContext());
-            return true;
-        } else if (itemId == R.id.mark_all_read_item) {
+        if (itemId == R.id.mark_all_read_item) {
             ConfirmationDialog markAllReadConfirmationDialog = new ConfirmationDialog(getActivity(),
                     R.string.mark_all_read_label,
                     R.string.mark_all_read_confirmation_msg) {
@@ -274,9 +259,6 @@ public abstract class EpisodesListFragment extends Fragment {
         if (restoreScrollPosition) {
             recyclerView.restoreScrollPosition(getPrefName());
         }
-        if (isUpdatingFeeds != updateRefreshMenuItemChecker.isRefreshing()) {
-            ((PagedToolbarFragment) getParentFragment()).invalidateOptionsMenuIfActive(this);
-        }
     }
 
     /**
@@ -344,9 +326,6 @@ public abstract class EpisodesListFragment extends Fragment {
 
     private void updateUi() {
         loadItems();
-        if (isUpdatingFeeds != updateRefreshMenuItemChecker.isRefreshing()) {
-            ((PagedToolbarFragment) getParentFragment()).invalidateOptionsMenuIfActive(this);
-        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

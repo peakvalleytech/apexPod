@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -16,6 +16,13 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
@@ -27,15 +34,11 @@ import de.danoeh.apexpod.core.event.FeedItemEvent;
 import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
 import de.danoeh.apexpod.core.event.PlayerStatusEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
-import de.danoeh.apexpod.core.menuhandler.MenuItemUtils;
-import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
-import de.danoeh.apexpod.model.feed.FeedItem;
-import de.danoeh.apexpod.core.service.download.DownloadService;
 import de.danoeh.apexpod.core.storage.DBReader;
-import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
-import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
+import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
+import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.view.EmptyViewHandler;
 import de.danoeh.apexpod.view.EpisodeItemListRecyclerView;
 import de.danoeh.apexpod.view.viewholder.EpisodeItemViewHolder;
@@ -43,12 +46,6 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Displays all completed downloads and provides a button to delete them.
@@ -138,21 +135,6 @@ public class CompletedDownloadsFragment extends Fragment implements
         }
     }
 
-    @Override
-    public void onPrepareOptionsMenu(@NonNull Menu menu) {
-        menu.findItem(R.id.clear_logs_item).setVisible(false);
-        isUpdatingFeeds = MenuItemUtils.updateRefreshMenuItem(menu, R.id.refresh_item, updateRefreshMenuItemChecker);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.refresh_item) {
-            AutoUpdateManager.runImmediate(requireContext());
-            return true;
-        }
-        return false;
-    }
-
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onEventMainThread(DownloadEvent event) {
         Log.d(TAG, "onEventMainThread() called with: " + "event = [" + event + "]");
@@ -161,8 +143,7 @@ public class CompletedDownloadsFragment extends Fragment implements
         }
     }
 
-    private final MenuItemUtils.UpdateRefreshMenuItemChecker updateRefreshMenuItemChecker =
-            () -> DownloadService.isRunning && DownloadRequester.getInstance().isDownloadingFeeds();
+
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
