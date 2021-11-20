@@ -34,6 +34,13 @@ import de.danoeh.apexpod.core.event.MessageEvent;
 import de.danoeh.apexpod.core.feed.LocalFeedUpdater;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.service.download.DownloadStatus;
+import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteFilter;
+import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteService;
+import de.danoeh.apexpod.core.storage.autodelete.impl.AutoDeleteFilterFactory;
+import de.danoeh.apexpod.core.storage.autodelete.impl.AutoDeleteFilterImpl;
+import de.danoeh.apexpod.core.storage.autodelete.impl.rules.DurationAutoDeleteRule;
+import de.danoeh.apexpod.core.storage.autodelete.impl.rules.IncludeFavoritesAutoDeleteRule;
+import de.danoeh.apexpod.core.storage.autodelete.impl.rules.IncludeQueuedAutoDeleteRule;
 import de.danoeh.apexpod.core.storage.mapper.FeedCursorMapper;
 import de.danoeh.apexpod.core.sync.SyncService;
 import de.danoeh.apexpod.core.sync.queue.SynchronizationQueueSink;
@@ -289,7 +296,21 @@ public final class DBTasks {
      * @param context Used for accessing the DB.
      */
     public static void performAutoCleanup(final Context context) {
-        UserPreferences.getEpisodeCleanupAlgorithm().performCleanup(context);
+//        UserPreferences.getEpisodeCleanupAlgorithm().performCleanup(context);
+          int durationMinHours = UserPreferences.getEpisodeCleanupValue();
+        boolean keepFavorite = UserPreferences.shouldKeepFavorite();
+        boolean keepQueued = !UserPreferences.shouldAutoDeleteQueue();
+        AutoDeleteFilterFactory autoDeleteFactory = new AutoDeleteFilterFactory();
+
+        AutoDeleteFilter autoDeleteFilter =
+                autoDeleteFactory.createAutoDeleteFilter(
+                        durationMinHours,
+                        keepFavorite,
+                        keepQueued);
+
+        AutoDeleteService autoDeleteService =
+                new AutoDeleteServiceImpl(context, null, null, autoDeleteFilter);
+        autoDeleteService.start();
     }
 
     /**

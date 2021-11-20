@@ -12,5 +12,4 @@ class IncludeFavoritesAutoDeleteRule : AutoDeleteRule {
         }
         return false
     }
-
 }

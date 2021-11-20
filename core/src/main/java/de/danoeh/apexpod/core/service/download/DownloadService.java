@@ -417,8 +417,9 @@ public class DownloadService extends Service {
                 + ", cleanupMedia=" + cleanupMedia);
 
         if (cleanupMedia) {
-            UserPreferences.getEpisodeCleanupAlgorithm()
-                    .makeRoomForEpisodes(getApplicationContext(), requests.size());
+//            UserPreferences.getEpisodeCleanupAlgorithm()
+//                    .makeRoomForEpisodes(getApplicationContext(), requests.size());
+            DBTasks.performAutoCleanup(getApplicationContext());
         }
 
         // #2448: First, add to-download items to the queue before actual download
