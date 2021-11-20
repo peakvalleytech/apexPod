@@ -63,9 +63,22 @@
         <SwitchPreferenceCompat
             android:key="autoDownload"
             android:title="@string/auto_download_label" />
+        <EditTextPreference
+            android:key="episodesToKeep"
+            android:title="Episodes to Keep Updated"
+            android:summary="The list of auto download episodes to keep updated. Excluded from auto delete."/>
+        <DropDownPreference
+            android:title="Order of downlaods"
+            android:summary="The place in the feed to start"
+            android:entryValues="@array/autoDowloadOrder">
+        </DropDownPreference>
+        <CheckBoxPreference
+            android:title="Include all episodes"
+            android:summary="Include older episodes into auto download"/>
         <Preference
             android:key="episodeFilter"
             android:summary="@string/episode_filters_description"
             android:title="@string/episode_filters_label" />
+
     </PreferenceCategory>
 </PreferenceScreen>
