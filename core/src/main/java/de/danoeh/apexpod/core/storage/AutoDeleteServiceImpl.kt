@@ -2,14 +2,15 @@ package de.danoeh.apexpod.core.storage
 
 import android.content.Context
 import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteFilter
+import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteService
 import de.danoeh.apexpod.model.feed.FeedItem
 
-class AutoDeleteService(
+class AutoDeleteServiceImpl(
     val context: Context,
-    val dbReader: DBReader,
-    val dbWriter: DBWriter,
-    val autoDeleteFilter: AutoDeleteFilter) {
-    fun start() {
+    val dbReader: DBReader?,
+    val dbWriter: DBWriter?,
+    val autoDeleteFilter: AutoDeleteFilter) : AutoDeleteService {
+    override fun start() {
         var downloadedItems = DBReader.getDownloadedItems()
 
         var itemsToDelete = autoDeleteFilter.filter(downloadedItems)

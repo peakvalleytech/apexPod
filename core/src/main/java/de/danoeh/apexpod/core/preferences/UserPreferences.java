@@ -81,6 +81,11 @@ public class UserPreferences {
     public static final String PREF_FOLLOW_QUEUE = "prefFollowQueue";
     public static final String PREF_SKIP_KEEPS_EPISODE = "prefSkipKeepsEpisode";
     public static final String PREF_AUTO_DELETE_FAVORITES = "prefFavoriteKeepsEpisode";
+
+    public static boolean shouldAutoDeleteQueue() {
+        return prefs.getBoolean(PREF_AUTO_DELETE_QUEUE, true);
+    }
+
     public static final String PREF_AUTO_DELETE_QUEUE = "prefAutoDeleteQueue";
     public static final String PREF_AUTO_DELETE = "prefAutoDelete";
     public static final String PREF_SMART_MARK_AS_PLAYED_SECS = "prefSmartMarkAsPlayedSecs";
@@ -415,7 +420,7 @@ public class UserPreferences {
 
     public static boolean shouldSkipKeepEpisode() { return prefs.getBoolean(PREF_SKIP_KEEPS_EPISODE, true); }
 
-    public static boolean shouldFavoriteKeepEpisode() {
+    public static boolean shouldKeepFavorite() {
         return prefs.getBoolean(PREF_AUTO_DELETE_FAVORITES, true);
     }
 
@@ -883,7 +888,7 @@ public class UserPreferences {
     }
 
     public static int getEpisodeCleanupValue() {
-        return Integer.parseInt(prefs.getString(PREF_EPISODE_CLEANUP, "" + EPISODE_CLEANUP_NULL));
+        return Integer.parseInt(prefs.getString(PREF_EPISODE_CLEANUP, "" + EPISODE_CLEANUP_DEFAULT));
     }
 
     public static void setEpisodeCleanupValue(int episodeCleanupValue) {

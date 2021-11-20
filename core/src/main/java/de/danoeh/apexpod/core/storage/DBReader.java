@@ -855,7 +855,7 @@ public final class DBReader {
         items.addAll(foldersSorted);
 
         NavDrawerData result = new NavDrawerData(items, queueSize, numNewItems, numDownloadedItems,
-                feedCounters, UserPreferences.getEpisodeCleanupAlgorithm().getReclaimableItems());
+                feedCounters, 0 /*UserPreferences.getEpisodeCleanupAlgorithm().getReclaimableItems()*/);
         adapter.close();
         return result;
     }

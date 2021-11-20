@@ -8,12 +8,8 @@ import java.util.*
 
 class DurationAutoDeleteRule(val numberOfHoursAfterPlayback : Int) : AutoDeleteRule {
     override fun shouldDelete(item: FeedItem): Boolean {
-        // make sure this candidate was played at least the proper amount of days prior
-        // to now
         if (item.hasMedia()) {
-            // make sure this candidate was played at least the proper amount of days prior
-            // to now
-                val media = item.media
+            val media = item.media
             val mostRecentDateForDeletion = calcMostRecentDateForDeletion(Date())
 
             if (media != null && media.getPlaybackCompletionDate() != null && media.getPlaybackCompletionDate()
@@ -22,6 +18,7 @@ class DurationAutoDeleteRule(val numberOfHoursAfterPlayback : Int) : AutoDeleteR
                 return true
             }
         }
+
         return false
     }
 

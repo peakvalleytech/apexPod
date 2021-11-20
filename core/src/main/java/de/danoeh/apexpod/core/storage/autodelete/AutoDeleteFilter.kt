@@ -6,7 +6,6 @@ interface AutoDeleteFilter {
     fun filter(feedItems: List<FeedItem>) : List<FeedItem>
 
     interface Builder {
-        fun addAutoDeleteRule(rule : AutoDeleteRule) : Builder
         fun build() : AutoDeleteFilter
     }
 }
