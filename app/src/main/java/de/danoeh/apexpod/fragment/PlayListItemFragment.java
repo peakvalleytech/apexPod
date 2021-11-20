@@ -44,11 +44,8 @@ import de.danoeh.apexpod.core.event.FeedItemEvent;
 import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
 import de.danoeh.apexpod.core.event.PlayerStatusEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
-import de.danoeh.apexpod.core.menuhandler.MenuItemUtils;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
-import de.danoeh.apexpod.core.service.download.DownloadService;
 import de.danoeh.apexpod.core.storage.DBWriter;
-import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
 import de.danoeh.apexpod.core.storage.repository.PlaylistRepository;
 import de.danoeh.apexpod.core.storage.repository.impl.PlaylistRepositoryImpl;
@@ -224,18 +221,12 @@ public class PlayListItemFragment extends Fragment implements
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onPlayerStatusChanged(PlayerStatusEvent event) {
         loadItems(false);
-        if (isUpdatingFeeds != updateRefreshMenuItemChecker.isRefreshing()) {
-            refreshToolbarState();
-        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onUnreadItemsChanged(UnreadItemsUpdateEvent event) {
         // Sent when playback position is reset
         loadItems(false);
-        if (isUpdatingFeeds != updateRefreshMenuItemChecker.isRefreshing()) {
-            refreshToolbarState();
-        }
     }
 
     @Override
@@ -247,16 +238,13 @@ public class PlayListItemFragment extends Fragment implements
         recyclerAdapter = null;
     }
 
-    private final MenuItemUtils.UpdateRefreshMenuItemChecker updateRefreshMenuItemChecker =
-            () -> DownloadService.isRunning && DownloadRequester.getInstance().isDownloadingFeeds();
+
 
     private void refreshToolbarState() {
 //        toolbar.getMenu().findItem(R.id.queue_lock).setChecked(UserPreferences.isQueueLocked());
 //        boolean keepSorted = UserPreferences.isQueueKeepSorted();
 //        toolbar.getMenu().findItem(R.id.queue_sort_random).setVisible(!keepSorted);
 //        toolbar.getMenu().findItem(R.id.queue_keep_sorted).setChecked(keepSorted);
-//        isUpdatingFeeds = MenuItemUtils.updateRefreshMenuItem(toolbar.getMenu(),
-//                R.id.refresh_item, updateRefreshMenuItemChecker);
     }
 
 

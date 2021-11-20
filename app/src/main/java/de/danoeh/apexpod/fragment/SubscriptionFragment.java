@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -34,9 +33,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.joanzapata.iconify.Iconify;
 import com.leinardi.android.speeddial.SpeedDialView;
 
-import de.danoeh.antennapod.core.feed.TagFilter;
-import de.danoeh.apexpod.adapter.FeedTagAdapter;
-import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -48,25 +44,25 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.Callable;
 
+import de.danoeh.antennapod.core.feed.TagFilter;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
+import de.danoeh.apexpod.adapter.FeedTagAdapter;
 import de.danoeh.apexpod.adapter.SubscriptionsRecyclerAdapter;
 import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.core.event.DownloadEvent;
 import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
-import de.danoeh.apexpod.core.menuhandler.MenuItemUtils;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
-import de.danoeh.apexpod.core.service.download.DownloadService;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
-import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
 import de.danoeh.apexpod.dialog.FeedSortDialog;
 import de.danoeh.apexpod.dialog.RemoveFeedDialog;
 import de.danoeh.apexpod.dialog.RenameFeedDialog;
 import de.danoeh.apexpod.dialog.SubscriptionsFilterDialog;
+import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import de.danoeh.apexpod.fragment.actions.FeedMultiSelectActionHandler;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedPreferences;
@@ -234,18 +230,12 @@ public class SubscriptionFragment extends Fragment
     private void refreshToolbarState() {
         int columns = prefs.getInt(PREF_NUM_COLUMNS, getDefaultNumOfColumns());
         toolbar.getMenu().findItem(COLUMN_CHECKBOX_IDS[columns - MIN_NUM_COLUMNS]).setChecked(true);
-
-        isUpdatingFeeds = MenuItemUtils.updateRefreshMenuItem(toolbar.getMenu(),
-                R.id.refresh_item, updateRefreshMenuItemChecker);
     }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         final int itemId = item.getItemId();
-        if (itemId == R.id.refresh_item) {
-            AutoUpdateManager.runImmediate(requireContext());
-            return true;
-        } else if (itemId == R.id.subscriptions_filter) {
+       if (itemId == R.id.subscriptions_filter) {
             SubscriptionsFilterDialog.showDialog(requireContext());
             return true;
         } else if (itemId == R.id.subscriptions_sort) {
@@ -443,8 +433,7 @@ public class SubscriptionFragment extends Fragment
         }
     }
 
-    private final MenuItemUtils.UpdateRefreshMenuItemChecker updateRefreshMenuItemChecker =
-            () -> DownloadService.isRunning && DownloadRequester.getInstance().isDownloadingFeeds();
+
 
     @Override
     public void onEndSelectMode() {

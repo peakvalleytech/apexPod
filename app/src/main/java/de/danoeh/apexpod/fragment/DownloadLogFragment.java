@@ -11,26 +11,33 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.ListFragment;
+
 import com.google.android.material.snackbar.Snackbar;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.DownloadLogAdapter;
 import de.danoeh.apexpod.core.event.DownloadEvent;
 import de.danoeh.apexpod.core.event.DownloadLogEvent;
 import de.danoeh.apexpod.core.event.DownloaderUpdate;
-import de.danoeh.apexpod.core.menuhandler.MenuItemUtils;
 import de.danoeh.apexpod.core.service.download.DownloadRequest;
-import de.danoeh.apexpod.core.service.download.DownloadService;
 import de.danoeh.apexpod.core.service.download.DownloadStatus;
 import de.danoeh.apexpod.core.service.download.Downloader;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.DownloadRequester;
-import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
@@ -39,12 +46,6 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Shows the download log
@@ -162,7 +163,6 @@ public class DownloadLogFragment extends ListFragment {
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
         menu.findItem(R.id.clear_logs_item).setVisible(!downloadLog.isEmpty());
-        isUpdatingFeeds = MenuItemUtils.updateRefreshMenuItem(menu, R.id.refresh_item, updateRefreshMenuItemChecker);
     }
 
     @Override
@@ -171,9 +171,6 @@ public class DownloadLogFragment extends ListFragment {
             return true;
         } else if (item.getItemId() == R.id.clear_logs_item) {
             DBWriter.clearDownloadLog();
-            return true;
-        } else if (item.getItemId() == R.id.refresh_item) {
-            AutoUpdateManager.runImmediate(requireContext());
             return true;
         }
         return false;
@@ -195,8 +192,7 @@ public class DownloadLogFragment extends ListFragment {
         adapter.setRunningDownloads(runningDownloads);
     }
 
-    private final MenuItemUtils.UpdateRefreshMenuItemChecker updateRefreshMenuItemChecker =
-            () -> DownloadService.isRunning && DownloadRequester.getInstance().isDownloadingFeeds();
+
 
     private void loadDownloadLog() {
         if (disposable != null) {
