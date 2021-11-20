@@ -48,9 +48,9 @@ public class StoragePreferencesFragment extends PreferenceFragmentCompat {
         );
 
         findPreference(UserPreferences.PREF_AUTO_DELETE).setOnPreferenceChangeListener(
-                (preference, newValue) -> {
-                    if (newValue instanceof Boolean) {
-//                        checkAutodownloadItemVisibility((Boolean) newValue);
+                (preference, enabled) -> {
+                    if (enabled instanceof Boolean) {
+                        checkAutodownloadItemVisibility((Boolean) enabled);
                     }
                     return true;
                 });
@@ -60,6 +60,12 @@ public class StoragePreferencesFragment extends PreferenceFragmentCompat {
                     return true;
                 }
         );
+    }
+
+    private void checkAutodownloadItemVisibility(Boolean enabled) {
+        findPreference(UserPreferences.PREF_EPISODE_CLEANUP).setEnabled(enabled);
+        findPreference(UserPreferences.PREF_AUTO_DELETE_FAVORITES).setEnabled(enabled);
+        findPreference(UserPreferences.PREF_AUTO_DELETE_QUEUE).setEnabled(enabled);
     }
 
     private void setDataFolderText() {
@@ -78,13 +84,7 @@ public class StoragePreferencesFragment extends PreferenceFragmentCompat {
         String[] entries = new String[values.length];
         for (int x = 0; x < values.length; x++) {
             int v = Integer.parseInt(values[x]);
-            if (v == UserPreferences.EPISODE_CLEANUP_EXCEPT_FAVORITE) {
-                entries[x] =  res.getString(R.string.episode_cleanup_except_favorite_removal);
-            } else if (v == UserPreferences.EPISODE_CLEANUP_QUEUE) {
-                entries[x] = res.getString(R.string.episode_cleanup_queue_removal);
-            } else if (v == UserPreferences.EPISODE_CLEANUP_NULL){
-                entries[x] = res.getString(R.string.episode_cleanup_never);
-            } else if (v == 0) {
+           if (v == 0) {
                 entries[x] = res.getString(R.string.episode_cleanup_after_listening);
             } else if (v > 0 && v < 24) {
                 entries[x] = res.getQuantityString(R.plurals.episode_cleanup_hours_after_listening, v, v);
