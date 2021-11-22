@@ -15,7 +15,6 @@ class PlayListItemDao() {
     lateinit var dbAdapter: ApexDBAdapter
 
     init {
-//        val dbAdapter: ApexDBAdapter = ApexDBAdapter.getInstance()
         dbAdapter = ApexDBAdapter.getInstance()
         db = dbAdapter.db
     }
