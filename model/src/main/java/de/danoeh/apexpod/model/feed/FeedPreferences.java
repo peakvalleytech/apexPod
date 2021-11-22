@@ -36,6 +36,10 @@ public class FeedPreferences implements Serializable {
     private int feedSkipEnding;
     private boolean showEpisodeNotification;
     private Set<String> tags = new HashSet<>();
+    /* Autodownload */
+    private int autoDL_Count = 1;
+    private boolean autoDL_newestFirst;
+    private boolean autoDL_includeAll;
 
     public FeedPreferences(long feedID, boolean autoDownload, AutoDeleteAction autoDeleteAction,
                            VolumeAdaptionSetting volumeAdaptionSetting, String username, String password) {
