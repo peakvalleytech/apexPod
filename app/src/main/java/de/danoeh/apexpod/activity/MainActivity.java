@@ -57,7 +57,7 @@ import de.danoeh.apexpod.fragment.AudioPlayerFragment;
 import de.danoeh.apexpod.fragment.DownloadsFragment;
 import de.danoeh.apexpod.fragment.EpisodesFragment;
 import de.danoeh.apexpod.fragment.FeedItemlistFragment;
-import de.danoeh.apexpod.fragment.MainFragment;
+import de.danoeh.apexpod.fragment.HomeFragment;
 import de.danoeh.apexpod.fragment.NavDrawerFragment;
 import de.danoeh.apexpod.fragment.PlayListItemFragment;
 import de.danoeh.apexpod.fragment.PlaybackHistoryFragment;
@@ -267,8 +267,8 @@ public class MainActivity extends CastEnabledActivity {
         Log.d(TAG, "loadFragment(tag: " + tag + ", args: " + args + ")");
         Fragment fragment;
         switch (tag) {
-            case MainFragment.TAG:
-                fragment = new MainFragment();
+            case HomeFragment.TAG:
+                fragment = new HomeFragment();
                 break;
             case QueueFragment.TAG:
                 fragment = new QueueFragment();
