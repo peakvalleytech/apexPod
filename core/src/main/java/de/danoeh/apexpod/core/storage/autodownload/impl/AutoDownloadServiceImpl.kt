@@ -6,7 +6,7 @@ import de.danoeh.apexpod.core.storage.DBReader
 import de.danoeh.apexpod.core.util.NetworkUtils
 import de.danoeh.apexpod.model.feed.Feed
 
-class AutoDownloadServiceImpl {
+class AutoDownloadServiceImpl() {
     private val TAG = "AutoDownlaodService"
 
     fun autoDownloadUndownloadedItems(context: Context) : Runnable {
@@ -16,14 +16,18 @@ class AutoDownloadServiceImpl {
                         && UserPreferences.isEnableAutodownload()
 
                 val feeds : List<Feed> = DBReader.getFeedList()
+
                 for (feed in feeds) {
                     val preferences = feed.preferences
                     if (preferences.autoDownload)
+                        // if getAll
+                            // get all episodes
+                            // sort for newest or oldest
+                            // Retrieve update count
+                            // Download if necessary
+                        // else
                 }
             }
-
-
-
         }
     }
 

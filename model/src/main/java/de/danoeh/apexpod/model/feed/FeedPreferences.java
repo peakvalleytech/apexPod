@@ -227,4 +227,28 @@ public class FeedPreferences implements Serializable {
     public void addTags(Set<String> tags) {
         this.tags.addAll(tags);
     }
+
+    public int getAutoDL_Count() {
+        return autoDL_Count;
+    }
+
+    public void setAutoDL_Count(int autoDL_Count) {
+        this.autoDL_Count = autoDL_Count;
+    }
+
+    public boolean isAutoDL_newestFirst() {
+        return autoDL_newestFirst;
+    }
+
+    public void setAutoDL_newestFirst(boolean autoDL_newestFirst) {
+        this.autoDL_newestFirst = autoDL_newestFirst;
+    }
+
+    public boolean isAutoDL_includeAll() {
+        return autoDL_includeAll;
+    }
+
+    public void setAutoDL_includeAll(boolean autoDL_includeAll) {
+        this.autoDL_includeAll = autoDL_includeAll;
+    }
 }
