@@ -34,6 +34,33 @@ class TestAutoDeleteFilter {
 //    }
 
     @Test
+    fun `should filter items by hours after playback`() {
+        val keepFavorite = false
+        val feed = Feed("url", null, "title")
+        val feedItems = mutableListOf<FeedItem>()
+
+        feed.items = feedItems
+        hrsAfterPlaybackValues.forEach {
+            createItem(
+                feed = feed,
+                feedItems,
+                itemState = FeedItem.PLAYED,
+                hrsToPlaybackDate(it),
+                false,
+                keepFavorite
+            )
+        }
+
+        var expectedSize = hrsAfterPlaybackValues.size
+        hrsAfterPlaybackValues.forEach {
+            val autoDeleteFilter = autoDeleteFactory.createAutoDeleteFilter(it, keepFavorite, false)
+            val filteredItems = autoDeleteFilter.filter(feedItems)
+            assertEquals(expectedSize, filteredItems.size)
+            expectedSize--
+        }
+    }
+
+    @Test
     fun `should return only non queued items`() {
         val hrsAfterPlayback = hrsAfterPlaybackValues.get(0)
         val keepFavorite = false
