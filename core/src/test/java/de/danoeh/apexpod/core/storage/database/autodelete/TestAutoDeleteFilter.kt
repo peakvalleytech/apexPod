@@ -64,7 +64,7 @@ class TestAutoDeleteFilter {
     fun `should return only non queued items`() {
         val hrsAfterPlayback = hrsAfterPlaybackValues.get(0)
         val keepFavorite = false
-        val autoDeleteFilter = autoDeleteFactory.createAutoDeleteFilter(hrsAfterPlayback, keepFavorite, false)
+        val autoDeleteFilter = autoDeleteFactory.createAutoDeleteFilter(hrsAfterPlayback, keepFavorite, true)
         val feedItems = mutableListOf<FeedItem>()
 
         autoDeleteFilter.filter(feedItems)
@@ -91,7 +91,7 @@ class TestAutoDeleteFilter {
             )
         }
         val filteredFeedItems = autoDeleteFilter.filter(feedItems)
-        assertEquals(5, filteredFeedItems.size)
+        assertEquals(1, filteredFeedItems.size)
     }
 
     fun createItem(
