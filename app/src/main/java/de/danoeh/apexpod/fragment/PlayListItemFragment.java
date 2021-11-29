@@ -436,6 +436,7 @@ public class PlayListItemFragment extends Fragment implements
                 recyclerView.setAdapter(recyclerAdapter);
                 emptyView.updateAdapter(recyclerAdapter);
             }
+            recyclerAdapter.playlsit = playList.getId();
             recyclerAdapter.updateItems(playListItems);
         } else {
             recyclerAdapter = null;

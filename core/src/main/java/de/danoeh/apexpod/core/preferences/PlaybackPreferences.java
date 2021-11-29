@@ -87,6 +87,19 @@ public class PlaybackPreferences implements SharedPreferences.OnSharedPreference
      */
     public static final int PLAYER_STATUS_OTHER = 3;
 
+
+    /**
+     * Indicates what queue should be used for continuous playback
+     */
+    private static final String PREF_PLAYLIST = "de.danoeh.apexpod.preferences.playlist" ;
+
+    /**
+     * Values for PREF_PLAYLIST
+     */
+    public static final long PLAYLIST_QUEUE = -2;
+    public static final long PLAYLIST_FEED = -1;
+    public static final long PLAYLIST_CUSTOM = 0;
+
     private static PlaybackPreferences instance;
     private static SharedPreferences prefs;
 
@@ -181,6 +194,15 @@ public class PlaybackPreferences implements SharedPreferences.OnSharedPreference
         SharedPreferences.Editor editor = prefs.edit();
         editor.remove(PREF_CURRENTLY_PLAYING_TEMPORARY_PLAYBACK_SPEED);
         editor.apply();
+    }
+
+    public static void setCurrentPlaylist(long playlist) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong(PREF_PLAYLIST, playlist);
+        editor.apply();
+    }
+    public static long getCurrentPlaylist() {
+        return prefs.getLong(PREF_PLAYLIST, PLAYLIST_QUEUE);
     }
 
     private static int getCurrentPlayerStatusAsInt(PlayerStatus playerStatus) {

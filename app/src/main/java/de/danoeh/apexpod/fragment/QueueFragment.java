@@ -47,6 +47,7 @@ import de.danoeh.apexpod.core.event.PlayerStatusEvent;
 import de.danoeh.apexpod.core.event.QueueEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.feed.util.PlaybackSpeedUtils;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
@@ -496,6 +497,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
                 recyclerView.setAdapter(recyclerAdapter);
                 emptyView.updateAdapter(recyclerAdapter);
             }
+            recyclerAdapter.playlsit = PlaybackPreferences.PLAYLIST_QUEUE;
             recyclerAdapter.updateItems(queue);
         } else {
             recyclerAdapter = null;

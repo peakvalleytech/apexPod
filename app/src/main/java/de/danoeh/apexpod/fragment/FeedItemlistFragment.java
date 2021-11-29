@@ -61,6 +61,7 @@ import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.feed.FeedEvent;
 import de.danoeh.apexpod.core.glide.ApGlideSettings;
 import de.danoeh.apexpod.core.glide.FastBlurTransformation;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
@@ -480,6 +481,7 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
         }
         progressBar.setVisibility(View.GONE);
         if (feed != null) {
+            adapter.playlsit = PlaybackPreferences.PLAYLIST_FEED;
             adapter.updateItems(feed.getItems());
             swipeActions.setFilter(feed.getItemFilter());
         }

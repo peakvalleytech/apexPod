@@ -27,7 +27,7 @@ public class VisitWebsiteActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context) {
+    public void onClick(Context context, long pl) {
         IntentUtils.openInBrowser(context, item.getLink());
     }
 

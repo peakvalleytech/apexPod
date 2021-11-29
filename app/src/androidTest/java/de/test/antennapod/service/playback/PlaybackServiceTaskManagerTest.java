@@ -1,10 +1,9 @@
 package de.test.antennapod.service.playback;
 
 import android.content.Context;
-import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.annotation.UiThreadTest;
-import androidx.test.filters.LargeTest;
 
+
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
 import de.danoeh.apexpod.core.widget.WidgetUpdater;
 import org.awaitility.Awaitility;
@@ -36,6 +35,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import androidx.test.annotation.UiThreadTest;
+import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
+
 /**
  * Test class for PlaybackServiceTaskManager
  */
@@ -58,6 +61,8 @@ public class PlaybackServiceTaskManagerTest {
         adapter.close();
         SleepTimerPreferences.setShakeToReset(false);
         SleepTimerPreferences.setVibrate(false);
+
+
     }
 
     @Test
@@ -65,6 +70,12 @@ public class PlaybackServiceTaskManagerTest {
         Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         PlaybackServiceTaskManager pstm = new PlaybackServiceTaskManager(context, defaultPSTM);
         pstm.shutdown();
+    }
+
+    @Test
+    public void testGetQueue() {
+        PlaybackPreferences.setCurrentPlaylist(PlaybackPreferences.PLAYLIST_QUEUE);
+
     }
 
     private List<FeedItem> writeTestQueue(String pref) {

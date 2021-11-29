@@ -32,6 +32,7 @@ public class EpisodeItemListAdapter extends SelectableAdapter<EpisodeItemViewHol
         implements View.OnCreateContextMenuListener {
 
     private final WeakReference<MainActivity> mainActivityRef;
+    public long playlsit = 0;
     private List<FeedItem> episodes = new ArrayList<>();
     private FeedItem longPressedItem;
     int longPressedPosition = 0; // used to init actionMode
@@ -67,7 +68,7 @@ public class EpisodeItemListAdapter extends SelectableAdapter<EpisodeItemViewHol
         beforeBindViewHolder(holder, pos);
 
         FeedItem item = episodes.get(pos);
-        holder.bind(item);
+        holder.bind(item, playlsit);
 
         holder.itemView.setOnClickListener(v -> {
             MainActivity activity = mainActivityRef.get();
