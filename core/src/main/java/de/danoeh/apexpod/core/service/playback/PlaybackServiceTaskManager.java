@@ -7,9 +7,13 @@ import android.os.Vibrator;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
+import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
+import de.danoeh.apexpod.core.storage.repository.impl.PlayListItemRepositoryImpl;
 import de.danoeh.apexpod.core.util.ChapterUtils;
 import de.danoeh.apexpod.core.widget.WidgetUpdater;
+import de.danoeh.apexpod.model.feed.Feed;
 import io.reactivex.disposables.Disposable;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -105,7 +109,20 @@ public class PlaybackServiceTaskManager {
 
     private synchronized void loadQueue() {
         if (!isQueueLoaderActive()) {
-            queueFuture = schedExecutor.submit(() -> DBReader.getQueue());
+            queueFuture = schedExecutor.submit(() -> {
+                long playlist = PlaybackPreferences.getCurrentPlaylist();
+                if (playlist == PlaybackPreferences.PLAYLIST_QUEUE) {
+                    return DBReader.getQueue();
+                } else if (playlist == PlaybackPreferences.PLAYLIST_CUSTOM) {
+                    PlayListItemRepositoryImpl playListItemRepository =
+                            new PlayListItemRepositoryImpl(new PlayListItemDao());
+                    return playListItemRepository.getItemsByPlayListId(playlist);
+                } else if(playlist == PlaybackPreferences.PLAYLIST_FEED) {
+                    Feed feed = DBReader.getFeed(playlist);
+                    return DBReader.getFeedItemList(feed, feed.getItemFilter());
+                }
+                return DBReader.getQueue();
+            });
         }
     }
 

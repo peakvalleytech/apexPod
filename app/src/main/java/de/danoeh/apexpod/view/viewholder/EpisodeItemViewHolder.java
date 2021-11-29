@@ -98,7 +98,7 @@ public class EpisodeItemViewHolder extends RecyclerView.ViewHolder {
         selectCheckBox = itemView.findViewById(R.id.selectCheckBox);
     }
 
-    public void bind(FeedItem item) {
+    public void bind(FeedItem item, long playlist) {
         this.item = item;
         placeholder.setText(item.getFeed().getTitle());
         title.setText(item.getTitle());
@@ -111,7 +111,7 @@ public class EpisodeItemViewHolder extends RecyclerView.ViewHolder {
         container.setAlpha(item.isPlayed() ? 0.5f : 1.0f);
 
         ItemActionButton actionButton = ItemActionButton.forItem(item);
-        actionButton.configure(secondaryActionButton, secondaryActionIcon, activity);
+        actionButton.configure(secondaryActionButton, secondaryActionIcon, activity, playlist);
         secondaryActionButton.setFocusable(false);
 
         if (item.getMedia() != null) {

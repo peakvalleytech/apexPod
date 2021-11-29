@@ -26,7 +26,7 @@ public abstract class ItemActionButton {
     @DrawableRes
     public abstract int getDrawable();
 
-    public abstract void onClick(Context context);
+    public abstract void onClick(Context context, long playlistId);
 
     public int getVisibility() {
         return View.VISIBLE;
@@ -55,10 +55,10 @@ public abstract class ItemActionButton {
         }
     }
 
-    public void configure(@NonNull View button, @NonNull ImageView icon, Context context) {
+    public void configure(@NonNull View button, @NonNull ImageView icon, Context context, long playlist) {
         button.setVisibility(getVisibility());
         button.setContentDescription(context.getString(getLabel()));
-        button.setOnClickListener((view) -> onClick(context));
+        button.setOnClickListener((view) -> onClick(context, playlist));
         icon.setImageResource(getDrawable());
     }
 }

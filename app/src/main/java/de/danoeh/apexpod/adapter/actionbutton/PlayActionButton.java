@@ -4,6 +4,7 @@ import android.content.Context;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.model.playback.MediaType;
@@ -12,7 +13,6 @@ import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.util.playback.PlaybackServiceStarter;
 
 public class PlayActionButton extends ItemActionButton {
-
     public PlayActionButton(FeedItem item) {
         super(item);
     }
@@ -30,11 +30,14 @@ public class PlayActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context) {
+    public void onClick(Context context, long playlistId) {
         FeedMedia media = item.getMedia();
         if (media == null) {
             return;
         }
+
+        PlaybackPreferences.setCurrentPlaylist(playlistId);
+
         if (!media.fileExists()) {
             DBTasks.notifyMissingFeedMediaFile(context, media);
             return;

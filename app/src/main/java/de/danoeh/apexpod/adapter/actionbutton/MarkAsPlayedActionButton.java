@@ -28,7 +28,7 @@ public class MarkAsPlayedActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context) {
+    public void onClick(Context context, long pl) {
         if (!item.isPlayed()) {
             DBWriter.markItemPlayed(item, FeedItem.PLAYED, true);
         }

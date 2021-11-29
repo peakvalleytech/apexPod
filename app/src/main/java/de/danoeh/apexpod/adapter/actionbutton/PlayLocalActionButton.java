@@ -29,7 +29,7 @@ public class PlayLocalActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context) {
+    public void onClick(Context context, long pl) {
         final FeedMedia media = item.getMedia();
         if (media == null) {
             return;
