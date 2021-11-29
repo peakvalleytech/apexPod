@@ -37,9 +37,7 @@ public class FeedPreferences implements Serializable {
     private boolean showEpisodeNotification;
     private Set<String> tags = new HashSet<>();
     /* Autodownload */
-    private int autoDL_Count = 1;
-    private boolean autoDL_newestFirst;
-    private boolean autoDL_includeAll;
+    private AutoDownload autoDownloadPreferences;
 
     public FeedPreferences(long feedID, boolean autoDownload, AutoDeleteAction autoDeleteAction,
                            VolumeAdaptionSetting volumeAdaptionSetting, String username, String password) {
@@ -228,27 +226,11 @@ public class FeedPreferences implements Serializable {
         this.tags.addAll(tags);
     }
 
-    public int getAutoDL_Count() {
-        return autoDL_Count;
+    public AutoDownload getAutoDownloadPreferences() {
+        return autoDownloadPreferences;
     }
 
-    public void setAutoDL_Count(int autoDL_Count) {
-        this.autoDL_Count = autoDL_Count;
-    }
-
-    public boolean isAutoDL_newestFirst() {
-        return autoDL_newestFirst;
-    }
-
-    public void setAutoDL_newestFirst(boolean autoDL_newestFirst) {
-        this.autoDL_newestFirst = autoDL_newestFirst;
-    }
-
-    public boolean isAutoDL_includeAll() {
-        return autoDL_includeAll;
-    }
-
-    public void setAutoDL_includeAll(boolean autoDL_includeAll) {
-        this.autoDL_includeAll = autoDL_includeAll;
+    public void setAutoDownloadPreferences(AutoDownload autoDownloadPreferences) {
+        this.autoDownloadPreferences = autoDownloadPreferences;
     }
 }
