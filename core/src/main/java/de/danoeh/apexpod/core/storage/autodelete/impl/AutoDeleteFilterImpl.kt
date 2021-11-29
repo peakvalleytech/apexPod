@@ -37,8 +37,10 @@ class AutoDeleteFilterImpl internal constructor(val rules: MutableList<AutoDelet
         }
 
         fun keepQueued(keep : Boolean) : AutoDeleteFilterBuilderImpl{
-            val includeQueuedAutoDeleteRule = IncludeQueuedAutoDeleteRule()
-            addAutoDeleteRule(includeQueuedAutoDeleteRule)
+            if (!keep) {
+                val includeQueuedAutoDeleteRule = IncludeQueuedAutoDeleteRule()
+                addAutoDeleteRule(includeQueuedAutoDeleteRule)
+            }
             return this
         }
 
