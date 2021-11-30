@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -20,6 +21,7 @@ import de.danoeh.apexpod.core.event.settings.SkipIntroEndingChangedEvent;
 import de.danoeh.apexpod.core.event.settings.SpeedPresetChangedEvent;
 import de.danoeh.apexpod.core.event.settings.VolumeAdaptionChangedEvent;
 import de.danoeh.apexpod.databinding.PlaybackSpeedFeedSettingDialogBinding;
+import de.danoeh.apexpod.model.feed.AutoDownload;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedFilter;
 import de.danoeh.apexpod.model.feed.FeedPreferences;
@@ -95,7 +97,6 @@ public class FeedSettingsFragment extends Fragment {
     }
 
     public static class FeedSettingsPreferenceFragment extends PreferenceFragmentCompat {
-        private static final CharSequence PREF_EPISODE_FILTER = "episodeFilter";
         private static final CharSequence PREF_SCREEN = "feedSettingsScreen";
         private static final CharSequence PREF_AUTHENTICATION = "authentication";
         private static final CharSequence PREF_AUTO_DELETE = "autoDelete";
@@ -103,6 +104,10 @@ public class FeedSettingsFragment extends Fragment {
         private static final String PREF_FEED_PLAYBACK_SPEED = "feedPlaybackSpeed";
         private static final String PREF_AUTO_SKIP = "feedAutoSkip";
         private static final String PREF_TAGS = "tags";
+        private static final String PREF_AUTO_DOWNLOAD_CACHE = "autoDownloadCache";
+        private static final String PREF_AUTO_DOWNLOAD_NEWEST_FIRST = "autoDownloadNewestFirst";
+        private static final String PREF_AUTO_DOWNLOAD_INCLUDE_ALL = "autoDownloadIncludeAll";
+        private static final CharSequence PREF_EPISODE_FILTER = "episodeFilter";
 
         private Feed feed;
         private Disposable disposable;
@@ -361,23 +366,33 @@ public class FeedSettingsFragment extends Fragment {
         }
 
         private void setupAutoDownloadPreference() {
-            SwitchPreferenceCompat pref = findPreference("autoDownload");
+            if (feedPreferences == null)
+                return;
+            SwitchPreferenceCompat autoDownloadPrefView = findPreference("autoDownload");
+            EditTextPreference autoDownloadCachePrefView = findPreference(PREF_AUTO_DOWNLOAD_CACHE);
+            SwitchPreferenceCompat newestFirstPrefView = findPreference(PREF_AUTO_DOWNLOAD_NEWEST_FIRST);
+            SwitchPreferenceCompat includeAllPrefView = findPreference(PREF_AUTO_DOWNLOAD_INCLUDE_ALL);
 
-            pref.setEnabled(UserPreferences.isEnableAutodownload());
-            if (UserPreferences.isEnableAutodownload()) {
-                pref.setChecked(feedPreferences.getAutoDownload());
-            } else {
-                pref.setChecked(false);
-                pref.setSummary(R.string.auto_download_disabled_globally);
-            }
+            boolean autoDownloadEnabled = feedPreferences.getAutoDownload();
+            autoDownloadPrefView.setEnabled(autoDownloadEnabled);
+            autoDownloadCachePrefView.setEnabled(autoDownloadEnabled);
+            newestFirstPrefView.setEnabled(autoDownloadEnabled);
+            includeAllPrefView.setEnabled(autoDownloadEnabled);
 
-            pref.setOnPreferenceChangeListener((preference, newValue) -> {
+            AutoDownload autoDownloadPrefs = feedPreferences.getAutoDownloadPreferences();
+            int autoDownloadCacheSize = autoDownloadPrefs.getCacheSize();
+            autoDownloadCachePrefView.setSummary(getString(R.string.auto_download_cache_pref_summary)
+                    + "-" + autoDownloadCacheSize);
+//            findPreference(PREF_AUTO_DOWNLOAD_CACHE).setEnabled(autoDownloadPrefs.getNumberToUpdate());
+            newestFirstPrefView.setChecked(autoDownloadPrefs.isNewestFirst());
+            includeAllPrefView.setChecked(autoDownloadPrefs.isIncludeAll());
+
+            autoDownloadPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
                 boolean checked = newValue == Boolean.TRUE;
-
                 feedPreferences.setAutoDownload(checked);
                 DBWriter.setFeedPreferences(feedPreferences);
                 updateAutoDownloadEnabled();
-                pref.setChecked(checked);
+                autoDownloadPrefView.setChecked(checked);
                 return false;
             });
         }

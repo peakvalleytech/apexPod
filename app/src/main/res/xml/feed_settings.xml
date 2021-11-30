@@ -64,15 +64,15 @@
             android:key="autoDownload"
             android:title="@string/auto_download_label" />
         <EditTextPreference
-            android:key="episodesToKeep"
-            android:title="Episodes to Keep Updated"
-            android:summary="The list of auto download episodes to keep updated. Excluded from auto delete."/>
-        <DropDownPreference
-            android:title="Order of downlaods"
-            android:summary="The place in the feed to start"
-            android:entryValues="@array/autoDowloadOrder">
-        </DropDownPreference>
+            android:key="autoDownloadCache"
+            android:title="Episodes to Auto Download"
+            android:summary="@string/auto_download_cache_pref_summary"/>
+        <SwitchPreferenceCompat
+            android:key="autoDownlaodNewestFirst"
+            android:title="Newest first"
+            android:summary="Start from newest" />
         <CheckBoxPreference
+            android:key="autoDownloadIncludeAll"
             android:title="Include all episodes"
             android:summary="Include older episodes into auto download"/>
         <Preference

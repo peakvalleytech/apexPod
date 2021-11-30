@@ -271,8 +271,4 @@
         <item>EpisodesFragment</item>
         <item>SubscriptionFragment</item>
     </string-array>
-    <string-array name="autoDowloadOrder">
-        <item>Oldest first</item>
-        <item>Newest first</item>
-    </string-array>
 </resources>

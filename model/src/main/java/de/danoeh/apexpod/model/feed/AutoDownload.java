@@ -1,18 +1,18 @@
 package de.danoeh.apexpod.model.feed;
 
 public class AutoDownload {
-    private int numberToUpdate;
+    private int cacheSize;
     private boolean newestFirst;
     private boolean includeAll;
 
-    public AutoDownload(int numberToUpdate, boolean newestFirst, boolean includeAll) {
-        this.numberToUpdate = numberToUpdate;
+    public AutoDownload(int cacheSize, boolean newestFirst, boolean includeAll) {
+        this.cacheSize = cacheSize;
         this.newestFirst = newestFirst;
         this.includeAll = includeAll;
     }
 
-    public int getNumberToUpdate() {
-        return numberToUpdate;
+    public int getCacheSize() {
+        return cacheSize;
     }
 
     public boolean isNewestFirst() {

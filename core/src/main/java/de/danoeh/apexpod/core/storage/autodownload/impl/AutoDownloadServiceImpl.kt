@@ -71,10 +71,10 @@ class AutoDownloadServiceImpl() {
                 selectedItems.reverse()
             }
 
-            if (autodownloadprefs.numberToUpdate > selectedItems.size) {
+            if (autodownloadprefs.cacheSize > selectedItems.size) {
                 return selectedItems
             } else  {
-                return selectedItems.subList(0, autodownloadprefs.numberToUpdate)
+                return selectedItems.subList(0, autodownloadprefs.cacheSize)
             }
             return selectedItems
         }
