@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.preference.CheckBoxPreference;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -151,7 +152,7 @@ public class FeedSettingsFragment extends Fragment {
                         feed = result;
                         feedPreferences = feed.getPreferences();
 
-                        setupAutoDownloadGlobalPreference();
+//                        setupAutoDownloadGlobalPreference();
                         setupAutoDownloadPreference();
                         setupKeepUpdatedPreference();
                         setupAutoDeletePreference();
@@ -355,46 +356,54 @@ public class FeedSettingsFragment extends Fragment {
             });
         }
 
-        private void setupAutoDownloadGlobalPreference() {
-            if (!UserPreferences.isEnableAutodownload()) {
-                SwitchPreferenceCompat autodl = findPreference("autoDownload");
-                autodl.setChecked(false);
-                autodl.setEnabled(false);
-                autodl.setSummary(R.string.auto_download_disabled_globally);
-                findPreference(PREF_EPISODE_FILTER).setEnabled(false);
-            }
-        }
-
         private void setupAutoDownloadPreference() {
             if (feedPreferences == null)
                 return;
             SwitchPreferenceCompat autoDownloadPrefView = findPreference("autoDownload");
             EditTextPreference autoDownloadCachePrefView = findPreference(PREF_AUTO_DOWNLOAD_CACHE);
             SwitchPreferenceCompat newestFirstPrefView = findPreference(PREF_AUTO_DOWNLOAD_NEWEST_FIRST);
-            SwitchPreferenceCompat includeAllPrefView = findPreference(PREF_AUTO_DOWNLOAD_INCLUDE_ALL);
+            CheckBoxPreference includeAllPrefView = findPreference(PREF_AUTO_DOWNLOAD_INCLUDE_ALL);
+            Preference episodeFilterPrefView = findPreference(PREF_EPISODE_FILTER);
 
             boolean autoDownloadEnabled = feedPreferences.getAutoDownload();
-            autoDownloadPrefView.setEnabled(autoDownloadEnabled);
-            autoDownloadCachePrefView.setEnabled(autoDownloadEnabled);
-            newestFirstPrefView.setEnabled(autoDownloadEnabled);
-            includeAllPrefView.setEnabled(autoDownloadEnabled);
 
-            AutoDownload autoDownloadPrefs = feedPreferences.getAutoDownloadPreferences();
-            int autoDownloadCacheSize = autoDownloadPrefs.getCacheSize();
-            autoDownloadCachePrefView.setSummary(getString(R.string.auto_download_cache_pref_summary)
-                    + "-" + autoDownloadCacheSize);
-//            findPreference(PREF_AUTO_DOWNLOAD_CACHE).setEnabled(autoDownloadPrefs.getNumberToUpdate());
-            newestFirstPrefView.setChecked(autoDownloadPrefs.isNewestFirst());
-            includeAllPrefView.setChecked(autoDownloadPrefs.isIncludeAll());
-
+            autoDownloadPrefView.setChecked(autoDownloadEnabled);
             autoDownloadPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
-                boolean checked = newValue == Boolean.TRUE;
-                feedPreferences.setAutoDownload(checked);
+                boolean autoDownloadChecked = newValue == Boolean.TRUE;
+                feedPreferences.setAutoDownload(autoDownloadChecked);
                 DBWriter.setFeedPreferences(feedPreferences);
-                updateAutoDownloadEnabled();
-                autoDownloadPrefView.setChecked(checked);
+                autoDownloadPrefView.setChecked(autoDownloadChecked);
+                autoDownloadCachePrefView.setEnabled(autoDownloadChecked);
+                newestFirstPrefView.setEnabled(autoDownloadChecked);
+                includeAllPrefView.setEnabled(autoDownloadChecked);
+                episodeFilterPrefView.setEnabled(autoDownloadChecked);
                 return false;
             });
+
+            autoDownloadCachePrefView.setEnabled(autoDownloadEnabled);
+            autoDownloadCachePrefView.setOnPreferenceChangeListener((preference, newValue) -> {
+                return false;
+            });
+            newestFirstPrefView.setEnabled(autoDownloadEnabled);
+            newestFirstPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
+                return false;
+            });
+            includeAllPrefView.setEnabled(autoDownloadEnabled);
+            includeAllPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
+                return false;
+            });
+            episodeFilterPrefView.setEnabled(autoDownloadEnabled);
+
+            AutoDownload autoDownloadPrefs = feedPreferences.getAutoDownloadPreferences();
+            if (autoDownloadPrefs != null) {
+                int autoDownloadCacheSize = autoDownloadPrefs.getCacheSize();
+                autoDownloadCachePrefView.setSummary(getString(R.string.auto_download_cache_pref_summary)
+                        + "-" + autoDownloadCacheSize);
+                newestFirstPrefView.setChecked(autoDownloadPrefs.isNewestFirst());
+                includeAllPrefView.setChecked(autoDownloadPrefs.isIncludeAll());
+
+
+            }
         }
 
         private void updateAutoDownloadEnabled() {
