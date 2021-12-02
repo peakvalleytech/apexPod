@@ -68,7 +68,7 @@
             android:title="Episodes to Auto Download"
             android:summary="@string/auto_download_cache_pref_summary"/>
         <SwitchPreferenceCompat
-            android:key="autoDownlaodNewestFirst"
+            android:key="autoDownloadNewestFirst"
             android:title="Newest first"
             android:summary="Start from newest" />
         <CheckBoxPreference
