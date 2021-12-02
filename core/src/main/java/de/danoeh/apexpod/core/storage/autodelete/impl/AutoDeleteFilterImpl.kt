@@ -4,7 +4,6 @@ import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteRule
 import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteFilter
 import de.danoeh.apexpod.core.storage.autodelete.impl.rules.DurationAutoDeleteRule
 import de.danoeh.apexpod.core.storage.autodelete.impl.rules.IncludeFavoritesAutoDeleteRule
-import de.danoeh.apexpod.core.storage.autodelete.impl.rules.IncludeQueuedAutoDeleteRule
 import de.danoeh.apexpod.model.feed.FeedItem
 
 class AutoDeleteFilterImpl internal constructor(val rules: MutableList<AutoDeleteRule>) : AutoDeleteFilter {
@@ -36,10 +35,10 @@ class AutoDeleteFilterImpl internal constructor(val rules: MutableList<AutoDelet
             return this
         }
 
-        fun keepQueued(keep : Boolean) : AutoDeleteFilterBuilderImpl{
+        fun keepPlaylisted(keep : Boolean) : AutoDeleteFilterBuilderImpl{
             if (!keep) {
-                val includeQueuedAutoDeleteRule = IncludeQueuedAutoDeleteRule()
-                addAutoDeleteRule(includeQueuedAutoDeleteRule)
+//                val includeQueuedAutoDeleteRule = IncludeQueuedAutoDeleteRule()
+//                addAutoDeleteRule(includeQueuedAutoDeleteRule)
             }
             return this
         }

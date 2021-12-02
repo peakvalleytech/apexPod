@@ -24,12 +24,12 @@
             android:summary="@string/pref_favorite_keeps_episodes_sum"
             android:title="@string/pref_favorite_keeps_episodes_title"/>
 
-    <SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:enabled="true"
-        android:key="prefAutoDeleteQueue"
-        android:summary="@string/pref_auto_delete_queue_summary"
-        android:title="@string/pref_auto_delete_queue_title"/>
+<!--    <SwitchPreferenceCompat-->
+<!--        android:defaultValue="false"-->
+<!--        android:enabled="true"-->
+<!--        android:key="prefAutoDeletePlaylist"-->
+<!--        android:summary="@string/pref_auto_delete_playlist_summary"-->
+<!--        android:title="@string/pref_auto_delete_playlist_title"/>-->
 
     <SwitchPreferenceCompat
             android:defaultValue="false"

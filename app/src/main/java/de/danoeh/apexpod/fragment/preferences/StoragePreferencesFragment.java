@@ -65,7 +65,7 @@ public class StoragePreferencesFragment extends PreferenceFragmentCompat {
     private void checkAutodownloadItemVisibility(Boolean enabled) {
         findPreference(UserPreferences.PREF_EPISODE_CLEANUP).setEnabled(enabled);
         findPreference(UserPreferences.PREF_AUTO_DELETE_FAVORITES).setEnabled(enabled);
-        findPreference(UserPreferences.PREF_AUTO_DELETE_QUEUE).setEnabled(enabled);
+//        findPreference(UserPreferences.PREF_AUTO_DELETE_PLAYLIST).setEnabled(enabled);
     }
 
     private void setDataFolderText() {

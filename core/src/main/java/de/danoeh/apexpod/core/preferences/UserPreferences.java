@@ -83,10 +83,10 @@ public class UserPreferences {
     public static final String PREF_AUTO_DELETE_FAVORITES = "prefFavoriteKeepsEpisode";
 
     public static boolean shouldAutoDeleteQueue() {
-        return prefs.getBoolean(PREF_AUTO_DELETE_QUEUE, true);
+        return prefs.getBoolean(PREF_AUTO_DELETE_PLAYLIST, true);
     }
 
-    public static final String PREF_AUTO_DELETE_QUEUE = "prefAutoDeleteQueue";
+    public static final String PREF_AUTO_DELETE_PLAYLIST = "prefAutoDeletePlaylist";
     public static final String PREF_AUTO_DELETE = "prefAutoDelete";
     public static final String PREF_SMART_MARK_AS_PLAYED_SECS = "prefSmartMarkAsPlayedSecs";
     private static final String PREF_PLAYBACK_SPEED_ARRAY = "prefPlaybackSpeedArray";
