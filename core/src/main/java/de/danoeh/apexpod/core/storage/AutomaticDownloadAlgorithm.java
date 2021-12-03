@@ -49,17 +49,8 @@ public class AutomaticDownloadAlgorithm {
 
                 List<FeedItem> candidates;
                 final List<FeedItem> queue = DBReader.getQueue();
-                final List<FeedItem> newItems = DBReader.getNewItemsList(0, Integer.MAX_VALUE);
-                candidates = new ArrayList<>(queue.size() + newItems.size());
+                candidates = new ArrayList<>(queue.size());
                 candidates.addAll(queue);
-                for (FeedItem newItem : newItems) {
-                    FeedPreferences feedPrefs = newItem.getFeed().getPreferences();
-                    if (feedPrefs.getAutoDownload()
-                            && !candidates.contains(newItem)
-                            && feedPrefs.getFilter().shouldAutoDownload(newItem)) {
-                        candidates.add(newItem);
-                    }
-                }
 
                 // filter items that are not auto downloadable
                 Iterator<FeedItem> it = candidates.iterator();
