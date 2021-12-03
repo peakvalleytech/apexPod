@@ -1,20 +1,12 @@
 package de.danoeh.apexpod.core.storage.database.autodelete
 
-import de.danoeh.apexpod.core.storage.PodDBAdapter
-import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteFilter
+//import de.danoeh.apexpod.core.storage.autodelete.impl.rules.IncludeQueuedAutoDeleteRule
 import de.danoeh.apexpod.core.storage.autodelete.impl.AutoDeleteFilterFactory
-import de.danoeh.apexpod.core.storage.autodelete.impl.AutoDeleteFilterImpl.AutoDeleteFilterBuilderImpl
-import de.danoeh.apexpod.core.storage.autodelete.impl.rules.DurationAutoDeleteRule
-import de.danoeh.apexpod.core.storage.autodelete.impl.rules.IncludeFavoritesAutoDeleteRule
-import de.danoeh.apexpod.core.storage.autodelete.impl.rules.IncludeQueuedAutoDeleteRule
 import de.danoeh.apexpod.model.feed.Feed
 import de.danoeh.apexpod.model.feed.FeedItem
 import de.danoeh.apexpod.model.feed.FeedMedia
 import junit.framework.Assert.assertEquals
-import org.junit.Assert
 import org.junit.Test
-import java.io.File
-import java.io.IOException
 import java.util.*
 
 class TestAutoDeleteFilter {
@@ -34,7 +26,7 @@ class TestAutoDeleteFilter {
 //    }
 
     @Test
-    fun `should filter items by hours after playback`() {
+    fun `should filter played items by hours after playback`() {
         val keepFavorite = false
         val feed = Feed("url", null, "title")
         val feedItems = mutableListOf<FeedItem>()
