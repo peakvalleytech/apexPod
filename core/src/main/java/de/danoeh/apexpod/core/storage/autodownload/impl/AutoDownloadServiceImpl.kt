@@ -6,6 +6,7 @@ import androidx.annotation.VisibleForTesting
 import de.danoeh.apexpod.core.preferences.UserPreferences
 import de.danoeh.apexpod.core.storage.AutomaticDownloadAlgorithm
 import de.danoeh.apexpod.core.storage.DBReader
+import de.danoeh.apexpod.core.storage.autodownload.AutoDownloadQueue
 import de.danoeh.apexpod.core.util.FeedItemUtil
 import de.danoeh.apexpod.core.util.NetworkUtils
 import de.danoeh.apexpod.core.util.PowerUtils
@@ -63,60 +64,23 @@ class AutoDownloadServiceImpl() {
                 : List<FeedItem> {
             var selectedItems = mutableListOf<FeedItem>()
 
-            selectedItems = getUnplayedItems(selectedItems, autodownloadprefs.isIncludeAll)
+            var autoDownloadQueue = AutoDownloadQueue(items.toMutableList())
+            autoDownloadQueue = autoDownloadQueue.getUnplayedItems(autodownloadprefs.isIncludeAll)
 
-            selectedItems.sortBy { feedItem -> feedItem.pubDate }
-            if (autodownloadprefs.isNewestFirst) {
-                selectedItems.reverse()
+            autoDownloadQueue.sortByNewest(false)
+
+            var downloadAbleSelectedItems =
+                autoDownloadQueue.getDownloadable(autodownloadprefs.cacheSize)
+
+            if (autodownloadprefs.cacheSize > downloadAbleSelectedItems.size()) {
+                downloadAbleSelectedItems = downloadAbleSelectedItems.subList(0, selectedItems.size)
             }
 
-            if (autodownloadprefs.cacheSize > selectedItems.size) {
-                selectedItems = selectedItems.subList(0, selectedItems.size)
-            }
-
-            val downloadAbleSelectedItems =
-                filterDownloadable(selectedItems, autodownloadprefs.cacheSize)
-
-            return downloadAbleSelectedItems
+            return downloadAbleSelectedItems.toList()
         }
 
-        fun getUnplayedItems(items: List<FeedItem>, includeAll: Boolean): MutableList<FeedItem> {
-            val unplayedItems = mutableListOf<FeedItem>()
-            if (includeAll) {
-                items.forEach {
-                    if (it.playState == FeedItem.NEW) {
-                        unplayedItems.add(it)
-                    }
-                }
-            } else {
-                items.forEach {
-                    if (it.playState == FeedItem.NEW
-                        || it.playState == FeedItem.UNPLAYED
-                    ) {
-                        unplayedItems.add(it)
-                    }
-                }
-            }
-            return unplayedItems
-        }
 
-        private fun filterDownloadable(
-            selectedItems: MutableList<FeedItem>,
-            limit: Int
-        ): MutableList<FeedItem> {
-            var i = 0
-            val downloadAbleSelectedItems: MutableList<FeedItem> = mutableListOf()
 
-            while (downloadAbleSelectedItems.size < limit && i < selectedItems.size) {
-                val item = selectedItems.get(i)
-                if (item.isAutoDownloadable() && !FeedItemUtil.isPlaying(item.getMedia())
-                    && !item.getFeed().isLocalFeed()
-                ) {
-                    downloadAbleSelectedItems.add(item)
-                }
-                ++i
-            }
-            return downloadAbleSelectedItems
-        }
+
     }
 }
