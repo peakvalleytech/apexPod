@@ -856,4 +856,9 @@
     <string name="playlists_label">Playlists</string>
     <string name="pref_auto_delete_playlist_summary">Exclude playlisted episodes from auto delete</string>
     <string name="pref_auto_delete_playlist_title">Keep Playlisted Episodes</string>
+    <string name="add_to_playlist_label">Add to Playlist</string>
+    <string name="no_playlists_label">No Playlists</string>
+    <string name="no_playlists_sub_label">After you create a playlist, it will appear here.</string>
+    <string name="auto_download_cache_pref_summary">"The set of episodes kept by auto download. Excluded from auto delete. "</string>
+
 </resources>

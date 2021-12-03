@@ -22,4 +22,16 @@ public class AutoDownload {
     public boolean isIncludeAll() {
         return includeAll;
     }
+
+    public void setCacheSize(int cacheSize) {
+        this.cacheSize = cacheSize;
+    }
+
+    public void setNewestFirst(boolean newestFirst) {
+        this.newestFirst = newestFirst;
+    }
+
+    public void setIncludeAll(boolean includeAll) {
+        this.includeAll = includeAll;
+    }
 }
