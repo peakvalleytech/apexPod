@@ -380,17 +380,41 @@ public class FeedSettingsFragment extends Fragment {
                 return false;
             });
 
+            AutoDownload autoDownload = feedPreferences.getAutoDownloadPreferences();
+            if (autoDownload == null) {
+                autoDownload = new AutoDownload(0, true, false);
+            }
             autoDownloadCachePrefView.setEnabled(autoDownloadEnabled);
+            AutoDownload finalAutoDownload = autoDownload;
             autoDownloadCachePrefView.setOnPreferenceChangeListener((preference, newValue) -> {
-                return false;
+                Integer cacheSize = 0;
+                try {
+                    cacheSize = (Integer) newValue;
+                    if (cacheSize > feed.getItems().size()) {
+                        cacheSize = 0;
+                    }
+
+                } catch (ClassCastException classCastException) {
+                    cacheSize = 0;
+                }
+                finalAutoDownload.setCacheSize(cacheSize);
+                updateAutoDownload(finalAutoDownload);
+                autoDownloadCachePrefView.setSummary(autoDownloadPrefView.getSummary() + " - " + cacheSize);
+                return true;
             });
             newestFirstPrefView.setEnabled(autoDownloadEnabled);
             newestFirstPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
-                return false;
+                boolean  newestFirst = newValue == Boolean.TRUE;
+                finalAutoDownload.setNewestFirst(newestFirst);
+                updateAutoDownload(finalAutoDownload);
+                return true;
             });
             includeAllPrefView.setEnabled(autoDownloadEnabled);
             includeAllPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
-                return false;
+                boolean inncludeAll = newValue == Boolean.TRUE;
+                finalAutoDownload.setIncludeAll(inncludeAll);
+                updateAutoDownload(finalAutoDownload);
+                return true;
             });
             episodeFilterPrefView.setEnabled(autoDownloadEnabled);
 
@@ -431,6 +455,12 @@ public class FeedSettingsFragment extends Fragment {
                 pref.setChecked(checked);
                 return false;
             });
+        }
+
+        private void updateAutoDownload(AutoDownload autoDownload) {
+            feedPreferences.setAutoDownloadPreferences(autoDownload);
+            DBWriter.setFeedPreferences(feedPreferences);
+
         }
     }
 }
