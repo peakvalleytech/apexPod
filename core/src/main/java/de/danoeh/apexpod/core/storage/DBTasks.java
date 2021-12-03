@@ -40,6 +40,7 @@ import de.danoeh.apexpod.core.storage.autodelete.impl.AutoDeleteFilterFactory;
 import de.danoeh.apexpod.core.storage.autodelete.impl.AutoDeleteFilterImpl;
 import de.danoeh.apexpod.core.storage.autodelete.impl.rules.DurationAutoDeleteRule;
 import de.danoeh.apexpod.core.storage.autodelete.impl.rules.IncludeFavoritesAutoDeleteRule;
+import de.danoeh.apexpod.core.storage.autodownload.impl.AutoDownloadServiceImpl;
 import de.danoeh.apexpod.core.storage.mapper.FeedCursorMapper;
 import de.danoeh.apexpod.core.sync.SyncService;
 import de.danoeh.apexpod.core.sync.queue.SynchronizationQueueSink;
@@ -275,7 +276,9 @@ public final class DBTasks {
      */
     public static Future<?> autodownloadUndownloadedItems(final Context context) {
         Log.d(TAG, "autodownloadUndownloadedItems");
-        return autodownloadExec.submit(downloadAlgorithm.autoDownloadUndownloadedItems(context));
+//        return autodownloadExec.submit(downloadAlgorithm.autoDownloadUndownloadedItems(context));
+        return autodownloadExec
+                .submit(new AutoDownloadServiceImpl().autoDownloadUndownloadedItems(context));
     }
 
     /**
