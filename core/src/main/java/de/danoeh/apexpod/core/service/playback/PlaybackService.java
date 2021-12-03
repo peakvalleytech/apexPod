@@ -54,6 +54,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.danoeh.apexpod.core.R;
 import de.danoeh.apexpod.core.event.MessageEvent;
+import de.danoeh.apexpod.core.event.PlaybackHistoryEvent;
 import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
 import de.danoeh.apexpod.core.event.ServiceEvent;
 import de.danoeh.apexpod.core.event.settings.SkipIntroEndingChangedEvent;
@@ -1143,15 +1144,15 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                 if (!shouldRepeat) {
                     DBWriter.removeQueueItem(PlaybackService.this, ended, item);
                     // Delete episode if enabled
-                    FeedPreferences.AutoDeleteAction action =
-                            item.getFeed().getPreferences().getCurrentAutoDelete();
-                    boolean shouldAutoDelete = action == FeedPreferences.AutoDeleteAction.YES
-                            || (action == FeedPreferences.AutoDeleteAction.GLOBAL && UserPreferences.isAutoDelete());
-                    if (shouldAutoDelete && (!item.isTagged(FeedItem.TAG_FAVORITE)
-                            || !UserPreferences.shouldKeepFavorite())) {
-                        DBWriter.deleteFeedMediaOfItem(PlaybackService.this, media.getId());
-                        Log.d(TAG, "Episode Deleted");
-                    }
+//                    FeedPreferences.AutoDeleteAction action =
+//                            item.getFeed().getPreferences().getCurrentAutoDelete();
+//                    boolean shouldAutoDelete = action == FeedPreferences.AutoDeleteAction.YES
+//                            || (action == FeedPreferences.AutoDeleteAction.GLOBAL && UserPreferences.isAutoDelete());
+//                    if (shouldAutoDelete && (!item.isTagged(FeedItem.TAG_FAVORITE)
+//                            || !UserPreferences.shouldKeepFavorite())) {
+//                        DBWriter.deleteFeedMediaOfItem(PlaybackService.this, media.getId());
+//                        Log.d(TAG, "Episode Deleted");
+//                    }
                 }
             }
         }
@@ -1610,6 +1611,11 @@ public class PlaybackService extends MediaBrowserServiceCompat {
             }
         }
     };
+
+    @Subscribe(threadMode = ThreadMode.ASYNC)
+    public void playbackHistoryUpdated(PlaybackHistoryEvent event) {
+        DBTasks.performAutoCleanup(getApplicationContext());
+    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     @SuppressWarnings("unused")
