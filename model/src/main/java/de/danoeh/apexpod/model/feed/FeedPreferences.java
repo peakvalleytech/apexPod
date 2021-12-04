@@ -36,7 +36,6 @@ public class FeedPreferences implements Serializable {
     private int feedSkipEnding;
     private boolean showEpisodeNotification;
     private Set<String> tags = new HashSet<>();
-    /* Autodownload */
     private AutoDownload autoDownloadPreferences;
 
     public FeedPreferences(long feedID, boolean autoDownload, AutoDeleteAction autoDeleteAction,
@@ -63,6 +62,29 @@ public class FeedPreferences implements Serializable {
         this.feedSkipEnding = feedSkipEnding;
         this.showEpisodeNotification = showEpisodeNotification;
         this.tags.addAll(tags);
+    }
+
+    public FeedPreferences(long feedID, boolean autoDownload, boolean keepUpdated,
+                           AutoDeleteAction autoDeleteAction, VolumeAdaptionSetting volumeAdaptionSetting,
+                           String username, String password, @NonNull FeedFilter filter, float feedPlaybackSpeed,
+                           int feedSkipIntro, int feedSkipEnding, boolean showEpisodeNotification,
+                           Set<String> tags, AutoDownload autoDownloadPreferences) {
+        this(
+            feedID,
+            autoDownload,
+            keepUpdated,
+            autoDeleteAction,
+            volumeAdaptionSetting,
+            username,
+            password,
+            filter,
+            feedPlaybackSpeed,
+            feedSkipIntro,
+            feedSkipEnding,
+            showEpisodeNotification,
+            tags
+        );
+        this.autoDownloadPreferences = autoDownloadPreferences;
     }
 
     /**
