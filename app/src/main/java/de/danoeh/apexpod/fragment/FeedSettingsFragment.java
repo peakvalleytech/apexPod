@@ -425,8 +425,6 @@ public class FeedSettingsFragment extends Fragment {
                         + "-" + autoDownloadCacheSize);
                 newestFirstPrefView.setChecked(autoDownloadPrefs.isNewestFirst());
                 includeAllPrefView.setChecked(autoDownloadPrefs.isIncludeAll());
-
-
             }
         }
 
