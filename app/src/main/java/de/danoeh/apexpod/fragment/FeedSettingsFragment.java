@@ -152,7 +152,7 @@ public class FeedSettingsFragment extends Fragment {
                         feed = result;
                         feedPreferences = feed.getPreferences();
 
-//                        setupAutoDownloadGlobalPreference();
+                        setupAutoDownloadGlobalPreference();
                         setupAutoDownloadPreference();
                         setupKeepUpdatedPreference();
                         setupAutoDeletePreference();
@@ -355,76 +355,99 @@ public class FeedSettingsFragment extends Fragment {
                 return false;
             });
         }
+        private void setupAutoDownloadGlobalPreference() {
+            if (!UserPreferences.isEnableAutodownload()) {
+                SwitchPreferenceCompat autodl = findPreference("autoDownload");
+                autodl.setChecked(false);
+                autodl.setEnabled(false);
+                autodl.setSummary(R.string.auto_download_disabled_globally);
+                findPreference(PREF_EPISODE_FILTER).setEnabled(false);
 
+            }
+        }
         private void setupAutoDownloadPreference() {
-            if (feedPreferences == null)
-                return;
             SwitchPreferenceCompat autoDownloadPrefView = findPreference("autoDownload");
             EditTextPreference autoDownloadCachePrefView = findPreference(PREF_AUTO_DOWNLOAD_CACHE);
             SwitchPreferenceCompat newestFirstPrefView = findPreference(PREF_AUTO_DOWNLOAD_NEWEST_FIRST);
             CheckBoxPreference includeAllPrefView = findPreference(PREF_AUTO_DOWNLOAD_INCLUDE_ALL);
             Preference episodeFilterPrefView = findPreference(PREF_EPISODE_FILTER);
-
-            boolean autoDownloadEnabled = feedPreferences.getAutoDownload();
-
-            autoDownloadPrefView.setChecked(autoDownloadEnabled);
-            autoDownloadPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
-                boolean autoDownloadChecked = newValue == Boolean.TRUE;
-                feedPreferences.setAutoDownload(autoDownloadChecked);
-                DBWriter.setFeedPreferences(feedPreferences);
-                autoDownloadPrefView.setChecked(autoDownloadChecked);
+            if (!UserPreferences.isEnableAutodownload()) {
+                SwitchPreferenceCompat autodl = findPreference("autoDownload");
+                boolean autoDownloadChecked = false;
+                autodl.setChecked(autoDownloadChecked);
+                autodl.setEnabled(autoDownloadChecked);
+                autodl.setSummary(R.string.auto_download_disabled_globally);
                 autoDownloadCachePrefView.setEnabled(autoDownloadChecked);
                 newestFirstPrefView.setEnabled(autoDownloadChecked);
                 includeAllPrefView.setEnabled(autoDownloadChecked);
-                episodeFilterPrefView.setEnabled(autoDownloadChecked);
-                return false;
-            });
+                findPreference(PREF_EPISODE_FILTER).setEnabled(autoDownloadChecked);
 
-            AutoDownload autoDownload = feedPreferences.getAutoDownloadPreferences();
-            if (autoDownload == null) {
-                autoDownload = new AutoDownload(0, true, false);
-            }
-            autoDownloadCachePrefView.setEnabled(autoDownloadEnabled);
-            AutoDownload finalAutoDownload = autoDownload;
-            autoDownloadCachePrefView.setOnPreferenceChangeListener((preference, newValue) -> {
-                Integer cacheSize = 0;
-                try {
-                    cacheSize = (Integer) newValue;
-                    if (cacheSize > feed.getItems().size()) {
+            } else {
+                if (feedPreferences == null)
+                    return;
+
+                boolean autoDownloadEnabled = feedPreferences.getAutoDownload();
+
+                autoDownloadPrefView.setChecked(autoDownloadEnabled);
+                autoDownloadPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
+                    boolean autoDownloadChecked = newValue == Boolean.TRUE;
+                    feedPreferences.setAutoDownload(autoDownloadChecked);
+                    DBWriter.setFeedPreferences(feedPreferences);
+                    autoDownloadPrefView.setChecked(autoDownloadChecked);
+                    autoDownloadCachePrefView.setEnabled(autoDownloadChecked);
+                    newestFirstPrefView.setEnabled(autoDownloadChecked);
+                    includeAllPrefView.setEnabled(autoDownloadChecked);
+                    episodeFilterPrefView.setEnabled(autoDownloadChecked);
+                    return false;
+                });
+
+                AutoDownload autoDownload = feedPreferences.getAutoDownloadPreferences();
+                if (autoDownload == null) {
+                    autoDownload = new AutoDownload(0, true, false);
+                }
+                autoDownloadCachePrefView.setEnabled(autoDownloadEnabled);
+                AutoDownload finalAutoDownload = autoDownload;
+                autoDownloadCachePrefView.setOnPreferenceChangeListener((preference, newValue) -> {
+                    Integer cacheSize = 0;
+                    String text = (String) newValue;
+                    try {
+                        cacheSize = Integer.valueOf(text);
+                        if (cacheSize > feed.getItems().size()) {
+                            cacheSize = 0;
+                        }
+                    } catch (NumberFormatException numberFormatException) {
+                        Log.d(TAG, numberFormatException.getMessage() + " : setting cache size to 0");
                         cacheSize = 0;
                     }
+                    finalAutoDownload.setCacheSize(cacheSize);
+                    updateAutoDownload(finalAutoDownload);
+                    autoDownloadCachePrefView.setSummary(getString(R.string.auto_download_cache_pref_summary) + cacheSize);
+                    return true;
+                });
+                newestFirstPrefView.setEnabled(autoDownloadEnabled);
+                newestFirstPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
+                    boolean newestFirst = newValue == Boolean.TRUE;
+                    finalAutoDownload.setNewestFirst(newestFirst);
+                    updateAutoDownload(finalAutoDownload);
+                    return true;
+                });
+                includeAllPrefView.setEnabled(autoDownloadEnabled);
+                includeAllPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
+                    boolean inncludeAll = newValue == Boolean.TRUE;
+                    finalAutoDownload.setIncludeAll(inncludeAll);
+                    updateAutoDownload(finalAutoDownload);
+                    return true;
+                });
+                episodeFilterPrefView.setEnabled(autoDownloadEnabled);
 
-                } catch (ClassCastException classCastException) {
-                    cacheSize = 0;
+                AutoDownload autoDownloadPrefs = feedPreferences.getAutoDownloadPreferences();
+                if (autoDownloadPrefs != null) {
+                    int autoDownloadCacheSize = autoDownloadPrefs.getCacheSize();
+                    autoDownloadCachePrefView.setSummary(getString(R.string.auto_download_cache_pref_summary)
+                            + autoDownloadCacheSize);
+                    newestFirstPrefView.setChecked(autoDownloadPrefs.isNewestFirst());
+                    includeAllPrefView.setChecked(autoDownloadPrefs.isIncludeAll());
                 }
-                finalAutoDownload.setCacheSize(cacheSize);
-                updateAutoDownload(finalAutoDownload);
-                autoDownloadCachePrefView.setSummary(autoDownloadPrefView.getSummary() + " - " + cacheSize);
-                return true;
-            });
-            newestFirstPrefView.setEnabled(autoDownloadEnabled);
-            newestFirstPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
-                boolean  newestFirst = newValue == Boolean.TRUE;
-                finalAutoDownload.setNewestFirst(newestFirst);
-                updateAutoDownload(finalAutoDownload);
-                return true;
-            });
-            includeAllPrefView.setEnabled(autoDownloadEnabled);
-            includeAllPrefView.setOnPreferenceChangeListener((preference, newValue) -> {
-                boolean inncludeAll = newValue == Boolean.TRUE;
-                finalAutoDownload.setIncludeAll(inncludeAll);
-                updateAutoDownload(finalAutoDownload);
-                return true;
-            });
-            episodeFilterPrefView.setEnabled(autoDownloadEnabled);
-
-            AutoDownload autoDownloadPrefs = feedPreferences.getAutoDownloadPreferences();
-            if (autoDownloadPrefs != null) {
-                int autoDownloadCacheSize = autoDownloadPrefs.getCacheSize();
-                autoDownloadCachePrefView.setSummary(getString(R.string.auto_download_cache_pref_summary)
-                        + "-" + autoDownloadCacheSize);
-                newestFirstPrefView.setChecked(autoDownloadPrefs.isNewestFirst());
-                includeAllPrefView.setChecked(autoDownloadPrefs.isIncludeAll());
             }
         }
 

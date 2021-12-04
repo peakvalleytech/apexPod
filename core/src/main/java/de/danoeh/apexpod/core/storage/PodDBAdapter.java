@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
 import de.danoeh.apexpod.model.Playlist;
+import de.danoeh.apexpod.model.feed.AutoDownload;
 import de.danoeh.apexpod.model.feed.FeedFunding;
 import de.danoeh.apexpod.core.storage.mapper.FeedItemFilterQuery;
 import org.apache.commons.io.FileUtils;
@@ -122,6 +123,9 @@ public class PodDBAdapter {
     public static final String KEY_EPISODE_NOTIFICATION = "episode_notification";
     public static final String KEY_PLAYLIST_NAME = "name";
     public static final String KEY_PLAYLIST = "playlist";
+    public static final String KEY_AUTO_DOWNLOAD_CACHE_SIZE = "auto_download_cache_size";
+    public static final String KEY_AUTO_DOWNLOAD_NEWEST_FIRST = "auto_download_newest_first";
+    public static final String KEY_AUTO_DOWNLOAD_INCLUDE_ALL = "auto_download_include_all";
 
     // Table names
     public static final String TABLE_NAME_FEEDS = "Feeds";
@@ -164,7 +168,10 @@ public class PodDBAdapter {
             + KEY_FEED_TAGS + " TEXT,"
             + KEY_FEED_SKIP_INTRO + " INTEGER DEFAULT 0,"
             + KEY_FEED_SKIP_ENDING + " INTEGER DEFAULT 0,"
-            + KEY_EPISODE_NOTIFICATION + " INTEGER DEFAULT 0)";
+            + KEY_EPISODE_NOTIFICATION + " INTEGER DEFAULT 0,"
+            + KEY_AUTO_DOWNLOAD_CACHE_SIZE + " INTEGER DEFAULT 1,"
+            + KEY_AUTO_DOWNLOAD_NEWEST_FIRST + " INTEGER DEFAULT 1,"
+            + KEY_AUTO_DOWNLOAD_INCLUDE_ALL + " INTEGER DEFAULT 0)";
 
     private static final String CREATE_TABLE_FEED_ITEMS = "CREATE TABLE "
             + TABLE_NAME_FEED_ITEMS + " (" + TABLE_PRIMARY_KEY
@@ -279,7 +286,10 @@ public class PodDBAdapter {
             TABLE_NAME_FEEDS + "." + KEY_FEED_TAGS,
             TABLE_NAME_FEEDS + "." + KEY_FEED_SKIP_INTRO,
             TABLE_NAME_FEEDS + "." + KEY_FEED_SKIP_ENDING,
-            TABLE_NAME_FEEDS + "." + KEY_EPISODE_NOTIFICATION
+            TABLE_NAME_FEEDS + "." + KEY_EPISODE_NOTIFICATION,
+            TABLE_NAME_FEEDS + "." + KEY_AUTO_DOWNLOAD_CACHE_SIZE,
+            TABLE_NAME_FEEDS + "." + KEY_AUTO_DOWNLOAD_NEWEST_FIRST,
+            TABLE_NAME_FEEDS + "." + KEY_AUTO_DOWNLOAD_INCLUDE_ALL
     };
 
     /**
@@ -480,6 +490,13 @@ public class PodDBAdapter {
         values.put(KEY_FEED_SKIP_INTRO, prefs.getFeedSkipIntro());
         values.put(KEY_FEED_SKIP_ENDING, prefs.getFeedSkipEnding());
         values.put(KEY_EPISODE_NOTIFICATION, prefs.getShowEpisodeNotification());
+
+        AutoDownload autoDownloadPrefs = prefs.getAutoDownloadPreferences();
+        if (autoDownloadPrefs != null) {
+            values.put(KEY_AUTO_DOWNLOAD_CACHE_SIZE, autoDownloadPrefs.getCacheSize());
+            values.put(KEY_AUTO_DOWNLOAD_NEWEST_FIRST, autoDownloadPrefs.isNewestFirst());
+            values.put(KEY_AUTO_DOWNLOAD_INCLUDE_ALL, autoDownloadPrefs.isIncludeAll());
+        }
         db.update(TABLE_NAME_FEEDS, values, KEY_ID + "=?", new String[]{String.valueOf(prefs.getFeedID())});
     }
 

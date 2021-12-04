@@ -3,6 +3,8 @@ package de.danoeh.apexpod.core.storage.mapper;
 import android.database.Cursor;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
+
+import de.danoeh.apexpod.model.feed.AutoDownload;
 import de.danoeh.apexpod.model.feed.FeedFilter;
 import de.danoeh.apexpod.model.feed.FeedPreferences;
 import de.danoeh.apexpod.model.feed.VolumeAdaptionSetting;
@@ -34,6 +36,9 @@ public abstract class FeedPreferencesCursorMapper {
         int indexAutoSkipEnding = cursor.getColumnIndex(PodDBAdapter.KEY_FEED_SKIP_ENDING);
         int indexEpisodeNotification = cursor.getColumnIndex(PodDBAdapter.KEY_EPISODE_NOTIFICATION);
         int indexTags = cursor.getColumnIndex(PodDBAdapter.KEY_FEED_TAGS);
+        int indexAutoDownloadCacheSize = cursor.getColumnIndex(PodDBAdapter.KEY_AUTO_DOWNLOAD_CACHE_SIZE);
+        int indexAutoDownloadNewestFirst = cursor.getColumnIndex(PodDBAdapter.KEY_AUTO_DOWNLOAD_NEWEST_FIRST);
+        int indexAutoDownloadIncludeAll = cursor.getColumnIndex(PodDBAdapter.KEY_AUTO_DOWNLOAD_INCLUDE_ALL);
 
         long feedId = cursor.getLong(indexId);
         boolean autoDownload = cursor.getInt(indexAutoDownload) > 0;
@@ -55,6 +60,11 @@ public abstract class FeedPreferencesCursorMapper {
         if (TextUtils.isEmpty(tagsString)) {
             tagsString = FeedPreferences.TAG_ROOT;
         }
+        AutoDownload autoDownloadPrefs = new AutoDownload(
+                cursor.getInt(indexAutoDownloadCacheSize),
+                cursor.getInt(indexAutoDownloadNewestFirst) == 1,
+                        cursor.getInt(indexAutoDownloadIncludeAll) == 1);
+
         return new FeedPreferences(feedId,
                 autoDownload,
                 autoRefresh,
@@ -67,6 +77,8 @@ public abstract class FeedPreferencesCursorMapper {
                 feedAutoSkipIntro,
                 feedAutoSkipEnding,
                 showNotification,
-                new HashSet<>(Arrays.asList(tagsString.split(FeedPreferences.TAG_SEPARATOR))));
+                new HashSet<>(Arrays.asList(tagsString.split(FeedPreferences.TAG_SEPARATOR))),
+                autoDownloadPrefs
+        );
     }
 }
