@@ -20,19 +20,27 @@ import org.robolectric.RobolectricTestRunner;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import de.danoeh.apexpod.core.ApplicationCallbacks;
 import de.danoeh.apexpod.core.ClientConfig;
+import de.danoeh.apexpod.core.storage.mapper.FeedPreferencesCursorMapper;
+import de.danoeh.apexpod.model.feed.AutoDownload;
 import de.danoeh.apexpod.model.feed.Feed;
+import de.danoeh.apexpod.model.feed.FeedFilter;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
+import de.danoeh.apexpod.model.feed.FeedPreferences;
+import de.danoeh.apexpod.model.feed.VolumeAdaptionSetting;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -833,6 +841,58 @@ public class DbWriterTest {
         for (FeedItem item : loadedItems) {
             assertTrue(item.isPlayed());
         }
+    }
+
+    @Test
+    public void testSetFeedPreferences() throws InterruptedException, ExecutionException, TimeoutException {
+        Feed feed = new Feed();
+        feed.setId(1);
+        FeedPreferences expectedFeedPrefs =
+            new FeedPreferences(
+                1,
+                true,
+                true,
+                FeedPreferences.AutoDeleteAction.GLOBAL,
+                VolumeAdaptionSetting.OFF,
+                "user",
+                "password",
+                new FeedFilter(),
+                2.5f,
+                0,
+                0,
+                true,
+                new HashSet<>(),
+                new AutoDownload(10, true, true)
+            );
+        feed.setPreferences(expectedFeedPrefs);
+        PodDBAdapter adapter = PodDBAdapter.getInstance();
+        adapter.open();
+        adapter.setCompleteFeed(feed);
+        adapter.close();
+        DBWriter.setFeedPreferences(expectedFeedPrefs).get(TIMEOUT, TimeUnit.SECONDS);
+        adapter.open();
+        Cursor feedCursor = adapter.getFeedCursor(expectedFeedPrefs.getFeedID());
+        FeedPreferences actualFeedPrefs = null;
+        if (feedCursor.moveToNext()) {
+         actualFeedPrefs = FeedPreferencesCursorMapper.convert(feedCursor);
+        }
+
+        assertEquals(expectedFeedPrefs.getFeedID(), actualFeedPrefs.getFeedID());
+        assertEquals(expectedFeedPrefs.getAutoDownload(), actualFeedPrefs.getAutoDownload());
+        assertEquals(expectedFeedPrefs.getFeedPlaybackSpeed(), actualFeedPrefs.getFeedPlaybackSpeed());
+        assertEquals(expectedFeedPrefs.getKeepUpdated(), actualFeedPrefs.getKeepUpdated());
+        assertEquals(expectedFeedPrefs.getFeedSkipIntro(), actualFeedPrefs.getFeedSkipIntro());
+        assertEquals(expectedFeedPrefs.getFeedSkipEnding(), actualFeedPrefs.getFeedSkipEnding());
+        assertEquals(expectedFeedPrefs.getShowEpisodeNotification(), actualFeedPrefs.getShowEpisodeNotification());
+        assertEquals(expectedFeedPrefs.getAutoDownloadPreferences().getCacheSize(),
+                actualFeedPrefs.getAutoDownloadPreferences().getCacheSize());
+        assertEquals(expectedFeedPrefs.getAutoDownloadPreferences().isIncludeAll(),
+                actualFeedPrefs.getAutoDownloadPreferences().isIncludeAll());
+        assertEquals(expectedFeedPrefs.getAutoDownloadPreferences().isNewestFirst(),
+                actualFeedPrefs.getAutoDownloadPreferences().isNewestFirst());
+        adapter.close();
+
+
     }
 
     private static Feed createTestFeed(int numItems) {
