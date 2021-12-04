@@ -3,6 +3,9 @@ package de.danoeh.apexpod.adapter.actionbutton;
 import android.content.Context;
 
 import androidx.appcompat.app.AlertDialog;
+
+import java.util.ArrayList;
+
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.model.feed.FeedItem;
@@ -46,7 +49,9 @@ class MobileDownloadHelper {
     private static void downloadFeedItems(Context context, FeedItem item) {
         allowMobileDownloadTimestamp = System.currentTimeMillis();
         try {
-            DownloadRequester.getInstance().downloadMedia(context, true, item);
+            ArrayList<FeedItem> feedItems = new ArrayList<>();
+            feedItems.add(item);
+            DownloadRequester.getInstance().downloadMedia(context, true, feedItems);
         } catch (DownloadRequestException e) {
             e.printStackTrace();
             DownloadRequestErrorDialogCreator.newRequestErrorDialog(context, e.getMessage());

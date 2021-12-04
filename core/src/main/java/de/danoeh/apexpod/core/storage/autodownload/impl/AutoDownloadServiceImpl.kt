@@ -6,6 +6,8 @@ import androidx.annotation.VisibleForTesting
 import de.danoeh.apexpod.core.preferences.UserPreferences
 import de.danoeh.apexpod.core.storage.AutomaticDownloadAlgorithm
 import de.danoeh.apexpod.core.storage.DBReader
+import de.danoeh.apexpod.core.storage.DownloadRequestException
+import de.danoeh.apexpod.core.storage.DownloadRequester
 import de.danoeh.apexpod.core.storage.autodownload.AutoDownloadQueue
 import de.danoeh.apexpod.core.util.FeedItemUtil
 import de.danoeh.apexpod.core.util.NetworkUtils
@@ -39,12 +41,25 @@ class AutoDownloadServiceImpl() {
                     for (feed in feeds) {
                         val preferences = feed.preferences
                         if (preferences.autoDownload) {
+
                             val items = feed.items
                             val filteredItems = selectFeedItems(
                                 autodownloadprefs = preferences.autoDownloadPreferences,
                                 items
                             )
                             itemsToDownload.addAll(filteredItems)
+                        }
+                    }
+                    if (itemsToDownload.size > 0) {
+                        try {
+                            DownloadRequester.getInstance()
+                                .downloadMedia(
+                                    context,
+                                    false,
+                                    itemsToDownload
+                                )
+                        } catch (e: DownloadRequestException) {
+                            e.printStackTrace()
                         }
                     }
                 }
