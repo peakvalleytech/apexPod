@@ -1,5 +1,7 @@
 package de.danoeh.apexpod.model.feed;
 
+import androidx.annotation.Nullable;
+
 public class AutoDownload {
     private int cacheSize;
     private boolean newestFirst;
@@ -34,4 +36,5 @@ public class AutoDownload {
     public void setIncludeAll(boolean includeAll) {
         this.includeAll = includeAll;
     }
+
 }
