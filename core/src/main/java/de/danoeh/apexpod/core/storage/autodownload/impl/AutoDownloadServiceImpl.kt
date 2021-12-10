@@ -82,7 +82,7 @@ class AutoDownloadServiceImpl() {
             var autoDownloadQueue = AutoDownloadQueue(items.toMutableList())
             autoDownloadQueue = autoDownloadQueue.getUnplayedItems()
 
-            autoDownloadQueue.sortByNewest(false)
+            autoDownloadQueue.sortByNewest(autodownloadprefs.isNewestFirst)
 
             var downloadAbleSelectedItems =
                 autoDownloadQueue.getDownloadable(autodownloadprefs.cacheSize)
