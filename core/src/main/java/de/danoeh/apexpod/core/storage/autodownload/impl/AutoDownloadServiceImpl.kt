@@ -80,7 +80,7 @@ class AutoDownloadServiceImpl() {
             var selectedItems = mutableListOf<FeedItem>()
 
             var autoDownloadQueue = AutoDownloadQueue(items.toMutableList())
-            autoDownloadQueue = autoDownloadQueue.getUnplayedItems(autodownloadprefs.isIncludeAll)
+            autoDownloadQueue = autoDownloadQueue.getUnplayedItems()
 
             autoDownloadQueue.sortByNewest(false)
 
