@@ -5,23 +5,17 @@ import de.danoeh.apexpod.model.feed.FeedItem
 
 class AutoDownloadQueue(val items : MutableList<FeedItem>) {
 
-    fun getUnplayedItems(includeAll: Boolean): AutoDownloadQueue {
+    fun getUnplayedItems(): AutoDownloadQueue {
         val unplayedItems = mutableListOf<FeedItem>()
-        if (!includeAll) {
-            items.forEach {
-                if (it.playState == FeedItem.NEW) {
-                    unplayedItems.add(it)
-                }
-            }
-        } else {
-            items.forEach {
-                if (it.playState == FeedItem.NEW
-                    || it.playState == FeedItem.UNPLAYED
-                ) {
-                    unplayedItems.add(it)
-                }
+
+        items.forEach {
+            if (it.playState == FeedItem.NEW
+                || it.playState == FeedItem.UNPLAYED
+            ) {
+                unplayedItems.add(it)
             }
         }
+
         return AutoDownloadQueue(unplayedItems)
     }
 
