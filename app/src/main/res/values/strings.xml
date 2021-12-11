@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translate="false">ApexPod</string>
-    <string name="add_to_playlist_label">Add to Playlist</string>
-    <string name="no_playlists_label">No Playlists</string>
-    <string name="no_playlists_sub_label">After you create a playlist, it will appear here.</string>
 </resources>

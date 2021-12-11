@@ -23,6 +23,7 @@ import de.danoeh.apexpod.core.storage.DownloadRequestException;
 import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.util.DownloadError;
 import de.danoeh.apexpod.model.feed.Feed;
+import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.ui.common.ThemeUtils;
 import de.danoeh.apexpod.view.viewholder.DownloadLogItemViewHolder;
@@ -146,7 +147,9 @@ public class DownloadLogAdapter extends BaseAdapter {
                             return;
                         }
                         try {
-                            DownloadRequester.getInstance().downloadMedia(context, true, media.getItem());
+                            ArrayList<FeedItem> feedItems = new ArrayList<>();
+                            feedItems.add( media.getItem());
+                            DownloadRequester.getInstance().downloadMedia(context, true, feedItems);
                             ((MainActivity) context).showSnackbarAbovePlayer(
                                     R.string.status_downloading_label, Toast.LENGTH_SHORT);
                         } catch (DownloadRequestException e) {

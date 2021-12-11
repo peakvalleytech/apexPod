@@ -8,6 +8,8 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
+import java.util.ArrayList;
+
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.model.feed.FeedItem;
@@ -73,7 +75,9 @@ public class DownloadActionButton extends ItemActionButton {
 
     private void downloadEpisode(Context context) {
         try {
-            DownloadRequester.getInstance().downloadMedia(context, true, item);
+            ArrayList<FeedItem> feedItems = new ArrayList<>();
+            feedItems.add(item);
+            DownloadRequester.getInstance().downloadMedia(context, true, feedItems);
         } catch (DownloadRequestException e) {
             e.printStackTrace();
             DownloadRequestErrorDialogCreator.newRequestErrorDialog(context, e.getMessage());

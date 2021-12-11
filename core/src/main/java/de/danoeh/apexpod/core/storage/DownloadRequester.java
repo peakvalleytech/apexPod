@@ -234,7 +234,7 @@ public class DownloadRequester implements DownloadStateProvider {
         downloadFeed(context, feed, false, false, true);
     }
 
-    public synchronized void downloadMedia(@NonNull Context context, boolean initiatedByUser, FeedItem... feedItems)
+    public synchronized void downloadMedia(@NonNull Context context, boolean initiatedByUser, List<FeedItem> feedItems)
             throws DownloadRequestException {
         downloadMedia(true, context, initiatedByUser, feedItems);
 
@@ -242,12 +242,12 @@ public class DownloadRequester implements DownloadStateProvider {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
     public synchronized void downloadMedia(boolean performAutoCleanup, @NonNull Context context,
-                                           boolean initiatedByUser, FeedItem... items)
+                                           boolean initiatedByUser, List<FeedItem> items)
             throws DownloadRequestException {
         Log.d(TAG, "downloadMedia() called with: performAutoCleanup = [" + performAutoCleanup
-                + "], #items = [" + items.length + "]");
+                + "], #items = [" + items.size() + "]");
 
-        List<DownloadRequest> requests = new ArrayList<>(items.length);
+        List<DownloadRequest> requests = new ArrayList<>(items.size());
         for (FeedItem item : items) {
             try {
                 DownloadRequest request = createRequest(item.getMedia(), initiatedByUser);
@@ -255,7 +255,7 @@ public class DownloadRequester implements DownloadStateProvider {
                     requests.add(request);
                 }
             } catch (DownloadRequestException e) {
-                if (items.length < 2) {
+                if (items.size() < 2) {
                     // single download, typically initiated from users
                     throw e;
                 } else {
