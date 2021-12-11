@@ -19,7 +19,10 @@ class AutoDownloadQueue(val items : MutableList<FeedItem>) {
         return AutoDownloadQueue(unplayedItems)
     }
 
-    fun getDownloadable(
+    /**
+     * Gets the next unplayed items that can be downloaded
+     */
+    fun getNextDownloads(
         limit: Int
     ): AutoDownloadQueue {
         var i = 0
@@ -27,7 +30,7 @@ class AutoDownloadQueue(val items : MutableList<FeedItem>) {
 
         while (downloadAbleSelectedItems.size < limit && i < items.size) {
             val item = items.get(i)
-            if (item.isAutoDownloadable() && !FeedItemUtil.isPlaying(item.getMedia())
+            if (item.media != null && !FeedItemUtil.isPlaying(item.getMedia())
                 && !item.getFeed().isLocalFeed()
             ) {
                 downloadAbleSelectedItems.add(item)

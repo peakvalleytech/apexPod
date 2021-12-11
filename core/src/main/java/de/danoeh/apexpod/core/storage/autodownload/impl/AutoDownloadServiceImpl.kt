@@ -4,18 +4,15 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.VisibleForTesting
 import de.danoeh.apexpod.core.preferences.UserPreferences
-import de.danoeh.apexpod.core.storage.AutomaticDownloadAlgorithm
 import de.danoeh.apexpod.core.storage.DBReader
 import de.danoeh.apexpod.core.storage.DownloadRequestException
 import de.danoeh.apexpod.core.storage.DownloadRequester
 import de.danoeh.apexpod.core.storage.autodownload.AutoDownloadQueue
-import de.danoeh.apexpod.core.util.FeedItemUtil
 import de.danoeh.apexpod.core.util.NetworkUtils
 import de.danoeh.apexpod.core.util.PowerUtils
 import de.danoeh.apexpod.model.feed.AutoDownload
 import de.danoeh.apexpod.model.feed.Feed
 import de.danoeh.apexpod.model.feed.FeedItem
-import de.danoeh.apexpod.model.feed.FeedPreferences
 
 class AutoDownloadServiceImpl() {
     private val TAG = "AutoDownlaodService"
@@ -42,7 +39,7 @@ class AutoDownloadServiceImpl() {
                         val preferences = feed.preferences
                         if (preferences.autoDownload) {
 
-                            val items = feed.items
+                            val items = DBReader.getFeedItemList(feed)
                             val filteredItems = selectFeedItems(
                                 autodownloadprefs = preferences.autoDownloadPreferences,
                                 items
@@ -77,25 +74,19 @@ class AutoDownloadServiceImpl() {
         @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
         fun selectFeedItems(autodownloadprefs: AutoDownload, items: List<FeedItem>)
                 : List<FeedItem> {
-            var selectedItems = mutableListOf<FeedItem>()
-
             var autoDownloadQueue = AutoDownloadQueue(items.toMutableList())
             autoDownloadQueue = autoDownloadQueue.getUnplayedItems()
 
-            autoDownloadQueue.sortByNewest(autodownloadprefs.isNewestFirst)
+            autoDownloadQueue.sortByNewest(!autodownloadprefs.isNewestFirst)
 
             var downloadAbleSelectedItems =
-                autoDownloadQueue.getDownloadable(autodownloadprefs.cacheSize)
+                autoDownloadQueue.getNextDownloads(autodownloadprefs.cacheSize)
 
-            if (autodownloadprefs.cacheSize > downloadAbleSelectedItems.size()) {
-                downloadAbleSelectedItems = downloadAbleSelectedItems.subList(0, selectedItems.size)
+            val undownloadedItems = downloadAbleSelectedItems.items.filter {
+                !it.isDownloaded
             }
 
-            return downloadAbleSelectedItems.toList()
+            return undownloadedItems
         }
-
-
-
-
     }
 }

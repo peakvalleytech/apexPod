@@ -71,10 +71,10 @@
             android:key="autoDownloadNewestFirst"
             android:title="Newest first"
             android:summary="Start from newest" />
-        <CheckBoxPreference
-            android:key="autoDownloadIncludeAll"
-            android:title="Include all episodes"
-            android:summary="Include older episodes into auto download"/>
+<!--        <CheckBoxPreference-->
+<!--            android:key="autoDownloadIncludeAll"-->
+<!--            android:title="Include all episodes"-->
+<!--            android:summary="Include older episodes into auto download"/>-->
         <Preference
             android:key="episodeFilter"
             android:summary="@string/episode_filters_description"
