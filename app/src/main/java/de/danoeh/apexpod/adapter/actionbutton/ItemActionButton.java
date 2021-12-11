@@ -52,7 +52,7 @@ public abstract class ItemActionButton {
         } else if (isDownloadingMedia) {
             return new CancelDownloadActionButton(item);
         } else if (UserPreferences.isStreamOverDownload()) {
-            return new StreamActionButton(item);
+            return new StreamActionButton(item, autoPlayMode, autoPlayListId);
         } else {
             return new DownloadActionButton(item);
         }
