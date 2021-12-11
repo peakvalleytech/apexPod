@@ -337,9 +337,9 @@ public class ItemFragment extends Fragment {
             } else if (item.getFeed().isLocalFeed()) {
                 actionButton1 = new PlayLocalActionButton(item);
             } else if (media.isDownloaded()) {
-                actionButton1 = new PlayActionButton(item);
+                actionButton1 = new PlayActionButton(item, 0, 0);
             } else {
-                actionButton1 = new StreamActionButton(item);
+                actionButton1 = new StreamActionButton(item, 0, 0);
             }
             if (DownloadRequester.getInstance().isDownloadingFile(media)) {
                 actionButton2 = new CancelDownloadActionButton(item);
