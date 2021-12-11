@@ -85,7 +85,7 @@ public class EpisodeMultiSelectActionHandler {
             }
         }
         try {
-            DownloadRequester.getInstance().downloadMedia(activity, true, toDownload.toArray(new FeedItem[0]));
+            DownloadRequester.getInstance().downloadMedia(activity, true, toDownload);
         } catch (DownloadRequestException e) {
             e.printStackTrace();
             DownloadRequestErrorDialogCreator.newRequestErrorDialog(activity, e.getMessage());
