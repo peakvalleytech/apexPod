@@ -30,13 +30,13 @@ public class PlayActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context, long playlistId) {
+    public void onClick(Context context, long autoPlayMode) {
         FeedMedia media = item.getMedia();
         if (media == null) {
             return;
         }
 
-        PlaybackPreferences.setCurrentPlaylist(playlistId);
+        PlaybackPreferences.setCurrentPlaylist(autoPlayMode);
 
         if (!media.fileExists()) {
             DBTasks.notifyMissingFeedMediaFile(context, media);

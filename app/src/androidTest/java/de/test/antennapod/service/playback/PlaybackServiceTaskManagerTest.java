@@ -74,7 +74,7 @@ public class PlaybackServiceTaskManagerTest {
 
     @Test
     public void testGetQueue() {
-        PlaybackPreferences.setCurrentPlaylist(PlaybackPreferences.PLAYLIST_QUEUE);
+        PlaybackPreferences.setCurrentPlaylist(PlaybackPreferences.AUTOPLAY_QUEUE);
 
     }
 

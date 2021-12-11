@@ -34,7 +34,7 @@ public class StreamActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context, long pl) {
+    public void onClick(Context context, long autoPlayMode) {
         final FeedMedia media = item.getMedia();
         if (media == null) {
             return;

@@ -91,14 +91,15 @@ public class PlaybackPreferences implements SharedPreferences.OnSharedPreference
     /**
      * Indicates what queue should be used for continuous playback
      */
-    private static final String PREF_PLAYLIST = "de.danoeh.apexpod.preferences.playlist" ;
+    private static final String PREF_AUTOPLAY_MODE = "de.danoeh.apexpod.preferences.autoplayMode" ;
+    private static final String PREF_AUTOPLAY_PLAYLIST_ID = "de.danoeh.apexpod.preferences.autoplayPlaylistId" ;
 
     /**
      * Values for PREF_PLAYLIST
      */
-    public static final long PLAYLIST_QUEUE = -2;
-    public static final long PLAYLIST_FEED = -1;
-    public static final long PLAYLIST_CUSTOM = 0;
+    public static final long AUTOPLAY_QUEUE = -2;
+    public static final long AUTOPLAY_FEED = -1;
+    public static final long AUTOPLAY_PLAYLIST = 0;
 
     private static PlaybackPreferences instance;
     private static SharedPreferences prefs;
@@ -196,13 +197,22 @@ public class PlaybackPreferences implements SharedPreferences.OnSharedPreference
         editor.apply();
     }
 
-    public static void setCurrentPlaylist(long playlist) {
+    public static void setCurrentAutoPlayPlaylistId(long id) {
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putLong(PREF_PLAYLIST, playlist);
+        editor.putLong(PREF_AUTOPLAY_PLAYLIST_ID, id);
         editor.apply();
     }
-    public static long getCurrentPlaylist() {
-        return prefs.getLong(PREF_PLAYLIST, PLAYLIST_QUEUE);
+    public static long getCurrentAutoPlayPlaylistId() {
+        return prefs.getLong(PREF_AUTOPLAY_PLAYLIST_ID, 0);
+    }
+
+    public static void setCurrentAutoPlayPlaylist(long mode) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong(PREF_AUTOPLAY_MODE, mode);
+        editor.apply();
+    }
+    public static long getCurrentAutoPlayPlaylist() {
+        return prefs.getLong(PREF_AUTOPLAY_MODE, AUTOPLAY_QUEUE);
     }
 
     private static int getCurrentPlayerStatusAsInt(PlayerStatus playerStatus) {

@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
+import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
 import de.danoeh.apexpod.model.feed.Chapter;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
@@ -274,6 +276,23 @@ public final class DBReader {
         } finally {
             adapter.close();
         }
+    }
+
+    public static List<FeedItem> getAutoPlayItems() {
+        long autoPlayMode = PlaybackPreferences.getCurrentAutoPlayPlaylist();
+        if (autoPlayMode == PlaybackPreferences.AUTOPLAY_QUEUE) {
+            return DBReader.getQueue();
+        } else if (autoPlayMode == PlaybackPreferences.AUTOPLAY_PLAYLIST) {
+            PlayListItemDao playListItemDao = new PlayListItemDao();
+            long playlistId = PlaybackPreferences.getCurrentAutoPlayPlaylistId();
+            return playListItemDao.getItemsByPlayListId(playlistId);
+        } else if(autoPlayMode == PlaybackPreferences.AUTOPLAY_FEED) {
+            long feedId = PlaybackPreferences.getCurrentAutoPlayPlaylistId();
+            Feed feed = DBReader.getFeed(feedId);
+            if(feed.getItemFilter() != null)
+                return DBReader.getFeedItemList(feed, feed.getItemFilter());
+        }
+        return DBReader.getQueue();
     }
 
     /**
