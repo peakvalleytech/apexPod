@@ -327,9 +327,9 @@ public class DBWriter {
             }
 
             adapter.close();
-            if (performAutoDownload) {
-                DBTasks.autodownloadUndownloadedItems(context);
-            }
+//            if (performAutoDownload) {
+//                DBTasks.autodownloadUndownloadedItems(context);
+//            }
 
         });
 
