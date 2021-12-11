@@ -13,8 +13,13 @@ import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.util.playback.PlaybackServiceStarter;
 
 public class PlayActionButton extends ItemActionButton {
-    public PlayActionButton(FeedItem item) {
+    private long autoPlayMode;
+    private long autoPlayListId;
+
+    public PlayActionButton(FeedItem item, long autoPlayMode, long autoPlayListId) {
         super(item);
+        this.autoPlayMode = autoPlayMode;
+        this.autoPlayListId = autoPlayListId;
     }
 
     @Override
@@ -30,13 +35,14 @@ public class PlayActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context, long autoPlayMode) {
+    public void onClick(Context context) {
         FeedMedia media = item.getMedia();
         if (media == null) {
             return;
         }
 
-        PlaybackPreferences.setCurrentPlaylist(autoPlayMode);
+        PlaybackPreferences.setCurrentAutoPlayPlaylist(autoPlayMode);
+        PlaybackPreferences.setCurrentAutoPlayPlaylistId(autoPlayListId);
 
         if (!media.fileExists()) {
             DBTasks.notifyMissingFeedMediaFile(context, media);

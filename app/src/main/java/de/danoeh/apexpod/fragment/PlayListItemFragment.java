@@ -44,6 +44,7 @@ import de.danoeh.apexpod.core.event.FeedItemEvent;
 import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
 import de.danoeh.apexpod.core.event.PlayerStatusEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
@@ -436,7 +437,8 @@ public class PlayListItemFragment extends Fragment implements
                 recyclerView.setAdapter(recyclerAdapter);
                 emptyView.updateAdapter(recyclerAdapter);
             }
-            recyclerAdapter.playlsit = playList.getId();
+            recyclerAdapter.autoPlayMode = PlaybackPreferences.AUTOPLAY_PLAYLIST;
+            recyclerAdapter.autoPlayPlayListId = playList.getId();
             recyclerAdapter.updateItems(playListItems);
         } else {
             recyclerAdapter = null;

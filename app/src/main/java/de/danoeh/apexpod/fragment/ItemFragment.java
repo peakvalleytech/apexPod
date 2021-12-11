@@ -176,7 +176,7 @@ public class ItemFragment extends Fragment {
                 showOnDemandConfigBalloon(true);
                 return;
             }
-            actionButton1.onClick(getContext(), 0);
+            actionButton1.onClick(getContext());
         });
         butAction2.setOnClickListener(v -> {
             if (actionButton2 instanceof DownloadActionButton && UserPreferences.isStreamOverDownload()
@@ -184,7 +184,7 @@ public class ItemFragment extends Fragment {
                 showOnDemandConfigBalloon(false);
                 return;
             }
-            actionButton2.onClick(getContext(), 0);
+            actionButton2.onClick(getContext());
         });
         return layout;
     }

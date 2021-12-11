@@ -30,7 +30,7 @@ public class PauseActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context, long autoPlayMode) {
+    public void onClick(Context context) {
         FeedMedia media = item.getMedia();
         if (media == null) {
             return;
