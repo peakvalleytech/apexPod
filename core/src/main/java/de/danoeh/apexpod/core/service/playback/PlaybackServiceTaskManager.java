@@ -110,18 +110,7 @@ public class PlaybackServiceTaskManager {
     private synchronized void loadQueue() {
         if (!isQueueLoaderActive()) {
             queueFuture = schedExecutor.submit(() -> {
-                long playlist = PlaybackPreferences.getCurrentPlaylist();
-                if (playlist == PlaybackPreferences.PLAYLIST_QUEUE) {
-                    return DBReader.getQueue();
-                } else if (playlist == PlaybackPreferences.PLAYLIST_CUSTOM) {
-                    PlayListItemRepositoryImpl playListItemRepository =
-                            new PlayListItemRepositoryImpl(new PlayListItemDao());
-                    return playListItemRepository.getItemsByPlayListId(playlist);
-                } else if(playlist == PlaybackPreferences.PLAYLIST_FEED) {
-                    Feed feed = DBReader.getFeed(playlist);
-                    return DBReader.getFeedItemList(feed, feed.getItemFilter());
-                }
-                return DBReader.getQueue();
+                return DBReader.getAutoPlayItems();
             });
         }
     }

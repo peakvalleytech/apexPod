@@ -326,7 +326,7 @@ public final class DBTasks {
     public static FeedItem getQueueSuccessorOfItem(final long itemId, List<FeedItem> queue) {
         FeedItem result = null;
         if (queue == null) {
-            queue = DBReader.getQueue();
+            queue = DBReader.getAutoPlayItems();
         }
         if (queue != null) {
             Iterator<FeedItem> iterator = queue.iterator();

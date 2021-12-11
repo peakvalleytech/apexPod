@@ -26,7 +26,7 @@ public abstract class ItemActionButton {
     @DrawableRes
     public abstract int getDrawable();
 
-    public abstract void onClick(Context context, long playlistId);
+    public abstract void onClick(Context context, long autoPlayMode);
 
     public int getVisibility() {
         return View.VISIBLE;

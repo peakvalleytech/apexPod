@@ -481,7 +481,7 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
         }
         progressBar.setVisibility(View.GONE);
         if (feed != null) {
-            adapter.playlsit = PlaybackPreferences.PLAYLIST_FEED;
+            adapter.playlsit = PlaybackPreferences.AUTOPLAY_FEED;
             adapter.updateItems(feed.getItems());
             swipeActions.setFilter(feed.getItemFilter());
         }

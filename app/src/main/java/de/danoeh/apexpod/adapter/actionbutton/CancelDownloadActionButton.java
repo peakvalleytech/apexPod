@@ -30,7 +30,7 @@ public class CancelDownloadActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context, long pl) {
+    public void onClick(Context context, long autoPlayMode) {
         FeedMedia media = item.getMedia();
         DownloadRequester.getInstance().cancelDownload(context, media);
         if (UserPreferences.isEnableAutodownload()) {
