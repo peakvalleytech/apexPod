@@ -66,7 +66,8 @@
         <EditTextPreference
             android:key="autoDownloadCache"
             android:title="Episodes to Auto Download"
-            android:summary="@string/auto_download_cache_pref_summary"/>
+            android:summary="@string/auto_download_cache_pref_summary"
+            android:defaultValue="1"/>
         <SwitchPreferenceCompat
             android:key="autoDownloadNewestFirst"
             android:title="Newest first"

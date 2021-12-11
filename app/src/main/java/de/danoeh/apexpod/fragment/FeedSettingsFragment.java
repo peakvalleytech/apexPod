@@ -406,6 +406,7 @@ public class FeedSettingsFragment extends Fragment {
                     autoDownload = new AutoDownload(0, true, false);
                 }
                 autoDownloadCachePrefView.setEnabled(autoDownloadEnabled);
+                autoDownloadCachePrefView.setText(String.valueOf(autoDownload.getCacheSize()));
                 AutoDownload finalAutoDownload = autoDownload;
                 autoDownloadCachePrefView.setOnPreferenceChangeListener((preference, newValue) -> {
                     Integer cacheSize = 0;
