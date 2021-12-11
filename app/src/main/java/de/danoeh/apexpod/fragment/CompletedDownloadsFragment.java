@@ -257,7 +257,7 @@ public class CompletedDownloadsFragment extends Fragment implements
         public void afterBindViewHolder(EpisodeItemViewHolder holder, int pos) {
             if (!inActionMode()) {
                 DeleteActionButton actionButton = new DeleteActionButton(getItem(pos));
-                actionButton.configure(holder.secondaryActionButton, holder.secondaryActionIcon, getActivity(), playlsit);
+                actionButton.configure(holder.secondaryActionButton, holder.secondaryActionIcon, getActivity());
             }
         }
 

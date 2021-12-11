@@ -28,7 +28,7 @@ public class DeleteActionButton extends ItemActionButton {
     }
 
     @Override
-    public void onClick(Context context, long autoPlayMode) {
+    public void onClick(Context context) {
         final FeedMedia media = item.getMedia();
         if (media == null) {
             return;

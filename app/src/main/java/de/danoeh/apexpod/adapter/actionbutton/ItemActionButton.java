@@ -15,6 +15,9 @@ import de.danoeh.apexpod.core.util.FeedItemUtil;
 
 public abstract class ItemActionButton {
     FeedItem item;
+    public interface OnClickListener {
+    }
+    OnClickListener onClickListener = new OnClickListener() {};
 
     ItemActionButton(FeedItem item) {
         this.item = item;
@@ -26,14 +29,14 @@ public abstract class ItemActionButton {
     @DrawableRes
     public abstract int getDrawable();
 
-    public abstract void onClick(Context context, long autoPlayMode);
+    public abstract void onClick(Context context);
 
     public int getVisibility() {
         return View.VISIBLE;
     }
 
     @NonNull
-    public static ItemActionButton forItem(@NonNull FeedItem item) {
+    public static ItemActionButton forItem(@NonNull FeedItem item, long autoPlayMode, long autoPlayListId) {
         final FeedMedia media = item.getMedia();
         if (media == null) {
             return new MarkAsPlayedActionButton(item);
@@ -45,7 +48,7 @@ public abstract class ItemActionButton {
         } else if (item.getFeed().isLocalFeed()) {
             return new PlayLocalActionButton(item);
         } else if (media.isDownloaded()) {
-            return new PlayActionButton(item);
+            return new PlayActionButton(item, autoPlayMode, autoPlayListId);
         } else if (isDownloadingMedia) {
             return new CancelDownloadActionButton(item);
         } else if (UserPreferences.isStreamOverDownload()) {
@@ -55,10 +58,11 @@ public abstract class ItemActionButton {
         }
     }
 
-    public void configure(@NonNull View button, @NonNull ImageView icon, Context context, long playlist) {
+
+    public void configure(@NonNull View button, @NonNull ImageView icon, Context context) {
         button.setVisibility(getVisibility());
         button.setContentDescription(context.getString(getLabel()));
-        button.setOnClickListener((view) -> onClick(context, playlist));
+        button.setOnClickListener((view) -> onClick(context));
         icon.setImageResource(getDrawable());
     }
 }

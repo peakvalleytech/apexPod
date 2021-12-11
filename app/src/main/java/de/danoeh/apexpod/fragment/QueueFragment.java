@@ -497,7 +497,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
                 recyclerView.setAdapter(recyclerAdapter);
                 emptyView.updateAdapter(recyclerAdapter);
             }
-            recyclerAdapter.playlsit = PlaybackPreferences.AUTOPLAY_QUEUE;
+            recyclerAdapter.autoPlayMode = PlaybackPreferences.AUTOPLAY_QUEUE;
             recyclerAdapter.updateItems(queue);
         } else {
             recyclerAdapter = null;
