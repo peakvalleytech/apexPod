@@ -349,7 +349,11 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
         }
         MainActivity activity = (MainActivity) getActivity();
         long[] ids = FeedItemUtil.getIds(feed.getItems());
-        activity.loadChildFragment(ItemPagerFragment.newInstance(ids, position));
+        activity.loadChildFragment(ItemPagerFragment.newInstance(ids,
+                position,
+                PlaybackPreferences.AUTOPLAY_FEED,
+                feed.getId()
+                ));
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

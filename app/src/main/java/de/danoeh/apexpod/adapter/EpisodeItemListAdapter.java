@@ -76,7 +76,7 @@ public class EpisodeItemListAdapter extends SelectableAdapter<EpisodeItemViewHol
             if (activity != null && !inActionMode()) {
                 long[] ids = FeedItemUtil.getIds(episodes);
                 int position = ArrayUtils.indexOf(ids, item.getId());
-                activity.loadChildFragment(ItemPagerFragment.newInstance(ids, position));
+                activity.loadChildFragment(ItemPagerFragment.newInstance(ids, position, autoPlayMode, autoPlayPlayListId));
             } else {
                 toggleSelection(holder.getBindingAdapterPosition());
             }
