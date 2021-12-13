@@ -26,6 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="8dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -34,11 +35,12 @@
                 android:id="@+id/featured_feeditem_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
+                android:paddingBottom="24dp"
                 android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:text="Featured Episode"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="?android:attr/textColorPrimary"
                 app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
             <de.danoeh.apexpod.ui.common.SquareImageView
