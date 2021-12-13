@@ -21,6 +21,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.core.event.FeedItemEvent;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
+import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
@@ -36,6 +38,8 @@ public class ItemPagerFragment extends Fragment implements Toolbar.OnMenuItemCli
     private static final String ARG_FEEDITEMS = "feeditems";
     private static final String ARG_FEEDITEM_POS = "feeditem_pos";
     private static final String KEY_PAGER_ID = "pager_id";
+    private static final String AUTOPLAY_MODE = "autoplayMode";
+    private static final String AUTOPLAY_PLAYLIST_ID = "autoPlayPlaylistId";
     private ViewPager2 pager;
 
     /**
@@ -45,11 +49,16 @@ public class ItemPagerFragment extends Fragment implements Toolbar.OnMenuItemCli
      * @param feedItemPos The position of the FeedItem that is currently shown
      * @return The ItemFragment instance
      */
-    public static ItemPagerFragment newInstance(long[] feeditems, int feedItemPos) {
+    public static ItemPagerFragment newInstance(long[] feeditems,
+                                                int feedItemPos,
+                                                long autoPlayMode,
+                                                long autPlayPlaylistId) {
         ItemPagerFragment fragment = new ItemPagerFragment();
         Bundle args = new Bundle();
         args.putLongArray(ARG_FEEDITEMS, feeditems);
         args.putInt(ARG_FEEDITEM_POS, feedItemPos);
+        args.putLong(AUTOPLAY_MODE, autoPlayMode);
+        args.putLong(AUTOPLAY_PLAYLIST_ID, autPlayPlaylistId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -84,7 +93,10 @@ public class ItemPagerFragment extends Fragment implements Toolbar.OnMenuItemCli
             newId = savedInstanceState.getInt(KEY_PAGER_ID, 0);
         }
         pager.setId(newId);
-        pager.setAdapter(new ItemPagerAdapter(this));
+
+        long autoplayMode = getArguments().getLong(AUTOPLAY_MODE);
+        long autoPlayPlaylistId = getArguments().getLong(AUTOPLAY_PLAYLIST_ID);
+        pager.setAdapter(new ItemPagerAdapter(this, autoplayMode, autoPlayPlaylistId));
         pager.setCurrentItem(feedItemPos, false);
         pager.setOffscreenPageLimit(1);
         loadItem(feedItems[feedItemPos]);
@@ -167,15 +179,19 @@ public class ItemPagerFragment extends Fragment implements Toolbar.OnMenuItemCli
     }
 
     private class ItemPagerAdapter extends FragmentStateAdapter {
-
-        ItemPagerAdapter(@NonNull Fragment fragment) {
+        private long autoplayMode;
+        private long autoplayPlaylistId;
+        ItemPagerAdapter(@NonNull Fragment fragment, long autoplayMode, long autoplayPlaylistId) {
             super(fragment);
+            this.autoplayMode = autoplayMode;
+            this.autoplayPlaylistId = autoplayPlaylistId;
         }
 
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-            return ItemFragment.newInstance(feedItems[position]);
+
+            return ItemFragment.newInstance(feedItems[position], autoplayMode, autoplayPlaylistId);
         }
 
         @Override
