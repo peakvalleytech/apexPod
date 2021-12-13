@@ -72,12 +72,6 @@ public class PlaybackServiceTaskManagerTest {
         pstm.shutdown();
     }
 
-    @Test
-    public void testGetQueue() {
-        PlaybackPreferences.setCurrentPlaylist(PlaybackPreferences.AUTOPLAY_QUEUE);
-
-    }
-
     private List<FeedItem> writeTestQueue(String pref) {
         final int NUM_ITEMS = 10;
         Feed f = new Feed(0, null, "title", "link", "d", null, null, null, null, "id", null, "null", "url", false);
