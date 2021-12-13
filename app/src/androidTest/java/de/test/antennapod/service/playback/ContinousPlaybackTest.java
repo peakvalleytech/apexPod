@@ -42,7 +42,6 @@ public class ContinousPlaybackTest {
     private List<FeedItem> feedItems = null;
 
     @Before
-
     public void setUp() {
         // create new database
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
@@ -84,15 +83,13 @@ public class ContinousPlaybackTest {
             assertEquals(testQueue.get(i).getId(), playlistItems.get(i).getId());
         }
         pstm.shutdown();
-
     }
 
     @Test
     public void switchingBetweenQueueAndPlaylist_shouldSwitchAutoPlayMode() throws InterruptedException {
-        for (int i = 0; i < 30; ++i) {
+        for (int i = 0; i < 10; ++i) {
            testGetQueue();
            testGetPlayList();
-//            Thread.sleep(1000);
         }
     }
 
@@ -124,7 +121,6 @@ public class ContinousPlaybackTest {
         }
 
         PodDBAdapter adapter = PodDBAdapter.getInstance();
-
         adapter.open();
         adapter.setCompleteFeed(f);
         adapter.close();
@@ -141,7 +137,6 @@ public class ContinousPlaybackTest {
         PlaylistRepositoryImpl playlistRepository = new PlaylistRepositoryImpl(context);
         Playlist playlist = new Playlist("Playlist 1");
         playlistRepository.addPlaylist(playlist);
-
 
         PlayListItemDao playListItemDao = new PlayListItemDao();
         playListItemDao.addItemsByPlayistId(1, feedItems);
@@ -167,29 +162,22 @@ public class ContinousPlaybackTest {
         for (FeedItem item : f.getItems()) {
             assertTrue(item.getId() != 0);
         }
+
         return f.getItems();
     }
 
     private final PlaybackServiceTaskManager.PSTMCallback defaultPSTM = new PlaybackServiceTaskManager.PSTMCallback() {
         @Override
-        public void positionSaverTick() {
-
-        }
+        public void positionSaverTick() { }
 
         @Override
-        public void onSleepTimerAlmostExpired(long timeLeft) {
-
-        }
+        public void onSleepTimerAlmostExpired(long timeLeft) { }
 
         @Override
-        public void onSleepTimerExpired() {
-
-        }
+        public void onSleepTimerExpired() { }
 
         @Override
-        public void onSleepTimerReset() {
-
-        }
+        public void onSleepTimerReset() { }
 
         @Override
         public WidgetUpdater.WidgetState requestWidgetState() {
@@ -197,8 +185,6 @@ public class ContinousPlaybackTest {
         }
 
         @Override
-        public void onChapterLoaded(Playable media) {
-
-        }
+        public void onChapterLoaded(Playable media) { }
     };
 }
