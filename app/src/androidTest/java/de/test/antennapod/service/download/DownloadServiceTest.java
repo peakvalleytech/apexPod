@@ -17,6 +17,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -114,7 +115,7 @@ public class DownloadServiceTest {
                         DBReader.getFeedMedia(testMedia11.getId()).isDownloaded());
 
                 DownloadRequester.getInstance().downloadMedia(false, InstrumentationRegistry
-                        .getInstrumentation().getTargetContext(), true, testMedia11.getItem());
+                        .getInstrumentation().getTargetContext(), true, Collections.singletonList(testMedia11.getItem()));
                 Awaitility.await()
                         .atMost(5000, TimeUnit.MILLISECONDS)
                         .until(() -> feedItemEventListener.getEvents().size() >= numEventsExpected);
@@ -158,7 +159,7 @@ public class DownloadServiceTest {
         }
 
         withFeedItemEventListener(feedItemEventListener -> {
-            DownloadRequester.getInstance().downloadMedia(false, context, true, testMedia11.getItem());
+            DownloadRequester.getInstance().downloadMedia(false, context, true, Collections.singletonList(testMedia11.getItem()));
             withDownloadEventListener(downloadEventListener ->
                     Awaitility.await("download is actually running")
                         .atMost(5000, TimeUnit.MILLISECONDS)

@@ -414,7 +414,7 @@ public class PreferencesTest {
         onView(withText(R.string.pref_episode_cleanup_title)).perform(click());
         onView(withId(R.id.select_dialog_listview)).perform(swipeUp());
         onView(withText(R.string.episode_cleanup_never)).perform(click());
-        Awaitility.await().atMost(1000, MILLISECONDS)
+        Awaitility.await().atMost(1000, MILLISECONDS);
 //                .until(() -> UserPreferences.getEpisodeCleanupAlgorithm() instanceof APNullCleanupAlgorithm);
     }
 
