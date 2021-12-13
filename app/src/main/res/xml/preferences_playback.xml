@@ -98,12 +98,12 @@
                 android:entryValues="@array/enqueue_location_values"
                 android:key="prefEnqueueLocation"
                 android:title="@string/pref_enqueue_location_title"/>
-        <SwitchPreferenceCompat
-                android:defaultValue="true"
-                android:enabled="true"
-                android:key="prefFollowQueue"
-                android:summary="@string/pref_followQueue_sum"
-                android:title="@string/pref_followQueue_title"/>
+<!--        <SwitchPreferenceCompat-->
+<!--                android:defaultValue="true"-->
+<!--                android:enabled="true"-->
+<!--                android:key="prefFollowQueue"-->
+<!--                android:summary="@string/pref_followQueue_sum"-->
+<!--                android:title="@string/pref_followQueue_title"/>-->
         <ListPreference
                 android:defaultValue="30"
                 android:entries="@array/smart_mark_as_played_values"
