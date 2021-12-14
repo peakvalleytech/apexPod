@@ -272,6 +272,4 @@
         <item>EpisodesFragment</item>
         <item>SubscriptionFragment</item>
     </string-array>
-    <string name="playlists_label">Playlists</string>
-    <string name="main_fragment_label">Home</string>
 </resources>
