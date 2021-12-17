@@ -17,6 +17,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
@@ -27,6 +29,7 @@ import com.bumptech.glide.request.RequestOptions;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.core.glide.ApGlideSettings;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.storage.repository.HomeRepository;
 import de.danoeh.apexpod.core.storage.repository.impl.HomeRepositoryImpl;
 import de.danoeh.apexpod.model.feed.FeedItem;
@@ -72,8 +75,21 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
         imgvCover = root.findViewById(R.id.imgvCover);
         podcastTitle = root.findViewById(R.id.txtvPodcastTitle);
         episodeTitle = root.findViewById(R.id.txtvEpisodeTitle);
-
         emptyViewLayout = root.findViewById(R.id.empty_layout);
+
+        imgvCover.setOnClickListener(v -> {
+            long autoplayMode = PlaybackPreferences.AUTOPLAY_QUEUE;
+            Fragment fragment = ItemFragment.newInstance(featuredFeedItem.getId(), autoplayMode, 0);
+            FragmentManager fragmentManager = getChildFragmentManager();
+            // clear back stack
+            for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++) {
+                fragmentManager.popBackStack();
+            }
+            FragmentTransaction t = fragmentManager.beginTransaction();
+            t.replace(R.id.home_layout, fragment);
+            t.commitAllowingStateLoss();
+        });
+
 
         setupEmptyView(root);
 

@@ -78,8 +78,7 @@ import java.util.Locale;
  * Displays information about a FeedItem and actions.
  */
 public class ItemFragment extends Fragment {
-
-    private static final String TAG = "ItemFragment";
+    public static final String TAG = "ItemFragment";
     private static final String ARG_FEEDITEM = "feeditem";
     private static final String AUTOPLAY_MODE = "autoplayMode";
     private static final String AUTOPLAY_PLAYLIST_ID = "autoPlayPlaylistId";
