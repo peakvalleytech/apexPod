@@ -31,7 +31,7 @@ public class PlaybackPreferencesFragment extends PreferenceFragmentCompat {
         addPreferencesFromResource(R.xml.preferences_playback);
 
         setupPlaybackScreen();
-        PreferenceControllerFlavorHelper.setupFlavoredUI(this);
+//        PreferenceControllerFlavorHelper.setupFlavoredUI(this);
         buildSmartMarkAsPlayedPreference();
     }
 
