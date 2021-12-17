@@ -1,7 +1,6 @@
 package de.danoeh.apexpod.core.storage.autodelete.impl.rules
 
 import androidx.annotation.VisibleForTesting
-import de.danoeh.apexpod.core.storage.APCleanupAlgorithm
 import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteRule
 import de.danoeh.apexpod.model.feed.FeedItem
 import java.util.*

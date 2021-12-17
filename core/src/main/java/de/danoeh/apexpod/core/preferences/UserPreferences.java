@@ -34,11 +34,6 @@ import de.danoeh.apexpod.core.R;
 import de.danoeh.apexpod.model.playback.MediaType;
 import de.danoeh.apexpod.core.feed.SubscriptionsFilter;
 import de.danoeh.apexpod.core.service.download.ProxyConfig;
-import de.danoeh.apexpod.core.storage.APCleanupAlgorithm;
-import de.danoeh.apexpod.core.storage.ExceptFavoriteCleanupAlgorithm;
-import de.danoeh.apexpod.core.storage.APNullCleanupAlgorithm;
-import de.danoeh.apexpod.core.storage.APQueueCleanupAlgorithm;
-import de.danoeh.apexpod.core.storage.EpisodeCleanupAlgorithm;
 import de.danoeh.apexpod.model.feed.SortOrder;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
 
@@ -868,22 +863,6 @@ public class UserPreferences {
             case "continue": return VideoBackgroundBehavior.CONTINUE_PLAYING;
             case "pip": //Deliberate fall-through
             default: return VideoBackgroundBehavior.PICTURE_IN_PICTURE;
-        }
-    }
-
-    public static EpisodeCleanupAlgorithm getEpisodeCleanupAlgorithm() {
-        if (!isEnableAutodownload()) {
-            return new APNullCleanupAlgorithm();
-        }
-        int cleanupValue = getEpisodeCleanupValue();
-        if (cleanupValue == EPISODE_CLEANUP_EXCEPT_FAVORITE) {
-            return new ExceptFavoriteCleanupAlgorithm();
-        } else if (cleanupValue == EPISODE_CLEANUP_QUEUE) {
-            return new APQueueCleanupAlgorithm();
-        } else if (cleanupValue == EPISODE_CLEANUP_NULL) {
-            return new APNullCleanupAlgorithm();
-        } else {
-            return new APCleanupAlgorithm(cleanupValue);
         }
     }
 
