@@ -797,11 +797,11 @@ public class UserPreferences {
     }
 
     private static int readEpisodeCacheSizeInternal(String valueFromPrefs) {
-        if (valueFromPrefs.equals(context.getString(R.string.pref_episode_cache_unlimited))) {
+//        if (valueFromPrefs.equals(context.getString(R.string.pref_episode_cache_unlimited))) {
             return EPISODE_CACHE_SIZE_UNLIMITED;
-        } else {
-            return Integer.parseInt(valueFromPrefs);
-        }
+//        } else {
+//            return Integer.parseInt(valueFromPrefs);
+//        }
     }
 
     private static List<Float> readPlaybackSpeedArray(String valueFromPrefs) {
