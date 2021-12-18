@@ -64,10 +64,10 @@
 <!--            android:key="prefContribute"-->
 <!--            android:title="@string/pref_contribute"-->
 <!--            android:icon="@drawable/ic_contribute" />-->
-        <Preference
-            android:key="prefSendBugReport"
-            android:title="@string/bug_report_title"
-            android:icon="@drawable/ic_bug" />
+<!--        <Preference-->
+<!--            android:key="prefSendBugReport"-->
+<!--            android:title="@string/bug_report_title"-->
+<!--            android:icon="@drawable/ic_bug" />-->
         <Preference
             android:key="prefAbout"
             android:title="@string/about_pref"

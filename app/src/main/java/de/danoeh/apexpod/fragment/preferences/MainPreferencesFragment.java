@@ -115,10 +115,10 @@ public class MainPreferencesFragment extends PreferenceFragmentCompat {
 //            IntentUtils.openInBrowser(getContext(), "https://antennapod.org/contribute/");
 //            return true;
 //        });
-        findPreference(PREF_SEND_BUG_REPORT).setOnPreferenceClickListener(preference -> {
-            startActivity(new Intent(getActivity(), BugReportActivity.class));
-            return true;
-        });
+//        findPreference(PREF_SEND_BUG_REPORT).setOnPreferenceClickListener(preference -> {
+//            startActivity(new Intent(getActivity(), BugReportActivity.class));
+//            return true;
+//        });
     }
 
     private void setupSearch() {

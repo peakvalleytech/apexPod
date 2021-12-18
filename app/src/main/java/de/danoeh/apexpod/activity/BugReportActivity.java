@@ -43,35 +43,35 @@ public class BugReportActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(UserPreferences.getTheme());
+//        setTheme(UserPreferences.getTheme());
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        setContentView(R.layout.bug_report);
-
-        String stacktrace = "No crash report recorded";
-        try {
-            File crashFile = CrashReportWriter.getFile();
-            if (crashFile.exists()) {
-                stacktrace = IOUtils.toString(new FileInputStream(crashFile), Charset.forName("UTF-8"));
-            } else {
-                Log.d(TAG, stacktrace);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        TextView crashDetailsTextView = findViewById(R.id.crash_report_logs);
-        crashDetailsTextView.setText(CrashReportWriter.getSystemInfo() + "\n\n" + stacktrace);
-
-        findViewById(R.id.btn_open_bug_tracker).setOnClickListener(v -> IntentUtils.openInBrowser(
-                BugReportActivity.this, "https://github.com/AntennaPod/AntennaPod/issues"));
-
-        findViewById(R.id.btn_copy_log).setOnClickListener(v -> {
-            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText(getString(R.string.bug_report_title), crashDetailsTextView.getText());
-            clipboard.setPrimaryClip(clip);
-            Snackbar.make(findViewById(android.R.id.content), R.string.copied_to_clipboard, Snackbar.LENGTH_SHORT).show();
-        });
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        setContentView(R.layout.bug_report);
+//
+//        String stacktrace = "No crash report recorded";
+//        try {
+//            File crashFile = CrashReportWriter.getFile();
+//            if (crashFile.exists()) {
+//                stacktrace = IOUtils.toString(new FileInputStream(crashFile), Charset.forName("UTF-8"));
+//            } else {
+//                Log.d(TAG, stacktrace);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        TextView crashDetailsTextView = findViewById(R.id.crash_report_logs);
+//        crashDetailsTextView.setText(CrashReportWriter.getSystemInfo() + "\n\n" + stacktrace);
+//
+//        findViewById(R.id.btn_open_bug_tracker).setOnClickListener(v -> IntentUtils.openInBrowser(
+//                BugReportActivity.this, "https://github.com/AntennaPod/AntennaPod/issues"));
+//
+//        findViewById(R.id.btn_copy_log).setOnClickListener(v -> {
+//            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+//            ClipData clip = ClipData.newPlainText(getString(R.string.bug_report_title), crashDetailsTextView.getText());
+//            clipboard.setPrimaryClip(clip);
+//            Snackbar.make(findViewById(android.R.id.content), R.string.copied_to_clipboard, Snackbar.LENGTH_SHORT).show();
+//        });
     }
 
     @Override
@@ -82,54 +82,54 @@ public class BugReportActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.export_logcat) {
-            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-            alertBuilder.setMessage(R.string.confirm_export_log_dialog_message);
-            alertBuilder.setPositiveButton(R.string.confirm_label, (dialog, which) -> {
-                exportLog();
-                dialog.dismiss();
-            });
-            alertBuilder.setNegativeButton(R.string.cancel_label, null);
-            alertBuilder.show();
-            return true;
-        }
+//        if (item.getItemId() == R.id.export_logcat) {
+//            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+//            alertBuilder.setMessage(R.string.confirm_export_log_dialog_message);
+//            alertBuilder.setPositiveButton(R.string.confirm_label, (dialog, which) -> {
+//                exportLog();
+//                dialog.dismiss();
+//            });
+//            alertBuilder.setNegativeButton(R.string.cancel_label, null);
+//            alertBuilder.show();
+//            return true;
+//        }
         return super.onOptionsItemSelected(item);
     }
 
-    private void exportLog() {
-        try {
-            File filename = new File(UserPreferences.getDataFolder(null), "full-logs.txt");
-            String cmd = "logcat -d -f " + filename.getAbsolutePath();
-            Runtime.getRuntime().exec(cmd);
-            //share file
-            try {
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("text/*");
-                String authString = getString(de.danoeh.apexpod.core.R.string.provider_authority);
-                Uri fileUri = FileProvider.getUriForFile(this, authString, filename);
-                i.putExtra(Intent.EXTRA_STREAM, fileUri);
-                i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-                    PackageManager pm = getPackageManager();
-                    List<ResolveInfo> resInfos = pm.queryIntentActivities(i, PackageManager.MATCH_DEFAULT_ONLY);
-                    for (ResolveInfo resolveInfo : resInfos) {
-                        String packageName = resolveInfo.activityInfo.packageName;
-                        grantUriPermission(packageName, fileUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    }
-                }
-                String chooserTitle = getString(de.danoeh.apexpod.core.R.string.share_file_label);
-                startActivity(Intent.createChooser(i, chooserTitle));
-            } catch (Exception e) {
-                e.printStackTrace();
-                int strResId = R.string.log_file_share_exception;
-                Snackbar.make(findViewById(android.R.id.content), strResId, Snackbar.LENGTH_LONG)
-                        .show();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            Snackbar.make(findViewById(android.R.id.content), e.getMessage(), Snackbar.LENGTH_LONG).show();
-        }
-    }
+//    private void exportLog() {
+//        try {
+//            File filename = new File(UserPreferences.getDataFolder(null), "full-logs.txt");
+//            String cmd = "logcat -d -f " + filename.getAbsolutePath();
+//            Runtime.getRuntime().exec(cmd);
+//            //share file
+//            try {
+//                Intent i = new Intent(Intent.ACTION_SEND);
+//                i.setType("text/*");
+//                String authString = getString(de.danoeh.apexpod.core.R.string.provider_authority);
+//                Uri fileUri = FileProvider.getUriForFile(this, authString, filename);
+//                i.putExtra(Intent.EXTRA_STREAM, fileUri);
+//                i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+//                    PackageManager pm = getPackageManager();
+//                    List<ResolveInfo> resInfos = pm.queryIntentActivities(i, PackageManager.MATCH_DEFAULT_ONLY);
+//                    for (ResolveInfo resolveInfo : resInfos) {
+//                        String packageName = resolveInfo.activityInfo.packageName;
+//                        grantUriPermission(packageName, fileUri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//                    }
+//                }
+//                String chooserTitle = getString(de.danoeh.apexpod.core.R.string.share_file_label);
+//                startActivity(Intent.createChooser(i, chooserTitle));
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                int strResId = R.string.log_file_share_exception;
+//                Snackbar.make(findViewById(android.R.id.content), strResId, Snackbar.LENGTH_LONG)
+//                        .show();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Snackbar.make(findViewById(android.R.id.content), e.getMessage(), Snackbar.LENGTH_LONG).show();
+//        }
+//    }
 
 
 }
