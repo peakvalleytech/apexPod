@@ -327,6 +327,46 @@
   <!--ApexPodSP-->
   <!--Add podcast fragment-->
   <string name="browse_gpoddernet_label">gpodder.net ब्राउज़ करें</string>
+    <string name="feeds_label">पॉडकास्ट</string>
+  <string name="open_autodownload_settings">ओपन सेटिंग्स</string>
+  <string name="download_statistics_label">डाउनलोड</string>
+  <string name="playback_statistics_label">प्लेबैक</string>
+  <string name="notification_pref_fragment">सूचनाएँ</string>
+  <string name="app_action_not_found">\"%1$s\"  नहीं मिला</string>
+  <string name="swipeactions_label">स्वाइप क्रियाएं</string>
+  <string name="swipeactions_summary">चुनें कि किसी सूची में किसी एपिसोड को स्वाइप करते समय क्या होता है</string>
+  <string name="swipe_right">सही स्वाइप करें</string>
+  <string name="swipe_left">स्वाइप लेफ्ट</string>
+  <string name="enable_swipeactions">इस स्क्रीन के लिए स्वाइप क्रियाएं सक्षम करें</string>
+  <string name="change_setting">परिवर्तन</string>
+  <string name="statistics_mode">सांख्यिकी मोड</string>
+  <string name="statistics_mode_count_all">खेले गए सभी एपिसोड को योग करें</string>
+  <string name="statistics_reset_data_msg">यह सभी एपिसोड के लिए निभाई अवधि के इतिहास को मिटा देगा। क्या आप सुनिश्चित हैं कि आप आगे बढ़ना चाहते हैं?</string>
+  <string name="statistics_reset_data">सांख्यिकी डेटा रीसेट करें</string>
+    <string name="statistics_counting_since">क्योंकि %s, \\nआप खेला</string>
+  <string name="total_size_downloaded_podcasts">डिवाइस पर एपिसोड का कुल आकार:</string>
+  <string name="log_file_share_exception">कोई संगत ऐप नहीं मिला</string>
+  <string name="export_logs_menu_title">निर्यात विस्तृत लॉग</string>
+  <string name="confirm_export_log_dialog_message">विस्तृत लॉग में संवेदनशील जानकारी हो सकती है, जैसे कि आपकी सदस्यता सूची</string>
+  <string name="support_funding_label">सहारा</string>
+  <string name="support_podcast">इस पॉडकास्ट का समर्थन करें</string>
+  <string name="shownotes_label">शोनोट्स</string>
+  <string name="shownotes_contentdescription">शोनोट पढ़ने के लिए स्वाइप करें</string>
+  <string name="feed_volume_reduction">वॉल्यूम में कमी</string>
+  <string name="feed_volume_reduction_summary">इस पॉडकास्ट के एपिसोड के लिए वॉल्यूम को बंद करें: %1$s</string>
+  <string name="feed_volume_reduction_off">बंद</string>
+  <string name="feed_volume_reduction_light">प्रकाश</string>
+  <string name="feed_volume_reduction_heavy">भारी</string>
+  <string name="parallel_downloads">%1$d  समानांतर डाउनलोड</string>
+  <string name="episode_cleanup_except_favorite_removal">जब पसंदीदा नहीं</string>
+  <string name="loading_more">अधिक लोड हो रहा है ...</string>
+  <string name="episode_notification">एपिसोड नोटिफिकेशन</string>
+  <string name="episode_notification_summary">नया एपिसोड जारी होने पर नोटिफिकेशन दिखाएं।</string>
+  <string name="new_episode_notification_group_text">आपकी सदस्यताओं में नए एपिसोड हैं।</string>
+  <string name="mark_all_read_msg">खेले गए सभी एपिसोड चिह्नित</string>
+  <string name="mark_all_read_confirmation_msg">कृपया पुष्टि करें कि आप सभी एपिसोड को खेले जाने के रूप में चिह्नित करना चाहते हैं।</string>
+  <string name="mark_all_read_feed_confirmation_msg">कृपया पुष्टि करें कि आप इस पॉडकास्ट में सभी एपिसोड को खेले जाने के रूप में चिह्नित करना चाहते हैं।</string>
+  <string name="remove_all_new_flags_label">सभी \"नए\" झंडे निकालें</string>
   <!--Episodes apply actions-->
   <!--Sort-->
   <!--Rating dialog-->
