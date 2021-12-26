@@ -855,7 +855,7 @@
     <string name="delete_playlist">Delete Playlist</string>
     <string name="delete_playlist_confirmation_msg">Do you want to delete this playlist?</string>
     <string name="playlists_label">Playlists</string>
-    <string name="main_fragment_label">Home</string>
+    <string name="home_fragment_label">Home</string>
     <string name="pref_auto_delete_playlist_summary">Exclude playlisted episodes from auto delete</string>
     <string name="pref_auto_delete_playlist_title">Keep Playlisted Episodes</string>
     <string name="add_to_playlist_label">Add to Playlist</string>

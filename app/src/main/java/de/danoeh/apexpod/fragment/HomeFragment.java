@@ -32,6 +32,7 @@ import de.danoeh.apexpod.core.glide.ApGlideSettings;
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.storage.repository.HomeRepository;
 import de.danoeh.apexpod.core.storage.repository.impl.HomeRepositoryImpl;
+import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.view.EmptyViewHandler;
 import io.reactivex.Maybe;
@@ -80,14 +81,13 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
         imgvCover.setOnClickListener(v -> {
             long autoplayMode = PlaybackPreferences.AUTOPLAY_QUEUE;
             Fragment fragment = ItemFragment.newInstance(featuredFeedItem.getId(), autoplayMode, 0);
-            FragmentManager fragmentManager = getChildFragmentManager();
-            // clear back stack
-            for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++) {
-                fragmentManager.popBackStack();
-            }
-            FragmentTransaction t = fragmentManager.beginTransaction();
-            t.replace(R.id.home_layout, fragment);
-            t.commitAllowingStateLoss();
+            MainActivity activity = (MainActivity) getActivity();
+            long[] ids = new long[]{featuredFeedItem.getId()};
+            activity.loadChildFragment(ItemPagerFragment.newInstance(ids,
+                    0,
+                    PlaybackPreferences.AUTOPLAY_QUEUE,
+                    0
+            ));
         });
 
 
@@ -141,7 +141,6 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
     }
 
     private void setupEmptyView(View root) {
-
         ImageView emptyViewIcon = root.findViewById(R.id.emptyViewIcon);
         emptyViewIcon.setBackground(
                 AppCompatResources.getDrawable(getActivity(), R.drawable.ic_folder)
@@ -150,6 +149,7 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
         TextView emptyViewTitle = root.findViewById(R.id.emptyViewTitle);
         emptyViewTitle.setText(R.string.no_subscriptions_head_label);
         TextView emptyViewMessage = root.findViewById(R.id.emptyViewMessage);
+        emptyViewMessage.setText(R.string.no_subscriptions_label);
         emptyViewMessage.setText(R.string.no_subscriptions_label);
     }
 }
