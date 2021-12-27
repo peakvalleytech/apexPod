@@ -6,7 +6,7 @@ plugins {
 apply from: "../common.gradle"
 apply plugin: 'kotlin-android'
 apply from: "../playFlavor.gradle"
-
+apply plugin: 'com.google.gms.google-services'
 android {
     defaultConfig {
         // Version code schema:
@@ -159,7 +159,9 @@ dependencies {
     implementation 'com.annimon:stream:1.2.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
-
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+    implementation 'com.google.firebase:firebase-analytics'
     // Non-free dependencies:
     playImplementation 'com.google.android.play:core:1.8.0'
     compileOnly "com.google.android.wearable:wearable:$wearableSupportVersion"
