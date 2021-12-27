@@ -736,6 +736,29 @@
   <string name="rating_message">यदि आप एपेक्सपॉड को रेट करने के लिए समय लेते हैं तो हम इसकी सराहना करेंगे।</string>
   <string name="rating_never_label">मुझे अकेला छोड़ दो</string>
   <string name="rating_later_label">मुझे बाद में याद दिलाएं</string>
+    <string name="share_dialog_include_label">शामिल करना:</string>
+  <string name="share_playback_position_dialog_label">प्लेबैक स्थिति</string>
+  <string name="share_dialog_media_file_url_label">मीडिया फाइल पता</string>
+  <string name="share_dialog_media_file_label">मीडिया फ़ाइल</string>
+  <string name="audio_controls">ऑडियो नियंत्रण</string>
+  <string name="playback_speed">प्लेबैक स्पीड</string>
+  <string name="volume">आयतन</string>
+  <string name="audio_effects">ऑडियो इफेक्ट्स</string>
+  <string name="stereo_to_mono">डाउनमिक्स: स्टीरियो से मोनो</string>
+  <string name="repeat_episode">दोहराने प्रकरण</string>
+  <string name="proxy_type_label">प्रकार</string>
+  <string name="host_label">मेज़बान</string>
+  <string name="port_label">बंदरगाह</string>
+  <string name="optional_hint">(वैकल्पिक)</string>
+  <string name="proxy_test_label">परीक्षा</string>
+  <string name="proxy_test_successful">टेस्ट सफल</string>
+  <string name="proxy_test_failed">टेस्ट फेल</string>
+  <string name="proxy_host_empty_error">मेजबान खाली नहीं हो सकता</string>
+  <string name="proxy_host_invalid_error">होस्ट एक मान्य आईपी पता या डोमेन नहीं है</string>
+  <string name="proxy_port_invalid_error">पोर्ट मान्य नहीं</string>
+  <string name="subscription_num_columns">स्तंभों की संख्या</string>
+  <string name="cast_disconnect_label">कास्ट सत्र को डिस्कनेक्ट करना</string>
+  <string name="cast_not_castable">चयनित मीडिया कास्ट डिवाइस के साथ संगत नहीं है</string>
   <!--Episodes apply actions-->
   <!--Sort-->
   <!--Rating dialog-->
