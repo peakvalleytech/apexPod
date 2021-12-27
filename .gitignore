@@ -38,6 +38,7 @@ contributers.py
 # View hierarchy captures
 captures
 # other
+*.json
 *.odg#
 proguard
 libs
