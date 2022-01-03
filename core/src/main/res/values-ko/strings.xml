@@ -54,9 +54,6 @@
   <string name="drawer_feed_counter_downloaded">다운로드한 에피소드 수</string>
   <string name="drawer_feed_counter_none">없음</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">호환되는 앱이 없습니다</string>
-  <string name="export_logs_menu_title">자세한 기록 내보내기</string>
-  <string name="confirm_export_log_dialog_message">자세한 기록에는 구독 목록과 같은 민감한 정보가 들어 있을 수도 있습니다</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">브라우저에서 열기</string>
   <string name="copy_url_label">URL 복사</string>
@@ -371,10 +368,6 @@
   <string name="pref_gpodnet_logout_toast">로그아웃 성공</string>
   <string name="pref_gpodnet_setlogin_information_title">로그인 정보 바꾸기</string>
   <string name="pref_gpodnet_setlogin_information_sum">gpodder.net 계정의 로그인 정보를 바꿉니다.</string>
-  <string name="pref_gpodnet_sync_changes_title">지금 동기화</string>
-  <string name="pref_gpodnet_sync_changes_sum">gpodder.net의 구독과 에피소드 상태 변화를 동기화합니다.</string>
-  <string name="pref_gpodnet_full_sync_title">전체 동기화 강제</string>
-  <string name="pref_gpodnet_full_sync_sum">gpodder.net의 모든 구독과 에피소드 상태를 동기화합니다.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[<i>%1$s</i> 사용자로 로그인, <i>%2$s</i> 장치]]></string>
   <string name="pref_playback_speed_sum">재생 속도를 다양하게 할 경우 속도를 직접 설정</string>
   <string name="pref_feed_playback_speed_sum">이 팟캐스트의 에피소드를 재생할 때 사용할 오디오 재생 속도</string>
@@ -412,7 +405,6 @@
   <string name="open_bug_tracker">버그 추적 사이트 열기</string>
   <string name="copy_to_clipboard">클립보드로 복사</string>
   <string name="copied_to_clipboard">클립보드에 복사함</string>
-  <string name="experimental_pref">실험적 기능</string>
   <string name="pref_media_player_message">어떤 미디어 플레이어로 파일을 재생할지 선택하십시오</string>
   <string name="pref_current_value">현재 값: %1$s</string>
   <string name="pref_proxy_title">프록시</string>
@@ -424,8 +416,6 @@
   <string name="pref_enqueue_downloaded_title">다운로드한 항목 대기열에 추가</string>
   <string name="pref_enqueue_downloaded_summary">다운로드한 에피소드를 대기열에 추가</string>
   <string name="media_player_builtin">내장 안드로이드 플레이어 (권장하지 않음) </string>
-  <string name="media_player_sonic">Sonic Media Player (권장하지 않음) </string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (추천)</string>
   <string name="media_player_switch_to_exoplayer">ExoPlayer로 전환</string>
   <string name="media_player_switched_to_exoplayer">ExoPlayer로 전환함.</string>
   <string name="pref_skip_silence_title">오디오에서 묵음 구간 건너뛰기</string>

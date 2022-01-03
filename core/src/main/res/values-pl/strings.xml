@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Liczba pobranych odcinków</string>
   <string name="drawer_feed_counter_none">Brak</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Nie znaleziono kompatybilnych aplikacji</string>
-  <string name="export_logs_menu_title">Eksportuj szczegółowe logi</string>
-  <string name="confirm_export_log_dialog_message">Szczegółowe logi mogą zawierać wrażliwe dane, takie jak listę twoich subskrypcji </string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Otwórz w przeglądarce</string>
   <string name="copy_url_label">Kopiuj adres</string>
@@ -461,10 +458,6 @@
   <string name="pref_gpodnet_logout_toast">Wylogowanie się powiodło</string>
   <string name="pref_gpodnet_setlogin_information_title">Zmień informacje logowania</string>
   <string name="pref_gpodnet_setlogin_information_sum">Zmień dane logowania konta gpodder.net.</string>
-  <string name="pref_gpodnet_sync_changes_title">Synchronizuj teraz</string>
-  <string name="pref_gpodnet_sync_changes_sum">Synchronizuj subskrypcje oraz stan odcinków z pomocą gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Wymuś pełną synchronizację</string>
-  <string name="pref_gpodnet_full_sync_sum">Synchronizuj wszystkie subskrypcje oraz stan odcinków z pomocą gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Zalogowano jako <i>%1$s</i> na urządzeniu <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Dostosuj prędkości dostępne dla odtwarzania o zmiennej prędkości</string>
   <string name="pref_feed_playback_speed_sum">Prędkość używana podczas odtwarzania odcinków z tego kanału</string>
@@ -502,7 +495,6 @@
   <string name="open_bug_tracker">Otwórz bugtracker</string>
   <string name="copy_to_clipboard">Kopiuj do schowka</string>
   <string name="copied_to_clipboard">Skopiowano do schowka</string>
-  <string name="experimental_pref">Eksperymentalne</string>
   <string name="pref_media_player_message">Wybierz który odtwarzacz używać do odtwarzania plików</string>
   <string name="pref_current_value">Aktualna wartość: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -514,8 +506,6 @@
   <string name="pref_enqueue_downloaded_title">Kolejkuj pobrane</string>
   <string name="pref_enqueue_downloaded_summary">Dodaj pobrane odcinki do kolejki</string>
   <string name="media_player_builtin">Wbudowany odtwarzacz Androida (przestarzały)</string>
-  <string name="media_player_sonic">Odtwarzacz mediów Sonic (przestarzały)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (rekomendowany)</string>
   <string name="media_player_switch_to_exoplayer">Zmień na ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Zmieniono na ExoPlayer</string>
   <string name="pref_skip_silence_title">Pomiń ciszę w plikach audio</string>
@@ -547,8 +537,7 @@
   <string name="new_episode_notification_enabled">Powiadomienie włączone</string>
   <string name="new_episode_notification_disabled">Powiadomienie wyłączone</string>
   <string name="pref_feed_settings_dialog_msg">To ustawienie jest unikalne dla każdego podcastu. Możesz je zmienić otwierając info podcastu.</string>
-  <string name="pref_contribute">Przyczyń się do rozwoju</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">O...</string>
   <string name="antennapod_version">Wersja ApexPod</string>
   <string name="contributors">Kontrybutorzy</string>
@@ -692,8 +681,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Autoryzacja</string>
   <string name="authentication_descr">Zmień swoją nazwę użytkownika oraz hasło dla tego podcastu i jego odcinków</string>
-  <string name="feed_folders_label">Foldery</string>
-  <string name="feed_folders_summary">Zmień foldery, w których pojawia się ten podcast.</string>
   <string name="feed_folders_include_root">Pokaż na głównej liście</string>
   <string name="auto_download_settings_label">Ustawienia automatycznego pobierania</string>
   <string name="episode_filters_label">Filtr odcinków</string>

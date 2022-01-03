@@ -195,13 +195,6 @@
                 <data android:scheme="https"/>
             </intent-filter>
         </activity>
-        <activity
-                android:name="de.danoeh.apexpod.activity.BugReportActivity"
-                android:label="@string/bug_report_title">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="de.danoeh.apexpod.activity.PreferenceActivity"/>
-        </activity>
 
         <activity
             android:name="de.danoeh.apexpod.activity.VideoplayerActivity"

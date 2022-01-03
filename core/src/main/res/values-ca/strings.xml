@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Número d\'episodis descarregats</string>
   <string name="drawer_feed_counter_none">Cap</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">No s\'han trobat aplicacions compatibles</string>
-  <string name="export_logs_menu_title">Exporta registres detallats</string>
-  <string name="confirm_export_log_dialog_message">Els registres detallats poden contenir informació confidencial, com ara la llista de subscripcions</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Obre en un navegador</string>
   <string name="copy_url_label">Copia l\'enllaç</string>
@@ -430,10 +427,6 @@
   <string name="pref_gpodnet_logout_toast">Heu sortit de la sessió</string>
   <string name="pref_gpodnet_setlogin_information_title">Dades d\'inici de sessió</string>
   <string name="pref_gpodnet_setlogin_information_sum">Canvia les dades d\'inici de sessió del vostre compte de gpodder.net</string>
-  <string name="pref_gpodnet_sync_changes_title">Sincronitza ara</string>
-  <string name="pref_gpodnet_sync_changes_sum">Sincronitza amb gpodder.net les subscripcions i els estats dels episodis.</string>
-  <string name="pref_gpodnet_full_sync_title">Força sincronització completa</string>
-  <string name="pref_gpodnet_full_sync_sum">Sincronitza amb gpodder.net totes les subscripcions i els estats dels episodis.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Connectat com a <i>%1$s</i> amb el dispositiu <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Personalitza les velocitats disponibles per a la reproducció a velocitat variable</string>
   <string name="pref_feed_playback_speed_sum">La velocitat a usar quan comence la reproducció per a episodis en aquest podcast</string>
@@ -471,7 +464,6 @@
   <string name="open_bug_tracker">Obri rastrejador de bugs</string>
   <string name="copy_to_clipboard">Còpia al porta-retalls </string>
   <string name="copied_to_clipboard">Copiat al porta-retalls</string>
-  <string name="experimental_pref">Experimental</string>
   <string name="pref_media_player_message">Seleccioneu el reproductor multimèdia per a reproduir fitxers</string>
   <string name="pref_current_value">Valor actual: %1$s</string>
   <string name="pref_proxy_title">Servidor intermediari</string>
@@ -483,8 +475,6 @@
   <string name="pref_enqueue_downloaded_title">Afegeix les baixades a la cua</string>
   <string name="pref_enqueue_downloaded_summary">Afegeix els episodis descarregats a la cua</string>
   <string name="media_player_builtin">Reproductor Android integrat (obsolet)</string>
-  <string name="media_player_sonic">Reproductor multimèdia Sonic (obsolet)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (recomanat)</string>
   <string name="media_player_switch_to_exoplayer">Canvia a ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Canviat a ExoPlayer</string>
   <string name="pref_skip_silence_title">Omet Silenci en Audio</string>
@@ -516,7 +506,6 @@
   <string name="new_episode_notification_enabled">Notificació activada</string>
   <string name="new_episode_notification_disabled">Notificació desactivada</string>
   <string name="pref_feed_settings_dialog_msg">Aquesta configuració és exclusiva de cada podcast. Podeu canviar-la obrint la pàgina del podcast.</string>
-  <string name="pref_contribute">Contribueix</string>
   <!--About screen-->
   <string name="about_pref">Quant a</string>
   <string name="antennapod_version">Versió d\'ApexPod</string>
@@ -655,8 +644,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Autenticació</string>
   <string name="authentication_descr">Canvieu el nom d\'usuari i contrasenya per a aquest podcast i els seus episodis.</string>
-  <string name="feed_folders_label">Carpetes</string>
-  <string name="feed_folders_summary">Canvia les carpetes on es mostra aquest podcast.</string>
   <string name="feed_folders_include_root">Mostra a la llista principal</string>
   <string name="auto_download_settings_label">Opcions d\'Auto Descàrrega</string>
   <string name="episode_filters_label">Filtre d\'episodis</string>

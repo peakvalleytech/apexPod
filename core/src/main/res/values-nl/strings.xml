@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Aantal gedownloade afleveringen</string>
   <string name="drawer_feed_counter_none">Geen</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Geen compatibele apps aangetroffen</string>
-  <string name="export_logs_menu_title">Uitgebreide logboeken exporteren</string>
-  <string name="confirm_export_log_dialog_message">Uitgebreide logboeken kunnen gevoelige informatie bevatten, zoals de abonnementenlijst</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Openen in browser</string>
   <string name="copy_url_label">URL kopiëren</string>
@@ -430,10 +427,6 @@
   <string name="pref_gpodnet_logout_toast">Uitgelogd</string>
   <string name="pref_gpodnet_setlogin_information_title">Inloggegevens wijzigen</string>
   <string name="pref_gpodnet_setlogin_information_sum">Wijzig de inloggegevens van je gpodder.net-account.</string>
-  <string name="pref_gpodnet_sync_changes_title">Nu synchroniseren</string>
-  <string name="pref_gpodnet_sync_changes_sum">Synchroniseer gewijzigde abonnementen en afleveringsstatussen met gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Volledige synchronisatie afdwingen</string>
-  <string name="pref_gpodnet_full_sync_sum">Synchroniseer alle abonnementen en afleveringsstatussen met gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Ingelogd als <i>%1$s</i> met apparaat <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Pas de beschikbare snelheden aan voor de variabele afspeelsnelheid</string>
   <string name="pref_feed_playback_speed_sum">De te gebruiken snelheid bij het afspelen van afleveringen in deze podcast</string>
@@ -471,7 +464,6 @@
   <string name="open_bug_tracker">Bugtracker openen</string>
   <string name="copy_to_clipboard">Kopiëren naar klembord</string>
   <string name="copied_to_clipboard">Gekopieerd naar het klembord</string>
-  <string name="experimental_pref">Experimenteel</string>
   <string name="pref_media_player_message">Kies welke mediaspeler gebruikt moet worden voor het afspelen van bestanden</string>
   <string name="pref_current_value">Huidige instelling: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -483,8 +475,6 @@
   <string name="pref_enqueue_downloaded_title">Gedownloade afleveringen in wachtrij</string>
   <string name="pref_enqueue_downloaded_summary">Voeg gedownloade afleveringen toe aan de wachtrij</string>
   <string name="media_player_builtin">Ingebouwde Android-speler (verouderd)</string>
-  <string name="media_player_sonic">Sonic-mediaspeler (verouderd)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (aanbevolen)</string>
   <string name="media_player_switch_to_exoplayer">ExoPlayer gebruiken</string>
   <string name="media_player_switched_to_exoplayer">Overgeschakeld naar ExoPlayer.</string>
   <string name="pref_skip_silence_title">Audiostiltes overslaan</string>
@@ -516,8 +506,7 @@
   <string name="new_episode_notification_enabled">Melding is ingeschakeld</string>
   <string name="new_episode_notification_disabled">Melding is uitgeschakeld</string>
   <string name="pref_feed_settings_dialog_msg">Deze instellingen moet per podcast worden in- of uitgeschakeld. Pas aan door de podcastpagina te openen.</string>
-  <string name="pref_contribute">Bijdragen</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Over ApexPod</string>
   <string name="antennapod_version">ApexPod-versie</string>
   <string name="contributors">Bijdragers</string>
@@ -655,8 +644,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Authenticatie</string>
   <string name="authentication_descr">Gebruikersnaam en wachtwoord wijzigen voor deze podcast en bijbehorende afleveringen.</string>
-  <string name="feed_folders_label">Mappen</string>
-  <string name="feed_folders_summary">Wijzig de mappen waarin deze podcast is opgenomen.</string>
   <string name="feed_folders_include_root">Tonen op overzicht</string>
   <string name="auto_download_settings_label">Instellingen voor Automatisch downloaden</string>
   <string name="episode_filters_label">Afleveringsfilter</string>

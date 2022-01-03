@@ -345,9 +345,6 @@
   <string name="statistics_reset_data">सांख्यिकी डेटा रीसेट करें</string>
     <string name="statistics_counting_since">क्योंकि %s, \\nआप खेला</string>
   <string name="total_size_downloaded_podcasts">डिवाइस पर एपिसोड का कुल आकार:</string>
-  <string name="log_file_share_exception">कोई संगत ऐप नहीं मिला</string>
-  <string name="export_logs_menu_title">निर्यात विस्तृत लॉग</string>
-  <string name="confirm_export_log_dialog_message">विस्तृत लॉग में संवेदनशील जानकारी हो सकती है, जैसे कि आपकी सदस्यता सूची</string>
   <string name="support_funding_label">सहारा</string>
   <string name="support_podcast">इस पॉडकास्ट का समर्थन करें</string>
   <string name="shownotes_label">शोनोट्स</string>
@@ -589,8 +586,7 @@
   <string name="new_episode_notification_enabled">अधिसूचना सक्षम</string>
   <string name="new_episode_notification_disabled">अधिसूचना अक्षम</string>
   <string name="pref_feed_settings_dialog_msg">यह सेटिंग प्रत्येक पॉडकास्ट के लिए अद्वितीय है। आप पॉडकास्ट पेज खोलकर इसे बदल सकते हैं।</string>
-  <string name="pref_contribute">योगदान</string>
-  <string name="antennapod_version">एपेक्सपॉड संस्करण</string>
+    <string name="antennapod_version">एपेक्सपॉड संस्करण</string>
   <string name="contributors">योगदानकर्ताओं</string>
   <string name="contributors_summary">हर कोई एपपोड को बेहतर बनाने में मदद कर सकता है - कोड, अनुवाद के साथ या हमारे फोरम में उपयोगकर्ताओं की मदद करके</string>
   <string name="developers">डेवलपर्स</string>
@@ -806,6 +802,16 @@
   <string name="rating_now_label">यकीन है, चलो यह करते हैं!</string>
   <string name="left_short">बाएँ</string>
   <string name="right_short">दाएँ</string>
+    <string name="sonic_only">सोनिक केवला</string>
+  <string name="exoplayer_only">केवल एक्सोप्लेयर</string>
+  <string name="media_player_switch_to_exoplayer">एक्सोप्लेयर पर स्विच करें</string>
+  <string name="media_player_switched_to_exoplayer">एक्सोप्लेयर में स्विच किया।</string>
+  <string name="sort_new_old">नई \\u2192 पुराने</string>
+  <string name="sort_old_new">पुराना \\u2192 नया</string>
+  <string name="sort_short_long">छोटा \\u2192 लंबा</string>
+  <string name="sort_long_short">लंबा \\u2192 छोटा</string>
+  <string name="proxy_checking">जाँच&#8230;</string>
+  <string name="cast_media_route_menu_title">पर खेलें&#8230;</string>
   <!--Episodes apply actions-->
   <!--Sort-->
   <!--Rating dialog-->
