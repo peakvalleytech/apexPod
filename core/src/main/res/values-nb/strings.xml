@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Antall nedlastede episoder</string>
   <string name="drawer_feed_counter_none">Ingen</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Fant ingen kompatible apper</string>
-  <string name="export_logs_menu_title">Eksport detaljert logfiler</string>
-  <string name="confirm_export_log_dialog_message">Detaljerte logfiler kan inneholde sensitiv informasjon, som f.eks. dine abonnementer.</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Åpne i nettleser</string>
   <string name="copy_url_label">Kopier URL</string>
@@ -402,10 +399,6 @@
   <string name="pref_gpodnet_logout_toast">Utloggelse lyktes</string>
   <string name="pref_gpodnet_setlogin_information_title">Endre innloggingsinformasjon</string>
   <string name="pref_gpodnet_setlogin_information_sum">Endre innlogginsinformasjonen til din gpodder.net konto</string>
-  <string name="pref_gpodnet_sync_changes_title">Synkroniser nå</string>
-  <string name="pref_gpodnet_sync_changes_sum">Synkroniser abonnement og episoder med gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Tving fram full synkronisering</string>
-  <string name="pref_gpodnet_full_sync_sum">Synkroniser alle abonnement og episoder med gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Logget inn som <i>%1$s</i> med enhet <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Definer hastighetene tilgjengelig for variabel avspillingshastighet</string>
   <string name="pref_feed_playback_speed_sum">Hastigheten som brukes når episoder av denne podkasten spilles av</string>
@@ -443,7 +436,6 @@
   <string name="open_bug_tracker">Åpne bug-tracker</string>
   <string name="copy_to_clipboard">Kopier til utklippstavle</string>
   <string name="copied_to_clipboard">Kopiert til utklippstavlen</string>
-  <string name="experimental_pref">Eksperimentell</string>
   <string name="pref_media_player_message">Velg hvilken mediespiller som skal brukes for å spille filer</string>
   <string name="pref_current_value">Valgt: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -455,8 +447,6 @@
   <string name="pref_enqueue_downloaded_title">Legg til nedlastede i køen</string>
   <string name="pref_enqueue_downloaded_summary">Legg til nedlastede episoder i køen</string>
   <string name="media_player_builtin">Innebygd Android-spiller (avskrevet)</string>
-  <string name="media_player_sonic">Sonic MediaPlayer (avskrevet)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (anbefalt)</string>
   <string name="media_player_switch_to_exoplayer">Bytt til ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Byttet til ExoPlayer</string>
   <string name="pref_skip_silence_title">Hopp over stillhet</string>
@@ -488,8 +478,7 @@
   <string name="new_episode_notification_enabled">Varslinger slått på</string>
   <string name="new_episode_notification_disabled">Varslinger slått av</string>
   <string name="pref_feed_settings_dialog_msg">Den innstillingen er unik til hver podkast. Du kan endre den med å åpne siden til podkasten.</string>
-  <string name="pref_contribute">Bidra</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Om</string>
   <string name="antennapod_version">ApexPod versjon</string>
   <string name="contributors">Bidragsytere</string>
@@ -627,8 +616,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Autentisering</string>
   <string name="authentication_descr">Endre brukernavnet og passordet for denne podkasten og dens episoder</string>
-  <string name="feed_folders_label">Mapper</string>
-  <string name="feed_folders_summary">Endre mappene som viser denne podkasten.</string>
   <string name="feed_folders_include_root">Vis i hovet lista</string>
   <string name="auto_download_settings_label">Innstillinger for automatisk nedlastning</string>
   <string name="episode_filters_label">Episodefilter</string>

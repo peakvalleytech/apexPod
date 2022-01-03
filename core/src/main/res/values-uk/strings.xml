@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Кількість завантажених епізодів</string>
   <string name="drawer_feed_counter_none">Жодних</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Сумісних програм не знайдено</string>
-  <string name="export_logs_menu_title">Експорт детальних журналів</string>
-  <string name="confirm_export_log_dialog_message">Детальні журнали можуть містити конфіденційну інформацію, наприклад, список ваших підписок</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Відкрити в браузері</string>
   <string name="copy_url_label">Копіювати URL</string>
@@ -460,10 +457,6 @@
   <string name="pref_gpodnet_logout_toast">Успішно закрили доступ</string>
   <string name="pref_gpodnet_setlogin_information_title">Змінити інформацію для входу</string>
   <string name="pref_gpodnet_setlogin_information_sum">Змінити інформацію щодо облікового запису gpodder.net</string>
-  <string name="pref_gpodnet_sync_changes_title">Синхронізувати зараз</string>
-  <string name="pref_gpodnet_sync_changes_sum">Синхронізувати підписки та зміни стану епізодів з gpodder.net</string>
-  <string name="pref_gpodnet_full_sync_title">Примусова повну синхронізація</string>
-  <string name="pref_gpodnet_full_sync_sum">Синхронізувати всі підписки та стан епізодів з gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Ви увійшли як <i>%1$s</i> з пристрою <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Налаштування доступних швидкостей для відтворення зі зміненою швидкістю</string>
   <string name="pref_feed_playback_speed_sum">Швидкість, яку слід використовувати при запуску відтворення аудіо для епізодів у цьому подкасті</string>
@@ -501,7 +494,6 @@
   <string name="open_bug_tracker">Відкрити трекер помилок</string>
   <string name="copy_to_clipboard">Копіювати</string>
   <string name="copied_to_clipboard">Скопійовано</string>
-  <string name="experimental_pref">Експериментальні</string>
   <string name="pref_media_player_message">Оберіть медіа плеєр для програвання файлів</string>
   <string name="pref_current_value">Поточне значення: %1$s</string>
   <string name="pref_proxy_title">Проксі</string>
@@ -513,8 +505,6 @@
   <string name="pref_enqueue_downloaded_title">Додати завантаження до черги</string>
   <string name="pref_enqueue_downloaded_summary">Додавати завантажені епізоди до черги</string>
   <string name="media_player_builtin">Built-in Android player (застарілий) </string>
-  <string name="media_player_sonic">Sonic Media Player (застарілий) </string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (рекомендований)</string>
   <string name="media_player_switch_to_exoplayer">Перейти в ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Переключено на ExoPlayer.</string>
   <string name="pref_skip_silence_title">Пропуск тиші</string>
@@ -546,8 +536,7 @@
   <string name="new_episode_notification_enabled">Сповіщення ввімкнено</string>
   <string name="new_episode_notification_disabled">Сповіщення вимкнено</string>
   <string name="pref_feed_settings_dialog_msg">Цей параметр унікальний для кожного подкасту. Ви можете змінити його, відкривши сторінку подкасту.</string>
-  <string name="pref_contribute">Посприяти</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Про програму</string>
   <string name="antennapod_version">Версія ApexPod</string>
   <string name="contributors">Учасники</string>
@@ -691,8 +680,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Автентикація</string>
   <string name="authentication_descr">Змінити ваші логін та пароль для подкаста та епізодів</string>
-  <string name="feed_folders_label">Папки</string>
-  <string name="feed_folders_summary">Змінити папки, у яких відображається цей подкаст.</string>
   <string name="feed_folders_include_root">Показати в основному списку</string>
   <string name="auto_download_settings_label">Налаштування автозавантаження</string>
   <string name="episode_filters_label">Фільтр епізодів</string>

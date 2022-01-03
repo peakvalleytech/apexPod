@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">عدد الحلقات المنزلة</string>
   <string name="drawer_feed_counter_none">بدون</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">لا يوجد برنامج متوافق</string>
-  <string name="export_logs_menu_title">اصدار سجلات مفصله</string>
-  <string name="confirm_export_log_dialog_message">السجلات المفصلة قد تحتوي على معلومات حساسة مثل قائمة اشتراكاتك</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">افتح فى المتصفح</string>
   <string name="copy_url_label">انسخ الرابط</string>
@@ -493,10 +490,6 @@
   <string name="pref_gpodnet_logout_toast">نجح تسجيل الخروج</string>
   <string name="pref_gpodnet_setlogin_information_title">تغيير بيانات تسجيل الدخول</string>
   <string name="pref_gpodnet_setlogin_information_sum">قم بتغيير بيانات تسجيل الدخول لحساب gpodder.net الخاص بك.</string>
-  <string name="pref_gpodnet_sync_changes_title">قم بعملية التزامن الآن</string>
-  <string name="pref_gpodnet_sync_changes_sum">زامن الإشتراكات وتغير حالة الحلقات مع gpodder.net </string>
-  <string name="pref_gpodnet_full_sync_title">ابدأ مزامنة كاملة</string>
-  <string name="pref_gpodnet_full_sync_sum">زامن كل الإشتراكات وحالة الحلقات مع gpodder.net</string>
   <string name="pref_gpodnet_login_status"><![CDATA[تم الدخول بسم <i>%1$s</i> بجهاز <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">حدد السرعات المتوفرة في التشغيل متعدد السرعات</string>
   <string name="pref_feed_playback_speed_sum">سرعة التشغيل الصوتي عند بدء تشغيل حلقات من هذا البودكاست </string>
@@ -534,7 +527,6 @@
   <string name="open_bug_tracker">إفتح نظام تتبع الأخطاء</string>
   <string name="copy_to_clipboard">إنسخ لذاكرة القصاصات</string>
   <string name="copied_to_clipboard">تم النسخ لذاكرة القصاصات</string>
-  <string name="experimental_pref">تجريبي</string>
   <string name="pref_media_player_message">حدد مشغل الوسائط الذي تريد استخدامه لتشغيل الملفات</string>
   <string name="pref_current_value">القيمة الحالية: %1$s</string>
   <string name="pref_proxy_title">خادم بروكسى</string>
@@ -546,8 +538,6 @@
   <string name="pref_enqueue_downloaded_title">الـ Enqueue المنزلة</string>
   <string name="pref_enqueue_downloaded_summary">أضف الحلقات المنزلة الى لائحة الاستماع</string>
   <string name="media_player_builtin">المشغل الخاص بالأندرويد (مهمل)</string>
-  <string name="media_player_sonic">مشغل الوسائط سونيك (مهمل)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (موصى به)</string>
   <string name="media_player_switch_to_exoplayer">قم بالتبديل إلى ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">تم بالتبديل إلى ExoPlayer</string>
   <string name="pref_skip_silence_title">تخطي الصمت في الصوت</string>
@@ -579,8 +569,7 @@
   <string name="new_episode_notification_enabled">الإشعارات مفعلة</string>
   <string name="new_episode_notification_disabled">الإشعارات غير مفعلة</string>
   <string name="pref_feed_settings_dialog_msg">هذا الإعداد فريد لكل بودكاست. يمكنك تغييره بفتح صفحة البودكاست.</string>
-  <string name="pref_contribute">ساهم</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">حول</string>
   <string name="antennapod_version">اصدار ApexPod</string>
   <string name="contributors">المساهمون</string>
@@ -730,8 +719,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">تسجيل الدخول</string>
   <string name="authentication_descr">غيّر اسم المستخدم وكلمة المرور لهذا البودكاست وحلقاته.</string>
-  <string name="feed_folders_label">مجلدات</string>
-  <string name="feed_folders_summary">غيّر المجلدات التي يُعرض فيها هذا البودكاست.</string>
   <string name="feed_folders_include_root">عرض في القائمة الرئيسية</string>
   <string name="auto_download_settings_label">إعدادات التنزيل التلقائي</string>
   <string name="episode_filters_label">مصفى الحلقات</string>

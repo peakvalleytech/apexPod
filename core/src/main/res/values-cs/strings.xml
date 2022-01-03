@@ -55,9 +55,6 @@
   <string name="drawer_feed_counter_downloaded">Počet stažených epizod</string>
   <string name="drawer_feed_counter_none">Žádné</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Nenalezena kompatibilní aplikace</string>
-  <string name="export_logs_menu_title">Exportovat detailní záznamy</string>
-  <string name="confirm_export_log_dialog_message">Detailní záznamy mohou obsahovat citlivé informace jako seznam odběrů</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Otevřít v prohlížeči</string>
   <string name="copy_url_label">Kopírovat URL</string>
@@ -438,10 +435,6 @@
   <string name="pref_gpodnet_logout_toast">Úspěšně odhlášeno</string>
   <string name="pref_gpodnet_setlogin_information_title">Změna přihlašovacích údajů</string>
   <string name="pref_gpodnet_setlogin_information_sum">Změní přihlašovací údaje k vašemu gpodder.net účtu.</string>
-  <string name="pref_gpodnet_sync_changes_title">Synchronizovat ihned</string>
-  <string name="pref_gpodnet_sync_changes_sum">Synchronizovat odběr a změny stavu epizody s gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Synchronizovat vše ihned</string>
-  <string name="pref_gpodnet_full_sync_sum">Synchronizovat všechny odběry a stav epizod s gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Přihlášen jako <i>%1$s</i> z přístroje <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Upravit předvybrané možnosti pro přehrávání zvuku různými rychlostmi</string>
   <string name="pref_feed_playback_speed_sum">Rychlost, která bude použita při zahájení přehrávání epizod tohoto podcastu</string>
@@ -479,7 +472,6 @@
   <string name="open_bug_tracker">Otevřít systém pro sledování a hlášení chyb</string>
   <string name="copy_to_clipboard">Zkopírovat do schránky</string>
   <string name="copied_to_clipboard">Zkopírováno do schránky</string>
-  <string name="experimental_pref">Experimentální</string>
   <string name="pref_media_player_message">Vybrat přehrávač pro přehrávání souborů</string>
   <string name="pref_current_value">Aktuální hodnota: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -491,8 +483,6 @@
   <string name="pref_enqueue_downloaded_title">Zařadit stažené</string>
   <string name="pref_enqueue_downloaded_summary">Přidat stažené epizody do fronty</string>
   <string name="media_player_builtin">Vestavěný přehrávač Androidu (zastaralé)</string>
-  <string name="media_player_sonic">Přehrávač médií Sonic (zastaralé)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (doporučen)</string>
   <string name="media_player_switch_to_exoplayer">Přepnout na ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Přepnuto na ExoPlayer</string>
   <string name="pref_skip_silence_title">Přeskočit ticho v audio souboru</string>
@@ -524,8 +514,7 @@
   <string name="new_episode_notification_enabled">Upozornění zapnuta</string>
   <string name="new_episode_notification_disabled">Upozornění vypnuta</string>
   <string name="pref_feed_settings_dialog_msg">Toto nastavení je specifické pro každý podcast zvlášť. Lze ho měnit otevřením přehledové stránky podcastu.</string>
-  <string name="pref_contribute">Pomozte</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">O aplikaci</string>
   <string name="antennapod_version">Verze aplikace ApexPod</string>
   <string name="contributors">Přispěvatelé</string>
@@ -668,8 +657,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Ověření</string>
   <string name="authentication_descr">Změnit uživatelské jméno a heslo pro tento podcast a jeho epizody.</string>
-  <string name="feed_folders_label">Adresáře</string>
-  <string name="feed_folders_summary">Upravit adresáře pod kterými je tento podcast zobrazen.</string>
   <string name="feed_folders_include_root">Zobrazit v hlavním seznamu</string>
   <string name="auto_download_settings_label">Nastavení automatického stahování</string>
   <string name="episode_filters_label">Filtr epizod</string>
