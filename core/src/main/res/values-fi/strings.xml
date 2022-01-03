@@ -49,9 +49,6 @@
   <string name="drawer_feed_counter_downloaded">Ladattuja jaksoja</string>
   <string name="drawer_feed_counter_none">Ei yhtään</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Yhteensopivia sovelluksia ei löytynyt</string>
-  <string name="export_logs_menu_title">Vie yksityiskohtaiset lokit</string>
-  <string name="confirm_export_log_dialog_message">Yksityiskohtaiset lokit voivat sisältää arkaluonteista tietoa, kuten listan tilauksistasi</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Avaa selaimessa</string>
   <string name="copy_url_label">Kopioi URL</string>
@@ -359,8 +356,6 @@
   <string name="pref_gpodnet_logout_toast">Uloskirjautuminen onnistui</string>
   <string name="pref_gpodnet_setlogin_information_title">Vaihda kirjautumistietoja</string>
   <string name="pref_gpodnet_setlogin_information_sum">Vaihda kirjautumistietoja gpodder.net tiliisi.</string>
-  <string name="pref_gpodnet_sync_changes_sum">Synkronoi tilaukset ja jaksojen tilojen muutokset gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_sum">Synkronoi kaikki tilaukset ja jaksojen tilastot gpodder.net</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Kirjauduttu <i>%1$s</i> laitteella <i>%2$s</i>]]></string>
   <string name="pref_playback_time_respects_speed_title">Mukauta mediatietoja soiton nopeuteen</string>
   <string name="pref_playback_time_respects_speed_sum">Näytetty aika ja kesto mukautuvat soiton nopeuteen</string>
@@ -377,8 +372,7 @@
   <string name="pref_lockscreen_background_title">Aseta lukitusruudun taustakuva</string>
   <string name="pref_lockscreen_background_sum">Aseta lukitusruudun taustakuva nykyisen jakson kuvaan. Tämä kuva näkyy kolmannen osapuolen sovelluksissa.</string>
   <string name="pref_smart_mark_as_played_disabled">Poissa käytöstä</string>
-  <string name="experimental_pref">Kokeellinen</string>
-  <string name="pref_media_player_message">Valitse mediasovellus jolla soitetaan tiedostot</string>
+    <string name="pref_media_player_message">Valitse mediasovellus jolla soitetaan tiedostot</string>
   <string name="pref_current_value">Nykyinen arvo: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Aseta verkkoproxy</string>

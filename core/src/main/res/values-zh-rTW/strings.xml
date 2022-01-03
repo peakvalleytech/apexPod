@@ -53,9 +53,6 @@
   <string name="drawer_feed_counter_downloaded">已下載集數</string>
   <string name="drawer_feed_counter_none">沒有</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">找不到相容的 App</string>
-  <string name="export_logs_menu_title">匯出詳細記錄</string>
-  <string name="confirm_export_log_dialog_message">詳細記錄中可能包含您的隱私資訊，例如訂閱列表等等</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">在瀏覽器中打開</string>
   <string name="copy_url_label">複製網址</string>
@@ -366,10 +363,6 @@
   <string name="pref_gpodnet_logout_toast">成功登出</string>
   <string name="pref_gpodnet_setlogin_information_title">變更登入資訊</string>
   <string name="pref_gpodnet_setlogin_information_sum">修改您的 gpodder.net 帳號登入資訊</string>
-  <string name="pref_gpodnet_sync_changes_title">馬上同步</string>
-  <string name="pref_gpodnet_sync_changes_sum">與 gpodder.net 同步訂閱及聆聽狀態。</string>
-  <string name="pref_gpodnet_full_sync_title">強制全部同步</string>
-  <string name="pref_gpodnet_full_sync_sum">與 gpodder.net 同步所有的訂閱及聆聽狀態。</string>
   <string name="pref_gpodnet_login_status"><![CDATA[以 <i>%1$s</i> 登入，設備為 <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">自訂可選用的播放速度</string>
   <string name="pref_feed_playback_speed_sum">播放此 Podcast 中各單集時的播放速度</string>
@@ -407,7 +400,6 @@
   <string name="open_bug_tracker">開啟錯誤追蹤</string>
   <string name="copy_to_clipboard">複製到剪貼簿</string>
   <string name="copied_to_clipboard">已複製到剪貼簿</string>
-  <string name="experimental_pref">實驗功能</string>
   <string name="pref_media_player_message">設定用以播放檔案的媒體播放器</string>
   <string name="pref_current_value">當前設定：%1$s</string>
   <string name="pref_proxy_title">代理伺服器</string>
@@ -419,8 +411,6 @@
   <string name="pref_enqueue_downloaded_title">下載後加入待播清單</string>
   <string name="pref_enqueue_downloaded_summary">下載單集以後自動加入待播清單</string>
   <string name="media_player_builtin">內建 Android 播放器 (已棄用)</string>
-  <string name="media_player_sonic">Sonic Media Player (已棄用) </string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer（推薦使用）</string>
   <string name="media_player_switch_to_exoplayer">切換至 ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">已切換至 ExoPlayer</string>
   <string name="pref_skip_silence_title">跳過沒有聲音的部分</string>
