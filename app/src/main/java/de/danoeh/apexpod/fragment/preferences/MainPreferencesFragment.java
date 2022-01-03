@@ -11,7 +11,6 @@ import com.bytehamster.lib.preferencesearch.SearchConfiguration;
 import com.bytehamster.lib.preferencesearch.SearchPreference;
 
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.BugReportActivity;
 import de.danoeh.apexpod.activity.PreferenceActivity;
 import de.danoeh.apexpod.core.util.IntentUtils;
 import de.danoeh.apexpod.fragment.preferences.about.AboutFragment;

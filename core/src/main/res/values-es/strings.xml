@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Número de episodios descargados</string>
   <string name="drawer_feed_counter_none">Ninguno</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">No se encontraro apps compatibles</string>
-  <string name="export_logs_menu_title">Exportar registros detallados</string>
-  <string name="confirm_export_log_dialog_message">Los registros detallados pueden contener información sensible, como su lista de suscripciones</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Abrir en el navegador</string>
   <string name="copy_url_label">Copiar URL</string>
@@ -430,10 +427,6 @@
   <string name="pref_gpodnet_logout_toast">Ha cerrado la sesión correctamente</string>
   <string name="pref_gpodnet_setlogin_information_title">Cambiar información de inicio de sesión</string>
   <string name="pref_gpodnet_setlogin_information_sum">Modificar datos de inicio de sesión en gpodder.net.</string>
-  <string name="pref_gpodnet_sync_changes_title">Sincronizar ahora</string>
-  <string name="pref_gpodnet_sync_changes_sum">Sincronizar cambios de suscripción y episodios con gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Forzar la sincronización completa</string>
-  <string name="pref_gpodnet_full_sync_sum">Sincronizar todas las suscripciones y episodios con gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Identificado como <i>%1$s</i> con dispositivo <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Personalice las velocidades disponibles en la reproducción a velocidad variable</string>
   <string name="pref_feed_playback_speed_sum">La velocidad a la que comenzarán los episodios de este podcast</string>
@@ -471,7 +464,6 @@
   <string name="open_bug_tracker">Abrir bug tracker</string>
   <string name="copy_to_clipboard">Copiar al portapapeles</string>
   <string name="copied_to_clipboard">Copiado al portapapeles</string>
-  <string name="experimental_pref">Experimental</string>
   <string name="pref_media_player_message">Seleccione qué reproductor multimedia usar para reproducir archivos</string>
   <string name="pref_current_value">Valor actual: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -483,8 +475,6 @@
   <string name="pref_enqueue_downloaded_title">Añadir descargados a la cola</string>
   <string name="pref_enqueue_downloaded_summary">Añadir episodios descargados a la cola</string>
   <string name="media_player_builtin">Reproductor integrado de Android (obsoleto)</string>
-  <string name="media_player_sonic">Sonic Media Player (obsoleto)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (recomendado)</string>
   <string name="media_player_switch_to_exoplayer">Cambiar a ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Cambiado a ExoPlayer</string>
   <string name="pref_skip_silence_title">Saltar silencio en audio</string>
@@ -516,8 +506,7 @@
   <string name="new_episode_notification_enabled">Notificación habilitada</string>
   <string name="new_episode_notification_disabled">Notificación deshabilitada</string>
   <string name="pref_feed_settings_dialog_msg">Esta preferencia es única para cada pódcast. Puede ajustarla abriendo la página del pódcast.</string>
-  <string name="pref_contribute">Contribuir</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Acerca de</string>
   <string name="antennapod_version">Versión de ApexPod</string>
   <string name="contributors">Contribuidores</string>
@@ -655,8 +644,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Autenticación</string>
   <string name="authentication_descr">Cambiar nombre y contraseña de este pódcast y sus episodios</string>
-  <string name="feed_folders_label">Carpetas</string>
-  <string name="feed_folders_summary">Cambiar las carpetas en que se muestra este pódcast.</string>
   <string name="feed_folders_include_root">Mostrar en la lista principal</string>
   <string name="auto_download_settings_label">Opciones de descarga automática</string>
   <string name="episode_filters_label">Filtro de episodios</string>

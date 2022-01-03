@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Počet stiahnutých epizód</string>
   <string name="drawer_feed_counter_none">Žiadne</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Žiadne kompatibilné aplikácie</string>
-  <string name="export_logs_menu_title">Exportovať podrobné záznamy</string>
-  <string name="confirm_export_log_dialog_message">Podrobné záznamy môžu obsahovať citlivé informácie ako napr. váš zoznam odberov</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Otvoriť v prehliadači</string>
   <string name="copy_url_label">Kopírovať odkaz</string>
@@ -460,10 +457,6 @@
   <string name="pref_gpodnet_logout_toast">Úspešne odhlásené</string>
   <string name="pref_gpodnet_setlogin_information_title">Zmena prihlasovacích údajov</string>
   <string name="pref_gpodnet_setlogin_information_sum">Zmení prihlasovacie údaje k vášmu gpodder.net účtu.</string>
-  <string name="pref_gpodnet_sync_changes_title">Synchronizovať ihneď</string>
-  <string name="pref_gpodnet_sync_changes_sum">Synchronizovať odber a zmeny stavu epizódy s gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Synchronizovať všetko ihneď</string>
-  <string name="pref_gpodnet_full_sync_sum">Synchronizovať všeťky odbery a stav epizód s gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Prihlásený ako <i>%1$s</i> zo zariadenia <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Upraviť predvybrané možnosti pre prehrávanie zvuku rôznymi rýchlosťami</string>
   <string name="pref_feed_playback_speed_sum">Rýchlosť, ktorá bude použitá pri začatí prehrávania epizód tohoto podcastu</string>
@@ -501,7 +494,6 @@
   <string name="open_bug_tracker">Otvoriť systém pre sledovanie a hlásenie chýb</string>
   <string name="copy_to_clipboard">Skopírovať do schránky</string>
   <string name="copied_to_clipboard">Skopírované do schránky</string>
-  <string name="experimental_pref">Experimentálne</string>
   <string name="pref_media_player_message">Vybrať prehrávač pre prehrávanie súborov</string>
   <string name="pref_current_value">Aktuálna hodnota: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -513,8 +505,6 @@
   <string name="pref_enqueue_downloaded_title">Zaradiť stiahnuté</string>
   <string name="pref_enqueue_downloaded_summary">Pridať stiahnuté epizódy do poradia</string>
   <string name="media_player_builtin">Vstavaný prehrávač Androidu (zastarané)</string>
-  <string name="media_player_sonic">Prehrávač médií Sonic (zastarané)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (odporúčané)</string>
   <string name="media_player_switch_to_exoplayer">Prepnúť na ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Prepnuté na ExoPlayer.</string>
   <string name="pref_skip_silence_title">Preskočiť ticho vo zvuku</string>
@@ -546,8 +536,7 @@
   <string name="new_episode_notification_enabled">Upozornenia zapnuté</string>
   <string name="new_episode_notification_disabled">Upozornenia vypnuté</string>
   <string name="pref_feed_settings_dialog_msg">Toto nastavenie je špecifické pre každý podcast zvlášť. Je možné ho meniť po otvorení prehľadovej stránky podcastu.</string>
-  <string name="pref_contribute">Pomôžte</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">O aplikácii</string>
   <string name="antennapod_version">Verzia ApexPod</string>
   <string name="contributors">Prispievatelia</string>
@@ -691,8 +680,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Overenie</string>
   <string name="authentication_descr">Zmeniť svoje používateľské meno a heslo pre tento podcast a jeho epizódy.</string>
-  <string name="feed_folders_label">Priečinky</string>
-  <string name="feed_folders_summary">Zmeniť priečinky, v ktorých sa tento podcast zobrazuje.</string>
   <string name="feed_folders_include_root">Zobraziť v hlavnom zozname</string>
   <string name="auto_download_settings_label">Nastavenia automatického sťahovania</string>
   <string name="episode_filters_label">Filter epizód</string>

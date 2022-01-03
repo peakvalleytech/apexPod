@@ -51,8 +51,6 @@
   <string name="drawer_feed_counter_downloaded">Episodios baxaos</string>
   <string name="drawer_feed_counter_none">Nada</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Nun s\'atoparon aplicaciones compatibles</string>
-  <string name="export_logs_menu_title">Esportar el rexistru detalláu</string>
   <!--Webview actions-->
   <string name="share_url_label">Compartición d\'una URL</string>
   <string name="copied_url_msg">La URL copióse al cartafueyu</string>
@@ -339,10 +337,6 @@
   <string name="pref_gpodnet_logout_toast">Zarresti sesión correutamente</string>
   <string name="pref_gpodnet_setlogin_information_title">Camudar la información del aniciu de sesión</string>
   <string name="pref_gpodnet_setlogin_information_sum">Camuda la información d\'aniciu de sesión de la to cuenta de gpodder.net .</string>
-  <string name="pref_gpodnet_sync_changes_title">Sincronizar agora</string>
-  <string name="pref_gpodnet_sync_changes_sum">Sincroniza los cambeos de les soscripciones y los episodios con gpodder.net .</string>
-  <string name="pref_gpodnet_full_sync_title">Forciar la sincronización completa</string>
-  <string name="pref_gpodnet_full_sync_sum">Sincroniza los estaos de toles soscripciones y tolos episodios con gpodder.net .</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Aniciesti sesión como <i>%1$s</i> col preséu <i>%2$s</i>]]></string>
   <string name="pref_feed_playback_speed_sum">La velocidá que s\'usa al aniciar la reproducción de los episodios d\'esti podcast</string>
   <string name="pref_feed_skip">Saltu automáticu</string>
@@ -371,8 +365,7 @@
   <string name="open_bug_tracker">Abrir el rastrexador de fallos</string>
   <string name="copy_to_clipboard">Copiar al cartafueyu</string>
   <string name="copied_to_clipboard">Copióse al cartafueyu</string>
-  <string name="experimental_pref">Esperimental</string>
-  <string name="pref_media_player_message">Esbilla\'l reproductor multimedia que s\'usa pa reproducir ficheros</string>
+    <string name="pref_media_player_message">Esbilla\'l reproductor multimedia que s\'usa pa reproducir ficheros</string>
   <string name="pref_current_value">El valor actual: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Afita un proxy de rede</string>
@@ -402,8 +395,7 @@
   <string name="not_auto_downloaded">Nun baxó automáticamente</string>
   <string name="new_episode_notification_enabled">Avisu activáu</string>
   <string name="new_episode_notification_disabled">Avisu desactiváu</string>
-  <string name="pref_contribute">Collaborar</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Tocante a</string>
   <string name="antennapod_version">Versión d\'ApexPod</string>
   <string name="contributors">Collaboradores</string>
@@ -517,8 +509,6 @@
   <string name="next_chapter">Capítulu siguiente</string>
   <!--Feed settings/information screen-->
   <string name="authentication_label">Autenticación</string>
-  <string name="feed_folders_label">Carpetes</string>
-  <string name="feed_folders_summary">Camuda les carpetes nes qu\'apaez esti podcast.</string>
   <string name="feed_folders_include_root">Amosar na llista principal</string>
   <string name="auto_download_settings_label">Axustes de la descarga automática</string>
   <string name="episode_filters_label">Peñera d\'episodios</string>

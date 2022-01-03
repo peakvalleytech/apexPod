@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Numero di episodi scaricati</string>
   <string name="drawer_feed_counter_none">Nessuno</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Nessuna applicazione compatibile trovata</string>
-  <string name="export_logs_menu_title">Esporta log dettagliati</string>
-  <string name="confirm_export_log_dialog_message">I log dettagliati possono contenere informazioni sensibili come la lista delle iscrizioni</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Apri nel browser</string>
   <string name="copy_url_label">Copia URL</string>
@@ -430,10 +427,6 @@
   <string name="pref_gpodnet_logout_toast">Logout effettuato</string>
   <string name="pref_gpodnet_setlogin_information_title">Cambia le informazioni di login</string>
   <string name="pref_gpodnet_setlogin_information_sum">Cambia le informazioni di login per il tuo account gpodder.net.</string>
-  <string name="pref_gpodnet_sync_changes_title">Sincronizza ora</string>
-  <string name="pref_gpodnet_sync_changes_sum">Sincronizza modifiche all\'iscrizione e allo stato dell\'episodio con gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Forza sincronizzazione completa</string>
-  <string name="pref_gpodnet_full_sync_sum">Sincronizza le iscrizioni e lo stato di tutti gli episodi con gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Accesso come <i>%1$s</i> con il dispositivo <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Personalizzare le velocità disponibili per le varie velocità di riproduzione.</string>
   <string name="pref_feed_playback_speed_sum">Velocità da usare per la riproduzione degli episodi di questo podcast</string>
@@ -471,7 +464,6 @@
   <string name="open_bug_tracker">Apri il bug tracker</string>
   <string name="copy_to_clipboard">Copia negli appunti</string>
   <string name="copied_to_clipboard">Copiato negli appunti</string>
-  <string name="experimental_pref">Sperimentale</string>
   <string name="pref_media_player_message">Seleziona il media player da usare per riprodurre i file</string>
   <string name="pref_current_value">Impostazione attuale: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -483,8 +475,6 @@
   <string name="pref_enqueue_downloaded_title">Aggiungi i download alla coda</string>
   <string name="pref_enqueue_downloaded_summary">Aggiunge gli episodi alla coda quando vengono scaricati</string>
   <string name="media_player_builtin">Player Android integrato (obsoleto)</string>
-  <string name="media_player_sonic">Sonic Media Player (obsoleto)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (consigliato)</string>
   <string name="media_player_switch_to_exoplayer">Passa ad ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Passaggio ad ExoPlayer eseguito.</string>
   <string name="pref_skip_silence_title">Salta il silenzio audio</string>
@@ -516,8 +506,7 @@
   <string name="new_episode_notification_enabled">Notifiche abilitate</string>
   <string name="new_episode_notification_disabled">Notifiche disabilitate</string>
   <string name="pref_feed_settings_dialog_msg">Questa impostazione è univoca per ogni podcast. Puoi modificarla aprendo la pagina del podcast.</string>
-  <string name="pref_contribute">Contribuisci</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Informazioni</string>
   <string name="antennapod_version">Versione di ApexPod</string>
   <string name="contributors">Contributori</string>
@@ -655,8 +644,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Autenticazione</string>
   <string name="authentication_descr">Cambia il nome utente e la password per questo podcast e i suoi episodi.</string>
-  <string name="feed_folders_label">Cartelle</string>
-  <string name="feed_folders_summary">Cambia le cartelle in cui questo podcast sarà visualizzato.</string>
   <string name="feed_folders_include_root">Mostra nella lista principale</string>
   <string name="auto_download_settings_label">Impostazioni download automatico</string>
   <string name="episode_filters_label">Filtro degli episodi</string>
