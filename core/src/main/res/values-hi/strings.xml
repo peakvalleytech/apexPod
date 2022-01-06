@@ -11,7 +11,6 @@
   <string name="new_label">नया</string>
   <string name="settings_label">सेटिंग्स</string>
   <string name="downloads_label">डाउनलोड</string>
-  <string name="downloads_running_label">जारी</string>
   <string name="downloads_completed_label">संपन्न हुए</string>
   <string name="downloads_log_label">अभिलेख</string>
   <string name="subscriptions_label">सब्स्क्रिप्शन्स</string>
@@ -74,7 +73,6 @@
   <string name="retry_label">पुन: प्रयास</string>
   <string name="auto_download_label">ऑटो डाउनलोड में शामिल करें</string>
   <string name="auto_download_apply_to_items_title">पिछले एपिसोड पर लागू करें</string>
-  <string name="auto_download_apply_to_items_message">नया <i>ऑटो डाउनलोड</i> सेटिंग स्वचालित रूप से नए एपिसोड पर लागू की जाएगा।\nक्या आप इससे पहले प्रकाशित एपिसोड पर भी लागू करना चाहते हैं?</string>
   <string name="auto_delete_label">ऑटो डिलीट एपिसोड</string>
   <string name="parallel_downloads_suffix">\u0020समानांतर डाउनलोड</string>
   <string name="feed_auto_download_global">सार्वभौमिक डिफ़ॉल्ट</string>
@@ -97,8 +95,6 @@
   <string name="rename_feed_label">पॉडकास्ट का नाम बदले</string>
   <string name="remove_feed_label">पॉडकास्ट हटाए</string>
   <string name="share_label">शेयर...</string>
-  <string name="share_link_label">एपिसोड URL शेयर करे</string>
-  <string name="share_link_with_position_label">स्थान के साथ एपिसोड URL शेयर करे</string>
   <string name="share_file_label">फाइल शेयर करे</string>
   <string name="share_item_url_label">मीडिया फाइल शेयर करे</string>
   <string name="share_item_url_with_position_label"> स्थान के साथ मीडिया फाइल शेयर करे</string>
@@ -157,7 +153,6 @@
   <string name="download_error_file_type_type">फ़ाइल प्रकार त्रुटि</string>
   <string name="download_error_forbidden">निषिद्ध</string>
   <string name="download_canceled_msg">डाउनलोड रद्द</string>
-  <string name="download_canceled_autodownload_enabled_msg">डाउनलोड रद्द हुआ\nइस आइटम के लिए <i>ऑटडाउनलोड</i> अक्षम किया गया</string>
   <string name="download_report_title">त्रुटि के साथ डाउनलोड संपन्न हुए</string>
   <string name="download_report_content_title">रिपोर्ट डाउनलोड करे</string>
   <string name="download_error_malformed_url">गलत URL</string>
@@ -381,7 +376,7 @@
   <string name="confirm_mobile_feed_refresh_dialog_message">मोबाइल डेटा कनेक्शन पर एपिसोड डाउनलोड करने सेटिंग्स में अक्षम है।  क्या आप अभी भी मोबाइल डेटा पर सभी पॉडकास्ट को ताज़ा करना चाहते हैं?</string>
   <string name="delete_episode_label">एपिसोड हटाएं</string>
   <string name="remove_new_flag_label">\"नया\" झंडा निकालें</string>
-  <string name="removed_new_flag_label">Removed \"new\" flag</string>
+  <string name="removed_new_flag_label">हटाया \"नया\" झंडा</string>
   <string name="marked_as_played_label">हटाया \"नया\" झंडा</string>
   <string name="marked_as_unplayed_label">बिना खेला के रूप में चिह्नित</string>
   <string name="mark_read_no_media_label">मार्क के रूप में पढ़ा</string>
@@ -812,6 +807,7 @@
   <string name="sort_long_short">लंबा \\u2192 छोटा</string>
   <string name="proxy_checking">जाँच&#8230;</string>
   <string name="cast_media_route_menu_title">पर खेलें&#8230;</string>
+  <string name="home_fragment_label">घर</string>
   <!--Episodes apply actions-->
   <!--Sort-->
   <!--Rating dialog-->
