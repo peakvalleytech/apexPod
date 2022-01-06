@@ -96,7 +96,6 @@
   <string name="remove_feed_label">पॉडकास्ट हटाए</string>
   <string name="share_label">शेयर...</string>
   <string name="share_file_label">फाइल शेयर करे</string>
-  <string name="share_item_url_label">मीडिया फाइल शेयर करे</string>
   <string name="share_item_url_with_position_label"> स्थान के साथ मीडिया फाइल शेयर करे</string>
   <string name="feed_remover_msg">पॉडकास्ट हटाया जारहा है</string>
   <string name="load_complete_feed">सारे पॉडकास्ट को रिफ्रेश करें</string>
@@ -155,7 +154,6 @@
   <string name="download_canceled_msg">डाउनलोड रद्द</string>
   <string name="download_report_title">त्रुटि के साथ डाउनलोड संपन्न हुए</string>
   <string name="download_report_content_title">रिपोर्ट डाउनलोड करे</string>
-  <string name="download_error_malformed_url">गलत URL</string>
   <string name="download_error_io_error">आईओ त्रुटि</string>
   <string name="download_error_request_error">अनुरोध त्रुटि</string>
   <string name="download_error_db_access">डेटाबेस का उपयोग त्रुटि</string>
@@ -197,15 +195,12 @@
   <string name="feed_title">पॉडकास्ट का शीर्षक</string>
   <string name="random">क्रमरहित</string>
   <string name="smart_shuffle">चतुर मिश्रण</string>
-  <string name="ascending">आरोही</string>
-  <string name="descending">अवरोही</string>
   <string name="clear_queue_confirmation_msg">कृपया पुष्टि करें कि आप सारे एपिसोड के इस कतार को हटाना चाहते हैं</string>
   <string name="time_left_label">समय बचा है:\u0020</string>
   <!--Variable Speed-->
   <string name="download_plugin_label">प्लगइन डाउनलोड करें</string>
   <string name="no_playback_plugin_title">प्लगइन स्थापित नहीं हुआ</string>
   <string name="set_playback_speed_label">प्लेबैक गति</string>
-  <string name="enable_sonic">सॉनिक सक्षम करे</string>
   <!--Empty list labels-->
   <string name="no_shownotes_label">इस एपिसोड में कोई शोनोट्स नहीं है।</string>
   <string name="no_chapters_label">इस एपिसोड में कोई अध्याय नहीं है।</string>
@@ -785,7 +780,6 @@
   <string name="delete_playlist">प्लेलिस्ट हटाएं</string>
   <string name="delete_playlist_confirmation_msg">क्या आप इस प्लेलिस्ट को हटाना चाहते हैं?</string>
   <string name="playlists_label">प्लेलिस्ट</string>
-  <string name="main_fragment_label">घर</string>
   <string name="pref_auto_delete_playlist_summary">ऑटो डिलीट से प्लेलिस्ट किए गए एपिसोड को बाहर करें</string>
   <string name="pref_auto_delete_playlist_title">प्लेलिस्टेड एपिसोड रखें</string>
   <string name="add_to_playlist_label">प्लेलिस्ट में जोड़ें</string>
