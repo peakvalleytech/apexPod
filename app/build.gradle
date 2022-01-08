@@ -35,7 +35,7 @@ android {
             buildConfigField "String", "PODCASTINDEX_API_SECRET", '"XAaAhk4^2YBsTE33vdbwbZNj82ZRLABDDqFdKe7x"'
         }
 
-        javaCompileOptions {girt
+        javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [eventBusIndex: 'de.danoeh.apexpod.ApEventBusIndex']
             }

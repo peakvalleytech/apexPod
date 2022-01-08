@@ -25,6 +25,9 @@ import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.NoSuchElementException;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
@@ -71,16 +74,12 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
             displayUpArrow = savedInstanceState.getBoolean(KEY_UP_ARROW);
         }
         ((MainActivity) getActivity()).setupToolbarToggle(toolbar, displayUpArrow);
-        toolbar.inflateMenu(R.menu.queue);
+        episodeTitle = root.findViewById(R.id.txtvEpisodeTitle);
+        homeLayout = root.findViewById(R.id.home_layout);
+        podcastTitle = root.findViewById(R.id.txtvPodcastTitle);
 
         imgvCover = root.findViewById(R.id.imgvCover);
-        podcastTitle = root.findViewById(R.id.txtvPodcastTitle);
-        episodeTitle = root.findViewById(R.id.txtvEpisodeTitle);
-        emptyViewLayout = root.findViewById(R.id.empty_layout);
-
         imgvCover.setOnClickListener(v -> {
-            long autoplayMode = PlaybackPreferences.AUTOPLAY_QUEUE;
-            Fragment fragment = ItemFragment.newInstance(featuredFeedItem.getId(), autoplayMode, 0);
             MainActivity activity = (MainActivity) getActivity();
             long[] ids = new long[]{featuredFeedItem.getId()};
             activity.loadChildFragment(ItemPagerFragment.newInstance(ids,
@@ -90,9 +89,14 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
             ));
         });
 
-
+        emptyViewLayout = root.findViewById(R.id.empty_layout);
         setupEmptyView(root);
-
+        FloatingActionButton subscriptionAddButton = root.findViewById(R.id.subscriptions_add);
+        subscriptionAddButton.setOnClickListener(view -> {
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).loadChildFragment(new AddFeedFragment());
+            }
+        });
         loadData();
         return root;
     }
@@ -109,9 +113,10 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
         disposable = Maybe.fromCallable(homeRepository::getFeaturedEpisode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .toSingle()
+                .toMaybe()
                 .subscribe(item -> {
                    featuredFeedItem = item;
-//                    homeLayout.s
                     emptyViewLayout.setVisibility(View.GONE);
                     Log.d(TAG, "Looded feeditem with name " + featuredFeedItem);
                     podcastTitle.setText(featuredFeedItem.getFeed().getTitle());
@@ -128,11 +133,13 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
                                     .apply(options)
                             )
                             .apply(options);
-
                     cover.into(imgvCover);
-
-                }, error -> Log.e(TAG, Log.getStackTraceString(error)));
-
+                }, error -> {
+                    if (error instanceof NoSuchElementException) {
+                        homeLayout.setVisibility(View.GONE);
+                    }
+                    Log.e(TAG, Log.getStackTraceString(error));
+                });
     }
 
     @Override
