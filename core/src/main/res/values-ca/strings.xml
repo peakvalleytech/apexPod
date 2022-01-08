@@ -784,7 +784,7 @@
   <string name="pref_synchronization_logout_toast">La sortida de sessió s\'ha realitzat correctament</string>
   <string name="synchronization_sync_changes_title">Sincronitza ara</string>
   <string name="synchronization_full_sync_title">Força la sincronització completa</string>
-  <string name="synchronization_login_status"><![CDATA[S'ha iniciat la sessió com a <i>%1$s</i> a <i>%2$s</i>. <br/><br/> Podeu tornar a triar el proveïdor de sincronització un cop hàgiu tancat la sessió]]></string>
+  <string name="synchronization_login_status"><![CDATA[S\'ha iniciat la sessió com a <i>%1$s</i> a <i>%2$s</i>. <br/><br/> Podeu tornar a triar el proveïdor de sincronització un cop hàgiu tancat la sessió]]></string>
   <string name="synchronization_summary_unchoosen">Podeu triar entre diversos proveïdors per sincronitzar les subscripcions i l\'estat de reproducció d\'episodis amb</string>
   <string name="synchronization_summary_nextcloud">Gpoddersync és una aplicació de codi obert Nextcloud que podeu instal·lar fàcilment al vostre propi servidor. L\'aplicació és independent del projecte ApexPod.</string>
   <string name="synchronization_nextcloud_authenticate_browser">Concedeix accés mitjançant el navegador web obert i torna a l\'ApexPod.</string>
