@@ -1,6 +1,5 @@
 package de.danoeh.apexpod.fragment.preferences;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +11,8 @@ import com.bytehamster.lib.preferencesearch.SearchPreference;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.PreferenceActivity;
-import de.danoeh.apexpod.core.util.IntentUtils;
 import de.danoeh.apexpod.fragment.preferences.about.AboutFragment;
+import de.danoeh.apexpod.fragment.preferences.stats.StatisticsFragment;
 
 public class MainPreferencesFragment extends PreferenceFragmentCompat {
 
