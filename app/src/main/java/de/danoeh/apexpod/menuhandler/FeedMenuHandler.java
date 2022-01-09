@@ -61,9 +61,7 @@ public class FeedMenuHandler {
     public static boolean onOptionsItemClicked(final Context context, final MenuItem item,
                                                final Feed selectedFeed) throws DownloadRequestException {
         final int itemId = item.getItemId();
-      /*  if (itemId == R.id.refresh_complete_item) {
-            DBTasks.forceRefreshCompleteFeed(context, selectedFeed);
-        } else */if (itemId == R.id.sort_items) {
+        if (itemId == R.id.sort_items) {
             showSortDialog(context, selectedFeed);
         } else if (itemId == R.id.filter_items) {
             showFilterDialog(context, selectedFeed);
