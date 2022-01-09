@@ -157,28 +157,6 @@ public final class DBTasks {
     }
 
     /**
-     * Downloads all pages of the given feed even if feed has not been modified since last refresh
-     *
-     * @param context Used for requesting the download.
-     * @param feed    The Feed object.
-     */
-    public static void forceRefreshCompleteFeed(final Context context, final Feed feed) {
-        try {
-            refreshFeeds(context, Collections.singletonList(feed), true, true, false);
-        } catch (DownloadRequestException e) {
-            e.printStackTrace();
-            DBWriter.addDownloadStatus(
-                    new DownloadStatus(feed,
-                                       feed.getHumanReadableIdentifier(),
-                                       DownloadError.ERROR_REQUEST_ERROR,
-                                       false,
-                                       e.getMessage(),
-                                       false)
-            );
-        }
-    }
-
-    /**
      * Queues the next page of this Feed for download. The given Feed has to be a paged
      * Feed (isPaged()=true) and must contain a nextPageLink.
      *
