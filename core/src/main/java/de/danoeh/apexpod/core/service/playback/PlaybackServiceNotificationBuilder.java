@@ -107,7 +107,7 @@ public class PlaybackServiceNotificationBuilder {
 
     private Bitmap getDefaultIcon() {
         if (defaultIcon == null) {
-            defaultIcon = getBitmap(context, R.mipmap.ic_launcher);
+            defaultIcon = getBitmap(context, R.drawable.ic_notification_play);
         }
         return defaultIcon;
     }
