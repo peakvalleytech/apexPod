@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment.preferences;
+package de.danoeh.apexpod.fragment.preferences.stats;
 
 import android.content.Context;
 import android.content.DialogInterface;

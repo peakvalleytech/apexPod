@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment.preferences;
+package de.danoeh.apexpod.fragment.preferences.stats;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
