@@ -300,7 +300,8 @@ public class UserPreferences {
      * @return {@code true} if notifications are persistent, {@code false}  otherwise
      */
     public static boolean isPersistNotify() {
-        return prefs.getBoolean(PREF_PERSISTENT_NOTIFICATION, true);
+//        return prefs.getBoolean(PREF_PERSISTENT_NOTIFICATION, true);
+        return true;
     }
 
     /**
