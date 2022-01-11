@@ -5,6 +5,8 @@ import androidx.annotation.StringRes;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 
+import de.danoeh.apexpod.core.service.playback.player.LocalPlaybackServiceMediaPlayer;
+
 /**
  * Class intended to work along PlaybackService and provide support for different flavors.
  */
@@ -17,7 +19,7 @@ class PlaybackServiceFlavorHelper {
     }
 
     void initializeMediaPlayer(Context context) {
-        callback.setMediaPlayer(new LocalPSMP(context, callback.getMediaPlayerCallback()));
+        callback.setMediaPlayer(new LocalPlaybackServiceMediaPlayer(context, callback.getMediaPlayerCallback()));
     }
 
     void removeCastConsumer() {

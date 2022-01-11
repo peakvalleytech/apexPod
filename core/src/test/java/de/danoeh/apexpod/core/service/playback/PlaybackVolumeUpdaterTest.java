@@ -1,5 +1,6 @@
 package de.danoeh.apexpod.core.service.playback;
 
+import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
@@ -20,11 +21,11 @@ public class PlaybackVolumeUpdaterTest {
 
     private static final long FEED_ID = 42;
 
-    private PlaybackServiceMediaPlayer mediaPlayer;
+    private BaseMediaPlayer mediaPlayer;
 
     @Before
     public void setUp() {
-        mediaPlayer = mock(PlaybackServiceMediaPlayer.class);
+        mediaPlayer = mock(BaseMediaPlayer.class);
     }
 
     @Test

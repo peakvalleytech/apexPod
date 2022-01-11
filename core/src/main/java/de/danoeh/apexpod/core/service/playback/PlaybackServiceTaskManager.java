@@ -7,13 +7,9 @@ import android.os.Vibrator;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
-import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
-import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
-import de.danoeh.apexpod.core.storage.repository.impl.PlayListItemRepositoryImpl;
 import de.danoeh.apexpod.core.util.ChapterUtils;
 import de.danoeh.apexpod.core.widget.WidgetUpdater;
-import de.danoeh.apexpod.model.feed.Feed;
 import io.reactivex.disposables.Disposable;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -69,7 +65,7 @@ public class PlaybackServiceTaskManager {
     private SleepTimer sleepTimer;
 
     private final Context context;
-    private final PSTMCallback callback;
+    private final TaskManagerCallback callback;
 
     /**
      * Sets up a new PSTM. This method will also start the queue loader task.
@@ -78,7 +74,7 @@ public class PlaybackServiceTaskManager {
      * @param callback A PSTMCallback object for notifying the user about updates. Must not be null.
      */
     public PlaybackServiceTaskManager(@NonNull Context context,
-                                      @NonNull PSTMCallback callback) {
+                                      @NonNull TaskManagerCallback callback) {
         this.context = context;
         this.callback = callback;
         schedExecutor = new ScheduledThreadPoolExecutor(SCHED_EX_POOL_SIZE, r -> {
@@ -477,7 +473,7 @@ public class PlaybackServiceTaskManager {
         }
     }
 
-    public interface PSTMCallback {
+    public interface TaskManagerCallback {
         void positionSaverTick();
 
         void onSleepTimerAlmostExpired(long timeLeft);

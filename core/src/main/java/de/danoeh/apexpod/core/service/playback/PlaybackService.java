@@ -64,6 +64,8 @@ import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.receiver.MediaButtonReceiver;
+import de.danoeh.apexpod.core.service.playback.notification.PlaybackServiceNotificationBuilder;
+import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
@@ -210,7 +212,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
      */
     private static volatile boolean isCasting = false;
 
-    private PlaybackServiceMediaPlayer mediaPlayer;
+    private BaseMediaPlayer mediaPlayer;
     private PlaybackServiceTaskManager taskManager;
     private PlaybackServiceFlavorHelper flavorHelper;
     private PlaybackServiceStateManager stateManager;
@@ -655,7 +657,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
      */
     private boolean handleKeycode(int keycode, boolean notificationButton) {
         Log.d(TAG, "Handling keycode: " + keycode);
-        final PlaybackServiceMediaPlayer.PSMPInfo info = mediaPlayer.getPSMPInfo();
+        final BaseMediaPlayer.PSMPInfo info = mediaPlayer.getPSMPInfo();
         final PlayerStatus status = info.playerStatus;
         switch (keycode) {
             case KeyEvent.KEYCODE_HEADSETHOOK:
@@ -789,10 +791,10 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         stateManager.stopForeground(!UserPreferences.isPersistNotify());
     }
 
-    private final PlaybackServiceTaskManager.PSTMCallback taskManagerCallback = new PlaybackServiceTaskManager.PSTMCallback() {
+    private final PlaybackServiceTaskManager.TaskManagerCallback taskManagerCallback = new PlaybackServiceTaskManager.TaskManagerCallback() {
         @Override
         public void positionSaverTick() {
-            saveCurrentPosition(true, null, PlaybackServiceMediaPlayer.INVALID_TIME);
+            saveCurrentPosition(true, null, BaseMediaPlayer.INVALID_TIME);
         }
 
         @Override
@@ -827,9 +829,9 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         }
     };
 
-    private final PlaybackServiceMediaPlayer.PSMPCallback mediaPlayerCallback = new PlaybackServiceMediaPlayer.PSMPCallback() {
+    private final BaseMediaPlayer.PSMPCallback mediaPlayerCallback = new BaseMediaPlayer.PSMPCallback() {
         @Override
-        public void statusChanged(PlaybackServiceMediaPlayer.PSMPInfo newInfo) {
+        public void statusChanged(BaseMediaPlayer.PSMPInfo newInfo) {
             if (mediaPlayer != null) {
                 currentMediaType = mediaPlayer.getCurrentMediaType();
             } else {
@@ -961,7 +963,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         @Override
         public void onPlaybackStart(@NonNull Playable playable, int position) {
             taskManager.startWidgetUpdater();
-            if (position != PlaybackServiceMediaPlayer.INVALID_TIME) {
+            if (position != BaseMediaPlayer.INVALID_TIME) {
                 playable.setPosition(position);
             } else {
                 skipIntro(playable);
@@ -974,7 +976,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         public void onPlaybackPause(Playable playable, int position) {
             taskManager.cancelPositionSaver();
             cancelPositionObserver();
-            saveCurrentPosition(position == PlaybackServiceMediaPlayer.INVALID_TIME || playable == null,
+            saveCurrentPosition(position == BaseMediaPlayer.INVALID_TIME || playable == null,
                     playable, position);
             taskManager.cancelWidgetUpdater();
             if (playable != null) {
@@ -1443,7 +1445,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         return taskManager.getSleepTimerTimeLeft();
     }
 
-    private void bluetoothNotifyChange(PlaybackServiceMediaPlayer.PSMPInfo info, String whatChanged) {
+    private void bluetoothNotifyChange(BaseMediaPlayer.PSMPInfo info, String whatChanged) {
         boolean isPlaying = false;
 
         if (info.playerStatus == PlayerStatus.PLAYING) {
@@ -1680,7 +1682,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         mediaPlayer.reinit();
     }
 
-    public PlaybackServiceMediaPlayer.PSMPInfo getPSMPInfo() {
+    public BaseMediaPlayer.PSMPInfo getPSMPInfo() {
         return mediaPlayer.getPSMPInfo();
     }
 
@@ -1950,11 +1952,11 @@ public class PlaybackService extends MediaBrowserServiceCompat {
             };
 
     interface FlavorHelperCallback {
-        PlaybackServiceMediaPlayer.PSMPCallback getMediaPlayerCallback();
+        BaseMediaPlayer.PSMPCallback getMediaPlayerCallback();
 
-        void setMediaPlayer(PlaybackServiceMediaPlayer mediaPlayer);
+        void setMediaPlayer(BaseMediaPlayer mediaPlayer);
 
-        PlaybackServiceMediaPlayer getMediaPlayer();
+        BaseMediaPlayer getMediaPlayer();
 
         void setIsCasting(boolean isCasting);
 
@@ -1962,7 +1964,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
 
         void saveCurrentPosition(boolean fromMediaPlayer, Playable playable, int position);
 
-        void setupNotification(boolean connected, PlaybackServiceMediaPlayer.PSMPInfo info);
+        void setupNotification(boolean connected, BaseMediaPlayer.PSMPInfo info);
 
         MediaSessionCompat getMediaSession();
 
@@ -1973,17 +1975,17 @@ public class PlaybackService extends MediaBrowserServiceCompat {
 
     private final FlavorHelperCallback flavorHelperCallback = new FlavorHelperCallback() {
         @Override
-        public PlaybackServiceMediaPlayer.PSMPCallback getMediaPlayerCallback() {
+        public BaseMediaPlayer.PSMPCallback getMediaPlayerCallback() {
             return PlaybackService.this.mediaPlayerCallback;
         }
 
         @Override
-        public void setMediaPlayer(PlaybackServiceMediaPlayer mediaPlayer) {
+        public void setMediaPlayer(BaseMediaPlayer mediaPlayer) {
             PlaybackService.this.mediaPlayer = mediaPlayer;
         }
 
         @Override
-        public PlaybackServiceMediaPlayer getMediaPlayer() {
+        public BaseMediaPlayer getMediaPlayer() {
             return PlaybackService.this.mediaPlayer;
         }
 
@@ -2004,7 +2006,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         }
 
         @Override
-        public void setupNotification(boolean connected, PlaybackServiceMediaPlayer.PSMPInfo info) {
+        public void setupNotification(boolean connected, BaseMediaPlayer.PSMPInfo info) {
             if (connected) {
                 PlaybackService.this.updateNotificationAndMediaSession(info.playable);
             } else {
