@@ -225,8 +225,8 @@
   <string name="user_interface_label">यूजर इंटरफेस</string>
   <string name="pref_set_theme_title">थीम का चयन करें</string>
   <string name="pref_set_theme_sum">ApexPod का प्रकटन बदलें.</string>
-  <string name="pref_automatic_download_title">स्वचालित डाउनलोड</string>
-  <string name="pref_automatic_download_sum">एपिसोड के स्वत: डाउनलोड विन्यस्त करें.</string>
+  <string name="pref_download_title">स्वचालित डाउनलोड</string>
+  <string name="pref_download_sum">एपिसोड के स्वत: डाउनलोड विन्यस्त करें.</string>
   <string name="pref_autodl_wifi_filter_title">वाई-फाई फिल्टर सक्षम करें</string>
   <string name="pref_autodl_wifi_filter_sum">केवल चयनित वाई-फाई नेटवर्क के लिए स्वत: डाउनलोड की अनुमति दें.</string>
   <string name="pref_episode_cache_title">	गुप्त एपिसोड</string>

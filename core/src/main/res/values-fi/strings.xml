@@ -336,8 +336,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Aseta tilauslaskuri</string>
   <string name="pref_nav_drawer_feed_counter_sum">Vaihda tilauslaskurin näyttämiä tietoja. Tämä vaikuttaa myös tilauksien järjestykseen, jos \"Tilausjärjestys\" on \"Laskuri\".</string>
   <string name="pref_set_theme_sum">Muuta ApexPodin ulkonäköä</string>
-  <string name="pref_automatic_download_title">Automaattinen lataus</string>
-  <string name="pref_automatic_download_sum">Aseta jaksojen automaattinen lataus</string>
+  <string name="pref_download_title">Automaattinen lataus</string>
+  <string name="pref_download_sum">Aseta jaksojen automaattinen lataus</string>
   <string name="pref_autodl_wifi_filter_title">Aseta Wi-Fi-suodatin</string>
   <string name="pref_autodl_wifi_filter_sum">Salli automaattiset lataukset vain sallittujen Wi-Fi-verkkojen kautta.</string>
   <string name="pref_automatic_download_on_battery_title">Lataa, kun akkua ei ladata</string>

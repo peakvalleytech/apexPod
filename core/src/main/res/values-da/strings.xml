@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Indstil abonnementstæller</string>
   <string name="pref_nav_drawer_feed_counter_sum">Ændr informationen vist af abonnementstælleren. Påvirker også rækkefølgen af abonnementer, hvis abonnementsrækkefølgen er sat til \'Tæller\'.</string>
   <string name="pref_set_theme_sum">Ændr ApexPods udseende.</string>
-  <string name="pref_automatic_download_title">Automatisk overførsel</string>
-  <string name="pref_automatic_download_sum">Konfigurer automatisk overførsel af udsendelser</string>
+  <string name="pref_download_title">Automatisk overførsel</string>
+  <string name="pref_download_sum">Konfigurer automatisk overførsel af udsendelser</string>
   <string name="pref_autodl_wifi_filter_title">Slå wi-fi-filter til</string>
   <string name="pref_autodl_wifi_filter_sum">Tillad automatisk overførsel kun på de valgte wi-fi-netværk</string>
   <string name="pref_automatic_download_on_battery_title">Tillad overførsel ved batteridrift</string>

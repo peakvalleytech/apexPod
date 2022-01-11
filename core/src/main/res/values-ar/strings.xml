@@ -466,8 +466,8 @@
   <string name="pref_nav_drawer_feed_counter_title">حدد عداد الاشتراكات</string>
   <string name="pref_nav_drawer_feed_counter_sum">غير المعلومات المعروضة بعداد الإشتراكات. إيضا يغير ترتيب الإشتراكات إذا كان ترتيبها يحدد بالـ\'العداد\'</string>
   <string name="pref_set_theme_sum">تغيير مظهر ApexPod.</string>
-  <string name="pref_automatic_download_title">تنزيل تلقائي</string>
-  <string name="pref_automatic_download_sum">حدد معطيات التحميل التلقائي للحلقات.</string>
+  <string name="pref_download_title">تنزيل تلقائي</string>
+  <string name="pref_download_sum">حدد معطيات التحميل التلقائي للحلقات.</string>
   <string name="pref_autodl_wifi_filter_title">تمكين اختيار شبكة الWi-Fi المستخدمة</string>
   <string name="pref_autodl_wifi_filter_sum">أسمح بالتنزيل التلقائي فقط على شبكات الواي فاي المختارة.</string>
   <string name="pref_automatic_download_on_battery_title">التنزيل عند عدم الشحن الجهاز</string>

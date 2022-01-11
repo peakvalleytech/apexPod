@@ -427,8 +427,9 @@
     <string name="pref_nav_drawer_feed_counter_title">Set Subscription Counter</string>
     <string name="pref_nav_drawer_feed_counter_sum">Change the information displayed by the subscription counter. Also affects the sorting of subscriptions if \'Subscription Order\' is set to \'Counter\'.</string>
     <string name="pref_set_theme_sum">Change the appearance of ApexPod.</string>
-    <string name="pref_automatic_download_title">Automatic Download</string>
-    <string name="pref_automatic_download_sum">Configure the automatic download of episodes.</string>
+<!--    <string name="pref_download_title">Automatic Download</string>-->
+    <string name="pref_download_title">Download</string>
+    <string name="pref_download_sum">Configure the download of episodes.</string>
     <string name="pref_autodl_wifi_filter_title">Enable Wi-Fi filter</string>
     <string name="pref_autodl_wifi_filter_sum">Allow automatic download only for selected Wi-Fi networks.</string>
     <string name="pref_automatic_download_on_battery_title">Download when not charging</string>
@@ -855,4 +856,6 @@
     <string name="no_playlists_sub_label">After you create a playlist, it will appear here.</string>
     <string name="auto_download_cache_pref_summary">"The number of episodes kept by automatic download. Excluded from auto delete. "</string>
     <string name="home_label">Home</string>
+    <string name="pref_auto_download_title">Automatic Download</string>
+    <string name="pref_automatic_download_sum">Enable automatic download of episodes</string>
 </resources>

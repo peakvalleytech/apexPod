@@ -375,8 +375,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Velg abonnementsteller</string>
   <string name="pref_nav_drawer_feed_counter_sum">Endre informasjonen som vises av abonnement-telleren. Påvirker også sorteringen av abonnementer hvis rekkefølgen er satt til \"Teller\"</string>
   <string name="pref_set_theme_sum">Endre utseendet til ApexPod</string>
-  <string name="pref_automatic_download_title">Automatisk nedlasting</string>
-  <string name="pref_automatic_download_sum">Konfigurer automatisk nedlasting av episoder.</string>
+  <string name="pref_download_title">Automatisk nedlasting</string>
+  <string name="pref_download_sum">Konfigurer automatisk nedlasting av episoder.</string>
   <string name="pref_autodl_wifi_filter_title">Skru på Wi-Fi-filter</string>
   <string name="pref_autodl_wifi_filter_sum">Tillat automatisk nedlasting kun for valgte Wi-Fi-nettverk.</string>
   <string name="pref_automatic_download_on_battery_title">Last ned når enheten ikke lader</string>

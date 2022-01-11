@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.preference.CheckBoxPreference;
-import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
@@ -23,30 +22,40 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class AutoDownloadPreferencesFragment extends PreferenceFragmentCompat {
-    private static final String TAG = "AutoDnldPrefFragment";
+public class DownloadPreferencesFragment extends PreferenceFragmentCompat {
+    private static final String TAG = "DwnldPrefFragment";
 
     private CheckBoxPreference[] selectedNetworks;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.preferences_autodownload);
+        addPreferencesFromResource(R.xml.preferences_download);
 
         setupAutoDownloadScreen();
         buildAutodownloadSelectedNetworksPreference();
         setSelectedNetworksEnabled(UserPreferences.isEnableAutodownloadWifiFilter());
+        findPreference(UserPreferences.PREF_PARALLEL_DOWNLOADS)
+                .setOnPreferenceChangeListener(
+                        (preference, o) -> {
+                            if (o instanceof Integer) {
+                                setParallelDownloadsText((Integer) o);
+                            }
+                            return true;
+                        }
+                );
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        ((PreferenceActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_automatic_download_title);
+        ((PreferenceActivity) getActivity()).getSupportActionBar().setTitle(R.string.pref_download_title);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         checkAutodownloadItemVisibility(UserPreferences.isEnableAutodownload());
+        setParallelDownloadsText(UserPreferences.getParallelDownloads());
     }
 
     private void setupAutoDownloadScreen() {
@@ -163,6 +172,12 @@ public class AutoDownloadPreferencesFragment extends PreferenceFragmentCompat {
         }
     }
 
+    private void setParallelDownloadsText(int downloads) {
+        final Resources res = getActivity().getResources();
+        String s = res.getString(R.string.parallel_downloads, downloads);
+        findPreference(UserPreferences.PREF_PARALLEL_DOWNLOADS).setSummary(s);
+    }
+
     private void setSelectedNetworksEnabled(boolean b) {
         if (selectedNetworks != null) {
             for (Preference p : selectedNetworks) {
@@ -170,4 +185,5 @@ public class AutoDownloadPreferencesFragment extends PreferenceFragmentCompat {
             }
         }
     }
+
 }

@@ -411,8 +411,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Nastavit čítač odběrů</string>
   <string name="pref_nav_drawer_feed_counter_sum">Změnit informaci zobrazenou čítačem odběrů. Též ovlivňuje řazení, je-li nastaveno na „podle čítače“.</string>
   <string name="pref_set_theme_sum">Změnit vzhled ApexPod.</string>
-  <string name="pref_automatic_download_title">Automatické stahování</string>
-  <string name="pref_automatic_download_sum">Nastavení automatického stahování epizod.</string>
+  <string name="pref_download_title">Automatické stahování</string>
+  <string name="pref_download_sum">Nastavení automatického stahování epizod.</string>
   <string name="pref_autodl_wifi_filter_title">Zapnout Wi-Fi filtr</string>
   <string name="pref_autodl_wifi_filter_sum">Povolit automatické stahování pouze pomocí vybraných Wi-Fi sítí.</string>
   <string name="pref_automatic_download_on_battery_title">Stahovat, pokud neprobíhá nabíjení</string>

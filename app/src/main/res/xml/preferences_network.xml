@@ -15,24 +15,15 @@
             android:key="prefMobileUpdateTypes"
             android:summary="@string/pref_mobileUpdate_sum"
             android:title="@string/pref_mobileUpdate_title"/>
-        <de.danoeh.apexpod.preferences.NumberPickerPreference
-            android:defaultValue="4"
-            numberpicker:minValue="1"
-            numberpicker:maxValue="50"
-            android:key="prefParallelDownloads"
-            android:title="@string/pref_parallel_downloads_title"/>
+<!--        <de.danoeh.apexpod.preferences.NumberPickerPreference-->
+<!--            android:defaultValue="4"-->
+<!--            numberpicker:minValue="1"-->
+<!--            numberpicker:maxValue="50"-->
+<!--            android:key="prefParallelDownloads"-->
+<!--            android:title="@string/pref_parallel_downloads_title"/>-->
         <Preference
             android:key="prefProxy"
             android:summary="@string/pref_proxy_sum"
             android:title="@string/pref_proxy_title"/>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/download_pref_details">
-        <Preference
-            android:summary="@string/pref_automatic_download_sum"
-            android:key="prefAutoDownloadSettings"
-            android:title="@string/pref_automatic_download_title"
-            search:ignore="true" />
     </PreferenceCategory>
 </PreferenceScreen>

@@ -434,8 +434,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Ustaw licznik subskrypcji</string>
   <string name="pref_nav_drawer_feed_counter_sum">Zmień informacje wyświetlane przez licznik subskrypcji. Zmienia również sortowanie subskrypcji, jeśli kolejność ustawiona jest na \'Sortuj wg licznika\'</string>
   <string name="pref_set_theme_sum">Zmień wygląd ApexPod.</string>
-  <string name="pref_automatic_download_title">Automatyczne pobieranie</string>
-  <string name="pref_automatic_download_sum">Skonfiguruj automatyczne pobieranie odcinków.</string>
+  <string name="pref_download_title">Automatyczne pobieranie</string>
+  <string name="pref_download_sum">Skonfiguruj automatyczne pobieranie odcinków.</string>
   <string name="pref_autodl_wifi_filter_title">Włącz filtr Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Zezwól na automatyczne pobieranie tylko dla określonych sieci Wi-Fi.</string>
   <string name="pref_automatic_download_on_battery_title">Pobieraj, gdy nie ładuje</string>

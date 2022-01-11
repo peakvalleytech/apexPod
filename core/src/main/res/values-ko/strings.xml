@@ -344,8 +344,8 @@
   <string name="pref_nav_drawer_feed_counter_title">구독 카운터 설정</string>
   <string name="pref_nav_drawer_feed_counter_sum">구독 카운터로 표시하는 정보를 바꿉니다. \'구독 순서\'를 \'카운터\'로 설정한 경우 구독 목록의 정렬 순서에도 영향을 미칩니다.</string>
   <string name="pref_set_theme_sum">안테나팟의 겉모양을 바꿉니다.</string>
-  <string name="pref_automatic_download_title">자동 다운로드</string>
-  <string name="pref_automatic_download_sum">에피소드 자동 다운로드를 설정합니다.</string>
+  <string name="pref_download_title">자동 다운로드</string>
+  <string name="pref_download_sum">에피소드 자동 다운로드를 설정합니다.</string>
   <string name="pref_autodl_wifi_filter_title">Wi-Fi 필터 사용</string>
   <string name="pref_autodl_wifi_filter_sum">선택한 Wi-Fi 네트워크에 대해서만 자동 다운로드를 허용합니다.</string>
   <string name="pref_automatic_download_on_battery_title">충전하지 않을 때 다운로드</string>

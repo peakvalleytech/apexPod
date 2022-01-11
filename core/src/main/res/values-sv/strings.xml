@@ -404,8 +404,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Val för Prenumerationsräknaren</string>
   <string name="pref_nav_drawer_feed_counter_sum">Ändra informationen som visas vid prenumerationsräknaren. Påverkar även sorteringen av prenumerationer om \'Prenumerationsordning\' är satt till \'Räknare\'.</string>
   <string name="pref_set_theme_sum">Ändra utseendet på ApexPod.</string>
-  <string name="pref_automatic_download_title">Automatisk nedladdning</string>
-  <string name="pref_automatic_download_sum">Konfigurera automatisk nedladdning av episoder.</string>
+  <string name="pref_download_title">Automatisk nedladdning</string>
+  <string name="pref_download_sum">Konfigurera automatisk nedladdning av episoder.</string>
   <string name="pref_autodl_wifi_filter_title">Aktivera WiFi filtrering</string>
   <string name="pref_autodl_wifi_filter_sum">Tillåt automatisk nedladdning endast för utvalda WiFi-nätverk.</string>
   <string name="pref_automatic_download_on_battery_title">Nedladdning vid batteridrift</string>

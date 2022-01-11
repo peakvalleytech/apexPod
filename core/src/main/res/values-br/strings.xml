@@ -422,8 +422,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Despizañ ar c\'honter koumanant</string>
   <string name="pref_nav_drawer_feed_counter_sum">Kemmañ an titour diskouezet war ar c\'honter koumanantoù. Kemmañ a ra ivez urzh ar podskignadoù mard eo urzh ar podskignadoù lakaet da \"Konter\".</string>
   <string name="pref_set_theme_sum">Kemmañ neuz ApexPod</string>
-  <string name="pref_automatic_download_title">Pellgargañ emgefreek</string>
-  <string name="pref_automatic_download_sum">Kefluniañ pellgargañ emgefreek ar rannoù.</string>
+  <string name="pref_download_title">Pellgargañ emgefreek</string>
+  <string name="pref_download_sum">Kefluniañ pellgargañ emgefreek ar rannoù.</string>
   <string name="pref_autodl_wifi_filter_title">Gweredekaat ar sil Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Aotren ar pellgargañ emgefreek war ar rouedadoù Wi-Fi diuzet nemetken.</string>
   <string name="pref_automatic_download_on_battery_title">Pellgargañ pa ne vez ket o kargañ</string>

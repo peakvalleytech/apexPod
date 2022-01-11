@@ -433,8 +433,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Nastaviť počítadlo odberov</string>
   <string name="pref_nav_drawer_feed_counter_sum">Zmeniť informáciu zobrazenú počítadlom odberov. Tiež ovplyvňuje zoradenie, ak je nastavené na „podľa počítadla“.</string>
   <string name="pref_set_theme_sum">Zmeniť vzhľad ApexPod.</string>
-  <string name="pref_automatic_download_title">Automatické sťahovanie</string>
-  <string name="pref_automatic_download_sum">Nastavenie automatického sťahovania epizód.</string>
+  <string name="pref_download_title">Automatické sťahovanie</string>
+  <string name="pref_download_sum">Nastavenie automatického sťahovania epizód.</string>
   <string name="pref_autodl_wifi_filter_title">Zapnúť Wi-Fi filter</string>
   <string name="pref_autodl_wifi_filter_sum">Povoliť automatické sťahovanie iba pomocou vybraných Wi-Fi sietí.</string>
   <string name="pref_automatic_download_on_battery_title">Sťahovať keď neprebieha nabíjanie</string>
