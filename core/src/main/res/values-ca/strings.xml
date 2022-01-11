@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Estableix el comptador de les subscripcions</string>
   <string name="pref_nav_drawer_feed_counter_sum">Canvia la informació mostrada pel comptador de les subscripcions. També afecta l\'ordre de les subscripcions si a l\'opció \'Ordre de les subscripcions\' s\'ha indicat \'Comptador\'.</string>
   <string name="pref_set_theme_sum">Canvieu l\'aparença d\'ApexPod.</string>
-  <string name="pref_automatic_download_title">Baixada automàtica</string>
-  <string name="pref_automatic_download_sum">Configureu la baixada automàtica d\'episodis.</string>
+  <string name="pref_download_title">Baixada automàtica</string>
+  <string name="pref_download_sum">Configureu la baixada automàtica d\'episodis.</string>
   <string name="pref_autodl_wifi_filter_title">Activa el filtre de la xarxa sense fils</string>
   <string name="pref_autodl_wifi_filter_sum">Permet les baixades automàtiques només per a les xarxes sense fils seleccionades.</string>
   <string name="pref_automatic_download_on_battery_title">Baixa mentre no es carrega</string>

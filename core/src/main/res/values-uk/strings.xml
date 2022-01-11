@@ -433,8 +433,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Налаштувати лічильник підписок</string>
   <string name="pref_nav_drawer_feed_counter_sum">Змініть інформацію, що відображається лічильником підписки. Це впливає на сортування підписок, якщо в параметрі \"Порядок підписок\" вибрано \"Лічильник\".</string>
   <string name="pref_set_theme_sum">Змінити вигляд ApexPod</string>
-  <string name="pref_automatic_download_title">Автозавантаження</string>
-  <string name="pref_automatic_download_sum">Налаштування автозавантаження епізодів</string>
+  <string name="pref_download_title">Автозавантаження</string>
+  <string name="pref_download_sum">Налаштування автозавантаження епізодів</string>
   <string name="pref_autodl_wifi_filter_title">Увімкнути фільтр Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Дозволити автозавантаження тільки в цих Wi-Fi мережах</string>
   <string name="pref_automatic_download_on_battery_title">Завантаження без зарядного пристрою</string>

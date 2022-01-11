@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Teller instellen</string>
   <string name="pref_nav_drawer_feed_counter_sum">Wijzig de door de teller getoonde informatie. Is ook van toepassing op de sortering als \'Abonnementsvolgorde\' is ingesteld op \'Teller\'.</string>
   <string name="pref_set_theme_sum">Pas het uiterlijk van ApexPod aan.</string>
-  <string name="pref_automatic_download_title">Automatisch downloaden</string>
-  <string name="pref_automatic_download_sum">Stel het automatisch downloaden van afleveringen in.</string>
+  <string name="pref_download_title">Automatisch downloaden</string>
+  <string name="pref_download_sum">Stel het automatisch downloaden van afleveringen in.</string>
   <string name="pref_autodl_wifi_filter_title">Wifi-filter inschakelen</string>
   <string name="pref_autodl_wifi_filter_sum">Automatisch downloaden alleen toestaan via gekozen wifi-netwerken.</string>
   <string name="pref_automatic_download_on_battery_title">Downloaden als het apparaat niet wordt opgeladen</string>

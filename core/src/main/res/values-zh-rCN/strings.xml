@@ -388,8 +388,8 @@
   <string name="pref_nav_drawer_feed_counter_title">设定订阅数</string>
   <string name="pref_nav_drawer_feed_counter_sum">更改订阅计数器显示的信息。 如果“订阅的排序顺序”设置为“按数量排序”，这也会影响订阅的排序。</string>
   <string name="pref_set_theme_sum">改变 ApexPod 外观</string>
-  <string name="pref_automatic_download_title">自动下载</string>
-  <string name="pref_automatic_download_sum">配置自动下载的曲目</string>
+  <string name="pref_download_title">自动下载</string>
+  <string name="pref_download_sum">配置自动下载的曲目</string>
   <string name="pref_autodl_wifi_filter_title">打开 Wi-Fi 过滤器</string>
   <string name="pref_autodl_wifi_filter_sum">只允许在 Wi-Fi 网络下自动下载</string>
   <string name="pref_automatic_download_on_battery_title">未充电时下载</string>

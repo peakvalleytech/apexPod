@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">تنظیم شمارنده اشتراک</string>
   <string name="pref_nav_drawer_feed_counter_sum">اطلاعات نمایش داده شده توسط شمارندهٔ اشتراک را تغییر دهید. همچنین اگر «ترتیب اشتراک» روی «شمارنده» تنظیم شود، بر مرتب‌سازی اشتراک‌ها نیز تأثیر می‌گذارد.</string>
   <string name="pref_set_theme_sum">تغییر ظاهر آنتن پاد</string>
-  <string name="pref_automatic_download_title">بارگیری خودکار</string>
-  <string name="pref_automatic_download_sum">بارگیری خودکار قسمتها را پیکربندی کنید.</string>
+  <string name="pref_download_title">بارگیری خودکار</string>
+  <string name="pref_download_sum">بارگیری خودکار قسمتها را پیکربندی کنید.</string>
   <string name="pref_autodl_wifi_filter_title">فیلتر Wi-Fi را فعال کنید</string>
   <string name="pref_autodl_wifi_filter_sum">بارگیری خودکار فقط باید از طریق شبکه های Wi-Fi انتخاب شده مجاز باشد.</string>
   <string name="pref_automatic_download_on_battery_title">بارگیری زمانی که سیستم شارژ نمیشود مجاز باشد</string>

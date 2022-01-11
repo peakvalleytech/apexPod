@@ -404,8 +404,8 @@ Tippen, um Details anzuzeigen.</string>
   <string name="pref_nav_drawer_feed_counter_title">Abonnement-Zähler einstellen</string>
   <string name="pref_nav_drawer_feed_counter_sum">Ändere die durch den Abonnementszähler angezeigten Informationen. Betrifft auch die Sortierung der Abonnements wenn \"Reihenfolge der Abonnements\" auf \"Zähler\" gesetzt ist.</string>
   <string name="pref_set_theme_sum">Ändere das Aussehen von ApexPod.</string>
-  <string name="pref_automatic_download_title">Automatisches Herunterladen</string>
-  <string name="pref_automatic_download_sum">Konfiguriere das automatische Herunterladen von Episoden.</string>
+  <string name="pref_download_title">Automatisches Herunterladen</string>
+  <string name="pref_download_sum">Konfiguriere das automatische Herunterladen von Episoden.</string>
   <string name="pref_autodl_wifi_filter_title">W-LAN-Filter aktivieren</string>
   <string name="pref_autodl_wifi_filter_sum">Erlaube das automatische Herunterladen nur in ausgewählten W-LAN Netzwerken.</string>
   <string name="pref_automatic_download_on_battery_title">Automatischer Download im Batterie Modus</string>

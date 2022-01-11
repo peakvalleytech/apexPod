@@ -313,8 +313,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Contador de les soscripciones</string>
   <string name="pref_nav_drawer_feed_counter_sum">Camuda la información qu\'amuesa\'l contador de soscripciones. Tamién afeuta al orde de les soscripciones si «Orde de les soscripciones» s\'afita a «Contador».</string>
   <string name="pref_set_theme_sum">Camuda l\'aspeutu d\'ApexPod.</string>
-  <string name="pref_automatic_download_title">Descarga automática</string>
-  <string name="pref_automatic_download_sum">Configura la descarga automática d\'episodios.</string>
+  <string name="pref_download_title">Descarga automática</string>
+  <string name="pref_download_sum">Configura la descarga automática d\'episodios.</string>
   <string name="pref_autodl_wifi_filter_title">Activar la peñera de redes Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Namás permite la descarga automática nes redes Wi-Fi esbillaes.</string>
   <string name="pref_automatic_download_on_battery_title">Baxar al nun tar cargando la batería</string>

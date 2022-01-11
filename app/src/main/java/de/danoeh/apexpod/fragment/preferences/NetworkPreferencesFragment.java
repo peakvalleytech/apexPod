@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 
 public class NetworkPreferencesFragment extends PreferenceFragmentCompat
         implements SharedPreferences.OnSharedPreferenceChangeListener {
-    private static final String PREF_SCREEN_AUTODL = "prefAutoDownloadSettings";
     private static final String PREF_PROXY = "prefProxy";
 
     @Override
@@ -46,29 +45,15 @@ public class NetworkPreferencesFragment extends PreferenceFragmentCompat
     public void onResume() {
         super.onResume();
         setUpdateIntervalText();
-        setParallelDownloadsText(UserPreferences.getParallelDownloads());
     }
 
     private void setupNetworkScreen() {
-        findPreference(PREF_SCREEN_AUTODL).setOnPreferenceClickListener(preference -> {
-            ((PreferenceActivity) getActivity()).openScreen(R.xml.preferences_autodownload);
-            return true;
-        });
         findPreference(UserPreferences.PREF_UPDATE_INTERVAL)
                 .setOnPreferenceClickListener(preference -> {
                     new FeedRefreshIntervalDialog(getContext()).show();
                     return true;
                 });
 
-        findPreference(UserPreferences.PREF_PARALLEL_DOWNLOADS)
-                .setOnPreferenceChangeListener(
-                        (preference, o) -> {
-                            if (o instanceof Integer) {
-                                setParallelDownloadsText((Integer) o);
-                            }
-                            return true;
-                        }
-                );
         // validate and set correct value: number of downloads between 1 and 50 (inclusive)
         findPreference(PREF_PROXY).setOnPreferenceClickListener(preference -> {
             ProxyDialog dialog = new ProxyDialog(getActivity());
@@ -104,12 +89,6 @@ public class NetworkPreferencesFragment extends PreferenceFragmentCompat
         String summary = context.getString(R.string.feed_refresh_sum) + "\n"
                 + String.format(context.getString(R.string.pref_current_value), val);
         findPreference(UserPreferences.PREF_UPDATE_INTERVAL).setSummary(summary);
-    }
-
-    private void setParallelDownloadsText(int downloads) {
-        final Resources res = getActivity().getResources();
-        String s = res.getString(R.string.parallel_downloads, downloads);
-        findPreference(UserPreferences.PREF_PARALLEL_DOWNLOADS).setSummary(s);
     }
 
     @Override

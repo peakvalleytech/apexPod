@@ -433,8 +433,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Nustatyti prenumeratų skaitiklį</string>
   <string name="pref_nav_drawer_feed_counter_sum">Keisti prenumeratų skaitiklyje atvaizduojamą informaciją. Gali paveikti prenumeratų rikiavimą, jei prenumeratų tvarka nustatyta rikiuoti pagal skaitiklio reikšmę.</string>
   <string name="pref_set_theme_sum">Keisti ApexPod išvaizdą.</string>
-  <string name="pref_automatic_download_title">Automatinis atsiuntimas</string>
-  <string name="pref_automatic_download_sum">Konfigūruoti automatinį epizodų atsiuntimą.</string>
+  <string name="pref_download_title">Automatinis atsiuntimas</string>
+  <string name="pref_download_sum">Konfigūruoti automatinį epizodų atsiuntimą.</string>
   <string name="pref_autodl_wifi_filter_title">Įjungti belaidžių tinklų filtrą</string>
   <string name="pref_autodl_wifi_filter_sum">Leisti automatinį atsiuntimą tik prisijungus prie nurodytų belaidžių tinklų.</string>
   <string name="pref_automatic_download_on_battery_title">Atsiuntimas ne įkrovimo metu</string>

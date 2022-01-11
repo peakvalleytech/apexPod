@@ -414,8 +414,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Выбрать счетчик подписок</string>
   <string name="pref_nav_drawer_feed_counter_sum">Какую информацию показывать в счетчике подписок. Влияет также на очередность подписок, если сортировка подписок производится по счетчику.</string>
   <string name="pref_set_theme_sum">Изменить тему оформления ApexPod</string>
-  <string name="pref_automatic_download_title">Автоматическая загрузка</string>
-  <string name="pref_automatic_download_sum">Настроить автоматическую загрузку выпусков.</string>
+  <string name="pref_download_title">Автоматическая загрузка</string>
+  <string name="pref_download_sum">Настроить автоматическую загрузку выпусков.</string>
   <string name="pref_autodl_wifi_filter_title">Включить фильтр Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Разрешать автоматическую загрузку только для выбранных сетей Wi-Fi.</string>
   <string name="pref_automatic_download_on_battery_title">Загружать без зарядки</string>

@@ -21,7 +21,7 @@ import com.bytehamster.lib.preferencesearch.SearchPreferenceResultListener;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.databinding.SettingsActivityBinding;
-import de.danoeh.apexpod.fragment.preferences.AutoDownloadPreferencesFragment;
+import de.danoeh.apexpod.fragment.preferences.DownloadPreferencesFragment;
 import de.danoeh.apexpod.fragment.preferences.ImportExportPreferencesFragment;
 import de.danoeh.apexpod.fragment.preferences.MainPreferencesFragment;
 import de.danoeh.apexpod.fragment.preferences.NetworkPreferencesFragment;
@@ -60,7 +60,7 @@ public class PreferenceActivity extends AppCompatActivity implements SearchPrefe
         }
         Intent intent = getIntent();
         if (intent.getBooleanExtra(OPEN_AUTO_DOWNLOAD_SETTINGS, false)) {
-            openScreen(R.xml.preferences_autodownload);
+            openScreen(R.xml.preferences_download);
         }
     }
 
@@ -75,8 +75,8 @@ public class PreferenceActivity extends AppCompatActivity implements SearchPrefe
             prefFragment = new StoragePreferencesFragment();
         } else if (screen == R.xml.preferences_import_export) {
             prefFragment = new ImportExportPreferencesFragment();
-        } else if (screen == R.xml.preferences_autodownload) {
-            prefFragment = new AutoDownloadPreferencesFragment();
+        } else if (screen == R.xml.preferences_download) {
+            prefFragment = new DownloadPreferencesFragment();
         } else if (screen == R.xml.preferences_synchronization) {
             prefFragment = new SynchronizationPreferencesFragment();
         } else if (screen == R.xml.preferences_playback) {
@@ -92,8 +92,8 @@ public class PreferenceActivity extends AppCompatActivity implements SearchPrefe
     public static int getTitleOfPage(int preferences) {
         if (preferences == R.xml.preferences_network) {
             return R.string.network_pref;
-        } else if (preferences == R.xml.preferences_autodownload) {
-            return R.string.pref_automatic_download_title;
+        } else if (preferences == R.xml.preferences_download) {
+            return R.string.pref_download_title;
         } else if (preferences == R.xml.preferences_playback) {
             return R.string.playback_pref;
         } else if (preferences == R.xml.preferences_storage) {

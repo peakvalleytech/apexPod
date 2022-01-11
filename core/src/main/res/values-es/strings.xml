@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Ajustar contador de suscripción</string>
   <string name="pref_nav_drawer_feed_counter_sum">Cambiar la información mostrada en el contador de las suscripciones. También afecta al orden de las suscripciones si el \'orden de la suscripción\' está en modo \'Contador\'.</string>
   <string name="pref_set_theme_sum">Cambiar la apariencia de ApexPod.</string>
-  <string name="pref_automatic_download_title">Descarga automática</string>
-  <string name="pref_automatic_download_sum">Configurar la descarga automática de episodios.</string>
+  <string name="pref_download_title">Descarga automática</string>
+  <string name="pref_download_sum">Configurar la descarga automática de episodios.</string>
   <string name="pref_autodl_wifi_filter_title">Activar el filtro wifi</string>
   <string name="pref_autodl_wifi_filter_sum">Permitir la descarga automática sólo desde las redes wifi seleccionadas.</string>
   <string name="pref_automatic_download_on_battery_title">Descargar cuando no se está cargando</string>

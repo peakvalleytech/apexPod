@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Définir le compteur d\'abonnements</string>
   <string name="pref_nav_drawer_feed_counter_sum">Changer l\'information affichée par le compteur d\'abonnements. Cela change aussi l\'ordre des podcasts si ils sont triés par le compteur.</string>
   <string name="pref_set_theme_sum">Modifier l\'apparence d\'ApexPod.</string>
-  <string name="pref_automatic_download_title">Téléchargement automatique</string>
-  <string name="pref_automatic_download_sum">Configurer le téléchargement automatique des épisodes.</string>
+  <string name="pref_download_title">Téléchargement automatique</string>
+  <string name="pref_download_sum">Configurer le téléchargement automatique des épisodes.</string>
   <string name="pref_autodl_wifi_filter_title">Activer le filtre Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Autoriser le téléchargement automatique uniquement sur les réseaux Wi-Fi sélectionnés.</string>
   <string name="pref_automatic_download_on_battery_title">Télécharger lorsque l\'appareil n\'est pas en charge</string>

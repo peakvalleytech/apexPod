@@ -433,8 +433,8 @@
   <string name="pref_nav_drawer_feed_counter_title">הגדרת מונה מינויים</string>
   <string name="pref_nav_drawer_feed_counter_sum">שינוי המידע שמוצג במונה המינויים. משפיע גם על סדר המינויים אם ‚סדר המינויים’ מוגדר כ־‚מונה’.</string>
   <string name="pref_set_theme_sum">שינוי המראה של אנטנה־פּוֹד</string>
-  <string name="pref_automatic_download_title">הורדה אוטומטית</string>
-  <string name="pref_automatic_download_sum">הגדרת הורדה אטומטית של פרקים.</string>
+  <string name="pref_download_title">הורדה אוטומטית</string>
+  <string name="pref_download_sum">הגדרת הורדה אטומטית של פרקים.</string>
   <string name="pref_autodl_wifi_filter_title">הפעלת סינון רשתות אלחוטיות</string>
   <string name="pref_autodl_wifi_filter_sum">לאפשר הורדה אוטומטית רק דרך רשתות אלחוטיות נבחרות.</string>
   <string name="pref_automatic_download_on_battery_title">להוריד שלא בזמן טעינה</string>

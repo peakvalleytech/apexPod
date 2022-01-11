@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Feliratkozásszámláló beállítása</string>
   <string name="pref_nav_drawer_feed_counter_sum">Módosítja a feliratkozásszámlálóban megjelenített információt. A feliratkozások sorrendjére is hatással van, ha a „Feliratkozási sorrend” a „Számláló” értékre van állítva.</string>
   <string name="pref_set_theme_sum">ApexPod kinézetének módosítása.</string>
-  <string name="pref_automatic_download_title">Automatikus letöltés</string>
-  <string name="pref_automatic_download_sum">Az epizódok automatikus letöltésének beállítása.</string>
+  <string name="pref_download_title">Automatikus letöltés</string>
+  <string name="pref_download_sum">Az epizódok automatikus letöltésének beállítása.</string>
   <string name="pref_autodl_wifi_filter_title">Wi-Fi szűrő engedélyezése</string>
   <string name="pref_autodl_wifi_filter_sum">Automatikus letöltés engedélyezése csak a kiválasztott Wi-Fi hálózatok esetén.</string>
   <string name="pref_automatic_download_on_battery_title">Letöltés, ha nincs akkumulátortöltés</string>

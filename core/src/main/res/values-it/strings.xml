@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Contatore delle iscrizioni</string>
   <string name="pref_nav_drawer_feed_counter_sum">Cambia il criterio di calcolo del contatore delle iscrizioni. Influenza anche l\'ordinamento quando è impostato su \'Ordina per contatore\'.</string>
   <string name="pref_set_theme_sum">Cambia l\'aspetto di ApexPod</string>
-  <string name="pref_automatic_download_title">Download automatico</string>
-  <string name="pref_automatic_download_sum">Configura il download automatico degli episodi</string>
+  <string name="pref_download_title">Download automatico</string>
+  <string name="pref_download_sum">Configura il download automatico degli episodi</string>
   <string name="pref_autodl_wifi_filter_title">Abilita il filtro Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Abilita il download automatico solo per alcune reti Wi-Fi selezionate.</string>
   <string name="pref_automatic_download_on_battery_title">Scarica episodi con batteria non in carica</string>

@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Configurar Contador de Assinaturas</string>
   <string name="pref_nav_drawer_feed_counter_sum">Altera a informação exibida pelo contador de assinaturas. Também afeta a ordenação das assinaturas caso a \'Ordem das assinaturas\' esteja definida como \'Contador\'.</string>
   <string name="pref_set_theme_sum">Altera a aparência do ApexPod</string>
-  <string name="pref_automatic_download_title">Download automático</string>
-  <string name="pref_automatic_download_sum">Configurar download automático de episódios.</string>
+  <string name="pref_download_title">Download automático</string>
+  <string name="pref_download_sum">Configurar download automático de episódios.</string>
   <string name="pref_autodl_wifi_filter_title">Habilitar filtro Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Permitir download automático somente pelas redes Wi-Fi selecionadas.</string>
   <string name="pref_automatic_download_on_battery_title">Baixar enquanto não está carregando</string>

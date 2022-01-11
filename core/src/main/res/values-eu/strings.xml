@@ -403,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Doitu harpidetzen kontagailua</string>
   <string name="pref_nav_drawer_feed_counter_sum">Aldatu harpidetzen kontagailuan erakutsitako informazioa aldatzea. Harpidetzen ordenari ere eragiten dio, \'Harpidetzaren ordena\' \'kontagailu\' moduan badago.</string>
   <string name="pref_set_theme_sum">Aldatu ApexPoden itxura</string>
-  <string name="pref_automatic_download_title">Deskarga automatikoa</string>
-  <string name="pref_automatic_download_sum">Konfiguratu saioen deskarga automatikoa</string>
+  <string name="pref_download_title">Deskarga automatikoa</string>
+  <string name="pref_download_sum">Konfiguratu saioen deskarga automatikoa</string>
   <string name="pref_autodl_wifi_filter_title">Gaitu Wifi iragazkia</string>
   <string name="pref_autodl_wifi_filter_sum">Onartu deskarga automatikoak aukeratutako Wifi sareetan bakarrik</string>
   <string name="pref_automatic_download_on_battery_title">Deskargatu kargatzen ari dela</string>
