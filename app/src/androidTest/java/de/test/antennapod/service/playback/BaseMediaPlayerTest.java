@@ -23,8 +23,8 @@ import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.model.feed.FeedPreferences;
-import de.danoeh.apexpod.core.service.playback.LocalPSMP;
-import de.danoeh.apexpod.core.service.playback.PlaybackServiceMediaPlayer;
+import de.danoeh.apexpod.core.service.playback.player.LocalPlaybackServiceMediaPlayer;
+import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
 import de.danoeh.apexpod.core.service.playback.PlayerStatus;
 import de.danoeh.apexpod.core.storage.PodDBAdapter;
 import de.danoeh.apexpod.model.playback.Playable;
@@ -46,7 +46,7 @@ import static org.junit.Assert.fail;
  * Test class for LocalPSMP
  */
 @MediumTest
-public class PlaybackServiceMediaPlayerTest {
+public class BaseMediaPlayerTest {
     private static final String PLAYABLE_DEST_URL = "psmptestfile.mp3";
     private String PLAYABLE_LOCAL_URL = null;
     private static final int LATCH_TIMEOUT_SECONDS = 3;
@@ -93,7 +93,7 @@ public class PlaybackServiceMediaPlayerTest {
         assertEquals(0, httpServer.serveFile(dest));
     }
 
-    private void checkPSMPInfo(LocalPSMP.PSMPInfo info) {
+    private void checkPSMPInfo(LocalPlaybackServiceMediaPlayer.PSMPInfo info) {
         try {
             switch (info.playerStatus) {
                 case PLAYING:
@@ -119,7 +119,7 @@ public class PlaybackServiceMediaPlayerTest {
     @Test
     public void testInit() {
         final Context c = getInstrumentation().getTargetContext();
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, new DefaultPSMPCallback());
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, new DefaultPSMPCallback());
         psmp.shutdown();
     }
 
@@ -146,7 +146,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 try {
                     checkPSMPInfo(newInfo);
                     if (newInfo.playerStatus == PlayerStatus.ERROR)
@@ -166,7 +166,7 @@ public class PlaybackServiceMediaPlayerTest {
                 }
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, null);
         psmp.playMediaObject(p, true, false, false);
         boolean res = countDownLatch.await(LATCH_TIMEOUT_SECONDS, TimeUnit.SECONDS);
@@ -186,7 +186,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 try {
                     checkPSMPInfo(newInfo);
                     if (newInfo.playerStatus == PlayerStatus.ERROR)
@@ -206,7 +206,7 @@ public class PlaybackServiceMediaPlayerTest {
                 }
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, null);
         psmp.playMediaObject(p, true, true, false);
 
@@ -227,7 +227,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(4);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 try {
                     checkPSMPInfo(newInfo);
                     if (newInfo.playerStatus == PlayerStatus.ERROR)
@@ -250,7 +250,7 @@ public class PlaybackServiceMediaPlayerTest {
                 }
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, null);
         psmp.playMediaObject(p, true, false, true);
         boolean res = countDownLatch.await(LATCH_TIMEOUT_SECONDS, TimeUnit.SECONDS);
@@ -269,7 +269,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(5);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 try {
                     checkPSMPInfo(newInfo);
                     if (newInfo.playerStatus == PlayerStatus.ERROR)
@@ -295,7 +295,7 @@ public class PlaybackServiceMediaPlayerTest {
                 }
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, null);
         psmp.playMediaObject(p, true, true, true);
         boolean res = countDownLatch.await(LATCH_TIMEOUT_SECONDS, TimeUnit.SECONDS);
@@ -313,7 +313,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 try {
                     checkPSMPInfo(newInfo);
                     if (newInfo.playerStatus == PlayerStatus.ERROR)
@@ -333,7 +333,7 @@ public class PlaybackServiceMediaPlayerTest {
                 }
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, PLAYABLE_LOCAL_URL);
         psmp.playMediaObject(p, false, false, false);
         boolean res = countDownLatch.await(LATCH_TIMEOUT_SECONDS, TimeUnit.SECONDS);
@@ -352,7 +352,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 try {
                     checkPSMPInfo(newInfo);
                     if (newInfo.playerStatus == PlayerStatus.ERROR)
@@ -372,7 +372,7 @@ public class PlaybackServiceMediaPlayerTest {
                 }
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, PLAYABLE_LOCAL_URL);
         psmp.playMediaObject(p, false, true, false);
         boolean res = countDownLatch.await(LATCH_TIMEOUT_SECONDS, TimeUnit.SECONDS);
@@ -391,7 +391,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(4);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 try {
                     checkPSMPInfo(newInfo);
                     if (newInfo.playerStatus == PlayerStatus.ERROR)
@@ -414,7 +414,7 @@ public class PlaybackServiceMediaPlayerTest {
                 }
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, PLAYABLE_LOCAL_URL);
         psmp.playMediaObject(p, false, false, true);
         boolean res = countDownLatch.await(LATCH_TIMEOUT_SECONDS, TimeUnit.SECONDS);
@@ -432,7 +432,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(5);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 try {
                     checkPSMPInfo(newInfo);
                     if (newInfo.playerStatus == PlayerStatus.ERROR)
@@ -459,7 +459,7 @@ public class PlaybackServiceMediaPlayerTest {
                 }
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, PLAYABLE_LOCAL_URL);
         psmp.playMediaObject(p, false, true, true);
         boolean res = countDownLatch.await(LATCH_TIMEOUT_SECONDS, TimeUnit.SECONDS);
@@ -478,7 +478,7 @@ public class PlaybackServiceMediaPlayerTest {
 
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 checkPSMPInfo(newInfo);
                 if (newInfo.playerStatus == PlayerStatus.ERROR) {
                     if (assertionError == null)
@@ -522,7 +522,7 @@ public class PlaybackServiceMediaPlayerTest {
                 return false;
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, PLAYABLE_LOCAL_URL);
         if (initialState == PlayerStatus.PLAYING) {
             psmp.playMediaObject(p, stream, true, true);
@@ -589,7 +589,7 @@ public class PlaybackServiceMediaPlayerTest {
 
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 checkPSMPInfo(newInfo);
                 if (newInfo.playerStatus == PlayerStatus.ERROR) {
                     if (assertionError == null)
@@ -613,7 +613,7 @@ public class PlaybackServiceMediaPlayerTest {
                 return false;
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         if (initialState == PlayerStatus.PREPARED || initialState == PlayerStatus.PLAYING || initialState == PlayerStatus.PAUSED) {
             boolean startWhenPrepared = (initialState != PlayerStatus.PREPARED);
             psmp.playMediaObject(writeTestPlayable(playableFileUrl, PLAYABLE_LOCAL_URL), false, startWhenPrepared, true);
@@ -651,7 +651,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(latchCount);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 checkPSMPInfo(newInfo);
                 if (newInfo.playerStatus == PlayerStatus.ERROR) {
                     if (assertionError == null)
@@ -672,7 +672,7 @@ public class PlaybackServiceMediaPlayerTest {
                 return false;
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, PLAYABLE_LOCAL_URL);
         if (initialState == PlayerStatus.INITIALIZED
                 || initialState == PlayerStatus.PLAYING
@@ -725,7 +725,7 @@ public class PlaybackServiceMediaPlayerTest {
         final CountDownLatch countDownLatch = new CountDownLatch(latchCount);
         CancelablePSMPCallback callback = new CancelablePSMPCallback(new DefaultPSMPCallback() {
             @Override
-            public void statusChanged(LocalPSMP.PSMPInfo newInfo) {
+            public void statusChanged(LocalPlaybackServiceMediaPlayer.PSMPInfo newInfo) {
                 checkPSMPInfo(newInfo);
                 if (newInfo.playerStatus == PlayerStatus.ERROR) {
                     if (assertionError == null)
@@ -746,7 +746,7 @@ public class PlaybackServiceMediaPlayerTest {
                 return false;
             }
         });
-        PlaybackServiceMediaPlayer psmp = new LocalPSMP(c, callback);
+        BaseMediaPlayer psmp = new LocalPlaybackServiceMediaPlayer(c, callback);
         Playable p = writeTestPlayable(playableFileUrl, PLAYABLE_LOCAL_URL);
         boolean prepareImmediately = initialState != PlayerStatus.INITIALIZED;
         boolean startImmediately = initialState != PlayerStatus.PREPARED;
