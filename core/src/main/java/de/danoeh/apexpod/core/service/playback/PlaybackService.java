@@ -829,6 +829,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         }
     };
 
+    private  PlayStatLogger playStatLogger = new PlayStatLoggerImpl();
     private final BaseMediaPlayer.PSMPCallback mediaPlayerCallback = new BaseMediaPlayer.PSMPCallback() {
         @Override
         public void statusChanged(BaseMediaPlayer.PSMPInfo newInfo) {
@@ -858,6 +859,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                         // remove notification on pause
                         stateManager.stopForeground(true);
                     }
+                    playStatLogger.endPlayStat(System.currentTimeMillis(), getCurrentPosition());
                     cancelPositionObserver();
                     PlaybackPreferences.writePlayerStatus(mediaPlayer.getPlayerStatus());
                     break;
@@ -866,6 +868,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                     //stopService();
                     break;
                 case PLAYING:
+                    playStatLogger.startPlayStat(System.currentTimeMillis(), getCurrentPosition());
                     PlaybackPreferences.writePlayerStatus(mediaPlayer.getPlayerStatus());
                     updateNotificationAndMediaSession(newInfo.playable);
                     setupPositionObserver();
