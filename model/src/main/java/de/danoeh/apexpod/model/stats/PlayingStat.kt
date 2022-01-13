@@ -1,8 +1,9 @@
 package de.danoeh.apexpod.model.stats
 
 data class PlayingStat(
-    val id : Long,
-    val feedItemId : Long,
-    val startTime : Long,
-    val endTime : Long,
-    val actualDuration : Long)
+    var id : Long,
+    var feedItemId : Long,
+    var startTime : Long,
+    var endTime : Long,
+    var startPos : Int,
+    var endPos : Int)

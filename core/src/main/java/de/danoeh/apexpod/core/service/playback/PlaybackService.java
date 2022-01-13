@@ -830,6 +830,14 @@ public class PlaybackService extends MediaBrowserServiceCompat {
     };
 
     private  PlayStatLogger playStatLogger = new PlayStatLoggerImpl();
+
+    private FeedItem getFeedItem() {
+        Playable playable = getPlayable();
+        if(playable instanceof FeedMedia) {
+            return ((FeedMedia) getPlayable()).getItem();
+        }
+       return null;
+    }
     private final BaseMediaPlayer.PSMPCallback mediaPlayerCallback = new BaseMediaPlayer.PSMPCallback() {
         @Override
         public void statusChanged(BaseMediaPlayer.PSMPInfo newInfo) {
@@ -859,7 +867,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                         // remove notification on pause
                         stateManager.stopForeground(true);
                     }
-                    playStatLogger.endPlayStat(System.currentTimeMillis(), getCurrentPosition());
+                    playStatLogger.endPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
                     cancelPositionObserver();
                     PlaybackPreferences.writePlayerStatus(mediaPlayer.getPlayerStatus());
                     break;
@@ -868,7 +876,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                     //stopService();
                     break;
                 case PLAYING:
-                    playStatLogger.startPlayStat(System.currentTimeMillis(), getCurrentPosition());
+                    playStatLogger.startPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
                     PlaybackPreferences.writePlayerStatus(mediaPlayer.getPlayerStatus());
                     updateNotificationAndMediaSession(newInfo.playable);
                     setupPositionObserver();
@@ -1117,6 +1125,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         }
         FeedMedia media = (FeedMedia) playable;
         FeedItem item = media.getItem();
+        playStatLogger.endPlayStat(System.currentTimeMillis(), getCurrentPosition(), item);
         boolean smartMarkAsPlayed = FeedItemUtil.hasAlmostEnded(media);
         if (!ended && smartMarkAsPlayed) {
             Log.d(TAG, "smart mark as played");
