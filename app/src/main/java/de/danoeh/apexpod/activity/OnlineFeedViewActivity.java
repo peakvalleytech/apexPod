@@ -144,7 +144,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             if (feedUrl.contains("subscribeonandroid.com")) {
                 feedUrl = feedUrl.replaceFirst("((www.)?(subscribeonandroid.com/))", "");
             }
-            if (savedInstanceState == null) {
+            if (isAuthenticated(savedInstanceState)) {
                 lookupUrlAndDownload(feedUrl, null, null);
             } else {
                 lookupUrlAndDownload(feedUrl, savedInstanceState.getString("username"),
@@ -153,6 +153,9 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         }
     }
 
+    private boolean isAuthenticated(Bundle savedInstanceState) {
+        return savedInstanceState == null;
+    }
     private void showNoPodcastFoundError() {
         runOnUiThread(() -> new AlertDialog.Builder(OnlineFeedViewActivity.this)
                 .setNeutralButton(android.R.string.ok, (dialog, which) -> finish())
