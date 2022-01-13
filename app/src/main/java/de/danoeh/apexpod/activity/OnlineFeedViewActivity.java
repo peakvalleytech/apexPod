@@ -309,7 +309,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
                 .subscribe(
                         feeds -> {
                             OnlineFeedViewActivity.this.feeds = feeds;
-                            handleUpdatedFeedStatus(feed);
+                            updateSubscribeButton(feed);
                         }, error -> Log.e(TAG, Log.getStackTraceString(error))
                 );
     }
@@ -317,7 +317,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(DownloadEvent event) {
         Log.d(TAG, "onEventMainThread() called with: " + "event = [" + event + "]");
-        handleUpdatedFeedStatus(feed);
+        updateSubscribeButton(feed);
     }
 
     private void parseFeed() {
@@ -439,7 +439,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
                     DownloadRequestErrorDialogCreator.newRequestErrorDialog(this, e.getMessage());
                 }
                 didPressSubscribe = true;
-                handleUpdatedFeedStatus(feed);
+                updateSubscribeButton(feed);
             }
         });
 
@@ -504,7 +504,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
                 }
             });
         }
-        handleUpdatedFeedStatus(feed);
+        updateSubscribeButton(feed);
     }
 
     private void openFeed() {
@@ -517,7 +517,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void handleUpdatedFeedStatus(Feed feed) {
+    private void updateSubscribeButton(Feed feed) {
         if (feed != null) {
             if (DownloadRequester.getInstance().isDownloadingFile(feed.getDownload_url())) {
                 viewBinding.subscribeButton.setEnabled(false);
