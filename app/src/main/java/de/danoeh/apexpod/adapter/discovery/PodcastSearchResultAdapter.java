@@ -124,7 +124,8 @@ public class PodcastSearchResultAdapter extends
             itemView.setBackgroundResource(ThemeUtils.getDrawableFromAttr(activity, R.attr.selectableItemBackground));
 
         quickSubBtn.setOnClickListener(v -> {
-            quickSubIcon.setBackground(AppCompatResources.getDrawable(activity,R.drawable.ic_check_circle_black_24dp));
+            quickSubIcon.setBackground(AppCompatResources.getDrawable(activity,R.drawable.ic_check));
+
         });
         }
     }
