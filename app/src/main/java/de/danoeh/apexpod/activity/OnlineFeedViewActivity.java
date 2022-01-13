@@ -530,8 +530,8 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
                     if (UserPreferences.isEnableAutodownload()) {
                         boolean autoDownload = viewBinding.autoDownloadCheckBox.isChecked();
 
-                        Feed feed1 = DBReader.getFeed(getFeedId(feed));
-                        FeedPreferences feedPreferences = feed1.getPreferences();
+                        Feed feedTemp = DBReader.getFeed(getFeedId(feed));
+                        FeedPreferences feedPreferences = feedTemp.getPreferences();
                         feedPreferences.setAutoDownload(autoDownload);
                         DBWriter.setFeedPreferences(feedPreferences);
 
