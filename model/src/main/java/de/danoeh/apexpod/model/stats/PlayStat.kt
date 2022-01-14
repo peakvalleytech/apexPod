@@ -1,6 +1,6 @@
 package de.danoeh.apexpod.model.stats
 
-data class PlayingStat(
+data class PlayStat(
     var id : Long,
     var feedItemId : Long,
     var startTime : Long,

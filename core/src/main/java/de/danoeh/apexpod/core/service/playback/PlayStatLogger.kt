@@ -1,7 +1,6 @@
 package de.danoeh.apexpod.core.service.playback
 
 import de.danoeh.apexpod.model.feed.FeedItem
-import de.danoeh.apexpod.model.stats.PlayingStat
 
 interface PlayStatLogger {
 
