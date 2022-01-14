@@ -28,6 +28,8 @@ import androidx.core.app.NavUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.activity.discovery.DownlaodRequestFactory;
+import de.danoeh.apexpod.activity.discovery.SubscribeHelper;
 import de.danoeh.apexpod.adapter.FeedItemlistDescriptionAdapter;
 import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.core.event.DownloadEvent;
@@ -49,7 +51,6 @@ import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.parser.feed.FeedHandler;
 import de.danoeh.apexpod.parser.feed.FeedHandlerResult;
 import de.danoeh.apexpod.core.util.DownloadError;
-import de.danoeh.apexpod.core.util.FileNameGenerator;
 import de.danoeh.apexpod.core.util.IntentUtils;
 import de.danoeh.apexpod.core.util.StorageUtils;
 import de.danoeh.apexpod.core.util.URLChecker;
@@ -57,10 +58,8 @@ import de.danoeh.apexpod.core.util.syndication.FeedDiscoverer;
 import de.danoeh.apexpod.core.util.syndication.HtmlToPlainText;
 import de.danoeh.apexpod.databinding.OnlinefeedviewActivityBinding;
 import de.danoeh.apexpod.dialog.AuthenticationDialog;
-import de.danoeh.apexpod.discovery.PodcastSearcherRegistry;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedPreferences;
-import de.danoeh.apexpod.model.feed.VolumeAdaptionSetting;
 import de.danoeh.apexpod.model.playback.RemoteMedia;
 import de.danoeh.apexpod.parser.feed.UnsupportedFeedtypeException;
 import io.reactivex.Maybe;
@@ -144,12 +143,24 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             if (feedUrl.contains("subscribeonandroid.com")) {
                 feedUrl = feedUrl.replaceFirst("((www.)?(subscribeonandroid.com/))", "");
             }
-            if (isAuthenticated(savedInstanceState)) {
-                lookupUrlAndDownload(feedUrl, null, null);
-            } else {
-                lookupUrlAndDownload(feedUrl, savedInstanceState.getString("username"),
-                        savedInstanceState.getString("password"));
+            String username = null, password = null;
+            if (!isAuthenticated(savedInstanceState)) {
+                username = savedInstanceState.getString("username");
+                password = savedInstanceState.getString("password");
             }
+            SubscribeHelper subscribeHelper = new SubscribeHelper();
+            subscribeHelper.lookupUrl(
+                    feedUrl,
+                    username,
+                    password,
+                    (url, u, p) -> {
+                        startFeedDownload(url, u, p);
+                        return null;
+                    },() -> {
+                        showNoPodcastFoundError();
+                        return null;
+                    }
+            );
         }
     }
 
@@ -245,31 +256,14 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void lookupUrlAndDownload(String url, String username, String password) {
-        download = PodcastSearcherRegistry.lookupUrl(url)
-                .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
-                .subscribe(lookedUpUrl -> startFeedDownload(lookedUpUrl, username, password),
-                        error -> {
-                            showNoPodcastFoundError();
-                            Log.e(TAG, Log.getStackTraceString(error));
-                        });
-    }
-
     private void startFeedDownload(String url, String username, String password) {
         Log.d(TAG, "Starting feed download");
         url = URLChecker.prepareURL(url);
-        feed = new Feed(url, null);
-        if (username != null && password != null) {
-            feed.setPreferences(new FeedPreferences(0, false, FeedPreferences.AutoDeleteAction.GLOBAL,
-                    VolumeAdaptionSetting.OFF, username, password));
-        }
-        String fileUrl = new File(getExternalCacheDir(),
-                FileNameGenerator.generateFileName(feed.getDownload_url())).toString();
-        feed.setFile_url(fileUrl);
-        final DownloadRequest request = new DownloadRequest(feed.getFile_url(),
-                feed.getDownload_url(), "OnlineFeed", 0, Feed.FEEDFILETYPE_FEED, username, password,
-                true, null, true);
+        DownlaodRequestFactory downlaodRequestFactory = new DownlaodRequestFactory();
+        final DownloadRequest request =
+                downlaodRequestFactory.create(
+                url, getExternalCacheDir(), username, password);
+        this.feed = downlaodRequestFactory.getFeed();
 
         download = Observable.fromCallable(() -> {
             feeds = DBReader.getFeedList();
