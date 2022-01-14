@@ -56,8 +56,8 @@ public class PlayStatDaoTest {
         PlayStatRange createdPlayStats = playListItemDao.getAllPlayStats();
         assertEquals(createdPlayStats.size(), playStats.size());
         for (int i = 0; i < createdPlayStats.size(); i++) {
-            assertTrue(createdPlayStats(i).get(i).getId() != 0);
-            assertEquals(playlistItems.get(i).getId(), playlistItems.get(i).getId());
+            assertTrue(createdPlayStats.get(i).getId() != 0);
+            assertEquals(createdPlayStats.get(i).getId(), playStats.get(i).getId());
         }
     }
 }
