@@ -1,20 +1,21 @@
 package de.danoeh.apexpod.core.service.playback
 
 import android.util.Log
+import de.danoeh.apexpod.core.storage.repository.PlayStatsRepository
 import de.danoeh.apexpod.core.util.Converter
-import de.danoeh.apexpod.core.util.DateFormatter
 import de.danoeh.apexpod.model.feed.FeedItem
-import de.danoeh.apexpod.model.stats.PlayingStat
+import de.danoeh.apexpod.model.stats.PlayStat
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
-class PlayStatLoggerImpl : PlayStatLogger {
+class PlayStatLoggerImpl(
+    playStatsRepository: PlayStatsRepository
+) : PlayStatLogger {
     private val TAG = "PlayStatLoggerImpl"
-    private var currPlayStat : PlayingStat? = null
+    private var currPlayStat : PlayStat? = null
     private var playingFeedItem : FeedItem? = null
     override fun startPlayStat(startTime: Long, startPosition: Int, feedItem: FeedItem) {
-        currPlayStat = PlayingStat(0, 0, startTime, 0, startPosition, -1)
+        currPlayStat = PlayStat(0, 0, startTime, 0, startPosition, -1)
         playingFeedItem = feedItem
         Log.d(TAG, "Starting new PlayStat at ${prettyMillis(startTime)} at position  ${Converter.getDurationStringLong(startPosition)}" )
         Log.d(TAG, "Starting playback of ${playingFeedItem!!.title}")
