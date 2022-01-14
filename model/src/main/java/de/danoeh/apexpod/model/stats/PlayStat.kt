@@ -6,4 +6,5 @@ data class PlayStat(
     var startTime : Long,
     var endTime : Long,
     var startPos : Int,
-    var endPos : Int)
+    var endPos : Int
+    )
