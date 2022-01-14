@@ -70,6 +70,7 @@ import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.FeedSearcher;
+import de.danoeh.apexpod.core.storage.repository.PlayStatsRepository;
 import de.danoeh.apexpod.core.sync.queue.SynchronizationQueueSink;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.IntentUtils;
@@ -85,6 +86,7 @@ import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.model.feed.FeedPreferences;
 import de.danoeh.apexpod.model.playback.MediaType;
 import de.danoeh.apexpod.model.playback.Playable;
+import de.danoeh.apexpod.model.stats.PlayStat;
 import de.danoeh.apexpod.ui.appstartintent.MainActivityStarter;
 import de.danoeh.apexpod.ui.appstartintent.VideoPlayerActivityStarter;
 import io.reactivex.Completable;
@@ -829,7 +831,28 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         }
     };
 
-    private  PlayStatLogger playStatLogger = new PlayStatLoggerImpl();
+    private  PlayStatLogger playStatLogger = new PlayStatLoggerImpl(new PlayStatsRepository() {
+        @Override
+        public void createPlayStat(@NonNull PlayStat playStat) {
+
+        }
+
+        @NonNull
+        @Override
+        public List<PlayStat> getPlayStats() {
+            return null;
+        }
+
+        @Override
+        public void updatePlayStat(@NonNull PlayStat playStat) {
+
+        }
+
+        @Override
+        public void deletePlayStat(@NonNull PlayStat playStat) {
+
+        }
+    });
 
     private FeedItem getFeedItem() {
         Playable playable = getPlayable();
