@@ -31,6 +31,21 @@ import de.danoeh.apexpod.model.stats.PlayStatRange;
 public class PlayStatDaoTest {
     private ApexDBAdapter adapter;
     PlayStatDao playListItemDao;
+
+    class TestData {
+        PlayStatRange emptyList = new PlayStatRange(0, 0);
+        PlayStatRange simpleList = new PlayStatRange(0, 100);
+        PlayStatRange list = new PlayStatRange(0, 100);
+        public TestData() {
+            long feedItemId = 1;
+            simpleList.add(new PlayStat(0, feedItemId, 0, 1, 0, 0));
+            simpleList.add(new PlayStat(0, feedItemId, 2, 4, 0, 0));
+            simpleList.add(new PlayStat(0, feedItemId, 5, 8, 0, 0));
+            simpleList.add(new PlayStat(0, feedItemId, 9, 13, 0, 0));
+            simpleList.add(new PlayStat(0, feedItemId, 14, 19, 0, 0));
+        }
+
+    }
     @Before
     public void setUp() {
         Context context = InstrumentationRegistry.getInstrumentation().getContext();
@@ -42,7 +57,7 @@ public class PlayStatDaoTest {
 //        playListItemDao = new PlayListItemDao();
     }
     @Test
-    public void addStats() {
+    public void givenPlayStats_whenAdded_shouldSucceed() {
         List<PlayStat> playStats = new ArrayList<>();
         int numOfStats = 5;
         int feedItemId = 4;
@@ -59,5 +74,25 @@ public class PlayStatDaoTest {
             assertTrue(createdPlayStats.get(i).getId() != 0);
             assertEquals(createdPlayStats.get(i).getId(), playStats.get(i).getId());
         }
+    }
+
+    @Test
+    public void givenPlayStats_whenGettingByFeedItemId_shouldReturnMatchingPlayStats() {
+
+    }
+
+    @Test
+    public void givenPlayStats_whenGettingByRange_shouldReturnMatchingPlayStats() {
+
+    }
+
+    @Test
+    public void givenPlayStat_whenUpdated_shouldUpdatePlayStat() {
+
+    }
+
+    @Test
+    public void givenPlayStat_whenDeleted_shouldDeletePlayStat() {
+
     }
 }
