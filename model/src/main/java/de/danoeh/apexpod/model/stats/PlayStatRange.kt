@@ -1,25 +1,34 @@
 package de.danoeh.apexpod.model.stats
 
+import android.util.Range
 import java.lang.IllegalArgumentException
+import java.util.*
 
 /**
- * Holds a set of PlayStat objects whose starttime and endtime is bound to a given range.
+ * Holds a set of PlayStat objects whose non negative starttime and endtime is bound to a given range.
  */
 class PlayStatRange(val start : Long, val end : Long) {
     private lateinit var playStats : MutableList<PlayStat>
     init {
         if (start > end) {
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("Start must be less than end")
+        }
+        if (start < 0 || end < 0) {
+            throw IllegalArgumentException("Start and end must be non negative")
         }
         playStats = mutableListOf()
     }
 
     /**
+     *  Adds a PlayStat to existing set
+     *  Insert time can be expected to be O(1)
      * @param the PlayStat to add
-     * @throws IllegalArgumentException if start time or end time is not within range
+     * @throws IllegalArgumentException
+     *      if start time or end time is not within range
+     *      if range already contains a PlayStat with the same start time
+     * @
      */
     fun add(playStat: PlayStat) {
-//        if(playStat.startTime )
 
     }
 
@@ -45,4 +54,16 @@ class PlayStatRange(val start : Long, val end : Long) {
     fun size(): Int {
         return playStats.size
     }
+
+    /**
+     * Determines if range is valid for given range
+     */
+    fun isValidRange(start : Long, end : Long) : Boolean {
+        return false
+    }
+
+    private fun validateRange(start : Long, end : Long) {
+
+    }
+    val r = Range()
 }
