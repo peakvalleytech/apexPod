@@ -45,8 +45,6 @@ public class FeedMultiSelectActionHandler {
             keepUpdatedPrefHandler();
         } else if (id == R.id.autodownload) {
             autoDownloadPrefHandler();
-        } else if (id == R.id.autoDeleteDownload) {
-            autoDeleteEpisodesPrefHandler();
         } else if (id == R.id.playback_speed) {
             playbackSpeedPrefHandler();
         } else if (id == R.id.add_tag) {
@@ -115,33 +113,6 @@ public class FeedMultiSelectActionHandler {
                 })
                 .setNegativeButton(R.string.cancel_label, null)
                 .show();
-    }
-
-    private void autoDeleteEpisodesPrefHandler() {
-        PreferenceListDialog preferenceListDialog = new PreferenceListDialog(activity,
-                "Auto delete episodes");
-        String[] items = activity.getResources().getStringArray(R.array.spnAutoDeleteItems);
-        String[] values = activity.getResources().getStringArray(R.array.spnAutoDeleteValues);
-        preferenceListDialog.openDialog(items);
-        preferenceListDialog.setOnPreferenceChangedListener(which -> {
-            FeedPreferences.AutoDeleteAction autoDeleteAction = null;
-            switch (values[which]) {
-                case "global":
-                    autoDeleteAction = FeedPreferences.AutoDeleteAction.GLOBAL;
-                    break;
-                case "always":
-                    autoDeleteAction = FeedPreferences.AutoDeleteAction.YES;
-                    break;
-                case "never":
-                    autoDeleteAction = FeedPreferences.AutoDeleteAction.NO;
-                    break;
-                default:
-            }
-            FeedPreferences.AutoDeleteAction finalAutoDeleteAction = autoDeleteAction;
-            saveFeedPreferences(feedPreferences -> {
-                feedPreferences.setAutoDeleteAction(finalAutoDeleteAction);
-            });
-        });
     }
 
     private void keepUpdatedPrefHandler() {

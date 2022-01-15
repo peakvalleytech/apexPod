@@ -100,7 +100,6 @@ public class FeedSettingsFragment extends Fragment {
     public static class FeedSettingsPreferenceFragment extends PreferenceFragmentCompat {
         private static final CharSequence PREF_SCREEN = "feedSettingsScreen";
         private static final CharSequence PREF_AUTHENTICATION = "authentication";
-        private static final CharSequence PREF_AUTO_DELETE = "autoDelete";
         private static final CharSequence PREF_CATEGORY_AUTO_DOWNLOAD = "autoDownloadCategory";
         private static final String PREF_FEED_PLAYBACK_SPEED = "feedPlaybackSpeed";
         private static final String PREF_AUTO_SKIP = "feedAutoSkip";
@@ -155,7 +154,6 @@ public class FeedSettingsFragment extends Fragment {
                         setupAutoDownloadGlobalPreference();
                         setupAutoDownloadPreference();
                         setupKeepUpdatedPreference();
-                        setupAutoDeletePreference();
                         setupVolumeReductionPreferences();
                         setupAuthentificationPreference();
                         setupEpisodeFilterPreference();
@@ -163,14 +161,11 @@ public class FeedSettingsFragment extends Fragment {
                         setupFeedAutoSkipPreference();
                         setupEpisodeNotificationPreference();
                         setupTags();
-
-                        updateAutoDeleteSummary();
                         updateVolumeReductionValue();
                         updateAutoDownloadEnabled();
 
                         if (feed.isLocalFeed()) {
                             findPreference(PREF_AUTHENTICATION).setVisible(false);
-                            findPreference(PREF_AUTO_DELETE).setVisible(false);
                             findPreference(PREF_CATEGORY_AUTO_DOWNLOAD).setVisible(false);
                         }
 
@@ -265,44 +260,6 @@ public class FeedSettingsFragment extends Fragment {
                 }.show();
                 return false;
             });
-        }
-
-        private void setupAutoDeletePreference() {
-            findPreference(PREF_AUTO_DELETE).setOnPreferenceChangeListener((preference, newValue) -> {
-                switch ((String) newValue) {
-                    case "global":
-                        feedPreferences.setAutoDeleteAction(FeedPreferences.AutoDeleteAction.GLOBAL);
-                        break;
-                    case "always":
-                        feedPreferences.setAutoDeleteAction(FeedPreferences.AutoDeleteAction.YES);
-                        break;
-                    case "never":
-                        feedPreferences.setAutoDeleteAction(FeedPreferences.AutoDeleteAction.NO);
-                        break;
-                }
-                DBWriter.setFeedPreferences(feedPreferences);
-                updateAutoDeleteSummary();
-                return false;
-            });
-        }
-
-        private void updateAutoDeleteSummary() {
-            ListPreference autoDeletePreference = findPreference(PREF_AUTO_DELETE);
-
-            switch (feedPreferences.getAutoDeleteAction()) {
-                case GLOBAL:
-                    autoDeletePreference.setSummary(R.string.feed_auto_download_global);
-                    autoDeletePreference.setValue("global");
-                    break;
-                case YES:
-                    autoDeletePreference.setSummary(R.string.feed_auto_download_always);
-                    autoDeletePreference.setValue("always");
-                    break;
-                case NO:
-                    autoDeletePreference.setSummary(R.string.feed_auto_download_never);
-                    autoDeletePreference.setValue("never");
-                    break;
-            }
         }
 
         private void setupVolumeReductionPreferences() {
