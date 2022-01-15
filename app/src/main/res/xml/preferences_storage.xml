@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:search="http://schemas.android.com/apk/com.bytehamster.lib.preferencesearch">
 
-    <de.danoeh.apexpod.preferences.MasterSwitchPreference
+    <SwitchPreferenceCompat
         android:key="prefAutoDelete"
         android:title="@string/pref_auto_delete_title"
         search:summary="@string/pref_auto_delete_sum"
