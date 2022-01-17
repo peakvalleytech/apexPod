@@ -112,6 +112,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
 
     private OnlinefeedviewActivityBinding viewBinding;
 
+    SubscribeHelper subscribeHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(UserPreferences.getTranslucentTheme());
@@ -148,13 +149,13 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
                 username = savedInstanceState.getString("username");
                 password = savedInstanceState.getString("password");
             }
-            SubscribeHelper subscribeHelper = new SubscribeHelper();
+            subscribeHelper = new SubscribeHelper(this);
             subscribeHelper.lookupUrl(
                     feedUrl,
                     username,
                     password,
-                    (url, u, p) -> {
-                        startFeedDownload(url, u, p);
+                    (result) -> {
+                        checkDownloadResult(result);
                         return null;
                     },() -> {
                         showNoPodcastFoundError();
@@ -256,27 +257,6 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void startFeedDownload(String url, String username, String password) {
-        Log.d(TAG, "Starting feed download");
-        url = URLChecker.prepareURL(url);
-        DownlaodRequestFactory downlaodRequestFactory = new DownlaodRequestFactory();
-        final DownloadRequest request =
-                downlaodRequestFactory.create(
-                url, getExternalCacheDir(), username, password);
-        this.feed = downlaodRequestFactory.getFeed();
-
-        download = Observable.fromCallable(() -> {
-            feeds = DBReader.getFeedList();
-            downloader = new HttpDownloader(request);
-            downloader.call();
-            return downloader.getResult();
-        })
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(this::checkDownloadResult,
-                error -> Log.e(TAG, Log.getStackTraceString(error)));
-    }
-
     private void checkDownloadResult(@NonNull DownloadStatus status) {
         if (status.isCancelled()) {
             return;
@@ -315,7 +295,8 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private void parseFeed() {
-        if (feed == null || (feed.getFile_url() == null && feed.isDownloaded())) {
+        this.feed = subscribeHelper.getFeed();
+        if (this.feed == null || (feed.getFile_url() == null && feed.isDownloaded())) {
             throw new IllegalStateException("feed must be non-null and downloaded when parseFeed is called");
         }
         Log.d(TAG, "Parsing feed");
@@ -634,7 +615,9 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         if (urls.size() == 1) {
             // Skip dialog and display the item directly
             resetIntent(urls.get(0));
-            startFeedDownload(urls.get(0), null, null);
+            subscribeHelper.startFeedDownload(urls.get(0), null, null, (result) -> {checkDownloadResult(result);
+                return null;
+            });
             return true;
         }
 
@@ -645,9 +628,9 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             resetIntent(selectedUrl);
             FeedPreferences prefs = feed.getPreferences();
             if(prefs != null) {
-                startFeedDownload(selectedUrl, prefs.getUsername(), prefs.getPassword());
+                subscribeHelper.startFeedDownload(selectedUrl, prefs.getUsername(), prefs.getPassword(), (status) -> {checkDownloadResult(status); return null;});
             } else {
-                startFeedDownload(selectedUrl, null, null);
+                subscribeHelper.startFeedDownload(selectedUrl, null, null, (status) -> {checkDownloadResult(status); return null;});
             }
         };
 
@@ -683,7 +666,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
 
         @Override
         protected void onConfirmed(String username, String password) {
-            startFeedDownload(feedUrl, username, password);
+            subscribeHelper.startFeedDownload(feedUrl, username, password, (status) -> {checkDownloadResult(status); return null;});
         }
     }
 
