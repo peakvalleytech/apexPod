@@ -84,7 +84,7 @@ public class StoragePreferencesFragment extends PreferenceFragmentCompat {
         String[] entries = new String[values.length];
         for (int x = 0; x < values.length; x++) {
             int v = Integer.parseInt(values[x]);
-           if (v == 0) {
+            if (v == 0) {
                 entries[x] = res.getString(R.string.episode_cleanup_after_listening);
             } else if (v > 0 && v < 24) {
                 entries[x] = res.getQuantityString(R.plurals.episode_cleanup_hours_after_listening, v, v);
@@ -94,5 +94,30 @@ public class StoragePreferencesFragment extends PreferenceFragmentCompat {
             }
         }
         pref.setEntries(entries);
+        if (values.length > 0) {
+            int valueIndex = 0;
+            try {
+                String currentValue = String.valueOf(UserPreferences.getEpisodeCleanupValue());
+                valueIndex = getIndexOfResArray(currentValue, values);
+            } catch (Resources.NotFoundException e){
+                valueIndex = 0;
+            }
+            pref.setValueIndex(valueIndex);
+        }
+    }
+
+    /**
+     * Get the index value is located in a resource array
+     * @param value
+     * @param array the array from R.array
+     * @return the index of value
+     */
+    public static int getIndexOfResArray(String value, String[] array) {
+        for (int i = 0; i < array.length; ++i) {
+            if (array[i].equals(value)) {
+                return i;
+            }
+        }
+        throw new Resources.NotFoundException("Resource value not found.");
     }
 }

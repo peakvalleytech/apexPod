@@ -467,7 +467,7 @@ Tippen, um Details anzuzeigen.</string>
   <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
   <string name="pref_media_player_message">Wähle, welcher Medienabspieler benutzt werden soll, um Dateien abzuspielen</string>
   <string name="pref_current_value">Aktueller Wert: %1$s</string>
-  <string name="pref_proxy_title">Proxy</string>
+  <string name="pref_proxy_title">Stellvertreter</string>
   <string name="pref_proxy_sum">Richte einen Netzwerk-Proxy ein</string>
   <string name="pref_no_browser_found">Kein Browser gefunden.</string>
   <string name="pref_cast_title">Chromecast-Unterstützung</string>
@@ -780,4 +780,20 @@ Tippen, um Details anzuzeigen.</string>
   <string name="on_demand_config_setting_changed">Einstellung erfolgreich aktualisiert.</string>
   <string name="on_demand_config_stream_text">Es sieht so aus als würdest du viel streamen. Möchtest du in Listen den Streamen-Button anzeigen?</string>
   <string name="on_demand_config_download_text">Es sieht so aus als würdest du viel herunterladen. Möchtest du in Listen den Herunterladen-Button anzeigen?</string>
+    <string name="synchronization_logout">Abmeldung</string>
+  <string name="pref_synchronization_logout_toast">Abmelden war erfolgreich</string>
+  <string name="synchronization_sync_changes_title">Jetzt synchronisieren</string>
+  <string name="synchronization_full_sync_title">Vollständige Synchronisierung erzwingen</string>
+  <string name="synchronization_login_status"><![CDATA[Angemeldet als <i>%1$s</i> auf <i>%2$s</i>. <br/><br/> Sie können Ihren Synchronisierungsanbieter erneut auswählen, sobald Sie sich abgemeldet haben]]></string>
+  <string name="synchronization_summary_unchoosen">Sie können aus mehreren Anbietern wählen, mit denen Sie Ihre Abonnements und den Episodenwiedergabestatus synchronisieren möchten.</string>
+  <string name="synchronization_summary_nextcloud">Gpoddersync ist eine Open-Source-Nextcloud-App, die Sie ganz einfach auf Ihrem eigenen Server installieren können. Die App ist unabhängig vom ApexPod-Projekt.</string>
+  <string name="synchronization_nextcloud_authenticate_browser">Gewähren Sie den Zugriff über den geöffneten Webbrowser und kehren Sie zu ApexPod zurück.</string>
+  <string name="synchronization_choose_title">Synchronisierungsanbieter auswählen</string>
+  <string name="synchronization_force_sync_summary">Synchronisieren Sie alle Abonnements und Episodenzustände erneut</string>
+  <string name="synchronization_sync_summary">Synchronisieren von Abonnement- und Episodenstatusänderungen</string>
+  <string name="dialog_choose_sync_service_title">Synchronisierungsanbieter auswählen</string>
+  <string name="sync_status_wait_for_downloads">Warten auf den Abschluss der Downloads...</string>
+  <string name="left_short">L</string>
+  <string name="right_short">R</string>
+  <string name="volume">Volumen</string>
 </resources>

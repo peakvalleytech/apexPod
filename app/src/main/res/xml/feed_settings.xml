@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:key="feedSettingsScreen">
 
     <SwitchPreferenceCompat
@@ -41,7 +42,7 @@
         android:title="@string/pref_feed_skip" />
 
     <ListPreference
-        android:defaultValue="off"
+        android:defaultValue="After Finishing"
         android:entries="@array/spnVolumeReductionItems"
         android:entryValues="@array/spnVolumeReductionValues"
         android:icon="@drawable/ic_volume_adaption"
