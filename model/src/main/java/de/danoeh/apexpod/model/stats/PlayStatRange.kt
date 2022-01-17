@@ -63,7 +63,5 @@ class PlayStatRange(val start : Long, val end : Long) {
     }
 
     private fun validateRange(start : Long, end : Long) {
-
     }
-    val r = Range()
 }
