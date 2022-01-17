@@ -3,6 +3,7 @@ package de.danoeh.apexpod.activity.discovery
 import android.content.Context
 import de.danoeh.apexpod.core.service.download.DownloadRequest
 import de.danoeh.apexpod.core.util.FileNameGenerator
+import de.danoeh.apexpod.core.util.URLChecker
 import de.danoeh.apexpod.model.feed.Feed
 import de.danoeh.apexpod.model.feed.FeedPreferences
 import de.danoeh.apexpod.model.feed.VolumeAdaptionSetting
@@ -11,7 +12,6 @@ import java.io.File
 class DownlaodRequestFactory(
 ) {
     var feed : Feed? = null
-
     fun create(
             downloadUrl: String,
             destFile: File,
