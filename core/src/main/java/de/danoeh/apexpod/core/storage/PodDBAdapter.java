@@ -56,7 +56,7 @@ public class PodDBAdapter {
 
     private static final String TAG = "PodDBAdapter";
     public static final String DATABASE_NAME = "Antennapod.db";
-    public static final int VERSION = 2030000;
+    public static final int VERSION = 1;
 
     /**
      * Maximum number of arguments for IN-operator.
@@ -126,6 +126,10 @@ public class PodDBAdapter {
     public static final String KEY_AUTO_DOWNLOAD_CACHE_SIZE = "auto_download_cache_size";
     public static final String KEY_AUTO_DOWNLOAD_NEWEST_FIRST = "auto_download_newest_first";
     public static final String KEY_AUTO_DOWNLOAD_INCLUDE_ALL = "auto_download_include_all";
+    public static final String KEY_START_TIME = "start_time";
+    public static final String KEY_END_TIME = "end_time";
+    public static final String KEY_START_POS = "start_pos";
+    public static final String KEY_END_POS = "end_pos";
 
     // Table names
     public static final String TABLE_NAME_FEEDS = "Feeds";
@@ -138,6 +142,7 @@ public class PodDBAdapter {
     public static final String TABLE_NAME_FAVORITES = "Favorites";
     public static final String TABLE_NAME_PLAYLIST = "Playlists";
     public static final String TABLE_NAME_PLAYLIST_ITEMS = "PlaylistsItems";
+    public static final String TABLE_NAME_PLAYSTATS = "PlayStats";
 
 
     // SQL Statements for creating new tables
@@ -221,6 +226,16 @@ public class PodDBAdapter {
             + " TEXT," + KEY_START + " INTEGER," + KEY_FEEDITEM + " INTEGER,"
             + KEY_LINK + " TEXT," + KEY_IMAGE_URL + " TEXT," + KEY_CHAPTER_TYPE + " INTEGER)";
 
+    static final String CREATE_TABLE_FAVORITES = "CREATE TABLE "
+            + TABLE_NAME_FAVORITES + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
+            + KEY_FEEDITEM + " INTEGER," + KEY_FEED + " INTEGER)";
+
+    static final String CREATE_TABLE_PLAYSTATS = "CREATE TABLE "
+            + TABLE_NAME_PLAYSTATS + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
+            + KEY_FEEDITEM + " INTEGER, " + KEY_START_TIME + " INTEGER, "
+            + KEY_END_TIME + " INTEGER, " + KEY_START_POS + " INTEGER,"
+            + KEY_END_POS + " INTEGER)";
+
     // SQL Statements for creating indexes
     static final String CREATE_INDEX_FEEDITEMS_FEED = "CREATE INDEX "
             + TABLE_NAME_FEED_ITEMS + "_" + KEY_FEED + " ON " + TABLE_NAME_FEED_ITEMS + " ("
@@ -245,10 +260,6 @@ public class PodDBAdapter {
     static final String CREATE_INDEX_SIMPLECHAPTERS_FEEDITEM = "CREATE INDEX "
             + TABLE_NAME_SIMPLECHAPTERS + "_" + KEY_FEEDITEM + " ON " + TABLE_NAME_SIMPLECHAPTERS + " ("
             + KEY_FEEDITEM + ")";
-
-    static final String CREATE_TABLE_FAVORITES = "CREATE TABLE "
-            + TABLE_NAME_FAVORITES + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-            + KEY_FEEDITEM + " INTEGER," + KEY_FEED + " INTEGER)";
 
     /**
      * Select all columns from the feed-table
@@ -372,10 +383,24 @@ public class PodDBAdapter {
     }
 
     /**
+     * Used for testing database upgrades
+     * @param version the database version
+     * @return
+     */
+    public static synchronized PodDBAdapter getVersionInstance(int version) {
+            instance = new PodDBAdapter(version);
+        return instance;
+    }
+    /**
      * Changed to public so that it can be extended
      */
     public PodDBAdapter() {
         dbHelper = new PodDBHelper(PodDBAdapter.context, DATABASE_NAME, null);
+        db = openDb();
+    }
+
+    public PodDBAdapter(int version) {
+        dbHelper = new PodDBHelper(PodDBAdapter.context, version, DATABASE_NAME, null);
         db = openDb();
     }
 
@@ -1456,6 +1481,10 @@ public class PodDBAdapter {
      */
     private static class PodDBHelper extends SQLiteOpenHelper {
         /**
+         * Used for testing
+         */
+        private int version;
+        /**
          * Constructor.
          *
          * @param context Context to use
@@ -1464,6 +1493,22 @@ public class PodDBAdapter {
          */
         public PodDBHelper(final Context context, final String name, final CursorFactory factory) {
             super(context, name, factory, VERSION, new PodDbErrorHandler());
+        }
+
+        /**
+         * Used for testing database upgrades
+         * @param context
+         * @param version
+         * @param name
+         * @param factory
+         */
+        public PodDBHelper(final Context context, int version, final String name, final CursorFactory factory) {
+            super(context, name, factory, version, new PodDbErrorHandler());
+        }
+
+        @Override
+        public void onOpen(SQLiteDatabase db) {
+            super.onOpen(db);
         }
 
         @Override
@@ -1477,6 +1522,7 @@ public class PodDBAdapter {
             db.execSQL(CREATE_TABLE_FAVORITES);
             db.execSQL(CREATE_TABLE_PLAYLISTS);
             db.execSQL(CREATE_TABLE_PLAYLIST_ITEMS);
+            db.execSQL(CREATE_TABLE_PLAYSTATS);
 
             db.execSQL(CREATE_INDEX_FEEDITEMS_FEED);
             db.execSQL(CREATE_INDEX_FEEDITEMS_PUBDATE);
@@ -1490,6 +1536,13 @@ public class PodDBAdapter {
         public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
             Log.w("DBAdapter", "Upgrading from version " + oldVersion + " to " + newVersion + ".");
             DBUpgrader.upgrade(db, oldVersion, newVersion);
+        }
+
+        @Override
+        public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            Log.w("DBAdapter", "Downgrading from version " + oldVersion + " to " + newVersion + ".");
+            super.onDowngrade(db, oldVersion, newVersion);
+//            DBUpgrader.downgrade(db, oldVersion, newVersion);
         }
     }
 }

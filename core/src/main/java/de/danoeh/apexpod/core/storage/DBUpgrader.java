@@ -324,4 +324,9 @@ class DBUpgrader {
         }
     }
 
+    static void downgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
+        if (oldVersion < 4) {
+
+        }
+    }
 }
