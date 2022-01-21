@@ -316,6 +316,7 @@ public class PodDBAdapter {
             TABLE_NAME_SIMPLECHAPTERS,
             TABLE_NAME_FAVORITES,
             TABLE_NAME_PLAYLIST,
+            TABLE_NAME_PLAYSTATS
 
     };
 

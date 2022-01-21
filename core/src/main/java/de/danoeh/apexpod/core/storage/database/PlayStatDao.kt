@@ -38,46 +38,22 @@ class PlayStatDao {
             var cursor : Cursor? = null
             var playStatRange : PlayStatRange? = null
             cursor = db.rawQuery(query, null)
-            if (cursor.moveToFirst()) {
-                var startTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_START_TIME)
-                val rangeStartTime = cursor.getLong(startTimeIndex)
-                var rangeEndtime = 0L
-                if (cursor.isLast) {
-                    val endTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_TIME)
-                    rangeEndtime = cursor.getLong(endTimeIndex)
-                } else {
-                    cursor.moveToLast()
-                    val endTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_TIME)
-                    rangeEndtime = cursor.getLong(endTimeIndex)
-                }
-                playStatRange = PlayStatRange(rangeStartTime, rangeEndtime)
-                cursor.moveToFirst()
-                do {
-                    val idIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_ID)
-                    val feedItemIdIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_FEEDITEM)
-                    val feedIdIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_FEED)
-                    startTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_START_TIME)
-                    val endTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_TIME)
-                    val startPosIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_START_POS)
-                    val endPosIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_POS)
-                    val playStat = PlayStat(
-                        cursor.getLong(idIndex),
-                        cursor.getLong(feedItemIdIndex),
-                        cursor.getLong(feedIdIndex),
-                        cursor.getLong(startTimeIndex),
-                        cursor.getLong(endTimeIndex),
-                        cursor.getInt(startPosIndex),
-                        cursor.getInt(endPosIndex))
-                    playStatRange.add(playStat)
-                } while (cursor.moveToNext())
-            }
+            playStatRange = extractPlayStatRange(cursor)
             cursor.close()
             return@doTransaction playStatRange as PlayStatRange?
         } as PlayStatRange?
     }
 
-    fun getAllByFeedItemId(feedItemId : Long) : PlayStatRange {
-        return PlayStatRange(0, 1)
+    fun getAllByFeedId(feedId : Long) : PlayStatRange? {
+        return doTransaction {
+            val query : String = "SELECT * FROM ${PodDBAdapter.TABLE_NAME_PLAYSTATS}  WHERE ${PodDBAdapter.KEY_FEED} = ? ORDER BY ${PodDBAdapter.KEY_START_TIME}"
+            var cursor : Cursor? = null
+            var playStatRange : PlayStatRange? = null
+            cursor = db.rawQuery(query, arrayOf(feedId.toString()))
+            playStatRange = extractPlayStatRange(cursor)
+            cursor.close()
+            return@doTransaction playStatRange as PlayStatRange?
+        } as PlayStatRange?
     }
     fun getPlayStatsByRange(fromDateMillis : Long, toDateMillis : Long) : PlayStatRange {
         return PlayStatRange(0, 1)
@@ -101,5 +77,44 @@ class PlayStatDao {
         } finally {
             db.endTransaction()
         }
+    }
+
+    private fun extractPlayStatRange(cursor: Cursor): PlayStatRange? {
+        var playStatRange : PlayStatRange? = null
+
+        if (cursor.moveToFirst()) {
+            var startTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_START_TIME)
+            val rangeStartTime = cursor.getLong(startTimeIndex)
+            var rangeEndtime = 0L
+            if (cursor.isLast) {
+                val endTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_TIME)
+                rangeEndtime = cursor.getLong(endTimeIndex)
+            } else {
+                cursor.moveToLast()
+                val endTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_TIME)
+                rangeEndtime = cursor.getLong(endTimeIndex)
+            }
+            playStatRange = PlayStatRange(rangeStartTime, rangeEndtime)
+            cursor.moveToFirst()
+            do {
+                val idIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_ID)
+                val feedItemIdIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_FEEDITEM)
+                val feedIdIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_FEED)
+                startTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_START_TIME)
+                val endTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_TIME)
+                val startPosIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_START_POS)
+                val endPosIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_POS)
+                val playStat = PlayStat(
+                    cursor.getLong(idIndex),
+                    cursor.getLong(feedItemIdIndex),
+                    cursor.getLong(feedIdIndex),
+                    cursor.getLong(startTimeIndex),
+                    cursor.getLong(endTimeIndex),
+                    cursor.getInt(startPosIndex),
+                    cursor.getInt(endPosIndex))
+                playStatRange.add(playStat)
+            } while (cursor.moveToNext())
+        }
+        return playStatRange
     }
 }
