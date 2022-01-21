@@ -4,9 +4,9 @@ import de.danoeh.apexpod.model.feed.Feed
 
 class FeedPlayStatsItem(
     val feed : Feed,
-    val timePlayed : Long,
-    val timePlayedSpeedAdjusted : Long,
-    val totalPlayingTime : Long
+    val totalSpeedAdjustedListeningTime : Long,
+    val totalListeningTime : Long,
+    val episodesListenedTo : Int
 ) {
 
 }
