@@ -33,51 +33,65 @@ public class PlayStatDaoTest {
     PlayStatDao playStatsDao;
 
     class TestData {
+
         PlayStatRange emptyList = new PlayStatRange(0, 0);
-        PlayStatRange simpleList = new PlayStatRange(0, 100);
-        PlayStatRange list = new PlayStatRange(0, 100);
+        PlayStatRange singleFeedList = new PlayStatRange(0, 100);
+        PlayStatRange multiFeedList = new PlayStatRange(0, 100);
         public TestData() {
             long feedItemId = 1;
-            simpleList.add(new PlayStat(0, feedItemId, 0, 1, 0, 0));
-            simpleList.add(new PlayStat(0, feedItemId, 2, 4, 0, 0));
-            simpleList.add(new PlayStat(0, feedItemId, 5, 8, 0, 0));
-            simpleList.add(new PlayStat(0, feedItemId, 9, 13, 0, 0));
-            simpleList.add(new PlayStat(0, feedItemId, 14, 19, 0, 0));
+            long feedId = 1;
+            singleFeedList.add(new PlayStat(0, feedItemId, feedId,0, 1, 0, 0));
+            singleFeedList.add(new PlayStat(0, feedItemId, feedId,2, 4, 0, 0));
+            singleFeedList.add(new PlayStat(0, feedItemId, feedId,5, 8, 0, 0));
+            singleFeedList.add(new PlayStat(0, feedItemId, feedId,9, 13, 0, 0));
+            singleFeedList.add(new PlayStat(0, feedItemId, feedId,14, 19, 0, 0));
+
         }
 
     }
+    private TestData data;
     @Before
     public void setUp() {
         Context context = InstrumentationRegistry.getInstrumentation().getContext();
         UserPreferences.init(context);
         ApexDBAdapter.init(context);
         ApexDBAdapter.deleteDatabase();
+        ApexDBAdapter.tearDownTests();
         adapter = ApexDBAdapter.getInstance();
         adapter.open();
-        playStatsDao = new Pl;
+        playStatsDao = new PlayStatDao();
+        data = new TestData();
     }
     @Test
-    public void givenPlayStats_whenAdded_shouldSucceed() {
+    public void givenPlayStats_whenValid_shouldAdded() {
         List<PlayStat> playStats = new ArrayList<>();
-        int numOfStats = 5;
+        int numOfStats = data.singleFeedList.size();
         int feedItemId = 4;
-        for (int i = 0; i < numOfStats; ++numOfStats) {
-            playStats.add(new PlayStat(0, feedItemId, 1, 2, 3, 4));
+        for (int i = 0; i < numOfStats; ++i) {
+            playStats.add(data.singleFeedList.get(i));
         }
-        for (int i = 0; i < numOfStats; ++numOfStats) {
-            long id = playStatsDao.createPlayStat(playStats.get(i));
-            assertTrue(id == i + 1);
-        }
-        PlayStatRange createdPlayStats = playStatsDao.getAllPlayStats();
-        assertEquals(createdPlayStats.size(), playStats.size());
-        for (int i = 0; i < createdPlayStats.size(); i++) {
-            assertTrue(createdPlayStats.get(i).getId() != 0);
-            assertEquals(createdPlayStats.get(i).getId(), playStats.get(i).getId());
+        for (int i = 0; i < numOfStats; ++i) {
+            long expectedId = playStatsDao.createPlayStat(playStats.get(i));
+            assertEquals(  i + 1, expectedId);
         }
     }
 
     @Test
-    public void givenPlayStats_whenGettingByFeedItemId_shouldReturnMatchingPlayStats() {
+    public void givenTableNotEmpty_whenGettingAllItems_shouldReturnAll() {
+        List<PlayStat> playStats = new ArrayList<>();
+        int numOfStats = data.singleFeedList.size();
+        for (int i = 0; i < numOfStats; ++i) {
+            playStats.add(data.singleFeedList.get(i));
+        }
+        for (int i = 0; i < numOfStats; ++i) {
+            playStatsDao.createPlayStat(playStats.get(i));
+        }
+        PlayStatRange createdPlayStats = playStatsDao.getAllPlayStats();
+        assertEquals(createdPlayStats.size(), playStats.size());
+    }
+
+    @Test
+    public void givenFeedItemId_whenValid_shouldReturnMatchingPlayStats() {
 
     }
 

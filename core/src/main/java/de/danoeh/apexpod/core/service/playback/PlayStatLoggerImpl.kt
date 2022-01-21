@@ -15,7 +15,7 @@ class PlayStatLoggerImpl(
     private var currPlayStat : PlayStat? = null
     private var playingFeedItem : FeedItem? = null
     override fun startPlayStat(startTime: Long, startPosition: Int, feedItem: FeedItem) {
-        currPlayStat = PlayStat(0, 0, startTime, 0, startPosition, -1)
+        currPlayStat = PlayStat(0, 0, feedItem.feed.id, startTime, 0, startPosition, -1)
         playingFeedItem = feedItem
         Log.d(TAG, "Starting new PlayStat at ${prettyMillis(startTime)} at position  ${Converter.getDurationStringLong(startPosition)}" )
         Log.d(TAG, "Starting playback of ${playingFeedItem!!.title}")
