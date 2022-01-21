@@ -70,7 +70,7 @@ import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.util.FeedItemPermutors;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.gui.MoreContentListFooterUtil;
-import de.danoeh.apexpod.dialog.FilterDialog;
+import de.danoeh.apexpod.dialog.FeedFilterDialog;
 import de.danoeh.apexpod.dialog.RemoveFeedDialog;
 import de.danoeh.apexpod.dialog.RenameFeedDialog;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
@@ -522,7 +522,7 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
                 txtvInformation.setText("{md-info-outline} " + this.getString(R.string.filtered_label));
                 Iconify.addIcons(txtvInformation);
                 txtvInformation.setOnClickListener((l) -> {
-                    FilterDialog filterDialog = new FilterDialog(requireContext(), feed.getItemFilter()) {
+                    FeedFilterDialog feedFilterDialog = new FeedFilterDialog(requireContext(), feed.getItemFilter()) {
                         @Override
                         protected void updateFilter(Set<String> filterValues) {
                             feed.setItemFilter(filterValues.toArray(new String[0]));
@@ -530,7 +530,7 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
                         }
                     };
 
-                    filterDialog.openDialog();
+                    feedFilterDialog.openDialog();
                 });
                 txtvInformation.setVisibility(View.VISIBLE);
             } else {

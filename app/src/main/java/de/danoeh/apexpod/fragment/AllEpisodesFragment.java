@@ -13,7 +13,7 @@ import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedItemFilter;
 import de.danoeh.apexpod.core.storage.DBReader;
-import de.danoeh.apexpod.dialog.FilterDialog;
+import de.danoeh.apexpod.dialog.FeedFilterDialog;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -76,7 +76,7 @@ public class AllEpisodesFragment extends EpisodesListFragment {
     }
 
     private void showFilterDialog() {
-        FilterDialog filterDialog = new FilterDialog(getContext(), feedItemFilter) {
+        FeedFilterDialog feedFilterDialog = new FeedFilterDialog(getContext(), feedItemFilter) {
             @Override
             protected void updateFilter(Set<String> filterValues) {
                 feedItemFilter = new FeedItemFilter(filterValues.toArray(new String[0]));
@@ -86,7 +86,7 @@ public class AllEpisodesFragment extends EpisodesListFragment {
             }
         };
 
-        filterDialog.openDialog();
+        feedFilterDialog.openDialog();
     }
 
     @Override

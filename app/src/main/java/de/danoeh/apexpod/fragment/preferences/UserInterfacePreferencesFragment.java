@@ -89,17 +89,6 @@ public class UserInterfacePreferencesFragment extends PreferenceFragmentCompat {
                     return true;
                 });
 
-        findPreference(UserPreferences.PREF_FILTER_FEED)
-                .setOnPreferenceClickListener((preference -> {
-                    SubscriptionsFilterDialog.showDialog(requireContext());
-                    return true;
-                }));
-
-        findPreference(UserPreferences.PREF_DRAWER_FEED_ORDER)
-                .setOnPreferenceClickListener((preference -> {
-                    FeedSortDialog.showDialog(requireContext());
-                    return true;
-                }));
         findPreference(PREF_SWIPE)
                 .setOnPreferenceClickListener(preference -> {
                     ((PreferenceActivity) getActivity()).openScreen(R.xml.preferences_swipe);

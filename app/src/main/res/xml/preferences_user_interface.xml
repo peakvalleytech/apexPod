@@ -29,10 +29,10 @@
                 android:enabled="true"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/subscriptions_label">
-        <Preference
-            android:title="@string/pref_nav_drawer_feed_order_title"
-            android:key="prefDrawerFeedOrder"
-            android:summary="@string/pref_nav_drawer_feed_order_sum"/>
+<!--        <Preference-->
+<!--            android:title="@string/pref_nav_drawer_feed_order_title"-->
+<!--            android:key="prefDrawerFeedOrder"-->
+<!--            android:summary="@string/pref_nav_drawer_feed_order_sum"/>-->
         <ListPreference
             android:entryValues="@array/nav_drawer_feed_counter_values"
             android:entries="@array/nav_drawer_feed_counter_options"
@@ -40,10 +40,10 @@
             android:key="prefDrawerFeedIndicator"
             android:summary="@string/pref_nav_drawer_feed_counter_sum"
             android:defaultValue="1"/>
-        <Preference
-            android:title="@string/pref_filter_feed_title"
-            android:key="prefSubscriptionsFilter"
-            android:summary="@string/pref_filter_feed_sum" />
+<!--        <Preference-->
+<!--            android:title="@string/pref_filter_feed_title"-->
+<!--            android:key="prefSubscriptionsFilter"-->
+<!--            android:summary="@string/pref_filter_feed_sum" />-->
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/external_elements">
         <SwitchPreferenceCompat

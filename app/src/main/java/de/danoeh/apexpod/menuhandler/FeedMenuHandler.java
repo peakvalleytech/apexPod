@@ -15,13 +15,12 @@ import java.util.Set;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.model.feed.Feed;
-import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.DownloadRequestException;
 import de.danoeh.apexpod.core.util.IntentUtils;
 import de.danoeh.apexpod.core.util.ShareUtils;
 import de.danoeh.apexpod.model.feed.SortOrder;
-import de.danoeh.apexpod.dialog.FilterDialog;
+import de.danoeh.apexpod.dialog.FeedFilterDialog;
 import de.danoeh.apexpod.dialog.IntraFeedSortDialog;
 
 /**
@@ -91,7 +90,7 @@ public class FeedMenuHandler {
     }
 
     private static void showFilterDialog(Context context, Feed selectedFeed) {
-        FilterDialog filterDialog = new FilterDialog(context, selectedFeed.getItemFilter()) {
+        FeedFilterDialog feedFilterDialog = new FeedFilterDialog(context, selectedFeed.getItemFilter()) {
             @Override
             protected void updateFilter(Set<String> filterValues) {
                 selectedFeed.setItemFilter(filterValues.toArray(new String[0]));
@@ -99,7 +98,7 @@ public class FeedMenuHandler {
             }
         };
 
-        filterDialog.openDialog();
+        feedFilterDialog.openDialog();
     }
 
 

@@ -18,12 +18,12 @@ import de.danoeh.apexpod.model.feed.FeedItemFilter;
 import de.danoeh.apexpod.core.feed.FeedItemFilterGroup;
 import de.danoeh.apexpod.ui.common.RecursiveRadioGroup;
 
-public abstract class FilterDialog {
+public abstract class FeedFilterDialog {
 
     protected FeedItemFilter filter;
     protected Context context;
 
-    public FilterDialog(Context context, FeedItemFilter feedItemFilter) {
+    public FeedFilterDialog(Context context, FeedItemFilter feedItemFilter) {
         this.context = context;
         this.filter = feedItemFilter;
     }

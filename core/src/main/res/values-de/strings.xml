@@ -333,7 +333,7 @@ Tippen, um Details anzuzeigen.</string>
   <string name="synchronization_pref">Synchronisation</string>
   <string name="synchronization_sum">Synchronisiere über gpodder.net mit anderen Geräten</string>
   <string name="automation">Automatisierung</string>
-  <string name="download_pref_details">Details</string>
+  <string name="download_pref_details">Downloads</string>
   <string name="import_export_pref">Import/Export</string>
   <string name="import_export_search_keywords">backup, Sicherung, Datensicherung, Wiederherstellung</string>
   <string name="appearance">Erscheinungsbild</string>
@@ -796,4 +796,15 @@ Tippen, um Details anzuzeigen.</string>
   <string name="left_short">L</string>
   <string name="right_short">R</string>
   <string name="volume">Volumen</string>
+  <string name="feed_tags_label">Schilder</string>
+  <string name="feed_tags_summary">Ändern der Tags dieses Podcasts, um Ihre Abonnements besser zu organisieren</string>
+  <string name="repeat_episode">Episode wiederholen</string>
+  <string name="delete_playlist">Wiedergabeliste löschen</string>
+  <string name="delete_playlist_confirmation_msg">Möchten Sie diese Wiedergabeliste löschen?</string>
+  <string name="playlists_label">Wiedergabelisten</string>
+  <string name="home_fragment_label">Heim</string>
+  <string name="pref_auto_delete_playlist_summary">Episoden mit Wiedergabeliste vom automatischen Löschen ausschließen</string>
+  <string name="pref_auto_delete_playlist_title">Playlist-Episoden beibehalten</string>
+  <string name="add_to_playlist_label">Zur Wiedergabeliste hinzufügen</string>
+  <string name="no_playlists_label">Keine Wiedergabelisten</string>
 </resources>
