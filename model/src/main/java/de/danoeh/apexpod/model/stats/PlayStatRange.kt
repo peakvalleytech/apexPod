@@ -37,7 +37,7 @@ class PlayStatRange(val start : Long, val end : Long) {
     }
 
     fun get(index : Int) : PlayStat {
-        return playStats.get(0)
+        return playStats.get(index)
     }
 
     /**

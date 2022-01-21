@@ -113,8 +113,20 @@ public class PlayStatDaoTest {
 
 
     @Test
-    public void givenFeed_whenValid_shouldReturnMatchingPlayStats() {
+    public void givenFeedExists_whenGettingSingleFeed_shouldReturnMatchingPlayStatsRange() {
+        List<PlayStat> playStats = new ArrayList<>();
+        int numOfStats = data.multiFeedList.size();
+        for (int i = 0; i < numOfStats; ++i) {
+            playStats.add(data.multiFeedList.get(i));
+        }
+        for (int i = 0; i < numOfStats; ++i) {
+            playStatsDao.createPlayStat(playStats.get(i));
+        }
 
+        PlayStatRange playStatRange = playStatsDao.getAllByFeedId(playStats.get(0).getFeedId());
+        assertEquals(1, playStatRange.size());
+        assertEquals(playStats.get(0).getStartTime(), playStatRange.getStart());
+        assertEquals(playStats.get(0).getEndTime(), playStatRange.getEnd());
     }
 
     @Test
