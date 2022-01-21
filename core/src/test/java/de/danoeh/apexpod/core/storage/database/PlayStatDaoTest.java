@@ -30,7 +30,7 @@ import de.danoeh.apexpod.model.stats.PlayStatRange;
 @RunWith(RobolectricTestRunner.class)
 public class PlayStatDaoTest {
     private ApexDBAdapter adapter;
-    PlayStatDao playListItemDao;
+    PlayStatDao playStatsDao;
 
     class TestData {
         PlayStatRange emptyList = new PlayStatRange(0, 0);
@@ -54,7 +54,7 @@ public class PlayStatDaoTest {
         ApexDBAdapter.deleteDatabase();
         adapter = ApexDBAdapter.getInstance();
         adapter.open();
-//        playListItemDao = new PlayListItemDao();
+        playStatsDao = new Pl;
     }
     @Test
     public void givenPlayStats_whenAdded_shouldSucceed() {
@@ -65,10 +65,10 @@ public class PlayStatDaoTest {
             playStats.add(new PlayStat(0, feedItemId, 1, 2, 3, 4));
         }
         for (int i = 0; i < numOfStats; ++numOfStats) {
-            long id = playListItemDao.createPlayStat(playStats.get(i));
+            long id = playStatsDao.createPlayStat(playStats.get(i));
             assertTrue(id == i + 1);
         }
-        PlayStatRange createdPlayStats = playListItemDao.getAllPlayStats();
+        PlayStatRange createdPlayStats = playStatsDao.getAllPlayStats();
         assertEquals(createdPlayStats.size(), playStats.size());
         for (int i = 0; i < createdPlayStats.size(); i++) {
             assertTrue(createdPlayStats.get(i).getId() != 0);
