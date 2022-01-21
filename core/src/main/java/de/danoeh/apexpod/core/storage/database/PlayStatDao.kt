@@ -44,11 +44,11 @@ class PlayStatDao {
                 var rangeEndtime = 0L
                 if (cursor.isLast) {
                     val endTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_TIME)
-                    rangeEndtime = cursor.getLong(startTimeIndex)
+                    rangeEndtime = cursor.getLong(endTimeIndex)
                 } else {
                     cursor.moveToLast()
                     val endTimeIndex = cursor.getColumnIndexOrThrow(PodDBAdapter.KEY_END_TIME)
-                    rangeEndtime = cursor.getLong(startTimeIndex)
+                    rangeEndtime = cursor.getLong(endTimeIndex)
                 }
                 playStatRange = PlayStatRange(rangeStartTime, rangeEndtime)
                 cursor.moveToFirst()
