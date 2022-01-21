@@ -29,7 +29,7 @@ class PlayStatRange(val start : Long, val end : Long) {
      * @
      */
     fun add(playStat: PlayStat) {
-
+        playStats.add(playStat)
     }
 
     fun remove(playStat: PlayStat) {

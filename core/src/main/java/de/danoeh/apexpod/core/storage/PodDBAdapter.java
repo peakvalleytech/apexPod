@@ -56,7 +56,7 @@ public class PodDBAdapter {
 
     private static final String TAG = "PodDBAdapter";
     public static final String DATABASE_NAME = "Antennapod.db";
-    public static final int VERSION = 1;
+    public static final int VERSION = 2;
 
     /**
      * Maximum number of arguments for IN-operator.
@@ -232,8 +232,9 @@ public class PodDBAdapter {
 
     static final String CREATE_TABLE_PLAYSTATS = "CREATE TABLE "
             + TABLE_NAME_PLAYSTATS + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-            + KEY_FEEDITEM + " INTEGER, " + KEY_START_TIME + " INTEGER, "
-            + KEY_END_TIME + " INTEGER, " + KEY_START_POS + " INTEGER,"
+            + KEY_FEEDITEM + " INTEGER, " + KEY_FEED + " INTEGER, "
+            + KEY_START_TIME + " INTEGER, " + KEY_END_TIME + " INTEGER, "
+            + KEY_START_POS + " INTEGER,"
             + KEY_END_POS + " INTEGER)";
 
     // SQL Statements for creating indexes
@@ -313,7 +314,9 @@ public class PodDBAdapter {
             TABLE_NAME_DOWNLOAD_LOG,
             TABLE_NAME_QUEUE,
             TABLE_NAME_SIMPLECHAPTERS,
-            TABLE_NAME_FAVORITES
+            TABLE_NAME_FAVORITES,
+            TABLE_NAME_PLAYLIST,
+
     };
 
     public static final String SELECT_KEY_ITEM_ID = "item_id";
@@ -1522,7 +1525,7 @@ public class PodDBAdapter {
             db.execSQL(CREATE_TABLE_FAVORITES);
             db.execSQL(CREATE_TABLE_PLAYLISTS);
             db.execSQL(CREATE_TABLE_PLAYLIST_ITEMS);
-            if (version > 1)
+            if (VERSION > 1)
                 db.execSQL(CREATE_TABLE_PLAYSTATS);
 
             db.execSQL(CREATE_INDEX_FEEDITEMS_FEED);
@@ -1542,7 +1545,7 @@ public class PodDBAdapter {
         @Override
         public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w("DBAdapter", "Downgrading from version " + oldVersion + " to " + newVersion + ".");
-            super.onDowngrade(db, oldVersion, newVersion);
+//            db.execSQL("DROP TABLE " + PodDBAdapter.ALL_TABLES);
 //            DBUpgrader.downgrade(db, oldVersion, newVersion);
         }
     }
