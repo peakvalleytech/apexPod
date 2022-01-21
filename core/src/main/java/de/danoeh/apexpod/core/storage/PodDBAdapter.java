@@ -1522,7 +1522,8 @@ public class PodDBAdapter {
             db.execSQL(CREATE_TABLE_FAVORITES);
             db.execSQL(CREATE_TABLE_PLAYLISTS);
             db.execSQL(CREATE_TABLE_PLAYLIST_ITEMS);
-            db.execSQL(CREATE_TABLE_PLAYSTATS);
+            if (version > 1)
+                db.execSQL(CREATE_TABLE_PLAYSTATS);
 
             db.execSQL(CREATE_INDEX_FEEDITEMS_FEED);
             db.execSQL(CREATE_INDEX_FEEDITEMS_PUBDATE);
@@ -1535,7 +1536,7 @@ public class PodDBAdapter {
         @Override
         public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
             Log.w("DBAdapter", "Upgrading from version " + oldVersion + " to " + newVersion + ".");
-            DBUpgrader.upgrade(db, oldVersion, newVersion);
+//            DBUpgrader.upgrade(db, oldVersion, newVersion);
         }
 
         @Override
