@@ -97,38 +97,11 @@ public class PlaybackStatisticsFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.statistics_mode) {
-            selectStatisticsMode();
-            return true;
-        }
         if (item.getItemId() == R.id.statistics_reset) {
             confirmResetStatistics();
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void selectStatisticsMode() {
-        View contentView = View.inflate(getContext(), R.layout.statistics_mode_select_dialog, null);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setView(contentView);
-        builder.setTitle(R.string.statistics_mode);
-
-        if (countAll) {
-            ((RadioButton) contentView.findViewById(R.id.statistics_mode_count_all)).setChecked(true);
-        } else {
-            ((RadioButton) contentView.findViewById(R.id.statistics_mode_normal)).setChecked(true);
-        }
-
-        builder.setPositiveButton(android.R.string.ok, (dialog, which) -> {
-            countAll = ((RadioButton) contentView.findViewById(R.id.statistics_mode_count_all)).isChecked();
-            listAdapter.setCountAll(countAll);
-            prefs.edit().putBoolean(PREF_COUNT_ALL, countAll).apply();
-            refreshStatistics();
-            getActivity().invalidateOptionsMenu();
-        });
-
-        builder.show();
     }
 
     private void confirmResetStatistics() {
