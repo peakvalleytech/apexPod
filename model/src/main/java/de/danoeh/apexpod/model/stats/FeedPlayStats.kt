@@ -6,10 +6,14 @@ class FeedPlayStats(
     val items : List<FeedPlayStatsItem>
 ) {
     fun calculateTotalListeningTime() : Long? {
-        return null
+        return items.fold(0) {acc, feedPlayStatsItem ->
+            acc?.plus(feedPlayStatsItem.totalListeningTime)
+        }
     }
 
     fun calculateTotalSpeedAdjustedListeningTime() : Long? {
-        return null
+        return items.fold(0) {acc, feedPlayStatsItem ->
+            acc?.plus(feedPlayStatsItem.totalSpeedAdjustedListeningTime)
+        }
     }
 }

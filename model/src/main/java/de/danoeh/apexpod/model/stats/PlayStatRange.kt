@@ -55,12 +55,20 @@ class PlayStatRange(val start : Long, val end : Long) {
         return playStats.size
     }
 
-    fun calculateTotalTime() : Long {
-        return 0
+    fun getTotalTime() : Long {
+        var totalTime = 0L
+        playStats.forEach {
+            totalTime += it.endTime - it.startTime
+        }
+        return totalTime
     }
 
-    fun calculateTotalDuration() : Long {
-        return  0
+    fun getTotalDuration() : Long {
+        var totalDuration = 0L
+        playStats.forEach {
+            totalDuration += it.endPos - it.startPos
+        }
+        return  totalDuration
     }
     /**
      * Determines if range is valid for given range
