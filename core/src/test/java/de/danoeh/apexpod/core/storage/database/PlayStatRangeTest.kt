@@ -47,11 +47,6 @@ class PlayStatRangeTest {
     fun setUp() {
         data = TestData()
     }
-    @Test
-    fun givenValidRange_whenCreatingInstance_returnEmptyRange() {
-        val playStatRange = PlayStatRange()
-        assertEquals(0, playStatRange.size())
-    }
 
     @Test
     fun givenStartEqEnd_whenCreatingInstance_returnEmptyRange() {
@@ -59,14 +54,6 @@ class PlayStatRangeTest {
         var expectedSize = 0
         var actualSize = playStatRange.size()
         assertEquals(expectedSize, actualSize)
-        playStatRange = PlayStatRange()
-        actualSize = playStatRange.size()
-        assertEquals(expectedSize, actualSize)
-    }
-
-    @Test(expected = Exception::class)
-    fun givenStartGTEnd_whenCreatingInstance_throwException() {
-        val playStatRange = PlayStatRange()
     }
 
     @Test

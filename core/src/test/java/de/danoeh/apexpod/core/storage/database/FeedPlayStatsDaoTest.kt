@@ -17,6 +17,7 @@ import org.robolectric.RobolectricTestRunner
 class FeedPlayStatsDaoTest {
     private var adapter: ApexDBAdapter? = null
     var feedPlayStatsDao: FeedPlayStatsDao? = null
+    var playStatsDao : PlayStatDao? = null
     @Before
     fun setUp() {
         val context = InstrumentationRegistry.getInstrumentation().context
@@ -27,10 +28,8 @@ class FeedPlayStatsDaoTest {
         adapter = ApexDBAdapter.getInstance()
         adapter?.open()
         feedPlayStatsDao = FeedPlayStatsDao()
-//        data = TestData()
+        playStatsDao = PlayStatDao()
     }
-
-
 
     @Test
     fun shouldGetFeeds() {
@@ -55,24 +54,26 @@ class FeedPlayStatsDaoTest {
     @Test
     fun shouldGetFeedPlayStatsItems() {
 
-        val multiFeedList = PlayStatRange(0, 100)
+        val multiFeedList = PlayStatRange()
         val feedItemId: Long = 1
         val feed1 =
             Feed(0, null, "A", "link", "d", null, null, null, "rss", "A", null, "", "", true)
         adapter!!.setCompleteFeed(feed1)
 
-        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 5, 0, 10))
-        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 5, 0, 10))
-        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 5, 0, 10))
-        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 5, 0, 10))
+        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 10, 0, 5))
+        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 10, 0, 5))
+        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 10, 0, 5))
+        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 10, 0, 5))
+        for (i in 0 until multiFeedList.size()) {
+            playStatsDao?.createPlayStat(multiFeedList.get(i))
+        }
         val expectedFeedPlayStatsItem =
             FeedPlayStatsItem(
                 feed1,
                 20,
                 40,
-                1,
-                0,
-                0)
+                0
+                )
         val feedPlayStats = feedPlayStatsDao?.getFeedPlayStats()
         val feedPlayStatsItemList = feedPlayStats?.items
         assertEquals(1, feedPlayStatsItemList?.size)

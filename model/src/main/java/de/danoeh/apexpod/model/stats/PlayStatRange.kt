@@ -9,13 +9,10 @@ import java.util.*
  */
 class PlayStatRange() {
     private lateinit var playStats : MutableList<PlayStat>
+    var startTime : Long = 0
+    var endTime : Long = 0
+
     init {
-//        if (start > end) {
-//            throw IllegalArgumentException("Start must be less than end")
-//        }
-//        if (start < 0 || end < 0) {
-//            throw IllegalArgumentException("Start and end must be non negative")
-//        }
         playStats = mutableListOf()
     }
 
@@ -29,7 +26,12 @@ class PlayStatRange() {
      * @
      */
     fun add(playStat: PlayStat) {
-
+        if (playStat.startTime <= startTime) {
+            startTime = playStat.startTime
+        }
+        if (playStat.endTime >= endTime) {
+            endTime = playStat.endTime
+        }
         playStats.add(playStat)
     }
 
@@ -86,4 +88,12 @@ class PlayStatRange() {
             action(it)
         }
     }
+
+//    fun getStart() : Long {
+//
+//    }
+//
+//    fun getEnd() {
+//
+//    }
 }

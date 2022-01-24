@@ -3,32 +3,59 @@ package de.danoeh.apexpod.core.storage.database
 import android.database.sqlite.SQLiteDatabase
 import de.danoeh.apexpod.core.storage.ApexDBAdapter
 import de.danoeh.apexpod.core.storage.DBReader
+import de.danoeh.apexpod.model.feed.Feed
 import de.danoeh.apexpod.model.stats.FeedPlayStats
 import de.danoeh.apexpod.model.stats.FeedPlayStatsItem
+import de.danoeh.apexpod.model.stats.PlayStatRange
 
 class FeedPlayStatsDao {
-    private lateinit var db: SQLiteDatabase
-    lateinit var dbAdapter: ApexDBAdapter
-    lateinit var playStatDao: PlayStatDao
+    private var db: SQLiteDatabase
+    var dbAdapter: ApexDBAdapter
+    var playStatDao: PlayStatDao
+
     init {
         dbAdapter = ApexDBAdapter.getInstance()
         db = dbAdapter.db
         playStatDao = PlayStatDao()
     }
+
     fun getFeedPlayStats() : FeedPlayStats? {
         val feeds = DBReader.getFeedList()
         val playStats = playStatDao.getAllPlayStats()
-        val feedPlayStatsItemList = mutableListOf<FeedPlayStatsItem>()
-        val feedIdToStatsItemMap = mutableMapOf<Long, FeedPlayStatsItem>()
+        val feedIdToRangeMap = mutableMapOf<Long, PlayStatRange>()
         feeds.forEach {
-            val feedPlayStatsItem = FeedPlayStatsItem(it)
-            feedIdToStatsItemMap.put(it.id, feedPlayStatsItem)
+            feedIdToRangeMap.put(it.id, PlayStatRange())
         }
 
-        playStats.
+        playStats?.forEach {
+            val playStatRange = feedIdToRangeMap.get(it.feedId)
+            playStatRange.let {
+                psrIt ->
+                    psrIt?.add(it)
+            }
+        }
 
-
-        return FeedPlayStats(feedPlayStatsItemList)
+        return FeedPlayStats(createFeedPlayStatsItem(feeds, feedIdToRangeMap))
     }
 
+    private fun createFeedPlayStatsItem(
+        feeds: List<Feed>,
+        feedIdToRangeMap : Map<Long, PlayStatRange>) : MutableList<FeedPlayStatsItem> {
+        val feedPlayStatsItemList = mutableListOf<FeedPlayStatsItem>()
+
+        feeds.forEach {
+            val playStatRange = feedIdToRangeMap.get(it.id)
+            if (playStatRange != null) {
+                val feedPlayStatsItem = FeedPlayStatsItem(
+                    it,
+                    totalSpeedAdjustedListeningTime = playStatRange.getTotalDuration(),
+                    totalListeningTime = playStatRange.getTotalTime(),
+                    0
+                )
+                feedPlayStatsItemList.add(feedPlayStatsItem)
+            }
+        }
+
+        return feedPlayStatsItemList
+    }
 }

@@ -35,9 +35,9 @@ public class PlayStatDaoTest {
 
     class TestData {
 
-        PlayStatRange emptyList = new PlayStatRange(0, 0);
-        PlayStatRange singleFeedList = new PlayStatRange(0, 100);
-        PlayStatRange multiFeedList = new PlayStatRange(0, 100);
+        PlayStatRange emptyList = new PlayStatRange();
+        PlayStatRange singleFeedList = new PlayStatRange();
+        PlayStatRange multiFeedList = new PlayStatRange();
         public TestData() {
             initSingleFeedList();
             initMultiFeedList();
@@ -88,6 +88,7 @@ public class PlayStatDaoTest {
             long expectedId = playStatsDao.createPlayStat(playStats.get(i));
             assertEquals(  i + 1, expectedId);
         }
+        adapter.close();
     }
     @Test
     public void givenTableEmpty_whenGettingAllItems_shouldReturnNull() {
@@ -106,8 +107,9 @@ public class PlayStatDaoTest {
         }
         PlayStatRange playStatRange = playStatsDao.getAllPlayStats();
         assertEquals(playStatRange.size(), playStats.size());
-        assertEquals(playStats.get(0).getStartTime(), playStatRange.getStart());
-        assertEquals(playStats.get(numOfStats - 1).getEndTime(), playStatRange.getEnd());
+        assertEquals(playStats.get(0).getStartTime(), playStatRange.getStartTime());
+        assertEquals(playStats.get(numOfStats - 1).getEndTime(), playStatRange.getEndTime());
+        adapter.close();
     }
 
 
@@ -125,8 +127,9 @@ public class PlayStatDaoTest {
 
         PlayStatRange playStatRange = playStatsDao.getAllByFeedId(playStats.get(0).getFeedId());
         assertEquals(1, playStatRange.size());
-        assertEquals(playStats.get(0).getStartTime(), playStatRange.getStart());
-        assertEquals(playStats.get(0).getEndTime(), playStatRange.getEnd());
+        assertEquals(playStats.get(0).getStartTime(), playStatRange.getStartTime());
+        assertEquals(playStats.get(0).getEndTime(), playStatRange.getEndTime());
+        adapter.close();
     }
 
     @Test

@@ -14,6 +14,7 @@ fun SQLiteDatabase.doTransaction(transaction : (SQLiteDatabase) -> Any?) : Any? 
             Log.e(this.javaClass.canonicalName, Log.getStackTraceString(e))
             throw e
         } finally {
-            this.endTransaction()
+            if (this.inTransaction())
+                this.endTransaction()
         }
 }
