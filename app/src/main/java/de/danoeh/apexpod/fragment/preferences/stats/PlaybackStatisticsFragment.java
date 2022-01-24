@@ -28,7 +28,9 @@ import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.StatisticsItem;
+import de.danoeh.apexpod.core.storage.database.FeedPlayStatsDao;
 import de.danoeh.apexpod.core.util.comparator.CompareCompat;
+import de.danoeh.apexpod.model.stats.FeedPlayStats;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -52,6 +54,7 @@ public class PlaybackStatisticsFragment extends Fragment {
     private PlaybackStatisticsListAdapter listAdapter;
     private boolean countAll = false;
     private SharedPreferences prefs;
+    private FeedPlayStatsDao feedPlayStatsDao;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class PlaybackStatisticsFragment extends Fragment {
         prefs = getContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         countAll = prefs.getBoolean(PREF_COUNT_ALL, false);
         setHasOptionsMenu(true);
+        feedPlayStatsDao = new FeedPlayStatsDao();
     }
 
     @Nullable
@@ -157,15 +161,10 @@ public class PlaybackStatisticsFragment extends Fragment {
                 }, error -> Log.e(TAG, Log.getStackTraceString(error)));
     }
 
-    private List<StatisticsItem> fetchStatistics() {
-        List<StatisticsItem> statisticsData = DBReader.getStatistics();
-        if (countAll) {
-            Collections.sort(statisticsData, (item1, item2) ->
-                    CompareCompat.compareLong(item1.timePlayedCountAll, item2.timePlayedCountAll));
-        } else {
-            Collections.sort(statisticsData, (item1, item2) ->
-                    CompareCompat.compareLong(item1.timePlayed, item2.timePlayed));
-        }
+    private FeedPlayStats fetchStatistics() {
+        FeedPlayStats statisticsData = feedPlayStatsDao.getFeedPlayStats();
+            Collections.sort(statisticsData.getItems(), (item1, item2) ->
+                    CompareCompat.compareLong(item1.getTotalListeningTime(), item2.getTotalListeningTime()));
         return statisticsData;
     }
 }

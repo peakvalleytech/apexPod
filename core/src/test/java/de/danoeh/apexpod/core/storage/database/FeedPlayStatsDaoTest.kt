@@ -53,7 +53,6 @@ class FeedPlayStatsDaoTest {
 
     @Test
     fun shouldGetFeedPlayStatsItems() {
-
         val multiFeedList = PlayStatRange()
         val feedItemId: Long = 1
         val feed1 =

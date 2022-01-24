@@ -8,6 +8,8 @@ import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.StatisticsItem;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.DateFormatter;
+import de.danoeh.apexpod.model.stats.FeedPlayStats;
+import de.danoeh.apexpod.model.stats.FeedPlayStatsItem;
 import de.danoeh.apexpod.view.PieChartView;
 
 import java.util.Date;
@@ -45,28 +47,28 @@ public class PlaybackStatisticsListAdapter extends StatisticsListAdapter {
     }
 
     @Override
-    PieChartView.PieChartData generateChartData(List<StatisticsItem> statisticsData) {
-        float[] dataValues = new float[statisticsData.size()];
-        for (int i = 0; i < statisticsData.size(); i++) {
-            StatisticsItem item = statisticsData.get(i);
-            dataValues[i] = countAll ? item.timePlayedCountAll : item.timePlayed;
+    PieChartView.PieChartData generateChartData(FeedPlayStats feedPlayStats) {
+        float[] dataValues = new float[feedPlayStats.size()];
+        for (int i = 0; i < feedPlayStats.size(); i++) {
+            FeedPlayStatsItem item = feedPlayStats.getItems().get(i);
+            dataValues[i] = item.getTotalListeningTime();
         }
         return new PieChartView.PieChartData(dataValues);
     }
 
     @Override
-    void onBindFeedViewHolder(StatisticsHolder holder, StatisticsItem statsItem) {
-        long time = countAll ? statsItem.timePlayedCountAll : statsItem.timePlayed;
+    void onBindFeedViewHolder(StatisticsHolder holder, FeedPlayStatsItem statsItem) {
+        long time = statsItem.getTotalListeningTime();
         holder.value.setText(Converter.shortLocalizedDuration(context, time));
 
         holder.itemView.setOnClickListener(v -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            dialog.setTitle(statsItem.feed.getTitle());
+            dialog.setTitle(statsItem.getFeed().getTitle());
             dialog.setMessage(context.getString(R.string.statistics_details_dialog,
-                    countAll ? statsItem.episodesStartedIncludingMarked : statsItem.episodesStarted,
-                    statsItem.episodes, Converter.shortLocalizedDuration(context,
-                            countAll ? statsItem.timePlayedCountAll : statsItem.timePlayed),
-                    Converter.shortLocalizedDuration(context, statsItem.time)));
+                    statsItem.getEpisodesStarted(),
+                    statsItem.getEpisodeCount(), Converter.shortLocalizedDuration(context,
+                            statsItem.getTotalListeningTime()),
+                    Converter.shortLocalizedDuration(context, statsItem.getTotalListeningTime())));
             dialog.setPositiveButton(android.R.string.ok, null);
             dialog.show();
         });

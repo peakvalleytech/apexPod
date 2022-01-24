@@ -8,6 +8,8 @@ import java.util.Locale;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.storage.StatisticsItem;
+import de.danoeh.apexpod.model.stats.FeedPlayStats;
+import de.danoeh.apexpod.model.stats.FeedPlayStatsItem;
 import de.danoeh.apexpod.view.PieChartView;
 
 /**
@@ -30,21 +32,21 @@ public class DownloadStatisticsListAdapter extends StatisticsListAdapter {
     }
 
     @Override
-    PieChartView.PieChartData generateChartData(List<StatisticsItem> statisticsData) {
+    PieChartView.PieChartData generateChartData(FeedPlayStats statisticsData) {
         float[] dataValues = new float[statisticsData.size()];
         for (int i = 0; i < statisticsData.size(); i++) {
-            StatisticsItem item = statisticsData.get(i);
-            dataValues[i] = item.totalDownloadSize;
+            FeedPlayStatsItem item = statisticsData.getItems().get(i);
+            dataValues[i] = item.getTotalDownloadSize();
         }
         return new PieChartView.PieChartData(dataValues);
     }
 
     @Override
-    void onBindFeedViewHolder(StatisticsHolder holder, StatisticsItem item) {
-        holder.value.setText(Formatter.formatShortFileSize(context, item.totalDownloadSize)
+    void onBindFeedViewHolder(StatisticsHolder holder, FeedPlayStatsItem item) {
+        holder.value.setText(Formatter.formatShortFileSize(context, item.getTotalDownloadSize())
                 + " • "
                 + String.format(Locale.getDefault(), "%d%s",
-                item.episodesDownloadCount, context.getString(R.string.episodes_suffix)));
+                item.getDownloadsCount(), context.getString(R.string.episodes_suffix)));
     }
 
 }
