@@ -88,6 +88,19 @@
                         android:visibility="invisible"
                         tools:visibility="visible"
                         android:padding="8dp"/>
+
+                <ImageButton
+                    android:id="@+id/butPlayRandomEpisode"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="@string/show_feed_settings_label"
+                    app:srcCompat="@drawable/ic_play_white"
+                    tools:background="@android:color/holo_green_dark"
+                    android:scaleType="fitXY"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
+                    android:padding="8dp"/>
             </LinearLayout>
 
         </LinearLayout>

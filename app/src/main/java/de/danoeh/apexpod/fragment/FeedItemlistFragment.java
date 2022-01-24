@@ -43,6 +43,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import de.danoeh.apexpod.R;
@@ -112,6 +113,7 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
     private TextView txtvUpdatesDisabled;
     private ImageButton butShowInfo;
     private ImageButton butShowSettings;
+    private ImageButton butPlayEpisode;
     private View header;
     private Toolbar toolbar;
     private SpeedDialView speedDialView;
@@ -175,6 +177,7 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
         imgvCover = root.findViewById(R.id.imgvCover);
         butShowInfo = root.findViewById(R.id.butShowInfo);
         butShowSettings = root.findViewById(R.id.butShowSettings);
+        butPlayEpisode = root.findViewById(R.id.butPlayRandomEpisode);
         txtvInformation = root.findViewById(R.id.txtvInformation);
         txtvFailure = root.findViewById(R.id.txtvFailure);
         txtvUpdatesDisabled = root.findViewById(R.id.txtvUpdatesDisabled);
@@ -347,13 +350,7 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
         if (adapter == null) {
             return;
         }
-        MainActivity activity = (MainActivity) getActivity();
-        long[] ids = FeedItemUtil.getIds(feed.getItems());
-        activity.loadChildFragment(ItemPagerFragment.newInstance(ids,
-                position,
-                PlaybackPreferences.AUTOPLAY_FEED,
-                feed.getId()
-                ));
+       openFeedItemView(position);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -541,6 +538,19 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
         }
     }
 
+    private void openFeedItemView(int position) {
+        MainActivity activity = (MainActivity) getActivity();
+        long[] ids = FeedItemUtil.getIds(feed.getItems());
+        if(position < 0) {
+            Random random = new Random(System.currentTimeMillis());
+            position = Math.abs(random.nextInt()) % ids.length;
+        }
+        activity.loadChildFragment(ItemPagerFragment.newInstance(ids,
+                position,
+                PlaybackPreferences.AUTOPLAY_FEED,
+                feed.getId()
+        ));
+    }
     private void setupHeaderView() {
         if (feed == null || headerCreated) {
             return;
@@ -557,6 +567,10 @@ public class FeedItemlistFragment extends Fragment implements AdapterView.OnItem
                 FeedSettingsFragment fragment = FeedSettingsFragment.newInstance(feed);
                 ((MainActivity) getActivity()).loadChildFragment(fragment, TransitionEffect.SLIDE);
             }
+        });
+        butPlayEpisode.setVisibility(View.VISIBLE);
+        butPlayEpisode.setOnClickListener(v -> {
+            openFeedItemView(-1);
         });
         txtvFailure.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), MainActivity.class);
