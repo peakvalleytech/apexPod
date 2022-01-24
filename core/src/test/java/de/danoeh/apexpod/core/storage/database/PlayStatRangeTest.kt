@@ -13,9 +13,9 @@ import java.util.ArrayList
 
 class PlayStatRangeTest {
     internal class TestData {
-        var emptyList = PlayStatRange(0, 0)
-        var singleFeedList = PlayStatRange(0, 100)
-        var multiFeedList = PlayStatRange(0, 100)
+        var emptyList = PlayStatRange()
+        var singleFeedList = PlayStatRange()
+        var multiFeedList = PlayStatRange()
         private fun initSingleFeedList() {
             val feedItemId: Long = 1
             val feedId: Long = 1
@@ -49,24 +49,24 @@ class PlayStatRangeTest {
     }
     @Test
     fun givenValidRange_whenCreatingInstance_returnEmptyRange() {
-        val playStatRange = PlayStatRange(0, 1)
+        val playStatRange = PlayStatRange()
         assertEquals(0, playStatRange.size())
     }
 
     @Test
     fun givenStartEqEnd_whenCreatingInstance_returnEmptyRange() {
-        var playStatRange = PlayStatRange(0, 0)
+        var playStatRange = PlayStatRange()
         var expectedSize = 0
         var actualSize = playStatRange.size()
         assertEquals(expectedSize, actualSize)
-        playStatRange = PlayStatRange(5, 5)
+        playStatRange = PlayStatRange()
         actualSize = playStatRange.size()
         assertEquals(expectedSize, actualSize)
     }
 
     @Test(expected = Exception::class)
     fun givenStartGTEnd_whenCreatingInstance_throwException() {
-        val playStatRange = PlayStatRange(1, 0)
+        val playStatRange = PlayStatRange()
     }
 
     @Test

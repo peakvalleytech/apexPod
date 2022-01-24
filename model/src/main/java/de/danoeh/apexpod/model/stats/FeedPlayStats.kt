@@ -16,4 +16,8 @@ class FeedPlayStats(
             acc?.plus(feedPlayStatsItem.totalSpeedAdjustedListeningTime)
         }
     }
+
+    fun size(): Int {
+        return items.size
+    }
 }

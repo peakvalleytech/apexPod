@@ -7,15 +7,15 @@ import java.util.*
 /**
  * Holds a set of PlayStat objects whose non negative starttime and endtime is bound to a given range.
  */
-class PlayStatRange(val start : Long, val end : Long) {
+class PlayStatRange() {
     private lateinit var playStats : MutableList<PlayStat>
     init {
-        if (start > end) {
-            throw IllegalArgumentException("Start must be less than end")
-        }
-        if (start < 0 || end < 0) {
-            throw IllegalArgumentException("Start and end must be non negative")
-        }
+//        if (start > end) {
+//            throw IllegalArgumentException("Start must be less than end")
+//        }
+//        if (start < 0 || end < 0) {
+//            throw IllegalArgumentException("Start and end must be non negative")
+//        }
         playStats = mutableListOf()
     }
 
@@ -29,6 +29,7 @@ class PlayStatRange(val start : Long, val end : Long) {
      * @
      */
     fun add(playStat: PlayStat) {
+
         playStats.add(playStat)
     }
 
@@ -48,7 +49,7 @@ class PlayStatRange(val start : Long, val end : Long) {
      * invalid
      */
     fun from(start : Long, end : Long) : PlayStatRange {
-        return PlayStatRange(start, end)
+        return PlayStatRange()
     }
 
     fun size(): Int {
@@ -78,5 +79,11 @@ class PlayStatRange(val start : Long, val end : Long) {
     }
 
     private fun validateRange(start : Long, end : Long) {
+    }
+
+    fun forEach(action : (PlayStat) -> Unit) {
+        playStats.forEach {
+            action(it)
+        }
     }
 }
