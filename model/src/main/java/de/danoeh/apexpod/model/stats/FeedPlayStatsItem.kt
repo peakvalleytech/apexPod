@@ -8,9 +8,9 @@ data class FeedPlayStatsItem(
     val totalListeningTime : Long = 0,
     val totalTime : Long = 0,
     val episodesListenedTo : Int = 0,
-    val episodesStarted : Int = 0,
-    val episodeCount : Int = 0,
-    val totalDownloadSize : Int = 0,
-    val downloadsCount : Int = 0
+    val episodesStarted : Long = 0,
+    val episodeCount : Long = 0,
+    val totalDownloadSize : Long = 0,
+    val downloadsCount : Long = 0
 ) {
 }

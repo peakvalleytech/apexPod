@@ -3,7 +3,9 @@ package de.danoeh.apexpod.core.storage.database
 import android.database.sqlite.SQLiteDatabase
 import de.danoeh.apexpod.core.storage.ApexDBAdapter
 import de.danoeh.apexpod.core.storage.DBReader
+import de.danoeh.apexpod.core.storage.FeedStatsCalculator
 import de.danoeh.apexpod.model.feed.Feed
+import de.danoeh.apexpod.model.feed.FeedItem
 import de.danoeh.apexpod.model.stats.FeedPlayStats
 import de.danoeh.apexpod.model.stats.FeedPlayStatsItem
 import de.danoeh.apexpod.model.stats.PlayStatRange
@@ -44,13 +46,20 @@ class FeedPlayStatsDao {
         val feedPlayStatsItemList = mutableListOf<FeedPlayStatsItem>()
 
         feeds.forEach {
+            val feedStatsCalculator = FeedStatsCalculator()
+            feedStatsCalculator.calculate(it.id)
+
             val playStatRange = feedIdToRangeMap.get(it.id)
             if (playStatRange != null) {
                 val feedPlayStatsItem = FeedPlayStatsItem(
                     it,
                     totalSpeedAdjustedListeningTime = playStatRange.getTotalDuration(),
                     totalListeningTime = playStatRange.getTotalTime(),
-                    0
+                    0,
+                    episodesStarted = feedStatsCalculator.episodesStarted,
+                    episodeCount = feedStatsCalculator.episodes,
+                    totalDownloadSize = feedStatsCalculator.totalDownloadSize,
+                    downloadsCount = feedStatsCalculator.episodesDownloadCount
                 )
                 feedPlayStatsItemList.add(feedPlayStatsItem)
             }
