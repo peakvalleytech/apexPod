@@ -276,21 +276,23 @@ public final class DBTasks {
      * @param context Used for accessing the DB.
      */
     public static void performAutoCleanup(final Context context) {
-//        UserPreferences.getEpisodeCleanupAlgorithm().performCleanup(context);
-          int durationMinHours = UserPreferences.getEpisodeCleanupValue();
-        boolean keepFavorite = UserPreferences.shouldKeepFavorite();
-        boolean keepQueued = !UserPreferences.shouldAutoDeleteQueue();
-        AutoDeleteFilterFactory autoDeleteFactory = new AutoDeleteFilterFactory();
+        boolean autoDeleteEnabled = UserPreferences.isAutoDelete();
+        if(autoDeleteEnabled) {
+            int durationMinHours = UserPreferences.getEpisodeCleanupValue();
+            boolean keepFavorite = UserPreferences.shouldKeepFavorite();
+            boolean keepQueued = !UserPreferences.shouldAutoDeleteQueue();
+            AutoDeleteFilterFactory autoDeleteFactory = new AutoDeleteFilterFactory();
 
-        AutoDeleteFilter autoDeleteFilter =
-                autoDeleteFactory.createAutoDeleteFilter(
-                        durationMinHours,
-                        keepFavorite,
-                        keepQueued);
+            AutoDeleteFilter autoDeleteFilter =
+                    autoDeleteFactory.createAutoDeleteFilter(
+                            durationMinHours,
+                            keepFavorite,
+                            keepQueued);
 
-        AutoDeleteService autoDeleteService =
-                new AutoDeleteServiceImpl(context, null, null, autoDeleteFilter);
-        autoDeleteService.start();
+            AutoDeleteService autoDeleteService =
+                    new AutoDeleteServiceImpl(context, null, null, autoDeleteFilter);
+            autoDeleteService.start();
+        }
     }
 
     /**
