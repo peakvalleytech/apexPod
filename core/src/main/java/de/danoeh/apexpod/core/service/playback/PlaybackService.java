@@ -70,6 +70,7 @@ import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.FeedSearcher;
+import de.danoeh.apexpod.core.storage.database.PlayStatDao;
 import de.danoeh.apexpod.core.storage.repository.PlayStatsRepository;
 import de.danoeh.apexpod.core.sync.queue.SynchronizationQueueSink;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
@@ -831,28 +832,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         }
     };
 
-    private  PlayStatLogger playStatLogger = new PlayStatLoggerImpl(new PlayStatsRepository() {
-        @Override
-        public void createPlayStat(@NonNull PlayStat playStat) {
-
-        }
-
-        @NonNull
-        @Override
-        public List<PlayStat> getPlayStats() {
-            return null;
-        }
-
-        @Override
-        public void updatePlayStat(@NonNull PlayStat playStat) {
-
-        }
-
-        @Override
-        public void deletePlayStat(@NonNull PlayStat playStat) {
-
-        }
-    });
+    private PlayStatLogger playStatLogger = new PlayStatLoggerImpl(new PlayStatDao());
 
     private FeedItem getFeedItem() {
         Playable playable = getPlayable();

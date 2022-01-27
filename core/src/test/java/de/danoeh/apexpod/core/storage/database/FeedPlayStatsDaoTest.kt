@@ -24,11 +24,11 @@ class FeedPlayStatsDaoTest {
         UserPreferences.init(context)
         ApexDBAdapter.init(context)
         ApexDBAdapter.deleteDatabase()
-        ApexDBAdapter.tearDownTests()
         adapter = ApexDBAdapter.getInstance()
         adapter?.open()
         feedPlayStatsDao = FeedPlayStatsDao()
         playStatsDao = PlayStatDao()
+        adapter?.close()
     }
 
     @Test
@@ -41,11 +41,13 @@ class FeedPlayStatsDaoTest {
             Feed(0, null, "C", "link", "d", null, null, null, "rss", "C", null, "", "", true)
         val feed4 =
             Feed(0, null, "d", "link", "d", null, null, null, "rss", "d", null, "", "", true)
+        adapter!!.open()
         adapter!!.setCompleteFeed(feed1)
         adapter!!.setCompleteFeed(feed2)
         adapter!!.setCompleteFeed(feed3)
         adapter!!.setCompleteFeed(feed4)
         val feedPlayStats = feedPlayStatsDao?.getFeedPlayStats()
+        adapter?.close()
         val expectedSize = 4
         val actualSize = feedPlayStats?.size()
         assertEquals(expectedSize, actualSize)
@@ -57,12 +59,13 @@ class FeedPlayStatsDaoTest {
         val feedItemId: Long = 1
         val feed1 =
             Feed(0, null, "A", "link", "d", null, null, null, "rss", "A", null, "", "", true)
+        adapter!!.open()
         adapter!!.setCompleteFeed(feed1)
 
-        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 10, 0, 5))
-        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 10, 0, 5))
-        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 10, 0, 5))
-        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 10, 0, 5))
+        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 5, 0, 10))
+        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 5, 0, 10))
+        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 5, 0, 10))
+        multiFeedList.add(PlayStat(0, feedItemId, 1, 0, 5, 0, 10))
         for (i in 0 until multiFeedList.size()) {
             playStatsDao?.createPlayStat(multiFeedList.get(i))
         }
@@ -74,6 +77,7 @@ class FeedPlayStatsDaoTest {
                 0
                 )
         val feedPlayStats = feedPlayStatsDao?.getFeedPlayStats()
+        adapter?.close()
         val feedPlayStatsItemList = feedPlayStats?.items
         assertEquals(1, feedPlayStatsItemList?.size)
         val actualFeedPlayStatsItem = feedPlayStatsItemList?.get(0)

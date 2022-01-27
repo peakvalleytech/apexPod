@@ -17,7 +17,9 @@ import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.adapter.DownloadStatisticsListAdapter;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.StatisticsItem;
+import de.danoeh.apexpod.core.storage.database.FeedPlayStatsDao;
 import de.danoeh.apexpod.core.util.comparator.CompareCompat;
+import de.danoeh.apexpod.model.stats.FeedPlayStats;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -36,6 +38,7 @@ public class DownloadStatisticsFragment extends Fragment {
     private RecyclerView downloadStatisticsList;
     private ProgressBar progressBar;
     private DownloadStatisticsListAdapter listAdapter;
+    private FeedPlayStatsDao feedPlayStatsDao;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class DownloadStatisticsFragment extends Fragment {
         listAdapter = new DownloadStatisticsListAdapter(getContext());
         downloadStatisticsList.setLayoutManager(new LinearLayoutManager(getContext()));
         downloadStatisticsList.setAdapter(listAdapter);
+        feedPlayStatsDao = new FeedPlayStatsDao();
         return root;
     }
 
@@ -73,10 +77,10 @@ public class DownloadStatisticsFragment extends Fragment {
 
         disposable =
                 Observable.fromCallable(() -> {
-                    List<StatisticsItem> statisticsData = DBReader.getStatistics();
-                    Collections.sort(statisticsData, (item1, item2) ->
-                            CompareCompat.compareLong(item1.totalDownloadSize, item2.totalDownloadSize));
-                    return statisticsData;
+                    FeedPlayStats feedPlayStats = feedPlayStatsDao.getFeedPlayStats();
+                    Collections.sort(feedPlayStats.getItems(), (item1, item2) ->
+                            CompareCompat.compareLong(item1.getTotalDownloadSize(), item2.getTotalDownloadSize()));
+                    return feedPlayStats;
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -53,9 +53,9 @@ class FeedPlayStatsDao {
             if (playStatRange != null) {
                 val feedPlayStatsItem = FeedPlayStatsItem(
                     it,
-                    totalSpeedAdjustedListeningTime = playStatRange.getTotalDuration(),
-                    totalListeningTime = playStatRange.getTotalTime(),
-                    0,
+                    totalSpeedAdjustedListeningTime = playStatRange.getTotalTime(),
+                    totalListeningTime = playStatRange.getTotalDuration(),
+                    totalTime = feedStatsCalculator.feedTotalTime,
                     episodesStarted = feedStatsCalculator.episodesStarted,
                     episodeCount = feedStatsCalculator.episodes,
                     totalDownloadSize = feedStatsCalculator.totalDownloadSize,

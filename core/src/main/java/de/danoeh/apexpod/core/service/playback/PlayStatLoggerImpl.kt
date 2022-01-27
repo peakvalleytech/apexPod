@@ -1,6 +1,7 @@
 package de.danoeh.apexpod.core.service.playback
 
 import android.util.Log
+import de.danoeh.apexpod.core.storage.database.PlayStatDao
 import de.danoeh.apexpod.core.storage.repository.PlayStatsRepository
 import de.danoeh.apexpod.core.util.Converter
 import de.danoeh.apexpod.model.feed.FeedItem
@@ -9,7 +10,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class PlayStatLoggerImpl(
-    playStatsRepository: PlayStatsRepository
+    val playStatDao : PlayStatDao
 ) : PlayStatLogger {
     private val TAG = "PlayStatLoggerImpl"
     private var currPlayStat : PlayStat? = null
@@ -27,6 +28,7 @@ class PlayStatLoggerImpl(
         if (currPlayStat != null && playingFeedItem != null) {
             currPlayStat!!.endTime = endTime
             currPlayStat!!.endPos = endPosition
+            playStatDao.createPlayStat(currPlayStat!!)
         }
         // If currPlayStat is not null
         currPlayStat = null
