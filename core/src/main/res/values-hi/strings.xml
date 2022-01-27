@@ -55,7 +55,6 @@
   <string name="reset">रीसेट</string>
   <string name="author_label">कलाकार</string>
   <string name="url_label">URL</string>
-  <string name="cover_label">तस्वीर</string>
   <string name="error_label">त्रुटि</string>
   <string name="error_msg_prefix">एक त्रुटि हो गई:</string>
   <string name="refresh_label">ताज़ा करें</string>
@@ -64,7 +63,6 @@
   <string name="chapter_duration">अवधि: %1$s</string>
   <string name="description_label">विवरण</string>
   <string name="episodes_suffix">\u0020एपिसोड</string>
-  <string name="processing_label">प्रसंस्करण</string>
   <string name="save_username_password_label">यूज़रनेम और पासवर्ड सहेजें</string>
   <string name="close_label">बंद करें</string>
   <string name="retry_label">पुन: प्रयास</string>
@@ -87,7 +85,6 @@
   <string name="mark_all_read_label">पढ़ने के रूप में सभी को चिह्नित करें</string>
   <string name="show_info_label">जानकारी दिखाएँ</string>
   <string name="show_feed_settings_label">पॉडकास्ट सेटिंग दिखाएं</string>
-  <string name="feed_info_label">पॉडकास्ट की जानकारी</string>
   <string name="feed_settings_label">पॉडकास्ट की सेटिंग</string>
   <string name="rename_feed_label">पॉडकास्ट का नाम बदले</string>
   <string name="remove_feed_label">पॉडकास्ट हटाए</string>
