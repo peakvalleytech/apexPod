@@ -21,7 +21,7 @@ import java.util.List;
 public class PlaybackStatisticsListAdapter extends StatisticsListAdapter {
 
     boolean countAll = true;
-
+    private Long totalSpeedAdjustedTime = null;
     public PlaybackStatisticsListAdapter(Context context) {
         super(context);
     }
@@ -47,12 +47,25 @@ public class PlaybackStatisticsListAdapter extends StatisticsListAdapter {
     }
 
     @Override
+    String getSubheaderCaption() {
+        return context.getString(R.string.speed_adjusted_label);
+    }
+
+    @Override
+    String getSubheaderValue() {
+        return Converter.shortLocalizedDuration(context, totalSpeedAdjustedTime);
+    }
+
+    @Override
     PieChartView.PieChartData generateChartData(FeedPlayStats feedPlayStats) {
         float[] dataValues = new float[feedPlayStats.size()];
+        totalSpeedAdjustedTime = 0L;
         for (int i = 0; i < feedPlayStats.size(); i++) {
             FeedPlayStatsItem item = feedPlayStats.getItems().get(i);
             dataValues[i] = item.getTotalListeningTime();
+            totalSpeedAdjustedTime += item.getTotalSpeedAdjustedListeningTime();
         }
+
         return new PieChartView.PieChartData(dataValues);
     }
 

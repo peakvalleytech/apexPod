@@ -53,6 +53,12 @@ public abstract class StatisticsListAdapter extends RecyclerView.Adapter<Recycle
             View view = inflater.inflate(R.layout.statistics_listitem_total, parent, false);
             TextView totalText = view.findViewById(R.id.total_description);
             totalText.setText(getHeaderCaption());
+            TextView subheaderLabel = view.findViewById(R.id.total_speed_adjusted_time_label);
+            String subHeaderCaption = getSubheaderCaption();
+            if (subHeaderCaption.isEmpty()) {
+                subheaderLabel.setVisibility(View.GONE);
+            }
+            subheaderLabel.setText(getSubheaderCaption());
             return new HeaderHolder(view);
         }
         return new StatisticsHolder(inflater.inflate(R.layout.statistics_listitem, parent, false));
@@ -64,6 +70,10 @@ public abstract class StatisticsListAdapter extends RecyclerView.Adapter<Recycle
             HeaderHolder holder = (HeaderHolder) h;
             holder.pieChart.setData(pieChartData);
             holder.totalTime.setText(getHeaderValue());
+            if (getSubheaderValue().isEmpty()) {
+                holder.speedAdjustedTimeValue.setVisibility(View.GONE);
+            }
+            holder.speedAdjustedTimeValue.setText(getSubheaderValue());
         } else {
             StatisticsHolder holder = (StatisticsHolder) h;
             FeedPlayStatsItem statsItem = statisticsData.getItems().get(position - 1);
@@ -94,11 +104,13 @@ public abstract class StatisticsListAdapter extends RecyclerView.Adapter<Recycle
     static class HeaderHolder extends RecyclerView.ViewHolder {
         TextView totalTime;
         PieChartView pieChart;
+        TextView speedAdjustedTimeValue;
 
         HeaderHolder(View itemView) {
             super(itemView);
             totalTime = itemView.findViewById(R.id.total_time);
             pieChart = itemView.findViewById(R.id.pie_chart);
+            speedAdjustedTimeValue = itemView.findViewById(R.id.total_speed_adjusted_time_value);
         }
     }
 
@@ -120,6 +132,10 @@ public abstract class StatisticsListAdapter extends RecyclerView.Adapter<Recycle
     abstract String getHeaderCaption();
 
     abstract String getHeaderValue();
+
+    abstract String getSubheaderCaption();
+
+    abstract String getSubheaderValue();
 
     abstract PieChartView.PieChartData generateChartData(FeedPlayStats statisticsData);
 

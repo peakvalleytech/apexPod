@@ -32,6 +32,16 @@ public class DownloadStatisticsListAdapter extends StatisticsListAdapter {
     }
 
     @Override
+    String getSubheaderCaption() {
+        return "";
+    }
+
+    @Override
+    String getSubheaderValue() {
+        return "";
+    }
+
+    @Override
     PieChartView.PieChartData generateChartData(FeedPlayStats statisticsData) {
         float[] dataValues = new float[statisticsData.size()];
         for (int i = 0; i < statisticsData.size(); i++) {
