@@ -163,6 +163,7 @@ public class DownloadLogFragment extends ListFragment {
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
         menu.findItem(R.id.clear_logs_item).setVisible(!downloadLog.isEmpty());
+        menu.findItem(R.id.delete_played).setVisible(false);
     }
 
     @Override

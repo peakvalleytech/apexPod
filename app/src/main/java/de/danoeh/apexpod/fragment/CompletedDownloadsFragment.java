@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,7 @@ import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
 import de.danoeh.apexpod.core.event.PlayerStatusEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.storage.DBReader;
+import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
@@ -71,6 +74,7 @@ public class CompletedDownloadsFragment extends Fragment implements
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.simple_list_fragment, container, false);
         Toolbar toolbar = root.findViewById(R.id.toolbar);
+
         toolbar.setVisibility(View.GONE);
 
         recyclerView = root.findViewById(R.id.recyclerView);
@@ -134,7 +138,29 @@ public class CompletedDownloadsFragment extends Fragment implements
             disposable.dispose();
         }
     }
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        menu.findItem(R.id.clear_logs_item).setVisible(false);
+        menu.findItem(R.id.delete_played).setVisible(true);
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+       if (item.getItemId() == R.id.delete_played) {
+            DBWriter.deleteFeedItems(getContext(), filterPlayed(items));
+            return true;
+        }
+        return false;
+    }
 
+    private List<FeedItem> filterPlayed(List<FeedItem> feedItems) {
+        List<FeedItem> playedItems = new ArrayList();
+        for (FeedItem item : feedItems) {
+            if (item.isPlayed()) {
+                playedItems.add(item);
+            }
+        }
+        return playedItems;
+    }
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onEventMainThread(DownloadEvent event) {
         Log.d(TAG, "onEventMainThread() called with: " + "event = [" + event + "]");
@@ -142,8 +168,6 @@ public class CompletedDownloadsFragment extends Fragment implements
             ((PagedToolbarFragment) getParentFragment()).invalidateOptionsMenuIfActive(this);
         }
     }
-
-
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
