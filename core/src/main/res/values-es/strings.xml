@@ -810,4 +810,7 @@
   <string name="dialog_choose_sync_service_title">Elegir proveedor de sincronización</string>
   <string name="synchronization_login_status"><![CDATA[Lo que se ha iniciado como <i>%1$s</i> en <i>%2$s</i>. <br/><br/> Puede volver a elegir su proveedor de sincronización una vez que haya cerrado la sesión]]></string>
   <string name="confirm_mobile_feed_refresh_dialog_message">La descarga de episodios a través de la conexión de datos móviles está deshabilitada en la configuración.\\n\\n¿Aún desea actualizar todos los podcasts a través de datos móviles?</string>
+    <string name="delete_played">Eliminar reproducido</string>
+  <string name="pref_automatic_download_sum">Habilitar la descarga automática de episodios</string>
+  <string name="pref_auto_download_title">Descarga automática</string>
 </resources>

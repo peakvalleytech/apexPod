@@ -63,7 +63,6 @@
   <string name="chapter_duration">अवधि: %1$s</string>
   <string name="description_label">विवरण</string>
   <string name="episodes_suffix">\u0020एपिसोड</string>
-  <string name="save_username_password_label">यूज़रनेम और पासवर्ड सहेजें</string>
   <string name="close_label">बंद करें</string>
   <string name="retry_label">पुन: प्रयास</string>
   <string name="auto_download_label">ऑटो डाउनलोड में शामिल करें</string>
@@ -783,6 +782,9 @@
   <string name="proxy_checking">जाँच&#8230;</string>
   <string name="cast_media_route_menu_title">पर खेलें&#8230;</string>
   <string name="home_fragment_label">घर</string>
+    <string name="pref_auto_download_title">स्वचालित डाउनलोड</string>
+  <string name="pref_automatic_download_sum">एपिसोड का स्वचालित डाउनलोड सक्षम करें</string>
+  <string name="delete_played">चलाएँ हटाएँ</string>
   <!--Episodes apply actions-->
   <!--Sort-->
   <!--Rating dialog-->
