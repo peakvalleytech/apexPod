@@ -35,6 +35,7 @@ import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.service.download.DownloadStatus;
 import de.danoeh.apexpod.core.service.playback.PlaybackService;
+import de.danoeh.apexpod.core.storage.database.PlayStatDao;
 import de.danoeh.apexpod.core.sync.queue.SynchronizationQueueSink;
 import de.danoeh.apexpod.core.util.FeedItemPermutors;
 import de.danoeh.apexpod.core.util.IntentUtils;
@@ -1007,10 +1008,8 @@ public class DBWriter {
     @NonNull
     public static Future<?> resetStatistics() {
         return dbExec.submit(() -> {
-            PodDBAdapter adapter = PodDBAdapter.getInstance();
-            adapter.open();
-            adapter.resetAllMediaPlayedDuration();
-            adapter.close();
+            PlayStatDao playStatDao = new PlayStatDao();
+            playStatDao.deleteAllPlayStats();
         });
     }
 }

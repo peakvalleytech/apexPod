@@ -62,8 +62,10 @@ class PlayStatDao {
     fun updatePlayStat(playStat : PlayStat) {
 
     }
-    fun deletePlayStat(playStat: PlayStat) {
-
+    fun deleteAllPlayStats() : Int {
+        return db.doTransaction {
+            it.delete("${PodDBAdapter.TABLE_NAME_PLAYSTATS}", null, null)
+        } as Int
     }
 
     private fun doTransaction(transaction : () -> Any?) : Any? {

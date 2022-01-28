@@ -19,7 +19,6 @@ import java.util.List;
  * Adapter for the playback statistics list.
  */
 public class PlaybackStatisticsListAdapter extends StatisticsListAdapter {
-
     boolean countAll = true;
     private Long totalSpeedAdjustedTime = null;
     public PlaybackStatisticsListAdapter(Context context) {
