@@ -55,7 +55,9 @@
         android:title="@string/auto_download_settings_label">
         <SwitchPreferenceCompat
             android:key="autoDownload"
-            android:title="@string/auto_download_label" />
+            android:title="@string/auto_download_label"
+            android:defaultValue="true"
+            />
         <EditTextPreference
             android:key="autoDownloadCache"
             android:title="Episodes to Auto Download"

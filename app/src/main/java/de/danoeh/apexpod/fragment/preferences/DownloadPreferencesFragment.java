@@ -59,7 +59,9 @@ public class DownloadPreferencesFragment extends PreferenceFragmentCompat {
     }
 
     private void setupAutoDownloadScreen() {
-        findPreference(UserPreferences.PREF_ENABLE_AUTODL).setOnPreferenceChangeListener(
+        Preference autoDownloadPref = findPreference(UserPreferences.PREF_ENABLE_AUTODL);
+        autoDownloadPref.setDefaultValue(UserPreferences.isEnableAutodownload());
+        autoDownloadPref.setOnPreferenceChangeListener(
                 (preference, newValue) -> {
                     if (newValue instanceof Boolean) {
                         checkAutodownloadItemVisibility((Boolean) newValue);

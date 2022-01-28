@@ -9,7 +9,7 @@
         android:title="@string/pref_auto_download_title"
         android:summary="@string/pref_automatic_download_sum"
         search:summary="@string/pref_automatic_download_sum"
-        android:defaultValue="false"/>
+        android:defaultValue="true"/>
 
     <SwitchPreferenceCompat
         android:key="prefEnableAutoDownloadOnBattery"
