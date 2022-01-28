@@ -580,7 +580,7 @@ public class UserPreferences {
     }
 
     public static boolean isEnableAutodownload() {
-        return prefs.getBoolean(PREF_ENABLE_AUTODL, false);
+        return prefs.getBoolean(PREF_ENABLE_AUTODL, true);
     }
 
     @VisibleForTesting
