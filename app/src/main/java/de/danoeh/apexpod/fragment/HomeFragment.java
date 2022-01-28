@@ -89,17 +89,6 @@ public class HomeFragment extends Fragment implements Toolbar.OnMenuItemClickLis
                     0
             ));
         });
-        Button crashButton = new Button(getActivity());
-        crashButton.setText("Test Crash");
-        crashButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                throw new RuntimeException("Test Crash"); // Force a crash
-            }
-        });
-
-        getActivity().addContentView(crashButton, new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
         emptyViewLayout = root.findViewById(R.id.empty_layout);
         setupEmptyView(root);
         FloatingActionButton subscriptionAddButton = root.findViewById(R.id.subscriptions_add);
