@@ -44,6 +44,9 @@ proguard
 libs
 *.DS_Store
 gradle.properties
-*.keystore
 *.p12
 assets
+*.properties
+*.jks
+keystore.gradle
+

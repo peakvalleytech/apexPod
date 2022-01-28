@@ -32,6 +32,7 @@ import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import com.bumptech.glide.Glide;
@@ -73,7 +74,7 @@ import org.greenrobot.eventbus.ThreadMode;
 /**
  * Activity for playing video files.
  */
-public class VideoplayerActivity extends CastEnabledActivity implements SeekBar.OnSeekBarChangeListener {
+public class VideoplayerActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
     private static final String TAG = "VideoplayerActivity";
 
     /**
@@ -553,7 +554,7 @@ public class VideoplayerActivity extends CastEnabledActivity implements SeekBar.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        requestCastButton(menu);
+//        requestCastButton(menu);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.mediaplayer, menu);
         return true;

@@ -6,7 +6,10 @@ plugins {
 apply from: "../common.gradle"
 apply plugin: 'kotlin-android'
 apply from: "../playFlavor.gradle"
-//apply plugin: 'com.google.gms.google-services'
+apply from: "../keystore.gradle"
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
 android {
     defaultConfig {
         // Version code schema:
@@ -160,11 +163,13 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
     // Firebase
-//    implementation platform('com.google.firebase:firebase-bom:29.0.3')
-//    implementation 'com.google.firebase:firebase-analytics'
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
     // Non-free dependencies:
     playImplementation 'com.google.android.play:core:1.8.0'
     compileOnly "com.google.android.wearable:wearable:$wearableSupportVersion"
+    playApi "com.google.android.gms:play-services-cast:$playServicesVersion"
 
     androidTestImplementation "org.awaitility:awaitility:$awaitilityVersion"
     androidTestImplementation 'com.nanohttpd:nanohttpd:2.1.1'
@@ -177,6 +182,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
 }
 
 if (project.hasProperty("antennaPodPlayPublisherCredentials")) {
