@@ -167,6 +167,7 @@ public class UserPreferences {
         UserPreferences.prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         createNoMediaFile();
+        QueuePreferences.init(context);
     }
 
     /**

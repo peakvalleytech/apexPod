@@ -36,6 +36,8 @@ import de.danoeh.apexpod.core.util.LongList;
 import de.danoeh.apexpod.core.util.comparator.DownloadStatusComparator;
 import de.danoeh.apexpod.core.util.comparator.FeedItemPubdateComparator;
 import de.danoeh.apexpod.core.util.comparator.PlaybackCompletionDateComparator;
+import de.danoeh.apexpod.model.feed.feedItemFilter.FeedItemFilter2;
+import de.danoeh.apexpod.model.feed.feedItemFilter.PodcastFeedItemFilter;
 
 /**
  * Provides methods for reading data from the AntennaPod database.
@@ -227,6 +229,7 @@ public final class DBReader {
         Log.d(TAG, "getQueue()");
         try (Cursor cursor = adapter.getQueueCursor()) {
             List<FeedItem> items = extractItemlistFromCursor(adapter, cursor);
+            FeedItemFilter2 feedItemFilter2 = PodcastFeedItemFilter();
             loadAdditionalFeedItemListData(items);
             return items;
         }
