@@ -79,5 +79,5 @@ public abstract class FeedFilterDialog {
         builder.create().show();
     }
 
-    protected abstract void updateFilter(Set<String> filterValues);
+    protected abstract void updateFilter(Set<String> filt erValues);
 }
