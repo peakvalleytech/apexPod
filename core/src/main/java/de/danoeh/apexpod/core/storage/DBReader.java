@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
+import de.danoeh.apexpod.core.preferences.QueuePreferences;
 import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
 import de.danoeh.apexpod.model.feed.Chapter;
 import de.danoeh.apexpod.model.feed.Feed;
@@ -229,7 +230,6 @@ public final class DBReader {
         Log.d(TAG, "getQueue()");
         try (Cursor cursor = adapter.getQueueCursor()) {
             List<FeedItem> items = extractItemlistFromCursor(adapter, cursor);
-            FeedItemFilter2 feedItemFilter2 = PodcastFeedItemFilter();
             loadAdditionalFeedItemListData(items);
             return items;
         }
@@ -275,7 +275,11 @@ public final class DBReader {
         PodDBAdapter adapter = PodDBAdapter.getInstance();
         adapter.open();
         try {
-            return getQueue(adapter);
+            List<FeedItem> feedItems = getQueue(adapter);
+            List<Long> filteredFeeds = QueuePreferences.getFeedsFilter();
+            FeedItemFilter2 feedItemFilter2 = new PodcastFeedItemFilter(filteredFeeds);
+            List<FeedItem> filteredFeedItems = feedItemFilter2.filter(feedItems);
+            return filteredFeedItems;
         } finally {
             adapter.close();
         }
