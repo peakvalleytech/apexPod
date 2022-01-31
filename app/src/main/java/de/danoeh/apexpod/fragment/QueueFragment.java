@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
@@ -54,6 +55,7 @@ import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
+import de.danoeh.apexpod.dialog.ChecklistDialog;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
 import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
@@ -249,6 +251,14 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         final int itemId = item.getItemId();
+
+        if (itemId == R.id.queue_filter) {
+            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            Fragment fragment = new ChecklistDialog();
+            fragmentTransaction.add(fragment, null);
+            fragmentTransaction.commit();
+            return true;
+        }
         if (itemId == R.id.queue_lock) {
             toggleQueueLock();
             return true;

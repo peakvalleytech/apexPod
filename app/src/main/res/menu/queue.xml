@@ -7,7 +7,11 @@
         android:icon="@drawable/ic_search"
         custom:showAsAction="ifRoom"
         android:title="@string/search_label"/>
-
+    <item
+        android:id="@+id/queue_filter"
+        android:icon="@drawable/ic_filter"
+        custom:showAsAction="always"
+        android:title="Filter" />
     <item
         android:id="@+id/queue_lock"
         android:title="@string/lock_queue"
