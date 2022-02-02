@@ -6,7 +6,7 @@ plugins {
 apply from: "../common.gradle"
 apply plugin: 'kotlin-android'
 apply from: "../playFlavor.gradle"
-apply from: "../keystore.gradle"
+//apply from: "../keystore.gradle"
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 

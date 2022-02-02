@@ -32,8 +32,11 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
@@ -59,6 +62,7 @@ import de.danoeh.apexpod.dialog.ChecklistDialog;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
 import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
+import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedItemFilter;
 import de.danoeh.apexpod.model.feed.SortOrder;
@@ -254,7 +258,39 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
 
         if (itemId == R.id.queue_filter) {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-            Fragment fragment = new ChecklistDialog();
+            List<Feed> podcasts = new ArrayList<>();
+            podcasts.add(new Feed("", "", "Feed 1"));
+            podcasts.add(new Feed("", "", "Feed 2"));
+            podcasts.add(new Feed("", "", "Feed 3"));
+            podcasts.add(new Feed("", "", "Feed 4"));
+//            podcasts.add("Pod1");
+//            podcasts.add("Pod2");
+//            podcasts.add("Pod3");
+            Set<Feed> filteredFeeds = new HashSet<>();
+            Fragment fragment = new ChecklistDialog(
+                    podcasts,
+                    (index) -> {
+                        return podcasts.get((Integer) index).getTitle();
+                    },
+                    (index, isChecked) -> {
+                        Log.d(TAG, "Podcast filter: index " + index + ", isChecked " + isChecked);
+                        Feed selectedFeed = podcasts.get(index);
+                        if (isChecked) {
+                            filteredFeeds.add(selectedFeed);
+                        } else {
+                            filteredFeeds.remove(selectedFeed);
+                        }
+                    },
+                    (dialog, which) -> {
+                        Log.d(TAG, "Applying podcast filter");
+                        for (Feed feed : filteredFeeds) {
+                            Log.d(TAG, "Filtered feed: " + feed.getTitle());
+                        }
+
+                    },
+                    (dialog, which) -> {
+                        Log.d(TAG, "Canceling podcast filter");
+                    });
             fragmentTransaction.add(fragment, null);
             fragmentTransaction.commit();
             return true;
