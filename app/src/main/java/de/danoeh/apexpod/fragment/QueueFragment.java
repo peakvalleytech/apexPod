@@ -59,6 +59,7 @@ import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
 import de.danoeh.apexpod.dialog.ChecklistDialog;
+import de.danoeh.apexpod.dialog.factory.DialogAlertFactory;
 import de.danoeh.apexpod.dialog.queue.QueueFeedFilterDialog;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
 import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
@@ -256,8 +257,19 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
         final int itemId = item.getItemId();
 
         if (itemId == R.id.queue_filter) {
-            QueueFeedFilterDialog queueFeedFilterDialog = new QueueFeedFilterDialog(queue);
-            queueFeedFilterDialog.show(getParentFragmentManager());
+            if (queue.isEmpty()) {
+                AlertDialog dialog = DialogAlertFactory.Companion.create(
+                        getContext(),
+                        getString(R.string.no_items_header_label),
+                        getString(R.string.no_items_header_label),
+                        getString(android.R.string.ok),
+                        null,
+                        null);
+                dialog.show();
+            } else {
+                QueueFeedFilterDialog queueFeedFilterDialog = new QueueFeedFilterDialog(queue);
+                queueFeedFilterDialog.show(getParentFragmentManager());
+            }
             return true;
         }
         if (itemId == R.id.queue_lock) {

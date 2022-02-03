@@ -7,10 +7,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import de.danoeh.apexpod.core.preferences.QueuePreferences;
 import de.danoeh.apexpod.dialog.ChecklistDialog;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
@@ -45,6 +47,7 @@ public class QueueFeedFilterDialog {
                     Log.d(TAG, "Applying podcast filter");
                     for (Long feedId : filteredFeedIds) {
                         Log.d(TAG, "Filtered feed id: " + feedId);
+                        QueuePreferences.setFeedsFilter(filteredFeedIds.toArray(new Long[0]));
                     }
 
                 },

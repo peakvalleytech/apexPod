@@ -56,7 +56,9 @@ public class QueuePreferences {
         }
 
         for (String id : feedIdsString.split(",")) {
-            feedIds.add(Long.valueOf(id));
+            if (!id.isEmpty()) {
+                feedIds.add(Long.valueOf(id));
+            }
         }
 
         return  feedIds;
