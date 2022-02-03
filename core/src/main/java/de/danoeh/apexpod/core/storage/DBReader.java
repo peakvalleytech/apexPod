@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.QueuePreferences;
@@ -276,7 +278,7 @@ public final class DBReader {
         adapter.open();
         try {
             List<FeedItem> feedItems = getQueue(adapter);
-            List<Long> filteredFeeds = QueuePreferences.getFeedsFilter();
+            Set<Long> filteredFeeds = new HashSet<>(QueuePreferences.getFeedsFilter());
             FeedItemFilter2 feedItemFilter2 = new PodcastFeedItemFilter(filteredFeeds);
             List<FeedItem> filteredFeedItems = feedItemFilter2.filter(feedItems);
             return filteredFeedItems;
