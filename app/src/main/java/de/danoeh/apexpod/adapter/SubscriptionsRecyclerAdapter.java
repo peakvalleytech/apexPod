@@ -4,8 +4,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -51,12 +53,37 @@ public class SubscriptionsRecyclerAdapter
     private List<NavDrawerData.DrawerItem> listItems;
     private Feed selectedFeed = null;
     int longPressedPosition = 0; // used to init actionMode
-
+    ActionMode setPriorityActionMode;
     // Experimental
     private boolean dragNDropMode = false;
     private StartDragListener startDragListener;
     public void setDragNDropMode(boolean dragNDropMode) {
         this.dragNDropMode = dragNDropMode;
+        if(dragNDropMode)
+       setPriorityActionMode = mainActivityRef.get().startActionMode(new ActionMode.Callback() {
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                mode.setTitle("Set Priority");
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                setDragNDropMode(false);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     public boolean isDragNDropMode() {
