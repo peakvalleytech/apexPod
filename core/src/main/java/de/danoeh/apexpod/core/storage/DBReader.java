@@ -277,11 +277,34 @@ public final class DBReader {
         PodDBAdapter adapter = PodDBAdapter.getInstance();
         adapter.open();
         try {
-            List<FeedItem> feedItems = getQueue(adapter);
-            Set<Long> filteredFeeds = new HashSet<>(QueuePreferences.getFeedsFilter());
-            FeedItemFilter2 feedItemFilter2 = new PodcastFeedItemFilter(filteredFeeds);
-            List<FeedItem> filteredFeedItems = feedItemFilter2.filter(feedItems);
-            return filteredFeedItems;
+            return  getQueue(adapter);
+        } finally {
+            adapter.close();
+        }
+    }
+
+    /**
+     * Loads a list of the FeedItems in the queue with filtered applied
+     * {@link #getQueueIDList()} instead.
+     *
+     * @return A list of FeedItems sorted by the same order as the queue.
+     */
+    @NonNull
+    public static List<FeedItem> getQueue(boolean filtered) {
+        Log.d(TAG, "getQueue() called");
+        PodDBAdapter adapter = PodDBAdapter.getInstance();
+        adapter.open();
+        try {
+            if (filtered) {
+                List<FeedItem> feedItems = getQueue(adapter);
+                Set<Long> filteredFeeds = new HashSet<>(QueuePreferences.getFeedsFilter());
+                FeedItemFilter2 feedItemFilter2 = new PodcastFeedItemFilter(filteredFeeds);
+                List<FeedItem> filteredFeedItems = feedItemFilter2.filter(feedItems);
+                return filteredFeedItems;
+            } else {
+                return getQueue();
+            }
+
         } finally {
             adapter.close();
         }

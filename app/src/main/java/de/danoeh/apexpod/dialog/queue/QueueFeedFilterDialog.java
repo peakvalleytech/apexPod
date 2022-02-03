@@ -6,12 +6,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import de.danoeh.apexpod.core.event.QueueEvent;
 import de.danoeh.apexpod.core.preferences.QueuePreferences;
 import de.danoeh.apexpod.dialog.ChecklistDialog;
 import de.danoeh.apexpod.model.feed.Feed;
