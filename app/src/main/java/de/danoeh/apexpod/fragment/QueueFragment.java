@@ -259,14 +259,19 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
         if (itemId == R.id.queue_filter) {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             List<Feed> podcasts = new ArrayList<>();
-            podcasts.add(new Feed("", "", "Feed 1"));
-            podcasts.add(new Feed("", "", "Feed 2"));
-            podcasts.add(new Feed("", "", "Feed 3"));
-            podcasts.add(new Feed("", "", "Feed 4"));
-//            podcasts.add("Pod1");
-//            podcasts.add("Pod2");
-//            podcasts.add("Pod3");
-            Set<Feed> filteredFeeds = new HashSet<>();
+            Feed feed = new Feed("", "", "Feed 1");
+            feed.setId(1);
+            podcasts.add(feed);
+            feed = new Feed("", "", "Feed 2");
+            feed.setId(2);
+            podcasts.add(feed);
+            feed = new Feed("", "", "Feed 3");
+            feed.setId(3);
+            podcasts.add(feed);
+            feed = new Feed("", "", "Feed 4");
+            feed.setId(4);
+            podcasts.add(feed);
+            Set<Long> filteredFeedIds = new HashSet<>();
             Fragment fragment = new ChecklistDialog(
                     podcasts,
                     (index) -> {
@@ -276,15 +281,15 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
                         Log.d(TAG, "Podcast filter: index " + index + ", isChecked " + isChecked);
                         Feed selectedFeed = podcasts.get(index);
                         if (isChecked) {
-                            filteredFeeds.add(selectedFeed);
+                            filteredFeedIds.add(selectedFeed.getId());
                         } else {
-                            filteredFeeds.remove(selectedFeed);
+                            filteredFeedIds.remove(selectedFeed.getId());
                         }
                     },
                     (dialog, which) -> {
                         Log.d(TAG, "Applying podcast filter");
-                        for (Feed feed : filteredFeeds) {
-                            Log.d(TAG, "Filtered feed: " + feed.getTitle());
+                        for (Long feedId : filteredFeedIds) {
+                            Log.d(TAG, "Filtered feed id: " + feedId);
                         }
 
                     },
