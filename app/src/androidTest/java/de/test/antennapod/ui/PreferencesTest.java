@@ -29,7 +29,7 @@ import de.danoeh.apexpod.core.storage.EpisodeCleanupAlgorithm;
 import de.danoeh.apexpod.core.storage.ExceptFavoriteCleanupAlgorithm;
 import de.danoeh.apexpod.fragment.EpisodesFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
-import de.danoeh.apexpod.fragment.SubscriptionFragment;
+import de.danoeh.apexpod.fragment.subscriptions.SubscriptionFragment;
 import de.test.antennapod.EspressoTestUtils;
 
 import static androidx.test.espresso.Espresso.onData;

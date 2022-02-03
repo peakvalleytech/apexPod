@@ -61,7 +61,7 @@ import de.danoeh.apexpod.fragment.NavDrawerFragment;
 import de.danoeh.apexpod.fragment.PlaybackHistoryFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
 import de.danoeh.apexpod.fragment.SearchFragment;
-import de.danoeh.apexpod.fragment.SubscriptionFragment;
+import de.danoeh.apexpod.fragment.subscriptions.SubscriptionFragment;
 import de.danoeh.apexpod.fragment.TransitionEffect;
 import de.danoeh.apexpod.preferences.PreferenceUpgrader;
 import de.danoeh.apexpod.ui.appstartintent.MainActivityStarter;

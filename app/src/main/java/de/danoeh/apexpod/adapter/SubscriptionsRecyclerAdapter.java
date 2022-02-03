@@ -35,7 +35,7 @@ import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.core.feed.LocalFeedUpdater;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
 import de.danoeh.apexpod.fragment.FeedItemlistFragment;
-import de.danoeh.apexpod.fragment.SubscriptionFragment;
+import de.danoeh.apexpod.fragment.subscriptions.SubscriptionFragment;
 import de.danoeh.apexpod.model.feed.Feed;
 import jp.shts.android.library.TriangleLabelView;
 
@@ -44,8 +44,7 @@ import jp.shts.android.library.TriangleLabelView;
  */
 public class SubscriptionsRecyclerAdapter
         extends SelectableAdapter<SubscriptionsRecyclerAdapter.SubscriptionViewHolder>
-        implements View.OnCreateContextMenuListener,
-        FeedsItemMoveCallback.ItemTouchHelperContract {
+        implements View.OnCreateContextMenuListener {
     private static final String TAG = "SubscriptionsRecyclerAdapter";
     private final WeakReference<MainActivity> mainActivityRef;
     private List<NavDrawerData.DrawerItem> listItems;
@@ -266,29 +265,7 @@ public class SubscriptionsRecyclerAdapter
         return dp * context.getResources().getDisplayMetrics().density;
     }
 
-    @Override
-    public void onRowMoved(int fromPosition, int toPosition) {
-        Log.d("RowMoved", "from position " + fromPosition + " to position " + toPosition);
-        if (fromPosition < toPosition) {
-            for (int i = fromPosition; i < toPosition; i++) {
-                Collections.swap(listItems, i, i + 1);
-            }
-        } else {
-            for (int i = fromPosition; i > toPosition; i--) {
-                Collections.swap(listItems, i, i - 1);
-            }
-        }
-        notifyItemMoved(fromPosition, toPosition);
-    }
 
-    @Override
-    public void onRowSelected(RecyclerView.ViewHolder myViewHolder) {
-    }
-
-    @Override
-    public void onRowClear(RecyclerView.ViewHolder myViewHolder) {
-
-    }
 
     public void setStartDragListener(StartDragListener startDragListener) {
         this.startDragListener = startDragListener;

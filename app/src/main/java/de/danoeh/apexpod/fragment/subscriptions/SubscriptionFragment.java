@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment;
+package de.danoeh.apexpod.fragment.subscriptions;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -59,6 +59,8 @@ import de.danoeh.apexpod.dialog.FeedSortDialog;
 import de.danoeh.apexpod.dialog.RemoveFeedDialog;
 import de.danoeh.apexpod.dialog.RenameFeedDialog;
 import de.danoeh.apexpod.dialog.SubscriptionsFilterDialog;
+import de.danoeh.apexpod.fragment.AddFeedFragment;
+import de.danoeh.apexpod.fragment.SearchFragment;
 import de.danoeh.apexpod.fragment.actions.FeedMultiSelectActionHandler;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.view.EmptyViewHandler;

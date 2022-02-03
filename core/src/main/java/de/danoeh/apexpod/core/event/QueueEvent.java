@@ -12,7 +12,7 @@ import de.danoeh.apexpod.model.feed.FeedItem;
 public class QueueEvent {
 
     public enum Action {
-        ADDED, ADDED_ITEMS, SET_QUEUE, REMOVED, IRREVERSIBLE_REMOVED, CLEARED, DELETED_MEDIA, SORTED, MOVED
+        ADDED, ADDED_ITEMS, SET_QUEUE, REMOVED, IRREVERSIBLE_REMOVED, CLEARED, DELETED_MEDIA, SORTED, FILTERED, MOVED
     }
 
     public final Action action;
@@ -55,6 +55,7 @@ public class QueueEvent {
         return new QueueEvent(Action.SORTED, null, sortedQueue, -1);
     }
 
+    public static QueueEvent fil
     public static QueueEvent moved(FeedItem item, int newPosition) {
         return new QueueEvent(Action.MOVED, item, null, newPosition);
     }

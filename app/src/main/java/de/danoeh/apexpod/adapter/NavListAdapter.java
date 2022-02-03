@@ -32,7 +32,7 @@ import de.danoeh.apexpod.fragment.EpisodesFragment;
 import de.danoeh.apexpod.fragment.NavDrawerFragment;
 import de.danoeh.apexpod.fragment.PlaybackHistoryFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
-import de.danoeh.apexpod.fragment.SubscriptionFragment;
+import de.danoeh.apexpod.fragment.subscriptions.SubscriptionFragment;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.lang.ref.WeakReference;
