@@ -86,7 +86,7 @@ public class SubscriptionViewHolder extends RecyclerView.ViewHolder {
             dragHandle.setVisibility(View.GONE);
             dragHandle.setOnTouchListener((v, event) -> {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                    startDragListener.requestDrag(holder);
+                    adapter.requestDrag(this);
                 }
                 return false;
             });
@@ -106,7 +106,7 @@ public class SubscriptionViewHolder extends RecyclerView.ViewHolder {
             imageView.setAlpha(0.6f);
             count.setVisibility(View.GONE);
         } else {
-            if(adapter.isDragNDropMode())
+            if(!adapter.isDragNDropMode())
                 selectView.setVisibility(View.GONE);
             imageView.setAlpha(1.0f);
         }

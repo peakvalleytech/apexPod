@@ -157,6 +157,14 @@ public class SubscriptionsRecyclerAdapter
         this.startDragListener = startDragListener;
     }
 
+    public void requestDrag(SubscriptionViewHolder holder) {
+        startDragListener.requestDrag(holder);
+    }
+
+    public void swap(int i, int j) {
+        Collections.swap(listItems, i, j);
+    }
+
     public interface StartDragListener {
         void requestDrag(RecyclerView.ViewHolder viewHolder);
     }
