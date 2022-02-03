@@ -59,6 +59,7 @@ import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
 import de.danoeh.apexpod.dialog.ChecklistDialog;
+import de.danoeh.apexpod.dialog.queue.QueueFeedFilterDialog;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
 import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
@@ -243,8 +244,6 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
         recyclerAdapter = null;
     }
 
-
-
     private void refreshToolbarState() {
         toolbar.getMenu().findItem(R.id.queue_lock).setChecked(UserPreferences.isQueueLocked());
         boolean keepSorted = UserPreferences.isQueueKeepSorted();
@@ -257,47 +256,8 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
         final int itemId = item.getItemId();
 
         if (itemId == R.id.queue_filter) {
-            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-            List<Feed> podcasts = new ArrayList<>();
-            Feed feed = new Feed("", "", "Feed 1");
-            feed.setId(1);
-            podcasts.add(feed);
-            feed = new Feed("", "", "Feed 2");
-            feed.setId(2);
-            podcasts.add(feed);
-            feed = new Feed("", "", "Feed 3");
-            feed.setId(3);
-            podcasts.add(feed);
-            feed = new Feed("", "", "Feed 4");
-            feed.setId(4);
-            podcasts.add(feed);
-            Set<Long> filteredFeedIds = new HashSet<>();
-            Fragment fragment = new ChecklistDialog(
-                    podcasts,
-                    (index) -> {
-                        return podcasts.get((Integer) index).getTitle();
-                    },
-                    (index, isChecked) -> {
-                        Log.d(TAG, "Podcast filter: index " + index + ", isChecked " + isChecked);
-                        Feed selectedFeed = podcasts.get(index);
-                        if (isChecked) {
-                            filteredFeedIds.add(selectedFeed.getId());
-                        } else {
-                            filteredFeedIds.remove(selectedFeed.getId());
-                        }
-                    },
-                    (dialog, which) -> {
-                        Log.d(TAG, "Applying podcast filter");
-                        for (Long feedId : filteredFeedIds) {
-                            Log.d(TAG, "Filtered feed id: " + feedId);
-                        }
-
-                    },
-                    (dialog, which) -> {
-                        Log.d(TAG, "Canceling podcast filter");
-                    });
-            fragmentTransaction.add(fragment, null);
-            fragmentTransaction.commit();
+            QueueFeedFilterDialog queueFeedFilterDialog = new QueueFeedFilterDialog(queue);
+            queueFeedFilterDialog.show(getParentFragmentManager());
             return true;
         }
         if (itemId == R.id.queue_lock) {

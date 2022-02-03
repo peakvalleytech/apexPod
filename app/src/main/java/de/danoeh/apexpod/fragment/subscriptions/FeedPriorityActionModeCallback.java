@@ -32,6 +32,6 @@ public class FeedPriorityActionModeCallback implements ActionMode.Callback {
 
     @Override
     public void onDestroyActionMode(ActionMode mode) {
-        subscriptionsRecyclerAdapter.endSetPriority();
+//        subscriptionsRecyclerAdapter.endSetPriority();
     }
 }

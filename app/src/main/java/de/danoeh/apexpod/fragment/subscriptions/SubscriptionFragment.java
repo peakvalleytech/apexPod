@@ -29,7 +29,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.joanzapata.iconify.Iconify;
 import com.leinardi.android.speeddial.SpeedDialView;
 
-import de.danoeh.antennapod.adapter.FeedsItemMoveCallback;
 import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -120,16 +119,6 @@ public class SubscriptionFragment extends Fragment
         setRetainInstance(true);
         prefs = requireActivity().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         MainActivity activity = (MainActivity) getActivity();
-        activity.setOnKeyUpListener(new MainActivity.OnKeyUpListener() {
-            @Override
-            public boolean onKeyUp(int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK && subscriptionAdapter.isDragNDropMode()) {
-                    endDragDropMode();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -365,7 +354,7 @@ public class SubscriptionFragment extends Fragment
         } else if (itemId == R.id.multi_select) {
             speedDialView.setVisibility(View.VISIBLE);
             return subscriptionAdapter.onContextItemSelected(item);
-        } else if (itemId == R.id.reorder) {
+        } /*else if (itemId == R.id.reorder) {
             subscriptionAdapter.setDragNDropMode(true);
             ItemTouchHelper.Callback callback =
                     new FeedsItemMoveCallback(subscriptionAdapter);
@@ -377,7 +366,7 @@ public class SubscriptionFragment extends Fragment
             subscriptionAdapter.notifyDataSetChanged();
             swipeRefreshLayout.setEnabled(false);
             return true;
-        }
+        }*/
         return super.onContextItemSelected(item);
     }
 
