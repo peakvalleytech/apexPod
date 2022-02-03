@@ -374,15 +374,15 @@ public class SubscriptionFragment extends Fragment
             return subscriptionAdapter.onContextItemSelected(item);
         } else if (itemId == R.id.reorder) {
             subscriptionAdapter.setDragNDropMode(true);
-            ItemTouchHelper.Callback callback =
-                    new FeedsItemMoveCallback(subscriptionAdapter);
-            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
-            itemTouchHelper.attachToRecyclerView(subscriptionRecycler);
-            subscriptionAdapter.setStartDragListener(viewHolder -> {
-                itemTouchHelper.startDrag(viewHolder);
-            });
-            subscriptionAdapter.notifyDataSetChanged();
-            swipeRefreshLayout.setEnabled(false);
+//            ItemTouchHelper.Callback callback =
+//                    new FeedsItemMoveCallback(subscriptionAdapter);
+//            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+//            itemTouchHelper.attachToRecyclerView(subscriptionRecycler);
+//            subscriptionAdapter.setStartDragListener(viewHolder -> {
+//                itemTouchHelper.startDrag(viewHolder);
+//            });
+//            subscriptionAdapter.notifyDataSetChanged();
+//            swipeRefreshLayout.setEnabled(false);
             return true;
         }
         return super.onContextItemSelected(item);

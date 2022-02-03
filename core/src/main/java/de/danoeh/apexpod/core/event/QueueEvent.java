@@ -55,7 +55,6 @@ public class QueueEvent {
         return new QueueEvent(Action.SORTED, null, sortedQueue, -1);
     }
 
-    public static QueueEvent fil
     public static QueueEvent moved(FeedItem item, int newPosition) {
         return new QueueEvent(Action.MOVED, item, null, newPosition);
     }

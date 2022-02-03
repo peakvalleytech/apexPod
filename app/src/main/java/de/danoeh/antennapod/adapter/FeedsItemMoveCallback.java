@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import de.danoeh.apexpod.adapter.SubscriptionsRecyclerAdapter;
+import de.danoeh.apexpod.fragment.subscriptions.SubscriptionViewHolder;
 
 public class FeedsItemMoveCallback extends ItemTouchHelper.Callback {
     private final ItemTouchHelperContract adapter;
@@ -31,9 +32,9 @@ public class FeedsItemMoveCallback extends ItemTouchHelper.Callback {
     @Override
     public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
         if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-            if (viewHolder instanceof SubscriptionsRecyclerAdapter.SubscriptionViewHolder) {
-                SubscriptionsRecyclerAdapter.SubscriptionViewHolder subscriptionViewHolder =
-                        (SubscriptionsRecyclerAdapter.SubscriptionViewHolder) viewHolder;
+            if (viewHolder instanceof SubscriptionViewHolder) {
+                SubscriptionViewHolder subscriptionViewHolder =
+                        (SubscriptionViewHolder) viewHolder;
                 adapter.onRowSelected(viewHolder);
             }
         }
