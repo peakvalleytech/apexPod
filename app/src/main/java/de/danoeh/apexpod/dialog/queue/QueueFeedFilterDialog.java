@@ -22,20 +22,23 @@ import de.danoeh.apexpod.model.feed.FeedItem;
 
 public class QueueFeedFilterDialog {
     private static final String TAG = "QueueFeedFilterDia";
-    private Set<Long> filteredFeedIds = new HashSet<>();
-    private List<Feed> feedOptions = new ArrayList<>();
+    private final Set<Long> filteredFeedIds;
+    private final List<Feed> feedOptions;
 
     public QueueFeedFilterDialog(List<FeedItem> queue) {
         feedOptions = QueueUtils.getFeedsFromFeedItems(queue);
+        filteredFeedIds = new HashSet<>(QueuePreferences.getFeedsFilter());
     }
 
     public void show(FragmentManager fragmentManager) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Set<Long> filteredFeedIds = new HashSet<>();
-        Fragment fragment = new ChecklistDialog(
+        Fragment fragment = new ChecklistDialog<Feed>(
                 feedOptions,
                 (index) -> {
                     return feedOptions.get((Integer) index).getTitle();
+                },
+                (index) -> {
+                    return filteredFeedIds.contains(feedOptions.get((Integer) index).getId());
                 },
                 (index, isChecked) -> {
                     Log.d(TAG, "Podcast filter: index " + index + ", isChecked " + isChecked);
@@ -50,9 +53,11 @@ public class QueueFeedFilterDialog {
                     Log.d(TAG, "Applying podcast filter");
                     for (Long feedId : filteredFeedIds) {
                         Log.d(TAG, "Filtered feed id: " + feedId);
-                        QueuePreferences.setFeedsFilter(filteredFeedIds.toArray(new Long[0]));
                     }
 
+                    QueuePreferences.setFeedsFilter(filteredFeedIds.toArray(new Long[0]));
+                    boolean isFiltered = !filteredFeedIds.isEmpty();
+                    EventBus.getDefault().post(QueueEvent.filtered(isFiltered));
                 },
                 (dialog, which) -> {
                     Log.d(TAG, "Canceling podcast filter");

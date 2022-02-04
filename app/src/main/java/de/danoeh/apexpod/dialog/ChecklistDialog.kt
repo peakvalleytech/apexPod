@@ -17,6 +17,7 @@ import de.danoeh.apexpod.adapter.CheckListAdapter
 class ChecklistDialog<T>(
     val items : List<T>,
     val getValue : (Int) -> String,
+    val isChecked : (Int) -> Boolean,
     val onItemCheckedListener : OnItemCheckListener? = null,
     val onPositiveButtonClickListener : DialogInterface.OnClickListener? = null,
     val onNegativeButtonClickListener : DialogInterface.OnClickListener? = null
@@ -29,7 +30,7 @@ class ChecklistDialog<T>(
         val recycler : RecyclerView = view.findViewById(R.id.checklist_recycler)
         val linearLayoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)
         recycler.layoutManager = linearLayoutManager
-        recycler.adapter = onItemCheckedListener?.let { CheckListAdapter(items, getValue, it) }
+        recycler.adapter = onItemCheckedListener?.let { CheckListAdapter(items, getValue, isChecked, it) }
         builder.setView(view)
         builder.setPositiveButton(getString(R.string.confirm_label), onPositiveButtonClickListener)
         builder.setNegativeButton(getString(R.string.cancel_label), onNegativeButtonClickListener)

@@ -14,6 +14,7 @@ import de.danoeh.apexpod.dialog.ChecklistDialog
  class CheckListAdapter<T>(
     val items : List<T>,
     val getValue : (Int) -> String,
+    val isChecked : (Int) -> Boolean,
     val onItemCheckListener: ChecklistDialog.OnItemCheckListener
 ) : RecyclerView.Adapter<CheckListAdapter.CheckListViewHolder>() {
     class CheckListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,6 +33,7 @@ import de.danoeh.apexpod.dialog.ChecklistDialog
 
     override fun onBindViewHolder(holder: CheckListViewHolder, position : Int) {
         holder.checkbox.setText(getValue(position))
+        holder.checkbox.isChecked = isChecked(position)
         holder.checkbox.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
             override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
                 onItemCheckListener.onItemChecked(holder.absoluteAdapterPosition, isChecked)

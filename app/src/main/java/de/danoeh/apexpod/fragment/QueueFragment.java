@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +38,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.concurrent.Callable;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
@@ -52,6 +54,7 @@ import de.danoeh.apexpod.core.event.QueueEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.feed.util.PlaybackSpeedUtils;
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
+import de.danoeh.apexpod.core.preferences.QueuePreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
@@ -93,6 +96,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
     private boolean displayUpArrow;
 
     private List<FeedItem> queue;
+    private List<FeedItem> unFilteredQueue;
 
     private boolean isUpdatingFeeds = false;
 
@@ -153,7 +157,8 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
                 break;
             case SET_QUEUE:
             case SORTED: //Deliberate fall-through
-                queue = event.items;
+//                queue = event.items;
+                loadItems(false);
                 recyclerAdapter.notifyDataSetChanged();
                 break;
             case REMOVED:
@@ -168,6 +173,8 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
                 break;
             case MOVED:
                 return;
+            case FILTERED:
+                loadItems(false);
         }
         recyclerView.saveScrollPosition(QueueFragment.TAG);
         onFragmentLoaded(false);
@@ -267,7 +274,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
                         null);
                 dialog.show();
             } else {
-                QueueFeedFilterDialog queueFeedFilterDialog = new QueueFeedFilterDialog(queue);
+                QueueFeedFilterDialog queueFeedFilterDialog = new QueueFeedFilterDialog(unFilteredQueue);
                 queueFeedFilterDialog.show(getParentFragmentManager());
             }
             return true;
@@ -569,12 +576,20 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
             emptyView.hide();
             progLoading.setVisibility(View.VISIBLE);
         }
-        disposable = Observable.fromCallable(DBReader::getQueue)
+        disposable = Observable.fromCallable(() -> {
+            Pair<List<FeedItem>, List<FeedItem>> unFilteredAndFilteredQueues = new Pair<>(DBReader.getQueue(), DBReader.getQueue(true));
+         return    unFilteredAndFilteredQueues;
+        })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(items -> {
+                .subscribe(unFilteredAndFilteredQueues -> {
                     progLoading.setVisibility(View.GONE);
-                    queue = items;
+                    unFilteredQueue = unFilteredAndFilteredQueues.first;
+                    boolean isFiltered = !unFilteredAndFilteredQueues.second.isEmpty();
+                    if (isFiltered)
+                        queue = unFilteredAndFilteredQueues.second;
+                    else
+                        queue = unFilteredQueue;
                     onFragmentLoaded(restoreScrollPosition);
                     if (recyclerAdapter != null) {
                         recyclerAdapter.notifyDataSetChanged();
