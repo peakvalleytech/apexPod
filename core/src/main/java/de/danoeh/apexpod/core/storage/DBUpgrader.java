@@ -323,10 +323,4 @@ class DBUpgrader {
                     + " ADD COLUMN " + PodDBAdapter.KEY_FEED_TAGS + " TEXT;");
         }
     }
-
-    static void downgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
-        if (oldVersion < 4) {
-
-        }
-    }
 }

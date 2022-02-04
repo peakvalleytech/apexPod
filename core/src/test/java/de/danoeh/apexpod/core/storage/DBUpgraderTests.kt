@@ -19,7 +19,7 @@ class DBUpgraderTests {
         var adapter = PodDBAdapter.getInstance()
         adapter.open()
         adapter.close()
-        adapter = PodDBAdapter.getVersionInstance(3)
+        adapter = PodDBAdapter.getVersionInstance(1)
         PodDBAdapter.tearDownTests()
 
 
@@ -27,6 +27,6 @@ class DBUpgraderTests {
 
     @Test
     fun testDBUpgrade3_to_4() {
-        var adapter = PodDBAdapter.getVersionInstance(2)
+        var adapter = PodDBAdapter.getVersionInstance(4)
     }
 }
