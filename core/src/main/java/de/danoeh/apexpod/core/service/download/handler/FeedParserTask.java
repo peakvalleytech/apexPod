@@ -36,8 +36,9 @@ public class FeedParserTask implements Callable<FeedHandlerResult> {
         feed.setFile_url(request.getDestination());
         feed.setId(request.getFeedfileId());
         feed.setDownloaded(true);
-        feed.setPreferences(new FeedPreferences(0, true, FeedPreferences.AutoDeleteAction.GLOBAL,
-                VolumeAdaptionSetting.OFF, request.getUsername(), request.getPassword()));
+        FeedPreferences feedPreferences = new FeedPreferences(0, true, FeedPreferences.AutoDeleteAction.GLOBAL,
+                VolumeAdaptionSetting.OFF, request.getUsername(), request.getPassword());
+        feedPreferences.setPriority(System.currentTimeMillis());
         feed.setPageNr(request.getArguments().getInt(DownloadRequester.REQUEST_ARG_PAGE_NR, 0));
 
         DownloadError reason = null;

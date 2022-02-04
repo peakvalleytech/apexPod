@@ -130,6 +130,7 @@ public class PodDBAdapter {
     public static final String KEY_END_TIME = "end_time";
     public static final String KEY_START_POS = "start_pos";
     public static final String KEY_END_POS = "end_pos";
+    public static final String KEY_FEED_PRIORITY = "feed_priority";
 
     // Table names
     public static final String TABLE_NAME_FEEDS = "Feeds";
@@ -176,7 +177,8 @@ public class PodDBAdapter {
             + KEY_EPISODE_NOTIFICATION + " INTEGER DEFAULT 0,"
             + KEY_AUTO_DOWNLOAD_CACHE_SIZE + " INTEGER DEFAULT 1,"
             + KEY_AUTO_DOWNLOAD_NEWEST_FIRST + " INTEGER DEFAULT 1,"
-            + KEY_AUTO_DOWNLOAD_INCLUDE_ALL + " INTEGER DEFAULT 0)";
+            + KEY_AUTO_DOWNLOAD_INCLUDE_ALL + " INTEGER DEFAULT 0"
+            + KEY_FEED_PRIORITY + " INTEGER DEFAULT 0)";
 
     private static final String CREATE_TABLE_FEED_ITEMS = "CREATE TABLE "
             + TABLE_NAME_FEED_ITEMS + " (" + TABLE_PRIMARY_KEY
@@ -519,7 +521,7 @@ public class PodDBAdapter {
         values.put(KEY_FEED_SKIP_INTRO, prefs.getFeedSkipIntro());
         values.put(KEY_FEED_SKIP_ENDING, prefs.getFeedSkipEnding());
         values.put(KEY_EPISODE_NOTIFICATION, prefs.getShowEpisodeNotification());
-
+        values.put(KEY_FEED_PRIORITY, prefs.getPriority());
         AutoDownload autoDownloadPrefs = prefs.getAutoDownloadPreferences();
         if (autoDownloadPrefs != null) {
             values.put(KEY_AUTO_DOWNLOAD_CACHE_SIZE, autoDownloadPrefs.getCacheSize());
@@ -1538,14 +1540,14 @@ public class PodDBAdapter {
 
         @Override
         public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
-            Log.w("DBAdapter", "Upgrading from version " + oldVersion + " to " + newVersion + ".");
+//            Log.w("DBAdapter", "Upgrading from version " + oldVersion + " to " + newVersion + ".");
             ApexPodDBUpgrader.upgrade(db, oldVersion, newVersion);
 
         }
 
         @Override
         public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            Log.w("DBAdapter", "Downgrading from version " + oldVersion + " to " + newVersion + ".");
+//            Log.w("DBAdapter", "Downgrading from version " + oldVersion + " to " + newVersion + ".");
             ApexPodDBUpgrader.downgrade(db, oldVersion, newVersion);
         }
     }
