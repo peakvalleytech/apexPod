@@ -15,6 +15,7 @@ import de.danoeh.apexpod.R
 import de.danoeh.apexpod.adapter.CheckListAdapter
 
 class ChecklistDialog<T>(
+    val title : Int,
     val items : List<T>,
     val getValue : (Int) -> String,
     val isChecked : (Int) -> Boolean,
@@ -25,7 +26,7 @@ class ChecklistDialog<T>(
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val builder = AlertDialog.Builder(requireActivity())
-        builder.setTitle("Filter by Podcast")
+        builder.setTitle(getString(title))
         val view = layoutInflater.inflate(R.layout.dialog_checklist,null , false)
         val recycler : RecyclerView = view.findViewById(R.id.checklist_recycler)
         val linearLayoutManager = LinearLayoutManager(view.context, LinearLayoutManager.VERTICAL, false)

@@ -1,5 +1,6 @@
 package de.danoeh.apexpod.dialog.queue;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.event.QueueEvent;
 import de.danoeh.apexpod.core.preferences.QueuePreferences;
 import de.danoeh.apexpod.dialog.ChecklistDialog;
@@ -33,6 +35,7 @@ public class QueueFeedFilterDialog {
     public void show(FragmentManager fragmentManager) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = new ChecklistDialog<Feed>(
+                R.string.filter_by_podcasts,
                 feedOptions,
                 (index) -> {
                     return feedOptions.get((Integer) index).getTitle();
