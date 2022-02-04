@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">מספר פרקים שהתקבלו</string>
   <string name="drawer_feed_counter_none">ללא</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">לא נמצאו יישומונים תואמים</string>
-  <string name="export_logs_menu_title">ייצוא יומנים מפורטים</string>
-  <string name="confirm_export_log_dialog_message">יומנים מפורטים עשויים להכיל מידע רגיש כגון רשימת המינויים שלך</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">פתיחה בדפדפן</string>
   <string name="copy_url_label">העתקת כתובת</string>
@@ -436,8 +433,8 @@
   <string name="pref_nav_drawer_feed_counter_title">הגדרת מונה מינויים</string>
   <string name="pref_nav_drawer_feed_counter_sum">שינוי המידע שמוצג במונה המינויים. משפיע גם על סדר המינויים אם ‚סדר המינויים’ מוגדר כ־‚מונה’.</string>
   <string name="pref_set_theme_sum">שינוי המראה של אנטנה־פּוֹד</string>
-  <string name="pref_automatic_download_title">הורדה אוטומטית</string>
-  <string name="pref_automatic_download_sum">הגדרת הורדה אטומטית של פרקים.</string>
+  <string name="pref_download_title">הורדה אוטומטית</string>
+  <string name="pref_download_sum">הגדרת הורדה אטומטית של פרקים.</string>
   <string name="pref_autodl_wifi_filter_title">הפעלת סינון רשתות אלחוטיות</string>
   <string name="pref_autodl_wifi_filter_sum">לאפשר הורדה אוטומטית רק דרך רשתות אלחוטיות נבחרות.</string>
   <string name="pref_automatic_download_on_battery_title">להוריד שלא בזמן טעינה</string>
@@ -460,10 +457,6 @@
   <string name="pref_gpodnet_logout_toast">הצלחת לצאת</string>
   <string name="pref_gpodnet_setlogin_information_title">שינוי פרטי הכניסה</string>
   <string name="pref_gpodnet_setlogin_information_sum">שינוי פרטי הכניסה לחשבון ה־gpodder.net שלך.</string>
-  <string name="pref_gpodnet_sync_changes_title">לסנכרן כעת</string>
-  <string name="pref_gpodnet_sync_changes_sum">סנכרון שינויי מצב במינויים ובפרקים מול gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">לכפות סנכרון מלא</string>
-  <string name="pref_gpodnet_full_sync_sum">סנכרון כל המינויים ומצבי הפרקים עם gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[נכנסת בשם <i>%1$s</i> עם ההתקן <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">התאמת המהירויות הזמינות למהירות נגינה משתנה</string>
   <string name="pref_feed_playback_speed_sum">המהירות שתחול על פרקים בפודקאסט זה כשאלו מתחילים להתנגן</string>
@@ -501,7 +494,6 @@
   <string name="open_bug_tracker">פתיחת מערכת מעקב התקלות</string>
   <string name="copy_to_clipboard">העתקה ללוח הגזירים</string>
   <string name="copied_to_clipboard">הועתק ללוח הגזירים</string>
-  <string name="experimental_pref">ניסיוני</string>
   <string name="pref_media_player_message">נא לבחור באיזה נגן מדיה להשתמש כדי לנגן קבצים</string>
   <string name="pref_current_value">ערך נוכחי: %1$s</string>
   <string name="pref_proxy_title">מתווך</string>
@@ -513,8 +505,6 @@
   <string name="pref_enqueue_downloaded_title">הוספת הורדות לתור</string>
   <string name="pref_enqueue_downloaded_summary">הוספת פרקים שהתקבלו לתור</string>
   <string name="media_player_builtin">הנגן המובנה ב־Android (לא זמין עוד)</string>
-  <string name="media_player_sonic">נגן המדיה Sonic (לא זמין עוד)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (מומלץ)</string>
   <string name="media_player_switch_to_exoplayer">מעבר ל־ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">הועבר ל־ExoPlayer.</string>
   <string name="pref_skip_silence_title">דילוג על שקט בקטעי ההאזנה</string>
@@ -546,8 +536,7 @@
   <string name="new_episode_notification_enabled">ההתראות פעילות</string>
   <string name="new_episode_notification_disabled">ההתראות מושבתות</string>
   <string name="pref_feed_settings_dialog_msg">הגדרה זו היא ייחודית לפי פודקאסט. ניתן לשנות אותה על ידי פתיחת עמוד הפודקאסט.</string>
-  <string name="pref_contribute">תרומה</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">על אודות</string>
   <string name="antennapod_version">גרסת אנטנה־פּוֹד</string>
   <string name="contributors">מתנדבים</string>
@@ -691,8 +680,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">אימות</string>
   <string name="authentication_descr">שינוי שם המשתמש והססמה שלך לפודקאסט הזה ולפרקים שלו.</string>
-  <string name="feed_folders_label">תיקיות</string>
-  <string name="feed_folders_summary">ניתן לשנות את התיקיות בהן מופיע הפודקאסט הזה.</string>
   <string name="feed_folders_include_root">הצגה ברשימה הראשית</string>
   <string name="auto_download_settings_label">הגדרות הורדה אוטומטית</string>
   <string name="episode_filters_label">מסנן פרקים</string>

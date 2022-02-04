@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Número d\'episodis descarregats</string>
   <string name="drawer_feed_counter_none">Cap</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">No s\'han trobat aplicacions compatibles</string>
-  <string name="export_logs_menu_title">Exporta registres detallats</string>
-  <string name="confirm_export_log_dialog_message">Els registres detallats poden contenir informació confidencial, com ara la llista de subscripcions</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Obre en un navegador</string>
   <string name="copy_url_label">Copia l\'enllaç</string>
@@ -406,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Estableix el comptador de les subscripcions</string>
   <string name="pref_nav_drawer_feed_counter_sum">Canvia la informació mostrada pel comptador de les subscripcions. També afecta l\'ordre de les subscripcions si a l\'opció \'Ordre de les subscripcions\' s\'ha indicat \'Comptador\'.</string>
   <string name="pref_set_theme_sum">Canvieu l\'aparença d\'ApexPod.</string>
-  <string name="pref_automatic_download_title">Baixada automàtica</string>
-  <string name="pref_automatic_download_sum">Configureu la baixada automàtica d\'episodis.</string>
+  <string name="pref_download_title">Baixada automàtica</string>
+  <string name="pref_download_sum">Configureu la baixada automàtica d\'episodis.</string>
   <string name="pref_autodl_wifi_filter_title">Activa el filtre de la xarxa sense fils</string>
   <string name="pref_autodl_wifi_filter_sum">Permet les baixades automàtiques només per a les xarxes sense fils seleccionades.</string>
   <string name="pref_automatic_download_on_battery_title">Baixa mentre no es carrega</string>
@@ -430,10 +427,6 @@
   <string name="pref_gpodnet_logout_toast">Heu sortit de la sessió</string>
   <string name="pref_gpodnet_setlogin_information_title">Dades d\'inici de sessió</string>
   <string name="pref_gpodnet_setlogin_information_sum">Canvia les dades d\'inici de sessió del vostre compte de gpodder.net</string>
-  <string name="pref_gpodnet_sync_changes_title">Sincronitza ara</string>
-  <string name="pref_gpodnet_sync_changes_sum">Sincronitza amb gpodder.net les subscripcions i els estats dels episodis.</string>
-  <string name="pref_gpodnet_full_sync_title">Força sincronització completa</string>
-  <string name="pref_gpodnet_full_sync_sum">Sincronitza amb gpodder.net totes les subscripcions i els estats dels episodis.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Connectat com a <i>%1$s</i> amb el dispositiu <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Personalitza les velocitats disponibles per a la reproducció a velocitat variable</string>
   <string name="pref_feed_playback_speed_sum">La velocitat a usar quan comence la reproducció per a episodis en aquest podcast</string>
@@ -471,7 +464,6 @@
   <string name="open_bug_tracker">Obri rastrejador de bugs</string>
   <string name="copy_to_clipboard">Còpia al porta-retalls </string>
   <string name="copied_to_clipboard">Copiat al porta-retalls</string>
-  <string name="experimental_pref">Experimental</string>
   <string name="pref_media_player_message">Seleccioneu el reproductor multimèdia per a reproduir fitxers</string>
   <string name="pref_current_value">Valor actual: %1$s</string>
   <string name="pref_proxy_title">Servidor intermediari</string>
@@ -483,8 +475,6 @@
   <string name="pref_enqueue_downloaded_title">Afegeix les baixades a la cua</string>
   <string name="pref_enqueue_downloaded_summary">Afegeix els episodis descarregats a la cua</string>
   <string name="media_player_builtin">Reproductor Android integrat (obsolet)</string>
-  <string name="media_player_sonic">Reproductor multimèdia Sonic (obsolet)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (recomanat)</string>
   <string name="media_player_switch_to_exoplayer">Canvia a ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Canviat a ExoPlayer</string>
   <string name="pref_skip_silence_title">Omet Silenci en Audio</string>
@@ -516,7 +506,6 @@
   <string name="new_episode_notification_enabled">Notificació activada</string>
   <string name="new_episode_notification_disabled">Notificació desactivada</string>
   <string name="pref_feed_settings_dialog_msg">Aquesta configuració és exclusiva de cada podcast. Podeu canviar-la obrint la pàgina del podcast.</string>
-  <string name="pref_contribute">Contribueix</string>
   <!--About screen-->
   <string name="about_pref">Quant a</string>
   <string name="antennapod_version">Versió d\'ApexPod</string>
@@ -655,8 +644,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Autenticació</string>
   <string name="authentication_descr">Canvieu el nom d\'usuari i contrasenya per a aquest podcast i els seus episodis.</string>
-  <string name="feed_folders_label">Carpetes</string>
-  <string name="feed_folders_summary">Canvia les carpetes on es mostra aquest podcast.</string>
   <string name="feed_folders_include_root">Mostra a la llista principal</string>
   <string name="auto_download_settings_label">Opcions d\'Auto Descàrrega</string>
   <string name="episode_filters_label">Filtre d\'episodis</string>
@@ -792,4 +779,35 @@
   <string name="on_demand_config_setting_changed">Ajust actualitzar exitosament</string>
   <string name="on_demand_config_stream_text">Pareix que escoltes en línia molt a sovint. Vols que les llistes d\'episodis mostren botons per a escoltar en línia?</string>
   <string name="on_demand_config_download_text">Pareix que baixes molt a sovint. Vols que les llistes d\'episodis mostren botons per a baixar episodis?</string>
+    <string name="confirm_mobile_feed_refresh_dialog_message">La descarga de episodios a través de la conexión de datos móviles está deshabilitada en la configuración.\\n\\n¿Aún desea actualizar todos los podcasts a través de datos móviles?</string>
+  <string name="synchronization_logout">Logout</string>
+  <string name="pref_synchronization_logout_toast">La sortida de sessió s\'ha realitzat correctament</string>
+  <string name="synchronization_sync_changes_title">Sincronitza ara</string>
+  <string name="synchronization_full_sync_title">Força la sincronització completa</string>
+  <string name="synchronization_login_status"><![CDATA[S\'ha iniciat la sessió com a <i>%1$s</i> a <i>%2$s</i>. <br/><br/> Podeu tornar a triar el proveïdor de sincronització un cop hàgiu tancat la sessió]]></string>
+  <string name="synchronization_summary_unchoosen">Podeu triar entre diversos proveïdors per sincronitzar les subscripcions i l\'estat de reproducció d\'episodis amb</string>
+  <string name="synchronization_summary_nextcloud">Gpoddersync és una aplicació de codi obert Nextcloud que podeu instal·lar fàcilment al vostre propi servidor. L\'aplicació és independent del projecte ApexPod.</string>
+  <string name="synchronization_nextcloud_authenticate_browser">Concedeix accés mitjançant el navegador web obert i torna a l\'ApexPod.</string>
+  <string name="synchronization_choose_title">Trieu el proveïdor de sincronització</string>
+  <string name="synchronization_force_sync_summary">Torna a sincronitzar totes les subscripcions i els estats d\'episodis</string>
+  <string name="synchronization_sync_summary">Sincronitza els canvis d\'estat de subscripció i d\'episodi</string>
+  <string name="dialog_choose_sync_service_title">Trieu el proveïdor de sincronització</string>
+  <string name="sync_status_wait_for_downloads">S\'està esperant que es completin les baixades...</string>
+  <string name="feed_tags_label">Etiquetes</string>
+  <string name="feed_tags_summary">Canviar les etiquetes d\'aquest podcast per ajudar-vos a organitzar les subscripcions</string>
+  <string name="volume">Volum</string>
+  <string name="left_short">Esquerra</string>
+  <string name="right_short">Dreta</string>
+  <string name="repeat_episode">Repeteix l\'episodi</string>
+  <string name="delete_playlist">Suprimeix la llista de reproducció</string>
+  <string name="delete_playlist_confirmation_msg">Voleu suprimir aquesta llista de reproducció?</string>
+  <string name="playlists_label">Llistes de reproducció</string>
+  <string name="home_fragment_label">Llar</string>
+  <string name="pref_auto_delete_playlist_summary">Exclou els episodis de llistes de reproducció de la supressió automàtica</string>
+  <string name="pref_auto_delete_playlist_title">Conserva els episodis de la llista de reproducció</string>
+  <string name="add_to_playlist_label">Afegeix-ho a la llista de reproducció</string>
+  <string name="no_playlists_label">No hi ha llistes de reproducció</string>
+  <string name="no_playlists_sub_label">Després de crear una llista de reproducció, apareixerà aquí.</string>
+  <string name="auto_download_cache_pref_summary">"Nombre d'episodis conservats per descàrrega automàtica. S'ha exclòs de la supressió automàtica. "</string>
+  <string name="home_label">Llar</string>
 </resources>

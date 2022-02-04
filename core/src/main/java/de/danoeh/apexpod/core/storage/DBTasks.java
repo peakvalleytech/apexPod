@@ -34,6 +34,13 @@ import de.danoeh.apexpod.core.event.MessageEvent;
 import de.danoeh.apexpod.core.feed.LocalFeedUpdater;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.service.download.DownloadStatus;
+import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteFilter;
+import de.danoeh.apexpod.core.storage.autodelete.AutoDeleteService;
+import de.danoeh.apexpod.core.storage.autodelete.impl.AutoDeleteFilterFactory;
+import de.danoeh.apexpod.core.storage.autodelete.impl.AutoDeleteFilterImpl;
+import de.danoeh.apexpod.core.storage.autodelete.impl.rules.DurationAutoDeleteRule;
+import de.danoeh.apexpod.core.storage.autodelete.impl.rules.IncludeFavoritesAutoDeleteRule;
+import de.danoeh.apexpod.core.storage.autodownload.impl.AutoDownloadServiceImpl;
 import de.danoeh.apexpod.core.storage.mapper.FeedCursorMapper;
 import de.danoeh.apexpod.core.sync.SyncService;
 import de.danoeh.apexpod.core.sync.queue.SynchronizationQueueSink;
@@ -150,28 +157,6 @@ public final class DBTasks {
     }
 
     /**
-     * Downloads all pages of the given feed even if feed has not been modified since last refresh
-     *
-     * @param context Used for requesting the download.
-     * @param feed    The Feed object.
-     */
-    public static void forceRefreshCompleteFeed(final Context context, final Feed feed) {
-        try {
-            refreshFeeds(context, Collections.singletonList(feed), true, true, false);
-        } catch (DownloadRequestException e) {
-            e.printStackTrace();
-            DBWriter.addDownloadStatus(
-                    new DownloadStatus(feed,
-                                       feed.getHumanReadableIdentifier(),
-                                       DownloadError.ERROR_REQUEST_ERROR,
-                                       false,
-                                       e.getMessage(),
-                                       false)
-            );
-        }
-    }
-
-    /**
      * Queues the next page of this Feed for download. The given Feed has to be a paged
      * Feed (isPaged()=true) and must contain a nextPageLink.
      *
@@ -269,7 +254,9 @@ public final class DBTasks {
      */
     public static Future<?> autodownloadUndownloadedItems(final Context context) {
         Log.d(TAG, "autodownloadUndownloadedItems");
-        return autodownloadExec.submit(downloadAlgorithm.autoDownloadUndownloadedItems(context));
+//        return autodownloadExec.submit(downloadAlgorithm.autoDownloadUndownloadedItems(context));
+        return autodownloadExec
+                .submit(new AutoDownloadServiceImpl().autoDownloadUndownloadedItems(context));
     }
 
     /**
@@ -289,7 +276,21 @@ public final class DBTasks {
      * @param context Used for accessing the DB.
      */
     public static void performAutoCleanup(final Context context) {
-        UserPreferences.getEpisodeCleanupAlgorithm().performCleanup(context);
+//        UserPreferences.getEpisodeCleanupAlgorithm().performCleanup(context);
+          int durationMinHours = UserPreferences.getEpisodeCleanupValue();
+        boolean keepFavorite = UserPreferences.shouldKeepFavorite();
+        boolean keepQueued = !UserPreferences.shouldAutoDeleteQueue();
+        AutoDeleteFilterFactory autoDeleteFactory = new AutoDeleteFilterFactory();
+
+        AutoDeleteFilter autoDeleteFilter =
+                autoDeleteFactory.createAutoDeleteFilter(
+                        durationMinHours,
+                        keepFavorite,
+                        keepQueued);
+
+        AutoDeleteService autoDeleteService =
+                new AutoDeleteServiceImpl(context, null, null, autoDeleteFilter);
+        autoDeleteService.start();
     }
 
     /**
@@ -303,7 +304,7 @@ public final class DBTasks {
     public static FeedItem getQueueSuccessorOfItem(final long itemId, List<FeedItem> queue) {
         FeedItem result = null;
         if (queue == null) {
-            queue = DBReader.getQueue();
+            queue = DBReader.getAutoPlayItems();
         }
         if (queue != null) {
             Iterator<FeedItem> iterator = queue.iterator();

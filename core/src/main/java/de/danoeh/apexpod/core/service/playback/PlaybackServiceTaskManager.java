@@ -65,7 +65,7 @@ public class PlaybackServiceTaskManager {
     private SleepTimer sleepTimer;
 
     private final Context context;
-    private final PSTMCallback callback;
+    private final TaskManagerCallback callback;
 
     /**
      * Sets up a new PSTM. This method will also start the queue loader task.
@@ -74,7 +74,7 @@ public class PlaybackServiceTaskManager {
      * @param callback A PSTMCallback object for notifying the user about updates. Must not be null.
      */
     public PlaybackServiceTaskManager(@NonNull Context context,
-                                      @NonNull PSTMCallback callback) {
+                                      @NonNull TaskManagerCallback callback) {
         this.context = context;
         this.callback = callback;
         schedExecutor = new ScheduledThreadPoolExecutor(SCHED_EX_POOL_SIZE, r -> {
@@ -105,7 +105,9 @@ public class PlaybackServiceTaskManager {
 
     private synchronized void loadQueue() {
         if (!isQueueLoaderActive()) {
-            queueFuture = schedExecutor.submit(() -> DBReader.getQueue());
+            queueFuture = schedExecutor.submit(() -> {
+                return DBReader.getAutoPlayItems();
+            });
         }
     }
 
@@ -156,9 +158,9 @@ public class PlaybackServiceTaskManager {
      * Returns the queue or waits until the PSTM has loaded the queue from the database.
      */
     public List<FeedItem> getQueue() throws InterruptedException {
-        if (queueFuture == null) {
+//        if (queueFuture == null) {
             loadQueue();
-        }
+//        }
         try {
             return queueFuture.get();
         } catch (ExecutionException e) {
@@ -471,7 +473,7 @@ public class PlaybackServiceTaskManager {
         }
     }
 
-    public interface PSTMCallback {
+    public interface TaskManagerCallback {
         void positionSaverTick();
 
         void onSleepTimerAlmostExpired(long timeLeft);

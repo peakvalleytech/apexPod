@@ -34,11 +34,6 @@ import de.danoeh.apexpod.core.R;
 import de.danoeh.apexpod.model.playback.MediaType;
 import de.danoeh.apexpod.core.feed.SubscriptionsFilter;
 import de.danoeh.apexpod.core.service.download.ProxyConfig;
-import de.danoeh.apexpod.core.storage.APCleanupAlgorithm;
-import de.danoeh.apexpod.core.storage.ExceptFavoriteCleanupAlgorithm;
-import de.danoeh.apexpod.core.storage.APNullCleanupAlgorithm;
-import de.danoeh.apexpod.core.storage.APQueueCleanupAlgorithm;
-import de.danoeh.apexpod.core.storage.EpisodeCleanupAlgorithm;
 import de.danoeh.apexpod.model.feed.SortOrder;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
 
@@ -69,7 +64,6 @@ public class UserPreferences {
     public static final String PREF_BACK_BUTTON_BEHAVIOR = "prefBackButtonBehavior";
     private static final String PREF_BACK_BUTTON_GO_TO_PAGE = "prefBackButtonGoToPage";
     public static final String PREF_FILTER_FEED = "prefSubscriptionsFilter";
-
     public static final String PREF_QUEUE_KEEP_SORTED = "prefQueueKeepSorted";
     public static final String PREF_QUEUE_KEEP_SORTED_ORDER = "prefQueueKeepSortedOrder";
 
@@ -81,8 +75,14 @@ public class UserPreferences {
     public static final String PREF_HARDWARE_PREVIOUS_BUTTON = "prefHardwarePreviousButton";
     public static final String PREF_FOLLOW_QUEUE = "prefFollowQueue";
     public static final String PREF_SKIP_KEEPS_EPISODE = "prefSkipKeepsEpisode";
-    private static final String PREF_FAVORITE_KEEPS_EPISODE = "prefFavoriteKeepsEpisode";
-    private static final String PREF_AUTO_DELETE = "prefAutoDelete";
+    public static final String PREF_AUTO_DELETE_FAVORITES = "prefFavoriteKeepsEpisode";
+
+    public static boolean shouldAutoDeleteQueue() {
+        return prefs.getBoolean(PREF_AUTO_DELETE_PLAYLIST, true);
+    }
+
+    public static final String PREF_AUTO_DELETE_PLAYLIST = "prefAutoDeletePlaylist";
+    public static final String PREF_AUTO_DELETE = "prefAutoDelete";
     public static final String PREF_SMART_MARK_AS_PLAYED_SECS = "prefSmartMarkAsPlayedSecs";
     private static final String PREF_PLAYBACK_SPEED_ARRAY = "prefPlaybackSpeedArray";
     private static final String PREF_PAUSE_PLAYBACK_FOR_FOCUS_LOSS = "prefPauseForFocusLoss";
@@ -136,6 +136,7 @@ public class UserPreferences {
     public static final int EPISODE_CLEANUP_NULL = -2;
     public static final int EPISODE_CLEANUP_EXCEPT_FAVORITE = -3;
     public static final int EPISODE_CLEANUP_DEFAULT = 0;
+    public static final String PREF_REPEAT_EPISODE = "prefRepeatEpisode";
 
     // Constants
     private static final int NOTIFICATION_BUTTON_REWIND = 0;
@@ -299,7 +300,8 @@ public class UserPreferences {
      * @return {@code true} if notifications are persistent, {@code false}  otherwise
      */
     public static boolean isPersistNotify() {
-        return prefs.getBoolean(PREF_PERSISTENT_NOTIFICATION, true);
+//        return prefs.getBoolean(PREF_PERSISTENT_NOTIFICATION, true);
+        return true;
     }
 
     /**
@@ -414,8 +416,8 @@ public class UserPreferences {
 
     public static boolean shouldSkipKeepEpisode() { return prefs.getBoolean(PREF_SKIP_KEEPS_EPISODE, true); }
 
-    public static boolean shouldFavoriteKeepEpisode() {
-        return prefs.getBoolean(PREF_FAVORITE_KEEPS_EPISODE, true);
+    public static boolean shouldKeepFavorite() {
+        return prefs.getBoolean(PREF_AUTO_DELETE_FAVORITES, true);
     }
 
     public static boolean isAutoDelete() {
@@ -791,11 +793,11 @@ public class UserPreferences {
     }
 
     private static int readEpisodeCacheSizeInternal(String valueFromPrefs) {
-        if (valueFromPrefs.equals(context.getString(R.string.pref_episode_cache_unlimited))) {
+//        if (valueFromPrefs.equals(context.getString(R.string.pref_episode_cache_unlimited))) {
             return EPISODE_CACHE_SIZE_UNLIMITED;
-        } else {
-            return Integer.parseInt(valueFromPrefs);
-        }
+//        } else {
+//            return Integer.parseInt(valueFromPrefs);
+//        }
     }
 
     private static List<Float> readPlaybackSpeedArray(String valueFromPrefs) {
@@ -846,6 +848,16 @@ public class UserPreferences {
                 .apply();
     }
 
+    public static boolean getShouldRepeatEpisode() {
+        return prefs.getBoolean(PREF_REPEAT_EPISODE, false);
+    }
+
+    public static void setShouldRepeatEpisode(boolean enable) {
+        prefs.edit()
+                .putBoolean(PREF_REPEAT_EPISODE, enable)
+                .apply();
+    }
+
     public static VideoBackgroundBehavior getVideoBackgroundBehavior() {
         switch (prefs.getString(PREF_VIDEO_BEHAVIOR, "pip")) {
             case "stop": return VideoBackgroundBehavior.STOP;
@@ -855,24 +867,8 @@ public class UserPreferences {
         }
     }
 
-    public static EpisodeCleanupAlgorithm getEpisodeCleanupAlgorithm() {
-        if (!isEnableAutodownload()) {
-            return new APNullCleanupAlgorithm();
-        }
-        int cleanupValue = getEpisodeCleanupValue();
-        if (cleanupValue == EPISODE_CLEANUP_EXCEPT_FAVORITE) {
-            return new ExceptFavoriteCleanupAlgorithm();
-        } else if (cleanupValue == EPISODE_CLEANUP_QUEUE) {
-            return new APQueueCleanupAlgorithm();
-        } else if (cleanupValue == EPISODE_CLEANUP_NULL) {
-            return new APNullCleanupAlgorithm();
-        } else {
-            return new APCleanupAlgorithm(cleanupValue);
-        }
-    }
-
     public static int getEpisodeCleanupValue() {
-        return Integer.parseInt(prefs.getString(PREF_EPISODE_CLEANUP, "" + EPISODE_CLEANUP_NULL));
+        return Integer.parseInt(prefs.getString(PREF_EPISODE_CLEANUP, "" + EPISODE_CLEANUP_DEFAULT));
     }
 
     public static void setEpisodeCleanupValue(int episodeCleanupValue) {
@@ -988,7 +984,7 @@ public class UserPreferences {
             case "prompt": return BackButtonBehavior.SHOW_PROMPT;
             case "page": return BackButtonBehavior.GO_TO_PAGE;
             case "default": // Deliberate fall-through
-            default: return BackButtonBehavior.DEFAULT;
+            default: return BackButtonBehavior.DOUBLE_TAP;
         }
     }
 
@@ -1085,4 +1081,5 @@ public class UserPreferences {
     public static void unsetUsageCountingDate() {
         setUsageCountingDateMillis(-1);
     }
+
 }

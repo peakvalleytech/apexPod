@@ -22,6 +22,8 @@ import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.widget.IconTextView;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.PreferenceActivity;
+import de.danoeh.apexpod.fragment.HomeFragment;
+import de.danoeh.apexpod.fragment.PlaylistFragment;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.core.glide.ApGlideSettings;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
@@ -109,7 +111,11 @@ public class NavListAdapter extends RecyclerView.Adapter<NavListAdapter.Holder>
 
     private @DrawableRes int getDrawable(String tag) {
         switch (tag) {
+            case HomeFragment.TAG:
+                return R.drawable.ic_home;
             case QueueFragment.TAG:
+                return R.drawable.ic_playlist;
+            case PlaylistFragment.TAG:
                 return R.drawable.ic_playlist;
             case EpisodesFragment.TAG:
                 return R.drawable.ic_feed;

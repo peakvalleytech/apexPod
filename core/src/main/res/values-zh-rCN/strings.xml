@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">已下载曲目数量</string>
   <string name="drawer_feed_counter_none">无</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">没有找到兼容的应用程序</string>
-  <string name="export_logs_menu_title">导出详细日志</string>
-  <string name="confirm_export_log_dialog_message">详细日志可能包含敏感信息，如你的订阅列表</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">在浏览器打开</string>
   <string name="copy_url_label">复制 URL</string>
@@ -391,8 +388,8 @@
   <string name="pref_nav_drawer_feed_counter_title">设定订阅数</string>
   <string name="pref_nav_drawer_feed_counter_sum">更改订阅计数器显示的信息。 如果“订阅的排序顺序”设置为“按数量排序”，这也会影响订阅的排序。</string>
   <string name="pref_set_theme_sum">改变 ApexPod 外观</string>
-  <string name="pref_automatic_download_title">自动下载</string>
-  <string name="pref_automatic_download_sum">配置自动下载的曲目</string>
+  <string name="pref_download_title">自动下载</string>
+  <string name="pref_download_sum">配置自动下载的曲目</string>
   <string name="pref_autodl_wifi_filter_title">打开 Wi-Fi 过滤器</string>
   <string name="pref_autodl_wifi_filter_sum">只允许在 Wi-Fi 网络下自动下载</string>
   <string name="pref_automatic_download_on_battery_title">未充电时下载</string>
@@ -416,10 +413,6 @@
   <string name="pref_gpodnet_logout_toast">注销成功</string>
   <string name="pref_gpodnet_setlogin_information_title">改变登录信息</string>
   <string name="pref_gpodnet_setlogin_information_sum">改变 gpodder.net 账户登录信息.</string>
-  <string name="pref_gpodnet_sync_changes_title">现在同步</string>
-  <string name="pref_gpodnet_sync_changes_sum">和gpodder.net同步订阅和节目状态</string>
-  <string name="pref_gpodnet_full_sync_title">强制完整同步</string>
-  <string name="pref_gpodnet_full_sync_sum">与gpodder.net同步所有订阅和节目状态</string>
   <string name="pref_gpodnet_login_status"><![CDATA[在设备 <i>%2$s</i> 上以 <i>%1$s</i> 身份登录]]></string>
   <string name="pref_playback_speed_sum">自定义可用于变速播放的速度</string>
   <string name="pref_feed_playback_speed_sum">开始播放此播客中剧集时使用的速度</string>
@@ -457,7 +450,6 @@
   <string name="open_bug_tracker">打开Bug跟踪器</string>
   <string name="copy_to_clipboard">复制到剪贴板</string>
   <string name="copied_to_clipboard">已复制到剪贴板</string>
-  <string name="experimental_pref">实验性</string>
   <string name="pref_media_player_message">选择使用哪个媒体播放器来播放文件</string>
   <string name="pref_current_value">当前值：%1$s</string>
   <string name="pref_proxy_title">代理</string>
@@ -469,8 +461,6 @@
   <string name="pref_enqueue_downloaded_title">已下载队列</string>
   <string name="pref_enqueue_downloaded_summary">向队列添加已下载的节目</string>
   <string name="media_player_builtin">内置安卓播放器 (已废弃)</string>
-  <string name="media_player_sonic">Sonic 媒体播放器 (已废弃)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (推荐)</string>
   <string name="media_player_switch_to_exoplayer">转到ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">已转至ExoPlayer</string>
   <string name="pref_skip_silence_title">跳过没有声音的音频</string>
@@ -502,8 +492,7 @@
   <string name="new_episode_notification_enabled">通知已启用</string>
   <string name="new_episode_notification_disabled">通知已禁用</string>
   <string name="pref_feed_settings_dialog_msg">你可以为每个播客设置不同的间隔或时间。可以通过打开播客页面来改变它。</string>
-  <string name="pref_contribute">贡献</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">关于</string>
   <string name="antennapod_version">ApexPod版本</string>
   <string name="contributors">贡献者</string>
@@ -638,8 +627,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">验证</string>
   <string name="authentication_descr">给本播客及曲目变更用户名及密码</string>
-  <string name="feed_folders_label">文件夹</string>
-  <string name="feed_folders_summary">更改显示此播客的文件夹。</string>
   <string name="feed_folders_include_root">在主列表中显示</string>
   <string name="auto_download_settings_label">自动下载设置</string>
   <string name="episode_filters_label">曲目过滤器</string>

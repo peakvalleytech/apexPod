@@ -162,6 +162,7 @@ public class SubscriptionsRecyclerAdapter
 
     public void setItems(List<NavDrawerData.DrawerItem> listItems) {
         this.listItems = listItems;
+        notifyDataSetChanged();
     }
 
     @Override

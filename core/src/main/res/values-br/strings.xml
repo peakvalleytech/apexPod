@@ -55,9 +55,6 @@
   <string name="drawer_feed_counter_downloaded">Niver a rannoù pellgarget</string>
   <string name="drawer_feed_counter_none">Hini ebet</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">N\'eo ket bet kavet arloadoù keverlec\'h</string>
-  <string name="export_logs_menu_title">Ezporzhiañ ar c\'herzhlevrioù dre ar munud</string>
-  <string name="confirm_export_log_dialog_message">Titouroù kizidik evel roll ho koumanantoù a c\'hell bezañ er c\'herzhlevrioù</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Digeriñ er merdeer</string>
   <string name="copy_url_label">Eilañ an URL</string>
@@ -425,8 +422,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Despizañ ar c\'honter koumanant</string>
   <string name="pref_nav_drawer_feed_counter_sum">Kemmañ an titour diskouezet war ar c\'honter koumanantoù. Kemmañ a ra ivez urzh ar podskignadoù mard eo urzh ar podskignadoù lakaet da \"Konter\".</string>
   <string name="pref_set_theme_sum">Kemmañ neuz ApexPod</string>
-  <string name="pref_automatic_download_title">Pellgargañ emgefreek</string>
-  <string name="pref_automatic_download_sum">Kefluniañ pellgargañ emgefreek ar rannoù.</string>
+  <string name="pref_download_title">Pellgargañ emgefreek</string>
+  <string name="pref_download_sum">Kefluniañ pellgargañ emgefreek ar rannoù.</string>
   <string name="pref_autodl_wifi_filter_title">Gweredekaat ar sil Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Aotren ar pellgargañ emgefreek war ar rouedadoù Wi-Fi diuzet nemetken.</string>
   <string name="pref_automatic_download_on_battery_title">Pellgargañ pa ne vez ket o kargañ</string>
@@ -449,10 +446,6 @@
   <string name="pref_gpodnet_logout_toast">Digennasket gant berzh</string>
   <string name="pref_gpodnet_setlogin_information_title">Kemmañ an titouroù kennaskañ</string>
   <string name="pref_gpodnet_setlogin_information_sum">Kemmañ ho titouroù kennaskañ evit ho kont gpodder.net.</string>
-  <string name="pref_gpodnet_sync_changes_title">Goubredañ bremañ</string>
-  <string name="pref_gpodnet_sync_changes_sum">Goubredañ stad ar c\'houmanantoù hag ar rannoù gant gpodder.net</string>
-  <string name="pref_gpodnet_full_sync_title">Rediañ ur goubredañ klok</string>
-  <string name="pref_gpodnet_full_sync_sum">Goubredañ an holl goumanantoù ha stadoù ar rannoù gant gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Kennasket evel <i>%1$s</i> gant ar benveg <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Dibab an tizhioù a c\'haller dibab pa vez lennet ar son</string>
   <string name="pref_feed_playback_speed_sum">Tizh dre ziouer ar rannoù</string>
@@ -490,7 +483,6 @@
   <string name="open_bug_tracker">Digeriñ heulier ar beugoù</string>
   <string name="copy_to_clipboard">Eilañ er golver</string>
   <string name="copied_to_clipboard">Eilet er golver</string>
-  <string name="experimental_pref">Arnodel</string>
   <string name="pref_media_player_message">Dibab al lenner da implij evit lenn ar restroù</string>
   <string name="pref_current_value">Talvoud bremanel: %1$s</string>
   <string name="pref_proxy_title">Proksi</string>
@@ -502,8 +494,6 @@
   <string name="pref_enqueue_downloaded_title">Ouzhpennañ el lost ur wech pellgarget</string>
   <string name="pref_enqueue_downloaded_summary">Ouzhpennañ ar rannoù pellgarget el lost</string>
   <string name="media_player_builtin">Lenner genidik Android (dizaliet)</string>
-  <string name="media_player_sonic">Sonic Media Player (dizaliet)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (aliet)</string>
   <string name="media_player_switch_to_exoplayer">Ober gant ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Kemmet eo bet al lenner evit ExoPlayer</string>
   <string name="pref_skip_silence_title">Tremen ar mareoù didrouz en aodio</string>
@@ -535,8 +525,7 @@
   <string name="new_episode_notification_enabled">Gweredekaet eo bet ar rebuzadurioù.</string>
   <string name="new_episode_notification_disabled">Diweredekaet eo bet ar rebuzadurioù.</string>
   <string name="pref_feed_settings_dialog_msg">An dibarzh-mañ a zo dibar evit pep podskignad. Gallout a rit kemmañ anezhañ e pajenn ar podskignad.</string>
-  <string name="pref_contribute">Kemer perzh</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">A-zivout</string>
   <string name="antennapod_version">Handelv ApexPod</string>
   <string name="contributors">Kendaolerien</string>
@@ -682,8 +671,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Dilesa</string>
   <string name="authentication_descr">Kemmit hoc\'h anv arveriad hag ho ker-tremen evit ar podskignad-mañ hag e rannoù.</string>
-  <string name="feed_folders_label">Teuliadoù</string>
-  <string name="feed_folders_summary">Kemmañ an teuliadoù eo diskouezet ar podskignad-mañ enno.</string>
   <string name="feed_folders_include_root">Diskouez er roll pennañ</string>
   <string name="auto_download_settings_label">Arventennoù ar pellgargañ emgefreek</string>
   <string name="episode_filters_label">Sil ar rannoù</string>

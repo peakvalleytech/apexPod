@@ -54,7 +54,7 @@ import de.danoeh.apexpod.core.storage.StatisticsItem;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.IntentUtils;
 import de.danoeh.apexpod.core.util.syndication.HtmlToPlainText;
-import de.danoeh.apexpod.fragment.preferences.StatisticsFragment;
+import de.danoeh.apexpod.fragment.preferences.stats.StatisticsFragment;
 import de.danoeh.apexpod.menuhandler.FeedMenuHandler;
 import de.danoeh.apexpod.view.ToolbarIconTintManager;
 import io.reactivex.Completable;

@@ -1,6 +1,5 @@
 package de.danoeh.apexpod.fragment.preferences;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,16 +10,16 @@ import com.bytehamster.lib.preferencesearch.SearchConfiguration;
 import com.bytehamster.lib.preferencesearch.SearchPreference;
 
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.BugReportActivity;
 import de.danoeh.apexpod.activity.PreferenceActivity;
-import de.danoeh.apexpod.core.util.IntentUtils;
 import de.danoeh.apexpod.fragment.preferences.about.AboutFragment;
+import de.danoeh.apexpod.fragment.preferences.stats.StatisticsFragment;
 
 public class MainPreferencesFragment extends PreferenceFragmentCompat {
 
     private static final String PREF_SCREEN_USER_INTERFACE = "prefScreenInterface";
     private static final String PREF_SCREEN_PLAYBACK = "prefScreenPlayback";
     private static final String PREF_SCREEN_NETWORK = "prefScreenNetwork";
+    private static final String PREF_SCREEN_DOWNLOAD = "prefScreenDownload";
     private static final String PREF_SCREEN_SYNCHRONIZATION = "prefScreenSynchronization";
     private static final String PREF_SCREEN_STORAGE = "prefScreenStorage";
     private static final String PREF_DOCUMENTATION = "prefDocumentation";
@@ -73,6 +72,10 @@ public class MainPreferencesFragment extends PreferenceFragmentCompat {
             ((PreferenceActivity) getActivity()).openScreen(R.xml.preferences_network);
             return true;
         });
+        findPreference(PREF_SCREEN_DOWNLOAD).setOnPreferenceClickListener(preference -> {
+            ((PreferenceActivity) getActivity()).openScreen(R.xml.preferences_download);
+            return true;
+        });
         findPreference(PREF_SCREEN_SYNCHRONIZATION).setOnPreferenceClickListener(preference -> {
             ((PreferenceActivity) getActivity()).openScreen(R.xml.preferences_synchronization);
             return true;
@@ -101,22 +104,24 @@ public class MainPreferencesFragment extends PreferenceFragmentCompat {
                     return true;
                 }
         );
-        findPreference(PREF_DOCUMENTATION).setOnPreferenceClickListener(preference -> {
-            IntentUtils.openInBrowser(getContext(), "https://antennapod.org/documentation/");
-            return true;
-        });
-        findPreference(PREF_VIEW_FORUM).setOnPreferenceClickListener(preference -> {
-            IntentUtils.openInBrowser(getContext(), "https://forum.antennapod.org/");
-            return true;
-        });
-        findPreference(PREF_CONTRIBUTE).setOnPreferenceClickListener(preference -> {
-            IntentUtils.openInBrowser(getContext(), "https://antennapod.org/contribute/");
-            return true;
-        });
-        findPreference(PREF_SEND_BUG_REPORT).setOnPreferenceClickListener(preference -> {
-            startActivity(new Intent(getActivity(), BugReportActivity.class));
-            return true;
-        });
+        // TODO: May be supported in the future
+//        findPreference(PREF_DOCUMENTATION).setOnPreferenceClickListener(preference -> {
+//            IntentUtils.openInBrowser(getContext(), "https://antennapod.org/documentation/");
+//            return true;
+//        });
+//        findPreference(PREF_VIEW_FORUM).setOnPreferenceClickListener(preference -> {
+//            IntentUtils.openInBrowser(getContext(), "https://forum.antennapod.org/");
+//            return true;
+//        });
+        // TODO: May be supported in the future
+//        findPreference(PREF_CONTRIBUTE).setOnPreferenceClickListener(preference -> {
+//            IntentUtils.openInBrowser(getContext(), "https://antennapod.org/contribute/");
+//            return true;
+//        });
+//        findPreference(PREF_SEND_BUG_REPORT).setOnPreferenceClickListener(preference -> {
+//            startActivity(new Intent(getActivity(), BugReportActivity.class));
+//            return true;
+//        });
     }
 
     private void setupSearch() {
@@ -137,10 +142,10 @@ public class MainPreferencesFragment extends PreferenceFragmentCompat {
         config.index(R.xml.preferences_import_export)
                 .addBreadcrumb(PreferenceActivity.getTitleOfPage(R.xml.preferences_storage))
                 .addBreadcrumb(PreferenceActivity.getTitleOfPage(R.xml.preferences_import_export));
-        config.index(R.xml.preferences_autodownload)
+        config.index(R.xml.preferences_download)
                 .addBreadcrumb(PreferenceActivity.getTitleOfPage(R.xml.preferences_network))
                 .addBreadcrumb(R.string.automation)
-                .addBreadcrumb(PreferenceActivity.getTitleOfPage(R.xml.preferences_autodownload));
+                .addBreadcrumb(PreferenceActivity.getTitleOfPage(R.xml.preferences_download));
         config.index(R.xml.preferences_synchronization)
                 .addBreadcrumb(PreferenceActivity.getTitleOfPage(R.xml.preferences_synchronization));
         config.index(R.xml.preferences_notifications)

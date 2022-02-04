@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
+import de.danoeh.apexpod.core.storage.database.PlayListItemDao;
 import de.danoeh.apexpod.model.feed.Chapter;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
@@ -198,7 +200,7 @@ public final class DBReader {
     }
 
     @NonNull
-    private static List<FeedItem> extractItemlistFromCursor(PodDBAdapter adapter, Cursor cursor) {
+    public static List<FeedItem> extractItemlistFromCursor(PodDBAdapter adapter, Cursor cursor) {
         List<FeedItem> result = new ArrayList<>(cursor.getCount());
         if (cursor.moveToFirst()) {
             int indexMediaId = cursor.getColumnIndexOrThrow(PodDBAdapter.SELECT_KEY_MEDIA_ID);
@@ -274,6 +276,23 @@ public final class DBReader {
         } finally {
             adapter.close();
         }
+    }
+
+    public static List<FeedItem> getAutoPlayItems() {
+        long autoPlayMode = PlaybackPreferences.getCurrentAutoPlayPlaylist();
+        if (autoPlayMode == PlaybackPreferences.AUTOPLAY_QUEUE) {
+            return DBReader.getQueue();
+        } else if (autoPlayMode == PlaybackPreferences.AUTOPLAY_PLAYLIST) {
+            PlayListItemDao playListItemDao = new PlayListItemDao();
+            long playlistId = PlaybackPreferences.getCurrentAutoPlayPlaylistId();
+            return playListItemDao.getItemsByPlayListId(playlistId);
+        } else if(autoPlayMode == PlaybackPreferences.AUTOPLAY_FEED) {
+            long feedId = PlaybackPreferences.getCurrentAutoPlayPlaylistId();
+            Feed feed = DBReader.getFeed(feedId);
+            if(feed.getItemFilter() != null)
+                return DBReader.getFeedItemList(feed, feed.getItemFilter());
+        }
+        return DBReader.getQueue();
     }
 
     /**
@@ -575,6 +594,7 @@ public final class DBReader {
     @Nullable
     private static FeedItem getFeedItemByGuidOrEpisodeUrl(final String guid, final String episodeUrl,
             PodDBAdapter adapter) {
+        Log.d(TAG, "Loading feeditem with guid " + guid + " or episode url " + episodeUrl);
         try (Cursor cursor = adapter.getFeedItemCursor(guid, episodeUrl)) {
             if (!cursor.moveToNext()) {
                 return null;
@@ -632,6 +652,8 @@ public final class DBReader {
      *          Does NOT load additional attributes like feed or queue state.
      */
     public static FeedItem getFeedItemByGuidOrEpisodeUrl(final String guid, final String episodeUrl) {
+        Log.d(TAG, "getFeedItem() called with: " + "guid = [" + guid + "], episodeUrl = [" + episodeUrl + "]");
+
         PodDBAdapter adapter = PodDBAdapter.getInstance();
         adapter.open();
         try {
@@ -818,61 +840,10 @@ public final class DBReader {
         adapter.open();
 
         final LongIntMap feedCounters = adapter.getFeedCounters();
+        LongIntMap playedCounters = adapter.getPlayedEpisodesCounters();
+        final Map<Long, Long> recentPubDates = adapter.getMostRecentItemDates();
         SubscriptionsFilter subscriptionsFilter = UserPreferences.getSubscriptionsFilter();
         List<Feed> feeds = subscriptionsFilter.filter(getFeedList(adapter), feedCounters);
-
-        Comparator<Feed> comparator;
-        int feedOrder = UserPreferences.getFeedOrder();
-        if (feedOrder == UserPreferences.FEED_ORDER_COUNTER) {
-            comparator = (lhs, rhs) -> {
-                long counterLhs = feedCounters.get(lhs.getId());
-                long counterRhs = feedCounters.get(rhs.getId());
-                if (counterLhs > counterRhs) {
-                    // reverse natural order: podcast with most unplayed episodes first
-                    return -1;
-                } else if (counterLhs == counterRhs) {
-                    return lhs.getTitle().compareToIgnoreCase(rhs.getTitle());
-                } else {
-                    return 1;
-                }
-            };
-        } else if (feedOrder == UserPreferences.FEED_ORDER_ALPHABETICAL) {
-            comparator = (lhs, rhs) -> {
-                String t1 = lhs.getTitle();
-                String t2 = rhs.getTitle();
-                if (t1 == null) {
-                    return 1;
-                } else if (t2 == null) {
-                    return -1;
-                } else {
-                    return t1.compareToIgnoreCase(t2);
-                }
-            };
-        } else if (feedOrder == UserPreferences.FEED_ORDER_MOST_PLAYED) {
-            final LongIntMap playedCounters = adapter.getPlayedEpisodesCounters();
-
-            comparator = (lhs, rhs) -> {
-                long counterLhs = playedCounters.get(lhs.getId());
-                long counterRhs = playedCounters.get(rhs.getId());
-                if (counterLhs > counterRhs) {
-                    // podcast with most played episodes first
-                    return -1;
-                } else if (counterLhs == counterRhs) {
-                    return lhs.getTitle().compareToIgnoreCase(rhs.getTitle());
-                } else {
-                    return 1;
-                }
-            };
-        } else {
-            final Map<Long, Long> recentPubDates = adapter.getMostRecentItemDates();
-            comparator = (lhs, rhs) -> {
-                long dateLhs = recentPubDates.containsKey(lhs.getId()) ? recentPubDates.get(lhs.getId()) : 0;
-                long dateRhs = recentPubDates.containsKey(rhs.getId()) ? recentPubDates.get(rhs.getId()) : 0;
-                return Long.compare(dateRhs, dateLhs);
-            };
-        }
-
-        Collections.sort(feeds, comparator);
         int queueSize = adapter.getQueueSize();
         int numNewItems = adapter.getNumberOfNewItems();
         int numDownloadedItems = adapter.getNumberOfDownloadedEpisodes();
@@ -881,11 +852,11 @@ public final class DBReader {
         Map<String, NavDrawerData.TagDrawerItem> folders = new HashMap<>();
         for (Feed feed : feeds) {
             for (String tag : feed.getPreferences().getTags()) {
+                long recentPubDate = recentPubDates.containsKey(feed.getId()) ? recentPubDates.get(feed.getId()) : -1;
                 NavDrawerData.FeedDrawerItem drawerItem = new NavDrawerData.FeedDrawerItem(feed, feed.getId(),
-                        feedCounters.get(feed.getId()));
+                        feedCounters.get(feed.getId()), playedCounters.get(feed.getId(), -1), recentPubDate);
                 if (FeedPreferences.TAG_ROOT.equals(tag)) {
                     items.add(drawerItem);
-                    continue;
                 }
                 NavDrawerData.TagDrawerItem folder;
                 if (folders.containsKey(tag)) {
@@ -903,7 +874,7 @@ public final class DBReader {
         items.addAll(foldersSorted);
 
         NavDrawerData result = new NavDrawerData(items, queueSize, numNewItems, numDownloadedItems,
-                feedCounters, UserPreferences.getEpisodeCleanupAlgorithm().getReclaimableItems());
+                feedCounters, 0 /*UserPreferences.getEpisodeCleanupAlgorithm().getReclaimableItems()*/);
         adapter.close();
         return result;
     }

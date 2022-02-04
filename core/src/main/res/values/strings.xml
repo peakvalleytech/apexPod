@@ -51,7 +51,7 @@
     <string name="statistics_mode_count_all">Sum up all episodes marked as played</string>
     <string name="statistics_speed_not_counted">Notice: Playback speed is never taken into account.</string>
     <string name="statistics_reset_data">Reset statistics data</string>
-    <string name="statistics_reset_data_msg">This will erase the history of duration played for all episodes. Are you sure you want to proceed?</string>
+    <string name="statistics_reset_data_msg">This will erase listening statistics for all episodes. Play history will not be affected. Are you sure you want to proceed?</string>
     <string name="statistics_counting_since">Since %s,\nyou played</string>
 
     <!-- Download Statistics fragment -->
@@ -70,11 +70,6 @@
     <string name="drawer_feed_counter_unplayed">Number of unplayed episodes</string>
     <string name="drawer_feed_counter_downloaded">Number of downloaded episodes</string>
     <string name="drawer_feed_counter_none">None</string>
-
-    <!-- Bug report activity -->
-    <string name="log_file_share_exception">No compatible apps found</string>
-    <string name="export_logs_menu_title">Export detailed logs</string>
-    <string name="confirm_export_log_dialog_message">Detailed logs may contain sensitive information, such as your subscriptions list</string>
 
     <!-- Webview actions -->
     <string name="open_in_browser_label">Open in Browser</string>
@@ -187,7 +182,7 @@
         <item quantity="one">%d subscription updated.</item>
         <item quantity="other">%d subscriptions updated.</item>
     </plurals>
-    <string name="add_to_folder">Add to folder</string>
+    <string name="add_to_folder">Add Tag</string>
     <string name="confirm_mobile_feed_refresh_dialog_message">Downloading episodes over mobile data connection is disabled in the settings.\n\nDo you still want to refresh all podcasts over mobile data?</string>
 
     <!-- actions on feeditems -->
@@ -358,8 +353,9 @@
     <string name="project_pref">Project</string>
     <string name="synchronization_pref">Synchronization</string>
     <string name="synchronization_sum">Synchronize with other devices</string>
-    <string name="automation">Automation</string>
-    <string name="download_pref_details">Details</string>
+    <string name="automation">Updates</string>
+<!--    <string name="download_pref_details">Details</string>-->
+    <string name="download_pref_details">Downloads</string>
     <string name="import_export_pref">Import/Export</string>
     <string name="import_export_search_keywords">backup, restore</string>
     <string name="appearance">Appearance</string>
@@ -371,8 +367,8 @@
     <string name="preference_search_no_results">No results</string>
     <string name="preference_search_clear_history">Clear history</string>
     <string name="media_player">Media player</string>
-    <string name="pref_episode_cleanup_title">Episode Cleanup</string>
-    <string name="pref_episode_cleanup_summary">Episodes that should be eligible for removal if Auto Download needs space for new episodes</string>
+    <string name="pref_episode_cleanup_title">Duration</string>
+    <string name="pref_episode_cleanup_summary">How long to wait before played episode becomes illegible for automatic deletion</string>
     <string name="pref_pauseOnDisconnect_sum">Pause playback when headphones or bluetooth are disconnected</string>
     <string name="pref_unpauseOnHeadsetReconnect_sum">Resume playback when the headphones are reconnected</string>
     <string name="pref_unpauseOnBluetoothReconnect_sum">Resume playback when bluetooth reconnects</string>
@@ -413,7 +409,8 @@
     <string name="pref_unpauseOnBluetoothReconnect_title">Bluetooth Reconnect</string>
     <string name="pref_stream_over_download_title">Prefer Streaming</string>
     <string name="pref_stream_over_download_sum">Display stream button instead of download button in lists.</string>
-    <string name="pref_mobileUpdate_title">Mobile Updates</string>
+<!--    <string name="pref_mobileUpdate_title">Mobile </string>-->
+    <string name="pref_mobileUpdate_title">Mobile Data</string>
     <string name="pref_mobileUpdate_sum">Select what should be allowed over the mobile data connection</string>
     <string name="pref_mobileUpdate_refresh">Podcast refresh</string>
     <string name="pref_mobileUpdate_images">Cover images</string>
@@ -430,14 +427,14 @@
     <string name="pref_nav_drawer_feed_counter_title">Set Subscription Counter</string>
     <string name="pref_nav_drawer_feed_counter_sum">Change the information displayed by the subscription counter. Also affects the sorting of subscriptions if \'Subscription Order\' is set to \'Counter\'.</string>
     <string name="pref_set_theme_sum">Change the appearance of ApexPod.</string>
-    <string name="pref_automatic_download_title">Automatic Download</string>
-    <string name="pref_automatic_download_sum">Configure the automatic download of episodes.</string>
+<!--    <string name="pref_download_title">Automatic Download</string>-->
+    <string name="pref_download_title">Download</string>
+    <string name="pref_download_sum">Configure the download of episodes.</string>
     <string name="pref_autodl_wifi_filter_title">Enable Wi-Fi filter</string>
     <string name="pref_autodl_wifi_filter_sum">Allow automatic download only for selected Wi-Fi networks.</string>
     <string name="pref_automatic_download_on_battery_title">Download when not charging</string>
     <string name="pref_automatic_download_on_battery_sum">Allow automatic download when the battery is not charging</string>
     <string name="pref_parallel_downloads_title">Parallel Downloads</string>
-    <string name="pref_episode_cache_title">Episode Cache</string>
     <string name="pref_episode_cache_summary">Total number of downloaded episodes cached on the device. Automatic download will be suspended if this number is reached.</string>
     <string name="pref_episode_cover_title">Use Episode Cover</string>
     <string name="pref_episode_cover_summary">Use the episode specific cover in lists whenever available. If unchecked, the app will always use the podcast cover image.</string>
@@ -498,11 +495,10 @@
     <string name="open_bug_tracker">Open bug tracker</string>
     <string name="copy_to_clipboard">Copy to clipboard</string>
     <string name="copied_to_clipboard">Copied to clipboard</string>
-    <string name="experimental_pref">Experimental</string>
     <string name="pref_media_player_message">Select which media player to use to play files</string>
     <string name="pref_current_value">Current value: %1$s</string>
     <string name="pref_proxy_title">Proxy</string>
-    <string name="pref_proxy_sum">Set a network proxy</string>
+    <string name="pref_proxy_sum">Set a netawork proxy</string>
     <string name="pref_no_browser_found">No web browser found.</string>
     <string name="pref_cast_title">Chromecast support</string>
     <string name="pref_cast_message_play_flavor">Enable support for remote media playback on Cast devices (such as Chromecast, Audio Speakers or Android TV)</string>
@@ -510,8 +506,6 @@
     <string name="pref_enqueue_downloaded_title">Enqueue Downloaded</string>
     <string name="pref_enqueue_downloaded_summary">Add downloaded episodes to the queue</string>
     <string name="media_player_builtin">Built-in Android player (deprecated) </string>
-    <string name="media_player_sonic">Sonic Media Player (deprecated) </string>
-    <string name="media_player_exoplayer_recommended">ExoPlayer (recommended)</string>
     <string name="media_player_switch_to_exoplayer">Switch to ExoPlayer</string>
     <string name="media_player_switched_to_exoplayer">Switched to ExoPlayer.</string>
     <string name="pref_skip_silence_title">Skip Silence in Audio</string>
@@ -543,7 +537,6 @@
     <string name="new_episode_notification_enabled">Notification enabled</string>
     <string name="new_episode_notification_disabled">Notification disabled</string>
     <string name="pref_feed_settings_dialog_msg">This setting is unique to each podcast. You can change it by opening the podcast page.</string>
-    <string name="pref_contribute">Contribute</string>
 
     <!-- About screen -->
     <string name="about_pref">About</string>
@@ -784,10 +777,14 @@
     <!-- Audio controls -->
     <string name="audio_controls">Audio controls</string>
     <string name="playback_speed">Playback Speed</string>
+    <string name="volume">Volume</string>
+    <string name="left_short">L</string>
+    <string name="right_short">R</string>
     <string name="audio_effects">Audio Effects</string>
     <string name="stereo_to_mono">Downmix: Stereo to mono</string>
     <string name="sonic_only">Sonic only</string>
     <string name="exoplayer_only">ExoPlayer only</string>
+    <string name="repeat_episode">Repeat Episode</string>
 
     <!-- proxy settings -->
     <string name="proxy_type_label">Type</string>
@@ -847,4 +844,19 @@
     <string name="on_demand_config_setting_changed">Setting updated successfully.</string>
     <string name="on_demand_config_stream_text">Looks like you stream a lot. Do you want episode lists to show stream buttons?</string>
     <string name="on_demand_config_download_text">Looks like you download a lot. Do you want episode lists to show download buttons?</string>
+
+    <string name="delete_playlist">Delete Playlist</string>
+    <string name="delete_playlist_confirmation_msg">Do you want to delete this playlist?</string>
+    <string name="playlists_label">Playlists</string>
+    <string name="home_fragment_label">Home</string>
+    <string name="pref_auto_delete_playlist_summary">Exclude playlisted episodes from automatic delete</string>
+    <string name="pref_auto_delete_playlist_title">Keep Playlisted Episodes</string>
+    <string name="add_to_playlist_label">Add to Playlist</string>
+    <string name="no_playlists_label">No Playlists</string>
+    <string name="no_playlists_sub_label">After you create a playlist, it will appear here.</string>
+    <string name="auto_download_cache_pref_summary">"The number of episodes kept by automatic download. Excluded from auto delete. "</string>
+    <string name="home_label">Home</string>
+    <string name="pref_auto_download_title">Automatic Download</string>
+    <string name="pref_automatic_download_sum">Enable automatic download of episodes</string>
+    <string name="speed_adjusted_label">Speed adjusted time</string>
 </resources>

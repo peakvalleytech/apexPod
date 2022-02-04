@@ -22,7 +22,9 @@ import de.danoeh.apexpod.core.sync.queue.SynchronizationQueueSink;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.IntentUtils;
 import de.danoeh.apexpod.core.util.ShareUtils;
+import de.danoeh.apexpod.dialog.AddToPlayListDialog;
 import de.danoeh.apexpod.dialog.ShareDialog;
+import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.net.sync.model.EpisodeAction;
@@ -77,7 +79,6 @@ public class FeedItemMenuHandler {
 
         setItemVisibility(menu, R.id.add_to_favorites_item, !isFavorite);
         setItemVisibility(menu, R.id.remove_from_favorites_item, isFavorite);
-        setItemVisibility(menu, R.id.remove_item, fileDownloaded);
         return true;
     }
 
@@ -144,8 +145,6 @@ public class FeedItemMenuHandler {
         @NonNull Context context = fragment.requireContext();
         if (menuItemId == R.id.skip_episode_item) {
             IntentUtils.sendLocalBroadcast(context, PlaybackService.ACTION_SKIP_CURRENT_EPISODE);
-        } else if (menuItemId == R.id.remove_item) {
-            DBWriter.deleteFeedMediaOfItem(context, selectedItem.getMedia().getId());
         } else if (menuItemId == R.id.remove_new_flag_item) {
             removeNewFlagWithUndo(fragment, selectedItem);
         } else if (menuItemId == R.id.mark_read_item) {
@@ -175,6 +174,9 @@ public class FeedItemMenuHandler {
             }
         } else if (menuItemId == R.id.add_to_queue_item) {
             DBWriter.addQueueItem(context, selectedItem);
+        } else if (menuItemId == R.id.add_to_playlist) {
+            AddToPlayListDialog.newInstance(selectedItem).show(fragment.getChildFragmentManager(), TagSettingsDialog.TAG);
+
         } else if (menuItemId == R.id.remove_from_queue_item) {
             DBWriter.removeQueueItem(context, true, selectedItem);
         } else if (menuItemId == R.id.add_to_favorites_item) {

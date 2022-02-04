@@ -15,6 +15,9 @@ import de.danoeh.apexpod.core.util.FeedItemUtil;
 
 public abstract class ItemActionButton {
     FeedItem item;
+    public interface OnClickListener {
+    }
+    OnClickListener onClickListener = new OnClickListener() {};
 
     ItemActionButton(FeedItem item) {
         this.item = item;
@@ -33,7 +36,7 @@ public abstract class ItemActionButton {
     }
 
     @NonNull
-    public static ItemActionButton forItem(@NonNull FeedItem item) {
+    public static ItemActionButton forItem(@NonNull FeedItem item, long autoPlayMode, long autoPlayListId) {
         final FeedMedia media = item.getMedia();
         if (media == null) {
             return new MarkAsPlayedActionButton(item);
@@ -45,15 +48,16 @@ public abstract class ItemActionButton {
         } else if (item.getFeed().isLocalFeed()) {
             return new PlayLocalActionButton(item);
         } else if (media.isDownloaded()) {
-            return new PlayActionButton(item);
+            return new PlayActionButton(item, autoPlayMode, autoPlayListId);
         } else if (isDownloadingMedia) {
             return new CancelDownloadActionButton(item);
         } else if (UserPreferences.isStreamOverDownload()) {
-            return new StreamActionButton(item);
+            return new StreamActionButton(item, autoPlayMode, autoPlayListId);
         } else {
             return new DownloadActionButton(item);
         }
     }
+
 
     public void configure(@NonNull View button, @NonNull ImageView icon, Context context) {
         button.setVisibility(getVisibility());

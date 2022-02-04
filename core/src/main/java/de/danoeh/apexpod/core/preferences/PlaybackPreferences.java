@@ -87,6 +87,20 @@ public class PlaybackPreferences implements SharedPreferences.OnSharedPreference
      */
     public static final int PLAYER_STATUS_OTHER = 3;
 
+
+    /**
+     * Indicates what queue should be used for continuous playback
+     */
+    private static final String PREF_AUTOPLAY_MODE = "de.danoeh.apexpod.preferences.autoplayMode" ;
+    private static final String PREF_AUTOPLAY_PLAYLIST_ID = "de.danoeh.apexpod.preferences.autoplayPlaylistId" ;
+
+    /**
+     * Values for PREF_PLAYLIST
+     */
+    public static final long AUTOPLAY_QUEUE = -2;
+    public static final long AUTOPLAY_FEED = -1;
+    public static final long AUTOPLAY_PLAYLIST = 0;
+
     private static PlaybackPreferences instance;
     private static SharedPreferences prefs;
 
@@ -181,6 +195,24 @@ public class PlaybackPreferences implements SharedPreferences.OnSharedPreference
         SharedPreferences.Editor editor = prefs.edit();
         editor.remove(PREF_CURRENTLY_PLAYING_TEMPORARY_PLAYBACK_SPEED);
         editor.apply();
+    }
+
+    public static void setCurrentAutoPlayPlaylistId(long id) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong(PREF_AUTOPLAY_PLAYLIST_ID, id);
+        editor.apply();
+    }
+    public static long getCurrentAutoPlayPlaylistId() {
+        return prefs.getLong(PREF_AUTOPLAY_PLAYLIST_ID, 0);
+    }
+
+    public static void setCurrentAutoPlayPlaylist(long mode) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong(PREF_AUTOPLAY_MODE, mode);
+        editor.apply();
+    }
+    public static long getCurrentAutoPlayPlaylist() {
+        return prefs.getLong(PREF_AUTOPLAY_MODE, AUTOPLAY_QUEUE);
     }
 
     private static int getCurrentPlayerStatusAsInt(PlayerStatus playerStatus) {

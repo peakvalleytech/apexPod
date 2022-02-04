@@ -6,6 +6,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.StringRes;
 
 import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.model.playback.MediaType;
@@ -16,9 +17,13 @@ import de.danoeh.apexpod.core.util.playback.PlaybackServiceStarter;
 import de.danoeh.apexpod.dialog.StreamingConfirmationDialog;
 
 public class StreamActionButton extends ItemActionButton {
+    private long autoPlayMode;
+    private long autoPlayListId;
 
-    public StreamActionButton(FeedItem item) {
+    public StreamActionButton(FeedItem item, long autoPlayMode, long autoPlayListId) {
         super(item);
+        this.autoPlayMode = autoPlayMode;
+        this.autoPlayListId = autoPlayListId;
     }
 
     @Override
@@ -45,6 +50,10 @@ public class StreamActionButton extends ItemActionButton {
             new StreamingConfirmationDialog(context, media).show();
             return;
         }
+
+        PlaybackPreferences.setCurrentAutoPlayPlaylist(autoPlayMode);
+        PlaybackPreferences.setCurrentAutoPlayPlaylistId(autoPlayListId);
+
         new PlaybackServiceStarter(context, media)
                 .callEvenIfRunning(true)
                 .startWhenPrepared(true)

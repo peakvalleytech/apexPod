@@ -54,9 +54,6 @@
   <string name="drawer_feed_counter_downloaded">ダウンロード済のエピソードの数</string>
   <string name="drawer_feed_counter_none">なし</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">互換性のあるアプリが見つかりません</string>
-  <string name="export_logs_menu_title">詳細ログを出力する</string>
-  <string name="confirm_export_log_dialog_message">詳細ログには購読リストなどの機密情報が含まれる可能性があります</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">ブラウザーで開く</string>
   <string name="copy_url_label">URLをコピー</string>
@@ -319,8 +316,8 @@
   <string name="pref_nav_drawer_feed_counter_title">購読カウンターをセット</string>
   <string name="pref_nav_drawer_feed_counter_sum">購読カウンターに表示される情報を変更します。 \'購読順\' が \'カウンター\' に設定されている場合は、購読の並び替えにも影響します。</string>
   <string name="pref_set_theme_sum">ApexPodの外観を変更します。</string>
-  <string name="pref_automatic_download_title">自動ダウンロード</string>
-  <string name="pref_automatic_download_sum">エピソードの自動ダウンロードを構成します。</string>
+  <string name="pref_download_title">自動ダウンロード</string>
+  <string name="pref_download_sum">エピソードの自動ダウンロードを構成します。</string>
   <string name="pref_autodl_wifi_filter_title">Wi-Fiフィルターを有効にする</string>
   <string name="pref_autodl_wifi_filter_sum">選択したWi-Fiネットワークに対してのみ自動ダウンロードを許可します。</string>
   <string name="pref_automatic_download_on_battery_title">充電中以外の時にダウンロード</string>
@@ -340,8 +337,6 @@
   <string name="pref_gpodnet_logout_toast">ログアウトしました</string>
   <string name="pref_gpodnet_setlogin_information_title">ログイン情報を変更</string>
   <string name="pref_gpodnet_setlogin_information_sum">gpodder.netアカウントのログイン情報を変更します。</string>
-  <string name="pref_gpodnet_sync_changes_sum">購読とエピソードの状態の変更を gpodder.net で同期します。</string>
-  <string name="pref_gpodnet_full_sync_sum">すべての購読とエピソードの状態を gpodder.net で同期します。</string>
   <string name="pref_gpodnet_login_status"><![CDATA[<i>%1$s</i> としてデバイス <i>%2$s</i> でログインしました]]></string>
   <string name="pref_feed_playback_speed_sum">このポッドキャストでエピソードのオーディオ再生を開始するときに使用する速度</string>
   <string name="pref_playback_time_respects_speed_title">メディア情報を再生速度に調整</string>
@@ -369,8 +364,7 @@
   <string name="open_bug_tracker">バグトラッカーを開く</string>
   <string name="copy_to_clipboard">クリップボードにコピー</string>
   <string name="copied_to_clipboard">クリップボードにコピーしました</string>
-  <string name="experimental_pref">実験的</string>
-  <string name="pref_media_player_message">ファイルを再生するメディアプレーヤーを選択</string>
+    <string name="pref_media_player_message">ファイルを再生するメディアプレーヤーを選択</string>
   <string name="pref_current_value">現在の値: %1$s</string>
   <string name="pref_proxy_title">プロキシ</string>
   <string name="pref_proxy_sum">ネットワーク プロキシの設定</string>

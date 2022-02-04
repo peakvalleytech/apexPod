@@ -40,7 +40,7 @@ public class FeedMenuHandler {
 
         Log.d(TAG, "Preparing options menu");
 
-        menu.findItem(R.id.refresh_complete_item).setVisible(selectedFeed.isPaged());
+//        menu.findItem(R.id.refresh_complete_item).setVisible(selectedFeed.isPaged());
         if (StringUtils.isBlank(selectedFeed.getLink())) {
             menu.findItem(R.id.visit_website_item).setVisible(false);
             menu.findItem(R.id.share_link_item).setVisible(false);
@@ -61,11 +61,7 @@ public class FeedMenuHandler {
     public static boolean onOptionsItemClicked(final Context context, final MenuItem item,
                                                final Feed selectedFeed) throws DownloadRequestException {
         final int itemId = item.getItemId();
-        if (itemId == R.id.refresh_item) {
-            DBTasks.forceRefreshFeed(context, selectedFeed, true);
-        } else if (itemId == R.id.refresh_complete_item) {
-            DBTasks.forceRefreshCompleteFeed(context, selectedFeed);
-        } else if (itemId == R.id.sort_items) {
+        if (itemId == R.id.sort_items) {
             showSortDialog(context, selectedFeed);
         } else if (itemId == R.id.filter_items) {
             showFilterDialog(context, selectedFeed);

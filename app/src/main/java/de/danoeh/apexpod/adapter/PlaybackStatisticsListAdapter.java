@@ -8,6 +8,8 @@ import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.StatisticsItem;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.DateFormatter;
+import de.danoeh.apexpod.model.stats.FeedPlayStats;
+import de.danoeh.apexpod.model.stats.FeedPlayStatsItem;
 import de.danoeh.apexpod.view.PieChartView;
 
 import java.util.Date;
@@ -17,9 +19,8 @@ import java.util.List;
  * Adapter for the playback statistics list.
  */
 public class PlaybackStatisticsListAdapter extends StatisticsListAdapter {
-
     boolean countAll = true;
-
+    private Long totalSpeedAdjustedTime = null;
     public PlaybackStatisticsListAdapter(Context context) {
         super(context);
     }
@@ -45,28 +46,41 @@ public class PlaybackStatisticsListAdapter extends StatisticsListAdapter {
     }
 
     @Override
-    PieChartView.PieChartData generateChartData(List<StatisticsItem> statisticsData) {
-        float[] dataValues = new float[statisticsData.size()];
-        for (int i = 0; i < statisticsData.size(); i++) {
-            StatisticsItem item = statisticsData.get(i);
-            dataValues[i] = countAll ? item.timePlayedCountAll : item.timePlayed;
+    String getSubheaderCaption() {
+        return context.getString(R.string.speed_adjusted_label);
+    }
+
+    @Override
+    String getSubheaderValue() {
+        return Converter.shortLocalizedDuration(context, totalSpeedAdjustedTime);
+    }
+
+    @Override
+    PieChartView.PieChartData generateChartData(FeedPlayStats feedPlayStats) {
+        float[] dataValues = new float[feedPlayStats.size()];
+        totalSpeedAdjustedTime = 0L;
+        for (int i = 0; i < feedPlayStats.size(); i++) {
+            FeedPlayStatsItem item = feedPlayStats.getItems().get(i);
+            dataValues[i] = item.getTotalListeningTime();
+            totalSpeedAdjustedTime += item.getTotalSpeedAdjustedListeningTime();
         }
+
         return new PieChartView.PieChartData(dataValues);
     }
 
     @Override
-    void onBindFeedViewHolder(StatisticsHolder holder, StatisticsItem statsItem) {
-        long time = countAll ? statsItem.timePlayedCountAll : statsItem.timePlayed;
+    void onBindFeedViewHolder(StatisticsHolder holder, FeedPlayStatsItem statsItem) {
+        long time = statsItem.getTotalListeningTime();
         holder.value.setText(Converter.shortLocalizedDuration(context, time));
 
         holder.itemView.setOnClickListener(v -> {
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-            dialog.setTitle(statsItem.feed.getTitle());
+            dialog.setTitle(statsItem.getFeed().getTitle());
             dialog.setMessage(context.getString(R.string.statistics_details_dialog,
-                    countAll ? statsItem.episodesStartedIncludingMarked : statsItem.episodesStarted,
-                    statsItem.episodes, Converter.shortLocalizedDuration(context,
-                            countAll ? statsItem.timePlayedCountAll : statsItem.timePlayed),
-                    Converter.shortLocalizedDuration(context, statsItem.time)));
+                    statsItem.getEpisodesStarted(),
+                    statsItem.getEpisodeCount(), Converter.shortLocalizedDuration(context,
+                            statsItem.getTotalListeningTime()),
+                    Converter.shortLocalizedDuration(context, statsItem.getTotalListeningTime())));
             dialog.setPositiveButton(android.R.string.ok, null);
             dialog.show();
         });

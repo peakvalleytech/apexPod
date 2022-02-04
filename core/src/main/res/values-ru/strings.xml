@@ -57,9 +57,6 @@
   <string name="drawer_feed_counter_downloaded">Количество загруженных выпусков</string>
   <string name="drawer_feed_counter_none">Ничего</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Совместимых приложений не найдено</string>
-  <string name="export_logs_menu_title">Экспортировать подробные журналы</string>
-  <string name="confirm_export_log_dialog_message">Подробные журналы могут содержать личные сведения, такие как перечень ваших подписок</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Открыть в браузере</string>
   <string name="copy_url_label">Скопировать ссылку</string>
@@ -417,8 +414,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Выбрать счетчик подписок</string>
   <string name="pref_nav_drawer_feed_counter_sum">Какую информацию показывать в счетчике подписок. Влияет также на очередность подписок, если сортировка подписок производится по счетчику.</string>
   <string name="pref_set_theme_sum">Изменить тему оформления ApexPod</string>
-  <string name="pref_automatic_download_title">Автоматическая загрузка</string>
-  <string name="pref_automatic_download_sum">Настроить автоматическую загрузку выпусков.</string>
+  <string name="pref_download_title">Автоматическая загрузка</string>
+  <string name="pref_download_sum">Настроить автоматическую загрузку выпусков.</string>
   <string name="pref_autodl_wifi_filter_title">Включить фильтр Wi-Fi</string>
   <string name="pref_autodl_wifi_filter_sum">Разрешать автоматическую загрузку только для выбранных сетей Wi-Fi.</string>
   <string name="pref_automatic_download_on_battery_title">Загружать без зарядки</string>
@@ -441,10 +438,6 @@
   <string name="pref_gpodnet_logout_toast">Выход успешно выполнен</string>
   <string name="pref_gpodnet_setlogin_information_title">Изменить информацию авторизации</string>
   <string name="pref_gpodnet_setlogin_information_sum">Изменить информацию авторизации для аккаунта gpodder.net</string>
-  <string name="pref_gpodnet_sync_changes_title">Синхронизировать сейчас</string>
-  <string name="pref_gpodnet_sync_changes_sum">Синхронизировать изменения подписок и выпусков при помощи gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Выполнить полную синхронизацию</string>
-  <string name="pref_gpodnet_full_sync_sum">Синхронизировать состояния всех подписок и выпусков при помощи gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Вход как <i>%1$s</i> с устройства <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Выбрать значения скорости, доступные при воспроизведении</string>
   <string name="pref_feed_playback_speed_sum">Скорость, с которой будут изначально воспроизводиться выпуски этого подкаста</string>
@@ -482,7 +475,6 @@
   <string name="open_bug_tracker">Перейти в систему отслеживания ошибок</string>
   <string name="copy_to_clipboard">Скопировать в буфер</string>
   <string name="copied_to_clipboard">Скопировано в буфер</string>
-  <string name="experimental_pref">Экспериментальные настройки</string>
   <string name="pref_media_player_message">Выбрать проигрыватель</string>
   <string name="pref_current_value">Текущее значение: %1$s</string>
   <string name="pref_proxy_title">Прокси</string>
@@ -494,8 +486,6 @@
   <string name="pref_enqueue_downloaded_title">Добавлять загруженные в очередь</string>
   <string name="pref_enqueue_downloaded_summary">Добавлять загруженные выпуски в очередь</string>
   <string name="media_player_builtin">Встроенный Android (устарел)</string>
-  <string name="media_player_sonic">Sonic Media Player (устарел) </string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (рекомендован)</string>
   <string name="media_player_switch_to_exoplayer">Переключить на ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Переключено на ExoPlayer.</string>
   <string name="pref_skip_silence_title">Пропускать участки тишины</string>
@@ -527,8 +517,7 @@
   <string name="new_episode_notification_enabled">С уведомлением</string>
   <string name="new_episode_notification_disabled">Без уведомления</string>
   <string name="pref_feed_settings_dialog_msg">Эта настройка у каждого подкаста своя. Изменить её можно открыв страницу подкаста.</string>
-  <string name="pref_contribute">Поучаствовать</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">О программе</string>
   <string name="antennapod_version">Версия ApexPod</string>
   <string name="contributors">Участники</string>
@@ -671,8 +660,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Авторизация</string>
   <string name="authentication_descr">Изменить имя пользователя и пароль для этого подкаста и его выпусков.</string>
-  <string name="feed_folders_label">Каталоги</string>
-  <string name="feed_folders_summary">Измените каталоги в которых отображается этот подкаст.</string>
   <string name="feed_folders_include_root">Показывать в основном списке</string>
   <string name="auto_download_settings_label">Настройки автозагрузки</string>
   <string name="episode_filters_label">Фильтр выпусков</string>

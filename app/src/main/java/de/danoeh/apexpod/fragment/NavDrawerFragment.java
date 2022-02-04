@@ -41,6 +41,7 @@ import de.danoeh.apexpod.core.storage.NavDrawerData;
 import de.danoeh.apexpod.dialog.RemoveFeedDialog;
 import de.danoeh.apexpod.dialog.SubscriptionsFilterDialog;
 import de.danoeh.apexpod.dialog.RenameFeedDialog;
+import de.danoeh.apexpod.model.feed.FeedPreferences;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -64,7 +65,9 @@ public class NavDrawerFragment extends Fragment implements SharedPreferences.OnS
     public static final String TAG = "NavDrawerFragment";
 
     public static final String[] NAV_DRAWER_TAGS = {
+            HomeFragment.TAG,
             QueueFragment.TAG,
+            PlaylistFragment.TAG,
             EpisodesFragment.TAG,
             SubscriptionFragment.TAG,
             DownloadsFragment.TAG,
@@ -388,13 +391,18 @@ public class NavDrawerFragment extends Fragment implements SharedPreferences.OnS
         List<NavDrawerData.DrawerItem> flatItems = new ArrayList<>();
         for (NavDrawerData.DrawerItem item : items) {
             item.setLayer(layer);
-            flatItems.add(item);
+
             if (item.type == NavDrawerData.DrawerItem.Type.TAG) {
-                NavDrawerData.TagDrawerItem folder = ((NavDrawerData.TagDrawerItem) item);
-                folder.isOpen = openFolders.contains(folder.name);
-                if (folder.isOpen) {
-                    flatItems.addAll(makeFlatDrawerData(((NavDrawerData.TagDrawerItem) item).children, layer + 1));
+                NavDrawerData.TagDrawerItem tag = ((NavDrawerData.TagDrawerItem) item);
+                if (!tag.name.equals(FeedPreferences.TAG_ROOT)) {
+                    flatItems.add(item);
+                    tag.isOpen = openFolders.contains(tag.name);
+                    if (tag.isOpen) {
+                        flatItems.addAll(makeFlatDrawerData(((NavDrawerData.TagDrawerItem) item).children, layer + 1));
+                    }
                 }
+            } else {
+                flatItems.add(item);
             }
         }
         return flatItems;

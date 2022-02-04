@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Letöltött epizódok száma</string>
   <string name="drawer_feed_counter_none">Nincs</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Nem található kompatibilis alkalmazás</string>
-  <string name="export_logs_menu_title">Részletes naplók exportálása</string>
-  <string name="confirm_export_log_dialog_message">A részletes naplók érzékeny adatokat is tartalmazhatnak, mint például a feliratkozások listáját</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Megnyitás böngészőben</string>
   <string name="copy_url_label">URL másolása</string>
@@ -406,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Feliratkozásszámláló beállítása</string>
   <string name="pref_nav_drawer_feed_counter_sum">Módosítja a feliratkozásszámlálóban megjelenített információt. A feliratkozások sorrendjére is hatással van, ha a „Feliratkozási sorrend” a „Számláló” értékre van állítva.</string>
   <string name="pref_set_theme_sum">ApexPod kinézetének módosítása.</string>
-  <string name="pref_automatic_download_title">Automatikus letöltés</string>
-  <string name="pref_automatic_download_sum">Az epizódok automatikus letöltésének beállítása.</string>
+  <string name="pref_download_title">Automatikus letöltés</string>
+  <string name="pref_download_sum">Az epizódok automatikus letöltésének beállítása.</string>
   <string name="pref_autodl_wifi_filter_title">Wi-Fi szűrő engedélyezése</string>
   <string name="pref_autodl_wifi_filter_sum">Automatikus letöltés engedélyezése csak a kiválasztott Wi-Fi hálózatok esetén.</string>
   <string name="pref_automatic_download_on_battery_title">Letöltés, ha nincs akkumulátortöltés</string>
@@ -430,10 +427,6 @@
   <string name="pref_gpodnet_logout_toast">Kijelentkezés sikeres</string>
   <string name="pref_gpodnet_setlogin_information_title">Bejelentkezési adatok módosítása</string>
   <string name="pref_gpodnet_setlogin_information_sum">A gpodder.net fiókjához használt bejelentkezési adatok módosítása.</string>
-  <string name="pref_gpodnet_sync_changes_title">Szinkronizálás most</string>
-  <string name="pref_gpodnet_sync_changes_sum">A feliratkozásai és epizódállapotainak szinkronizálása a gpodder.nettel.</string>
-  <string name="pref_gpodnet_full_sync_title">Teljes szinkronizáció kényszerítése</string>
-  <string name="pref_gpodnet_full_sync_sum">Az összes feliratkozásának és epizódállapotainak szinkronizálása a gpodder.nettel.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Bejelentkezve mint <i>%1$s</i>, a(z) <i>%2$s</i> eszközzel]]></string>
   <string name="pref_playback_speed_sum">A változó sebességű lejátszáshoz elérhető sebességek testreszabása</string>
   <string name="pref_feed_playback_speed_sum">A podcast epizódjainak indításakor használandó lejátszási sebesség</string>
@@ -471,7 +464,6 @@
   <string name="open_bug_tracker">Hibakövető megnyitása</string>
   <string name="copy_to_clipboard">Másolás vágólapra</string>
   <string name="copied_to_clipboard">Vágólapra másolva</string>
-  <string name="experimental_pref">Kísérleti</string>
   <string name="pref_media_player_message">Válassza ki a fájlok lejátszásához használt médialejátszót</string>
   <string name="pref_current_value">Jelenlegi érték: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -483,8 +475,6 @@
   <string name="pref_enqueue_downloaded_title">Letöltött elemek sorbaállítása</string>
   <string name="pref_enqueue_downloaded_summary">Letöltött epizódok sorhoz adása</string>
   <string name="media_player_builtin">Beépített androidos lejátszó (elavult)</string>
-  <string name="media_player_sonic">Sonic médialejátszó (elavult)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (javasolt)</string>
   <string name="media_player_switch_to_exoplayer">Váltás az ExoPlayerre</string>
   <string name="media_player_switched_to_exoplayer">Átváltva az ExoPlayerre.</string>
   <string name="pref_skip_silence_title">Csend kihagyása a hangokban</string>
@@ -516,8 +506,7 @@
   <string name="new_episode_notification_enabled">Értesítés engedélyezve</string>
   <string name="new_episode_notification_disabled">Értesítés letiltva</string>
   <string name="pref_feed_settings_dialog_msg">A beállítás minden podcastnál egyedi. A podcast lapját megnyitva módosíthatja.</string>
-  <string name="pref_contribute">Közreműködés</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Névjegy</string>
   <string name="antennapod_version">ApexPod verzió</string>
   <string name="contributors">Közreműködők</string>
@@ -655,8 +644,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Hitelesítés</string>
   <string name="authentication_descr">A felhasználónév és jelszó módosítása ennél a podcastnál és az epizódoknál.</string>
-  <string name="feed_folders_label">Mappák</string>
-  <string name="feed_folders_summary">Mappák módosítása, amelyben a podcast megjelenik</string>
   <string name="feed_folders_include_root">Megjelenítés a fő listában</string>
   <string name="auto_download_settings_label">Automatikus letöltési beállítások</string>
   <string name="episode_filters_label">Epizódszűrő</string>

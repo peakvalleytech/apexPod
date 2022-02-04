@@ -55,9 +55,6 @@
   <string name="drawer_feed_counter_downloaded">İndirilen bölümlerin sayısı</string>
   <string name="drawer_feed_counter_none">Hiçbiri</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Uyumlu uygulama bulunamadı</string>
-  <string name="export_logs_menu_title">Ayrıntılı günlükleri dışa aktar</string>
-  <string name="confirm_export_log_dialog_message">Ayrıntılı günlükler, abonelik listeniz gibi hassas bilgiler içerebilir</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Tarayıcıda aç</string>
   <string name="copy_url_label">URL\'yi kopyala</string>
@@ -357,8 +354,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Abonelik sayacını ayarla</string>
   <string name="pref_nav_drawer_feed_counter_sum">Change the information displayed by the subscription counter. Also affects the sorting of subscriptions if \'Subscription Order\' is set to \'Counter\'.</string>
   <string name="pref_set_theme_sum">ApexPod\'un görüntüsünü değiştir.</string>
-  <string name="pref_automatic_download_title">Otomatk indirme</string>
-  <string name="pref_automatic_download_sum">Bölümlerin otomatik indirilmesini yapılandır.</string>
+  <string name="pref_download_title">Otomatk indirme</string>
+  <string name="pref_download_sum">Bölümlerin otomatik indirilmesini yapılandır.</string>
   <string name="pref_autodl_wifi_filter_title">Wi-Fi filtresini etkinleştir</string>
   <string name="pref_autodl_wifi_filter_sum">Seçilen kablosuz ağlar için otomatik indirmeye izin ver.</string>
   <string name="pref_automatic_download_on_battery_title">Şarj olmuyorken indir</string>
@@ -378,10 +375,6 @@
   <string name="pref_gpodnet_logout_toast">Çıkış başarılı</string>
   <string name="pref_gpodnet_setlogin_information_title">Giriş bilgisini değiştir</string>
   <string name="pref_gpodnet_setlogin_information_sum">gpodder.net hesabınız için giriş bilgisini değiştirin.</string>
-  <string name="pref_gpodnet_sync_changes_title">Synchronize now</string>
-  <string name="pref_gpodnet_sync_changes_sum">Sync subscription and episode state changes with gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Force full synchronization</string>
-  <string name="pref_gpodnet_full_sync_sum">Sync all subscriptions and episode states with gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Logged in as <i>%1$s</i> with device <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Customize the speeds available for variable speed playback</string>
   <string name="pref_feed_playback_speed_sum">The speed to use when starting audio playback for episodes in this podcast</string>
@@ -418,7 +411,6 @@
   <string name="open_bug_tracker">Open bug tracker</string>
   <string name="copy_to_clipboard">Copy to clipboard</string>
   <string name="copied_to_clipboard">Copied to clipboard</string>
-  <string name="experimental_pref">Deneysel</string>
   <string name="pref_media_player_message">Select which media player to use to play files</string>
   <string name="pref_current_value">Current value: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -429,8 +421,7 @@
   <string name="pref_cast_message_free_flavor" tools:ignore="UnusedResources">Chromecast requires third party proprietary libraries that are disabled in this version of ApexPod</string>
   <string name="pref_enqueue_downloaded_title">Enqueue Downloaded</string>
   <string name="pref_enqueue_downloaded_summary">Add downloaded episodes to the queue</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (tavsiye edilen)</string>
-  <string name="media_player_switch_to_exoplayer">Switch to ExoPlayer</string>
+    <string name="media_player_switch_to_exoplayer">Switch to ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Switched to ExoPlayer.</string>
   <string name="pref_skip_silence_title">Skip Silence in Audio</string>
   <string name="pref_videoBehavior_title">Upon exiting video</string>

@@ -57,12 +57,17 @@ import de.danoeh.apexpod.fragment.AudioPlayerFragment;
 import de.danoeh.apexpod.fragment.DownloadsFragment;
 import de.danoeh.apexpod.fragment.EpisodesFragment;
 import de.danoeh.apexpod.fragment.FeedItemlistFragment;
+import de.danoeh.apexpod.fragment.HomeFragment;
+import de.danoeh.apexpod.fragment.ItemFragment;
 import de.danoeh.apexpod.fragment.NavDrawerFragment;
+import de.danoeh.apexpod.fragment.PlayListItemFragment;
 import de.danoeh.apexpod.fragment.PlaybackHistoryFragment;
+import de.danoeh.apexpod.fragment.PlaylistFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
 import de.danoeh.apexpod.fragment.SearchFragment;
 import de.danoeh.apexpod.fragment.subscriptions.SubscriptionFragment;
 import de.danoeh.apexpod.fragment.TransitionEffect;
+import de.danoeh.apexpod.model.Playlist;
 import de.danoeh.apexpod.preferences.PreferenceUpgrader;
 import de.danoeh.apexpod.ui.appstartintent.MainActivityStarter;
 import de.danoeh.apexpod.ui.common.ThemeUtils;
@@ -263,8 +268,18 @@ public class MainActivity extends CastEnabledActivity {
         Log.d(TAG, "loadFragment(tag: " + tag + ", args: " + args + ")");
         Fragment fragment;
         switch (tag) {
+            case HomeFragment.TAG:
+                fragment = new HomeFragment();
+                break;
             case QueueFragment.TAG:
                 fragment = new QueueFragment();
+                break;
+            case PlaylistFragment.TAG:
+                fragment = new PlaylistFragment();
+                break;
+            case PlayListItemFragment.TAG:
+                Playlist playList = (Playlist) args.getSerializable(PlayListItemFragment.ARG_PLAYLIST);
+                fragment = PlayListItemFragment.newInstance(playList);
                 break;
             case EpisodesFragment.TAG:
                 fragment = new EpisodesFragment();
@@ -305,7 +320,7 @@ public class MainActivity extends CastEnabledActivity {
         loadFragment(fragment);
     }
 
-    private void loadFragment(Fragment fragment) {
+    public void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         // clear back stack
         for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++) {
@@ -313,7 +328,7 @@ public class MainActivity extends CastEnabledActivity {
         }
         FragmentTransaction t = fragmentManager.beginTransaction();
         t.replace(R.id.main_view, fragment, MAIN_FRAGMENT_TAG);
-        fragmentManager.popBackStack();
+//        fragmentManager.popBackStack();
         // TODO: we have to allow state loss here
         // since this function can get called from an AsyncTask which
         // could be finishing after our app has already committed state

@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Número de episodios descargados</string>
   <string name="drawer_feed_counter_none">Ninguno</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">No se encontraro apps compatibles</string>
-  <string name="export_logs_menu_title">Exportar registros detallados</string>
-  <string name="confirm_export_log_dialog_message">Los registros detallados pueden contener información sensible, como su lista de suscripciones</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Abrir en el navegador</string>
   <string name="copy_url_label">Copiar URL</string>
@@ -406,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Ajustar contador de suscripción</string>
   <string name="pref_nav_drawer_feed_counter_sum">Cambiar la información mostrada en el contador de las suscripciones. También afecta al orden de las suscripciones si el \'orden de la suscripción\' está en modo \'Contador\'.</string>
   <string name="pref_set_theme_sum">Cambiar la apariencia de ApexPod.</string>
-  <string name="pref_automatic_download_title">Descarga automática</string>
-  <string name="pref_automatic_download_sum">Configurar la descarga automática de episodios.</string>
+  <string name="pref_download_title">Descarga automática</string>
+  <string name="pref_download_sum">Configurar la descarga automática de episodios.</string>
   <string name="pref_autodl_wifi_filter_title">Activar el filtro wifi</string>
   <string name="pref_autodl_wifi_filter_sum">Permitir la descarga automática sólo desde las redes wifi seleccionadas.</string>
   <string name="pref_automatic_download_on_battery_title">Descargar cuando no se está cargando</string>
@@ -430,10 +427,6 @@
   <string name="pref_gpodnet_logout_toast">Ha cerrado la sesión correctamente</string>
   <string name="pref_gpodnet_setlogin_information_title">Cambiar información de inicio de sesión</string>
   <string name="pref_gpodnet_setlogin_information_sum">Modificar datos de inicio de sesión en gpodder.net.</string>
-  <string name="pref_gpodnet_sync_changes_title">Sincronizar ahora</string>
-  <string name="pref_gpodnet_sync_changes_sum">Sincronizar cambios de suscripción y episodios con gpodder.net.</string>
-  <string name="pref_gpodnet_full_sync_title">Forzar la sincronización completa</string>
-  <string name="pref_gpodnet_full_sync_sum">Sincronizar todas las suscripciones y episodios con gpodder.net.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Identificado como <i>%1$s</i> con dispositivo <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Personalice las velocidades disponibles en la reproducción a velocidad variable</string>
   <string name="pref_feed_playback_speed_sum">La velocidad a la que comenzarán los episodios de este podcast</string>
@@ -471,7 +464,6 @@
   <string name="open_bug_tracker">Abrir bug tracker</string>
   <string name="copy_to_clipboard">Copiar al portapapeles</string>
   <string name="copied_to_clipboard">Copiado al portapapeles</string>
-  <string name="experimental_pref">Experimental</string>
   <string name="pref_media_player_message">Seleccione qué reproductor multimedia usar para reproducir archivos</string>
   <string name="pref_current_value">Valor actual: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -483,8 +475,6 @@
   <string name="pref_enqueue_downloaded_title">Añadir descargados a la cola</string>
   <string name="pref_enqueue_downloaded_summary">Añadir episodios descargados a la cola</string>
   <string name="media_player_builtin">Reproductor integrado de Android (obsoleto)</string>
-  <string name="media_player_sonic">Sonic Media Player (obsoleto)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (recomendado)</string>
   <string name="media_player_switch_to_exoplayer">Cambiar a ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Cambiado a ExoPlayer</string>
   <string name="pref_skip_silence_title">Saltar silencio en audio</string>
@@ -516,8 +506,7 @@
   <string name="new_episode_notification_enabled">Notificación habilitada</string>
   <string name="new_episode_notification_disabled">Notificación deshabilitada</string>
   <string name="pref_feed_settings_dialog_msg">Esta preferencia es única para cada pódcast. Puede ajustarla abriendo la página del pódcast.</string>
-  <string name="pref_contribute">Contribuir</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Acerca de</string>
   <string name="antennapod_version">Versión de ApexPod</string>
   <string name="contributors">Contribuidores</string>
@@ -655,8 +644,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Autenticación</string>
   <string name="authentication_descr">Cambiar nombre y contraseña de este pódcast y sus episodios</string>
-  <string name="feed_folders_label">Carpetas</string>
-  <string name="feed_folders_summary">Cambiar las carpetas en que se muestra este pódcast.</string>
   <string name="feed_folders_include_root">Mostrar en la lista principal</string>
   <string name="auto_download_settings_label">Opciones de descarga automática</string>
   <string name="episode_filters_label">Filtro de episodios</string>
@@ -792,4 +779,35 @@
   <string name="on_demand_config_setting_changed">Configuración actualizada satisfactoriamente.</string>
   <string name="on_demand_config_stream_text">Parece que usas mucho la reproducción en directo. ¿Quieres que las listas de episodios muestren los botones de escuchar en directo?</string>
   <string name="on_demand_config_download_text">Parece que usas mucho las descargas. ¿Quieres mostrar el botón de descargar en la lista de episodios?</string>
+    <string name="delete_playlist">Eliminar lista de reproducción</string>
+  <string name="delete_playlist_confirmation_msg">¿Quieres eliminar esta lista de reproducción?</string>
+  <string name="playlists_label">Listas de reproducción</string>
+  <string name="home_fragment_label">Hogar</string>
+  <string name="pref_auto_delete_playlist_summary">Excluir episodios de listas de reproducción de la eliminación automática</string>
+  <string name="pref_auto_delete_playlist_title">Mantener episodios en listas de reproducción</string>
+  <string name="add_to_playlist_label">Añadir a la lista de reproducción</string>
+  <string name="no_playlists_label">Sin listas de reproducción</string>
+  <string name="no_playlists_sub_label">Después de crear una lista de reproducción, aparecerá aquí.</string>
+  <string name="auto_download_cache_pref_summary">"El número de episodios mantenidos por descarga automática. Excluido de la eliminación automática. "</string>
+  <string name="home_label">Hogar</string>
+  <string name="left_short">Izquierda</string>
+  <string name="right_short">Derecha</string>
+  <string name="volume">Volumen</string>
+  <string name="repeat_episode">Repetir episodio</string>
+  <string name="feed_tags_label">Etiquetas</string>
+  <string name="feed_tags_summary">Cambia las etiquetas de este podcast para ayudar a organizar tus suscripciones</string>
+  <string name="sync_status_wait_for_downloads">A la espera de que se completen las descargas...</string>
+  <string name="synchronization_sync_changes_title">Sincronizar ahora</string>
+  <string name="synchronization_logout">Cerrar sesión</string>
+  <string name="pref_synchronization_logout_toast">El cierre de sesión se ha realizado correctamente</string>
+  <string name="synchronization_full_sync_title">Forzar la sincronización completa</string>
+  <string name="synchronization_summary_unchoosen">Puede elegir entre varios proveedores para sincronizar sus suscripciones y el estado de reproducción de episodios con</string>
+  <string name="synchronization_summary_nextcloud">Gpoddersync es una aplicación Nextcloud de código abierto que puede instalar fácilmente en su propio servidor. La aplicación es independiente del proyecto ApexPod.</string>
+  <string name="synchronization_nextcloud_authenticate_browser">Conceda acceso utilizando el navegador web abierto y vuelva a ApexPod.</string>
+  <string name="synchronization_choose_title">Elegir proveedor de sincronización</string>
+  <string name="synchronization_force_sync_summary">Volver a sincronizar todas las suscripciones y estados de episodios</string>
+  <string name="synchronization_sync_summary">Sincronizar los cambios de estado de la suscripción y del episodio</string>
+  <string name="dialog_choose_sync_service_title">Elegir proveedor de sincronización</string>
+  <string name="synchronization_login_status"><![CDATA[Lo que se ha iniciado como <i>%1$s</i> en <i>%2$s</i>. <br/><br/> Puede volver a elegir su proveedor de sincronización una vez que haya cerrado la sesión]]></string>
+  <string name="confirm_mobile_feed_refresh_dialog_message">La descarga de episodios a través de la conexión de datos móviles está deshabilitada en la configuración.\\n\\n¿Aún desea actualizar todos los podcasts a través de datos móviles?</string>
 </resources>

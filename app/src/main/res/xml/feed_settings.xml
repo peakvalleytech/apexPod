@@ -63,9 +63,23 @@
         <SwitchPreferenceCompat
             android:key="autoDownload"
             android:title="@string/auto_download_label" />
+        <EditTextPreference
+            android:key="autoDownloadCache"
+            android:title="Episodes to Auto Download"
+            android:summary="@string/auto_download_cache_pref_summary"
+            android:defaultValue="1"/>
+        <SwitchPreferenceCompat
+            android:key="autoDownloadNewestFirst"
+            android:title="Newest first"
+            android:summary="Start from newest" />
+<!--        <CheckBoxPreference-->
+<!--            android:key="autoDownloadIncludeAll"-->
+<!--            android:title="Include all episodes"-->
+<!--            android:summary="Include older episodes into auto download"/>-->
         <Preference
             android:key="episodeFilter"
             android:summary="@string/episode_filters_description"
             android:title="@string/episode_filters_label" />
+
     </PreferenceCategory>
 </PreferenceScreen>

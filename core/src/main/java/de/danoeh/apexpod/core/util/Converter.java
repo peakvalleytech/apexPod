@@ -96,13 +96,21 @@ public final class Converter {
         return result;
     }
 
+
+    public static float millisToHours(long millis) {
+        float seconds = millis / 1000;
+        float minutes =  seconds / 60;
+        float hours = minutes / 60;
+        return hours;
+    }
+
     /**
      * Converts seconds to a localized representation.
-     * @param time The time in seconds
+     * @param millis The time in seconds
      * @return "HH:MM hours"
      */
-    public static String shortLocalizedDuration(Context context, long time) {
-        float hours = (float) time / 3600f;
+    public static String shortLocalizedDuration(Context context, long millis) {
+        float hours = millisToHours(millis);
         return String.format(Locale.getDefault(), "%.1f ", hours) + context.getString(R.string.time_hours);
     }
 }

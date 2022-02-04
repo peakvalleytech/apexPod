@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">تعداد قسمت‌های بارگیری‌شده</string>
   <string name="drawer_feed_counter_none">هیچ‌یک</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">هیچ اپ سازگاری پیدا نشد</string>
-  <string name="export_logs_menu_title">برون‌ریزی گزارش پرجزئیات</string>
-  <string name="confirm_export_log_dialog_message">گزارش‌های پرجزئیات ممکن است حاوی اطلاعات حساس شامل فهرست اشتراک‌های شما باشد</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">باز کردن در مرورگر</string>
   <string name="copy_url_label">کپی کردن URL</string>
@@ -406,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">تنظیم شمارنده اشتراک</string>
   <string name="pref_nav_drawer_feed_counter_sum">اطلاعات نمایش داده شده توسط شمارندهٔ اشتراک را تغییر دهید. همچنین اگر «ترتیب اشتراک» روی «شمارنده» تنظیم شود، بر مرتب‌سازی اشتراک‌ها نیز تأثیر می‌گذارد.</string>
   <string name="pref_set_theme_sum">تغییر ظاهر آنتن پاد</string>
-  <string name="pref_automatic_download_title">بارگیری خودکار</string>
-  <string name="pref_automatic_download_sum">بارگیری خودکار قسمتها را پیکربندی کنید.</string>
+  <string name="pref_download_title">بارگیری خودکار</string>
+  <string name="pref_download_sum">بارگیری خودکار قسمتها را پیکربندی کنید.</string>
   <string name="pref_autodl_wifi_filter_title">فیلتر Wi-Fi را فعال کنید</string>
   <string name="pref_autodl_wifi_filter_sum">بارگیری خودکار فقط باید از طریق شبکه های Wi-Fi انتخاب شده مجاز باشد.</string>
   <string name="pref_automatic_download_on_battery_title">بارگیری زمانی که سیستم شارژ نمیشود مجاز باشد</string>
@@ -430,10 +427,6 @@
   <string name="pref_gpodnet_logout_toast">خروج موفقیت‌آمیز بود</string>
   <string name="pref_gpodnet_setlogin_information_title">تغییر اطلاعات ورود</string>
   <string name="pref_gpodnet_setlogin_information_sum">اطلاعات ورود به سیستم حساب gpodder.net خود را تغییر دهید.</string>
-  <string name="pref_gpodnet_sync_changes_title">اکنون همگام سازی کنید</string>
-  <string name="pref_gpodnet_sync_changes_sum">تغییرات اشتراک و وضعیت اپیزود را با gpodder.net همگام سازی کنید.</string>
-  <string name="pref_gpodnet_full_sync_title">همگام سازی کامل را اجبار کن</string>
-  <string name="pref_gpodnet_full_sync_sum">همه اشتراک ها و حالت های قسمت را با gpodder.net همگام سازی کنید.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[وارد شد به عنوان <i>%1$s</i> با وسیله <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">سرعتهای موجود برای بازپخش با سرعت متغیر را سفارشی کنید</string>
   <string name="pref_feed_playback_speed_sum">سرعت شروع  بازپخش صدا برای قسمت های این پادکست</string>
@@ -471,7 +464,6 @@
   <string name="open_bug_tracker">باز کردن ردیاب اشکال</string>
   <string name="copy_to_clipboard">کپی به کلیپ بورد</string>
   <string name="copied_to_clipboard">در کلیپ بورد کپی شد</string>
-  <string name="experimental_pref">آزمایشی</string>
   <string name="pref_media_player_message">انتخاب کنید از کدام دستگاه پخش کننده رسانه برای پخش فایلها استفاده شود</string>
   <string name="pref_current_value">مقدار فعلی: %1$s</string>
   <string name="pref_proxy_title">پروکسی</string>
@@ -483,8 +475,6 @@
   <string name="pref_enqueue_downloaded_title">در صف نهادن بارگیری‌شده‌ها</string>
   <string name="pref_enqueue_downloaded_summary">قسمتهای بارگیری شده را به صف اضافه کنید</string>
   <string name="media_player_builtin">پخش‌کننده پیش‌فرض اندروید</string>
-  <string name="media_player_sonic">Sonic پخش کننده</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (توصیه می شود)</string>
   <string name="media_player_switch_to_exoplayer">به ExoPlayer بروید</string>
   <string name="media_player_switched_to_exoplayer">به ExoPlayer تغییر وضعیت داده شد.</string>
   <string name="pref_skip_silence_title">رد کردن سکوت در صدا</string>
@@ -516,8 +506,7 @@
   <string name="new_episode_notification_enabled">آگاهی به کار افتاده</string>
   <string name="new_episode_notification_disabled">آگاهی از کار افتاده</string>
   <string name="pref_feed_settings_dialog_msg">این تنظیم برای هر پادکست منحصر به فرد است. با باز کردن صفحه پادکست می توانید آن را تغییر دهید.</string>
-  <string name="pref_contribute">مشارکت</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">درباره</string>
   <string name="antennapod_version">نسخه ApexPod</string>
   <string name="contributors">همکاران</string>
@@ -655,8 +644,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">احراز هویت</string>
   <string name="authentication_descr">تغییر نام کاربری و رمز ورود خود را برای این پادکست و قسمت های آن</string>
-  <string name="feed_folders_label">پوشه ها</string>
-  <string name="feed_folders_summary">پوشه هایی که این پادکست در آنها نمایش داده می شود را تغییر دهید.</string>
   <string name="feed_folders_include_root">نمایش در لیست اصلی</string>
   <string name="auto_download_settings_label">تنظیمات بارگیری خودکار</string>
   <string name="episode_filters_label">فیلتر قسمت</string>

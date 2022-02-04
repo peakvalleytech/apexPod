@@ -1,5 +1,7 @@
 package de.danoeh.apexpod.core.storage;
 
+import androidx.annotation.Nullable;
+
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.core.util.LongIntMap;
 
@@ -82,11 +84,21 @@ public class NavDrawerData {
     public static class FeedDrawerItem extends DrawerItem {
         public final Feed feed;
         public final int counter;
-
+        public long playedCounter;
+        public long mostRecentPubDate;
         public FeedDrawerItem(Feed feed, long id, int counter) {
             super(DrawerItem.Type.FEED, id);
             this.feed = feed;
             this.counter = counter;
+            this.playedCounter = -1;
+            this.mostRecentPubDate = -1;
+        }
+        public FeedDrawerItem(Feed feed, long id, int counter, int playedCounter, long mostRecentPubDate) {
+            super(DrawerItem.Type.FEED, id);
+            this.feed = feed;
+            this.counter = counter;
+            this.playedCounter = playedCounter;
+            this.mostRecentPubDate = mostRecentPubDate;
         }
 
         public String getTitle() {
@@ -95,6 +107,20 @@ public class NavDrawerData {
 
         public int getCounter() {
             return counter;
+        }
+
+        @Override
+        public boolean equals(@Nullable Object obj) {
+            if (obj instanceof FeedDrawerItem) {
+                FeedDrawerItem drawerItem = (FeedDrawerItem) obj;
+                return drawerItem.feed.getId() == feed.getId();
+            }
+            return false;
+        }
+
+        @Override
+        public int hashCode() {
+            return feed.getFeedTitle().hashCode() + (int) feed.getId() % Integer.MAX_VALUE;
         }
     }
 }

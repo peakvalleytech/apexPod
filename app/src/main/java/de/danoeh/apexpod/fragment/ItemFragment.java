@@ -45,6 +45,7 @@ import de.danoeh.apexpod.core.event.DownloaderUpdate;
 import de.danoeh.apexpod.core.event.FeedItemEvent;
 import de.danoeh.apexpod.core.event.PlayerStatusEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.core.feed.util.ImageResourceUtils;
@@ -77,20 +78,24 @@ import java.util.Locale;
  * Displays information about a FeedItem and actions.
  */
 public class ItemFragment extends Fragment {
-
-    private static final String TAG = "ItemFragment";
+    public static final String TAG = "ItemFragment";
     private static final String ARG_FEEDITEM = "feeditem";
-
+    private static final String AUTOPLAY_MODE = "autoplayMode";
+    private static final String AUTOPLAY_PLAYLIST_ID = "autoPlayPlaylistId";
     /**
      * Creates a new instance of an ItemFragment
      *
      * @param feeditem The ID of the FeedItem to show
      * @return The ItemFragment instance
      */
-    public static ItemFragment newInstance(long feeditem) {
+    public static ItemFragment newInstance(long feeditem,
+                                           long autoPlayMode,
+                                           long autoPlayPlaylistId) {
         ItemFragment fragment = new ItemFragment();
         Bundle args = new Bundle();
         args.putLong(ARG_FEEDITEM, feeditem);
+        args.putLong(AUTOPLAY_MODE, autoPlayMode);
+        args.putLong(AUTOPLAY_PLAYLIST_ID, autoPlayPlaylistId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -332,14 +337,24 @@ public class ItemFragment extends Fragment {
                 txtvDuration.setContentDescription(
                         Converter.getDurationStringLocalized(getContext(), media.getDuration()));
             }
+            Bundle args = getArguments();
+            long autoPlayMode = args.getLong(AUTOPLAY_MODE);
+            long autoPlayPlaylistId = 0;
+
+            if (autoPlayMode == PlaybackPreferences.AUTOPLAY_FEED) {
+                autoPlayPlaylistId = item.getFeedId();
+            } else {
+                autoPlayPlaylistId = args.getLong(AUTOPLAY_PLAYLIST_ID);
+            }
+
             if (FeedItemUtil.isCurrentlyPlaying(media)) {
                 actionButton1 = new PauseActionButton(item);
             } else if (item.getFeed().isLocalFeed()) {
                 actionButton1 = new PlayLocalActionButton(item);
             } else if (media.isDownloaded()) {
-                actionButton1 = new PlayActionButton(item);
+                actionButton1 = new PlayActionButton(item, autoPlayMode, autoPlayPlaylistId);
             } else {
-                actionButton1 = new StreamActionButton(item);
+                actionButton1 = new StreamActionButton(item, autoPlayMode, autoPlayPlaylistId);
             }
             if (DownloadRequester.getInstance().isDownloadingFile(media)) {
                 actionButton2 = new CancelDownloadActionButton(item);

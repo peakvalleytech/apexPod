@@ -98,12 +98,12 @@
                 android:entryValues="@array/enqueue_location_values"
                 android:key="prefEnqueueLocation"
                 android:title="@string/pref_enqueue_location_title"/>
-        <SwitchPreferenceCompat
-                android:defaultValue="true"
-                android:enabled="true"
-                android:key="prefFollowQueue"
-                android:summary="@string/pref_followQueue_sum"
-                android:title="@string/pref_followQueue_title"/>
+<!--        <SwitchPreferenceCompat-->
+<!--                android:defaultValue="true"-->
+<!--                android:enabled="true"-->
+<!--                android:key="prefFollowQueue"-->
+<!--                android:summary="@string/pref_followQueue_sum"-->
+<!--                android:title="@string/pref_followQueue_title"/>-->
         <ListPreference
                 android:defaultValue="30"
                 android:entries="@array/smart_mark_as_played_values"
@@ -119,19 +119,19 @@
                 android:title="@string/pref_skip_keeps_episodes_title"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/experimental_pref">
-        <ListPreference
-                android:defaultValue="exoplayer"
-                android:entries="@array/media_player_options"
-                android:key="prefMediaPlayer"
-                android:title="@string/media_player"
-                android:summary="@string/pref_media_player_message"
-                android:entryValues="@array/media_player_values"/>
-        <SwitchPreferenceCompat
-                android:defaultValue="false"
-                android:enabled="true"
-                android:key="prefCast"
-                android:summary="@string/pref_cast_message"
-                android:title="@string/pref_cast_title"/>
-    </PreferenceCategory>
+<!--    <PreferenceCategory android:title="@string/experimental_pref">-->
+<!--        <ListPreference-->
+<!--                android:defaultValue="exoplayer"-->
+<!--                android:entries="@array/media_player_options"-->
+<!--                android:key="prefMediaPlayer"-->
+<!--                android:title="@string/media_player"-->
+<!--                android:summary="@string/pref_media_player_message"-->
+<!--                android:entryValues="@array/media_player_values"/>-->
+<!--        <SwitchPreferenceCompat-->
+<!--                android:defaultValue="false"-->
+<!--                android:enabled="true"-->
+<!--                android:key="prefCast"-->
+<!--                android:summary="@string/pref_cast_message"-->
+<!--                android:title="@string/pref_cast_title"/>-->
+<!--    </PreferenceCategory>-->
 </PreferenceScreen>

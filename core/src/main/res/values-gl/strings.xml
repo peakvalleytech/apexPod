@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Número de episodios descargados</string>
   <string name="drawer_feed_counter_none">Ningún</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Non se atopan apps compatibles</string>
-  <string name="export_logs_menu_title">Exportar rexistro detallado</string>
-  <string name="confirm_export_log_dialog_message">O rexistro detallado podería conter información sensible, como a túa lista de subscricións</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Abrir no navegador</string>
   <string name="copy_url_label">Copiar URL</string>
@@ -406,8 +403,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Establecer o contador de subscricións</string>
   <string name="pref_nav_drawer_feed_counter_sum">Cambiar a información mostrada polo contador de subscricións. Tamén afecta á orde das subscricións se \"Orde das subscricións\" está establecida a \"Contador\".</string>
   <string name="pref_set_theme_sum">Cambiar o aspecto de ApexPod.</string>
-  <string name="pref_automatic_download_title">Descarga automática</string>
-  <string name="pref_automatic_download_sum">Axuste a descarga automática de episodios.</string>
+  <string name="pref_download_title">Descarga automática</string>
+  <string name="pref_download_sum">Axuste a descarga automática de episodios.</string>
   <string name="pref_autodl_wifi_filter_title">Habilitar o filtro WiFi</string>
   <string name="pref_autodl_wifi_filter_sum">Permitir a descarga automática só en redes WiFi selecionadas.</string>
   <string name="pref_automatic_download_on_battery_title">Descargar elementos cando non esté cargando</string>
@@ -430,10 +427,6 @@
   <string name="pref_gpodnet_logout_toast">Desconectouse correctamente</string>
   <string name="pref_gpodnet_setlogin_information_title">Cambiar a información de conexión</string>
   <string name="pref_gpodnet_setlogin_information_sum">Cambiar a información de conexión da súa conta gpodder.net</string>
-  <string name="pref_gpodnet_sync_changes_title">Sincronizar agora</string>
-  <string name="pref_gpodnet_sync_changes_sum">Sincronizar os datos de subscrición e estado dos episodios con gpodder.net</string>
-  <string name="pref_gpodnet_full_sync_title">Forzar sincronización completa</string>
-  <string name="pref_gpodnet_full_sync_sum">Sincronizar todas as subscricións e estados de episodios con gpodder.net</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Conectada como <i>%1$s</i> co dispositivo <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Personaliza as velocidades dispoñibles para reprodución de velocidade variable</string>
   <string name="pref_feed_playback_speed_sum">A velocidade para reproducir o contido dos episodios deste podcast</string>
@@ -471,7 +464,6 @@
   <string name="open_bug_tracker">Abrir seguimento de fallos</string>
   <string name="copy_to_clipboard">Copiar ó portapapeis</string>
   <string name="copied_to_clipboard">Copiado ó portapapeis</string>
-  <string name="experimental_pref">En probas</string>
   <string name="pref_media_player_message">Escolle o reprodutor de medios para reproducir ficheiros</string>
   <string name="pref_current_value">Valor actual: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
@@ -483,8 +475,6 @@
   <string name="pref_enqueue_downloaded_title">Foron descargados os elementos da cola</string>
   <string name="pref_enqueue_downloaded_summary">Engadir os episodios descargados a cola</string>
   <string name="media_player_builtin">Reprodutor incluído de Android (relegado)</string>
-  <string name="media_player_sonic">Reprodutor Sonic Media (relegado)</string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (recomendado)</string>
   <string name="media_player_switch_to_exoplayer">Cambiar a ExoPlayer</string>
   <string name="media_player_switched_to_exoplayer">Cambiaches a ExoPlayer.</string>
   <string name="pref_skip_silence_title">Omitir silencio no Audio</string>
@@ -516,8 +506,7 @@
   <string name="new_episode_notification_enabled">Notificación activada</string>
   <string name="new_episode_notification_disabled">Notificación desactivada</string>
   <string name="pref_feed_settings_dialog_msg">Este axuste é único para cada podcast. Podes cambialo abrindo a páxina do podcast.</string>
-  <string name="pref_contribute">Colaborar</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Sobre</string>
   <string name="antennapod_version">Versión ApexPod</string>
   <string name="contributors">Colaboradoras</string>
@@ -655,8 +644,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Autenticación</string>
   <string name="authentication_descr">Cambiar o seu nome de usuaria e contrasinal para este podcast e os seus episodios.</string>
-  <string name="feed_folders_label">Cartafoles</string>
-  <string name="feed_folders_summary">Cambiar os cartafoles nos que se mostra este podcast.</string>
   <string name="feed_folders_include_root">Mostrar na lista principal</string>
   <string name="auto_download_settings_label">Axustes de descarga automática</string>
   <string name="episode_filters_label">Fitro de episodios</string>

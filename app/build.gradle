@@ -4,15 +4,16 @@ plugins {
     id('com.github.triplet.play') version '3.6.0-agp4.2' apply false
 }
 apply from: "../common.gradle"
+apply plugin: 'kotlin-android'
 apply from: "../playFlavor.gradle"
-
+//apply plugin: 'com.google.gms.google-services'
 android {
     defaultConfig {
         // Version code schema:
         // "1.2.3-beta4"    -> 1020304
         // "1.2.3"          -> 1020395
-        versionCode 2040095
-        versionName "2.4.0"
+        versionCode 7
+        versionName "0.5.5"
 
         def commit = ""
         try {
@@ -117,6 +118,8 @@ dependencies {
     implementation project(':parser:feed')
     implementation project(':ui:app-start-intent')
     implementation project(':ui:common')
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.test:monitor:1.4.0'
 
     annotationProcessor "androidx.annotation:annotation:$annotationVersion"
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
@@ -154,7 +157,11 @@ dependencies {
     implementation 'com.github.skydoves:balloon:1.1.5'
     implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.3'
     implementation 'com.annimon:stream:1.2.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
 
+    // Firebase
+//    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+//    implementation 'com.google.firebase:firebase-analytics'
     // Non-free dependencies:
     playImplementation 'com.google.android.play:core:1.8.0'
     compileOnly "com.google.android.wearable:wearable:$wearableSupportVersion"
@@ -168,6 +175,8 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$runnerVersion"
     androidTestImplementation "androidx.test:rules:$rulesVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 if (project.hasProperty("antennaPodPlayPublisherCredentials")) {
@@ -191,4 +200,7 @@ preBuild.dependsOn copyLicense
 apply plugin: 'de.timfreiheit.resourceplaceholders.plugin'
 resourcePlaceholders {
     files = ['xml/shortcuts.xml']
+}
+repositories {
+    mavenCentral()
 }

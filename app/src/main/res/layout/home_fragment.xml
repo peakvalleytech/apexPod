@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:squareImageView="http://schemas.android.com/apk/de.danoeh.apexpod"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="@string/home_label" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include android:id="@+id/empty_layout" layout="@layout/empty_view_layout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/home_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/featured_feeditem_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="Featured Episode"
+                android:textSize="18sp"
+                android:textColor="?android:attr/textColorPrimary"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <de.danoeh.apexpod.ui.common.SquareImageView
+                android:id="@+id/imgvCover"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_weight="0"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:importantForAccessibility="no"
+                android:scaleType="fitCenter"
+                squareImageView:direction="height"
+                tools:src="@tools:sample/avatars" />
+
+            <LinearLayout
+                android:id="@+id/cover_fragment_text_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtvPodcastTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:ellipsize="none"
+                    android:gravity="center_horizontal"
+                    android:maxLines="2"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textIsSelectable="false"
+                    android:textSize="@dimen/text_size_small"
+                    tools:text="Podcast" />
+
+                <TextView
+                    android:id="@+id/txtvEpisodeTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="none"
+                    android:gravity="center_horizontal"
+                    android:maxLines="2"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:textIsSelectable="false"
+                    android:textSize="@dimen/text_size_small"
+                    tools:text="Episode" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--        <ProgressBar-->
+<!--                android:id="@+id/discover_progress_bar"-->
+<!--                style="?android:attr/progressBarStyle"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:layout_marginTop="30dp"/>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/subscriptions_add"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/add_feed_label"
+        app:srcCompat="@drawable/ic_add" />
+    </RelativeLayout>
+</LinearLayout>

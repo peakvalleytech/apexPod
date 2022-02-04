@@ -61,9 +61,6 @@
   <string name="drawer_feed_counter_downloaded">Atsisiųstų epizodų skaičius</string>
   <string name="drawer_feed_counter_none">Nieko</string>
   <!--Bug report activity-->
-  <string name="log_file_share_exception">Nerasta suderinamų programėlių</string>
-  <string name="export_logs_menu_title">Eksportuoti išsamų žurnalą</string>
-  <string name="confirm_export_log_dialog_message">Išsamiajame žurnale gali būti jautrios informacijos, pavyzdžiui, prenumeratų sąrašas</string>
   <!--Webview actions-->
   <string name="open_in_browser_label">Atverti naršyklėje</string>
   <string name="copy_url_label">Kopijuoti URL</string>
@@ -436,8 +433,8 @@
   <string name="pref_nav_drawer_feed_counter_title">Nustatyti prenumeratų skaitiklį</string>
   <string name="pref_nav_drawer_feed_counter_sum">Keisti prenumeratų skaitiklyje atvaizduojamą informaciją. Gali paveikti prenumeratų rikiavimą, jei prenumeratų tvarka nustatyta rikiuoti pagal skaitiklio reikšmę.</string>
   <string name="pref_set_theme_sum">Keisti ApexPod išvaizdą.</string>
-  <string name="pref_automatic_download_title">Automatinis atsiuntimas</string>
-  <string name="pref_automatic_download_sum">Konfigūruoti automatinį epizodų atsiuntimą.</string>
+  <string name="pref_download_title">Automatinis atsiuntimas</string>
+  <string name="pref_download_sum">Konfigūruoti automatinį epizodų atsiuntimą.</string>
   <string name="pref_autodl_wifi_filter_title">Įjungti belaidžių tinklų filtrą</string>
   <string name="pref_autodl_wifi_filter_sum">Leisti automatinį atsiuntimą tik prisijungus prie nurodytų belaidžių tinklų.</string>
   <string name="pref_automatic_download_on_battery_title">Atsiuntimas ne įkrovimo metu</string>
@@ -460,10 +457,6 @@
   <string name="pref_gpodnet_logout_toast">Sėkmingai atsijungta</string>
   <string name="pref_gpodnet_setlogin_information_title">Keisti prisijungimo duomenis</string>
   <string name="pref_gpodnet_setlogin_information_sum">Keisti prisijungimo prie „gpodder.net“ paskyros duomenis.</string>
-  <string name="pref_gpodnet_sync_changes_title">Sinchronizuoti dabar</string>
-  <string name="pref_gpodnet_sync_changes_sum">Sinchronizuoti prenumeratų bei epizodų būsenų pasikeitimus su „gpodder.net“.</string>
-  <string name="pref_gpodnet_full_sync_title">Priverstinis pilnas sinchronizavimas</string>
-  <string name="pref_gpodnet_full_sync_sum">Sinchronizuoti visas prenumeratas bei epizodų būsenas su „gpodder.net“.</string>
   <string name="pref_gpodnet_login_status"><![CDATA[Prisijungta kaip <i>%1$s</i> naudojant įrenginį <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Derinkite prieinamas garso atkūrimo spartas</string>
   <string name="pref_feed_playback_speed_sum">Atkūrimo sparta, naudojama pradedant šios tinklalaidės epizodų atkūrimą</string>
@@ -501,7 +494,6 @@
   <string name="open_bug_tracker">Atverti klaidų sekimo sistemą</string>
   <string name="copy_to_clipboard">Kopijuoti į iškarpinę</string>
   <string name="copied_to_clipboard">Nukopijuotas į iškarpinę</string>
-  <string name="experimental_pref">Eksperimentinis</string>
   <string name="pref_media_player_message">Pasirinkite medijos grotuvą, kuris bus naudojamas atkūrimui</string>
   <string name="pref_current_value">Dabartinė reikšmė: %1$s</string>
   <string name="pref_proxy_title">Įgaliotasis serveris</string>
@@ -513,8 +505,6 @@
   <string name="pref_enqueue_downloaded_title">Atsiuntimus pridėti į eilę</string>
   <string name="pref_enqueue_downloaded_summary">Parsiuntus epizodus, pridėti juos į eilę</string>
   <string name="media_player_builtin">Įtaisytoji „Android“ leistuvė (nebenaudojama)</string>
-  <string name="media_player_sonic">„Sonic Media Player“ (nebenaudojama) </string>
-  <string name="media_player_exoplayer_recommended">ExoPlayer (rekomenduojama)</string>
   <string name="media_player_switch_to_exoplayer">Perjungti į „ExoPlayer“</string>
   <string name="media_player_switched_to_exoplayer">Perjungta į „ExoPlayer“.</string>
   <string name="pref_skip_silence_title">Praleisti tylą</string>
@@ -546,8 +536,7 @@
   <string name="new_episode_notification_enabled">Pranešimas įjungtas</string>
   <string name="new_episode_notification_disabled">Pranešimas išjungtas</string>
   <string name="pref_feed_settings_dialog_msg">Šis nustatymas individualus kiekvienai tinklalaidei. Jį pakeisti galite atvėrę tinklalaidės langą.</string>
-  <string name="pref_contribute">Prisidėti</string>
-  <!--About screen-->
+    <!--About screen-->
   <string name="about_pref">Apie</string>
   <string name="antennapod_version">„ApexPod“ versija</string>
   <string name="contributors">Autoriai</string>
@@ -691,8 +680,6 @@
   <!--Feed settings/information screen-->
   <string name="authentication_label">Tapatumo nustatymas</string>
   <string name="authentication_descr">Keisti vartotojo vardą ir slaptažodį šiai tinklalaidei ir jos epizodams.</string>
-  <string name="feed_folders_label">Aplankai</string>
-  <string name="feed_folders_summary">Keisti aplankus, kuriuose ši tinklalaidė atvaizduojama.</string>
   <string name="feed_folders_include_root">Rodyti pagrindiniame sąraše</string>
   <string name="auto_download_settings_label">Automatinio atsiuntimo nustatymai</string>
   <string name="episode_filters_label">Epizodų filtras</string>

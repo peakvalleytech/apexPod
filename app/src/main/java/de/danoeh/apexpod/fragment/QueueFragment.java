@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
@@ -25,6 +26,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.List;
+import java.util.Locale;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
@@ -38,22 +46,20 @@ import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
 import de.danoeh.apexpod.core.event.PlayerStatusEvent;
 import de.danoeh.apexpod.core.event.QueueEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
-import de.danoeh.apexpod.core.menuhandler.MenuItemUtils;
-import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
-import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
-import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.core.feed.util.PlaybackSpeedUtils;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
-import de.danoeh.apexpod.core.service.download.DownloadService;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
-import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
+import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
+import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
+import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
+import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
+import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedItemFilter;
 import de.danoeh.apexpod.model.feed.SortOrder;
-import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
-import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
 import de.danoeh.apexpod.view.EmptyViewHandler;
 import de.danoeh.apexpod.view.EpisodeItemListRecyclerView;
 import de.danoeh.apexpod.view.viewholder.EpisodeItemViewHolder;
@@ -61,12 +67,6 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Shows all items in the queue.
@@ -220,18 +220,12 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onPlayerStatusChanged(PlayerStatusEvent event) {
         loadItems(false);
-        if (isUpdatingFeeds != updateRefreshMenuItemChecker.isRefreshing()) {
-            refreshToolbarState();
-        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onUnreadItemsChanged(UnreadItemsUpdateEvent event) {
         // Sent when playback position is reset
         loadItems(false);
-        if (isUpdatingFeeds != updateRefreshMenuItemChecker.isRefreshing()) {
-            refreshToolbarState();
-        }
     }
 
     @Override
@@ -243,16 +237,13 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
         recyclerAdapter = null;
     }
 
-    private final MenuItemUtils.UpdateRefreshMenuItemChecker updateRefreshMenuItemChecker =
-            () -> DownloadService.isRunning && DownloadRequester.getInstance().isDownloadingFeeds();
+
 
     private void refreshToolbarState() {
         toolbar.getMenu().findItem(R.id.queue_lock).setChecked(UserPreferences.isQueueLocked());
         boolean keepSorted = UserPreferences.isQueueKeepSorted();
         toolbar.getMenu().findItem(R.id.queue_sort_random).setVisible(!keepSorted);
         toolbar.getMenu().findItem(R.id.queue_keep_sorted).setChecked(keepSorted);
-        isUpdatingFeeds = MenuItemUtils.updateRefreshMenuItem(toolbar.getMenu(),
-                R.id.refresh_item, updateRefreshMenuItemChecker);
     }
 
     @Override
@@ -260,9 +251,6 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
         final int itemId = item.getItemId();
         if (itemId == R.id.queue_lock) {
             toggleQueueLock();
-            return true;
-        } else if (itemId == R.id.refresh_item) {
-            AutoUpdateManager.runImmediate(requireContext());
             return true;
         } else if (itemId == R.id.clear_queue) {
             // make sure the user really wants to clear the queue
@@ -509,6 +497,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
                 recyclerView.setAdapter(recyclerAdapter);
                 emptyView.updateAdapter(recyclerAdapter);
             }
+            recyclerAdapter.autoPlayMode = PlaybackPreferences.AUTOPLAY_QUEUE;
             recyclerAdapter.updateItems(queue);
         } else {
             recyclerAdapter = null;

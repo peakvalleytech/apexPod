@@ -46,3 +46,4 @@ gradle.properties
 *.keystore
 *.p12
 *.json
+assets

@@ -124,15 +124,12 @@
     </string-array>
 
     <string-array name="episode_cleanup_values">
-        <item>-3</item>
-        <item>-1</item>
         <item>0</item>
         <item>12</item>
         <item>24</item>
         <item>72</item>
         <item>120</item>
         <item>168</item>
-        <item>-2</item>
     </string-array>
 
     <string-array name="theme_options">
@@ -150,7 +147,9 @@
     </string-array>
 
     <string-array name="nav_drawer_titles">
+        <item>@string/home_fragment_label</item>
         <item>@string/queue_label</item>
+        <item>@string/playlists_label</item>
         <item>@string/episodes_label</item>
         <item>@string/subscriptions_label</item>
         <item>@string/downloads_label</item>
@@ -185,12 +184,6 @@
         <item>2</item>
         <item>4</item>
         <item>3</item>
-    </string-array>
-
-    <string-array name="media_player_options">
-        <item>@string/media_player_exoplayer_recommended</item>
-        <item>@string/media_player_builtin</item>
-        <item>@string/media_player_sonic</item>
     </string-array>
 
     <string-array name="media_player_values">

@@ -35,7 +35,8 @@ public class FeedPreferences implements Serializable {
     private int feedSkipIntro;
     private int feedSkipEnding;
     private boolean showEpisodeNotification;
-    private final Set<String> tags = new HashSet<>();
+    private Set<String> tags = new HashSet<>();
+    private AutoDownload autoDownloadPreferences;
 
     public FeedPreferences(long feedID, boolean autoDownload, AutoDeleteAction autoDeleteAction,
                            VolumeAdaptionSetting volumeAdaptionSetting, String username, String password) {
@@ -61,6 +62,29 @@ public class FeedPreferences implements Serializable {
         this.feedSkipEnding = feedSkipEnding;
         this.showEpisodeNotification = showEpisodeNotification;
         this.tags.addAll(tags);
+    }
+
+    public FeedPreferences(long feedID, boolean autoDownload, boolean keepUpdated,
+                           AutoDeleteAction autoDeleteAction, VolumeAdaptionSetting volumeAdaptionSetting,
+                           String username, String password, @NonNull FeedFilter filter, float feedPlaybackSpeed,
+                           int feedSkipIntro, int feedSkipEnding, boolean showEpisodeNotification,
+                           Set<String> tags, AutoDownload autoDownloadPreferences) {
+        this(
+            feedID,
+            autoDownload,
+            keepUpdated,
+            autoDeleteAction,
+            volumeAdaptionSetting,
+            username,
+            password,
+            filter,
+            feedPlaybackSpeed,
+            feedSkipIntro,
+            feedSkipEnding,
+            showEpisodeNotification,
+            tags
+        );
+        this.autoDownloadPreferences = autoDownloadPreferences;
     }
 
     /**
@@ -200,6 +224,14 @@ public class FeedPreferences implements Serializable {
         return TextUtils.join(TAG_SEPARATOR, tags);
     }
 
+    public void addTag(String tag) {
+        tags.add(tag);
+    }
+
+    public void removeTag(String tag) {
+        tags.remove(tag);
+    }
+
     /**
      * getter for preference if notifications should be display for new episodes.
      * @return true for displaying notifications
@@ -210,5 +242,17 @@ public class FeedPreferences implements Serializable {
 
     public void setShowEpisodeNotification(boolean showEpisodeNotification) {
         this.showEpisodeNotification = showEpisodeNotification;
+    }
+
+    public void addTags(Set<String> tags) {
+        this.tags.addAll(tags);
+    }
+
+    public AutoDownload getAutoDownloadPreferences() {
+        return autoDownloadPreferences;
+    }
+
+    public void setAutoDownloadPreferences(AutoDownload autoDownloadPreferences) {
+        this.autoDownloadPreferences = autoDownloadPreferences;
     }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:numberpicker="http://schemas.android.com/apk/de.danoeh.apexpod"
+        xmlns:search="http://schemas.android.com/apk/com.bytehamster.lib.preferencesearch">
+
+    <SwitchPreferenceCompat
+        android:key="prefEnableAutoDl"
+        android:title="@string/pref_auto_download_title"
+        android:summary="@string/pref_automatic_download_sum"
+        search:summary="@string/pref_automatic_download_sum"
+        android:defaultValue="false"/>
+
+    <SwitchPreferenceCompat
+        android:key="prefEnableAutoDownloadOnBattery"
+        android:title="@string/pref_automatic_download_on_battery_title"
+        android:summary="@string/pref_automatic_download_on_battery_sum"
+        android:defaultValue="true"/>
+
+    <de.danoeh.apexpod.preferences.NumberPickerPreference
+        android:defaultValue="4"
+        numberpicker:minValue="1"
+        numberpicker:maxValue="50"
+        android:key="prefParallelDownloads"
+        android:title="@string/pref_parallel_downloads_title"/>
+
+<!--    <ListPreference-->
+<!--            android:defaultValue="25"-->
+<!--            android:entries="@array/episode_cache_size_entries"-->
+<!--            android:key="prefEpisodeCacheSize"-->
+<!--            android:title="@string/pref_episode_cache_title"-->
+<!--            android:summary="@string/pref_episode_cache_summary"-->
+<!--            android:entryValues="@array/episode_cache_size_values"/>-->
+
+    <SwitchPreferenceCompat
+            android:key="prefEnableAutoDownloadWifiFilter"
+            android:title="@string/pref_autodl_wifi_filter_title"
+            android:summary="@string/pref_autodl_wifi_filter_sum"/>
+</PreferenceScreen>

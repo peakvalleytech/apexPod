@@ -49,17 +49,8 @@ public class AutomaticDownloadAlgorithm {
 
                 List<FeedItem> candidates;
                 final List<FeedItem> queue = DBReader.getQueue();
-                final List<FeedItem> newItems = DBReader.getNewItemsList(0, Integer.MAX_VALUE);
-                candidates = new ArrayList<>(queue.size() + newItems.size());
+                candidates = new ArrayList<>(queue.size());
                 candidates.addAll(queue);
-                for (FeedItem newItem : newItems) {
-                    FeedPreferences feedPrefs = newItem.getFeed().getPreferences();
-                    if (feedPrefs.getAutoDownload()
-                            && !candidates.contains(newItem)
-                            && feedPrefs.getFilter().shouldAutoDownload(newItem)) {
-                        candidates.add(newItem);
-                    }
-                }
 
                 // filter items that are not auto downloadable
                 Iterator<FeedItem> it = candidates.iterator();
@@ -73,8 +64,10 @@ public class AutomaticDownloadAlgorithm {
 
                 int autoDownloadableEpisodes = candidates.size();
                 int downloadedEpisodes = DBReader.getNumberOfDownloadedEpisodes();
-                int deletedEpisodes = UserPreferences.getEpisodeCleanupAlgorithm()
-                        .makeRoomForEpisodes(context, autoDownloadableEpisodes);
+//                int deletedEpisodes = UserPreferences.getEpisodeCleanupAlgorithm()
+//                        .makeRoomForEpisodes(context, autoDownloadableEpisodes);
+                int deletedEpisodes = 0;
+
                 boolean cacheIsUnlimited =
                         UserPreferences.getEpisodeCacheSize() == UserPreferences.getEpisodeCacheSizeUnlimited();
                 int episodeCacheSize = UserPreferences.getEpisodeCacheSize();
@@ -92,11 +85,11 @@ public class AutomaticDownloadAlgorithm {
                 if (itemsToDownload.length > 0) {
                     Log.d(TAG, "Enqueueing " + itemsToDownload.length + " items for download");
 
-                    try {
-                        DownloadRequester.getInstance().downloadMedia(false, context, false, itemsToDownload);
-                    } catch (DownloadRequestException e) {
-                        e.printStackTrace();
-                    }
+//                    try {
+////                        DownloadRequester.getInstance().downloadMedia(false, context, false, itemsToDownload);
+//                    } catch (DownloadRequestException e) {
+//                        e.printStackTrace();
+//                    }
                 }
             }
         };

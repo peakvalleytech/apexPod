@@ -1,9 +1,7 @@
 package de.test.antennapod.service.playback;
 
 import android.content.Context;
-import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.annotation.UiThreadTest;
-import androidx.test.filters.LargeTest;
+
 
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
 import de.danoeh.apexpod.core.widget.WidgetUpdater;
@@ -35,6 +33,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import androidx.test.annotation.UiThreadTest;
+import androidx.test.filters.LargeTest;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 /**
  * Test class for PlaybackServiceTaskManager
@@ -166,7 +168,7 @@ public class PlaybackServiceTaskManagerTest {
         final int NUM_COUNTDOWNS = 2;
         final int TIMEOUT = 3 * PlaybackServiceTaskManager.POSITION_SAVER_WAITING_INTERVAL;
         final CountDownLatch countDownLatch = new CountDownLatch(NUM_COUNTDOWNS);
-        PlaybackServiceTaskManager pstm = new PlaybackServiceTaskManager(c, new PlaybackServiceTaskManager.PSTMCallback() {
+        PlaybackServiceTaskManager pstm = new PlaybackServiceTaskManager(c, new PlaybackServiceTaskManager.TaskManagerCallback() {
             @Override
             public void positionSaverTick() {
                 countDownLatch.countDown();
@@ -227,7 +229,7 @@ public class PlaybackServiceTaskManagerTest {
         final int NUM_COUNTDOWNS = 2;
         final int TIMEOUT = 3 * PlaybackServiceTaskManager.WIDGET_UPDATER_NOTIFICATION_INTERVAL;
         final CountDownLatch countDownLatch = new CountDownLatch(NUM_COUNTDOWNS);
-        PlaybackServiceTaskManager pstm = new PlaybackServiceTaskManager(c, new PlaybackServiceTaskManager.PSTMCallback() {
+        PlaybackServiceTaskManager pstm = new PlaybackServiceTaskManager(c, new PlaybackServiceTaskManager.TaskManagerCallback() {
             @Override
             public void positionSaverTick() {
 
@@ -325,7 +327,7 @@ public class PlaybackServiceTaskManagerTest {
         final long TIME = 2000;
         final long TIMEOUT = 2 * TIME;
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        PlaybackServiceTaskManager pstm = new PlaybackServiceTaskManager(c, new PlaybackServiceTaskManager.PSTMCallback() {
+        PlaybackServiceTaskManager pstm = new PlaybackServiceTaskManager(c, new PlaybackServiceTaskManager.TaskManagerCallback() {
             @Override
             public void positionSaverTick() {
 
@@ -371,7 +373,7 @@ public class PlaybackServiceTaskManagerTest {
         final long TIME = 1000;
         final long TIMEOUT = 2 * TIME;
         final CountDownLatch countDownLatch = new CountDownLatch(1);
-        PlaybackServiceTaskManager pstm = new PlaybackServiceTaskManager(c, new PlaybackServiceTaskManager.PSTMCallback() {
+        PlaybackServiceTaskManager pstm = new PlaybackServiceTaskManager(c, new PlaybackServiceTaskManager.TaskManagerCallback() {
             @Override
             public void positionSaverTick() {
 
@@ -429,7 +431,7 @@ public class PlaybackServiceTaskManagerTest {
         pstm.shutdown();
     }
 
-    private final PlaybackServiceTaskManager.PSTMCallback defaultPSTM = new PlaybackServiceTaskManager.PSTMCallback() {
+    private final PlaybackServiceTaskManager.TaskManagerCallback defaultPSTM = new PlaybackServiceTaskManager.TaskManagerCallback() {
         @Override
         public void positionSaverTick() {
 
