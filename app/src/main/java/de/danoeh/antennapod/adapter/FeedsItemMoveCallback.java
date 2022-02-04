@@ -1,12 +1,9 @@
 package de.danoeh.antennapod.adapter;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import de.danoeh.apexpod.adapter.SubscriptionsRecyclerAdapter;
 import de.danoeh.apexpod.fragment.subscriptions.SubscriptionViewHolder;
 
 public class FeedsItemMoveCallback extends ItemTouchHelper.Callback {

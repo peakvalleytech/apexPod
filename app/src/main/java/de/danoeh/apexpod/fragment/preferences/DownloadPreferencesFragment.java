@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
@@ -86,6 +87,7 @@ public class DownloadPreferencesFragment extends PreferenceFragmentCompat {
 //        findPreference(UserPreferences.PREF_EPISODE_CACHE_SIZE).setEnabled(autoDownload);
         findPreference(UserPreferences.PREF_ENABLE_AUTODL_ON_BATTERY).setEnabled(autoDownload);
         findPreference(UserPreferences.PREF_ENABLE_AUTODL_WIFI_FILTER).setEnabled(autoDownload);
+        findPreference(UserPreferences.PREF_EPISODE_CLEANUP).setEnabled(autoDownload);
         setSelectedNetworksEnabled(autoDownload && UserPreferences.isEnableAutodownloadWifiFilter());
     }
 
@@ -174,7 +176,6 @@ public class DownloadPreferencesFragment extends PreferenceFragmentCompat {
 
     private void setParallelDownloadsText(int downloads) {
     // NOTE: should be moved to stoarge preferences
-    private void buildEpisodeCleanupPreference() {
         final Resources res = getActivity().getResources();
         String s = res.getString(R.string.parallel_downloads, downloads);
         findPreference(UserPreferences.PREF_PARALLEL_DOWNLOADS).setSummary(s);

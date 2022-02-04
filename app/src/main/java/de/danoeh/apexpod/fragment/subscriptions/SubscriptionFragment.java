@@ -168,7 +168,6 @@ public class SubscriptionFragment extends Fragment
             toolbar.getMenu().findItem(COLUMN_CHECKBOX_IDS[i])
                     .setTitle(String.format(Locale.getDefault(), "%d", i + MIN_NUM_COLUMNS));
         }
-        refreshToolbarState();
 
         if (getArguments() != null) {
             displayedFolder = getArguments().getString(ARGUMENT_FOLDER, null);
@@ -246,13 +245,6 @@ public class SubscriptionFragment extends Fragment
         super.onSaveInstanceState(outState);
     }
 
-    private void refreshToolbarState() {
-        int columns = prefs.getInt(PREF_NUM_COLUMNS, getDefaultNumOfColumns());
-        toolbar.getMenu().findItem(COLUMN_CHECKBOX_IDS[columns - MIN_NUM_COLUMNS]).setChecked(true);
-        isUpdatingFeeds = MenuItemUtils.updateRefreshMenuItem(toolbar.getMenu(),
-                R.id.refresh_item, updateRefreshMenuItemChecker);
-    }
-
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         final int itemId = item.getItemId();
@@ -286,7 +278,6 @@ public class SubscriptionFragment extends Fragment
         gridLayoutManager.setSpanCount(columns);
         subscriptionAdapter.notifyDataSetChanged();
         prefs.edit().putInt(PREF_NUM_COLUMNS, columns).apply();
-        refreshToolbarState();
     }
 
     private void setupEmptyView() {
@@ -464,16 +455,6 @@ public class SubscriptionFragment extends Fragment
     public void onUnreadItemsChanged(UnreadItemsUpdateEvent event) {
         loadSubscriptions();
     }
-
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(DownloadEvent event) {
-        Log.d(TAG, "onEventMainThread() called with: " + "event = [" + event + "]");
-        if (event.hasChangedFeedUpdateStatus(isUpdatingFeeds)) {
-            refreshToolbarState();
-        }
-    }
-
-
 
     @Override
     public void onEndSelectMode() {
