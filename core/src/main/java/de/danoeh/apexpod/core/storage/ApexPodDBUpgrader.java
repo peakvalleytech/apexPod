@@ -10,12 +10,13 @@ class ApexPodDBUpgrader {
      */
     static void upgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
         if (oldVersion < 2) {
-            db.execSQL(PodDBAdapter.CREATE_TABLE_PLAYSTATS);
         }
     }
 
     static void downgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
-        // This will occur in very early versions of ApexPod when the version was derived from
-        // last AntennaPod version. In later versions, the version was reset to 1.
+        // This should be called once for earlier versions that used AntennaPod versioning.
+        // In later versions, the version was reset to 1, and should not be called
+        // for these versions
+        db.execSQL(PodDBAdapter.CREATE_TABLE_PLAYSTATS);
     }
 }
