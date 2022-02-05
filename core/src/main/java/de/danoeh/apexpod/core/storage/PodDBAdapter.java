@@ -177,7 +177,7 @@ public class PodDBAdapter {
             + KEY_EPISODE_NOTIFICATION + " INTEGER DEFAULT 0,"
             + KEY_AUTO_DOWNLOAD_CACHE_SIZE + " INTEGER DEFAULT 1,"
             + KEY_AUTO_DOWNLOAD_NEWEST_FIRST + " INTEGER DEFAULT 1,"
-            + KEY_AUTO_DOWNLOAD_INCLUDE_ALL + " INTEGER DEFAULT 0"
+            + KEY_AUTO_DOWNLOAD_INCLUDE_ALL + " INTEGER DEFAULT 0,"
             + KEY_FEED_PRIORITY + " INTEGER DEFAULT 0)";
 
     private static final String CREATE_TABLE_FEED_ITEMS = "CREATE TABLE "
@@ -1166,7 +1166,7 @@ public class PodDBAdapter {
     }
 
     public final Cursor getFeedCursor(final long id) {
-        return db.query(TABLE_NAME_FEEDS, FEED_SEL_STD, KEY_ID + "=" + id, null,
+        return db.query(TABLE_NAME_FEEDS, null, KEY_ID + "=" + id, null,
                 null, null, null);
     }
 

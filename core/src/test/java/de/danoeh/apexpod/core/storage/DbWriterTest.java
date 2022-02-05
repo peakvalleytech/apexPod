@@ -846,10 +846,10 @@ public class DbWriterTest {
     @Test
     public void testSetFeedPreferences() throws InterruptedException, ExecutionException, TimeoutException {
         Feed feed = new Feed();
-        feed.setId(1);
+        feed.setId(0);
         FeedPreferences expectedFeedPrefs =
             new FeedPreferences(
-                1,
+                2,
                 true,
                 true,
                 FeedPreferences.AutoDeleteAction.GLOBAL,
@@ -864,6 +864,7 @@ public class DbWriterTest {
                 new HashSet<>(),
                 new AutoDownload(10, true, true)
             );
+        expectedFeedPrefs.setPriority(5);
         feed.setPreferences(expectedFeedPrefs);
         PodDBAdapter adapter = PodDBAdapter.getInstance();
         adapter.open();
@@ -871,15 +872,22 @@ public class DbWriterTest {
         adapter.close();
         DBWriter.setFeedPreferences(expectedFeedPrefs).get(TIMEOUT, TimeUnit.SECONDS);
         adapter.open();
-        Cursor feedCursor = adapter.getFeedCursor(expectedFeedPrefs.getFeedID());
         FeedPreferences actualFeedPrefs = null;
-        if (feedCursor.moveToNext()) {
-         actualFeedPrefs = FeedPreferencesCursorMapper.convert(feedCursor);
+        try {
+            Cursor feedCursor = adapter.getFeedCursor(expectedFeedPrefs.getFeedID());
+            if (feedCursor.moveToNext()) {
+                actualFeedPrefs = FeedPreferencesCursorMapper.convert(feedCursor);
+            }
+        } catch (Throwable e) {
+            Log.e(TAG, e.getMessage());
         }
+
+
 
         assertEquals(expectedFeedPrefs.getFeedID(), actualFeedPrefs.getFeedID());
         assertEquals(expectedFeedPrefs.getAutoDownload(), actualFeedPrefs.getAutoDownload());
-        assertEquals(expectedFeedPrefs.getFeedPlaybackSpeed(), actualFeedPrefs.getFeedPlaybackSpeed());
+        float delta = 0.09f;
+        assertEquals(expectedFeedPrefs.getFeedPlaybackSpeed(), actualFeedPrefs.getFeedPlaybackSpeed(), delta);
         assertEquals(expectedFeedPrefs.getKeepUpdated(), actualFeedPrefs.getKeepUpdated());
         assertEquals(expectedFeedPrefs.getFeedSkipIntro(), actualFeedPrefs.getFeedSkipIntro());
         assertEquals(expectedFeedPrefs.getFeedSkipEnding(), actualFeedPrefs.getFeedSkipEnding());
@@ -890,9 +898,8 @@ public class DbWriterTest {
                 actualFeedPrefs.getAutoDownloadPreferences().isIncludeAll());
         assertEquals(expectedFeedPrefs.getAutoDownloadPreferences().isNewestFirst(),
                 actualFeedPrefs.getAutoDownloadPreferences().isNewestFirst());
+        assertEquals(expectedFeedPrefs.getPriority(), actualFeedPrefs.getPriority());
         adapter.close();
-
-
     }
 
     private static Feed createTestFeed(int numItems) {
