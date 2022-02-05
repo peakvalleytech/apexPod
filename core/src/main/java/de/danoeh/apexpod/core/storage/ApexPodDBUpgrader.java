@@ -18,5 +18,6 @@ class ApexPodDBUpgrader {
         // In later versions, the version was reset to 1, and should not be called
         // for these versions
         db.execSQL(PodDBAdapter.CREATE_TABLE_PLAYSTATS);
+        db.execSQL("ALTER TABLE " + PodDBAdapter.TABLE_NAME_FEEDS + " ADD COLUMN " + PodDBAdapter.KEY_FEED_PRIORITY + " INTEGER DEFAULT 0");
     }
 }

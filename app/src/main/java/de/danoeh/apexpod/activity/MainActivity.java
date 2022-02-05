@@ -640,7 +640,7 @@ public class MainActivity extends CastEnabledActivity {
         AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
         Integer customKeyCode = null;
 
-        if (onKeyUpListener.onKeyUp(keyCode, event)) {
+        if (onKeyUpListener != null && onKeyUpListener.onKeyUp(keyCode, event)) {
             return true;
         }
         switch (keyCode) {
