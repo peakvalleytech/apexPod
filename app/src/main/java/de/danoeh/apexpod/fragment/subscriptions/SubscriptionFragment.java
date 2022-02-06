@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.util.Pair;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +34,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.joanzapata.iconify.Iconify;
 import com.leinardi.android.speeddial.SpeedDialView;
 
-import de.danoeh.antennapod.adapter.FeedsItemMoveCallback;
+import de.danoeh.antennapod.adapter.DragAndDropItemTouchHelper;
 import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -54,7 +53,6 @@ import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.FeedTagAdapter;
 import de.danoeh.apexpod.adapter.SubscriptionsRecyclerAdapter;
 import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
-import de.danoeh.apexpod.core.event.DownloadEvent;
 import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
@@ -66,7 +64,6 @@ import de.danoeh.apexpod.dialog.FeedSortDialog;
 import de.danoeh.apexpod.dialog.RemoveFeedDialog;
 import de.danoeh.apexpod.dialog.RenameFeedDialog;
 import de.danoeh.apexpod.dialog.SubscriptionsFilterDialog;
-import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import de.danoeh.apexpod.fragment.AddFeedFragment;
 import de.danoeh.apexpod.fragment.SearchFragment;
 import de.danoeh.apexpod.fragment.actions.FeedMultiSelectActionHandler;
@@ -138,17 +135,6 @@ public class SubscriptionFragment extends Fragment
         setRetainInstance(true);
         prefs = requireActivity().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         MainActivity activity = (MainActivity) getActivity();
-        activity.setOnKeyUpListener(new MainActivity.OnKeyUpListener() {
-            @Override
-            public boolean onKeyUp(int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK && subscriptionAdapter.isDragNDropMode()) {
-                    endDragDropMode();
-                    subscriptionAdapter.notifyDataSetChanged();
-                    return true;
-                }
-                return false;
-            }
-        });
     }
 
     @Override
@@ -411,7 +397,7 @@ public class SubscriptionFragment extends Fragment
         } else if (itemId == R.id.reorder) {
             subscriptionAdapter.setDragNDropMode(true);
             ItemTouchHelper.Callback callback =
-                    new FeedsItemMoveCallback(new FeedItemTouchHelper(subscriptionAdapter));
+                    new DragAndDropItemTouchHelper(subscriptionAdapter);
             ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
             itemTouchHelper.attachToRecyclerView(subscriptionRecycler);
 

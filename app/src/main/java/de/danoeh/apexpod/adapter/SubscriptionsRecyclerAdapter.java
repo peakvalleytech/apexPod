@@ -3,44 +3,28 @@ package de.danoeh.apexpod.adapter;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.text.TextUtilsCompat;
-import androidx.core.view.ViewCompat;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.ref.WeakReference;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
-import de.danoeh.antennapod.adapter.FeedsItemMoveCallback;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.core.feed.LocalFeedUpdater;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
-import de.danoeh.apexpod.fragment.FeedItemlistFragment;
-import de.danoeh.apexpod.fragment.subscriptions.SubscriptionFragment;
 import de.danoeh.apexpod.fragment.subscriptions.SubscriptionViewHolder;
 import de.danoeh.apexpod.model.feed.Feed;
-import jp.shts.android.library.TriangleLabelView;
 
 /**
  * Adapter for subscriptions
@@ -191,6 +175,17 @@ public class SubscriptionsRecyclerAdapter
 
     public void swap(int i, int j) {
         Collections.swap(listItems, i, j);
+    }
+
+    /**
+     * Sets the priority of feed changed through drag and drop
+     * @param fromPos
+     * @param toPos
+     */
+    public void swapPriorities(int fromPos, int toPos) {
+        Feed fromFeed = ((NavDrawerData.FeedDrawerItem) listItems.get(fromPos)).feed;
+        Feed toFeed = ((NavDrawerData.FeedDrawerItem) listItems.get(fromPos)).feed;
+
     }
 
     public interface StartDragListener {

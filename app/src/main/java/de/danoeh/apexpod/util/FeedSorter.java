@@ -53,6 +53,14 @@ public class FeedSorter {
                     return 1;
                 }
             };
+        } else if (feedOrder == UserPreferences.FEED_ORDER_PRIORITY) {
+            comparator = (lhs, rhs) -> {
+                NavDrawerData.FeedDrawerItem _lhs = (NavDrawerData.FeedDrawerItem) lhs;
+                NavDrawerData.FeedDrawerItem _rhs = (NavDrawerData.FeedDrawerItem) rhs;
+                long priorityLhs = _lhs.feed.getPreferences().getPriority();
+                long priorityRhs = _rhs.feed.getPreferences().getPriority();
+                return Long.compare(priorityLhs, priorityRhs);
+            };
         } else {
             comparator = (lhs, rhs) -> {
                 NavDrawerData.FeedDrawerItem _lhs = (NavDrawerData.FeedDrawerItem) lhs;

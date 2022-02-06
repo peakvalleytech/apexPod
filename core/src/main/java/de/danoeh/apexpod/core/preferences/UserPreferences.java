@@ -146,6 +146,7 @@ public class UserPreferences {
     public static final int FEED_ORDER_COUNTER = 0;
     public static final int FEED_ORDER_ALPHABETICAL = 1;
     public static final int FEED_ORDER_MOST_PLAYED = 3;
+    public static final int FEED_ORDER_PRIORITY = 4;
     public static final int FEED_COUNTER_SHOW_NEW_UNPLAYED_SUM = 0;
     public static final int FEED_COUNTER_SHOW_NEW = 1;
     public static final int FEED_COUNTER_SHOW_UNPLAYED = 2;
