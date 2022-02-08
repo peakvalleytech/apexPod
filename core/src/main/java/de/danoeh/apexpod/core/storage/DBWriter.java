@@ -880,6 +880,17 @@ public class DBWriter {
         });
     }
 
+    /**
+     * Reorders the priority of a feed by swapping current priority with the priority of another
+     * feed
+     * @param fromFeed
+     * @param toFeed
+     * @return
+     */
+    public static Future<?> swapPriorities(Feed fromFeed, Feed toFeed) {
+        return null;
+    }
+
     private static boolean itemListContains(List<FeedItem> items, long itemId) {
         return indexInItemList(items, itemId) >= 0;
     }
