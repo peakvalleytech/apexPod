@@ -40,7 +40,7 @@ public class FeedParserTask implements Callable<FeedHandlerResult> {
                 VolumeAdaptionSetting.OFF, request.getUsername(), request.getPassword());
         feedPreferences.setPriority(System.currentTimeMillis());
         feed.setPageNr(request.getArguments().getInt(DownloadRequester.REQUEST_ARG_PAGE_NR, 0));
-
+        feed.setPreferences(feedPreferences);
         DownloadError reason = null;
         String reasonDetailed = null;
         FeedHandler feedHandler = new FeedHandler();

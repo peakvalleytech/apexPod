@@ -3,6 +3,7 @@ package de.danoeh.apexpod.adapter;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
+import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
 import de.danoeh.apexpod.fragment.subscriptions.SubscriptionViewHolder;
 import de.danoeh.apexpod.model.feed.Feed;
@@ -183,9 +185,10 @@ public class SubscriptionsRecyclerAdapter
      * @param toPos
      */
     public void swapPriorities(int fromPos, int toPos) {
+        Log.d(TAG, "Swapping priorities: from: " + fromPos + " to: " + toPos);
         Feed fromFeed = ((NavDrawerData.FeedDrawerItem) listItems.get(fromPos)).feed;
-        Feed toFeed = ((NavDrawerData.FeedDrawerItem) listItems.get(fromPos)).feed;
-
+        Feed toFeed = ((NavDrawerData.FeedDrawerItem) listItems.get(toPos)).feed;
+        DBWriter.swapPriorities(fromFeed, toFeed);
     }
 
     public interface StartDragListener {

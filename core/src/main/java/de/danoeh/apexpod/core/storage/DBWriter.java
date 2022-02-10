@@ -882,13 +882,31 @@ public class DBWriter {
 
     /**
      * Reorders the priority of a feed by swapping current priority with the priority of another
-     * feed
+     * feed.
      * @param fromFeed
      * @param toFeed
      * @return
      */
     public static Future<?> swapPriorities(Feed fromFeed, Feed toFeed) {
-        return null;
+        FeedPreferences fromFeedPrefs = fromFeed.getPreferences();
+        FeedPreferences toFeedPrefs = toFeed.getPreferences();
+        return dbExec.submit(() -> {
+            if (fromFeedPrefs != null && toFeedPrefs != null) {
+                long fromFeedPriority = fromFeedPrefs.getPriority();
+                fromFeedPrefs.setPriority(toFeedPrefs.getPriority());
+                toFeedPrefs.setPriority(fromFeedPriority);
+                DBWriter.setFeedPreferences(fromFeedPrefs);
+                DBWriter.setFeedPreferences(toFeedPrefs);
+//                EventBus.getDefault().post(new FeedListUpdateEvent(fromFeedPrefs.getFeedID()));
+//                EventBus.getDefault().post(new FeedListUpdateEvent(toFeedPrefs.getFeedID()));
+            }
+        });
+    }
+
+    public static Future<?> formatPriorities() {
+        return dbExec.submit(() -> {
+
+        });
     }
 
     private static boolean itemListContains(List<FeedItem> items, long itemId) {

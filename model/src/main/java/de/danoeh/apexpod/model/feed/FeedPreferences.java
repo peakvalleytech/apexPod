@@ -37,7 +37,7 @@ public class FeedPreferences implements Serializable {
     private boolean showEpisodeNotification;
     private Set<String> tags = new HashSet<>();
     private AutoDownload autoDownloadPreferences;
-    private long priority = 0;
+    private long priority = System.currentTimeMillis();
     public FeedPreferences(long feedID, boolean autoDownload, AutoDeleteAction autoDeleteAction,
                            VolumeAdaptionSetting volumeAdaptionSetting, String username, String password) {
         this(feedID, autoDownload, true, autoDeleteAction, volumeAdaptionSetting,
@@ -138,6 +138,7 @@ public class FeedPreferences implements Serializable {
             return;
         this.username = other.username;
         this.password = other.password;
+//        this.priority = other.priority;
     }
 
     public long getFeedID() {
