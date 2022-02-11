@@ -80,13 +80,8 @@ public class SubscriptionViewHolder extends RecyclerView.ViewHolder {
                     .withCoverView(imageView)
                     .load();
         }
-        if(!adapter.isDragNDropMode()) {
-            itemView.setOnCreateContextMenuListener(adapter);
-            selectView.setVisibility(View.GONE);
-            dragHandle.setVisibility(View.GONE);
 
-        }
-        else {
+        if(adapter.isDragNDropMode()) {
             itemView.setOnCreateContextMenuListener(null);
             selectView.setVisibility(View.VISIBLE);
             dragHandle.setVisibility(View.VISIBLE);
@@ -97,19 +92,20 @@ public class SubscriptionViewHolder extends RecyclerView.ViewHolder {
                 }
                 return false;
             });
-        }
-
-        if (adapter.inActionMode()) {
+        } else if (adapter.inActionMode()) {
             selectView.setVisibility(View.VISIBLE);
+            selectCheckbox.setVisibility(View.VISIBLE);
             selectCheckbox.setChecked((adapter.isSelected(getBindingAdapterPosition())));
             selectCheckbox.setOnCheckedChangeListener((buttonView, isChecked)
                     -> adapter.setSelected(getBindingAdapterPosition(), isChecked));
             imageView.setAlpha(0.6f);
             count.setVisibility(View.GONE);
         } else {
-            if(!adapter.isDragNDropMode())
+                itemView.setOnCreateContextMenuListener(adapter);
                 selectView.setVisibility(View.GONE);
-            imageView.setAlpha(1.0f);
+                dragHandle.setVisibility(View.GONE);
+                imageView.setAlpha(1.0f);
+                itemView.setOnTouchListener(null);
         }
 
         itemView.setOnLongClickListener(v -> {
