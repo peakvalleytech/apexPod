@@ -368,6 +368,9 @@ public class SubscriptionFragment extends Fragment
                             public void onStart(int actionModeCode) {
                                 if (actionModeCode == SubscriptionsRecyclerAdapter.ACTION_MODE_PRIORITY) {
                                     subscriptionAddButton.setVisibility(View.GONE);
+                                    tagRecycler.setVisibility(View.INVISIBLE);
+                                    expandTagsButton.setVisibility(View.GONE);
+                                    folderChipGroup.setVisibility(View.GONE);
                                 }
                             }
 
@@ -376,14 +379,11 @@ public class SubscriptionFragment extends Fragment
                                 if (actionModeCode == SubscriptionsRecyclerAdapter.ACTION_MODE_PRIORITY) {
                                     endDragDropMode();
                                     subscriptionAddButton.setVisibility(View.VISIBLE);
+                                    tagRecycler.setVisibility(View.VISIBLE);
+                                    expandTagsButton.setVisibility(View.VISIBLE);
                                 }
                             }
                         });
-                        // End drag and drop state
-                        listItems = result;
-                        endDragDropMode();
-                        subscriptionAdapter.setItems(result);
-                        subscriptionAdapter.notifyDataSetChanged();
                         emptyView.updateVisibility();
                         progressBar.setVisibility(View.GONE); // Keep hidden to avoid flickering while refreshing
                     }, error -> {
