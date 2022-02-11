@@ -84,18 +84,19 @@ public class SubscriptionViewHolder extends RecyclerView.ViewHolder {
             itemView.setOnCreateContextMenuListener(adapter);
             selectView.setVisibility(View.GONE);
             dragHandle.setVisibility(View.GONE);
-            dragHandle.setOnTouchListener((v, event) -> {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    adapter.requestDrag(this);
-                }
-                return false;
-            });
+
         }
         else {
             itemView.setOnCreateContextMenuListener(null);
             selectView.setVisibility(View.VISIBLE);
             dragHandle.setVisibility(View.VISIBLE);
             selectCheckbox.setVisibility(View.GONE);
+            itemView.setOnTouchListener((v, event) -> {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    adapter.requestDrag(this);
+                }
+                return false;
+            });
         }
 
         if (adapter.inActionMode()) {
