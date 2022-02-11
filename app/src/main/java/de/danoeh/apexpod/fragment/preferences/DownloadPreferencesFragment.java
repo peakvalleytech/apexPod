@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.preference.CheckBoxPreference;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
@@ -175,6 +176,7 @@ public class DownloadPreferencesFragment extends PreferenceFragmentCompat {
     }
 
     private void setParallelDownloadsText(int downloads) {
+    // NOTE: should be moved to stoarge preferences
         final Resources res = getActivity().getResources();
         String s = res.getString(R.string.parallel_downloads, downloads);
         findPreference(UserPreferences.PREF_PARALLEL_DOWNLOADS).setSummary(s);
@@ -187,5 +189,4 @@ public class DownloadPreferencesFragment extends PreferenceFragmentCompat {
             }
         }
     }
-
 }

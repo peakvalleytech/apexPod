@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.core.service.playback;
+package de.danoeh.apexpod.core.service.playback.player;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -12,6 +12,7 @@ import android.view.SurfaceHolder;
 import java.util.List;
 import java.util.concurrent.Future;
 
+import de.danoeh.apexpod.core.service.playback.PlayerStatus;
 import de.danoeh.apexpod.model.playback.MediaType;
 import de.danoeh.apexpod.model.playback.Playable;
 
@@ -25,13 +26,13 @@ import de.danoeh.apexpod.model.playback.Playable;
  * Abstract class that allows for different implementations of the PlaybackServiceMediaPlayer for local
  * and remote (cast devices) playback.
  */
-public abstract class PlaybackServiceMediaPlayer {
+public abstract class BaseMediaPlayer {
     private static final String TAG = "PlaybackSvcMediaPlayer";
 
     /**
      * Return value of some PSMP methods if the method call failed.
      */
-    static final int INVALID_TIME = -1;
+    public static final int INVALID_TIME = -1;
 
     private volatile PlayerStatus oldPlayerStatus;
     volatile PlayerStatus playerStatus;
@@ -44,8 +45,8 @@ public abstract class PlaybackServiceMediaPlayer {
     final PSMPCallback callback;
     final Context context;
 
-    PlaybackServiceMediaPlayer(@NonNull Context context,
-                               @NonNull PSMPCallback callback){
+    BaseMediaPlayer(@NonNull Context context,
+                    @NonNull PSMPCallback callback){
         this.context = context;
         this.callback = callback;
 

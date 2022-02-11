@@ -49,6 +49,7 @@ public class ItunesTopListLoader {
                 if (COUNTRY_CODE_UNSET.equals(country)) {
                     feedString = getTopListFeed(client, "US", limit);
                 } else {
+                    Log.e(TAG, e.getMessage());
                     emitter.onError(e);
                     return;
                 }

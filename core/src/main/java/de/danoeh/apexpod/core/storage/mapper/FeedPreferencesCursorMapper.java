@@ -39,7 +39,7 @@ public abstract class FeedPreferencesCursorMapper {
         int indexAutoDownloadCacheSize = cursor.getColumnIndex(PodDBAdapter.KEY_AUTO_DOWNLOAD_CACHE_SIZE);
         int indexAutoDownloadNewestFirst = cursor.getColumnIndex(PodDBAdapter.KEY_AUTO_DOWNLOAD_NEWEST_FIRST);
         int indexAutoDownloadIncludeAll = cursor.getColumnIndex(PodDBAdapter.KEY_AUTO_DOWNLOAD_INCLUDE_ALL);
-
+        int indexFeedPriority = cursor.getColumnIndex(PodDBAdapter.KEY_FEED_PRIORITY);
         long feedId = cursor.getLong(indexId);
         boolean autoDownload = cursor.getInt(indexAutoDownload) > 0;
         boolean autoRefresh = cursor.getInt(indexAutoRefresh) > 0;
@@ -64,8 +64,8 @@ public abstract class FeedPreferencesCursorMapper {
                 cursor.getInt(indexAutoDownloadCacheSize),
                 cursor.getInt(indexAutoDownloadNewestFirst) == 1,
                         cursor.getInt(indexAutoDownloadIncludeAll) == 1);
-
-        return new FeedPreferences(feedId,
+        long feedPriority = cursor.getLong(indexFeedPriority);
+        FeedPreferences feedPreferences = new FeedPreferences(feedId,
                 autoDownload,
                 autoRefresh,
                 autoDeleteAction,
@@ -80,5 +80,7 @@ public abstract class FeedPreferencesCursorMapper {
                 new HashSet<>(Arrays.asList(tagsString.split(FeedPreferences.TAG_SEPARATOR))),
                 autoDownloadPrefs
         );
+        feedPreferences.setPriority(feedPriority);
+        return feedPreferences;
     }
 }

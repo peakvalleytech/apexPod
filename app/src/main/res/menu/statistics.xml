@@ -8,11 +8,4 @@
         custom:showAsAction="never"
         />
 
-    <item
-        android:id="@+id/statistics_mode"
-        android:icon="@drawable/ic_filter"
-        android:title="@string/statistics_mode"
-        custom:showAsAction="never">
-    </item>
-
 </menu>

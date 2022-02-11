@@ -3,47 +3,100 @@ package de.danoeh.apexpod.adapter;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.text.TextUtilsCompat;
-import androidx.core.view.ViewCompat;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.lang.ref.WeakReference;
-import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.core.feed.LocalFeedUpdater;
+import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
-import de.danoeh.apexpod.fragment.FeedItemlistFragment;
-import de.danoeh.apexpod.fragment.SubscriptionFragment;
+import de.danoeh.apexpod.fragment.subscriptions.SubscriptionViewHolder;
 import de.danoeh.apexpod.model.feed.Feed;
-import jp.shts.android.library.TriangleLabelView;
+import de.danoeh.apexpod.model.feed.FeedPreferences;
 
 /**
  * Adapter for subscriptions
  */
-public class SubscriptionsRecyclerAdapter extends SelectableAdapter<SubscriptionsRecyclerAdapter.SubscriptionViewHolder>
+public class SubscriptionsRecyclerAdapter
+        extends SelectableAdapter<SubscriptionViewHolder>
         implements View.OnCreateContextMenuListener {
+    private static final String TAG = "SubscriptionsRecyclerAdapter";
     private final WeakReference<MainActivity> mainActivityRef;
     private List<NavDrawerData.DrawerItem> listItems;
     private Feed selectedFeed = null;
     int longPressedPosition = 0; // used to init actionMode
+    ActionMode setPriorityActionMode;
+    private StartDragListener startDragListener;
+    private ActionModeCallback actionModeCallback;
+
+    public static final int ACTION_MODE_PRIORITY = 0;
+    public void startPriorityActionMode() {
+        if(setPriorityActionMode == null)
+           setPriorityActionMode = mainActivityRef.get().startActionMode(new ActionMode.Callback() {
+                @Override
+                public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                    actionModeCallback.onStart(ACTION_MODE_PRIORITY);
+                    return true;
+                }
+
+                @Override
+                public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                    mode.setTitle("Set Priority");
+                    return false;
+                }
+
+                @Override
+                public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                    return false;
+                }
+
+                @Override
+                public void onDestroyActionMode(ActionMode mode) {
+                    long priorityCounter = 1;
+                    for (NavDrawerData.DrawerItem item : listItems) {
+                        if (item.type == NavDrawerData.DrawerItem.Type.FEED) {
+                            Feed feed = ((NavDrawerData.FeedDrawerItem)item).feed;
+                            FeedPreferences feedPreferences = feed.getPreferences();
+                            feedPreferences.setPriority(priorityCounter);
+                            DBWriter.setFeedPreferences(feedPreferences, false);
+                            priorityCounter++;
+                        }
+                    }
+                    notifyDataSetChanged();
+                    actionModeCallback.onEnd(ACTION_MODE_PRIORITY);
+                }
+            });
+        else {
+            if (setPriorityActionMode != null) {
+                setPriorityActionMode.finish();
+                setPriorityActionMode = null;
+            }
+        }
+    }
+
+    public void endPriorityActionMode() {
+        if (setPriorityActionMode != null) {
+            setPriorityActionMode.finish();
+            setPriorityActionMode = null;
+        }
+    }
+    public boolean isDragNDropMode() {
+        return setPriorityActionMode != null;
+    }
 
     public SubscriptionsRecyclerAdapter(MainActivity mainActivity) {
         super(mainActivity);
@@ -64,57 +117,13 @@ public class SubscriptionsRecyclerAdapter extends SelectableAdapter<Subscription
     @Override
     public SubscriptionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(mainActivityRef.get()).inflate(R.layout.subscription_item, parent, false);
-        return new SubscriptionViewHolder(itemView);
+        return new SubscriptionViewHolder(this.mainActivityRef, itemView, isDragNDropMode(), inActionMode());
     }
 
     @Override
     public void onBindViewHolder(@NonNull SubscriptionViewHolder holder, int position) {
         NavDrawerData.DrawerItem drawerItem = listItems.get(position);
-        boolean isFeed = drawerItem.type == NavDrawerData.DrawerItem.Type.FEED;
         holder.bind(drawerItem);
-        holder.itemView.setOnCreateContextMenuListener(this);
-        if (inActionMode()) {
-            if (isFeed) {
-                holder.selectCheckbox.setVisibility(View.VISIBLE);
-                holder.selectView.setVisibility(View.VISIBLE);
-            }
-            holder.selectCheckbox.setChecked((isSelected(position)));
-            holder.selectCheckbox.setOnCheckedChangeListener((buttonView, isChecked)
-                    -> setSelected(holder.getBindingAdapterPosition(), isChecked));
-            holder.imageView.setAlpha(0.6f);
-            holder.count.setVisibility(View.GONE);
-        } else {
-            holder.selectView.setVisibility(View.GONE);
-            holder.imageView.setAlpha(1.0f);
-        }
-
-        holder.itemView.setOnLongClickListener(v -> {
-            if (!inActionMode()) {
-                if (isFeed) {
-                    selectedFeed = ((NavDrawerData.FeedDrawerItem) getItem(holder.getBindingAdapterPosition())).feed;
-                    longPressedPosition = holder.getBindingAdapterPosition();
-                } else {
-                    selectedFeed = null;
-                }
-            }
-            return false;
-        });
-
-        holder.itemView.setOnClickListener(v -> {
-            if (isFeed) {
-                if (inActionMode()) {
-                    holder.selectCheckbox.setChecked(!isSelected(holder.getBindingAdapterPosition()));
-                } else {
-                    Fragment fragment = FeedItemlistFragment
-                            .newInstance(((NavDrawerData.FeedDrawerItem) drawerItem).feed.getId());
-                    mainActivityRef.get().loadChildFragment(fragment);
-                }
-            } else if (!inActionMode()) {
-                Fragment fragment = SubscriptionFragment.newInstance(drawerItem.getTitle());
-                mainActivityRef.get().loadChildFragment(fragment);
-            }
-        });
-
     }
 
     @Override
@@ -172,59 +181,24 @@ public class SubscriptionsRecyclerAdapter extends SelectableAdapter<Subscription
         }
     }
 
-    public class SubscriptionViewHolder extends RecyclerView.ViewHolder {
-        private final TextView feedTitle;
-        private final ImageView imageView;
-        private final TriangleLabelView count;
-        private final FrameLayout selectView;
-        private final CheckBox selectCheckbox;
-
-        public SubscriptionViewHolder(@NonNull View itemView) {
-            super(itemView);
-            feedTitle = itemView.findViewById(R.id.txtvTitle);
-            imageView = itemView.findViewById(R.id.imgvCover);
-            count = itemView.findViewById(R.id.triangleCountView);
-            selectView = itemView.findViewById(R.id.selectView);
-            selectCheckbox = itemView.findViewById(R.id.selectCheckBox);
-        }
-
-        public void bind(NavDrawerData.DrawerItem drawerItem) {
-            feedTitle.setText(drawerItem.getTitle());
-            imageView.setContentDescription(drawerItem.getTitle());
-            feedTitle.setVisibility(View.VISIBLE);
-            if (TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault())
-                    == ViewCompat.LAYOUT_DIRECTION_RTL) {
-                count.setCorner(TriangleLabelView.Corner.TOP_LEFT);
-            }
-
-            if (drawerItem.getCounter() > 0) {
-                count.setPrimaryText(NumberFormat.getInstance().format(drawerItem.getCounter()));
-                count.setVisibility(View.VISIBLE);
-            } else {
-                count.setVisibility(View.GONE);
-            }
-
-            if (drawerItem.type == NavDrawerData.DrawerItem.Type.FEED) {
-                Feed feed = ((NavDrawerData.FeedDrawerItem) drawerItem).feed;
-                boolean textAndImageCombind = feed.isLocalFeed()
-                        && LocalFeedUpdater.getDefaultIconUrl(itemView.getContext()).equals(feed.getImageUrl());
-                new CoverLoader(mainActivityRef.get())
-                        .withUri(feed.getImageUrl())
-                        .withPlaceholderView(feedTitle, textAndImageCombind)
-                        .withCoverView(imageView)
-                        .load();
-            } else {
-                new CoverLoader(mainActivityRef.get())
-                        .withResource(R.drawable.ic_tag)
-                        .withPlaceholderView(feedTitle, true)
-                        .withCoverView(imageView)
-                        .load();
-            }
-        }
-    }
-
     public static float convertDpToPixel(Context context, float dp) {
         return dp * context.getResources().getDisplayMetrics().density;
+    }
+
+    public void setStartDragListener(StartDragListener startDragListener) {
+        this.startDragListener = startDragListener;
+    }
+
+    public void requestDrag(SubscriptionViewHolder holder) {
+        startDragListener.requestDrag(holder);
+    }
+
+    public void swap(int i, int j) {
+        Collections.swap(listItems, i, j);
+    }
+
+    public interface StartDragListener {
+        void requestDrag(RecyclerView.ViewHolder viewHolder);
     }
 
     public static class GridDividerItemDecorator extends RecyclerView.ItemDecoration {
@@ -243,5 +217,18 @@ public class SubscriptionsRecyclerAdapter extends SelectableAdapter<Subscription
             int insetOffset = (int) convertDpToPixel(context, 1f);
             outRect.set(insetOffset, insetOffset, insetOffset, insetOffset);
         }
+    }
+
+    public void showContextMenu(int longPressedPosition) {
+        this.selectedFeed =((NavDrawerData.FeedDrawerItem) getItem(longPressedPosition)).feed;
+        this.longPressedPosition = longPressedPosition;
+    }
+
+    public ActionModeCallback getActionModeCallback() {
+        return actionModeCallback;
+    }
+
+    public void setActionModeCallback(ActionModeCallback actionModeCallback) {
+        this.actionModeCallback = actionModeCallback;
     }
 }

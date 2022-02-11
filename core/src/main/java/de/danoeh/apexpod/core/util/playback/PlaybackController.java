@@ -21,7 +21,7 @@ import de.danoeh.apexpod.core.feed.util.PlaybackSpeedUtils;
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.service.playback.PlaybackService;
-import de.danoeh.apexpod.core.service.playback.PlaybackServiceMediaPlayer;
+import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
 import de.danoeh.apexpod.core.service.playback.PlayerStatus;
 import de.danoeh.apexpod.model.playback.Playable;
 import org.greenrobot.eventbus.EventBus;
@@ -182,7 +182,7 @@ public abstract class PlaybackController {
         public void onReceive(Context context, Intent intent) {
             Log.d(TAG, "Received statusUpdate Intent.");
             if (playbackService != null) {
-                PlaybackServiceMediaPlayer.PSMPInfo info = playbackService.getPSMPInfo();
+                BaseMediaPlayer.PSMPInfo info = playbackService.getPSMPInfo();
                 status = info.playerStatus;
                 media = info.playable;
                 handleStatus();
@@ -338,7 +338,7 @@ public abstract class PlaybackController {
     private void queryService() {
         Log.d(TAG, "Querying service info");
         if (playbackService != null) {
-            PlaybackServiceMediaPlayer.PSMPInfo info = playbackService.getPSMPInfo();
+            BaseMediaPlayer.PSMPInfo info = playbackService.getPSMPInfo();
             status = info.playerStatus;
             media = info.playable;
 

@@ -323,5 +323,4 @@ class DBUpgrader {
                     + " ADD COLUMN " + PodDBAdapter.KEY_FEED_TAGS + " TEXT;");
         }
     }
-
 }
