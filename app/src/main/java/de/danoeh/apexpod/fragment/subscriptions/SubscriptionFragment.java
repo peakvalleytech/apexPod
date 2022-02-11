@@ -122,7 +122,7 @@ public class SubscriptionFragment extends Fragment
     private RecyclerView tagRecycler;
     private FeedTagAdapter feedTagAdapter;
     private ChipGroup folderChipGroup;
-
+    private ImageButton expandTagsButton;
     public static SubscriptionFragment newInstance(String folderTitle) {
         SubscriptionFragment fragment = new SubscriptionFragment();
         Bundle args = new Bundle();
@@ -205,7 +205,7 @@ public class SubscriptionFragment extends Fragment
             return true;
         });
 
-        ImageButton expandTagsButton = root.findViewById(R.id.expandTagsButton);
+        expandTagsButton = root.findViewById(R.id.expandTagsButton);
         expandTagsButton.setOnClickListener(v -> {
             if (folderChipGroup.getVisibility() == View.GONE) {
                 folderChipGroup.setVisibility(View.VISIBLE);
@@ -336,6 +336,7 @@ public class SubscriptionFragment extends Fragment
                             // We have fewer items. This can result in items being selected that are no longer visible.
                             subscriptionAdapter.endSelectMode();
                         }
+                        listItems = result;
                         Pair<List<NavDrawerData.DrawerItem>,
                                 List<NavDrawerData.TagDrawerItem>> feedsAndTags =
                                 extractFeedsAndTags(result);
@@ -417,7 +418,17 @@ public class SubscriptionFragment extends Fragment
             List<String> entryValues =
                     Arrays.asList(getContext().getResources().getStringArray(R.array.nav_drawer_feed_order_values));
             UserPreferences.setFeedOrder(entryValues.get(UserPreferences.FEED_ORDER_PRIORITY));
-            subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
+            clearTagFilterIds();
+            Pair<List<NavDrawerData.DrawerItem>,
+                    List<NavDrawerData.TagDrawerItem>> feedsAndTags =
+                    extractFeedsAndTags(listItems);
+            tagFilteredFeeds = feedsAndTags.first;
+            List<NavDrawerData.TagDrawerItem> tags = feedsAndTags.second;
+            initTagViews(tags);
+            if (folderChipGroup.getVisibility() == View.VISIBLE) {
+                expandTagsButton.callOnClick();
+            }
+            subscriptionAdapter.setItems(tagFilteredFeeds);
             //Update subscriptions
             subscriptionAdapter.startPriorityActionMode();
             ItemTouchHelper.Callback callback =
