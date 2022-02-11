@@ -368,9 +368,7 @@ public class SubscriptionFragment extends Fragment
                             public void onStart(int actionModeCode) {
                                 if (actionModeCode == SubscriptionsRecyclerAdapter.ACTION_MODE_PRIORITY) {
                                     subscriptionAddButton.setVisibility(View.GONE);
-                                    tagRecycler.setVisibility(View.INVISIBLE);
-                                    expandTagsButton.setVisibility(View.GONE);
-                                    folderChipGroup.setVisibility(View.GONE);
+                                    showTagBar(false);
                                 }
                             }
 
@@ -379,8 +377,7 @@ public class SubscriptionFragment extends Fragment
                                 if (actionModeCode == SubscriptionsRecyclerAdapter.ACTION_MODE_PRIORITY) {
                                     endDragDropMode();
                                     subscriptionAddButton.setVisibility(View.VISIBLE);
-                                    tagRecycler.setVisibility(View.VISIBLE);
-                                    expandTagsButton.setVisibility(View.VISIBLE);
+                                    showTagBar(true);
                                 }
                             }
                         });
@@ -399,7 +396,11 @@ public class SubscriptionFragment extends Fragment
             feedsFilteredMsg.setVisibility(View.GONE);
         }
     }
-
+    private void showTagBar(boolean show) {
+        tagRecycler.setVisibility(show ? View.VISIBLE : View.INVISIBLE );
+        expandTagsButton.setVisibility(show ? View.VISIBLE : View.GONE);
+        folderChipGroup.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
     private int getDefaultNumOfColumns() {
         return getResources().getInteger(R.integer.subscriptions_default_num_of_columns);
     }
@@ -507,10 +508,12 @@ public class SubscriptionFragment extends Fragment
         speedDialView.close();
         speedDialView.setVisibility(View.GONE);
         subscriptionAdapter.setItems(tagFilteredFeeds);
+        showTagBar(true);
     }
 
     @Override
     public void onStartSelectMode() {
+        showTagBar(false);
         List<NavDrawerData.DrawerItem> feedsOnly = new ArrayList<>();
         for (NavDrawerData.DrawerItem item : tagFilteredFeeds) {
             if (item.type == NavDrawerData.DrawerItem.Type.FEED) {

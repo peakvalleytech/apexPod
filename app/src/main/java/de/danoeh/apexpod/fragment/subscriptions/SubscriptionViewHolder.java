@@ -95,6 +95,7 @@ public class SubscriptionViewHolder extends RecyclerView.ViewHolder {
         } else if (adapter.inActionMode()) {
             selectView.setVisibility(View.VISIBLE);
             selectCheckbox.setVisibility(View.VISIBLE);
+            dragHandle.setVisibility(View.GONE);
             selectCheckbox.setChecked((adapter.isSelected(getBindingAdapterPosition())));
             selectCheckbox.setOnCheckedChangeListener((buttonView, isChecked)
                     -> adapter.setSelected(getBindingAdapterPosition(), isChecked));
