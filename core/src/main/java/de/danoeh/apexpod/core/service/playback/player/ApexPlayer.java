@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.core.service.playback;
+package de.danoeh.apexpod.core.service.playback.player;
 
 import android.content.Context;
 import android.net.Uri;
@@ -45,7 +45,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class ExoPlayerWrapper implements IPlayer {
+public class ApexPlayer implements IPlayer {
     private static final String TAG = "ExoPlayerWrapper";
     public static final int ERROR_CODE_OFFSET = 1000;
     private final Context context;
@@ -60,7 +60,7 @@ public class ExoPlayerWrapper implements IPlayer {
     private MediaPlayer.OnInfoListener infoListener;
     private DefaultTrackSelector trackSelector;
 
-    ExoPlayerWrapper(Context context) {
+    ApexPlayer(Context context) {
         this.context = context;
         createPlayer();
         playbackParameters = exoPlayer.getPlaybackParameters();
@@ -131,7 +131,7 @@ public class ExoPlayerWrapper implements IPlayer {
     @Override
     public int getDuration() {
         if (exoPlayer.getDuration() == C.TIME_UNSET) {
-            return PlaybackServiceMediaPlayer.INVALID_TIME;
+            return BaseMediaPlayer.INVALID_TIME;
         }
         return (int) exoPlayer.getDuration();
     }

@@ -51,7 +51,7 @@
     <string name="statistics_mode_count_all">Sum up all episodes marked as played</string>
     <string name="statistics_speed_not_counted">Notice: Playback speed is never taken into account.</string>
     <string name="statistics_reset_data">Reset statistics data</string>
-    <string name="statistics_reset_data_msg">This will erase the history of duration played for all episodes. Are you sure you want to proceed?</string>
+    <string name="statistics_reset_data_msg">This will erase listening statistics for all episodes. Play history will not be affected. Are you sure you want to proceed?</string>
     <string name="statistics_counting_since">Since %s,\nyou played</string>
 
     <!-- Download Statistics fragment -->
@@ -858,6 +858,8 @@
     <string name="home_label">Featured</string>
     <string name="pref_auto_download_title">Automatic Download</string>
     <string name="pref_automatic_download_sum">Enable automatic download of episodes</string>
+    <string name="speed_adjusted_label">Speed adjusted time</string>
+    <string name="priority">Priority</string>
     <string name="delete_played">Delete Played</string>
     <string name="filter_by_podcasts">Filter by Podcasts</string>
 </resources>

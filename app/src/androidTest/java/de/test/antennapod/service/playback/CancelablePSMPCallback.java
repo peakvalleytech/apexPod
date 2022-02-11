@@ -2,15 +2,15 @@ package de.test.antennapod.service.playback;
 
 import androidx.annotation.NonNull;
 import de.danoeh.apexpod.model.playback.MediaType;
-import de.danoeh.apexpod.core.service.playback.PlaybackServiceMediaPlayer;
+import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
 import de.danoeh.apexpod.model.playback.Playable;
 
-public class CancelablePSMPCallback implements PlaybackServiceMediaPlayer.PSMPCallback {
+public class CancelablePSMPCallback implements BaseMediaPlayer.PSMPCallback {
 
-    private final PlaybackServiceMediaPlayer.PSMPCallback originalCallback;
+    private final BaseMediaPlayer.PSMPCallback originalCallback;
     private boolean isCancelled = false;
 
-    public CancelablePSMPCallback(PlaybackServiceMediaPlayer.PSMPCallback originalCallback) {
+    public CancelablePSMPCallback(BaseMediaPlayer.PSMPCallback originalCallback) {
         this.originalCallback = originalCallback;
     }
 
@@ -19,7 +19,7 @@ public class CancelablePSMPCallback implements PlaybackServiceMediaPlayer.PSMPCa
     }
 
     @Override
-    public void statusChanged(PlaybackServiceMediaPlayer.PSMPInfo newInfo) {
+    public void statusChanged(BaseMediaPlayer.PSMPInfo newInfo) {
         if (isCancelled) {
             return;
         }

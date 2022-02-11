@@ -1,5 +1,6 @@
 package de.danoeh.apexpod.core.util;
 
+import de.danoeh.apexpod.model.feed.FeedPreferences;
 import de.danoeh.apexpod.model.feed.SortOrder;
 import org.junit.Test;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
+import de.danoeh.apexpod.model.feed.VolumeAdaptionSetting;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -156,6 +158,28 @@ public class FeedItemPermutorsTest {
         assertTrue(checkIdOrder(itemList, 2, 1, 3)); // after sorting
     }
 
+    @Test
+    public void testPermutorForRule_FEED_PRIORITY() {
+        Permutor<FeedItem> permutor = FeedItemPermutors.getPermutor(SortOrder.FEED_PRIORITY);
+
+        List<FeedItem> itemList = getTestList();
+        FeedPreferences item1Pref =
+                new FeedPreferences(1, false, FeedPreferences.AutoDeleteAction.GLOBAL, VolumeAdaptionSetting.OFF, null, null);
+        item1Pref.setPriority(2);
+
+        FeedPreferences item2Pref =
+                new FeedPreferences(2, false, FeedPreferences.AutoDeleteAction.GLOBAL, VolumeAdaptionSetting.OFF, null, null);
+        item2Pref.setPriority(3);
+        FeedPreferences item3Pref =
+                new FeedPreferences(3, false, FeedPreferences.AutoDeleteAction.GLOBAL, VolumeAdaptionSetting.OFF, null, null);
+        item3Pref.setPriority(1);
+        itemList.get(0).getFeed().setPreferences(item1Pref); // item 1
+        itemList.get(1).getFeed().setPreferences(item3Pref); // item 3
+        itemList.get(2).getFeed().setPreferences(item2Pref); // item 2
+        assertTrue(checkIdOrder(itemList, 1, 3, 2)); // before sorting
+        permutor.reorder(itemList);
+        assertTrue(checkIdOrder(itemList, 3, 1, 2)); // after sorting
+    }
     /**
      * Generates a list with test data.
      */

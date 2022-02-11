@@ -35,6 +35,7 @@ import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.service.download.DownloadStatus;
 import de.danoeh.apexpod.core.service.playback.PlaybackService;
+import de.danoeh.apexpod.core.storage.database.PlayStatDao;
 import de.danoeh.apexpod.core.sync.queue.SynchronizationQueueSink;
 import de.danoeh.apexpod.core.util.FeedItemPermutors;
 import de.danoeh.apexpod.core.util.IntentUtils;
@@ -879,6 +880,22 @@ public class DBWriter {
         });
     }
 
+    /**
+     * Saves a FeedPreferences object in the database. The Feed ID of the FeedPreferences-object MUST NOT be 0.
+     *
+     * @param preferences The FeedPreferences object.
+     */
+    public static Future<?> setFeedPreferences(final FeedPreferences preferences, boolean shouldBroadcast) {
+        return dbExec.submit(() -> {
+            PodDBAdapter adapter = PodDBAdapter.getInstance();
+            adapter.open();
+            adapter.setFeedPreferences(preferences);
+            adapter.close();
+            if (shouldBroadcast)
+                EventBus.getDefault().post(new FeedListUpdateEvent(preferences.getFeedID()));
+        });
+    }
+
     private static boolean itemListContains(List<FeedItem> items, long itemId) {
         return indexInItemList(items, itemId) >= 0;
     }
@@ -1007,10 +1024,8 @@ public class DBWriter {
     @NonNull
     public static Future<?> resetStatistics() {
         return dbExec.submit(() -> {
-            PodDBAdapter adapter = PodDBAdapter.getInstance();
-            adapter.open();
-            adapter.resetAllMediaPlayedDuration();
-            adapter.close();
+            PlayStatDao playStatDao = new PlayStatDao();
+            playStatDao.deleteAllPlayStats();
         });
     }
 }

@@ -321,6 +321,9 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
         } else if (itemId == R.id.queue_sort_feed_title_desc) {
             setSortOrder(SortOrder.FEED_TITLE_Z_A);
             return true;
+        } else if (itemId == R.id.queue_sort_priority) {
+            setSortOrder(SortOrder.FEED_PRIORITY);
+            return true;
         } else if (itemId == R.id.queue_sort_random) {
             setSortOrder(SortOrder.RANDOM);
             return true;

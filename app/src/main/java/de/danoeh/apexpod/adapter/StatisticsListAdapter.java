@@ -15,6 +15,8 @@ import com.bumptech.glide.request.RequestOptions;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.glide.ApGlideSettings;
 import de.danoeh.apexpod.core.storage.StatisticsItem;
+import de.danoeh.apexpod.model.stats.FeedPlayStats;
+import de.danoeh.apexpod.model.stats.FeedPlayStatsItem;
 import de.danoeh.apexpod.view.PieChartView;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public abstract class StatisticsListAdapter extends RecyclerView.Adapter<Recycle
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_FEED = 1;
     final Context context;
-    private List<StatisticsItem> statisticsData;
+    private FeedPlayStats statisticsData;
     PieChartView.PieChartData pieChartData;
 
     StatisticsListAdapter(Context context) {
@@ -51,6 +53,12 @@ public abstract class StatisticsListAdapter extends RecyclerView.Adapter<Recycle
             View view = inflater.inflate(R.layout.statistics_listitem_total, parent, false);
             TextView totalText = view.findViewById(R.id.total_description);
             totalText.setText(getHeaderCaption());
+            TextView subheaderLabel = view.findViewById(R.id.total_speed_adjusted_time_label);
+            String subHeaderCaption = getSubheaderCaption();
+            if (subHeaderCaption.isEmpty()) {
+                subheaderLabel.setVisibility(View.GONE);
+            }
+            subheaderLabel.setText(getSubheaderCaption());
             return new HeaderHolder(view);
         }
         return new StatisticsHolder(inflater.inflate(R.layout.statistics_listitem, parent, false));
@@ -62,11 +70,16 @@ public abstract class StatisticsListAdapter extends RecyclerView.Adapter<Recycle
             HeaderHolder holder = (HeaderHolder) h;
             holder.pieChart.setData(pieChartData);
             holder.totalTime.setText(getHeaderValue());
+            if (getSubheaderValue().isEmpty()) {
+                holder.speedAdjustedTimeValue.setVisibility(View.GONE);
+            }
+            holder.speedAdjustedTimeValue.setText(getSubheaderValue());
         } else {
             StatisticsHolder holder = (StatisticsHolder) h;
-            StatisticsItem statsItem = statisticsData.get(position - 1);
+            FeedPlayStatsItem statsItem = statisticsData.getItems().get(position - 1);
+
             Glide.with(context)
-                    .load(statsItem.feed.getImageUrl())
+                    .load(statsItem.getFeed().getImageUrl())
                     .apply(new RequestOptions()
                             .placeholder(R.color.light_gray)
                             .error(R.color.light_gray)
@@ -75,26 +88,29 @@ public abstract class StatisticsListAdapter extends RecyclerView.Adapter<Recycle
                             .dontAnimate())
                     .into(holder.image);
 
-            holder.title.setText(statsItem.feed.getTitle());
+            holder.title.setText(statsItem.getFeed().getTitle());
             holder.chip.setTextColor(pieChartData.getColorOfItem(position - 1));
             onBindFeedViewHolder(holder, statsItem);
         }
     }
 
-    public void update(List<StatisticsItem> statistics) {
-        statisticsData = statistics;
-        pieChartData = generateChartData(statistics);
+
+    public void update(FeedPlayStats feedPlayStats) {
+        statisticsData = feedPlayStats;
+        pieChartData = generateChartData(feedPlayStats);
         notifyDataSetChanged();
     }
 
     static class HeaderHolder extends RecyclerView.ViewHolder {
         TextView totalTime;
         PieChartView pieChart;
+        TextView speedAdjustedTimeValue;
 
         HeaderHolder(View itemView) {
             super(itemView);
             totalTime = itemView.findViewById(R.id.total_time);
             pieChart = itemView.findViewById(R.id.pie_chart);
+            speedAdjustedTimeValue = itemView.findViewById(R.id.total_speed_adjusted_time_value);
         }
     }
 
@@ -117,7 +133,11 @@ public abstract class StatisticsListAdapter extends RecyclerView.Adapter<Recycle
 
     abstract String getHeaderValue();
 
-    abstract PieChartView.PieChartData generateChartData(List<StatisticsItem> statisticsData);
+    abstract String getSubheaderCaption();
 
-    abstract void onBindFeedViewHolder(StatisticsHolder holder, StatisticsItem item);
+    abstract String getSubheaderValue();
+
+    abstract PieChartView.PieChartData generateChartData(FeedPlayStats statisticsData);
+
+    abstract void onBindFeedViewHolder(StatisticsHolder holder, FeedPlayStatsItem item);
 }

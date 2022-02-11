@@ -56,7 +56,7 @@ public class PodDBAdapter {
 
     private static final String TAG = "PodDBAdapter";
     public static final String DATABASE_NAME = "Antennapod.db";
-    public static final int VERSION = 2030000;
+    public static final int VERSION = 1;
 
     /**
      * Maximum number of arguments for IN-operator.
@@ -126,6 +126,11 @@ public class PodDBAdapter {
     public static final String KEY_AUTO_DOWNLOAD_CACHE_SIZE = "auto_download_cache_size";
     public static final String KEY_AUTO_DOWNLOAD_NEWEST_FIRST = "auto_download_newest_first";
     public static final String KEY_AUTO_DOWNLOAD_INCLUDE_ALL = "auto_download_include_all";
+    public static final String KEY_START_TIME = "start_time";
+    public static final String KEY_END_TIME = "end_time";
+    public static final String KEY_START_POS = "start_pos";
+    public static final String KEY_END_POS = "end_pos";
+    public static final String KEY_FEED_PRIORITY = "feed_priority";
 
     // Table names
     public static final String TABLE_NAME_FEEDS = "Feeds";
@@ -138,6 +143,7 @@ public class PodDBAdapter {
     public static final String TABLE_NAME_FAVORITES = "Favorites";
     public static final String TABLE_NAME_PLAYLIST = "Playlists";
     public static final String TABLE_NAME_PLAYLIST_ITEMS = "PlaylistsItems";
+    public static final String TABLE_NAME_PLAYSTATS = "PlayStats";
 
 
     // SQL Statements for creating new tables
@@ -171,7 +177,8 @@ public class PodDBAdapter {
             + KEY_EPISODE_NOTIFICATION + " INTEGER DEFAULT 0,"
             + KEY_AUTO_DOWNLOAD_CACHE_SIZE + " INTEGER DEFAULT 1,"
             + KEY_AUTO_DOWNLOAD_NEWEST_FIRST + " INTEGER DEFAULT 1,"
-            + KEY_AUTO_DOWNLOAD_INCLUDE_ALL + " INTEGER DEFAULT 0)";
+            + KEY_AUTO_DOWNLOAD_INCLUDE_ALL + " INTEGER DEFAULT 0,"
+            + KEY_FEED_PRIORITY + " INTEGER DEFAULT 0)";
 
     private static final String CREATE_TABLE_FEED_ITEMS = "CREATE TABLE "
             + TABLE_NAME_FEED_ITEMS + " (" + TABLE_PRIMARY_KEY
@@ -221,6 +228,17 @@ public class PodDBAdapter {
             + " TEXT," + KEY_START + " INTEGER," + KEY_FEEDITEM + " INTEGER,"
             + KEY_LINK + " TEXT," + KEY_IMAGE_URL + " TEXT," + KEY_CHAPTER_TYPE + " INTEGER)";
 
+    static final String CREATE_TABLE_FAVORITES = "CREATE TABLE "
+            + TABLE_NAME_FAVORITES + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
+            + KEY_FEEDITEM + " INTEGER," + KEY_FEED + " INTEGER)";
+
+    static final String CREATE_TABLE_PLAYSTATS = "CREATE TABLE "
+            + TABLE_NAME_PLAYSTATS + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
+            + KEY_FEEDITEM + " INTEGER, " + KEY_FEED + " INTEGER, "
+            + KEY_START_TIME + " INTEGER, " + KEY_END_TIME + " INTEGER, "
+            + KEY_START_POS + " INTEGER,"
+            + KEY_END_POS + " INTEGER)";
+
     // SQL Statements for creating indexes
     static final String CREATE_INDEX_FEEDITEMS_FEED = "CREATE INDEX "
             + TABLE_NAME_FEED_ITEMS + "_" + KEY_FEED + " ON " + TABLE_NAME_FEED_ITEMS + " ("
@@ -245,10 +263,6 @@ public class PodDBAdapter {
     static final String CREATE_INDEX_SIMPLECHAPTERS_FEEDITEM = "CREATE INDEX "
             + TABLE_NAME_SIMPLECHAPTERS + "_" + KEY_FEEDITEM + " ON " + TABLE_NAME_SIMPLECHAPTERS + " ("
             + KEY_FEEDITEM + ")";
-
-    static final String CREATE_TABLE_FAVORITES = "CREATE TABLE "
-            + TABLE_NAME_FAVORITES + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
-            + KEY_FEEDITEM + " INTEGER," + KEY_FEED + " INTEGER)";
 
     /**
      * Select all columns from the feed-table
@@ -302,7 +316,10 @@ public class PodDBAdapter {
             TABLE_NAME_DOWNLOAD_LOG,
             TABLE_NAME_QUEUE,
             TABLE_NAME_SIMPLECHAPTERS,
-            TABLE_NAME_FAVORITES
+            TABLE_NAME_FAVORITES,
+            TABLE_NAME_PLAYLIST,
+            TABLE_NAME_PLAYSTATS
+
     };
 
     public static final String SELECT_KEY_ITEM_ID = "item_id";
@@ -372,10 +389,24 @@ public class PodDBAdapter {
     }
 
     /**
+     * Used for testing database upgrades
+     * @param version the database version
+     * @return
+     */
+    public static synchronized PodDBAdapter getVersionInstance(int version) {
+            instance = new PodDBAdapter(version);
+        return instance;
+    }
+    /**
      * Changed to public so that it can be extended
      */
     public PodDBAdapter() {
         dbHelper = new PodDBHelper(PodDBAdapter.context, DATABASE_NAME, null);
+        db = openDb();
+    }
+
+    public PodDBAdapter(int version) {
+        dbHelper = new PodDBHelper(PodDBAdapter.context, version, DATABASE_NAME, null);
         db = openDb();
     }
 
@@ -421,7 +452,7 @@ public class PodDBAdapter {
         adapter.open();
         try {
             for (String tableName : ALL_TABLES) {
-                adapter.db.delete(tableName, "1", null);
+                adapter.db.delete(tableName, null,null);
             }
             return true;
         } finally {
@@ -490,7 +521,7 @@ public class PodDBAdapter {
         values.put(KEY_FEED_SKIP_INTRO, prefs.getFeedSkipIntro());
         values.put(KEY_FEED_SKIP_ENDING, prefs.getFeedSkipEnding());
         values.put(KEY_EPISODE_NOTIFICATION, prefs.getShowEpisodeNotification());
-
+        values.put(KEY_FEED_PRIORITY, prefs.getPriority());
         AutoDownload autoDownloadPrefs = prefs.getAutoDownloadPreferences();
         if (autoDownloadPrefs != null) {
             values.put(KEY_AUTO_DOWNLOAD_CACHE_SIZE, autoDownloadPrefs.getCacheSize());
@@ -972,7 +1003,7 @@ public class PodDBAdapter {
      * @return The cursor of the query
      */
     public final Cursor getAllFeedsCursor() {
-        return db.query(TABLE_NAME_FEEDS, FEED_SEL_STD, null, null, null, null,
+        return db.query(TABLE_NAME_FEEDS, null, null, null, null, null,
                 KEY_TITLE + " COLLATE NOCASE ASC");
     }
 
@@ -1135,7 +1166,7 @@ public class PodDBAdapter {
     }
 
     public final Cursor getFeedCursor(final long id) {
-        return db.query(TABLE_NAME_FEEDS, FEED_SEL_STD, KEY_ID + "=" + id, null,
+        return db.query(TABLE_NAME_FEEDS, null, KEY_ID + "=" + id, null,
                 null, null, null);
     }
 
@@ -1456,6 +1487,10 @@ public class PodDBAdapter {
      */
     private static class PodDBHelper extends SQLiteOpenHelper {
         /**
+         * Used for testing
+         */
+        private int version;
+        /**
          * Constructor.
          *
          * @param context Context to use
@@ -1464,6 +1499,22 @@ public class PodDBAdapter {
          */
         public PodDBHelper(final Context context, final String name, final CursorFactory factory) {
             super(context, name, factory, VERSION, new PodDbErrorHandler());
+        }
+
+        /**
+         * Used for testing database upgrades
+         * @param context
+         * @param version
+         * @param name
+         * @param factory
+         */
+        public PodDBHelper(final Context context, int version, final String name, final CursorFactory factory) {
+            super(context, name, factory, version, new PodDbErrorHandler());
+        }
+
+        @Override
+        public void onOpen(SQLiteDatabase db) {
+            super.onOpen(db);
         }
 
         @Override
@@ -1477,6 +1528,7 @@ public class PodDBAdapter {
             db.execSQL(CREATE_TABLE_FAVORITES);
             db.execSQL(CREATE_TABLE_PLAYLISTS);
             db.execSQL(CREATE_TABLE_PLAYLIST_ITEMS);
+            db.execSQL(CREATE_TABLE_PLAYSTATS);
 
             db.execSQL(CREATE_INDEX_FEEDITEMS_FEED);
             db.execSQL(CREATE_INDEX_FEEDITEMS_PUBDATE);
@@ -1488,8 +1540,15 @@ public class PodDBAdapter {
 
         @Override
         public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
-            Log.w("DBAdapter", "Upgrading from version " + oldVersion + " to " + newVersion + ".");
-            DBUpgrader.upgrade(db, oldVersion, newVersion);
+//            Log.w("DBAdapter", "Upgrading from version " + oldVersion + " to " + newVersion + ".");
+            ApexPodDBUpgrader.upgrade(db, oldVersion, newVersion);
+
+        }
+
+        @Override
+        public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+//            Log.w("DBAdapter", "Downgrading from version " + oldVersion + " to " + newVersion + ".");
+            ApexPodDBUpgrader.downgrade(db, oldVersion, newVersion);
         }
     }
 }

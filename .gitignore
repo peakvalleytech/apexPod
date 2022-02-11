@@ -38,13 +38,13 @@ contributers.py
 # View hierarchy captures
 captures
 # other
-*.json
 *.odg#
 proguard
 libs
 *.DS_Store
 gradle.properties
 *.p12
+*.json
 assets
 *.properties
 *.jks

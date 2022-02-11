@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.core.service.playback;
+package de.danoeh.apexpod.core.service.playback.player;
 
 import android.app.UiModeManager;
 import android.content.Context;
@@ -14,6 +14,9 @@ import android.view.SurfaceHolder;
 import androidx.media.AudioAttributesCompat;
 import androidx.media.AudioFocusRequestCompat;
 import androidx.media.AudioManagerCompat;
+
+import de.danoeh.apexpod.core.service.playback.PlaybackService;
+import de.danoeh.apexpod.core.service.playback.PlayerStatus;
 import de.danoeh.apexpod.core.storage.DBReader;
 import org.antennapod.audio.MediaPlayer;
 
@@ -45,7 +48,7 @@ import de.danoeh.apexpod.core.util.playback.VideoPlayer;
 /**
  * Manages the MediaPlayer object of the PlaybackService.
  */
-public class LocalPSMP extends PlaybackServiceMediaPlayer {
+public class LocalPlaybackServiceMediaPlayer extends BaseMediaPlayer {
     private static final String TAG = "LclPlaybackSvcMPlayer";
 
     private final AudioManager audioManager;
@@ -141,8 +144,8 @@ public class LocalPSMP extends PlaybackServiceMediaPlayer {
         }
     }
 
-    public LocalPSMP(@NonNull Context context,
-                     @NonNull PSMPCallback callback) {
+    public LocalPlaybackServiceMediaPlayer(@NonNull Context context,
+                                           @NonNull PSMPCallback callback) {
         super(context, callback);
         this.audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         this.playerLock = new PlayerLock();
@@ -256,7 +259,7 @@ public class LocalPSMP extends PlaybackServiceMediaPlayer {
         this.mediaType = media.getMediaType();
         this.videoSize = null;
         createMediaPlayer();
-        LocalPSMP.this.startWhenPrepared.set(startWhenPrepared);
+        LocalPlaybackServiceMediaPlayer.this.startWhenPrepared.set(startWhenPrepared);
         setPlayerStatus(PlayerStatus.INITIALIZING, media);
         try {
             if (media instanceof FeedMedia && ((FeedMedia) media).getItem() == null) {
@@ -422,8 +425,8 @@ public class LocalPSMP extends PlaybackServiceMediaPlayer {
 
         Log.d(TAG, "Resource prepared");
 
-        if (mediaType == MediaType.VIDEO && mediaPlayer instanceof ExoPlayerWrapper) {
-            ExoPlayerWrapper vp = (ExoPlayerWrapper) mediaPlayer;
+        if (mediaType == MediaType.VIDEO && mediaPlayer instanceof ApexPlayer) {
+            ApexPlayer vp = (ApexPlayer) mediaPlayer;
             videoSize = new Pair<>(vp.getVideoWidth(), vp.getVideoHeight());
         } else if(mediaType == MediaType.VIDEO && mediaPlayer instanceof VideoPlayer) {
             VideoPlayer vp = (VideoPlayer) mediaPlayer;
@@ -732,8 +735,8 @@ public class LocalPSMP extends PlaybackServiceMediaPlayer {
         } else if (mediaPlayer instanceof AudioPlayer) {
             AudioPlayer ap = (AudioPlayer) mediaPlayer;
             ap.setOnErrorListener((mediaPlayer, i, i1) -> true);
-        } else if (mediaPlayer instanceof ExoPlayerWrapper) {
-            ExoPlayerWrapper ap = (ExoPlayerWrapper) mediaPlayer;
+        } else if (mediaPlayer instanceof ApexPlayer) {
+            ApexPlayer ap = (ApexPlayer) mediaPlayer;
             ap.setOnErrorListener((mediaPlayer, i, i1) -> true);
         }
     }
@@ -790,8 +793,8 @@ public class LocalPSMP extends PlaybackServiceMediaPlayer {
         Pair<Integer, Integer> res;
         if (mediaPlayer == null || playerStatus == PlayerStatus.ERROR || mediaType != MediaType.VIDEO) {
             res = null;
-        } else if (mediaPlayer instanceof ExoPlayerWrapper) {
-            ExoPlayerWrapper vp = (ExoPlayerWrapper) mediaPlayer;
+        } else if (mediaPlayer instanceof ApexPlayer) {
+            ApexPlayer vp = (ApexPlayer) mediaPlayer;
             videoSize = new Pair<>(vp.getVideoWidth(), vp.getVideoHeight());
             res = videoSize;
         } else {
@@ -841,7 +844,7 @@ public class LocalPSMP extends PlaybackServiceMediaPlayer {
         }
 
         if (UserPreferences.useExoplayer()) {
-            mediaPlayer = new ExoPlayerWrapper(context);
+            mediaPlayer = new ApexPlayer(context);
         } else if (media.getMediaType() == MediaType.VIDEO) {
             mediaPlayer = new VideoPlayer();
         } else {
@@ -1040,8 +1043,8 @@ public class LocalPSMP extends PlaybackServiceMediaPlayer {
             ap.setOnErrorListener(audioErrorListener);
             ap.setOnBufferingUpdateListener(audioBufferingUpdateListener);
             ap.setOnInfoListener(audioInfoListener);
-        } else if (mp instanceof ExoPlayerWrapper) {
-            ExoPlayerWrapper ap = (ExoPlayerWrapper) mp;
+        } else if (mp instanceof ApexPlayer) {
+            ApexPlayer ap = (ApexPlayer) mp;
             ap.setOnCompletionListener(audioCompletionListener);
             ap.setOnSeekCompleteListener(audioSeekCompleteListener);
             ap.setOnBufferingUpdateListener(audioBufferingUpdateListener);

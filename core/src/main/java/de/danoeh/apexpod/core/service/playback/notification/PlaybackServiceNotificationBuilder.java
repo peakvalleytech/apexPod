@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.core.service.playback;
+package de.danoeh.apexpod.core.service.playback.notification;
 
 import android.annotation.TargetApi;
 import android.app.Notification;
@@ -23,6 +23,8 @@ import de.danoeh.apexpod.core.R;
 import de.danoeh.apexpod.core.glide.ApGlideSettings;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.receiver.MediaButtonReceiver;
+import de.danoeh.apexpod.core.service.playback.PlaybackService;
+import de.danoeh.apexpod.core.service.playback.PlayerStatus;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.feed.util.ImageResourceUtils;
 import de.danoeh.apexpod.core.util.TimeSpeedConverter;

@@ -15,7 +15,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Queue;
 
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
@@ -166,7 +165,7 @@ public class ContinousPlaybackTest {
         return f.getItems();
     }
 
-    private final PlaybackServiceTaskManager.PSTMCallback defaultPSTM = new PlaybackServiceTaskManager.PSTMCallback() {
+    private final PlaybackServiceTaskManager.TaskManagerCallback defaultPSTM = new PlaybackServiceTaskManager.TaskManagerCallback() {
         @Override
         public void positionSaverTick() { }
 
