@@ -881,6 +881,22 @@ public class DBWriter {
     }
 
     /**
+     * Saves a FeedPreferences object in the database. The Feed ID of the FeedPreferences-object MUST NOT be 0.
+     *
+     * @param preferences The FeedPreferences object.
+     */
+    public static Future<?> setFeedPreferences(final FeedPreferences preferences, boolean shouldBroadcast) {
+        return dbExec.submit(() -> {
+            PodDBAdapter adapter = PodDBAdapter.getInstance();
+            adapter.open();
+            adapter.setFeedPreferences(preferences);
+            adapter.close();
+            if (shouldBroadcast)
+                EventBus.getDefault().post(new FeedListUpdateEvent(preferences.getFeedID()));
+        });
+    }
+
+    /**
      * Reorders the priority of a feed by swapping current priority with the priority of another
      * feed.
      * @param fromFeed
@@ -895,10 +911,8 @@ public class DBWriter {
                 long fromFeedPriority = fromFeedPrefs.getPriority();
                 fromFeedPrefs.setPriority(toFeedPrefs.getPriority());
                 toFeedPrefs.setPriority(fromFeedPriority);
-                DBWriter.setFeedPreferences(fromFeedPrefs);
-                DBWriter.setFeedPreferences(toFeedPrefs);
-//                EventBus.getDefault().post(new FeedListUpdateEvent(fromFeedPrefs.getFeedID()));
-//                EventBus.getDefault().post(new FeedListUpdateEvent(toFeedPrefs.getFeedID()));
+                DBWriter.setFeedPreferences(fromFeedPrefs, false);
+                DBWriter.setFeedPreferences(toFeedPrefs, false);
             }
         });
     }
