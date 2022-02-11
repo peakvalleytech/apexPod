@@ -41,6 +41,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -395,6 +396,11 @@ public class SubscriptionFragment extends Fragment
             speedDialView.setVisibility(View.VISIBLE);
             return subscriptionAdapter.onContextItemSelected(item);
         } else if (itemId == R.id.reorder) {
+            List<String> entryValues =
+                    Arrays.asList(getContext().getResources().getStringArray(R.array.nav_drawer_feed_order_values));
+            UserPreferences.setFeedOrder(entryValues.get(UserPreferences.FEED_ORDER_PRIORITY));
+            subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
+            //Update subscriptions
             subscriptionAdapter.setDragNDropMode(true);
             ItemTouchHelper.Callback callback =
                     new DragAndDropItemTouchHelper(subscriptionAdapter);

@@ -33,14 +33,13 @@ public class DragAndDropItemTouchHelper extends ItemTouchHelper.Callback {
                 adapter.swap(i, i - 1);
             }
         }
-        adapter.swapPriorities(fromPosition, toPosition);
         adapter.notifyItemMoved(fromPosition, toPosition);
         return true;
     }
 
+
     @Override
     public void onMoved(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, int fromPos, @NonNull RecyclerView.ViewHolder target, int toPos, int x, int y) {
-//        adapter.swapPriorities(fromPos, toPos);
     }
 
     @Override

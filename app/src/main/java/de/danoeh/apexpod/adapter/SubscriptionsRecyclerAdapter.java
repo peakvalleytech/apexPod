@@ -27,6 +27,7 @@ import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
 import de.danoeh.apexpod.fragment.subscriptions.SubscriptionViewHolder;
 import de.danoeh.apexpod.model.feed.Feed;
+import de.danoeh.apexpod.model.feed.FeedPreferences;
 
 /**
  * Adapter for subscriptions
@@ -67,6 +68,16 @@ public class SubscriptionsRecyclerAdapter
             @Override
             public void onDestroyActionMode(ActionMode mode) {
                 setDragNDropMode(false);
+                long priorityCounter = 1;
+                for (NavDrawerData.DrawerItem item : listItems) {
+                    if (item.type == NavDrawerData.DrawerItem.Type.FEED) {
+                        Feed feed = ((NavDrawerData.FeedDrawerItem)item).feed;
+                        FeedPreferences feedPreferences = feed.getPreferences();
+                        feedPreferences.setPriority(priorityCounter);
+                        DBWriter.setFeedPreferences(feedPreferences, false);
+                        priorityCounter++;
+                    }
+                }
                 notifyDataSetChanged();
             }
         });

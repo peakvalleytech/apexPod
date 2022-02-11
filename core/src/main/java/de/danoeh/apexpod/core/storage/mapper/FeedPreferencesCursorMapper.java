@@ -64,7 +64,7 @@ public abstract class FeedPreferencesCursorMapper {
                 cursor.getInt(indexAutoDownloadCacheSize),
                 cursor.getInt(indexAutoDownloadNewestFirst) == 1,
                         cursor.getInt(indexAutoDownloadIncludeAll) == 1);
-        int feedPriority = cursor.getInt(indexFeedPriority);
+        long feedPriority = cursor.getLong(indexFeedPriority);
         FeedPreferences feedPreferences = new FeedPreferences(feedId,
                 autoDownload,
                 autoRefresh,

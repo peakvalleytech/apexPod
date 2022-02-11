@@ -917,9 +917,17 @@ public class DBWriter {
         });
     }
 
-    public static Future<?> formatPriorities() {
+    public static Future<?> setPriorities(Feed fromFeed, Feed toFeed) {
+        FeedPreferences fromFeedPrefs = fromFeed.getPreferences();
+        FeedPreferences toFeedPrefs = toFeed.getPreferences();
         return dbExec.submit(() -> {
-
+            if (fromFeedPrefs != null && toFeedPrefs != null) {
+                long fromFeedPriority = fromFeedPrefs.getPriority();
+                fromFeedPrefs.setPriority(toFeedPrefs.getPriority());
+                toFeedPrefs.setPriority(fromFeedPriority);
+                DBWriter.setFeedPreferences(fromFeedPrefs, false);
+                DBWriter.setFeedPreferences(toFeedPrefs, false);
+            }
         });
     }
 
