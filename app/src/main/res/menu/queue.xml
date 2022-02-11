@@ -79,7 +79,10 @@
                 android:id="@+id/queue_sort_random"
                 android:title="@string/random">
             </item>
-
+            <item
+                android:id="@+id/queue_sort_priority"
+                android:title="@string/priority">
+            </item>
             <item
                 android:id="@+id/queue_sort_smart_shuffle"
                 android:title="@string/smart_shuffle">

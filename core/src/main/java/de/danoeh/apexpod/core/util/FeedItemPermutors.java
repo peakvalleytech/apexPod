@@ -11,7 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
+import de.danoeh.apexpod.model.feed.FeedPreferences;
 import de.danoeh.apexpod.model.feed.SortOrder;
 
 /**
@@ -55,6 +57,9 @@ public class FeedItemPermutors {
             case FEED_TITLE_Z_A:
                 comparator = (f1, f2) -> feedTitle(f2).compareTo(feedTitle(f1));
                 break;
+            case FEED_PRIORITY:
+                comparator = (f1, f2) -> Long.compare(feedPriority(f1), feedPriority(f2));
+                break;
             case RANDOM:
                 permutor = Collections::shuffle;
                 break;
@@ -96,6 +101,20 @@ public class FeedItemPermutors {
     private static String feedTitle(@Nullable FeedItem item) {
         return (item != null && item.getFeed() != null && item.getFeed().getTitle() != null) ?
                 item.getFeed().getTitle() : "";
+    }
+
+    @NonNull
+    private static long feedPriority(@Nullable FeedItem item) {
+        if (item != null) {
+            Feed feed = item.getFeed();
+            if (feed != null) {
+                FeedPreferences feedPreferences = feed.getPreferences();
+                if (feedPreferences != null) {
+                    return feedPreferences.getPriority();
+                }
+            }
+        }
+        return 0;
     }
 
     /**
