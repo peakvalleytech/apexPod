@@ -41,7 +41,6 @@ public class SubscriptionsRecyclerAdapter
     private Feed selectedFeed = null;
     int longPressedPosition = 0; // used to init actionMode
     ActionMode setPriorityActionMode;
-    // Experimental
     private boolean dragNDropMode = false;
     private StartDragListener startDragListener;
     public void setDragNDropMode(boolean dragNDropMode) {
@@ -50,7 +49,6 @@ public class SubscriptionsRecyclerAdapter
        setPriorityActionMode = mainActivityRef.get().startActionMode(new ActionMode.Callback() {
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-
                 return true;
             }
 
@@ -80,7 +78,10 @@ public class SubscriptionsRecyclerAdapter
                 }
                 notifyDataSetChanged();
             }
-        });
+        }); else {
+            if (setPriorityActionMode != null)
+                setPriorityActionMode.finish();
+        }
     }
 
     public boolean isDragNDropMode() {
@@ -170,13 +171,9 @@ public class SubscriptionsRecyclerAdapter
         }
     }
 
-
-
     public static float convertDpToPixel(Context context, float dp) {
         return dp * context.getResources().getDisplayMetrics().density;
     }
-
-
 
     public void setStartDragListener(StartDragListener startDragListener) {
         this.startDragListener = startDragListener;

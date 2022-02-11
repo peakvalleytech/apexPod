@@ -306,6 +306,7 @@ public class SubscriptionFragment extends Fragment
 
         if (subscriptionAdapter != null) {
             subscriptionAdapter.endSelectMode();
+            endDragDropMode();
         }
     }
 
