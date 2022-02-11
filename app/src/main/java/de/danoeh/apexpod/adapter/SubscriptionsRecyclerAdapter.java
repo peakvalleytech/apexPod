@@ -190,18 +190,6 @@ public class SubscriptionsRecyclerAdapter
         Collections.swap(listItems, i, j);
     }
 
-    /**
-     * Sets the priority of feed changed through drag and drop
-     * @param fromPos
-     * @param toPos
-     */
-    public void swapPriorities(int fromPos, int toPos) {
-        Log.d(TAG, "Swapping priorities: from: " + fromPos + " to: " + toPos);
-        Feed fromFeed = ((NavDrawerData.FeedDrawerItem) listItems.get(fromPos)).feed;
-        Feed toFeed = ((NavDrawerData.FeedDrawerItem) listItems.get(toPos)).feed;
-        DBWriter.swapPriorities(fromFeed, toFeed);
-    }
-
     public interface StartDragListener {
         void requestDrag(RecyclerView.ViewHolder viewHolder);
     }

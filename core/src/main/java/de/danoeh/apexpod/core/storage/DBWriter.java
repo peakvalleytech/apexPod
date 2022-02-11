@@ -896,41 +896,6 @@ public class DBWriter {
         });
     }
 
-    /**
-     * Reorders the priority of a feed by swapping current priority with the priority of another
-     * feed.
-     * @param fromFeed
-     * @param toFeed
-     * @return
-     */
-    public static Future<?> swapPriorities(Feed fromFeed, Feed toFeed) {
-        FeedPreferences fromFeedPrefs = fromFeed.getPreferences();
-        FeedPreferences toFeedPrefs = toFeed.getPreferences();
-        return dbExec.submit(() -> {
-            if (fromFeedPrefs != null && toFeedPrefs != null) {
-                long fromFeedPriority = fromFeedPrefs.getPriority();
-                fromFeedPrefs.setPriority(toFeedPrefs.getPriority());
-                toFeedPrefs.setPriority(fromFeedPriority);
-                DBWriter.setFeedPreferences(fromFeedPrefs, false);
-                DBWriter.setFeedPreferences(toFeedPrefs, false);
-            }
-        });
-    }
-
-    public static Future<?> setPriorities(Feed fromFeed, Feed toFeed) {
-        FeedPreferences fromFeedPrefs = fromFeed.getPreferences();
-        FeedPreferences toFeedPrefs = toFeed.getPreferences();
-        return dbExec.submit(() -> {
-            if (fromFeedPrefs != null && toFeedPrefs != null) {
-                long fromFeedPriority = fromFeedPrefs.getPriority();
-                fromFeedPrefs.setPriority(toFeedPrefs.getPriority());
-                toFeedPrefs.setPriority(fromFeedPriority);
-                DBWriter.setFeedPreferences(fromFeedPrefs, false);
-                DBWriter.setFeedPreferences(toFeedPrefs, false);
-            }
-        });
-    }
-
     private static boolean itemListContains(List<FeedItem> items, long itemId) {
         return indexInItemList(items, itemId) >= 0;
     }
