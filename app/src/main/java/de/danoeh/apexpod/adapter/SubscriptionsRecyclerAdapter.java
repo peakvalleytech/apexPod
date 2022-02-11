@@ -3,7 +3,6 @@ package de.danoeh.apexpod.adapter;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -41,51 +40,62 @@ public class SubscriptionsRecyclerAdapter
     private Feed selectedFeed = null;
     int longPressedPosition = 0; // used to init actionMode
     ActionMode setPriorityActionMode;
-    private boolean dragNDropMode = false;
     private StartDragListener startDragListener;
-    public void setDragNDropMode(boolean dragNDropMode) {
-        this.dragNDropMode = dragNDropMode;
-        if(dragNDropMode)
-       setPriorityActionMode = mainActivityRef.get().startActionMode(new ActionMode.Callback() {
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                return true;
-            }
+    private ActionModeCallback actionModeCallback;
 
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                mode.setTitle("Set Priority");
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                return false;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-                setDragNDropMode(false);
-                long priorityCounter = 1;
-                for (NavDrawerData.DrawerItem item : listItems) {
-                    if (item.type == NavDrawerData.DrawerItem.Type.FEED) {
-                        Feed feed = ((NavDrawerData.FeedDrawerItem)item).feed;
-                        FeedPreferences feedPreferences = feed.getPreferences();
-                        feedPreferences.setPriority(priorityCounter);
-                        DBWriter.setFeedPreferences(feedPreferences, false);
-                        priorityCounter++;
-                    }
+    public static final int ACTION_MODE_PRIORITY = 0;
+    public void startPriorityActionMode() {
+        if(setPriorityActionMode == null)
+           setPriorityActionMode = mainActivityRef.get().startActionMode(new ActionMode.Callback() {
+                @Override
+                public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                    actionModeCallback.onStart(ACTION_MODE_PRIORITY);
+                    return true;
                 }
-                notifyDataSetChanged();
-            }
-        }); else {
-            if (setPriorityActionMode != null)
+
+                @Override
+                public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                    mode.setTitle("Set Priority");
+                    return false;
+                }
+
+                @Override
+                public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                    return false;
+                }
+
+                @Override
+                public void onDestroyActionMode(ActionMode mode) {
+                    long priorityCounter = 1;
+                    for (NavDrawerData.DrawerItem item : listItems) {
+                        if (item.type == NavDrawerData.DrawerItem.Type.FEED) {
+                            Feed feed = ((NavDrawerData.FeedDrawerItem)item).feed;
+                            FeedPreferences feedPreferences = feed.getPreferences();
+                            feedPreferences.setPriority(priorityCounter);
+                            DBWriter.setFeedPreferences(feedPreferences, false);
+                            priorityCounter++;
+                        }
+                    }
+                    notifyDataSetChanged();
+                    actionModeCallback.onEnd(ACTION_MODE_PRIORITY);
+                }
+            });
+        else {
+            if (setPriorityActionMode != null) {
                 setPriorityActionMode.finish();
+                setPriorityActionMode = null;
+            }
         }
     }
 
+    public void endPriorityActionMode() {
+        if (setPriorityActionMode != null) {
+            setPriorityActionMode.finish();
+            setPriorityActionMode = null;
+        }
+    }
     public boolean isDragNDropMode() {
-        return dragNDropMode;
+        return setPriorityActionMode != null;
     }
 
     public SubscriptionsRecyclerAdapter(MainActivity mainActivity) {
@@ -214,4 +224,11 @@ public class SubscriptionsRecyclerAdapter
         this.longPressedPosition = longPressedPosition;
     }
 
+    public ActionModeCallback getActionModeCallback() {
+        return actionModeCallback;
+    }
+
+    public void setActionModeCallback(ActionModeCallback actionModeCallback) {
+        this.actionModeCallback = actionModeCallback;
+    }
 }

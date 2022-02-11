@@ -35,6 +35,7 @@ import com.joanzapata.iconify.Iconify;
 import com.leinardi.android.speeddial.SpeedDialView;
 
 import de.danoeh.antennapod.adapter.DragAndDropItemTouchHelper;
+import de.danoeh.apexpod.adapter.ActionModeCallback;
 import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -345,6 +346,22 @@ public class SubscriptionFragment extends Fragment
 
                         endDragDropMode();
                         subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
+                        subscriptionAdapter.setActionModeCallback(new ActionModeCallback() {
+                            @Override
+                            public void onStart(int actionModeCode) {
+                                if (actionModeCode == SubscriptionsRecyclerAdapter.ACTION_MODE_PRIORITY) {
+                                    subscriptionAddButton.setVisibility(View.GONE);
+                                }
+                            }
+
+                            @Override
+                            public void onEnd(int actionModeCode) {
+                                if (actionModeCode == SubscriptionsRecyclerAdapter.ACTION_MODE_PRIORITY) {
+                                    endDragDropMode();
+                                    subscriptionAddButton.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        });
                         subscriptionAdapter.notifyDataSetChanged();
                         emptyView.updateVisibility();
                         progressBar.setVisibility(View.GONE); // Keep hidden to avoid flickering while refreshing
@@ -402,7 +419,7 @@ public class SubscriptionFragment extends Fragment
             UserPreferences.setFeedOrder(entryValues.get(UserPreferences.FEED_ORDER_PRIORITY));
             subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
             //Update subscriptions
-            subscriptionAdapter.setDragNDropMode(true);
+            subscriptionAdapter.startPriorityActionMode();
             ItemTouchHelper.Callback callback =
                     new DragAndDropItemTouchHelper(subscriptionAdapter);
             ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
@@ -435,7 +452,7 @@ public class SubscriptionFragment extends Fragment
     }
 
     private void endDragDropMode() {
-        subscriptionAdapter.setDragNDropMode(false);
+        subscriptionAdapter.endPriorityActionMode();
         if (swipeRefreshLayout != null)
             swipeRefreshLayout.setEnabled(true);
     }
