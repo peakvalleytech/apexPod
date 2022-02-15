@@ -66,12 +66,12 @@ import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.receiver.MediaButtonReceiver;
 import de.danoeh.apexpod.core.service.playback.notification.PlaybackServiceNotificationBuilder;
 import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
+import de.danoeh.apexpod.core.service.playback.player.PlaybackServiceFlavorHelper;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.FeedSearcher;
 import de.danoeh.apexpod.core.storage.database.PlayStatDao;
-import de.danoeh.apexpod.core.storage.repository.PlayStatsRepository;
 import de.danoeh.apexpod.core.sync.queue.SynchronizationQueueSink;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.IntentUtils;
@@ -87,7 +87,6 @@ import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.model.feed.FeedPreferences;
 import de.danoeh.apexpod.model.playback.MediaType;
 import de.danoeh.apexpod.model.playback.Playable;
-import de.danoeh.apexpod.model.stats.PlayStat;
 import de.danoeh.apexpod.ui.appstartintent.MainActivityStarter;
 import de.danoeh.apexpod.ui.appstartintent.VideoPlayerActivityStarter;
 import io.reactivex.Completable;
@@ -1969,7 +1968,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                 }
             };
 
-    interface FlavorHelperCallback {
+    public interface FlavorHelperCallback {
         BaseMediaPlayer.PSMPCallback getMediaPlayerCallback();
 
         void setMediaPlayer(BaseMediaPlayer mediaPlayer);

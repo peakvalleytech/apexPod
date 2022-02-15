@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.core.service.playback;
+package de.danoeh.apexpod.core.service.playback.player;
 
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -28,6 +28,7 @@ import de.danoeh.apexpod.core.cast.CastConsumer;
 import de.danoeh.apexpod.core.cast.CastManager;
 import de.danoeh.apexpod.core.cast.CastUtils;
 import de.danoeh.apexpod.core.cast.DefaultCastConsumer;
+import de.danoeh.apexpod.core.service.playback.PlayerStatus;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.model.playback.RemoteMedia;
 import de.danoeh.apexpod.model.feed.FeedMedia;
@@ -38,7 +39,7 @@ import de.danoeh.apexpod.model.playback.Playable;
 /**
  * Implementation of PlaybackServiceMediaPlayer suitable for remote playback on Cast Devices.
  */
-public class RemotePSMP extends PlaybackServiceMediaPlayer {
+public class RemotePSMP extends BaseMediaPlayer {
 
     public static final String TAG = "RemotePSMP";
 

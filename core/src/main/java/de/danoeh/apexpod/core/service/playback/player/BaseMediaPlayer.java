@@ -378,7 +378,7 @@ public abstract class BaseMediaPlayer {
         public PlayerStatus playerStatus;
         public Playable playable;
 
-        PSMPInfo(PlayerStatus oldPlayerStatus, PlayerStatus playerStatus, Playable playable) {
+        public PSMPInfo(PlayerStatus oldPlayerStatus, PlayerStatus playerStatus, Playable playable) {
             this.oldPlayerStatus = oldPlayerStatus;
             this.playerStatus = playerStatus;
             this.playable = playable;
