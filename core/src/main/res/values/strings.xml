@@ -855,7 +855,6 @@
     <string name="no_playlists_label">No Playlists</string>
     <string name="no_playlists_sub_label">After you create a playlist, it will appear here.</string>
     <string name="auto_download_cache_pref_summary">"The number of episodes kept by automatic download. Excluded from auto delete. "</string>
-    <string name="home_label">Featured</string>
     <string name="pref_auto_download_title">Automatic Download</string>
     <string name="pref_automatic_download_sum">Enable automatic download of episodes</string>
     <string name="speed_adjusted_label">Speed adjusted time</string>

@@ -156,18 +156,18 @@
   <string name="stream_label">Akış</string>
   <string name="delete_label">Sil</string>
   <string name="delete_failed">Dosya silinemiyor. Cihazı yeniden başlatmak yardımcı olabilir.</string>
-  <string name="delete_episode_label">Delete Episode</string>
-  <string name="remove_new_flag_label">Remove \"new\" flag</string>
-  <string name="removed_new_flag_label">Removed \"new\" flag</string>
+  <string name="delete_episode_label">Bölümü Sil</string>
+  <string name="remove_new_flag_label">\"Yeni\" bayrağını kaldır</string>
+  <string name="removed_new_flag_label">\"Yeni\" bayrağı kaldırıldı</string>
   <string name="mark_read_label">Oynatıldı olarak işaretle</string>
-  <string name="mark_read_no_media_label">Mark as read</string>
-  <string name="play_this_to_seek_position">To jump to positions, you need to play the episode</string>
+  <string name="mark_read_no_media_label">Okundu olarak işaretle</string>
+  <string name="play_this_to_seek_position">Pozisyonlara atlamak için bölümü oynamanız gerekir.</string>
   <plurals name="marked_read_batch_label">
     <item quantity="one">%d episode marked as played.</item>
     <item quantity="other">%d episodes marked as played.</item>
   </plurals>
   <string name="mark_unread_label">Oynatılmadı olarak işaretle</string>
-  <string name="mark_unread_label_no_media">Mark as unread</string>
+  <string name="mark_unread_label_no_media">Okunmadı olarak işaretle</string>
   <plurals name="marked_unread_batch_label">
     <item quantity="one">%d episode marked as unplayed.</item>
     <item quantity="other">%d episodes marked as unplayed.</item>
@@ -189,7 +189,7 @@
   <string name="skip_episode_label">Bölümü atla</string>
   <string name="reset_position">Çalme konumunu sıfırla</string>
   <string name="removed_item">Öge kaldırıldı</string>
-  <string name="no_items_selected">No items selected</string>
+  <string name="no_items_selected">Seçili öğe yok</string>
   <!--Download messages and labels-->
   <string name="download_successful">başarılı</string>
   <string name="download_pending">İndirme bekleniyor</string>
@@ -243,14 +243,14 @@
   <!--Mediaplayer messages-->
   <string name="player_error_msg">Hata!</string>
   <string name="playback_error_server_died">Sunucu geberdi</string>
-  <string name="playback_error_unsupported">Unsupported media type</string>
-  <string name="playback_error_timeout">Operation timed out</string>
-  <string name="playback_error_source">Unable to access media file</string>
+  <string name="playback_error_unsupported">Desteklenmeyen ortam türü</string>
+  <string name="playback_error_timeout">İşlem zamanlanmış</string>
+  <string name="playback_error_source">Ortam dosyasına erişilemiyor</string>
   <string name="playback_error_unknown">Bilinmeyen Hata</string>
   <string name="no_media_playing_label">Çalınan medya yok</string>
   <string name="player_go_to_picture_in_picture">Resim içinde Resim modu</string>
   <string name="unknown_media_key">ApexPod - Bilinmeyen medya anahtarı: %1$d</string>
-  <string name="error_file_not_found">File not found</string>
+  <string name="error_file_not_found">Dosya bulunamadı</string>
   <string name="no_media_label">Öğe, bir medya dosyası içermiyor</string>
   <!--Queue operations-->
   <string name="lock_queue">Kuyruğu kilitle</string>
@@ -281,11 +281,11 @@
   <string name="no_shownotes_label">Bu dosya herhangi bir bilgi notu içermiyor.</string>
   <string name="no_comp_downloads_head_label">No downloaded episodes</string>
   <string name="no_comp_downloads_label">You can download episodes on the podcast details screen.</string>
-  <string name="no_log_downloads_head_label">No download log</string>
+  <string name="no_log_downloads_head_label">karşıdan yükleme günlüğü yok</string>
   <string name="no_log_downloads_label">Download logs will appear here when available.</string>
-  <string name="no_history_head_label">No History</string>
+  <string name="no_history_head_label">Tarih Yok</string>
   <string name="no_history_label">After you listen to an episode, it will appear here.</string>
-  <string name="no_all_episodes_head_label">No Episodes</string>
+  <string name="no_all_episodes_head_label">Bölüm Yok</string>
   <string name="no_all_episodes_label">When you add a podcast, the episodes will be shown here.</string>
   <string name="no_new_episodes_head_label">No new episodes</string>
   <string name="no_new_episodes_label">When new episodes arrive, they will be shown here.</string>
@@ -701,4 +701,24 @@
   <string name="on_demand_config_setting_changed">Setting updated successfully.</string>
   <string name="on_demand_config_stream_text">Looks like you stream a lot. Do you want episode lists to show stream buttons?</string>
   <string name="on_demand_config_download_text">Looks like you download a lot. Do you want episode lists to show download buttons?</string>
+    <string name="add_to_folder">Etiket Ekle</string>
+  <string name="confirm_mobile_feed_refresh_dialog_message">A Bölümleri mobil veri bağlantısı üzerinden indirme settings.dd Etiketi\'nde devre dışı bırakıldı/n/nYine de tüm podcast\'leri mobil veriler üzerinden yenilemek istiyor musunuz?</string>
+  <string name="marked_as_played_label">Oynanmış olarak işaretlenmiş</string>
+  <string name="marked_as_unplayed_label">Oynanmamış olarak işaretlenmiş</string>
+  <string name="completing">Tamamla...</string>
+  <string name="drawer_feed_order_priority">Önceliğe göre sırala</string>
+  <string name="swipeactions_label">Kaydırma Eylemleri</string>
+  <string name="priority">Öncelik</string>
+  <string name="speed_adjusted_label">Hız ayarlanan süre</string>
+  <string name="pref_automatic_download_sum">Bölümlerin otomatik olarak indirilmesini etkinleştirme</string>
+  <string name="pref_auto_download_title">Otomatik İndirme</string>
+  <string name="auto_download_cache_pref_summary">"Otomatik indirme tarafından tutulan bölüm sayısı. Otomatik silme dışında bırakıldı. "</string>
+  <string name="no_playlists_sub_label">Bir çalma listesi oluşturduktan sonra, burada görünecektir.</string>
+  <string name="no_playlists_label">Çalma Listesi Yok</string>
+  <string name="add_to_playlist_label">Çalma Listesine Ekle</string>
+  <string name="home_fragment_label">Özellikli</string>
+  <string name="pref_auto_delete_playlist_summary">Çalma listesine alınan bölümleri otomatik silmenin dışında bırak</string>
+  <string name="playlists_label">Çalma Listeleri</string>
+  <string name="delete_playlist">Çalma Listesini Sil</string>
+  <string name="delete_playlist_confirmation_msg">Bu çalma listesini silmek istiyor musunuz?</string>
 </resources>

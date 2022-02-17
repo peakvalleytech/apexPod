@@ -810,8 +810,7 @@ Tippen, um Details anzuzeigen.</string>
     <string name="delete_played">Löschen Gespielt</string>
   <string name="pref_automatic_download_sum">Aktivieren Sie den automatischen Download von Episoden</string>
   <string name="pref_auto_download_title">Automatischer Download</string>
-  <string name="home_label">Befähigt</string>
-  <string name="auto_download_cache_pref_summary">"Die Anzahl der Episoden, die durch automatischen Download gespeichert werden. Vom automatischen Löschen ausgeschlossen. "</string>
+    <string name="auto_download_cache_pref_summary">"Die Anzahl der Episoden, die durch automatischen Download gespeichert werden. Vom automatischen Löschen ausgeschlossen. "</string>
   <string name="no_playlists_sub_label">Nachdem Sie eine Wiedergabeliste erstellt haben, wird sie hier angezeigt.</string>
     <string name="confirm_mobile_feed_refresh_dialog_message">Nach Podcasts filtern</string>
 </resources>

@@ -399,7 +399,7 @@ public class SubscriptionFragment extends Fragment
     private void showTagBar(boolean show) {
         tagRecycler.setVisibility(show ? View.VISIBLE : View.INVISIBLE );
         expandTagsButton.setVisibility(show ? View.VISIBLE : View.GONE);
-        folderChipGroup.setVisibility(show ? View.VISIBLE : View.GONE);
+        folderChipGroup.setVisibility(View.GONE);
     }
     private int getDefaultNumOfColumns() {
         return getResources().getInteger(R.integer.subscriptions_default_num_of_columns);

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:title="@string/home_label" />
+        app:title="@string/home_fragment_label" />
 
     <RelativeLayout
         android:layout_width="match_parent"
