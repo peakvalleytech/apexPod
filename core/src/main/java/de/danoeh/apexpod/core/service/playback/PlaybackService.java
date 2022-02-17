@@ -66,7 +66,6 @@ import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.receiver.MediaButtonReceiver;
 import de.danoeh.apexpod.core.service.playback.notification.PlaybackServiceNotificationBuilder;
 import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
-import de.danoeh.apexpod.core.service.playback.player.PlaybackServiceFlavorHelper;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
