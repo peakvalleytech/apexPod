@@ -789,7 +789,6 @@
   <string name="no_playlists_label">Sin listas de reproducción</string>
   <string name="no_playlists_sub_label">Después de crear una lista de reproducción, aparecerá aquí.</string>
   <string name="auto_download_cache_pref_summary">"El número de episodios mantenidos por descarga automática. Excluido de la eliminación automática. "</string>
-  <string name="home_label">Hogar</string>
   <string name="left_short">Izquierda</string>
   <string name="right_short">Derecha</string>
   <string name="volume">Volumen</string>

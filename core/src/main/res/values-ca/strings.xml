@@ -809,5 +809,4 @@
   <string name="no_playlists_label">No hi ha llistes de reproducció</string>
   <string name="no_playlists_sub_label">Després de crear una llista de reproducció, apareixerà aquí.</string>
   <string name="auto_download_cache_pref_summary">"Nombre d'episodis conservats per descàrrega automàtica. S'ha exclòs de la supressió automàtica. "</string>
-  <string name="home_label">Llar</string>
 </resources>
