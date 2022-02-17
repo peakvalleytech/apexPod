@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.core.service.playback;
+package de.danoeh.apexpod.core.service.playback.player;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -27,6 +27,10 @@ import de.danoeh.apexpod.core.cast.CastConsumer;
 import de.danoeh.apexpod.core.cast.CastManager;
 import de.danoeh.apexpod.core.cast.DefaultCastConsumer;
 import de.danoeh.apexpod.core.event.MessageEvent;
+import de.danoeh.apexpod.core.service.playback.PlaybackService;
+import de.danoeh.apexpod.core.service.playback.PlayerStatus;
+import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
+import de.danoeh.apexpod.core.service.playback.player.LocalPlaybackServiceMediaPlayer;
 import de.danoeh.apexpod.model.playback.MediaType;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.util.NetworkUtils;
@@ -46,7 +50,7 @@ public class PlaybackServiceFlavorHelper {
     /**
      * Stores the state of the cast playback just before it disconnects.
      */
-    private volatile PlaybackServiceMediaPlayer.PSMPInfo infoBeforeCastDisconnection;
+    private volatile BaseMediaPlayer.PSMPInfo infoBeforeCastDisconnection;
 
     private boolean wifiConnectivity = true;
     private BroadcastReceiver wifiBroadcastReceiver;
@@ -56,7 +60,7 @@ public class PlaybackServiceFlavorHelper {
     private PlaybackService.FlavorHelperCallback callback;
     private CastConsumer castConsumer;
 
-    PlaybackServiceFlavorHelper(Context context, PlaybackService.FlavorHelperCallback callback) {
+    public PlaybackServiceFlavorHelper(Context context, PlaybackService.FlavorHelperCallback callback) {
         this.callback = callback;
         if (!CastManager.isInitialized()) {
             return;
@@ -65,9 +69,9 @@ public class PlaybackServiceFlavorHelper {
         setCastConsumer(context);
     }
 
-    void initializeMediaPlayer(Context context) {
+    public void initializeMediaPlayer(Context context) {
         if (!CastManager.isInitialized()) {
-            callback.setMediaPlayer(new LocalPSMP(context, callback.getMediaPlayerCallback()));
+            callback.setMediaPlayer(new LocalPlaybackServiceMediaPlayer(context, callback.getMediaPlayerCallback()));
             return;
         }
         castManager = CastManager.getInstance();
@@ -81,18 +85,18 @@ public class PlaybackServiceFlavorHelper {
                 castManager.disconnect();
             }
         } else {
-            callback.setMediaPlayer(new LocalPSMP(context, callback.getMediaPlayerCallback()));
+            callback.setMediaPlayer(new LocalPlaybackServiceMediaPlayer(context, callback.getMediaPlayerCallback()));
         }
     }
 
-    void removeCastConsumer() {
+    public void removeCastConsumer() {
         if (!CastManager.isInitialized()) {
             return;
         }
         castManager.removeCastConsumer(castConsumer);
     }
 
-    boolean castDisconnect(boolean castDisconnect) {
+    public boolean castDisconnect(boolean castDisconnect) {
         if (!CastManager.isInitialized()) {
             return false;
         }
@@ -102,7 +106,7 @@ public class PlaybackServiceFlavorHelper {
         return castDisconnect;
     }
 
-    boolean onMediaPlayerInfo(Context context, int code, @StringRes int resourceId) {
+    public boolean onMediaPlayerInfo(Context context, int code, @StringRes int resourceId) {
         if (!CastManager.isInitialized()) {
             return false;
         }
@@ -132,9 +136,9 @@ public class PlaybackServiceFlavorHelper {
                 // In onDisconnected(), the underlying CastPlayback#mVideoCastConsumer
                 // is disconnected and hence we update our local value of stream position
                 // to the latest position.
-                PlaybackServiceMediaPlayer mediaPlayer = callback.getMediaPlayer();
+                BaseMediaPlayer mediaPlayer = callback.getMediaPlayer();
                 if (mediaPlayer != null) {
-                    callback.saveCurrentPosition(true, null, PlaybackServiceMediaPlayer.INVALID_TIME);
+                    callback.saveCurrentPosition(true, null, BaseMediaPlayer.INVALID_TIME);
                     infoBeforeCastDisconnection = mediaPlayer.getPSMPInfo();
                     if (reason != BaseCastManager.DISCONNECT_REASON_EXPLICIT &&
                             infoBeforeCastDisconnection.playerStatus == PlayerStatus.PLAYING) {
@@ -148,17 +152,17 @@ public class PlaybackServiceFlavorHelper {
             public void onDisconnected() {
                 Log.d(TAG, "onDisconnected()");
                 callback.setIsCasting(false);
-                PlaybackServiceMediaPlayer.PSMPInfo info = infoBeforeCastDisconnection;
+                BaseMediaPlayer.PSMPInfo info = infoBeforeCastDisconnection;
                 infoBeforeCastDisconnection = null;
-                PlaybackServiceMediaPlayer mediaPlayer = callback.getMediaPlayer();
+                BaseMediaPlayer mediaPlayer = callback.getMediaPlayer();
                 if (info == null && mediaPlayer != null) {
                     info = mediaPlayer.getPSMPInfo();
                 }
                 if (info == null) {
-                    info = new PlaybackServiceMediaPlayer.PSMPInfo(PlayerStatus.INDETERMINATE,
+                    info = new BaseMediaPlayer.PSMPInfo(PlayerStatus.INDETERMINATE,
                             PlayerStatus.STOPPED, null);
                 }
-                switchMediaPlayer(new LocalPSMP(context, callback.getMediaPlayerCallback()),
+                switchMediaPlayer(new LocalPlaybackServiceMediaPlayer(context, callback.getMediaPlayerCallback()),
                         info, true);
                 if (info.playable != null) {
                     callback.sendNotificationBroadcast(PlaybackService.NOTIFICATION_TYPE_RELOAD,
@@ -179,19 +183,19 @@ public class PlaybackServiceFlavorHelper {
     private void onCastAppConnected(Context context, boolean wasLaunched) {
         Log.d(TAG, "A cast device application was " + (wasLaunched ? "launched" : "joined"));
         callback.setIsCasting(true);
-        PlaybackServiceMediaPlayer.PSMPInfo info = null;
-        PlaybackServiceMediaPlayer mediaPlayer = callback.getMediaPlayer();
+        BaseMediaPlayer.PSMPInfo info = null;
+        BaseMediaPlayer mediaPlayer = callback.getMediaPlayer();
         if (mediaPlayer != null) {
             info = mediaPlayer.getPSMPInfo();
             if (info.playerStatus == PlayerStatus.PLAYING) {
                 // could be pause, but this way we make sure the new player will get the correct position,
                 // since pause runs asynchronously and we could be directing the new player to play even before
                 // the old player gives us back the position.
-                callback.saveCurrentPosition(true, null, PlaybackServiceMediaPlayer.INVALID_TIME);
+                callback.saveCurrentPosition(true, null, BaseMediaPlayer.INVALID_TIME);
             }
         }
         if (info == null) {
-            info = new PlaybackServiceMediaPlayer.PSMPInfo(PlayerStatus.INDETERMINATE, PlayerStatus.STOPPED, null);
+            info = new BaseMediaPlayer.PSMPInfo(PlayerStatus.INDETERMINATE, PlayerStatus.STOPPED, null);
         }
         callback.sendNotificationBroadcast(PlaybackService.NOTIFICATION_TYPE_RELOAD,
                 PlaybackService.EXTRA_CODE_CAST);
@@ -204,10 +208,10 @@ public class PlaybackServiceFlavorHelper {
         callback.setupNotification(true, info);
     }
 
-    private void switchMediaPlayer(@NonNull PlaybackServiceMediaPlayer newPlayer,
-                                   @NonNull PlaybackServiceMediaPlayer.PSMPInfo info,
+    private void switchMediaPlayer(@NonNull BaseMediaPlayer newPlayer,
+                                   @NonNull BaseMediaPlayer.PSMPInfo info,
                                    boolean wasLaunched) {
-        PlaybackServiceMediaPlayer mediaPlayer = callback.getMediaPlayer();
+        BaseMediaPlayer mediaPlayer = callback.getMediaPlayer();
         if (mediaPlayer != null) {
             try {
                 mediaPlayer.stopPlayback(false).get(2, TimeUnit.SECONDS);
@@ -220,7 +224,7 @@ public class PlaybackServiceFlavorHelper {
         callback.setMediaPlayer(mediaPlayer);
         Log.d(TAG, "switched to " + mediaPlayer.getClass().getSimpleName());
         if (!wasLaunched) {
-            PlaybackServiceMediaPlayer.PSMPInfo candidate = mediaPlayer.getPSMPInfo();
+            BaseMediaPlayer.PSMPInfo candidate = mediaPlayer.getPSMPInfo();
             if (candidate.playable != null &&
                     candidate.playerStatus.isAtLeast(PlayerStatus.PREPARING)) {
                 // do not automatically send new media to cast device
@@ -263,7 +267,7 @@ public class PlaybackServiceFlavorHelper {
                 new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION));
     }
 
-    void unregisterWifiBroadcastReceiver() {
+    public void unregisterWifiBroadcastReceiver() {
         if (!CastManager.isInitialized()) {
             return;
         }
@@ -273,7 +277,7 @@ public class PlaybackServiceFlavorHelper {
         }
     }
 
-    boolean onSharedPreference(String key) {
+    public boolean onSharedPreference(String key) {
         if (!CastManager.isInitialized()) {
             return false;
         }
@@ -289,7 +293,7 @@ public class PlaybackServiceFlavorHelper {
         return false;
     }
 
-    void sessionStateAddActionForWear(PlaybackStateCompat.Builder sessionState, String actionName, CharSequence name, int icon) {
+    public void sessionStateAddActionForWear(PlaybackStateCompat.Builder sessionState, String actionName, CharSequence name, int icon) {
         if (!CastManager.isInitialized()) {
             return;
         }
@@ -302,7 +306,7 @@ public class PlaybackServiceFlavorHelper {
         sessionState.addCustomAction(actionBuilder.build());
     }
 
-    void mediaSessionSetExtraForWear(MediaSessionCompat mediaSession) {
+    public void mediaSessionSetExtraForWear(MediaSessionCompat mediaSession) {
         if (!CastManager.isInitialized()) {
             return;
         }
