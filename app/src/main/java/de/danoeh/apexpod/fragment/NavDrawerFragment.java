@@ -278,11 +278,6 @@ public class NavDrawerFragment extends Fragment implements SharedPreferences.OnS
         }
 
         @Override
-        public int getNumberOfNewItems() {
-            return (navDrawerData != null) ? navDrawerData.numNewItems : 0;
-        }
-
-        @Override
         public int getNumberOfDownloadedItems() {
             return (navDrawerData != null) ? navDrawerData.numDownloadedItems : 0;
         }

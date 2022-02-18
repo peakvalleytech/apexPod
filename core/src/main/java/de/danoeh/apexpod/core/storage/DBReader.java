@@ -872,7 +872,7 @@ public final class DBReader {
         adapter.open();
 
         final LongIntMap feedCounters = adapter.getFeedCounters();
-        LongIntMap playedCounters = adapter.getPlayedEpisodesCounters();
+        LongIntMap playedCounters = new LongIntMap(0);//adapter.getPlayedEpisodesCounters();
         final Map<Long, Long> recentPubDates = adapter.getMostRecentItemDates();
         SubscriptionsFilter subscriptionsFilter = UserPreferences.getSubscriptionsFilter();
         List<Feed> feeds = subscriptionsFilter.filter(getFeedList(adapter), feedCounters);

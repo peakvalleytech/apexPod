@@ -236,17 +236,12 @@ public class NavListAdapter extends RecyclerView.Adapter<NavListAdapter.Holder>
                 holder.count.setVisibility(View.VISIBLE);
             }
         } else if (tag.equals(EpisodesFragment.TAG)) {
-            int unreadItems = itemAccess.getNumberOfNewItems();
+            int unreadItems = 0;
             if (unreadItems > 0) {
                 holder.count.setText(NumberFormat.getInstance().format(unreadItems));
                 holder.count.setVisibility(View.VISIBLE);
             }
         } else if (tag.equals(SubscriptionFragment.TAG)) {
-            int sum = itemAccess.getFeedCounterSum();
-            if (sum > 0) {
-                holder.count.setText(NumberFormat.getInstance().format(sum));
-                holder.count.setVisibility(View.VISIBLE);
-            }
         } else if (tag.equals(DownloadsFragment.TAG) && UserPreferences.isEnableAutodownload()) {
             int epCacheSize = UserPreferences.getEpisodeCacheSize();
             // don't count episodes that can be reclaimed
@@ -397,8 +392,6 @@ public class NavListAdapter extends RecyclerView.Adapter<NavListAdapter.Holder>
         boolean isSelected(int position);
 
         int getQueueSize();
-
-        int getNumberOfNewItems();
 
         int getNumberOfDownloadedItems();
 
