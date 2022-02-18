@@ -27,7 +27,7 @@ import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.PreferenceActivity;
 import de.danoeh.apexpod.adapter.NavListAdapter;
-import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
+import de.danoeh.apexpod.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
 import de.danoeh.apexpod.core.event.QueueEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;

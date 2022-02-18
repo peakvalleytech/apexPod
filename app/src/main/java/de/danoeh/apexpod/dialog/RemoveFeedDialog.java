@@ -9,7 +9,6 @@ import java.util.Collections;
 import java.util.List;
 
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import io.reactivex.Completable;

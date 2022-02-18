@@ -12,22 +12,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.adapter.PlaybackStatisticsListAdapter;
-import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
+import de.danoeh.apexpod.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
-import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
-import de.danoeh.apexpod.core.storage.StatisticsItem;
 import de.danoeh.apexpod.core.storage.database.FeedPlayStatsDao;
 import de.danoeh.apexpod.core.util.comparator.CompareCompat;
 import de.danoeh.apexpod.model.stats.FeedPlayStats;
@@ -38,7 +34,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import java.util.Collections;
-import java.util.List;
 
 /**
  * Displays the 'playback statistics' screen

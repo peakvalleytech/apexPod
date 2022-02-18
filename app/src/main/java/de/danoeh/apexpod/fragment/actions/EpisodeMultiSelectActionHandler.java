@@ -11,7 +11,7 @@ import java.util.List;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
+import de.danoeh.apexpod.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.DownloadRequestException;
 import de.danoeh.apexpod.core.storage.DownloadRequester;

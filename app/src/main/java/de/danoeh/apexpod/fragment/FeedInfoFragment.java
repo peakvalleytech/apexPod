@@ -42,7 +42,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
+import de.danoeh.apexpod.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedFunding;
 import de.danoeh.apexpod.core.glide.ApGlideSettings;

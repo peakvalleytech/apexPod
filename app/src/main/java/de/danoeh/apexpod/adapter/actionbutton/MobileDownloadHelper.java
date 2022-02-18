@@ -7,7 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import java.util.ArrayList;
 
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
+import de.danoeh.apexpod.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
