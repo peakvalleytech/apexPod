@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de.danoeh.apexpod.view.NestedScrollableHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false"
+    android:nestedScrollingEnabled="true"
+    app:preferVertical="10">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtLoopModeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Loop Mode"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Start"
+            app:layout_constraintEnd_toStartOf="@+id/txtStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtLoopModeTitle" />
+
+        <TextView
+            android:id="@+id/txtStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnStart"
+            app:layout_constraintTop_toBottomOf="@id/txtLoopModeTitle"
+            tools:text="0:00" />
+
+        <Button
+            android:id="@+id/btnEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End"
+            app:layout_constraintEnd_toStartOf="@+id/txtEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnStart" />
+
+        <TextView
+            android:id="@+id/txtEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnEnd"
+            app:layout_constraintTop_toBottomOf="@id/btnStart"
+            tools:text="26:00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</de.danoeh.apexpod.view.NestedScrollableHost>

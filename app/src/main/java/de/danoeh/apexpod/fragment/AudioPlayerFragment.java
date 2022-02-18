@@ -37,7 +37,6 @@ import java.text.NumberFormat;
 import java.util.List;
 
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.CastEnabledActivity;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.core.event.FavoritesEvent;
 import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
@@ -79,7 +78,8 @@ public class AudioPlayerFragment extends Fragment implements
     public static final String TAG = "AudioPlayerFragment";
     public static final int POS_COVER = 0;
     public static final int POS_DESCRIPTION = 1;
-    private static final int NUM_CONTENT_FRAGMENTS = 2;
+    public static final int POS_LOOP_MODE = 2;
+    private static final int NUM_CONTENT_FRAGMENTS = 3;
 
     PlaybackSpeedIndicatorView butPlaybackSpeed;
     TextView txtvPlaybackSpeed;
@@ -507,7 +507,7 @@ public class AudioPlayerFragment extends Fragment implements
         toolbar.getMenu().findItem(R.id.set_sleeptimer_item).setVisible(!controller.sleepTimerActive());
         toolbar.getMenu().findItem(R.id.disable_sleeptimer_item).setVisible(controller.sleepTimerActive());
 
-        ((CastEnabledActivity) getActivity()).requestCastButton(toolbar.getMenu());
+//        ((CastEnabledActivity) getActivity()).requestCastButton(toolbar.getMenu());
     }
 
     @Override
@@ -571,6 +571,8 @@ public class AudioPlayerFragment extends Fragment implements
             switch (position) {
                 case POS_COVER:
                     return new CoverFragment();
+                case POS_LOOP_MODE:
+                    return new LoopModeFragment();
                 default:
                 case POS_DESCRIPTION:
                     return new ItemDescriptionFragment();
