@@ -8,11 +8,15 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.storage.DBReader;
+import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.playback.PlaybackController;
 import de.danoeh.apexpod.core.util.playback.Timeline;
 import de.danoeh.apexpod.model.feed.FeedMedia;
@@ -27,7 +31,7 @@ import io.reactivex.schedulers.Schedulers;
  * Displays the description of a Playable object in a Webview.
  */
 public class LoopModeFragment extends Fragment {
-    private static final String TAG = "ItemDescriptionFragment";
+    private static final String TAG = "LoopModeFragment";
 
     private static final String PREF = "ItemDescriptionFragmentPrefs";
     private static final String PREF_SCROLL_Y = "prefScrollY";
@@ -36,12 +40,47 @@ public class LoopModeFragment extends Fragment {
     private Disposable webViewLoader;
     private PlaybackController controller;
 
+    private Button startButton;
+    private Button endButton;
+    int startPos = -1;
+    int endPos = -1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "Creating view");
         View root = inflater.inflate(R.layout.loop_mode_fragment, container, false);
 
+        startButton = root.findViewById(R.id.btnStart);
+        endButton = root.findViewById(R.id.btnEnd);
+        startPos = 0;
+
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (controller != null) {
+            endPos = controller.getDuration();
+        }
+        startButton.setOnClickListener(v -> {
+            int tmpStartPos = controller.getPosition();
+            if (tmpStartPos >= endPos) {
+                Log.d(TAG, "Error: start position must be less than end position");
+            } else {
+                Log.d(TAG, "Setting loop start at position " + Converter.getDurationStringLong(tmpStartPos));
+                startPos = tmpStartPos;
+            }
+        });
+
+        endButton.setOnClickListener(v -> {
+            int tmpEndPos = controller.getPosition();
+            if (startPos >= tmpEndPos) {
+                Log.d(TAG, "Error: start position must be less than end position");
+            } else {
+                Log.d(TAG, "Setting loop end at position " + Converter.getDurationStringLong(tmpEndPos));
+                endPos = tmpEndPos;
+            }
+        });
     }
 
     @Override

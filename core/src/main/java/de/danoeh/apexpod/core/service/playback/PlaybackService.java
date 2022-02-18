@@ -878,8 +878,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                     break;
                 case SEEKING:
                     playStatLogger.endPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
-                    break;
-                case PLAYING:
+                    break; case PLAYING:
                     playStatLogger.startPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
                     PlaybackPreferences.writePlayerStatus(mediaPlayer.getPlayerStatus());
                     updateNotificationAndMediaSession(newInfo.playable);
