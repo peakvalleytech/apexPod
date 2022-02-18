@@ -397,7 +397,9 @@ public class SubscriptionFragment extends Fragment
         }
     }
     private void showTagBar(boolean show) {
-        tagRecycler.setVisibility(show ? View.VISIBLE : View.INVISIBLE );
+        tagRecycler.setVisibility(show ? View.VISIBLE : View.GONE );
+        expandTagsButton.setBackground(AppCompatResources.getDrawable(getActivity(), R.drawable.ic_arrow_down));
+
         expandTagsButton.setVisibility(show ? View.VISIBLE : View.GONE);
         folderChipGroup.setVisibility(View.GONE);
     }

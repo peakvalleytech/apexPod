@@ -86,7 +86,7 @@ public class SubscriptionViewHolder extends RecyclerView.ViewHolder {
             selectView.setVisibility(View.VISIBLE);
             dragHandle.setVisibility(View.VISIBLE);
             selectCheckbox.setVisibility(View.GONE);
-            itemView.setOnTouchListener((v, event) -> {
+            dragHandle.setOnTouchListener((v, event) -> {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     adapter.requestDrag(this);
                 }
