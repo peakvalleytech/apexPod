@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment;
+package de.danoeh.apexpod.fragment.feed;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.preference.CheckBoxPreference;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;

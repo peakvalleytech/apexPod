@@ -1,11 +1,10 @@
-package de.danoeh.apexpod.fragment;
+package de.danoeh.apexpod.fragment.downloads;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +38,7 @@ import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
+import de.danoeh.apexpod.fragment.PagedToolbarFragment;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
 import de.danoeh.apexpod.model.feed.FeedItem;

@@ -5,7 +5,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.PreferenceActivity;
 import de.danoeh.apexpod.dialog.SwipeActionsDialog;
-import de.danoeh.apexpod.fragment.FeedItemlistFragment;
+import de.danoeh.apexpod.fragment.feed.FeedItemlistFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
 
 public class SwipePreferencesFragment extends PreferenceFragmentCompat {

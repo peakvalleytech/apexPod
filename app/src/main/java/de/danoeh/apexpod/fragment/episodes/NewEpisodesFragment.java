@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment;
+package de.danoeh.apexpod.fragment.episodes;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;

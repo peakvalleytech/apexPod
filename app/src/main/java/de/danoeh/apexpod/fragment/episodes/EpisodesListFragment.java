@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment;
+package de.danoeh.apexpod.fragment.episodes;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -40,6 +40,8 @@ import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
+import de.danoeh.apexpod.fragment.PagedToolbarFragment;
+import de.danoeh.apexpod.fragment.SearchFragment;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.view.EmptyViewHandler;

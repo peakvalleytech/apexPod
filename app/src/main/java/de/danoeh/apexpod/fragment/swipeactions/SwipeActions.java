@@ -21,7 +21,7 @@ import java.util.List;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.dialog.SwipeActionsDialog;
-import de.danoeh.apexpod.fragment.EpisodesFragment;
+import de.danoeh.apexpod.fragment.episodes.EpisodesFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedItemFilter;

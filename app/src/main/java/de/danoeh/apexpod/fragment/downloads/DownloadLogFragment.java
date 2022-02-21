@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment;
+package de.danoeh.apexpod.fragment.downloads;
 
 import android.app.Dialog;
 import android.content.ClipData;
@@ -38,6 +38,7 @@ import de.danoeh.apexpod.core.service.download.Downloader;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.storage.DownloadRequester;
+import de.danoeh.apexpod.fragment.PagedToolbarFragment;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;

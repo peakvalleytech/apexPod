@@ -9,7 +9,7 @@ import com.bumptech.glide.request.RequestOptions;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.model.feed.Feed;
-import de.danoeh.apexpod.fragment.FeedItemlistFragment;
+import de.danoeh.apexpod.fragment.feed.FeedItemlistFragment;
 import de.danoeh.apexpod.ui.common.SquareImageView;
 
 import java.lang.ref.WeakReference;

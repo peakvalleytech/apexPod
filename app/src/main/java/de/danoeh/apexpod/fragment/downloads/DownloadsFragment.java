@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment;
+package de.danoeh.apexpod.fragment.downloads;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -18,56 +19,56 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
+import de.danoeh.apexpod.fragment.PagedToolbarFragment;
 
-public class EpisodesFragment extends PagedToolbarFragment {
+/**
+ * Shows the CompletedDownloadsFragment and the RunningDownloadsFragment.
+ */
+public class DownloadsFragment extends PagedToolbarFragment {
 
-    public static final String TAG = "EpisodesFragment";
+    public static final String TAG = "DownloadsFragment";
+
+    public static final String ARG_SELECTED_TAB = "selected_tab";
     private static final String PREF_LAST_TAB_POSITION = "tab_position";
     private static final String KEY_UP_ARROW = "up_arrow";
 
-    private static final int POS_NEW_EPISODES = 0;
-    private static final int POS_ALL_EPISODES = 1;
-    private static final int POS_FAV_EPISODES = 2;
-    private static final int TOTAL_COUNT = 3;
+    private static final int POS_COMPLETED = 0;
+    public static final int POS_LOG = 1;
+    private static final int TOTAL_COUNT = 2;
 
+    private ViewPager2 viewPager;
     private TabLayout tabLayout;
     private boolean displayUpArrow;
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true);
-    }
-
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View rootView = inflater.inflate(R.layout.pager_fragment, container, false);
-        Toolbar toolbar = rootView.findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.episodes_label);
-        toolbar.inflateMenu(R.menu.episodes);
+        View root = inflater.inflate(R.layout.pager_fragment, container, false);
+        Toolbar toolbar = root.findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.downloads_label);
+        toolbar.inflateMenu(R.menu.downloads);
         displayUpArrow = getParentFragmentManager().getBackStackEntryCount() != 0;
         if (savedInstanceState != null) {
             displayUpArrow = savedInstanceState.getBoolean(KEY_UP_ARROW);
         }
         ((MainActivity) getActivity()).setupToolbarToggle(toolbar, displayUpArrow);
 
-        ViewPager2 viewPager = rootView.findViewById(R.id.viewpager);
-        viewPager.setAdapter(new EpisodesPagerAdapter(this));
+        viewPager = root.findViewById(R.id.viewpager);
+        viewPager.setAdapter(new DownloadsPagerAdapter(this));
         viewPager.setOffscreenPageLimit(2);
         super.setupPagedToolbar(toolbar, viewPager);
 
         // Give the TabLayout the ViewPager
-        tabLayout = rootView.findViewById(R.id.sliding_tabs);
-
+        tabLayout = root.findViewById(R.id.sliding_tabs);
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
-                case POS_NEW_EPISODES:
-                    tab.setText(R.string.new_episodes_label);
+                case POS_COMPLETED:
+                    tab.setText(R.string.downloads_completed_label);
                     break;
-                case POS_ALL_EPISODES:
-                    tab.setText(R.string.all_episodes_short_label);
-                    break;
-                case POS_FAV_EPISODES:
-                    tab.setText(R.string.favorite_episodes_label);
+                case POS_LOG:
+                    tab.setText(R.string.downloads_log_label);
                     break;
                 default:
                     break;
@@ -79,7 +80,22 @@ public class EpisodesFragment extends PagedToolbarFragment {
         int lastPosition = prefs.getInt(PREF_LAST_TAB_POSITION, 0);
         viewPager.setCurrentItem(lastPosition, false);
 
-        return rootView;
+        return root;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putBoolean(KEY_UP_ARROW, displayUpArrow);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (getArguments() != null) {
+            int tab = getArguments().getInt(ARG_SELECTED_TAB);
+            viewPager.setCurrentItem(tab, false);
+        }
     }
 
     @Override
@@ -92,15 +108,9 @@ public class EpisodesFragment extends PagedToolbarFragment {
         editor.apply();
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putBoolean(KEY_UP_ARROW, displayUpArrow);
-        super.onSaveInstanceState(outState);
-    }
+    public static class DownloadsPagerAdapter extends FragmentStateAdapter {
 
-    static class EpisodesPagerAdapter extends FragmentStateAdapter {
-
-        EpisodesPagerAdapter(@NonNull Fragment fragment) {
+        DownloadsPagerAdapter(@NonNull Fragment fragment) {
             super(fragment);
         }
 
@@ -108,13 +118,11 @@ public class EpisodesFragment extends PagedToolbarFragment {
         @Override
         public Fragment createFragment(int position) {
             switch (position) {
-                case POS_NEW_EPISODES:
-                    return new NewEpisodesFragment();
-                case POS_ALL_EPISODES:
-                    return new AllEpisodesFragment();
+                case POS_COMPLETED:
+                    return new CompletedDownloadsFragment();
                 default:
-                case POS_FAV_EPISODES:
-                    return new FavoriteEpisodesFragment();
+                case POS_LOG:
+                    return new DownloadLogFragment();
             }
         }
 

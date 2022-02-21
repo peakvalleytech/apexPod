@@ -46,6 +46,7 @@ import de.danoeh.apexpod.core.event.FeedItemEvent;
 import de.danoeh.apexpod.core.event.PlayerStatusEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
+import de.danoeh.apexpod.fragment.feed.FeedItemlistFragment;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedMedia;
 import de.danoeh.apexpod.core.feed.util.ImageResourceUtils;

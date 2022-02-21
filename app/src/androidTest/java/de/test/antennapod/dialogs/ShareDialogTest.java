@@ -16,7 +16,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.fragment.EpisodesFragment;
+import de.danoeh.apexpod.fragment.episodes.EpisodesFragment;
 import de.test.antennapod.EspressoTestUtils;
 import de.test.antennapod.ui.UITestUtils;
 

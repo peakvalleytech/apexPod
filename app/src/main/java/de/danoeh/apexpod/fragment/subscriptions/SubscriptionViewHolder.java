@@ -23,7 +23,7 @@ import de.danoeh.apexpod.adapter.CoverLoader;
 import de.danoeh.apexpod.adapter.SubscriptionsRecyclerAdapter;
 import de.danoeh.apexpod.core.feed.LocalFeedUpdater;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
-import de.danoeh.apexpod.fragment.FeedItemlistFragment;
+import de.danoeh.apexpod.fragment.feed.FeedItemlistFragment;
 import de.danoeh.apexpod.model.feed.Feed;
 import jp.shts.android.library.TriangleLabelView;
 

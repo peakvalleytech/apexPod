@@ -29,6 +29,7 @@ import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
 import de.danoeh.apexpod.activity.OpmlImportActivity;
+import de.danoeh.apexpod.fragment.feed.FeedItemlistFragment;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DownloadRequestException;
