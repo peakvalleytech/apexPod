@@ -10,40 +10,57 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="24dp">
 
         <TextView
             android:id="@+id/txtLoopModeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Loop Mode"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <CheckBox
+            android:id="@+id/checkbox_repeat_episode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/repeat_episode"
+            app:layout_constraintTop_toBottomOf="@id/txtLoopModeTitle" />
+
+        <CheckBox
+            android:id="@+id/checkbox_repeat_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/repeat_section"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_repeat_episode" />
 
         <Button
             android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="Start"
             app:layout_constraintEnd_toStartOf="@+id/txtStart"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtLoopModeTitle" />
+            app:layout_constraintTop_toBottomOf="@id/checkbox_repeat_section" />
 
-        <TextView
+        <EditText
             android:id="@+id/txtStart"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:editable="true"
+            android:text="0:32:2"
             app:layout_constraintBottom_toBottomOf="@id/btnStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnStart"
-            app:layout_constraintTop_toBottomOf="@id/txtLoopModeTitle"
-            tools:text="0:00" />
+            app:layout_constraintTop_toBottomOf="@id/checkbox_repeat_section" />
 
         <Button
             android:id="@+id/btnEnd"
@@ -54,16 +71,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnStart" />
 
-        <TextView
+        <EditText
             android:id="@+id/txtEnd"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:editable="true"
+            android:text="0:45:21"
             app:layout_constraintBottom_toBottomOf="@id/btnEnd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnEnd"
-            app:layout_constraintTop_toBottomOf="@id/btnStart"
-            tools:text="26:00" />
+            app:layout_constraintTop_toBottomOf="@id/btnStart" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
