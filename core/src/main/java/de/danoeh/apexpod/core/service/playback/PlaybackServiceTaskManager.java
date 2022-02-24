@@ -9,6 +9,7 @@ import android.util.Log;
 
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
 import de.danoeh.apexpod.core.service.SleepTimer;
+import de.danoeh.apexpod.core.service.sleeptimer.SleepTimerService;
 import de.danoeh.apexpod.core.util.ChapterUtils;
 import de.danoeh.apexpod.core.widget.WidgetUpdater;
 import io.reactivex.disposables.Disposable;
@@ -63,8 +64,8 @@ public class PlaybackServiceTaskManager {
     private volatile Future<List<FeedItem>> queueFuture;
     private volatile Disposable chapterLoaderFuture;
 
-    private SleepTimer sleepTimer;
-
+//    private SleepTimer sleepTimer;
+    private SleepTimerService sleepTimerService;
     private final Context context;
     private final TaskManagerCallback callback;
 
@@ -245,19 +246,20 @@ public class PlaybackServiceTaskManager {
         if (isSleepTimerActive()) {
             sleepTimerFuture.cancel(true);
         }
-        sleepTimer = new SleepTimer(context, this, callback, waitingTime);
-        sleepTimerFuture = schedExecutor.schedule(sleepTimer, 0, TimeUnit.MILLISECONDS);
+        sleepTimerService = new SleepTimerService(context, callback);
+        sleepTimerService.setSleepTimer(waitingTime);
     }
 
     /**
      * Returns true if the sleep timer is currently active.
      */
     public synchronized boolean isSleepTimerActive() {
-        return sleepTimer != null
-                && sleepTimerFuture != null
-                && !sleepTimerFuture.isCancelled()
-                && !sleepTimerFuture.isDone()
-                && sleepTimer.getWaitingTime() > 0;
+//        return sleepTimer != null
+//                && sleepTimerFuture != null
+//                && !sleepTimerFuture.isCancelled()
+//                && !sleepTimerFuture.isDone()
+//                && sleepTimer.getWaitingTime() > 0;
+        return sleepTimerService != null && sleepTimerService.isSleepTimerActive();
     }
 
     /**
@@ -267,7 +269,8 @@ public class PlaybackServiceTaskManager {
         if (isSleepTimerActive()) {
             Log.d(TAG, "Disabling sleep timer");
             sleepTimerFuture.cancel(true);
-            sleepTimer.cancel();
+//            sleepTimer.cancel();
+            sleepTimerService.disableSleepTimer();
         }
     }
 
@@ -277,7 +280,8 @@ public class PlaybackServiceTaskManager {
     public synchronized void restartSleepTimer() {
         if (isSleepTimerActive()) {
             Log.d(TAG, "Restarting sleep timer");
-            sleepTimer.restart();
+//            sleepTimer.restart();
+            sleepTimerService.restartSleepTimer();
         }
     }
 
@@ -286,7 +290,8 @@ public class PlaybackServiceTaskManager {
      */
     public synchronized long getSleepTimerTimeLeft() {
         if (isSleepTimerActive()) {
-            return sleepTimer.getWaitingTime();
+//            return sleepTimer.getWaitingTime();
+            return sleepTimerService.getSleepTimerTimeLeft();
         } else {
             return 0;
         }

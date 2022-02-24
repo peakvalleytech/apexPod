@@ -11,6 +11,7 @@ import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.service.playback.PlaybackService;
 import de.danoeh.apexpod.core.service.playback.PlaybackServiceTaskManager;
 import de.danoeh.apexpod.core.service.playback.ShakeListener;
+import de.danoeh.apexpod.core.service.sleeptimer.SleepTimerService;
 
 public class SleepTimer implements Runnable {
         private static final String TAG = "SleepTimer";
@@ -22,15 +23,15 @@ public class SleepTimer implements Runnable {
         private ShakeListener shakeListener;
         private final Handler handler;
         private Context context;
-        private PlaybackServiceTaskManager playbackServiceTaskManager;
+        private SleepTimerService sleepTimerService;
         private PlaybackServiceTaskManager.TaskManagerCallback callback;
         public SleepTimer(Context context,
-                          PlaybackServiceTaskManager playbackServiceTaskManager,
+                          SleepTimerService sleepTimerService,
                           PlaybackServiceTaskManager.TaskManagerCallback callback,
                           long waitingTime) {
             super();
             this.context = context;
-            this.playbackServiceTaskManager = playbackServiceTaskManager;
+            this.sleepTimerService = sleepTimerService;
             this.callback = callback;
             this.waitingTime = waitingTime;
             this.timeLeft = waitingTime;
@@ -104,7 +105,7 @@ public class SleepTimer implements Runnable {
 
         public void restart() {
             postCallback(() -> {
-                playbackServiceTaskManager.setSleepTimer(waitingTime);
+                sleepTimerService.setSleepTimer(waitingTime);
                 callback.onSleepTimerReset();
             });
             if (shakeListener != null) {
