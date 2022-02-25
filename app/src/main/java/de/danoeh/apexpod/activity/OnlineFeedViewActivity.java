@@ -200,9 +200,6 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         super.onStop();
         isPaused = true;
         EventBus.getDefault().unregister(this);
-        if (downloader != null && !downloader.isFinished()) {
-            downloader.cancel();
-        }
         if(dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }

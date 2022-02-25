@@ -47,3 +47,5 @@ gradle.properties
 *.keystore
 *.p12
 assets
+keystore.gradle
+*.jks

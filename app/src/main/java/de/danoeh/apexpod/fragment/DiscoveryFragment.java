@@ -188,7 +188,10 @@ public class DiscoveryFragment extends Fragment {
         if (disposable != null) {
             disposable.dispose();
         }
-        adapter = null;
+        if (adapter != null) {
+            adapter.dispose();
+            adapter = null;
+        }
     }
 
     private void loadToplist(String country) {
