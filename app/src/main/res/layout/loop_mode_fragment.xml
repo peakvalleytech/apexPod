@@ -45,12 +45,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Start"
-            app:layout_constraintEnd_toStartOf="@+id/txtStart"
+            app:layout_constraintEnd_toStartOf="@+id/editTxtStart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/checkbox_repeat_section" />
 
         <EditText
-            android:id="@+id/txtStart"
+            android:id="@+id/editTxtStart"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -67,12 +67,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="End"
-            app:layout_constraintEnd_toStartOf="@+id/txtEnd"
+            app:layout_constraintEnd_toStartOf="@+id/editTxtEnd"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnStart" />
 
         <EditText
-            android:id="@+id/txtEnd"
+            android:id="@+id/editTxtEnd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -81,7 +81,8 @@
             app:layout_constraintBottom_toBottomOf="@id/btnEnd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnEnd"
-            app:layout_constraintTop_toBottomOf="@id/btnStart" />
+            app:layout_constraintTop_toBottomOf="@id/btnStart"
+            tools:enabled="false" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -12,9 +12,14 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatCheckBox;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
 
 import de.danoeh.apexpod.R;
+import de.danoeh.apexpod.core.preferences.LoopPreferences;
+import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
+import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.playback.PlaybackController;
@@ -40,20 +45,55 @@ public class LoopModeFragment extends Fragment {
     private Disposable webViewLoader;
     private PlaybackController controller;
 
+    private AppCompatCheckBox repeatEpisodeCheckbox;
+    private AppCompatCheckBox repeatSectionCheckbox;
     private Button startButton;
     private Button endButton;
+    private AppCompatEditText startField;
+    private AppCompatEditText endField;
+
     int startPos = -1;
     int endPos = -1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "Creating view");
         View root = inflater.inflate(R.layout.loop_mode_fragment, container, false);
-
+        repeatEpisodeCheckbox = root.findViewById(R.id.checkbox_repeat_episode);
+        repeatSectionCheckbox = root.findViewById(R.id.checkbox_repeat_section);
         startButton = root.findViewById(R.id.btnStart);
         endButton = root.findViewById(R.id.btnEnd);
+        startField = root.findViewById(R.id.editTxtStart);
+        endField = root.findViewById(R.id.editTxtEnd);
         startPos = 0;
 
+
+        repeatEpisodeCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+           updateMode(isChecked);
+        });
+        repeatSectionCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            updateMode(!isChecked);
+        });
+
+
         return root;
+    }
+
+    private void  updateMode(boolean repeatEpisode) {
+        if (repeatEpisode) {
+            repeatEpisodeCheckbox.setChecked(true);
+            repeatSectionCheckbox.setChecked(false);
+            startButton.setEnabled(false);
+            endButton.setEnabled(false);
+            startField.setEnabled(false);
+            endField.setEnabled(false);
+        } else {
+            repeatSectionCheckbox.setChecked(true);
+            repeatEpisodeCheckbox.setChecked(false);
+            startButton.setEnabled(true);
+            endButton.setEnabled(true);
+            startField.setEnabled(true);
+            endField.setEnabled(true);
+        }
     }
 
     @Override
