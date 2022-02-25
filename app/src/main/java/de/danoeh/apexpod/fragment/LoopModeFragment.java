@@ -3,39 +3,32 @@ package de.danoeh.apexpod.fragment;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.preferences.LoopPreferences;
-import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
-import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.playback.PlaybackController;
-import de.danoeh.apexpod.core.util.playback.Timeline;
-import de.danoeh.apexpod.model.feed.FeedMedia;
-import de.danoeh.apexpod.model.playback.Playable;
-import de.danoeh.apexpod.view.ShownotesWebView;
-import io.reactivex.Maybe;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Displays the description of a Playable object in a Webview.
  */
-public class LoopModeFragment extends Fragment {
+public class LoopModeFragment extends Fragment implements Preference.OnPreferenceChangeListener {
     private static final String TAG = "LoopModeFragment";
 
     private static final String PREF = "ItemDescriptionFragmentPrefs";
@@ -45,19 +38,21 @@ public class LoopModeFragment extends Fragment {
     private Disposable webViewLoader;
     private PlaybackController controller;
 
+    private SwitchCompat switchCompat;
     private AppCompatCheckBox repeatEpisodeCheckbox;
     private AppCompatCheckBox repeatSectionCheckbox;
     private Button startButton;
     private Button endButton;
     private AppCompatEditText startField;
     private AppCompatEditText endField;
-
+    boolean repeatEnabled;
     int startPos = -1;
     int endPos = -1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "Creating view");
         View root = inflater.inflate(R.layout.loop_mode_fragment, container, false);
+        switchCompat = root.findViewById((R.id.switch_enable_repeat));
         repeatEpisodeCheckbox = root.findViewById(R.id.checkbox_repeat_episode);
         repeatSectionCheckbox = root.findViewById(R.id.checkbox_repeat_section);
         startButton = root.findViewById(R.id.btnStart);
@@ -66,34 +61,65 @@ public class LoopModeFragment extends Fragment {
         endField = root.findViewById(R.id.editTxtEnd);
         startPos = 0;
 
+        // Repeat episode preference allows either to repeat the episode
+        // or optionally to repeat a section (loop) which is set using
+        // LoopPreferences.setEnabled()
+        repeatEnabled= UserPreferences.getShouldRepeatEpisode();
+        setLoopOptionsViews(repeatEnabled, LoopPreferences.isEnabled());
 
-        repeatEpisodeCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-           updateMode(isChecked);
-        });
-        repeatSectionCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            updateMode(!isChecked);
+        switchCompat.setOnClickListener(v -> {
+            boolean isChecked = switchCompat.isChecked();
+            UserPreferences.setShouldRepeatEpisode(isChecked);
+            setLoopOptionsViews(isChecked, false);
         });
 
+
+        repeatEpisodeCheckbox.setOnClickListener(v -> {
+           setLoopOptionsViews(repeatEnabled, !repeatEpisodeCheckbox.isChecked());
+        });
+
+        repeatSectionCheckbox.setOnClickListener(v -> {
+            setLoopOptionsViews(repeatEnabled, repeatSectionCheckbox.isChecked());
+        });
 
         return root;
     }
 
-    private void  updateMode(boolean repeatEpisode) {
-        if (repeatEpisode) {
-            repeatEpisodeCheckbox.setChecked(true);
-            repeatSectionCheckbox.setChecked(false);
-            startButton.setEnabled(false);
-            endButton.setEnabled(false);
-            startField.setEnabled(false);
-            endField.setEnabled(false);
+    private void setLoopOptionsViews(boolean repeat, boolean loop) {
+        if (!repeat) {
+            disabledRepeatSwitch(repeat);
         } else {
-            repeatSectionCheckbox.setChecked(true);
-            repeatEpisodeCheckbox.setChecked(false);
-            startButton.setEnabled(true);
-            endButton.setEnabled(true);
-            startField.setEnabled(true);
-            endField.setEnabled(true);
+            switchCompat.setChecked(repeat);
+            if (!loop) {
+                repeatEpisodeCheckbox.setEnabled(true);
+                repeatEpisodeCheckbox.setChecked(true);
+                repeatSectionCheckbox.setEnabled(true);
+                repeatSectionCheckbox.setChecked(false);
+                startButton.setEnabled(false);
+                endButton.setEnabled(false);
+                startField.setEnabled(false);
+                endField.setEnabled(false);
+            } else {
+                repeatSectionCheckbox.setEnabled(true);
+                repeatSectionCheckbox.setChecked(true);
+                repeatEpisodeCheckbox.setChecked(false);
+                startButton.setEnabled(true);
+                endButton.setEnabled(true);
+                startField.setEnabled(true);
+                endField.setEnabled(true);
+            }
         }
+    }
+
+    private void disabledRepeatSwitch(boolean enabled) {
+        repeatSectionCheckbox.setChecked(enabled);
+        repeatEpisodeCheckbox.setChecked(enabled);
+        repeatSectionCheckbox.setEnabled(enabled);
+        repeatEpisodeCheckbox.setEnabled(enabled);
+        startButton.setEnabled(enabled);
+        endButton.setEnabled(enabled);
+        startField.setEnabled(enabled);
+        endField.setEnabled(enabled);
     }
 
     @Override
@@ -204,5 +230,13 @@ public class LoopModeFragment extends Fragment {
         }
         controller.release();
         controller = null;
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference.getKey().equals(UserPreferences.PREF_REPEAT_EPISODE)) {
+            repeatEnabled = UserPreferences.getShouldRepeatEpisode();
+        }
+        return false;
     }
 }

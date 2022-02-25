@@ -18,6 +18,7 @@ public class PlaybackTaskManagerCallback implements PlaybackServiceTaskManager.T
 
     @Override
         public void positionSaverTick() {
+        Log.d(TAG, "Saving position tick : " + playbackService.getCurrentPosition());
         playbackService.saveCurrentPosition(true, null, BaseMediaPlayer.INVALID_TIME);
         }
 

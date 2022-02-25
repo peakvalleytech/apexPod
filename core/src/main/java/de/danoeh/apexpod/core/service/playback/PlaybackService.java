@@ -843,11 +843,12 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                     playStatLogger.endPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
                     break;
                 case PLAYING:
-                    if (LoopPreferences.isEnabled() && LoopPreferences.getFeedId() != PlaybackPreferences.getCurrentlyPlayingFeedMediaId()) {
-                        LoopPreferences.setStart(0);
-                        LoopPreferences.setEnd(newInfo.playable.getDuration());
-
+                    if (UserPreferences.getShouldRepeatEpisode() && LoopPreferences.getFeedId() != PlaybackPreferences.getCurrentlyPlayingFeedMediaId()) {
+                        LoopPreferences.setEnabled(false);
+                    } else {
+                        // get/set current loop position
                     }
+
                     playStatLogger.startPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
                     PlaybackPreferences.writePlayerStatus(mediaPlayer.getPlayerStatus());
                     updateNotificationAndMediaSession(newInfo.playable);
