@@ -60,11 +60,9 @@ public class PlaybackServiceTaskManager {
 
     private ScheduledFuture<?> positionSaverFuture;
     private ScheduledFuture<?> widgetUpdaterFuture;
-    private ScheduledFuture<?> sleepTimerFuture;
     private volatile Future<List<FeedItem>> queueFuture;
     private volatile Disposable chapterLoaderFuture;
 
-//    private SleepTimer sleepTimer;
     private SleepTimerService sleepTimerService;
     private final Context context;
     private final TaskManagerCallback callback;
@@ -241,11 +239,6 @@ public class PlaybackServiceTaskManager {
         if (waitingTime <= 0) {
             throw new IllegalArgumentException("Waiting time <= 0");
         }
-
-        Log.d(TAG, "Setting sleep timer to " + waitingTime + " milliseconds");
-        if (isSleepTimerActive()) {
-            sleepTimerFuture.cancel(true);
-        }
         sleepTimerService = new SleepTimerService(context, callback);
         sleepTimerService.setSleepTimer(waitingTime);
     }
@@ -254,11 +247,6 @@ public class PlaybackServiceTaskManager {
      * Returns true if the sleep timer is currently active.
      */
     public synchronized boolean isSleepTimerActive() {
-//        return sleepTimer != null
-//                && sleepTimerFuture != null
-//                && !sleepTimerFuture.isCancelled()
-//                && !sleepTimerFuture.isDone()
-//                && sleepTimer.getWaitingTime() > 0;
         return sleepTimerService != null && sleepTimerService.isSleepTimerActive();
     }
 
@@ -268,8 +256,6 @@ public class PlaybackServiceTaskManager {
     public synchronized void disableSleepTimer() {
         if (isSleepTimerActive()) {
             Log.d(TAG, "Disabling sleep timer");
-            sleepTimerFuture.cancel(true);
-//            sleepTimer.cancel();
             sleepTimerService.disableSleepTimer();
         }
     }
@@ -280,7 +266,6 @@ public class PlaybackServiceTaskManager {
     public synchronized void restartSleepTimer() {
         if (isSleepTimerActive()) {
             Log.d(TAG, "Restarting sleep timer");
-//            sleepTimer.restart();
             sleepTimerService.restartSleepTimer();
         }
     }
@@ -290,7 +275,6 @@ public class PlaybackServiceTaskManager {
      */
     public synchronized long getSleepTimerTimeLeft() {
         if (isSleepTimerActive()) {
-//            return sleepTimer.getWaitingTime();
             return sleepTimerService.getSleepTimerTimeLeft();
         } else {
             return 0;
