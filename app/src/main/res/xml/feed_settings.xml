@@ -49,6 +49,12 @@
 
     <PreferenceCategory
         android:title="@string/feed_settings_other_title">
+        <Preference
+            android:icon="@drawable/ic_tag"
+            android:key="tags"
+            android:summary="@string/feed_tags_summary"
+            android:title="@string/feed_tags_label" />
+
         <SwitchPreferenceCompat
             android:icon="@drawable/ic_refresh"
             android:key="keepUpdated"
@@ -63,17 +69,21 @@
             android:summary="@string/episode_notification_summary"
             android:title="@string/episode_notification" />
 
+        <ListPreference
+            android:defaultValue="After Finishing"
+            android:entries="@array/spnVolumeReductionItems"
+            android:entryValues="@array/spnVolumeReductionValues"
+            android:icon="@drawable/ic_volume_adaption"
+            android:key="volumeReduction"
+            android:summary="@string/feed_volume_reduction_summary"
+            android:title="@string/feed_volume_reduction" />
+
         <Preference
             android:icon="@drawable/ic_key"
             android:key="authentication"
             android:summary="@string/authentication_descr"
             android:title="@string/authentication_label" />
 
-        <Preference
-            android:icon="@drawable/ic_tag"
-            android:key="tags"
-            android:summary="@string/feed_tags_summary"
-            android:title="@string/feed_tags_label" />
     </PreferenceCategory>
 
 </PreferenceScreen>

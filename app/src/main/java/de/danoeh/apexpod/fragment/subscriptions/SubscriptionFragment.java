@@ -347,7 +347,6 @@ public class SubscriptionFragment extends Fragment
 
                         initTagViews(tags);
 
-                        endDragDropMode();
                         subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
                         subscriptionAdapter.setActionModeCallback(new ActionModeCallback() {
                             @Override
@@ -427,6 +426,7 @@ public class SubscriptionFragment extends Fragment
             List<String> entryValues =
                     Arrays.asList(getContext().getResources().getStringArray(R.array.nav_drawer_feed_order_values));
             UserPreferences.setFeedOrder(entryValues.get(UserPreferences.FEED_ORDER_PRIORITY));
+
             clearTagFilterIds();
             Pair<List<NavDrawerData.DrawerItem>,
                     List<NavDrawerData.TagDrawerItem>> feedsAndTags =
@@ -437,7 +437,8 @@ public class SubscriptionFragment extends Fragment
             if (folderChipGroup.getVisibility() == View.VISIBLE) {
                 expandTagsButton.callOnClick();
             }
-            subscriptionAdapter.setItems(tagFilteredFeeds);
+
+            subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
             //Update subscriptions
             subscriptionAdapter.startPriorityActionMode();
             ItemTouchHelper.Callback callback =
@@ -473,6 +474,7 @@ public class SubscriptionFragment extends Fragment
 
     private void endDragDropMode() {
         subscriptionAdapter.endPriorityActionMode();
+//        loadSubscriptions();
         if (swipeRefreshLayout != null)
             swipeRefreshLayout.setEnabled(true);
     }
