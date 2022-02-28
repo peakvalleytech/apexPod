@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.joanzapata.iconify.Iconify;
 import com.leinardi.android.speeddial.SpeedDialView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -85,6 +86,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
     private EmptyViewHandler emptyView;
     private ProgressBar progLoading;
     private Toolbar toolbar;
+    private TextView txtvInformation;
     private boolean displayUpArrow;
 
     private List<FeedItem> queue;
@@ -100,7 +102,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
     private SharedPreferences prefs;
 
     private SpeedDialView speedDialView;
-
+    private boolean isFiltered = false;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -476,6 +478,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
 
         progLoading = root.findViewById(R.id.progLoading);
         progLoading.setVisibility(View.VISIBLE);
+        txtvInformation = root.findViewById(R.id.txtvInformation);
 
         speedDialView = root.findViewById(R.id.fabSD);
         speedDialView.setOverlayLayout(root.findViewById(R.id.fabSDOverlay));
@@ -560,7 +563,19 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
             info += Converter.getDurationStringLocalized(getActivity(), timeLeft);
         }
         infoBar.setText(info);
+        refreshInfoText();
     }
+
+    private void refreshInfoText() {
+        if (isFiltered) {
+            txtvInformation.setText("{md-info-outline} " + this.getString(R.string.filtered_label));
+            Iconify.addIcons(txtvInformation);
+            txtvInformation.setVisibility(View.VISIBLE);
+        } else {
+            txtvInformation.setVisibility(View.GONE);
+        }
+    }
+
 
     private void loadItems(final boolean restoreScrollPosition) {
         Log.d(TAG, "loadItems()");
@@ -580,7 +595,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
                 .subscribe(unFilteredAndFilteredQueues -> {
                     progLoading.setVisibility(View.GONE);
                     unFilteredQueue = unFilteredAndFilteredQueues.first;
-                    boolean isFiltered = !unFilteredAndFilteredQueues.second.isEmpty();
+                    isFiltered = !unFilteredAndFilteredQueues.second.isEmpty();
                     if (isFiltered)
                         queue = unFilteredAndFilteredQueues.second;
                     else
