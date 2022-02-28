@@ -256,7 +256,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
         final int itemId = item.getItemId();
 
         if (itemId == R.id.queue_filter) {
-            if (queue.isEmpty()) {
+            if (unFilteredQueue.isEmpty()) {
                 AlertDialog dialog = DialogAlertFactory.Companion.create(
                         getContext(),
                         getString(R.string.no_items_header_label),
