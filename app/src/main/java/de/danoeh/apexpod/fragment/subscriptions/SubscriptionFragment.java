@@ -34,7 +34,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.joanzapata.iconify.Iconify;
 import com.leinardi.android.speeddial.SpeedDialView;
 
-import de.danoeh.antennapod.adapter.DragAndDropItemTouchHelper;
+import de.danoeh.apexpod.adapter.DragAndDropItemTouchHelper;
 import de.danoeh.apexpod.adapter.ActionModeCallback;
 import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import org.greenrobot.eventbus.EventBus;

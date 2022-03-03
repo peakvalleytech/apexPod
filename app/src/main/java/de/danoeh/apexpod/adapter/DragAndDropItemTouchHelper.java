@@ -1,4 +1,4 @@
-package de.danoeh.antennapod.adapter;
+package de.danoeh.apexpod.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
