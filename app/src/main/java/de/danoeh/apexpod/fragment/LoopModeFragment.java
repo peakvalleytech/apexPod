@@ -45,8 +45,6 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
     private AppCompatEditText startField;
     private AppCompatEditText endField;
     boolean repeatEnabled;
-    int startPos = -1;
-    int endPos = -1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "Creating view");
@@ -58,27 +56,26 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         endButton = root.findViewById(R.id.btnEnd);
         startField = root.findViewById(R.id.editTxtStart);
         endField = root.findViewById(R.id.editTxtEnd);
-        startPos = 0;
 
         // Repeat episode preference allows either to repeat the episode
         // or optionally to repeat a section (loop) which is set using
         // LoopPreferences.setEnabled()
         repeatEnabled= UserPreferences.getShouldRepeatEpisode();
-        setLoopOptionsViews(repeatEnabled, LoopPreferences.isEnabled());
+        setLoopModeView(repeatEnabled, LoopPreferences.isEnabled());
 
         repeatModeSwitch.setOnClickListener(v -> {
             boolean isChecked = repeatModeSwitch.isChecked();
             UserPreferences.setShouldRepeatEpisode(isChecked);
-            setLoopOptionsViews(isChecked, false);
+            setLoopModeView(isChecked, false);
         });
 
 
         repeatEpisodeCheckbox.setOnClickListener(v -> {
-           setLoopOptionsViews(repeatEnabled, !repeatEpisodeCheckbox.isChecked());
+           setLoopModeView(repeatEnabled, !repeatEpisodeCheckbox.isChecked());
         });
 
         repeatSectionCheckbox.setOnClickListener(v -> {
-            setLoopOptionsViews(repeatEnabled, repeatSectionCheckbox.isChecked());
+            setLoopModeView(repeatEnabled, repeatSectionCheckbox.isChecked());
         });
 
         PreferenceManager.getDefaultSharedPreferences(getContext()).registerOnSharedPreferenceChangeListener(this);
@@ -86,7 +83,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         return root;
     }
 
-    private void setLoopOptionsViews(boolean repeat, boolean loop) {
+    private void setLoopModeView(boolean repeat, boolean loop) {
         if (!repeat) {
             disabledRepeatSwitch(repeat);
         } else {
@@ -100,6 +97,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                 endButton.setEnabled(false);
                 startField.setEnabled(false);
                 endField.setEnabled(false);
+                setTextFields(0, 0);
             } else {
                 repeatSectionCheckbox.setEnabled(true);
                 repeatSectionCheckbox.setChecked(true);
@@ -108,6 +106,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                 endButton.setEnabled(true);
                 startField.setEnabled(true);
                 endField.setEnabled(true);
+                setTextFields(0, controller.getDuration());
             }
         }
     }
@@ -124,31 +123,46 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         endField.setEnabled(enabled);
     }
 
+    private void setTextFields(int startTime, int endTime) {
+        String startTimeText = Converter.getDurationStringLong(startTime);
+        String endTimeText = Converter.getDurationStringLong(endTime);
+        startField.setText(startTimeText);
+        endField.setText(endTimeText);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (controller != null) {
-            endPos = controller.getDuration();
-        }
         startButton.setOnClickListener(v -> {
             int tmpStartPos = controller.getPosition();
+            int endPos = LoopPreferences.getEnd();
             if (tmpStartPos >= endPos) {
                 Log.d(TAG, "Error: start position must be less than end position");
             } else {
-                Log.d(TAG, "Setting loop start at position " + Converter.getDurationStringLong(tmpStartPos));
-                startPos = tmpStartPos;
+                String startText = Converter.getDurationStringLong(tmpStartPos);
+                Log.d(TAG, "Setting loop start at position " + startText);
+                startField.setText(startText);
+                LoopPreferences.setStart(tmpStartPos);
             }
         });
 
         endButton.setOnClickListener(v -> {
             int tmpEndPos = controller.getPosition();
+            int startPos = LoopPreferences.getStart();
             if (startPos >= tmpEndPos) {
                 Log.d(TAG, "Error: start position must be less than end position");
             } else {
-                Log.d(TAG, "Setting loop end at position " + Converter.getDurationStringLong(tmpEndPos));
-                endPos = tmpEndPos;
+                String endText = Converter.getDurationStringLong(tmpEndPos);
+                Log.d(TAG, "Setting loop end at position " + endText);
+                endField.setText(endText);
+                LoopPreferences.setEnd(tmpEndPos);
             }
         });
+    }
+
+    public LoopModeFragment(PlaybackController controller) {
+        super();
+        this.controller = controller;
     }
 
     @Override
@@ -214,7 +228,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(UserPreferences.PREF_REPEAT_EPISODE)) {
             repeatEnabled = UserPreferences.getShouldRepeatEpisode();
-            setLoopOptionsViews(repeatEnabled, LoopPreferences.isEnabled());
+            setLoopModeView(repeatEnabled, LoopPreferences.isEnabled());
         }
     }
 }

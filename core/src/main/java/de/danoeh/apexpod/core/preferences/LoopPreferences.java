@@ -32,19 +32,19 @@ public class LoopPreferences {
         sharedPreferences.edit().putLong(PREF_KEY_LOOP_FEED_ID, feedId).apply();
     }
 
-    public static long getStart() {
-        return sharedPreferences.getLong(PREF_KEY_LOOP_START, 0L);
+    public static int getStart() {
+        return sharedPreferences.getInt(PREF_KEY_LOOP_START, 0);
     }
 
-    public static void setStart(long start) {
-        sharedPreferences.edit().putLong(PREF_KEY_LOOP_START, start).apply();
+    public static void setStart(int start) {
+        sharedPreferences.edit().putInt(PREF_KEY_LOOP_START, start).apply();
     }
 
-    public static long getEnd() {
-        return sharedPreferences.getLong(PREF_KEY_LOOP_END, 0L);
+    public static int getEnd() {
+        return sharedPreferences.getInt(PREF_KEY_LOOP_END, 0);
     }
 
-    public static void setEnd(long end) {
-        sharedPreferences.edit().putLong(PREF_KEY_LOOP_END, end).apply();
+    public static void setEnd(int end) {
+        sharedPreferences.edit().putInt(PREF_KEY_LOOP_END, end).apply();
     }
 }

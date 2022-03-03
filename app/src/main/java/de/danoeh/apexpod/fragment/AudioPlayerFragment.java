@@ -147,7 +147,7 @@ public class AudioPlayerFragment extends Fragment implements
         sbPosition.setOnSeekBarChangeListener(this);
 
         pager = root.findViewById(R.id.pager);
-        pager.setAdapter(new AudioPlayerPagerAdapter(this));
+        pager.setAdapter(new AudioPlayerPagerAdapter(this, controller));
         // Required for getChildAt(int) in ViewPagerBottomSheetBehavior to return the correct page
         pager.setOffscreenPageLimit((int) NUM_CONTENT_FRAGMENTS);
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -376,6 +376,7 @@ public class AudioPlayerFragment extends Fragment implements
     public void onStart() {
         super.onStart();
         controller = newPlaybackController();
+
         controller.init();
         loadMediaInfo(false);
         EventBus.getDefault().register(this);
@@ -562,9 +563,10 @@ public class AudioPlayerFragment extends Fragment implements
 
     private static class AudioPlayerPagerAdapter extends FragmentStateAdapter {
         private static final String TAG = "AudioPlayerPagerAdapter";
-
-        public AudioPlayerPagerAdapter(@NonNull Fragment fragment) {
+        private PlaybackController playbackController;
+        public AudioPlayerPagerAdapter(@NonNull Fragment fragment, PlaybackController playbackController) {
             super(fragment);
+            this.playbackController = playbackController;
         }
 
         @NonNull
@@ -576,7 +578,7 @@ public class AudioPlayerFragment extends Fragment implements
                 case POS_COVER:
                     return new CoverFragment();
                 case POS_LOOP_MODE:
-                    return new LoopModeFragment();
+                    return new LoopModeFragment(playbackController);
                 default:
                 case POS_DESCRIPTION:
                     return new ItemDescriptionFragment();
