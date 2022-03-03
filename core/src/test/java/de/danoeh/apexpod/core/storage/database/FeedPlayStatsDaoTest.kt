@@ -34,13 +34,13 @@ class FeedPlayStatsDaoTest {
     @Test
     fun shouldGetFeeds() {
         val feed1 =
-            Feed(0, null, "A", "link", "d", null, null, null, "rss", "A", null, "", "", true)
+            Feed(0,"A", "link", true)
         val feed2 =
-            Feed(0, null, "b", "link", "d", null, null, null, "rss", "b", null, "", "", true)
+            Feed(0,"B", "link", true)
         val feed3 =
-            Feed(0, null, "C", "link", "d", null, null, null, "rss", "C", null, "", "", true)
+            Feed(0,"C", "link", true)
         val feed4 =
-            Feed(0, null, "d", "link", "d", null, null, null, "rss", "d", null, "", "", true)
+            Feed(0,"D", "link", true)
         adapter!!.open()
         adapter!!.setCompleteFeed(feed1)
         adapter!!.setCompleteFeed(feed2)
@@ -58,7 +58,7 @@ class FeedPlayStatsDaoTest {
         val multiFeedList = PlayStatRange()
         val feedItemId: Long = 1
         val feed1 =
-            Feed(0, null, "A", "link", "d", null, null, null, "rss", "A", null, "", "", true)
+            Feed(0,"A", "link", true)
         adapter!!.open()
         adapter!!.setCompleteFeed(feed1)
 
