@@ -504,6 +504,10 @@ public class AudioPlayerFragment extends Fragment implements
             FeedItemMenuHandler.onPrepareMenu(toolbar.getMenu(), ((FeedMedia) media).getItem());
         }
 
+        toolbar.getMenu().findItem(R.id.loop_mode).setOnMenuItemClickListener(item -> {
+            pager.setCurrentItem(POS_LOOP_MODE);
+            return true;
+        });
         toolbar.getMenu().findItem(R.id.set_sleeptimer_item).setVisible(!controller.sleepTimerActive());
         toolbar.getMenu().findItem(R.id.disable_sleeptimer_item).setVisible(controller.sleepTimerActive());
 

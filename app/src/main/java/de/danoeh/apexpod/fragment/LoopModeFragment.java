@@ -3,13 +3,11 @@ package de.danoeh.apexpod.fragment;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +15,7 @@ import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.preferences.LoopPreferences;
@@ -28,7 +27,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * Displays the description of a Playable object in a Webview.
  */
-public class LoopModeFragment extends Fragment implements Preference.OnPreferenceChangeListener {
+public class LoopModeFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = "LoopModeFragment";
 
     private static final String PREF = "ItemDescriptionFragmentPrefs";
@@ -38,7 +37,7 @@ public class LoopModeFragment extends Fragment implements Preference.OnPreferenc
     private Disposable webViewLoader;
     private PlaybackController controller;
 
-    private SwitchCompat switchCompat;
+    private SwitchCompat repeatModeSwitch;
     private AppCompatCheckBox repeatEpisodeCheckbox;
     private AppCompatCheckBox repeatSectionCheckbox;
     private Button startButton;
@@ -52,7 +51,7 @@ public class LoopModeFragment extends Fragment implements Preference.OnPreferenc
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "Creating view");
         View root = inflater.inflate(R.layout.loop_mode_fragment, container, false);
-        switchCompat = root.findViewById((R.id.switch_enable_repeat));
+        repeatModeSwitch = root.findViewById((R.id.switch_enable_repeat));
         repeatEpisodeCheckbox = root.findViewById(R.id.checkbox_repeat_episode);
         repeatSectionCheckbox = root.findViewById(R.id.checkbox_repeat_section);
         startButton = root.findViewById(R.id.btnStart);
@@ -67,8 +66,8 @@ public class LoopModeFragment extends Fragment implements Preference.OnPreferenc
         repeatEnabled= UserPreferences.getShouldRepeatEpisode();
         setLoopOptionsViews(repeatEnabled, LoopPreferences.isEnabled());
 
-        switchCompat.setOnClickListener(v -> {
-            boolean isChecked = switchCompat.isChecked();
+        repeatModeSwitch.setOnClickListener(v -> {
+            boolean isChecked = repeatModeSwitch.isChecked();
             UserPreferences.setShouldRepeatEpisode(isChecked);
             setLoopOptionsViews(isChecked, false);
         });
@@ -82,6 +81,8 @@ public class LoopModeFragment extends Fragment implements Preference.OnPreferenc
             setLoopOptionsViews(repeatEnabled, repeatSectionCheckbox.isChecked());
         });
 
+        PreferenceManager.getDefaultSharedPreferences(getContext()).registerOnSharedPreferenceChangeListener(this);
+
         return root;
     }
 
@@ -89,7 +90,7 @@ public class LoopModeFragment extends Fragment implements Preference.OnPreferenc
         if (!repeat) {
             disabledRepeatSwitch(repeat);
         } else {
-            switchCompat.setChecked(repeat);
+            repeatModeSwitch.setChecked(repeat);
             if (!loop) {
                 repeatEpisodeCheckbox.setEnabled(true);
                 repeatEpisodeCheckbox.setChecked(true);
@@ -112,6 +113,7 @@ public class LoopModeFragment extends Fragment implements Preference.OnPreferenc
     }
 
     private void disabledRepeatSwitch(boolean enabled) {
+        repeatModeSwitch.setChecked(false);
         repeatSectionCheckbox.setChecked(enabled);
         repeatEpisodeCheckbox.setChecked(enabled);
         repeatSectionCheckbox.setEnabled(enabled);
@@ -186,28 +188,6 @@ public class LoopModeFragment extends Fragment implements Preference.OnPreferenc
         editor.apply();
     }
 
-    private boolean restoreFromPreference() {
-        Log.d(TAG, "Restoring from preferences");
-        Activity activity = getActivity();
-        if (activity != null) {
-            SharedPreferences prefs = activity.getSharedPreferences(PREF, Activity.MODE_PRIVATE);
-            String id = prefs.getString(PREF_PLAYABLE_ID, "");
-            int scrollY = prefs.getInt(PREF_SCROLL_Y, -1);
-//            if (controller != null && scrollY != -1 && controller.getMedia() != null
-//                    && id.equals(controller.getMedia().getIdentifier().toString())
-//                    && webvDescription != null) {
-//                Log.d(TAG, "Restored scroll Position: " + scrollY);
-//                webvDescription.scrollTo(webvDescription.getScrollX(), scrollY);
-//                return true;
-//            }
-        }
-        return false;
-    }
-
-    public void scrollToTop() {
-        savePreference();
-    }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -225,18 +205,16 @@ public class LoopModeFragment extends Fragment implements Preference.OnPreferenc
     public void onStop() {
         super.onStop();
 
-        if (webViewLoader != null) {
-            webViewLoader.dispose();
-        }
         controller.release();
         controller = null;
     }
 
+
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference.getKey().equals(UserPreferences.PREF_REPEAT_EPISODE)) {
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(UserPreferences.PREF_REPEAT_EPISODE)) {
             repeatEnabled = UserPreferences.getShouldRepeatEpisode();
+            setLoopOptionsViews(repeatEnabled, LoopPreferences.isEnabled());
         }
-        return false;
     }
 }
