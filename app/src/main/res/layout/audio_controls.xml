@@ -116,12 +116,6 @@
             android:layout_height="wrap_content"
             android:text="@string/stereo_to_mono" />
 
-        <CheckBox
-            android:id="@+id/repeat_episode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/repeat_episode" />
-
     </LinearLayout>
 
 </ScrollView>
