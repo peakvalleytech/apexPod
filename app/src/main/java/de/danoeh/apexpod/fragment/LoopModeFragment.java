@@ -22,6 +22,8 @@ import de.danoeh.apexpod.core.preferences.LoopPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.playback.PlaybackController;
+import de.danoeh.apexpod.model.feed.FeedMedia;
+import de.danoeh.apexpod.model.playback.Playable;
 import io.reactivex.disposables.Disposable;
 
 /**
@@ -69,7 +71,6 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
             setLoopModeView(isChecked, false);
         });
 
-
         repeatEpisodeCheckbox.setOnClickListener(v -> {
            setLoopModeView(repeatEnabled, !repeatEpisodeCheckbox.isChecked());
         });
@@ -97,8 +98,18 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                 endButton.setEnabled(false);
                 startField.setEnabled(false);
                 endField.setEnabled(false);
-                setTextFields(0, 0);
+                initTextFields(0, 0);
+                LoopPreferences.setEnabled(loop);
             } else {
+                if (controller != null) {
+                    Playable playable = controller.getMedia();
+                    if (playable instanceof FeedMedia) {
+                        FeedMedia feedMedia = (FeedMedia) playable;
+                        long itemId = feedMedia.getItemId();
+                        LoopPreferences.setFeedItemId(itemId);
+                    }
+                    LoopPreferences.setEnabled(loop);
+                }
                 repeatSectionCheckbox.setEnabled(true);
                 repeatSectionCheckbox.setChecked(true);
                 repeatEpisodeCheckbox.setChecked(false);
@@ -106,7 +117,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                 endButton.setEnabled(true);
                 startField.setEnabled(true);
                 endField.setEnabled(true);
-                setTextFields(0, controller.getDuration());
+                initTextFields(0, controller.getDuration());
             }
         }
     }
@@ -123,11 +134,13 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         endField.setEnabled(enabled);
     }
 
-    private void setTextFields(int startTime, int endTime) {
+    private void initTextFields(int startTime, int endTime) {
         String startTimeText = Converter.getDurationStringLong(startTime);
         String endTimeText = Converter.getDurationStringLong(endTime);
         startField.setText(startTimeText);
         endField.setText(endTimeText);
+        LoopPreferences.setStart(startTime);
+//        LoopPreferences.setEnd(endTime);
     }
 
     @Override
@@ -226,8 +239,11 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(UserPreferences.PREF_REPEAT_EPISODE)) {
+            if (key.equals(UserPreferences.PREF_REPEAT_EPISODE)) {
             repeatEnabled = UserPreferences.getShouldRepeatEpisode();
+            setLoopModeView(repeatEnabled, LoopPreferences.isEnabled());
+        }
+        if (key.equals(LoopPreferences.PREF_KEY_LOOP_ENABLED)) {
             setLoopModeView(repeatEnabled, LoopPreferences.isEnabled());
         }
     }

@@ -79,7 +79,6 @@ import de.danoeh.apexpod.core.util.NetworkUtils;
 import de.danoeh.apexpod.core.util.gui.NotificationUtils;
 import de.danoeh.apexpod.core.util.playback.PlayableUtils;
 import de.danoeh.apexpod.core.util.playback.PlaybackServiceStarter;
-import de.danoeh.apexpod.core.widget.WidgetUpdater;
 import de.danoeh.apexpod.model.feed.Chapter;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
@@ -843,7 +842,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                     playStatLogger.endPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
                     break;
                 case PLAYING:
-                    if (UserPreferences.getShouldRepeatEpisode() && LoopPreferences.getFeedId() != PlaybackPreferences.getCurrentlyPlayingFeedMediaId()) {
+                    if (UserPreferences.getShouldRepeatEpisode() && LoopPreferences.getFeedItemId() != PlaybackPreferences.getCurrentlyPlayingFeedMediaId()) {
                         LoopPreferences.setEnabled(false);
                     } else {
                         // get/set current loop position

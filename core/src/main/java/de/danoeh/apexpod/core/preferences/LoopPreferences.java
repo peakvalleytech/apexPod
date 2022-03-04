@@ -24,11 +24,11 @@ public class LoopPreferences {
         sharedPreferences.edit().putBoolean(PREF_KEY_LOOP_ENABLED, enabled).apply();
     }
 
-    public static long getFeedId() {
+    public static long getFeedItemId() {
         return sharedPreferences.getLong(PREF_KEY_LOOP_FEED_ID, 0);
     }
 
-    public static void setFeedId(long feedId) {
+    public static void setFeedItemId(long feedId) {
         sharedPreferences.edit().putLong(PREF_KEY_LOOP_FEED_ID, feedId).apply();
     }
 
