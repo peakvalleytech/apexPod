@@ -29,8 +29,6 @@ import de.danoeh.apexpod.core.cast.DefaultCastConsumer;
 import de.danoeh.apexpod.core.event.MessageEvent;
 import de.danoeh.apexpod.core.service.playback.PlaybackService;
 import de.danoeh.apexpod.core.service.playback.PlayerStatus;
-import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
-import de.danoeh.apexpod.core.service.playback.player.LocalPlaybackServiceMediaPlayer;
 import de.danoeh.apexpod.model.playback.MediaType;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.util.NetworkUtils;
