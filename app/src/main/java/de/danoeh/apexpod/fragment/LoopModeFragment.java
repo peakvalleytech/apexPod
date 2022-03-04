@@ -105,7 +105,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                     Playable playable = controller.getMedia();
                     if (playable instanceof FeedMedia) {
                         FeedMedia feedMedia = (FeedMedia) playable;
-                        long itemId = feedMedia.getItemId();
+                        long itemId = feedMedia.getId();
                         LoopPreferences.setFeedItemId(itemId);
                     }
                     LoopPreferences.setEnabled(loop);
@@ -117,7 +117,9 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                 endButton.setEnabled(true);
                 startField.setEnabled(true);
                 endField.setEnabled(true);
-                initTextFields(0, controller.getDuration());
+                if (controller != null) {
+                    initTextFields(0, controller.getDuration());
+                }
             }
         }
     }
@@ -140,7 +142,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         startField.setText(startTimeText);
         endField.setText(endTimeText);
         LoopPreferences.setStart(startTime);
-//        LoopPreferences.setEnd(endTime);
+        LoopPreferences.setEnd(endTime);
     }
 
     @Override
