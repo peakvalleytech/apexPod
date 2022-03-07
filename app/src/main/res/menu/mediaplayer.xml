@@ -29,13 +29,6 @@
     </item>
 
     <item
-        android:id="@+id/audio_controls"
-        android:icon="@drawable/ic_sliders"
-        android:title="@string/audio_controls"
-        custom:showAsAction="always">
-    </item>
-
-    <item
         android:id="@+id/open_feed_item"
         android:icon="@drawable/ic_feed"
         custom:showAsAction="collapseActionView"

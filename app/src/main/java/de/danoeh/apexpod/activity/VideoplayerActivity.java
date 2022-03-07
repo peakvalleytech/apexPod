@@ -54,7 +54,6 @@ import de.danoeh.apexpod.core.util.gui.PictureInPictureUtil;
 import de.danoeh.apexpod.core.util.playback.MediaPlayerError;
 import de.danoeh.apexpod.core.util.playback.PlaybackController;
 import de.danoeh.apexpod.databinding.VideoplayerActivityBinding;
-import de.danoeh.apexpod.dialog.PlaybackControlsDialog;
 import de.danoeh.apexpod.dialog.ShareDialog;
 import de.danoeh.apexpod.dialog.SkipPreferenceDialog;
 import de.danoeh.apexpod.dialog.SleepTimerDialog;
@@ -591,7 +590,6 @@ public class VideoplayerActivity extends AppCompatActivity implements SeekBar.On
         if (PictureInPictureUtil.supportsPictureInPicture(this)) {
             menu.findItem(R.id.player_go_to_picture_in_picture).setVisible(true);
         }
-        menu.findItem(R.id.audio_controls).setIcon(R.drawable.ic_sliders);
         return true;
     }
 
@@ -629,9 +627,6 @@ public class VideoplayerActivity extends AppCompatActivity implements SeekBar.On
         } else if (item.getItemId() == R.id.disable_sleeptimer_item
                 || item.getItemId() == R.id.set_sleeptimer_item) {
             new SleepTimerDialog().show(getSupportFragmentManager(), "SleepTimerDialog");
-        } else if (item.getItemId() == R.id.audio_controls) {
-            PlaybackControlsDialog dialog = PlaybackControlsDialog.newInstance();
-            dialog.show(getSupportFragmentManager(), "playback_controls");
         } else if (item.getItemId() == R.id.open_feed_item && feedItem != null) {
             Intent intent = MainActivity.getIntentToOpenFeed(this, feedItem.getFeedId());
             startActivity(intent);

@@ -56,7 +56,6 @@ import de.danoeh.apexpod.core.util.TimeSpeedConverter;
 import de.danoeh.apexpod.core.util.playback.MediaPlayerError;
 import de.danoeh.apexpod.model.playback.Playable;
 import de.danoeh.apexpod.core.util.playback.PlaybackController;
-import de.danoeh.apexpod.dialog.PlaybackControlsDialog;
 import de.danoeh.apexpod.dialog.SkipPreferenceDialog;
 import de.danoeh.apexpod.dialog.SleepTimerDialog;
 import de.danoeh.apexpod.dialog.VariableSpeedDialog;
@@ -529,10 +528,6 @@ public class AudioPlayerFragment extends Fragment implements
             // Fall-through)
         } else if (itemId == R.id.set_sleeptimer_item) {
             new SleepTimerDialog().show(getChildFragmentManager(), "SleepTimerDialog");
-            return true;
-        } else if (itemId == R.id.audio_controls) {
-            PlaybackControlsDialog dialog = PlaybackControlsDialog.newInstance();
-            dialog.show(getChildFragmentManager(), "playback_controls");
             return true;
         } else if (itemId == R.id.open_feed_item) {
             if (feedItem != null) {

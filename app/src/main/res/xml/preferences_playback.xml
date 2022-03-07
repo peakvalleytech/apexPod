@@ -44,6 +44,11 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/playback_control">
+        <SwitchPreferenceCompat
+            android:key="prefSkipSilence"
+            android:title="@string/pref_skip_silence_title"
+            android:summary="@string/pref_skip_silence_title" />
+
         <Preference
                 android:key="prefPlaybackFastForwardDeltaLauncher"
                 android:summary="@string/pref_fast_forward_sum"
