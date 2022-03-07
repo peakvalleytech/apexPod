@@ -1,6 +1,5 @@
 package de.danoeh.apexpod.fragment;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,14 +30,7 @@ import io.reactivex.disposables.Disposable;
  */
 public class LoopModeFragment extends Fragment implements SharedPreferences.OnSharedPreferenceChangeListener {
     private static final String TAG = "LoopModeFragment";
-
-    private static final String PREF = "ItemDescriptionFragmentPrefs";
-    private static final String PREF_SCROLL_Y = "prefScrollY";
-    private static final String PREF_PLAYABLE_ID = "prefPlayableId";
-
-    private Disposable webViewLoader;
     private PlaybackController controller;
-
     private SwitchCompat repeatModeSwitch;
     private AppCompatCheckBox repeatEpisodeCheckbox;
     private AppCompatCheckBox repeatSectionCheckbox;
@@ -47,6 +39,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
     private AppCompatEditText startField;
     private AppCompatEditText endField;
     boolean repeatEnabled;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d(TAG, "Creating view");
@@ -58,7 +51,8 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         endButton = root.findViewById(R.id.btnEnd);
         startField = root.findViewById(R.id.editTxtStart);
         endField = root.findViewById(R.id.editTxtEnd);
-
+        startField.setText(Converter.getDurationStringLong(LoopPreferences.getStart()));
+        endField.setText(Converter.getDurationStringLong(LoopPreferences.getEnd()));
         // Repeat episode preference allows either to repeat the episode
         // or optionally to repeat a section (loop) which is set using
         // LoopPreferences.setEnabled()
@@ -114,6 +108,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                     }
                     LoopPreferences.setEnabled(loop);
                     controller.startLoopMode();
+                    initTextFields(0, controller.getDuration());
                 }
                 repeatSectionCheckbox.setEnabled(true);
                 repeatSectionCheckbox.setChecked(true);
@@ -122,9 +117,6 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                 endButton.setEnabled(true);
                 startField.setEnabled(true);
                 endField.setEnabled(true);
-                if (controller != null) {
-                    initTextFields(0, controller.getDuration());
-                }
             }
         }
     }
@@ -191,48 +183,15 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         Log.d(TAG, "Fragment destroyed");
     }
 
-
-    private void load() {
-        Log.d(TAG, "load()");
-        if (webViewLoader != null) {
-            webViewLoader.dispose();
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        savePreference();
-    }
-
-    private void savePreference() {
-        Log.d(TAG, "Saving preferences");
-        SharedPreferences prefs = getActivity().getSharedPreferences(PREF, Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-//        if (controller != null && controller.getMedia() != null && webvDescription != null) {
-//            Log.d(TAG, "Saving scroll position: " + webvDescription.getScrollY());
-//            editor.putInt(PREF_SCROLL_Y, webvDescription.getScrollY());
-//            editor.putString(PREF_PLAYABLE_ID, controller.getMedia().getIdentifier()
-//                    .toString());
-//        } else {
-//            Log.d(TAG, "savePreferences was called while media or webview was null");
-//            editor.putInt(PREF_SCROLL_Y, -1);
-//            editor.putString(PREF_PLAYABLE_ID, "");
-//        }
-        editor.apply();
-    }
-
     @Override
     public void onStart() {
         super.onStart();
         controller = new PlaybackController(getActivity()) {
             @Override
             public void loadMediaInfo() {
-                load();
             }
         };
         controller.init();
-        load();
     }
 
     @Override
