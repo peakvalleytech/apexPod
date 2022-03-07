@@ -23,6 +23,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import java.util.function.IntPredicate;
 
 import de.danoeh.apexpod.core.event.FeedItemEvent;
 import de.danoeh.apexpod.core.event.QueueEvent;
@@ -67,6 +69,12 @@ public class PlaybackServiceTaskManager {
     private final Context context;
     private final TaskManagerCallback callback;
 
+    interface LoopPositionCallback {
+        void positionUpdated();
+    }
+    // Loop mode
+    private LoopPositionCallback loopPositionCallback;
+    private ScheduledFuture<?> loopPositionFuture;
     /**
      * Sets up a new PSTM. This method will also start the queue loader task.
      *
@@ -183,6 +191,8 @@ public class PlaybackServiceTaskManager {
             Log.d(TAG, "Call to startPositionSaver was ignored.");
         }
     }
+
+
 
     /**
      * Returns true if the position saver is currently running.
@@ -372,4 +382,28 @@ public class PlaybackServiceTaskManager {
 
         void onChapterLoaded(Playable media);
     }
+
+    public void setLoopPositionCallback(LoopPositionCallback loopPositionCallback) {
+        this.loopPositionCallback = loopPositionCallback;
+    }
+
+    public void startLoopMode() {
+        if(loopPositionFuture == null || loopPositionFuture.isCancelled())
+            loopPositionFuture = schedExecutor
+                    .scheduleWithFixedDelay(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (loopPositionCallback != null) {
+                                loopPositionCallback.positionUpdated();
+                            }
+                        }
+                    }, 0, 1, TimeUnit.SECONDS);
+    }
+
+    public void endLoopMode() {
+        if (loopPositionFuture != null)
+            loopPositionFuture.cancel(true);
+    }
+
+
 }

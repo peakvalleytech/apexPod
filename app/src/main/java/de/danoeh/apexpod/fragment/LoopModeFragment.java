@@ -87,6 +87,8 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
     private void setLoopModeView(boolean repeat, boolean loop) {
         if (!repeat) {
             disabledRepeatSwitch(repeat);
+            if (controller != null)
+                controller.endLoopMode();
         } else {
             repeatModeSwitch.setChecked(repeat);
             if (!loop) {
@@ -100,6 +102,8 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                 endField.setEnabled(false);
                 initTextFields(0, 0);
                 LoopPreferences.setEnabled(loop);
+                if (controller != null)
+                    controller.endLoopMode();
             } else {
                 if (controller != null) {
                     Playable playable = controller.getMedia();
@@ -109,6 +113,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                         LoopPreferences.setFeedItemId(itemId);
                     }
                     LoopPreferences.setEnabled(loop);
+                    controller.startLoopMode();
                 }
                 repeatSectionCheckbox.setEnabled(true);
                 repeatSectionCheckbox.setChecked(true);

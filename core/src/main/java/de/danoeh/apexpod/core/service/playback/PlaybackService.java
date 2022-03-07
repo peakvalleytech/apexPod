@@ -67,9 +67,9 @@ import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.receiver.MediaButtonReceiver;
 import de.danoeh.apexpod.core.service.playback.PlaybackServiceStateManager;
 import de.danoeh.apexpod.core.service.playback.PlaybackServiceTaskManager;
+import de.danoeh.apexpod.core.service.playback.loop.LoopServiceImpl;
 import de.danoeh.apexpod.core.service.playback.notification.PlaybackServiceNotificationBuilder;
 import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
-import de.danoeh.apexpod.core.service.playback.player.PlaybackServiceFlavorHelper;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
@@ -848,6 +848,8 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                     if (UserPreferences.getShouldRepeatEpisode() && LoopPreferences.getFeedItemId() != PlaybackPreferences.getCurrentlyPlayingFeedMediaId()) {
                         LoopPreferences.setFeedItemId(PlaybackPreferences.getCurrentlyPlayingFeedMediaId());
                         LoopPreferences.setEnabled(false);
+                    } else if(LoopPreferences.isEnabled()) {
+                        startLoopMode();
                     }
 
                     playStatLogger.startPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
@@ -1409,6 +1411,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
      * @param position        the position that should be saved, unless {@param fromMediaPlayer} is true.
      */
     synchronized void saveCurrentPosition(boolean fromMediaPlayer, Playable playable, int position) {
+
         int duration;
         if (fromMediaPlayer) {
             position = getCurrentPosition();
@@ -1417,6 +1420,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         } else {
             duration = playable.getDuration();
         }
+
         if (position != INVALID_TIME && duration != INVALID_TIME && playable != null) {
             Log.d(TAG, "Saving current position to " + position);
             PlayableUtils.saveCurrentPosition(playable, position, System.currentTimeMillis());
@@ -1776,6 +1780,24 @@ public class PlaybackService extends MediaBrowserServiceCompat {
 
     public Pair<Integer, Integer> getVideoSize() {
         return mediaPlayer.getVideoSize();
+    }
+
+    public void startLoopMode() {
+        taskManager.setLoopPositionCallback(() -> {
+            int position = getCurrentPosition();
+            Log.d(TAG, "Loop position updated at " + position);
+            int start = LoopPreferences.getStart();
+            int end = LoopPreferences.getEnd();
+            if (position < start || position > end) {
+                Log.d(TAG, "Repeating loop");
+                seekTo(start);
+            }
+        });
+        taskManager.startLoopMode();
+    }
+
+    public void endLoopMode() {
+        taskManager.endLoopMode();
     }
 
     private void setupPositionObserver() {

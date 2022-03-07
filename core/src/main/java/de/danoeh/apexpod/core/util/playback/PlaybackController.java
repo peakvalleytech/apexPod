@@ -572,4 +572,12 @@ public abstract class PlaybackController {
     public boolean isStreaming() {
         return playbackService != null && playbackService.isStreaming();
     }
+
+    public void startLoopMode() {
+        playbackService.startLoopMode();
+    }
+
+    public void endLoopMode() {
+        playbackService.endLoopMode();
+    }
 }
