@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment;
+package de.danoeh.apexpod.fragment.episodes;
 
 import android.content.Context;
 import android.content.SharedPreferences;

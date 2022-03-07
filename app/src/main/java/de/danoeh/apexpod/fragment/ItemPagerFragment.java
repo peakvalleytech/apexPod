@@ -21,8 +21,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.core.event.FeedItemEvent;
-import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
-import de.danoeh.apexpod.model.feed.Feed;
+import de.danoeh.apexpod.fragment.feed.FeedItemlistFragment;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
@@ -146,6 +145,8 @@ public class ItemPagerFragment extends Fragment implements Toolbar.OnMenuItemCli
         }
         if (item.hasMedia()) {
             FeedItemMenuHandler.onPrepareMenu(toolbar.getMenu(), item);
+            FeedItemMenuHandler.setItemVisibility(toolbar.getMenu(), R.id.remove_from_playlist, false);
+            FeedItemMenuHandler.setItemVisibility(toolbar.getMenu(), R.id.add_to_playlist, true);
         } else {
             // these are already available via button1 and button2
             FeedItemMenuHandler.onPrepareMenu(toolbar.getMenu(), item,

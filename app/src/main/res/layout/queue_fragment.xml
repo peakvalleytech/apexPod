@@ -33,12 +33,25 @@
         android:layout_height="1dp"
         android:layout_below="@id/info_bar"
         android:background="?android:attr/listDivider" />
+    <TextView
+        android:id="@+id/txtvInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:padding="2dp"
+        android:background="?android:attr/windowBackground"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:visibility="visible"
+        android:gravity="center"
+        android:textColor="?attr/colorAccent"
+        tools:visibility="visible"
+        tools:text="(i) Information"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/divider">
+        android:layout_below="@id/txtvInformation">
 
         <de.danoeh.apexpod.view.EpisodeItemListRecyclerView
             android:id="@+id/recyclerView"

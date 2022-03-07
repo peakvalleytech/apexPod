@@ -20,31 +20,27 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.joanzapata.iconify.Iconify;
 import com.leinardi.android.speeddial.SpeedDialView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.Callable;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.EpisodeItemListAdapter;
 import de.danoeh.apexpod.adapter.QueueRecyclerAdapter;
-import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
+import de.danoeh.apexpod.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.core.event.DownloadEvent;
 import de.danoeh.apexpod.core.event.DownloaderUpdate;
 import de.danoeh.apexpod.core.event.FeedItemEvent;
@@ -54,20 +50,17 @@ import de.danoeh.apexpod.core.event.QueueEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.feed.util.PlaybackSpeedUtils;
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
-import de.danoeh.apexpod.core.preferences.QueuePreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
 import de.danoeh.apexpod.core.util.Converter;
 import de.danoeh.apexpod.core.util.FeedItemUtil;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
-import de.danoeh.apexpod.dialog.ChecklistDialog;
 import de.danoeh.apexpod.dialog.factory.DialogAlertFactory;
 import de.danoeh.apexpod.dialog.queue.QueueFeedFilterDialog;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
 import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
-import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
 import de.danoeh.apexpod.model.feed.FeedItemFilter;
 import de.danoeh.apexpod.model.feed.SortOrder;
@@ -93,6 +86,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
     private EmptyViewHandler emptyView;
     private ProgressBar progLoading;
     private Toolbar toolbar;
+    private TextView txtvInformation;
     private boolean displayUpArrow;
 
     private List<FeedItem> queue;
@@ -108,7 +102,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
     private SharedPreferences prefs;
 
     private SpeedDialView speedDialView;
-
+    private boolean isFiltered = false;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -264,7 +258,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
         final int itemId = item.getItemId();
 
         if (itemId == R.id.queue_filter) {
-            if (queue.isEmpty()) {
+            if (unFilteredQueue.isEmpty()) {
                 AlertDialog dialog = DialogAlertFactory.Companion.create(
                         getContext(),
                         getString(R.string.no_items_header_label),
@@ -484,6 +478,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
 
         progLoading = root.findViewById(R.id.progLoading);
         progLoading.setVisibility(View.VISIBLE);
+        txtvInformation = root.findViewById(R.id.txtvInformation);
 
         speedDialView = root.findViewById(R.id.fabSD);
         speedDialView.setOverlayLayout(root.findViewById(R.id.fabSDOverlay));
@@ -568,7 +563,19 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
             info += Converter.getDurationStringLocalized(getActivity(), timeLeft);
         }
         infoBar.setText(info);
+        refreshInfoText();
     }
+
+    private void refreshInfoText() {
+        if (isFiltered) {
+            txtvInformation.setText("{md-info-outline} " + this.getString(R.string.filtered_label));
+            Iconify.addIcons(txtvInformation);
+            txtvInformation.setVisibility(View.VISIBLE);
+        } else {
+            txtvInformation.setVisibility(View.GONE);
+        }
+    }
+
 
     private void loadItems(final boolean restoreScrollPosition) {
         Log.d(TAG, "loadItems()");
@@ -588,7 +595,7 @@ public class QueueFragment extends Fragment implements Toolbar.OnMenuItemClickLi
                 .subscribe(unFilteredAndFilteredQueues -> {
                     progLoading.setVisibility(View.GONE);
                     unFilteredQueue = unFilteredAndFilteredQueues.first;
-                    boolean isFiltered = !unFilteredAndFilteredQueues.second.isEmpty();
+                    isFiltered = !unFilteredAndFilteredQueues.second.isEmpty();
                     if (isFiltered)
                         queue = unFilteredAndFilteredQueues.second;
                     else

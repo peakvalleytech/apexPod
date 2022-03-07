@@ -80,7 +80,7 @@ public class PlaybackStatisticsListAdapter extends StatisticsListAdapter {
                     statsItem.getEpisodesStarted(),
                     statsItem.getEpisodeCount(), Converter.shortLocalizedDuration(context,
                             statsItem.getTotalListeningTime()),
-                    Converter.shortLocalizedDuration(context, statsItem.getTotalListeningTime())));
+                    Converter.shortLocalizedDuration(context, statsItem.getTotalTime())));
             dialog.setPositiveButton(android.R.string.ok, null);
             dialog.show();
         });

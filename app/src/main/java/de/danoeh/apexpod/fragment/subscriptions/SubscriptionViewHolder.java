@@ -23,7 +23,7 @@ import de.danoeh.apexpod.adapter.CoverLoader;
 import de.danoeh.apexpod.adapter.SubscriptionsRecyclerAdapter;
 import de.danoeh.apexpod.core.feed.LocalFeedUpdater;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
-import de.danoeh.apexpod.fragment.FeedItemlistFragment;
+import de.danoeh.apexpod.fragment.feed.FeedItemlistFragment;
 import de.danoeh.apexpod.model.feed.Feed;
 import jp.shts.android.library.TriangleLabelView;
 
@@ -86,7 +86,7 @@ public class SubscriptionViewHolder extends RecyclerView.ViewHolder {
             selectView.setVisibility(View.VISIBLE);
             dragHandle.setVisibility(View.VISIBLE);
             selectCheckbox.setVisibility(View.GONE);
-            itemView.setOnTouchListener((v, event) -> {
+            dragHandle.setOnTouchListener((v, event) -> {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     adapter.requestDrag(this);
                 }

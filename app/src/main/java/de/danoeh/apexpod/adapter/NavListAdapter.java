@@ -29,8 +29,8 @@ import de.danoeh.apexpod.core.glide.ApGlideSettings;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
 import de.danoeh.apexpod.fragment.AddFeedFragment;
-import de.danoeh.apexpod.fragment.DownloadsFragment;
-import de.danoeh.apexpod.fragment.EpisodesFragment;
+import de.danoeh.apexpod.fragment.downloads.DownloadsFragment;
+import de.danoeh.apexpod.fragment.episodes.EpisodesFragment;
 import de.danoeh.apexpod.fragment.NavDrawerFragment;
 import de.danoeh.apexpod.fragment.PlaybackHistoryFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
@@ -236,17 +236,12 @@ public class NavListAdapter extends RecyclerView.Adapter<NavListAdapter.Holder>
                 holder.count.setVisibility(View.VISIBLE);
             }
         } else if (tag.equals(EpisodesFragment.TAG)) {
-            int unreadItems = itemAccess.getNumberOfNewItems();
+            int unreadItems = 0;
             if (unreadItems > 0) {
                 holder.count.setText(NumberFormat.getInstance().format(unreadItems));
                 holder.count.setVisibility(View.VISIBLE);
             }
         } else if (tag.equals(SubscriptionFragment.TAG)) {
-            int sum = itemAccess.getFeedCounterSum();
-            if (sum > 0) {
-                holder.count.setText(NumberFormat.getInstance().format(sum));
-                holder.count.setVisibility(View.VISIBLE);
-            }
         } else if (tag.equals(DownloadsFragment.TAG) && UserPreferences.isEnableAutodownload()) {
             int epCacheSize = UserPreferences.getEpisodeCacheSize();
             // don't count episodes that can be reclaimed
@@ -397,8 +392,6 @@ public class NavListAdapter extends RecyclerView.Adapter<NavListAdapter.Holder>
         boolean isSelected(int position);
 
         int getQueueSize();
-
-        int getNumberOfNewItems();
 
         int getNumberOfDownloadedItems();
 

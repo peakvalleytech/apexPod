@@ -90,7 +90,7 @@ public class FeedItemMenuHandler {
      * @param menuId The id of the menu item that will be used
      * @param visibility The new visibility status of given menu item
      * */
-    private static void setItemVisibility(Menu menu, int menuId, boolean visibility) {
+    public static void setItemVisibility(Menu menu, int menuId, boolean visibility) {
         if (menu == null) {
             return;
         }

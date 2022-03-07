@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.core.dialog;
+package de.danoeh.apexpod.dialog;
 
 import android.content.Context;
 import android.content.DialogInterface;

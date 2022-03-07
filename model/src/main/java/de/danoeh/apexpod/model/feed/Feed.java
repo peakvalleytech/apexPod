@@ -142,6 +142,14 @@ public class Feed extends FeedFile {
     }
 
     /**
+     * This constructor is used for test purposes.
+     */
+    public Feed(long id, String title,String feedIdentifier, boolean downloaded) {
+        this(id, "", title, null, "", "", "", "", "", "", feedIdentifier, "",
+                "", "", downloaded, false, null, null, null, false);
+    }
+
+    /**
      * This constructor can be used when parsing feed data. Only the 'lastUpdate' and 'items' field are initialized.
      */
     public Feed() {

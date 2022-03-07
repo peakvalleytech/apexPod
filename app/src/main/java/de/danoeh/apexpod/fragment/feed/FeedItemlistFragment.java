@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.fragment;
+package de.danoeh.apexpod.fragment.feed;
 
 import android.content.Context;
 import android.content.Intent;
@@ -49,7 +49,7 @@ import java.util.Set;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.EpisodeItemListAdapter;
-import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
+import de.danoeh.apexpod.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.core.event.DownloadEvent;
 import de.danoeh.apexpod.core.event.DownloaderUpdate;
 import de.danoeh.apexpod.core.event.FavoritesEvent;
@@ -74,7 +74,12 @@ import de.danoeh.apexpod.core.util.gui.MoreContentListFooterUtil;
 import de.danoeh.apexpod.dialog.FeedFilterDialog;
 import de.danoeh.apexpod.dialog.RemoveFeedDialog;
 import de.danoeh.apexpod.dialog.RenameFeedDialog;
+import de.danoeh.apexpod.fragment.ItemPagerFragment;
+import de.danoeh.apexpod.fragment.SearchFragment;
+import de.danoeh.apexpod.fragment.TransitionEffect;
 import de.danoeh.apexpod.fragment.actions.EpisodeMultiSelectActionHandler;
+import de.danoeh.apexpod.fragment.downloads.DownloadsFragment;
+import de.danoeh.apexpod.fragment.episodes.EpisodesFragment;
 import de.danoeh.apexpod.fragment.swipeactions.SwipeActions;
 import de.danoeh.apexpod.menuhandler.FeedItemMenuHandler;
 import de.danoeh.apexpod.menuhandler.FeedMenuHandler;

@@ -27,11 +27,13 @@ import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.PreferenceActivity;
 import de.danoeh.apexpod.adapter.NavListAdapter;
-import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
+import de.danoeh.apexpod.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
 import de.danoeh.apexpod.core.event.QueueEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.dialog.TagSettingsDialog;
+import de.danoeh.apexpod.fragment.downloads.DownloadsFragment;
+import de.danoeh.apexpod.fragment.episodes.EpisodesFragment;
 import de.danoeh.apexpod.fragment.subscriptions.SubscriptionFragment;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
@@ -275,11 +277,6 @@ public class NavDrawerFragment extends Fragment implements SharedPreferences.OnS
         @Override
         public int getQueueSize() {
             return (navDrawerData != null) ? navDrawerData.queueSize : 0;
-        }
-
-        @Override
-        public int getNumberOfNewItems() {
-            return (navDrawerData != null) ? navDrawerData.numNewItems : 0;
         }
 
         @Override

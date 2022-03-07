@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.ListFragment;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
+import de.danoeh.apexpod.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.core.service.download.DownloadRequest;
 import de.danoeh.apexpod.core.service.download.Downloader;
 import de.danoeh.apexpod.core.service.download.DownloadStatus;

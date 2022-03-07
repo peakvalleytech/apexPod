@@ -23,8 +23,6 @@ import java.util.Locale;
 public class PlaybackControlsDialog extends DialogFragment {
     private PlaybackController controller;
     private AlertDialog dialog;
-    private PlaybackSpeedSeekBar speedSeekBar;
-    private TextView txtvPlaybackSpeed;
 
     public static PlaybackControlsDialog newInstance() {
         Bundle arguments = new Bundle();
@@ -44,13 +42,10 @@ public class PlaybackControlsDialog extends DialogFragment {
             @Override
             public void loadMediaInfo() {
                 setupUi();
-                setupAudioTracks();
-                updateSpeed();
             }
 
             @Override
             public void onPlaybackSpeedChange() {
-                updateSpeed();
             }
         };
         controller.init();
@@ -75,16 +70,6 @@ public class PlaybackControlsDialog extends DialogFragment {
     }
 
     private void setupUi() {
-        txtvPlaybackSpeed = dialog.findViewById(R.id.txtvPlaybackSpeed);
-        speedSeekBar = dialog.findViewById(R.id.speed_seek_bar);
-        speedSeekBar.setProgressChangedListener(speed -> {
-            if (controller != null) {
-                controller.setPlaybackSpeed(speed);
-                updateSpeed();
-            }
-        });
-        updateSpeed();
-
         final CheckBox stereoToMono = dialog.findViewById(R.id.stereo_to_mono);
         stereoToMono.setChecked(UserPreferences.stereoToMono());
         if (controller != null && !controller.canDownmix()) {
@@ -109,31 +94,6 @@ public class PlaybackControlsDialog extends DialogFragment {
             if (controller != null) {
                 controller.setDownmix(isChecked);
             }
-        });
-    }
-
-    private void updateSpeed() {
-        if (controller != null) {
-            txtvPlaybackSpeed.setText(String.format(
-                    Locale.getDefault(), "%.2fx", controller.getCurrentPlaybackSpeedMultiplier()));
-            speedSeekBar.updateSpeed(controller.getCurrentPlaybackSpeedMultiplier());
-        }
-    }
-
-    private void setupAudioTracks() {
-        List<String> audioTracks = controller.getAudioTracks();
-        int selectedAudioTrack = controller.getSelectedAudioTrack();
-        final Button butAudioTracks = dialog.findViewById(R.id.audio_tracks);
-        if (audioTracks.size() < 2 || selectedAudioTrack < 0) {
-            butAudioTracks.setVisibility(View.GONE);
-            return;
-        }
-
-        butAudioTracks.setVisibility(View.VISIBLE);
-        butAudioTracks.setText(audioTracks.get(selectedAudioTrack));
-        butAudioTracks.setOnClickListener(v -> {
-            controller.setAudioTrack((selectedAudioTrack + 1) % audioTracks.size());
-            new Handler(Looper.getMainLooper()).postDelayed(this::setupAudioTracks, 500);
         });
     }
 }

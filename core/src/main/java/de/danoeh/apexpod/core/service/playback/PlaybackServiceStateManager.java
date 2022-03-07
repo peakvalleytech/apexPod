@@ -4,7 +4,9 @@ import android.app.Notification;
 
 import androidx.core.app.ServiceCompat;
 
-class PlaybackServiceStateManager {
+import de.danoeh.apexpod.core.service.playback.PlaybackService;
+
+public class PlaybackServiceStateManager {
     private final PlaybackService playbackService;
 
     private volatile boolean isInForeground = false;

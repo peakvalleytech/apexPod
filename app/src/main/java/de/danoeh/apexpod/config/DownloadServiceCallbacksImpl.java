@@ -10,7 +10,7 @@ import de.danoeh.apexpod.activity.DownloadAuthenticationActivity;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.core.DownloadServiceCallbacks;
 import de.danoeh.apexpod.core.service.download.DownloadRequest;
-import de.danoeh.apexpod.fragment.DownloadsFragment;
+import de.danoeh.apexpod.fragment.downloads.DownloadsFragment;
 import de.danoeh.apexpod.fragment.QueueFragment;
 
 

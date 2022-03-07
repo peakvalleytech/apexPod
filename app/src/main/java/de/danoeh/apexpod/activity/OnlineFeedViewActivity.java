@@ -29,7 +29,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.adapter.FeedItemlistDescriptionAdapter;
-import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
+import de.danoeh.apexpod.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.core.event.DownloadEvent;
 import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
 import de.danoeh.apexpod.core.event.PlayerStatusEvent;

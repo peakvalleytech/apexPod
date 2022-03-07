@@ -34,7 +34,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.joanzapata.iconify.Iconify;
 import com.leinardi.android.speeddial.SpeedDialView;
 
-import de.danoeh.antennapod.adapter.DragAndDropItemTouchHelper;
+import de.danoeh.apexpod.adapter.DragAndDropItemTouchHelper;
 import de.danoeh.apexpod.adapter.ActionModeCallback;
 import de.danoeh.apexpod.dialog.TagSettingsDialog;
 import org.greenrobot.eventbus.EventBus;
@@ -54,28 +54,14 @@ import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.FeedTagAdapter;
 import de.danoeh.apexpod.adapter.SubscriptionsRecyclerAdapter;
-import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
+import de.danoeh.apexpod.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.Callable;
 
-import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.adapter.SubscriptionsRecyclerAdapter;
-import de.danoeh.apexpod.core.dialog.ConfirmationDialog;
 import de.danoeh.apexpod.core.event.DownloadEvent;
-import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
-import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
-import de.danoeh.apexpod.core.preferences.UserPreferences;
-import de.danoeh.apexpod.core.service.download.DownloadService;
-import de.danoeh.apexpod.core.storage.DBReader;
-import de.danoeh.apexpod.core.storage.DBWriter;
-import de.danoeh.apexpod.core.storage.DownloadRequester;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
 import de.danoeh.apexpod.core.util.download.AutoUpdateManager;
 import de.danoeh.apexpod.dialog.FeedSortDialog;
@@ -361,7 +347,6 @@ public class SubscriptionFragment extends Fragment
 
                         initTagViews(tags);
 
-                        endDragDropMode();
                         subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
                         subscriptionAdapter.setActionModeCallback(new ActionModeCallback() {
                             @Override
@@ -397,7 +382,9 @@ public class SubscriptionFragment extends Fragment
         }
     }
     private void showTagBar(boolean show) {
-        tagRecycler.setVisibility(show ? View.VISIBLE : View.INVISIBLE );
+        tagRecycler.setVisibility(show ? View.VISIBLE : View.GONE );
+        expandTagsButton.setBackground(AppCompatResources.getDrawable(getActivity(), R.drawable.ic_arrow_down));
+
         expandTagsButton.setVisibility(show ? View.VISIBLE : View.GONE);
         folderChipGroup.setVisibility(View.GONE);
     }
@@ -439,6 +426,7 @@ public class SubscriptionFragment extends Fragment
             List<String> entryValues =
                     Arrays.asList(getContext().getResources().getStringArray(R.array.nav_drawer_feed_order_values));
             UserPreferences.setFeedOrder(entryValues.get(UserPreferences.FEED_ORDER_PRIORITY));
+
             clearTagFilterIds();
             Pair<List<NavDrawerData.DrawerItem>,
                     List<NavDrawerData.TagDrawerItem>> feedsAndTags =
@@ -449,7 +437,8 @@ public class SubscriptionFragment extends Fragment
             if (folderChipGroup.getVisibility() == View.VISIBLE) {
                 expandTagsButton.callOnClick();
             }
-            subscriptionAdapter.setItems(tagFilteredFeeds);
+
+            subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
             //Update subscriptions
             subscriptionAdapter.startPriorityActionMode();
             ItemTouchHelper.Callback callback =
@@ -485,6 +474,7 @@ public class SubscriptionFragment extends Fragment
 
     private void endDragDropMode() {
         subscriptionAdapter.endPriorityActionMode();
+//        loadSubscriptions();
         if (swipeRefreshLayout != null)
             swipeRefreshLayout.setEnabled(true);
     }
