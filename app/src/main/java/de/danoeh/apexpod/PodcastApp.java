@@ -9,15 +9,14 @@ import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.fonts.MaterialModule;
 
-import de.danoeh.apexpod.ApEventBusIndex;
+import org.greenrobot.eventbus.EventBus;
+
 import de.danoeh.apexpod.activity.SplashActivity;
 import de.danoeh.apexpod.core.ApCoreEventBusIndex;
 import de.danoeh.apexpod.core.BuildConfig;
 import de.danoeh.apexpod.core.ClientConfig;
-import de.danoeh.apexpod.error.CrashReportWriter;
-import de.danoeh.apexpod.error.RxJavaErrorHandlerSetup;
+import de.danoeh.apexpod.util.RxJavaErrorHandlerSetup;
 import de.danoeh.apexpod.spa.SPAUtil;
-import org.greenrobot.eventbus.EventBus;
 
 /** Main application class. */
 public class PodcastApp extends Application {
@@ -41,7 +40,6 @@ public class PodcastApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Thread.setDefaultUncaughtExceptionHandler(new CrashReportWriter());
         RxJavaErrorHandlerSetup.setupRxJavaErrorHandler();
 
         if (BuildConfig.DEBUG) {

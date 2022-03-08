@@ -6,7 +6,6 @@ import android.view.KeyEvent;
 import androidx.preference.PreferenceManager;
 
 import de.danoeh.apexpod.BuildConfig;
-import de.danoeh.apexpod.error.CrashReportWriter;
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences.EnqueueLocation;
@@ -29,7 +28,6 @@ public class PreferenceUpgrader {
 
         if (oldVersion != newVersion) {
             AutoUpdateManager.restartUpdateAlarm(context);
-            CrashReportWriter.getFile().delete();
 
             upgrade(oldVersion, context);
             upgraderPrefs.edit().putInt(PREF_CONFIGURED_VERSION, newVersion).apply();

@@ -5,15 +5,15 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.Toast;
-import androidx.annotation.Nullable;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.storage.PodDBAdapter;
-import de.danoeh.apexpod.error.CrashReportWriter;
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -52,7 +52,6 @@ public class SplashActivity extends AppCompatActivity {
                         finish();
                     }, error -> {
                         error.printStackTrace();
-                        CrashReportWriter.write(error);
                         Toast.makeText(this, error.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         finish();
                     });

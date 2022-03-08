@@ -1,4 +1,4 @@
-package de.danoeh.apexpod.error;
+package de.danoeh.apexpod.util;
 
 import android.util.Log;
 import de.danoeh.apexpod.BuildConfig;
@@ -25,7 +25,6 @@ public class RxJavaErrorHandlerSetup {
             // AntennaPod threads might throw NPEs after disposing because we set controllers to null.
             // Just swallow all exceptions here.
             Log.e(TAG, Log.getStackTraceString(exception));
-            CrashReportWriter.write(exception);
 
             if (BuildConfig.DEBUG) {
                 Thread.currentThread().getUncaughtExceptionHandler()
