@@ -93,6 +93,14 @@
             app:layout_constraintTop_toBottomOf="@id/btnStart"
             tools:enabled="false" />
 
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTxtEnd" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </de.danoeh.apexpod.view.NestedScrollableHost>

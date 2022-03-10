@@ -38,6 +38,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
     private Button endButton;
     private AppCompatEditText startField;
     private AppCompatEditText endField;
+    private Button resetButton;
     boolean repeatEnabled;
 
     @Override
@@ -51,6 +52,8 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         endButton = root.findViewById(R.id.btnEnd);
         startField = root.findViewById(R.id.editTxtStart);
         endField = root.findViewById(R.id.editTxtEnd);
+        resetButton = root.findViewById(R.id.resetButton);
+
         startField.setText(Converter.getDurationStringLong(LoopPreferences.getStart()));
         endField.setText(Converter.getDurationStringLong(LoopPreferences.getEnd()));
         // Repeat episode preference allows either to repeat the episode
@@ -71,6 +74,13 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
 
         repeatSectionCheckbox.setOnClickListener(v -> {
             setLoopModeView(repeatEnabled, repeatSectionCheckbox.isChecked());
+        });
+
+        resetButton.setOnClickListener(v -> {
+            LoopPreferences.setStart(0);
+            LoopPreferences.setEnd(controller.getDuration());
+            startField.setText(Converter.getDurationStringLong(0));
+            endField.setText(Converter.getDurationStringLong(controller.getDuration()));
         });
 
         PreferenceManager.getDefaultSharedPreferences(getContext()).registerOnSharedPreferenceChangeListener(this);
@@ -94,6 +104,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                 endButton.setEnabled(false);
                 startField.setEnabled(false);
                 endField.setEnabled(false);
+                resetButton.setEnabled(false);
                 initTextFields(0, 0);
                 LoopPreferences.setEnabled(loop);
                 if (controller != null)
@@ -108,7 +119,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                     }
                     LoopPreferences.setEnabled(loop);
                     controller.startLoopMode();
-                    initTextFields(0, controller.getDuration());
+                    initTextFields(controller.getPosition(), controller.getDuration());
                 }
                 repeatSectionCheckbox.setEnabled(true);
                 repeatSectionCheckbox.setChecked(true);
@@ -117,6 +128,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
                 endButton.setEnabled(true);
                 startField.setEnabled(true);
                 endField.setEnabled(true);
+                resetButton.setEnabled(true);
             }
         }
     }
@@ -131,6 +143,7 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         endButton.setEnabled(enabled);
         startField.setEnabled(enabled);
         endField.setEnabled(enabled);
+        resetButton.setEnabled(enabled);
     }
 
     private void initTextFields(int startTime, int endTime) {
