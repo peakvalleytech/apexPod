@@ -574,10 +574,12 @@ public abstract class PlaybackController {
     }
 
     public void startLoopMode() {
-        playbackService.startLoopMode();
+        if (playbackService != null)
+            playbackService.startLoopMode();
     }
 
     public void endLoopMode() {
-        playbackService.endLoopMode();
+        if (playbackService != null)
+            playbackService.endLoopMode();
     }
 }
