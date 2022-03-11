@@ -82,7 +82,7 @@ public class AudioPlayerFragment extends Fragment implements
     public static final int POS_LOOP_MODE = 2;
     private static final int NUM_CONTENT_FRAGMENTS = 3;
     private static final int AUDIO_CONTROL_ENABLED_ALPHA = 255;
-    private static final int AUDIO_CONTROL_DISABLED_ALPHA = 96;
+    private static final int AUDIO_CONTROL_DISABLED_ALPHA = 64;
 
 
 
