@@ -2,6 +2,7 @@ package de.danoeh.apexpod.fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.preference.PreferenceManager;
@@ -80,6 +82,10 @@ public class AudioPlayerFragment extends Fragment implements
     public static final int POS_DESCRIPTION = 1;
     public static final int POS_LOOP_MODE = 2;
     private static final int NUM_CONTENT_FRAGMENTS = 3;
+    private static final int AUDIO_CONTROL_ENABLED_ALPHA = 255;
+    private static final int AUDIO_CONTROL_DISABLED_ALPHA = 96;
+
+
 
     PlaybackSpeedIndicatorView butPlaybackSpeed;
     TextView txtvPlaybackSpeed;
@@ -97,7 +103,7 @@ public class AudioPlayerFragment extends Fragment implements
     private ProgressBar progressIndicator;
     private CardView cardViewSeek;
     private TextView txtvSeek;
-    private ImageView imgvRepeat;
+    private ImageView repeatAudioControlImgView;
 
     private PlaybackController controller;
     private Disposable disposable;
@@ -138,8 +144,9 @@ public class AudioPlayerFragment extends Fragment implements
         progressIndicator = root.findViewById(R.id.progLoading);
         cardViewSeek = root.findViewById(R.id.cardViewSeek);
         txtvSeek = root.findViewById(R.id.txtvSeek);
-        imgvRepeat = root.findViewById(R.id.repeat_episode);
-        imgvRepeat.setVisibility(UserPreferences.getShouldRepeatEpisode() ? View.VISIBLE : View.GONE);
+//        repeatAudioControlImgView = root.findViewById(R.id.repeat_episode);
+//        repeatAudioControlImgView.setImageAlpha(UserPreferences.getShouldRepeatEpisode() ?
+//                AUDIO_CONTROL_ENABLED_ALPHA : AUDIO_CONTROL_DISABLED_ALPHA);
 
         setupLengthTextView();
         setupControlButtons();
@@ -513,6 +520,11 @@ public class AudioPlayerFragment extends Fragment implements
         toolbar.getMenu().findItem(R.id.disable_sleeptimer_item).setVisible(controller.sleepTimerActive());
 
 //        ((CastEnabledActivity) getActivity()).requestCastButton(toolbar.getMenu());
+        Drawable icon = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat, getContext().getTheme());
+        icon.setAlpha(UserPreferences.getShouldRepeatEpisode() ?
+                AUDIO_CONTROL_ENABLED_ALPHA :
+                AUDIO_CONTROL_DISABLED_ALPHA);
+        toolbar.getMenu().findItem(R.id.loop_mode).setIcon(icon);
     }
 
     @Override
@@ -554,10 +566,15 @@ public class AudioPlayerFragment extends Fragment implements
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (UserPreferences.PREF_REPEAT_EPISODE.equals(key)) {
             if (UserPreferences.getShouldRepeatEpisode()) {
-                imgvRepeat.setVisibility(View.VISIBLE);
+//                repeatAudioControlImgView.setImageAlpha(AUDIO_CONTROL_ENABLED_ALPHA);
             } else {
-                imgvRepeat.setVisibility(View.GONE);
+//                repeatAudioControlImgView.setImageAlpha(AUDIO_CONTROL_DISABLED_ALPHA);
             }
+            Drawable icon = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat, getContext().getTheme());
+            icon.setAlpha(UserPreferences.getShouldRepeatEpisode() ?
+                    AUDIO_CONTROL_ENABLED_ALPHA :
+                    AUDIO_CONTROL_DISABLED_ALPHA);
+            toolbar.getMenu().findItem(R.id.loop_mode).setIcon(icon);
         }
     }
 
