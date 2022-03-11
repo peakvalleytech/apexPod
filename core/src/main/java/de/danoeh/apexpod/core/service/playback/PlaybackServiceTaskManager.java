@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import android.util.Log;
 
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
+import de.danoeh.apexpod.core.service.SleepTimer;
+import de.danoeh.apexpod.core.service.sleeptimer.SleepTimerService;
 import de.danoeh.apexpod.core.util.ChapterUtils;
 import de.danoeh.apexpod.core.widget.WidgetUpdater;
 import io.reactivex.disposables.Disposable;
@@ -21,6 +23,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import java.util.function.IntPredicate;
 
 import de.danoeh.apexpod.core.event.FeedItemEvent;
 import de.danoeh.apexpod.core.event.QueueEvent;
@@ -58,15 +62,19 @@ public class PlaybackServiceTaskManager {
 
     private ScheduledFuture<?> positionSaverFuture;
     private ScheduledFuture<?> widgetUpdaterFuture;
-    private ScheduledFuture<?> sleepTimerFuture;
     private volatile Future<List<FeedItem>> queueFuture;
     private volatile Disposable chapterLoaderFuture;
 
-    private SleepTimer sleepTimer;
-
+    private SleepTimerService sleepTimerService;
     private final Context context;
     private final TaskManagerCallback callback;
 
+    interface LoopPositionCallback {
+        void positionUpdated();
+    }
+    // Loop mode
+    private LoopPositionCallback loopPositionCallback;
+    private ScheduledFuture<?> loopPositionFuture;
     /**
      * Sets up a new PSTM. This method will also start the queue loader task.
      *
@@ -184,6 +192,8 @@ public class PlaybackServiceTaskManager {
         }
     }
 
+
+
     /**
      * Returns true if the position saver is currently running.
      */
@@ -239,24 +249,15 @@ public class PlaybackServiceTaskManager {
         if (waitingTime <= 0) {
             throw new IllegalArgumentException("Waiting time <= 0");
         }
-
-        Log.d(TAG, "Setting sleep timer to " + waitingTime + " milliseconds");
-        if (isSleepTimerActive()) {
-            sleepTimerFuture.cancel(true);
-        }
-        sleepTimer = new SleepTimer(waitingTime);
-        sleepTimerFuture = schedExecutor.schedule(sleepTimer, 0, TimeUnit.MILLISECONDS);
+        sleepTimerService = new SleepTimerService(context, callback);
+        sleepTimerService.setSleepTimer(waitingTime);
     }
 
     /**
      * Returns true if the sleep timer is currently active.
      */
     public synchronized boolean isSleepTimerActive() {
-        return sleepTimer != null
-                && sleepTimerFuture != null
-                && !sleepTimerFuture.isCancelled()
-                && !sleepTimerFuture.isDone()
-                && sleepTimer.getWaitingTime() > 0;
+        return sleepTimerService != null && sleepTimerService.isSleepTimerActive();
     }
 
     /**
@@ -265,7 +266,7 @@ public class PlaybackServiceTaskManager {
     public synchronized void disableSleepTimer() {
         if (isSleepTimerActive()) {
             Log.d(TAG, "Disabling sleep timer");
-            sleepTimer.cancel();
+            sleepTimerService.disableSleepTimer();
         }
     }
 
@@ -275,7 +276,7 @@ public class PlaybackServiceTaskManager {
     public synchronized void restartSleepTimer() {
         if (isSleepTimerActive()) {
             Log.d(TAG, "Restarting sleep timer");
-            sleepTimer.restart();
+            sleepTimerService.restartSleepTimer();
         }
     }
 
@@ -284,7 +285,7 @@ public class PlaybackServiceTaskManager {
      */
     public synchronized long getSleepTimerTimeLeft() {
         if (isSleepTimerActive()) {
-            return sleepTimer.getWaitingTime();
+            return sleepTimerService.getSleepTimerTimeLeft();
         } else {
             return 0;
         }
@@ -368,111 +369,6 @@ public class PlaybackServiceTaskManager {
         }
     }
 
-    /**
-     * Sleeps for a given time and then pauses playback.
-     */
-    class SleepTimer implements Runnable {
-        private static final String TAG = "SleepTimer";
-        private static final long UPDATE_INTERVAL = 1000L;
-        public static final long NOTIFICATION_THRESHOLD = 10000;
-        private boolean hasVibrated = false;
-        private final long waitingTime;
-        private long timeLeft;
-        private ShakeListener shakeListener;
-        private final Handler handler;
-
-        public SleepTimer(long waitingTime) {
-            super();
-            this.waitingTime = waitingTime;
-            this.timeLeft = waitingTime;
-
-            if (UserPreferences.useExoplayer() && Looper.myLooper() == Looper.getMainLooper()) {
-                // Run callbacks in main thread so they can call ExoPlayer methods themselves
-                this.handler = new Handler(Looper.getMainLooper());
-            } else {
-                this.handler = null;
-            }
-        }
-
-        private void postCallback(Runnable r) {
-            if (handler == null) {
-                r.run();
-            } else {
-                handler.post(r);
-            }
-        }
-
-        @Override
-        public void run() {
-            Log.d(TAG, "Starting");
-            long lastTick = System.currentTimeMillis();
-            while (timeLeft > 0) {
-                try {
-                    Thread.sleep(UPDATE_INTERVAL);
-                } catch (InterruptedException e) {
-                    Log.d(TAG, "Thread was interrupted while waiting");
-                    e.printStackTrace();
-                    break;
-                }
-
-                long now = System.currentTimeMillis();
-                timeLeft -= now - lastTick;
-                lastTick = now;
-
-                if (timeLeft < NOTIFICATION_THRESHOLD) {
-                    Log.d(TAG, "Sleep timer is about to expire");
-                    if (SleepTimerPreferences.vibrate() && !hasVibrated) {
-                        Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-                        if (v != null) {
-                            v.vibrate(500);
-                            hasVibrated = true;
-                        }
-                    }
-                    if (shakeListener == null && SleepTimerPreferences.shakeToReset()) {
-                        shakeListener = new ShakeListener(context, this);
-                    }
-                    postCallback(() -> callback.onSleepTimerAlmostExpired(timeLeft));
-                }
-                if (timeLeft <= 0) {
-                    Log.d(TAG, "Sleep timer expired");
-                    if (shakeListener != null) {
-                        shakeListener.pause();
-                        shakeListener = null;
-                    }
-                    hasVibrated = false;
-                    if (!Thread.currentThread().isInterrupted()) {
-                        postCallback(callback::onSleepTimerExpired);
-                    } else {
-                        Log.d(TAG, "Sleep timer interrupted");
-                    }
-                }
-            }
-        }
-
-        public long getWaitingTime() {
-            return timeLeft;
-        }
-
-        public void restart() {
-            postCallback(() -> {
-                setSleepTimer(waitingTime);
-                callback.onSleepTimerReset();
-            });
-            if (shakeListener != null) {
-                shakeListener.pause();
-                shakeListener = null;
-            }
-        }
-
-        public void cancel() {
-            sleepTimerFuture.cancel(true);
-            if (shakeListener != null) {
-                shakeListener.pause();
-            }
-            postCallback(callback::onSleepTimerReset);
-        }
-    }
-
     public interface TaskManagerCallback {
         void positionSaverTick();
 
@@ -486,4 +382,28 @@ public class PlaybackServiceTaskManager {
 
         void onChapterLoaded(Playable media);
     }
+
+    public void setLoopPositionCallback(LoopPositionCallback loopPositionCallback) {
+        this.loopPositionCallback = loopPositionCallback;
+    }
+
+    public void startLoopMode() {
+        if(loopPositionFuture == null || loopPositionFuture.isCancelled())
+            loopPositionFuture = schedExecutor
+                    .scheduleWithFixedDelay(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (loopPositionCallback != null) {
+                                loopPositionCallback.positionUpdated();
+                            }
+                        }
+                    }, 0, 1, TimeUnit.SECONDS);
+    }
+
+    public void endLoopMode() {
+        if (loopPositionFuture != null)
+            loopPositionFuture.cancel(true);
+    }
+
+
 }

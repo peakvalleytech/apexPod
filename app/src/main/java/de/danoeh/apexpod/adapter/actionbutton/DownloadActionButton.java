@@ -54,13 +54,13 @@ public class DownloadActionButton extends ItemActionButton {
 
         UsageStatistics.logAction(UsageStatistics.ACTION_DOWNLOAD);
 
-        if (NetworkUtils.isEpisodeDownloadAllowed() || MobileDownloadHelper.userAllowedMobileDownloads()) {
-            downloadEpisode(context);
-        } else if (MobileDownloadHelper.userChoseAddToQueue() && !isInQueue) {
-            addEpisodeToQueue(context);
-        } else {
+//        if (NetworkUtils.isEpisodeDownloadAllowed() || MobileDownloadHelper.userAllowedMobileDownloads()) {
+//            downloadEpisode(context);
+//        } else if (MobileDownloadHelper.userChoseAddToQueue() && !isInQueue) {
+//            addEpisodeToQueue(context);
+//        } else {
             MobileDownloadHelper.confirmMobileDownload(context, item);
-        }
+//        }
     }
 
     private boolean shouldNotDownload(@NonNull FeedMedia media) {

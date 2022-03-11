@@ -29,6 +29,13 @@
     </item>
 
     <item
+        android:id="@+id/loop_mode"
+        android:icon="@drawable/ic_repeat"
+        android:title="@string/title_loop_mode"
+        custom:showAsAction="always">
+    </item>
+
+    <item
         android:id="@+id/open_feed_item"
         android:icon="@drawable/ic_feed"
         custom:showAsAction="collapseActionView"

@@ -60,12 +60,14 @@ import de.danoeh.apexpod.core.event.ServiceEvent;
 import de.danoeh.apexpod.core.event.settings.SkipIntroEndingChangedEvent;
 import de.danoeh.apexpod.core.event.settings.SpeedPresetChangedEvent;
 import de.danoeh.apexpod.core.event.settings.VolumeAdaptionChangedEvent;
+import de.danoeh.apexpod.core.preferences.LoopPreferences;
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
 import de.danoeh.apexpod.core.receiver.MediaButtonReceiver;
 import de.danoeh.apexpod.core.service.playback.PlaybackServiceStateManager;
 import de.danoeh.apexpod.core.service.playback.PlaybackServiceTaskManager;
+import de.danoeh.apexpod.core.service.playback.loop.LoopServiceImpl;
 import de.danoeh.apexpod.core.service.playback.notification.PlaybackServiceNotificationBuilder;
 import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
 import de.danoeh.apexpod.core.storage.DBReader;
@@ -80,7 +82,6 @@ import de.danoeh.apexpod.core.util.NetworkUtils;
 import de.danoeh.apexpod.core.util.gui.NotificationUtils;
 import de.danoeh.apexpod.core.util.playback.PlayableUtils;
 import de.danoeh.apexpod.core.util.playback.PlaybackServiceStarter;
-import de.danoeh.apexpod.core.widget.WidgetUpdater;
 import de.danoeh.apexpod.model.feed.Chapter;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.model.feed.FeedItem;
@@ -215,7 +216,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
      */
     private static volatile boolean isCasting = false;
 
-    private BaseMediaPlayer mediaPlayer;
+    BaseMediaPlayer mediaPlayer;
     private PlaybackServiceTaskManager taskManager;
     private PlaybackServiceFlavorHelper flavorHelper;
     private PlaybackServiceStateManager stateManager;
@@ -295,7 +296,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         registerReceiver(skipCurrentEpisodeReceiver, new IntentFilter(ACTION_SKIP_CURRENT_EPISODE));
         registerReceiver(pausePlayCurrentEpisodeReceiver, new IntentFilter(ACTION_PAUSE_PLAY_CURRENT_EPISODE));
         EventBus.getDefault().register(this);
-        taskManager = new PlaybackServiceTaskManager(this, taskManagerCallback);
+        taskManager = new PlaybackServiceTaskManager(this, new PlaybackTaskManagerCallback(this));
 
         flavorHelper = new PlaybackServiceFlavorHelper(PlaybackService.this, flavorHelperCallback);
         PreferenceManager.getDefaultSharedPreferences(this)
@@ -794,44 +795,6 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         stateManager.stopForeground(!UserPreferences.isPersistNotify());
     }
 
-    private final PlaybackServiceTaskManager.TaskManagerCallback taskManagerCallback = new PlaybackServiceTaskManager.TaskManagerCallback() {
-        @Override
-        public void positionSaverTick() {
-            saveCurrentPosition(true, null, BaseMediaPlayer.INVALID_TIME);
-        }
-
-        @Override
-        public void onSleepTimerAlmostExpired(long timeLeft) {
-            final float[] multiplicators = {0.1f, 0.2f, 0.3f, 0.3f, 0.3f, 0.4f, 0.4f, 0.4f, 0.6f, 0.8f};
-            float multiplicator = multiplicators[Math.max(0, (int) timeLeft / 1000)];
-            Log.d(TAG, "onSleepTimerAlmostExpired: " + multiplicator);
-            mediaPlayer.setVolume(multiplicator, multiplicator);
-        }
-
-        @Override
-        public void onSleepTimerExpired() {
-            mediaPlayer.pause(true, true);
-            mediaPlayer.setVolume(1.0f, 1.0f);
-            sendNotificationBroadcast(NOTIFICATION_TYPE_SLEEPTIMER_UPDATE, 0);
-        }
-
-        @Override
-        public void onSleepTimerReset() {
-            mediaPlayer.setVolume(1.0f, 1.0f);
-        }
-
-        @Override
-        public WidgetUpdater.WidgetState requestWidgetState() {
-            return new WidgetUpdater.WidgetState(getPlayable(), getStatus(),
-                    getCurrentPosition(), getDuration(), getCurrentPlaybackSpeed(), isCasting());
-        }
-
-        @Override
-        public void onChapterLoaded(Playable media) {
-            sendNotificationBroadcast(NOTIFICATION_TYPE_RELOAD, 0);
-        }
-    };
-
     private PlayStatLogger playStatLogger = new PlayStatLoggerImpl(new PlayStatDao());
 
     private FeedItem getFeedItem() {
@@ -882,6 +845,13 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                     playStatLogger.endPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
                     break;
                 case PLAYING:
+                    if (UserPreferences.getShouldRepeatEpisode() && LoopPreferences.getFeedItemId() != PlaybackPreferences.getCurrentlyPlayingFeedMediaId()) {
+                        LoopPreferences.setFeedItemId(PlaybackPreferences.getCurrentlyPlayingFeedMediaId());
+                        LoopPreferences.setEnabled(false);
+                    } else if(LoopPreferences.isEnabled()) {
+                        startLoopMode();
+                    }
+
                     playStatLogger.startPlayStat(System.currentTimeMillis(), getCurrentPosition(), getFeedItem());
                     PlaybackPreferences.writePlayerStatus(mediaPlayer.getPlayerStatus());
                     updateNotificationAndMediaSession(newInfo.playable);
@@ -1193,7 +1163,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         sendNotificationBroadcast(NOTIFICATION_TYPE_SLEEPTIMER_UPDATE, 0);
     }
 
-    private void sendNotificationBroadcast(int type, int code) {
+    void sendNotificationBroadcast(int type, int code) {
         Intent intent = new Intent(ACTION_PLAYER_NOTIFICATION);
         intent.putExtra(EXTRA_NOTIFICATION_TYPE, type);
         intent.putExtra(EXTRA_NOTIFICATION_CODE, code);
@@ -1440,7 +1410,8 @@ public class PlaybackService extends MediaBrowserServiceCompat {
      *                        {@param fromMediaPlayer} is true.
      * @param position        the position that should be saved, unless {@param fromMediaPlayer} is true.
      */
-    private synchronized void saveCurrentPosition(boolean fromMediaPlayer, Playable playable, int position) {
+    synchronized void saveCurrentPosition(boolean fromMediaPlayer, Playable playable, int position) {
+
         int duration;
         if (fromMediaPlayer) {
             position = getCurrentPosition();
@@ -1449,6 +1420,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
         } else {
             duration = playable.getDuration();
         }
+
         if (position != INVALID_TIME && duration != INVALID_TIME && playable != null) {
             Log.d(TAG, "Saving current position to " + position);
             PlayableUtils.saveCurrentPosition(playable, position, System.currentTimeMillis());
@@ -1808,6 +1780,24 @@ public class PlaybackService extends MediaBrowserServiceCompat {
 
     public Pair<Integer, Integer> getVideoSize() {
         return mediaPlayer.getVideoSize();
+    }
+
+    public void startLoopMode() {
+        taskManager.setLoopPositionCallback(() -> {
+            int position = getCurrentPosition();
+            Log.d(TAG, "Loop position updated at " + position);
+            int start = LoopPreferences.getStart();
+            int end = LoopPreferences.getEnd();
+            if (position < start || position > end) {
+                Log.d(TAG, "Repeating loop");
+                seekTo(start);
+            }
+        });
+        taskManager.startLoopMode();
+    }
+
+    public void endLoopMode() {
+        taskManager.endLoopMode();
     }
 
     private void setupPositionObserver() {

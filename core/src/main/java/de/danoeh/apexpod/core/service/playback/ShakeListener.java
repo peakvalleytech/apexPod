@@ -7,16 +7,18 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
-class ShakeListener implements SensorEventListener
+import de.danoeh.apexpod.core.service.SleepTimer;
+
+public class ShakeListener implements SensorEventListener
 {
     private static final String TAG = ShakeListener.class.getSimpleName();
 
     private Sensor mAccelerometer;
     private SensorManager mSensorMgr;
-    private final PlaybackServiceTaskManager.SleepTimer mSleepTimer;
+    private final SleepTimer mSleepTimer;
     private final Context mContext;
 
-    public ShakeListener(Context context, PlaybackServiceTaskManager.SleepTimer sleepTimer) {
+    public ShakeListener(Context context, SleepTimer sleepTimer) {
         mContext = context;
         mSleepTimer = sleepTimer;
         resume();

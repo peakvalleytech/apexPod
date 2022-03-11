@@ -861,6 +861,7 @@
     <string name="priority">Priority</string>
     <string name="delete_played">Delete Played</string>
     <string name="filter_by_podcasts">Filter by Podcasts</string>
+    <string name="repeat_section">Repeat Section</string>
     <string name="feed_settings_other_title">Other</string>
     <string name="feed_settings_player_title">Playback</string>
 </resources>

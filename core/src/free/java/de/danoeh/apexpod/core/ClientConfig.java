@@ -2,6 +2,7 @@ package de.danoeh.apexpod.core;
 
 import android.content.Context;
 
+import de.danoeh.apexpod.core.preferences.LoopPreferences;
 import de.danoeh.apexpod.net.ssl.SslProviderInstaller;
 
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
@@ -42,6 +43,7 @@ public class ClientConfig {
         UserPreferences.init(context);
         UsageStatistics.init(context);
         PlaybackPreferences.init(context);
+        LoopPreferences.init(context);
         SslProviderInstaller.install(context);
         NetworkUtils.init(context);
         AntennapodHttpClient.setCacheDirectory(new File(context.getCacheDir(), "okhttp"));

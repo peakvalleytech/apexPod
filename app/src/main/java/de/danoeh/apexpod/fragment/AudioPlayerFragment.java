@@ -2,6 +2,7 @@ package de.danoeh.apexpod.fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.preference.PreferenceManager;
@@ -37,7 +39,6 @@ import java.text.NumberFormat;
 import java.util.List;
 
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.CastEnabledActivity;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.core.event.FavoritesEvent;
 import de.danoeh.apexpod.core.event.PlaybackPositionEvent;
@@ -78,7 +79,12 @@ public class AudioPlayerFragment extends Fragment implements
     public static final String TAG = "AudioPlayerFragment";
     public static final int POS_COVER = 0;
     public static final int POS_DESCRIPTION = 1;
-    private static final int NUM_CONTENT_FRAGMENTS = 2;
+    public static final int POS_LOOP_MODE = 2;
+    private static final int NUM_CONTENT_FRAGMENTS = 3;
+    private static final int AUDIO_CONTROL_ENABLED_ALPHA = 255;
+    private static final int AUDIO_CONTROL_DISABLED_ALPHA = 96;
+
+
 
     PlaybackSpeedIndicatorView butPlaybackSpeed;
     TextView txtvPlaybackSpeed;
@@ -96,7 +102,7 @@ public class AudioPlayerFragment extends Fragment implements
     private ProgressBar progressIndicator;
     private CardView cardViewSeek;
     private TextView txtvSeek;
-    private ImageView imgvRepeat;
+    private ImageView repeatAudioControlImgView;
 
     private PlaybackController controller;
     private Disposable disposable;
@@ -137,8 +143,9 @@ public class AudioPlayerFragment extends Fragment implements
         progressIndicator = root.findViewById(R.id.progLoading);
         cardViewSeek = root.findViewById(R.id.cardViewSeek);
         txtvSeek = root.findViewById(R.id.txtvSeek);
-        imgvRepeat = root.findViewById(R.id.repeat_episode);
-        imgvRepeat.setVisibility(UserPreferences.getShouldRepeatEpisode() ? View.VISIBLE : View.GONE);
+//        repeatAudioControlImgView = root.findViewById(R.id.repeat_episode);
+//        repeatAudioControlImgView.setImageAlpha(UserPreferences.getShouldRepeatEpisode() ?
+//                AUDIO_CONTROL_ENABLED_ALPHA : AUDIO_CONTROL_DISABLED_ALPHA);
 
         setupLengthTextView();
         setupControlButtons();
@@ -146,7 +153,7 @@ public class AudioPlayerFragment extends Fragment implements
         sbPosition.setOnSeekBarChangeListener(this);
 
         pager = root.findViewById(R.id.pager);
-        pager.setAdapter(new AudioPlayerPagerAdapter(this));
+        pager.setAdapter(new AudioPlayerPagerAdapter(this, controller));
         // Required for getChildAt(int) in ViewPagerBottomSheetBehavior to return the correct page
         pager.setOffscreenPageLimit((int) NUM_CONTENT_FRAGMENTS);
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
@@ -375,6 +382,7 @@ public class AudioPlayerFragment extends Fragment implements
     public void onStart() {
         super.onStart();
         controller = newPlaybackController();
+
         controller.init();
         loadMediaInfo(false);
         EventBus.getDefault().register(this);
@@ -503,10 +511,19 @@ public class AudioPlayerFragment extends Fragment implements
             FeedItemMenuHandler.onPrepareMenu(toolbar.getMenu(), ((FeedMedia) media).getItem());
         }
 
+        toolbar.getMenu().findItem(R.id.loop_mode).setOnMenuItemClickListener(item -> {
+            pager.setCurrentItem(POS_LOOP_MODE);
+            return true;
+        });
         toolbar.getMenu().findItem(R.id.set_sleeptimer_item).setVisible(!controller.sleepTimerActive());
         toolbar.getMenu().findItem(R.id.disable_sleeptimer_item).setVisible(controller.sleepTimerActive());
 
-        ((CastEnabledActivity) getActivity()).requestCastButton(toolbar.getMenu());
+//        ((CastEnabledActivity) getActivity()).requestCastButton(toolbar.getMenu());
+        Drawable icon = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat, getContext().getTheme());
+        icon.setAlpha(UserPreferences.getShouldRepeatEpisode() ?
+                AUDIO_CONTROL_ENABLED_ALPHA :
+                AUDIO_CONTROL_DISABLED_ALPHA);
+        toolbar.getMenu().findItem(R.id.loop_mode).setIcon(icon);
     }
 
     @Override
@@ -544,18 +561,24 @@ public class AudioPlayerFragment extends Fragment implements
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (UserPreferences.PREF_REPEAT_EPISODE.equals(key)) {
             if (UserPreferences.getShouldRepeatEpisode()) {
-                imgvRepeat.setVisibility(View.VISIBLE);
+//                repeatAudioControlImgView.setImageAlpha(AUDIO_CONTROL_ENABLED_ALPHA);
             } else {
-                imgvRepeat.setVisibility(View.GONE);
+//                repeatAudioControlImgView.setImageAlpha(AUDIO_CONTROL_DISABLED_ALPHA);
             }
+            Drawable icon = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_repeat, getContext().getTheme());
+            icon.setAlpha(UserPreferences.getShouldRepeatEpisode() ?
+                    AUDIO_CONTROL_ENABLED_ALPHA :
+                    AUDIO_CONTROL_DISABLED_ALPHA);
+            toolbar.getMenu().findItem(R.id.loop_mode).setIcon(icon);
         }
     }
 
     private static class AudioPlayerPagerAdapter extends FragmentStateAdapter {
         private static final String TAG = "AudioPlayerPagerAdapter";
-
-        public AudioPlayerPagerAdapter(@NonNull Fragment fragment) {
+        private PlaybackController playbackController;
+        public AudioPlayerPagerAdapter(@NonNull Fragment fragment, PlaybackController playbackController) {
             super(fragment);
+            this.playbackController = playbackController;
         }
 
         @NonNull
@@ -566,6 +589,8 @@ public class AudioPlayerFragment extends Fragment implements
             switch (position) {
                 case POS_COVER:
                     return new CoverFragment();
+                case POS_LOOP_MODE:
+                    return new LoopModeFragment(playbackController);
                 default:
                 case POS_DESCRIPTION:
                     return new ItemDescriptionFragment();

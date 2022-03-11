@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de.danoeh.apexpod.view.NestedScrollableHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false"
+    android:nestedScrollingEnabled="true"
+    app:preferVertical="10">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/txtLoopModeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_loop_mode"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+
+            tools:layout_editor_absoluteX="16dp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_enable_repeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Enabled"></androidx.appcompat.widget.SwitchCompat>
+
+        <CheckBox
+            android:id="@+id/checkbox_repeat_episode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/repeat_episode"
+            app:layout_constraintTop_toBottomOf="@id/txtLoopModeTitle" />
+
+        <CheckBox
+            android:id="@+id/checkbox_repeat_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/repeat_section"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_repeat_episode" />
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Start"
+            app:layout_constraintEnd_toStartOf="@+id/editTxtStart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_repeat_section" />
+
+        <EditText
+            android:id="@+id/editTxtStart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:editable="true"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@id/btnStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnStart"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_repeat_section" />
+
+        <Button
+            android:id="@+id/btnEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End"
+            app:layout_constraintEnd_toStartOf="@+id/editTxtEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnStart" />
+
+        <EditText
+            android:id="@+id/editTxtEnd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:editable="true"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@id/btnEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnEnd"
+            app:layout_constraintTop_toBottomOf="@id/btnStart"
+            tools:enabled="false" />
+
+        <Button
+            android:id="@+id/resetButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reset"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTxtEnd" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</de.danoeh.apexpod.view.NestedScrollableHost>
