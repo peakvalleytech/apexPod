@@ -70,6 +70,7 @@ import de.danoeh.apexpod.core.service.playback.PlaybackServiceTaskManager;
 import de.danoeh.apexpod.core.service.playback.loop.LoopServiceImpl;
 import de.danoeh.apexpod.core.service.playback.notification.PlaybackServiceNotificationBuilder;
 import de.danoeh.apexpod.core.service.playback.player.BaseMediaPlayer;
+import de.danoeh.apexpod.core.service.playback.player.PlaybackServiceFlavorHelper;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBTasks;
 import de.danoeh.apexpod.core.storage.DBWriter;
