@@ -8,6 +8,7 @@ import android.widget.AbsListView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -100,7 +101,8 @@ public class OnlineSearchFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recyclerView);
         adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), new ArrayList<>());
         recyclerView.setAdapter(adapter);
-
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
         //Show information about the podcast when the list item is clicked
 //        recyclerView.setOnItemClickListener((parent, view1, position, id) -> {
 //            PodcastSearchResult podcast = searchResults.get(position);
