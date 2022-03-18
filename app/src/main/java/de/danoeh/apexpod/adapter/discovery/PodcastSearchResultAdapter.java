@@ -21,7 +21,9 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
@@ -57,13 +59,22 @@ public class PodcastSearchResultAdapter extends
      * List holding the podcasts found in the search
      */
     private final List<PodcastSearchResult> data;
+    private final List<Feed> subscribedFeeds;
+    private Set<String> subscribedFeedsUrls;
     private FeedDownloader feedDownloader;
 
-    public PodcastSearchResultAdapter(MainActivity mainActivity, Context context, List<PodcastSearchResult> data) {
+    public PodcastSearchResultAdapter(MainActivity mainActivity, Context context, List<PodcastSearchResult> data, List<Feed> subscribedFeeds) {
         this.context = context;
         this.data = data;
         this.activity = mainActivity;
         this.feedDownloader = new FeedDownloader(mainActivity);
+        this.subscribedFeeds = subscribedFeeds;
+        this.subscribedFeedsUrls = new HashSet<>();
+        if (subscribedFeeds != null) {
+            for (Feed f : subscribedFeeds) {
+                subscribedFeedsUrls.add(f.getDownload_url());
+            }
+        }
     }
 
     @NonNull
@@ -78,53 +89,65 @@ public class PodcastSearchResultAdapter extends
         PodcastSearchResult podcastSearchResult = data.get(position);
         holder.onBind(podcastSearchResult);
         holder.quickSubBtn.setOnClickListener(v -> {
-            holder.quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_check));
-            feedDownloader.lookupUrl(
-                    podcastSearchResult.feedUrl,
-                    "",
-                    "",
-                    (result) -> {
-                        if (result.isCancelled()) {
+            if (!subscribedFeedsUrls.contains(podcastSearchResult)) {
+                feedDownloader.lookupUrl(
+                        podcastSearchResult.feedUrl,
+                        "",
+                        "",
+                        (result) -> {
+                            if (result.isCancelled()) {
+                                return null;
+                            }
+                            if (result.isSuccessful()) {
+                                parser = Maybe.fromCallable(this::doParseFeed)
+                                        .subscribeOn(Schedulers.computation())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribeWith(new DisposableMaybeObserver<FeedHandlerResult>() {
+                                            @Override
+                                            public void onSuccess(@NonNull FeedHandlerResult result) {
+                                                try {
+                                                    DownloadRequester.getInstance().downloadFeed(v.getContext(), result.feed);
+                                                } catch (DownloadRequestException e) {
+                                                    Log.e(TAG, Log.getStackTraceString(e));
+                                                    DownloadRequestErrorDialogCreator.newRequestErrorDialog(v.getContext(), e.getMessage());
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onComplete() {
+                                                // Ignore null result: We showed the discovery dialog.
+                                            }
+
+                                            @Override
+                                            public void onError(@NonNull Throwable error) {
+//                                            showErrorDialog(error.getMessage(), "");
+                                                Log.d(TAG, "Feed parser exception: " + Log.getStackTraceString(error));
+                                            }
+                                        });
+                            }
+                            return null;
+                        }, () -> {
                             return null;
                         }
-                        if (result.isSuccessful()) {
-                            parser = Maybe.fromCallable(this::doParseFeed)
-                                    .subscribeOn(Schedulers.computation())
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribeWith(new DisposableMaybeObserver<FeedHandlerResult>() {
-                                        @Override
-                                        public void onSuccess(@NonNull FeedHandlerResult result) {
-                                            try {
-                                                DownloadRequester.getInstance().downloadFeed(v.getContext(), result.feed);
-                                            } catch (DownloadRequestException e) {
-                                                Log.e(TAG, Log.getStackTraceString(e));
-                                                DownloadRequestErrorDialogCreator.newRequestErrorDialog(v.getContext(), e.getMessage());
-                                            }
-                                        }
+                );
+            } else {
 
-                                        @Override
-                                        public void onComplete() {
-                                            // Ignore null result: We showed the discovery dialog.
-                                        }
-
-                                        @Override
-                                        public void onError(@NonNull Throwable error) {
-//                                            showErrorDialog(error.getMessage(), "");
-                                            Log.d(TAG, "Feed parser exception: " + Log.getStackTraceString(error));
-                                        }
-                                    });
-                        }
-                        return null;
-                    }, () -> {
-                        return null;
-                    }
-            );
+            }
         });
+
     }
 
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public void subscribe(PodcastSearchResult result) {
+        subscribedFeedsUrls.add(result.feedUrl);
+    }
+
+    public void unSubscribe(PodcastSearchResult result) {
+        subscribedFeedsUrls.remove(result.feedUrl);
     }
 
     public class PodcastRecyclerViewHolder extends RecyclerView.ViewHolder {
@@ -154,7 +177,11 @@ public class PodcastSearchResultAdapter extends
         }
 
         public void onBind(@NonNull PodcastSearchResult podcastSearchResult) {
-            quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_add));
+            if (subscribedFeedsUrls.contains(podcastSearchResult.feedUrl)) {
+                quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_check));
+            } else {
+                quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_add));
+            }
             titleView.setText(podcastSearchResult.title);
             if (podcastSearchResult.author != null && !podcastSearchResult.author.trim().isEmpty()) {
                 authorView.setText(podcastSearchResult.author);

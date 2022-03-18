@@ -25,15 +25,22 @@ import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
 import de.danoeh.apexpod.adapter.discovery.PodcastSearchResultAdapter;
+import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
+import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.discovery.PodcastSearchResult;
 import de.danoeh.apexpod.discovery.PodcastSearcher;
 import de.danoeh.apexpod.discovery.PodcastSearcherRegistry;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.view.View.INVISIBLE;
+
+import org.greenrobot.eventbus.Subscribe;
 
 public class OnlineSearchFragment extends Fragment {
 
@@ -57,6 +64,7 @@ public class OnlineSearchFragment extends Fragment {
      */
     private List<PodcastSearchResult> searchResults;
     private Disposable disposable;
+    private Disposable updater;
 
     public static OnlineSearchFragment newInstance(Class<? extends PodcastSearcher> searchProvider) {
         return newInstance(searchProvider, null);
@@ -142,7 +150,22 @@ public class OnlineSearchFragment extends Fragment {
         if (disposable != null) {
             disposable.dispose();
         }
+
+        if (updater != null) {
+            updater.dispose();
+        }
         adapter = null;
+    }
+    @Subscribe
+    public void onFeedListChanged(FeedListUpdateEvent event) {
+        updater = Observable.fromCallable(DBReader::getFeedList)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        feeds -> {
+                            OnlineFeedViewActivity.this.feeds = feeds;
+                        }, error -> Log.e(TAG, Log.getStackTraceString(error))
+                );
     }
 
     private void setupToolbar(Toolbar toolbar) {
