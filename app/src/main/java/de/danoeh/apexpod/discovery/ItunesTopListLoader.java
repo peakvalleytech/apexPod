@@ -50,7 +50,7 @@ public class ItunesTopListLoader {
                     feedString = getTopListFeed(client, "US", limit);
                 } else {
                     emitter.onError(e);
-                    return;
+                    throw e;
                 }
             }
 

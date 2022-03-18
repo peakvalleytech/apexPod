@@ -16,7 +16,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class SubscribeHelper(val activity : AppCompatActivity) {
+class FeedDownloader(val activity : AppCompatActivity) {
     private val TAG = "SubscribeHelper"
     private var downloader: Downloader? = null
     private var download: Disposable? = null

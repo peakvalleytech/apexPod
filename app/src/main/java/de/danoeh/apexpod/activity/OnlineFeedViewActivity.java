@@ -28,8 +28,7 @@ import androidx.core.app.NavUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.discovery.DownlaodRequestFactory;
-import de.danoeh.apexpod.activity.discovery.SubscribeHelper;
+import de.danoeh.apexpod.activity.discovery.FeedDownloader;
 import de.danoeh.apexpod.adapter.FeedItemlistDescriptionAdapter;
 import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.core.event.DownloadEvent;
@@ -39,10 +38,8 @@ import de.danoeh.apexpod.core.glide.ApGlideSettings;
 import de.danoeh.apexpod.core.glide.FastBlurTransformation;
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.UserPreferences;
-import de.danoeh.apexpod.core.service.download.DownloadRequest;
 import de.danoeh.apexpod.core.service.download.DownloadStatus;
 import de.danoeh.apexpod.core.service.download.Downloader;
-import de.danoeh.apexpod.core.service.download.HttpDownloader;
 import de.danoeh.apexpod.core.service.playback.PlaybackService;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.core.storage.DBWriter;
@@ -53,7 +50,6 @@ import de.danoeh.apexpod.parser.feed.FeedHandlerResult;
 import de.danoeh.apexpod.core.util.DownloadError;
 import de.danoeh.apexpod.core.util.IntentUtils;
 import de.danoeh.apexpod.core.util.StorageUtils;
-import de.danoeh.apexpod.core.util.URLChecker;
 import de.danoeh.apexpod.core.util.syndication.FeedDiscoverer;
 import de.danoeh.apexpod.core.util.syndication.HtmlToPlainText;
 import de.danoeh.apexpod.databinding.OnlinefeedviewActivityBinding;
@@ -112,7 +108,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
 
     private OnlinefeedviewActivityBinding viewBinding;
 
-    SubscribeHelper subscribeHelper;
+    FeedDownloader feedDownloader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(UserPreferences.getTranslucentTheme());
@@ -149,8 +145,8 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
                 username = savedInstanceState.getString("username");
                 password = savedInstanceState.getString("password");
             }
-            subscribeHelper = new SubscribeHelper(this);
-            subscribeHelper.lookupUrl(
+            feedDownloader = new FeedDownloader(this);
+            feedDownloader.lookupUrl(
                     feedUrl,
                     username,
                     password,
@@ -292,7 +288,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private void parseFeed() {
-        this.feed = subscribeHelper.getFeed();
+        this.feed = feedDownloader.getFeed();
         if (this.feed == null || (feed.getFile_url() == null && feed.isDownloaded())) {
             throw new IllegalStateException("feed must be non-null and downloaded when parseFeed is called");
         }
@@ -612,7 +608,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         if (urls.size() == 1) {
             // Skip dialog and display the item directly
             resetIntent(urls.get(0));
-            subscribeHelper.startFeedDownload(urls.get(0), null, null, (result) -> {checkDownloadResult(result);
+            feedDownloader.startFeedDownload(urls.get(0), null, null, (result) -> {checkDownloadResult(result);
                 return null;
             });
             return true;
@@ -625,9 +621,9 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             resetIntent(selectedUrl);
             FeedPreferences prefs = feed.getPreferences();
             if(prefs != null) {
-                subscribeHelper.startFeedDownload(selectedUrl, prefs.getUsername(), prefs.getPassword(), (status) -> {checkDownloadResult(status); return null;});
+                feedDownloader.startFeedDownload(selectedUrl, prefs.getUsername(), prefs.getPassword(), (status) -> {checkDownloadResult(status); return null;});
             } else {
-                subscribeHelper.startFeedDownload(selectedUrl, null, null, (status) -> {checkDownloadResult(status); return null;});
+                feedDownloader.startFeedDownload(selectedUrl, null, null, (status) -> {checkDownloadResult(status); return null;});
             }
         };
 
@@ -663,7 +659,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
 
         @Override
         protected void onConfirmed(String username, String password) {
-            subscribeHelper.startFeedDownload(feedUrl, username, password, (status) -> {checkDownloadResult(status); return null;});
+            feedDownloader.startFeedDownload(feedUrl, username, password, (status) -> {checkDownloadResult(status); return null;});
         }
     }
 

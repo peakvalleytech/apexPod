@@ -2,7 +2,6 @@ package de.danoeh.apexpod.adapter.discovery;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,12 +22,11 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
-import de.danoeh.apexpod.activity.discovery.SubscribeHelper;
+import de.danoeh.apexpod.activity.discovery.FeedDownloader;
 import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
 import de.danoeh.apexpod.core.service.download.DownloadStatus;
 import de.danoeh.apexpod.core.storage.DownloadRequestException;
@@ -59,13 +57,13 @@ public class PodcastSearchResultAdapter extends
      * List holding the podcasts found in the search
      */
     private final List<PodcastSearchResult> data;
-    private SubscribeHelper subscribeHelper;
+    private FeedDownloader feedDownloader;
 
     public PodcastSearchResultAdapter(MainActivity mainActivity, Context context, List<PodcastSearchResult> data) {
         this.context = context;
         this.data = data;
         this.activity = mainActivity;
-        this.subscribeHelper = new SubscribeHelper(mainActivity);
+        this.feedDownloader = new FeedDownloader(mainActivity);
     }
 
     @NonNull
@@ -81,11 +79,41 @@ public class PodcastSearchResultAdapter extends
         holder.onBind(podcastSearchResult);
         holder.quickSubBtn.setOnClickListener(v -> {
             holder.quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_check));
-            subscribeHelper.lookupUrl(
+            feedDownloader.lookupUrl(
                     podcastSearchResult.feedUrl,
                     "",
                     "",
                     (result) -> {
+                        if (result.isCancelled()) {
+                            return null;
+                        }
+                        if (result.isSuccessful()) {
+                            parser = Maybe.fromCallable(this::doParseFeed)
+                                    .subscribeOn(Schedulers.computation())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribeWith(new DisposableMaybeObserver<FeedHandlerResult>() {
+                                        @Override
+                                        public void onSuccess(@NonNull FeedHandlerResult result) {
+                                            try {
+                                                DownloadRequester.getInstance().downloadFeed(v.getContext(), result.feed);
+                                            } catch (DownloadRequestException e) {
+                                                Log.e(TAG, Log.getStackTraceString(e));
+                                                DownloadRequestErrorDialogCreator.newRequestErrorDialog(v.getContext(), e.getMessage());
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onComplete() {
+                                            // Ignore null result: We showed the discovery dialog.
+                                        }
+
+                                        @Override
+                                        public void onError(@NonNull Throwable error) {
+//                                            showErrorDialog(error.getMessage(), "");
+                                            Log.d(TAG, "Feed parser exception: " + Log.getStackTraceString(error));
+                                        }
+                                    });
+                        }
                         return null;
                     }, () -> {
                         return null;
@@ -162,23 +190,6 @@ public class PodcastSearchResultAdapter extends
         }
     }
 
-    private void checkDownloadResult(@NonNull DownloadStatus status) {
-        if (status.isCancelled()) {
-            return;
-        }
-        if (status.isSuccessful()) {
-            parseFeed();
-        } else if (status.getReason() == DownloadError.ERROR_UNAUTHORIZED) {
-            if (!activity.isFinishing()) {
-//                dialog = new OnlineFeedViewActivity.FeedViewAuthenticationDialog(OnlineFeedViewActivity.this,
-//                        R.string.authentication_notification_title,
-//                        downloader.getDownloadRequest().getSource()).create();
-//                dialog.show();
-            }
-        } else {
-//            showErrorDialog(status.getReason().getErrorString(OnlineFeedViewActivity.this), status.getReasonDetailed());
-        }
-    }
     /**
      * Try to parse the feed.
      * @return  The FeedHandlerResult if successful.
@@ -188,7 +199,7 @@ public class PodcastSearchResultAdapter extends
     @Nullable
     private FeedHandlerResult doParseFeed() throws Exception {
         FeedHandler handler = new FeedHandler();
-        Feed feed = subscribeHelper.getFeed();
+        Feed feed = feedDownloader.getFeed();
         try {
             return handler.parseFeed(feed);
         } catch (UnsupportedFeedtypeException e) {
@@ -210,51 +221,10 @@ public class PodcastSearchResultAdapter extends
             boolean rc = new File(feed.getFile_url()).delete();
             Log.d(TAG, "Deleted feed source file. Result: " + rc);
         }
-
     }
-    private void parseFeed() {
-//        this.feed = subscribeHelper.getFeed();
-//        if (this.feed == null || (feed.getFile_url() == null && feed.isDownloaded())) {
-//            throw new IllegalStateException("feed must be non-null and downloaded when parseFeed is called");
-//        }
-//        Log.d(TAG, "Parsing feed");
-
-        parser = Maybe.fromCallable(this::doParseFeed)
-                .subscribeOn(Schedulers.computation())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeWith(new DisposableMaybeObserver<FeedHandlerResult>() {
-            @Override
-            public void onSuccess(@NonNull FeedHandlerResult result) {
-                Feed feed = result.feed;
-//                        showFeedInformation(feed, result.alternateFeedUrls);
-                Feed f = new Feed(feed.getDownload_url(), null, feed.getTitle());
-                f.setPreferences(feed.getPreferences());
-//                        this.feed = f;
-                try {
-                    DownloadRequester.getInstance().downloadFeed(context, f);
-                } catch (DownloadRequestException e) {
-                    Log.e(TAG, Log.getStackTraceString(e));
-                    DownloadRequestErrorDialogCreator.newRequestErrorDialog(context, e.getMessage());
-                }
-//                        didPressSubscribe = true;
-//                        updateSubscribeButton(feed);
-            }
-
-            @Override
-            public void onComplete() {
-                // Ignore null result: We showed the discovery dialog.
-            }
-
-            @Override
-            public void onError(@NonNull Throwable error) {
-//                        showErrorDialog(error.getMessage(), "");
-                Log.d(TAG, "Feed parser exception: " + Log.getStackTraceString(error));
-            }
-        });
-    }
-
 
     public void dispose() {
+        if (parser != null)
         parser.dispose();
     }
 }
