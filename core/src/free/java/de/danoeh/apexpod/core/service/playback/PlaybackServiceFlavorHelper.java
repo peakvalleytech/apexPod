@@ -10,7 +10,7 @@ import de.danoeh.apexpod.core.service.playback.player.LocalPlaybackServiceMediaP
 /**
  * Class intended to work along PlaybackService and provide support for different flavors.
  */
-class PlaybackServiceFlavorHelper {
+public class PlaybackServiceFlavorHelper {
 
     private final PlaybackService.FlavorHelperCallback callback;
 
