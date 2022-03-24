@@ -54,15 +54,18 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
 
         holder.chip.setOnClickListener(v -> {
             NavDrawerData.TagDrawerItem tag = feedFolders.get(position);
+            boolean isChecked = holder.chip.isChecked();
+
+            if (isChecked && getTagFilterIds().contains(String.valueOf(tag.id))) {
+                holder.chip.setChecked(true);
+                return;
+            }
 
             if (tag.name.equals("All")) {
-                clearTagFilterIds();
+               clearTagFilterIds();
             } else {
-                if (holder.chip.isChecked()) {
-                    addTagFilterId(tag.id);
-                } else {
-                    removeTagFilterId(tag.id);
-                }
+                clearTagFilterIds();
+                addTagFilterId(tag.id);
             }
         });
     }
@@ -130,4 +133,9 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
         prefs.edit().putStringSet(PREF_TAG_FILTER, new HashSet<>()).apply();
         notifyDataSetChanged();
     }
+
+    public Set<String> getTagFilterIds() {
+        return prefs.getStringSet(PREF_TAG_FILTER, new HashSet<>());
+    }
+
 }

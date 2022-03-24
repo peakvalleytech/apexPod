@@ -528,51 +528,7 @@ public class SubscriptionFragment extends Fragment
                 feedTagAdapter.addItem(folder);
         }
 
-
-
         tagRecycler.setAdapter(feedTagAdapter);
-
-//        initTagChipView(tags, tagFilterIds);
-    }
-
-    private void initTagChipView(List<NavDrawerData.TagDrawerItem> feedFolders, Set<String> tagFilterIds) {
-        Chip rootChip = null;
-        folderChipGroup.removeAllViews();
-        for (NavDrawerData.TagDrawerItem folderItem : feedFolders) {
-            Chip folderChip = new Chip(getActivity());
-            if (folderItem.name.equals(FeedPreferences.TAG_ROOT)) {
-                folderChip.setText("All");
-                rootChip = folderChip;
-            } else {
-                folderChip.setText(folderItem.name);
-            }
-            folderChip.setCheckable(true);
-            Chip finalRootChip = rootChip;
-            folderChip.setOnClickListener(v ->  {
-                tagChipOnClickListener(folderItem, folderChip, finalRootChip);
-            });
-
-            folderChip.setChecked(tagFilterIds.contains(String.valueOf(folderItem.id)));
-
-            folderChipGroup.addView(folderChip);
-        }
-    }
-
-    private void tagChipOnClickListener(NavDrawerData.TagDrawerItem folderItem,
-                                        Chip folderChip,
-                                        Chip finalRootChip) {
-        if (folderItem.name.equals(FeedPreferences.TAG_ROOT)) {
-            if (folderChip.isChecked()) {
-                feedTagAdapter.clear();
-                folderChipGroup.clearCheck();
-                activateAllChip(folderChip, true);
-                updateDisplayedSubscriptions(false);
-            }
-        } else {
-            boolean tagsSelected = !feedTagAdapter.isEmpyty();
-            updateDisplayedSubscriptions(tagsSelected);
-            activateAllChip(finalRootChip, !tagsSelected);
-        }
     }
 
     private void updateDisplayedSubscriptions(boolean tagsSelected) {
@@ -587,6 +543,7 @@ public class SubscriptionFragment extends Fragment
         }
         subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
     }
+
     private List<NavDrawerData.DrawerItem> sortFeeds(List<NavDrawerData.DrawerItem> items) {
         return FeedSorter.sortFeeds(items);
     }
