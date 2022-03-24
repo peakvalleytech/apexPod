@@ -545,10 +545,10 @@ public class SubscriptionFragment extends Fragment
         Set<String> tagFilterIds = getTagFilterIds();
 
         for (NavDrawerData.TagDrawerItem folder : tags) {
-            if (tagFilterIds.contains(String.valueOf(folder.id))) {
                 feedTagAdapter.addItem(folder);
-            }
         }
+
+
 
         tagRecycler.setAdapter(feedTagAdapter);
 
