@@ -56,17 +56,12 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
             NavDrawerData.TagDrawerItem tag = feedFolders.get(position);
             boolean isChecked = holder.chip.isChecked();
 
-            if (isChecked && getTagFilterIds().contains(String.valueOf(tag.id))) {
-                holder.chip.setChecked(true);
-                return;
-            }
-
-            if (tag.name.equals("All")) {
-               clearTagFilterIds();
+            if (isChecked) {
+                setTagFilterId(tag.id);
             } else {
-                clearTagFilterIds();
-                addTagFilterId(tag.id);
+                setTagFilterId(defaultAll.id);
             }
+            notifyDataSetChanged();
         });
     }
 
@@ -75,27 +70,12 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
         return feedFolders.size();
     }
 
-    public boolean isEmpyty() {
-        if (feedFolders.size() == 1 && feedFolders.get(0).id == defaultAll.id) {
-            return true;
-
-        } else {
-            return false;
-        }
-    }
-
     public List<NavDrawerData.TagDrawerItem> getFeedFolders() {
         return feedFolders;
     }
 
     public void addItem(NavDrawerData.TagDrawerItem tagDrawerItem) {
         feedFolders.add(tagDrawerItem);
-        notifyDataSetChanged();
-    }
-
-    public void clear() {
-        feedFolders.clear();
-        init();
         notifyDataSetChanged();
     }
 
@@ -109,33 +89,20 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
 
         public void bind(NavDrawerData.TagDrawerItem tagDrawerItem) {
             chip.setText(tagDrawerItem.name);
+            if (tagDrawerItem.id == getTagFilterId()) {
+                chip.setChecked(true);
+            } else {
+                chip.setChecked(false);
+            }
         }
     }
 
-    public void addTagFilterId(long tagFilterId) {
-        Set<String> tagFilterIds = new HashSet<>(prefs.getStringSet(PREF_TAG_FILTER, new HashSet<>()));
-        tagFilterIds.add(String.valueOf(tagFilterId));
-        prefs.edit().putStringSet(PREF_TAG_FILTER, null).apply();
-        prefs.edit().putStringSet(PREF_TAG_FILTER, tagFilterIds)
-                .apply();
+    public void setTagFilterId(long tagFilterId) {
+        prefs.edit().putLong(PREF_TAG_FILTER, tagFilterId).apply();
     }
 
-    public void removeTagFilterId(long tagFilterId) {
-        Set<String> tagFilterIds = new HashSet<>(prefs.getStringSet(PREF_TAG_FILTER, new HashSet<>()));
-        tagFilterIds.remove(String.valueOf(tagFilterId));
-        prefs.edit().putStringSet(PREF_TAG_FILTER, null).apply();
-        prefs.edit().putStringSet(PREF_TAG_FILTER, tagFilterIds)
-                .apply();
-    }
-
-    public void clearTagFilterIds() {
-        prefs.edit().putStringSet(PREF_TAG_FILTER, null).apply();
-        prefs.edit().putStringSet(PREF_TAG_FILTER, new HashSet<>()).apply();
-        notifyDataSetChanged();
-    }
-
-    public Set<String> getTagFilterIds() {
-        return prefs.getStringSet(PREF_TAG_FILTER, new HashSet<>());
+    public Long getTagFilterId() {
+        return prefs.getLong(PREF_TAG_FILTER, defaultAll.id);
     }
 
 }

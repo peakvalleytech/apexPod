@@ -513,15 +513,17 @@ public class SubscriptionFragment extends Fragment
         return feedsAndTags;
     }
     private List<NavDrawerData.DrawerItem> getTagFilteredFeeds(List<NavDrawerData.TagDrawerItem> tags) {
-        Set<String> tagFilterIds = getTagFilterIds();
-        TagFilter tagFilter = new TagFilter(tagFilterIds);
+       Long tagFilterId = getTagFilterId();
+        Set<String> idSet = new HashSet<>();
+        idSet.add(String.valueOf(tagFilterId));
+        TagFilter tagFilter = new TagFilter(idSet);
         List<NavDrawerData.DrawerItem> tagFilteredFeeds = tagFilter.filter(tags);
 
         return tagFilteredFeeds;
     }
     private void initTagViews(List<NavDrawerData.TagDrawerItem> tags) {
         feedTagAdapter = new FeedTagAdapter(getContext(), new ArrayList<>());
-        Set<String> tagFilterIds = getTagFilterIds();
+//        Set<String> tagFilterIds = tagFilterId();
 
         for (NavDrawerData.TagDrawerItem folder : tags) {
             if (!folder.name.equals(FeedPreferences.TAG_ROOT))
@@ -548,12 +550,7 @@ public class SubscriptionFragment extends Fragment
         return FeedSorter.sortFeeds(items);
     }
 
-    private void activateAllChip(Chip chip, boolean enabled) {
-        chip.setChecked(enabled);
-        chip.setEnabled(!enabled);
+    public Long getTagFilterId() {
+        return prefs.getLong(PREF_TAG_FILTER, -1);
     }
-    public Set<String> getTagFilterIds() {
-        return prefs.getStringSet(PREF_TAG_FILTER, new HashSet<>());
-    }
-
 }
