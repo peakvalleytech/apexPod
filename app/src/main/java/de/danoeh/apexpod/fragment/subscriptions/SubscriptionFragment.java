@@ -22,6 +22,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.preference.Preference;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -83,9 +84,14 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Fragment for displaying feed subscriptions
  */
-public class SubscriptionFragment extends Fragment
-        implements Toolbar.OnMenuItemClickListener,
-        SubscriptionsRecyclerAdapter.OnSelectModeListener {
+public class SubscriptionFragment
+        extends
+            Fragment
+        implements
+            Toolbar.OnMenuItemClickListener,
+            SubscriptionsRecyclerAdapter.OnSelectModeListener,
+        Preference.OnPreferenceChangeListener
+{
     public static final String TAG = "SubscriptionFragment";
     private static final String PREFS = "SubscriptionFragment";
     private static final String PREF_NUM_COLUMNS = "columns";
@@ -123,7 +129,8 @@ public class SubscriptionFragment extends Fragment
     private NavDrawerData.TagDrawerItem rootFolder;
     private RecyclerView tagRecycler;
     private FeedTagAdapter feedTagAdapter;
-    private ChipGroup folderChipGroup;
+
+
     public static SubscriptionFragment newInstance(String folderTitle) {
         SubscriptionFragment fragment = new SubscriptionFragment();
         Bundle args = new Bundle();
@@ -533,11 +540,14 @@ public class SubscriptionFragment extends Fragment
         tagRecycler.setAdapter(feedTagAdapter);
     }
 
-    private void updateDisplayedSubscriptions(boolean tagsSelected) {
-        if (tagsSelected)  {
+    private void updateDisplayedSubscriptions(Long filteredTagId) {
+        if (filteredTagId < 0)  {
             Set<NavDrawerData.DrawerItem> allChildren = new HashSet<>();
-            for (NavDrawerData.TagDrawerItem item : feedTagAdapter.getFeedFolders()) {
-                allChildren.addAll(item.children);
+            for(NavDrawerData.TagDrawerItem tagIter : feedTagAdapter.getFeedFolders()) {
+                if (tagIter.id == filteredTagId) {
+                    allChildren.addAll(tagIter.children);
+                    break;
+                }
             }
             tagFilteredFeeds = new ArrayList(allChildren);
         } else {
@@ -552,5 +562,14 @@ public class SubscriptionFragment extends Fragment
 
     public Long getTagFilterId() {
         return prefs.getLong(PREF_TAG_FILTER, -1);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference.getKey().equals(PREF_TAG_FILTER)) {
+            Long filteredTagId = (Long) newValue;
+            updateDisplayedSubscriptions(filteredTagId);
+        }
+        return false;
     }
 }

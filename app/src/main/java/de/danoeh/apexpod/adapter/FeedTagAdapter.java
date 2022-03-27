@@ -30,13 +30,8 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
         this.defaultAll = new NavDrawerData.TagDrawerItem("All");//context.getString(R.string.tag_all));
         this.feedFolders = feedFolders;
         defaultAll.id = RecyclerView.NO_ID;
-        init();
-    }
+        this.feedFolders.add(defaultAll);
 
-    private void init() {
-        if (this.feedFolders.size() == 0) {
-            this.feedFolders.add(defaultAll);
-        }
     }
 
     @NonNull
@@ -76,7 +71,6 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
 
     public void addItem(NavDrawerData.TagDrawerItem tagDrawerItem) {
         feedFolders.add(tagDrawerItem);
-        notifyDataSetChanged();
     }
 
     public class TagViewHolder extends RecyclerView.ViewHolder {
