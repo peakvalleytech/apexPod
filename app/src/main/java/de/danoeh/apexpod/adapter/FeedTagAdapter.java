@@ -25,11 +25,12 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
     private SharedPreferences prefs;
     public static final String PREF_TAG_FILTER = "prefTagFilter";
     private static final String PREFS = "SubscriptionFragment";
+    public static final Long ID_ALL = -1L;
     public FeedTagAdapter(Context context, List<NavDrawerData.TagDrawerItem> feedFolders) {
         prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         this.defaultAll = new NavDrawerData.TagDrawerItem("All");//context.getString(R.string.tag_all));
         this.feedFolders = feedFolders;
-        defaultAll.id = RecyclerView.NO_ID;
+        defaultAll.id = ID_ALL;
         this.feedFolders.add(defaultAll);
 
     }

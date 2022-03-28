@@ -90,7 +90,7 @@ public class SubscriptionFragment
         implements
             Toolbar.OnMenuItemClickListener,
             SubscriptionsRecyclerAdapter.OnSelectModeListener,
-        Preference.OnPreferenceChangeListener
+        SharedPreferences.OnSharedPreferenceChangeListener
 {
     public static final String TAG = "SubscriptionFragment";
     private static final String PREFS = "SubscriptionFragment";
@@ -145,6 +145,7 @@ public class SubscriptionFragment
         setRetainInstance(true);
         prefs = requireActivity().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         MainActivity activity = (MainActivity) getActivity();
+        prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -521,9 +522,13 @@ public class SubscriptionFragment
     }
     private List<NavDrawerData.DrawerItem> getTagFilteredFeeds(List<NavDrawerData.TagDrawerItem> tags) {
        Long tagFilterId = getTagFilterId();
+
         Set<String> idSet = new HashSet<>();
-        idSet.add(String.valueOf(tagFilterId));
+        if (tagFilterId > 0)
+            idSet.add(String.valueOf(tagFilterId));
+
         TagFilter tagFilter = new TagFilter(idSet);
+
         List<NavDrawerData.DrawerItem> tagFilteredFeeds = tagFilter.filter(tags);
 
         return tagFilteredFeeds;
@@ -541,7 +546,7 @@ public class SubscriptionFragment
     }
 
     private void updateDisplayedSubscriptions(Long filteredTagId) {
-        if (filteredTagId < 0)  {
+        if (filteredTagId > 0)  {
             Set<NavDrawerData.DrawerItem> allChildren = new HashSet<>();
             for(NavDrawerData.TagDrawerItem tagIter : feedTagAdapter.getFeedFolders()) {
                 if (tagIter.id == filteredTagId) {
@@ -561,15 +566,14 @@ public class SubscriptionFragment
     }
 
     public Long getTagFilterId() {
-        return prefs.getLong(PREF_TAG_FILTER, -1);
+        return prefs.getLong(PREF_TAG_FILTER, FeedTagAdapter.ID_ALL);
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference.getKey().equals(PREF_TAG_FILTER)) {
-            Long filteredTagId = (Long) newValue;
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(PREF_TAG_FILTER)) {
+            Long filteredTagId = prefs.getLong(key, FeedTagAdapter.ID_ALL);
             updateDisplayedSubscriptions(filteredTagId);
         }
-        return false;
     }
 }
