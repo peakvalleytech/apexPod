@@ -102,7 +102,6 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
 
     private Dialog dialog;
 
-    private Disposable download;
     private Disposable parser;
     private Disposable updater;
 
@@ -207,9 +206,6 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         if(updater != null) {
             updater.dispose();
         }
-        if(download != null) {
-            download.dispose();
-        }
         if(parser != null) {
             parser.dispose();
         }
@@ -275,7 +271,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         feeds -> {
-                            OnlineFeedViewActivity.this.feeds = feeds;
+                            this.feeds = feeds;
                             updateSubscribeButton(feed);
                         }, error -> Log.e(TAG, Log.getStackTraceString(error))
                 );
@@ -521,10 +517,10 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private boolean feedInFeedlist(Feed feed) {
-        if (feeds == null || feed == null) {
+        if (feedDownloader.getFeeds() == null || feed == null) {
             return false;
         }
-        for (Feed f : feeds) {
+        for (Feed f : feedDownloader.getFeeds()) {
             if (f.getIdentifyingValue().equals(feed.getIdentifyingValue())) {
                 return true;
             }
@@ -533,10 +529,10 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private long getFeedId(Feed feed) {
-        if (feeds == null || feed == null) {
+        if (feedDownloader.getFeeds() == null || feed == null) {
             return 0;
         }
-        for (Feed f : feeds) {
+        for (Feed f : feedDownloader.getFeeds()) {
             if (f.getIdentifyingValue().equals(feed.getIdentifyingValue())) {
                 return f.getId();
             }

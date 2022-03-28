@@ -163,7 +163,7 @@ public class OnlineSearchFragment extends Fragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         feeds -> {
-                            OnlineFeedViewActivity.this.feeds = feeds;
+//                            OnlineFeedViewActivity.this.feeds = feeds;
                         }, error -> Log.e(TAG, Log.getStackTraceString(error))
                 );
     }

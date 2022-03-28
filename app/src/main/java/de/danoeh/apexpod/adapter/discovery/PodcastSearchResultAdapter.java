@@ -63,12 +63,12 @@ public class PodcastSearchResultAdapter extends
     private Set<String> subscribedFeedsUrls;
     private FeedDownloader feedDownloader;
 
-    public PodcastSearchResultAdapter(MainActivity mainActivity, Context context, List<PodcastSearchResult> data, List<Feed> subscribedFeeds) {
+    public PodcastSearchResultAdapter(MainActivity mainActivity, Context context, List<PodcastSearchResult> data/*,List<Feed> subscribedFeeds*/) {
         this.context = context;
         this.data = data;
         this.activity = mainActivity;
         this.feedDownloader = new FeedDownloader(mainActivity);
-        this.subscribedFeeds = subscribedFeeds;
+        this.subscribedFeeds = null;
         this.subscribedFeedsUrls = new HashSet<>();
         if (subscribedFeeds != null) {
             for (Feed f : subscribedFeeds) {
