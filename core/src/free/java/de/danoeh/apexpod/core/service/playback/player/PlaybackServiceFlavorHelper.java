@@ -1,10 +1,11 @@
-package de.danoeh.apexpod.core.service.playback;
+package de.danoeh.apexpod.core.service.playback.player;
 
 import android.content.Context;
 import androidx.annotation.StringRes;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 
+import de.danoeh.apexpod.core.service.playback.PlaybackService;
 import de.danoeh.apexpod.core.service.playback.player.LocalPlaybackServiceMediaPlayer;
 
 /**
@@ -14,43 +15,43 @@ public class PlaybackServiceFlavorHelper {
 
     private final PlaybackService.FlavorHelperCallback callback;
 
-    PlaybackServiceFlavorHelper(Context context, PlaybackService.FlavorHelperCallback callback) {
+    public PlaybackServiceFlavorHelper(Context context, PlaybackService.FlavorHelperCallback callback) {
         this.callback = callback;
     }
 
-    void initializeMediaPlayer(Context context) {
+    public void initializeMediaPlayer(Context context) {
         callback.setMediaPlayer(new LocalPlaybackServiceMediaPlayer(context, callback.getMediaPlayerCallback()));
     }
 
-    void removeCastConsumer() {
+    public void removeCastConsumer() {
         // no-op
     }
 
-    boolean castDisconnect(boolean castDisconnect) {
+    public boolean castDisconnect(boolean castDisconnect) {
         return false;
     }
 
-    boolean onMediaPlayerInfo(Context context, int code, @StringRes int resourceId) {
+    public boolean onMediaPlayerInfo(Context context, int code, @StringRes int resourceId) {
         return false;
     }
 
-    void registerWifiBroadcastReceiver() {
+    public void registerWifiBroadcastReceiver() {
         // no-op
     }
 
-    void unregisterWifiBroadcastReceiver() {
+    public void unregisterWifiBroadcastReceiver() {
         // no-op
     }
 
-    boolean onSharedPreference(String key) {
+    public boolean onSharedPreference(String key) {
         return false;
     }
 
-    void sessionStateAddActionForWear(PlaybackStateCompat.Builder sessionState, String actionName, CharSequence name, int icon) {
+    public void sessionStateAddActionForWear(PlaybackStateCompat.Builder sessionState, String actionName, CharSequence name, int icon) {
         // no-op
     }
 
-    void mediaSessionSetExtraForWear(MediaSessionCompat mediaSession) {
+    public void mediaSessionSetExtraForWear(MediaSessionCompat mediaSession) {
         // no-op
     }
 }
