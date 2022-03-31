@@ -1,6 +1,7 @@
 package de.danoeh.apexpod.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,26 +11,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.storage.NavDrawerData;
+import de.danoeh.apexpod.model.feed.FeedPreferences;
 
 public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewHolder> {
     private List<NavDrawerData.TagDrawerItem> feedFolders;
     private NavDrawerData.TagDrawerItem defaultAll;
-
+    private SharedPreferences prefs;
+    public static final String PREF_TAG_FILTER = "prefTagFilter";
+    private static final String PREFS = "SubscriptionFragment";
+    public static final Long ID_ALL = -1L;
     public FeedTagAdapter(Context context, List<NavDrawerData.TagDrawerItem> feedFolders) {
+        prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         this.defaultAll = new NavDrawerData.TagDrawerItem("All");//context.getString(R.string.tag_all));
         this.feedFolders = feedFolders;
-        defaultAll.id = RecyclerView.NO_ID;
-        init();
-    }
+        defaultAll.id = ID_ALL;
+        this.feedFolders.add(defaultAll);
 
-    private void init() {
-        if (this.feedFolders.size() == 0) {
-            this.feedFolders.add(defaultAll);
-        }
     }
 
     @NonNull
@@ -44,20 +47,23 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
     @Override
     public void onBindViewHolder(@NonNull TagViewHolder holder, int position) {
         holder.bind(feedFolders.get(position));
+
+        holder.chip.setOnClickListener(v -> {
+            NavDrawerData.TagDrawerItem tag = feedFolders.get(position);
+            boolean isChecked = holder.chip.isChecked();
+
+            if (isChecked) {
+                setTagFilterId(tag.id);
+            } else {
+                setTagFilterId(defaultAll.id);
+            }
+            notifyDataSetChanged();
+        });
     }
 
     @Override
     public int getItemCount() {
         return feedFolders.size();
-    }
-
-    public boolean isEmpyty() {
-        if (feedFolders.size() == 1 && feedFolders.get(0).id == defaultAll.id) {
-            return true;
-
-        } else {
-            return false;
-        }
     }
 
     public List<NavDrawerData.TagDrawerItem> getFeedFolders() {
@@ -66,24 +72,6 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
 
     public void addItem(NavDrawerData.TagDrawerItem tagDrawerItem) {
         feedFolders.add(tagDrawerItem);
-        if (feedFolders.size() > 1) {
-            feedFolders.remove(defaultAll);
-        }
-        notifyDataSetChanged();
-    }
-
-    public void removeItem(NavDrawerData.TagDrawerItem tagDrawerItem) {
-        this.feedFolders.remove(tagDrawerItem);
-        if (feedFolders.size() == 0) {
-            feedFolders.add(defaultAll);
-        }
-        notifyDataSetChanged();
-    }
-
-    public void clear() {
-        feedFolders.clear();
-        init();
-        notifyDataSetChanged();
     }
 
     public class TagViewHolder extends RecyclerView.ViewHolder {
@@ -96,6 +84,20 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
 
         public void bind(NavDrawerData.TagDrawerItem tagDrawerItem) {
             chip.setText(tagDrawerItem.name);
+            if (tagDrawerItem.id == getTagFilterId()) {
+                chip.setChecked(true);
+            } else {
+                chip.setChecked(false);
+            }
         }
     }
+
+    public void setTagFilterId(long tagFilterId) {
+        prefs.edit().putLong(PREF_TAG_FILTER, tagFilterId).apply();
+    }
+
+    public Long getTagFilterId() {
+        return prefs.getLong(PREF_TAG_FILTER, defaultAll.id);
+    }
+
 }

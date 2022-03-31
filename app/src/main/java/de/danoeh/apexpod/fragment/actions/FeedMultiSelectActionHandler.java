@@ -133,7 +133,9 @@ public class FeedMultiSelectActionHandler {
         List<String> folders = new ArrayList<String>();
         for (NavDrawerData.DrawerItem item : items) {
             if (item.type == NavDrawerData.DrawerItem.Type.TAG) {
-                folders.add(item.getTitle());
+                NavDrawerData.TagDrawerItem tagItem = (NavDrawerData.TagDrawerItem) item;
+                if (!tagItem.name.equals(FeedPreferences.TAG_ROOT))
+                    folders.add(item.getTitle());
             }
         }
         return folders;

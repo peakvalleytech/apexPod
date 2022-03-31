@@ -22,6 +22,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.preference.Preference;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -83,9 +84,14 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Fragment for displaying feed subscriptions
  */
-public class SubscriptionFragment extends Fragment
-        implements Toolbar.OnMenuItemClickListener,
-        SubscriptionsRecyclerAdapter.OnSelectModeListener {
+public class SubscriptionFragment
+        extends
+            Fragment
+        implements
+            Toolbar.OnMenuItemClickListener,
+            SubscriptionsRecyclerAdapter.OnSelectModeListener,
+        SharedPreferences.OnSharedPreferenceChangeListener
+{
     public static final String TAG = "SubscriptionFragment";
     private static final String PREFS = "SubscriptionFragment";
     private static final String PREF_NUM_COLUMNS = "columns";
@@ -123,8 +129,8 @@ public class SubscriptionFragment extends Fragment
     private NavDrawerData.TagDrawerItem rootFolder;
     private RecyclerView tagRecycler;
     private FeedTagAdapter feedTagAdapter;
-    private ChipGroup folderChipGroup;
-    private ImageButton expandTagsButton;
+
+
     public static SubscriptionFragment newInstance(String folderTitle) {
         SubscriptionFragment fragment = new SubscriptionFragment();
         Bundle args = new Bundle();
@@ -139,6 +145,7 @@ public class SubscriptionFragment extends Fragment
         setRetainInstance(true);
         prefs = requireActivity().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         MainActivity activity = (MainActivity) getActivity();
+        prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -207,23 +214,10 @@ public class SubscriptionFragment extends Fragment
             return true;
         });
 
-        expandTagsButton = root.findViewById(R.id.expandTagsButton);
-        expandTagsButton.setOnClickListener(v -> {
-            if (folderChipGroup.getVisibility() == View.GONE) {
-                folderChipGroup.setVisibility(View.VISIBLE);
-                expandTagsButton.setBackground(AppCompatResources.getDrawable(getActivity(), R.drawable.ic_arrow_up));
-            } else {
-                folderChipGroup.setVisibility(View.GONE);
-                expandTagsButton.setBackground(AppCompatResources.getDrawable(getActivity(), R.drawable.ic_arrow_down));
-            }
-        });
-
         tagRecycler = root.findViewById(R.id.tagRecycler);
         LinearLayoutManager linearLayoutManager =
                 new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         tagRecycler.setLayoutManager(linearLayoutManager);
-
-        folderChipGroup = root.findViewById(R.id.feedChipGroup);
 
 
         return root;
@@ -383,10 +377,6 @@ public class SubscriptionFragment extends Fragment
     }
     private void showTagBar(boolean show) {
         tagRecycler.setVisibility(show ? View.VISIBLE : View.GONE );
-        expandTagsButton.setBackground(AppCompatResources.getDrawable(getActivity(), R.drawable.ic_arrow_down));
-
-        expandTagsButton.setVisibility(show ? View.VISIBLE : View.GONE);
-        folderChipGroup.setVisibility(View.GONE);
     }
     private int getDefaultNumOfColumns() {
         return getResources().getInteger(R.integer.subscriptions_default_num_of_columns);
@@ -427,16 +417,13 @@ public class SubscriptionFragment extends Fragment
                     Arrays.asList(getContext().getResources().getStringArray(R.array.nav_drawer_feed_order_values));
             UserPreferences.setFeedOrder(entryValues.get(UserPreferences.FEED_ORDER_PRIORITY));
 
-            clearTagFilterIds();
+//            clearTagFilterIds();
             Pair<List<NavDrawerData.DrawerItem>,
                     List<NavDrawerData.TagDrawerItem>> feedsAndTags =
                     extractFeedsAndTags(listItems);
             tagFilteredFeeds = feedsAndTags.first;
             List<NavDrawerData.TagDrawerItem> tags = feedsAndTags.second;
             initTagViews(tags);
-            if (folderChipGroup.getVisibility() == View.VISIBLE) {
-                expandTagsButton.callOnClick();
-            }
 
             subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
             //Update subscriptions
@@ -534,81 +521,38 @@ public class SubscriptionFragment extends Fragment
         return feedsAndTags;
     }
     private List<NavDrawerData.DrawerItem> getTagFilteredFeeds(List<NavDrawerData.TagDrawerItem> tags) {
-        Set<String> tagFilterIds = getTagFilterIds();
-        TagFilter tagFilter = new TagFilter(tagFilterIds);
+       Long tagFilterId = getTagFilterId();
+
+        Set<String> idSet = new HashSet<>();
+        if (tagFilterId > 0)
+            idSet.add(String.valueOf(tagFilterId));
+
+        TagFilter tagFilter = new TagFilter(idSet);
+
         List<NavDrawerData.DrawerItem> tagFilteredFeeds = tagFilter.filter(tags);
 
         return tagFilteredFeeds;
     }
     private void initTagViews(List<NavDrawerData.TagDrawerItem> tags) {
         feedTagAdapter = new FeedTagAdapter(getContext(), new ArrayList<>());
-        Set<String> tagFilterIds = getTagFilterIds();
+//        Set<String> tagFilterIds = tagFilterId();
 
         for (NavDrawerData.TagDrawerItem folder : tags) {
-            if (tagFilterIds.contains(String.valueOf(folder.id))) {
+            if (!folder.name.equals(FeedPreferences.TAG_ROOT))
                 feedTagAdapter.addItem(folder);
-            }
         }
 
         tagRecycler.setAdapter(feedTagAdapter);
-
-        initTagChipView(tags, tagFilterIds);
     }
 
-    private void initTagChipView(List<NavDrawerData.TagDrawerItem> feedFolders, Set<String> tagFilterIds) {
-        Chip rootChip = null;
-        folderChipGroup.removeAllViews();
-        for (NavDrawerData.TagDrawerItem folderItem : feedFolders) {
-            Chip folderChip = new Chip(getActivity());
-            if (folderItem.name.equals(FeedPreferences.TAG_ROOT)) {
-                folderChip.setText("All");
-                rootChip = folderChip;
-            } else {
-                folderChip.setText(folderItem.name);
-            }
-            folderChip.setCheckable(true);
-            Chip finalRootChip = rootChip;
-            folderChip.setOnClickListener(v ->  {
-                tagChipOnClickListener(folderItem, folderChip, finalRootChip);
-            });
-
-            folderChip.setChecked(tagFilterIds.contains(String.valueOf(folderItem.id)));
-
-            folderChipGroup.addView(folderChip);
-        }
-    }
-
-    private void tagChipOnClickListener(NavDrawerData.TagDrawerItem folderItem,
-                                        Chip folderChip,
-                                        Chip finalRootChip) {
-        if (folderItem.name.equals(FeedPreferences.TAG_ROOT)) {
-            if (folderChip.isChecked()) {
-                feedTagAdapter.clear();
-                clearTagFilterIds();
-                folderChipGroup.clearCheck();
-                activateAllChip(folderChip, true);
-                updateDisplayedSubscriptions(false);
-            }
-        } else {
-            if (folderChip.isChecked()) {
-                addTagFilterId(folderItem.id);
-                feedTagAdapter.addItem(folderItem);
-            } else {
-                removeTagFilterId(folderItem.id);
-                feedTagAdapter.removeItem(folderItem);
-            }
-
-            boolean tagsSelected = !feedTagAdapter.isEmpyty();
-            updateDisplayedSubscriptions(tagsSelected);
-            activateAllChip(finalRootChip, !tagsSelected);
-        }
-    }
-
-    private void updateDisplayedSubscriptions(boolean tagsSelected) {
-        if (tagsSelected)  {
+    private void updateDisplayedSubscriptions(Long filteredTagId) {
+        if (filteredTagId > 0)  {
             Set<NavDrawerData.DrawerItem> allChildren = new HashSet<>();
-            for (NavDrawerData.TagDrawerItem item : feedTagAdapter.getFeedFolders()) {
-                allChildren.addAll(item.children);
+            for(NavDrawerData.TagDrawerItem tagIter : feedTagAdapter.getFeedFolders()) {
+                if (tagIter.id == filteredTagId) {
+                    allChildren.addAll(tagIter.children);
+                    break;
+                }
             }
             tagFilteredFeeds = new ArrayList(allChildren);
         } else {
@@ -616,36 +560,20 @@ public class SubscriptionFragment extends Fragment
         }
         subscriptionAdapter.setItems(sortFeeds(tagFilteredFeeds));
     }
+
     private List<NavDrawerData.DrawerItem> sortFeeds(List<NavDrawerData.DrawerItem> items) {
         return FeedSorter.sortFeeds(items);
     }
 
-    private void activateAllChip(Chip chip, boolean enabled) {
-        chip.setChecked(enabled);
-        chip.setEnabled(!enabled);
-    }
-    public Set<String> getTagFilterIds() {
-        return prefs.getStringSet(PREF_TAG_FILTER, new HashSet<>());
-    }
-    public void addTagFilterId(long tagFilterId) {
-        Set<String> tagFilterIds = new HashSet<>(prefs.getStringSet(PREF_TAG_FILTER, new HashSet<>()));
-        tagFilterIds.add(String.valueOf(tagFilterId));
-        prefs.edit().putStringSet(PREF_TAG_FILTER, null).apply();
-        prefs.edit().putStringSet(PREF_TAG_FILTER, tagFilterIds)
-                .apply();
+    public Long getTagFilterId() {
+        return prefs.getLong(PREF_TAG_FILTER, FeedTagAdapter.ID_ALL);
     }
 
-    public void removeTagFilterId(long tagFilterId) {
-        Set<String> tagFilterIds = new HashSet<>(prefs.getStringSet(PREF_TAG_FILTER, new HashSet<>()));
-        tagFilterIds.remove(String.valueOf(tagFilterId));
-        prefs.edit().putStringSet(PREF_TAG_FILTER, null).apply();
-        prefs.edit().putStringSet(PREF_TAG_FILTER, tagFilterIds)
-                .apply();
-    }
-
-    public void clearTagFilterIds() {
-        prefs.edit().putStringSet(PREF_TAG_FILTER, null).apply();
-        prefs.edit().putStringSet(PREF_TAG_FILTER, new HashSet<>()).apply();
-        subscriptionAdapter.notifyDataSetChanged();
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(PREF_TAG_FILTER)) {
+            Long filteredTagId = prefs.getLong(key, FeedTagAdapter.ID_ALL);
+            updateDisplayedSubscriptions(filteredTagId);
+        }
     }
 }
