@@ -1,6 +1,5 @@
 package de.danoeh.apexpod.fragment;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,14 +9,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,12 +22,16 @@ import org.greenrobot.eventbus.EventBus;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
 import de.danoeh.apexpod.adapter.discovery.PodcastSearchResultAdapter;
 import de.danoeh.apexpod.core.event.DiscoveryDefaultUpdateEvent;
+import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.discovery.ItunesTopListLoader;
 import de.danoeh.apexpod.discovery.PodcastSearchResult;
+import de.danoeh.apexpod.model.feed.Feed;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,7 +67,7 @@ public class DiscoveryFragment extends Fragment {
     private List<PodcastSearchResult> topList;
     private Disposable disposable;
     private String countryCode = "US";
-
+    private List<Feed> subscribedFeeds;
     /**
      * Replace adapter data with provided search results from SearchTask.
      * @param result List of Podcast objects containing search results
@@ -78,7 +77,7 @@ public class DiscoveryFragment extends Fragment {
         if (result != null && result.size() > 0) {
             recyclerView.setVisibility(View.VISIBLE);
             txtvEmpty.setVisibility(View.GONE);
-            adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), result);
+            adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), result, subscribedFeeds);
             recyclerView.setAdapter(adapter);
         } else {
             recyclerView.setVisibility(View.GONE);
@@ -95,6 +94,17 @@ public class DiscoveryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         prefs = getActivity().getSharedPreferences(ItunesTopListLoader.PREFS, MODE_PRIVATE);
         countryCode = prefs.getString(ItunesTopListLoader.PREF_KEY_COUNTRY_CODE, Locale.getDefault().getCountry());
+        loadData();
+    }
+
+    private void loadData() {
+        disposable = Observable.fromCallable(DBReader::getFeedList)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(feeds -> {
+                    subscribedFeeds = feeds;
+                    loadToplist(countryCode);
+                });
     }
 
     @Override
@@ -105,7 +115,7 @@ public class DiscoveryFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), new ArrayList<>());
+        adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), new ArrayList<>(), new ArrayList<>());
         recyclerView.setAdapter(adapter);
         Toolbar toolbar = root.findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
@@ -166,7 +176,7 @@ public class DiscoveryFragment extends Fragment {
                         .apply();
 
                 EventBus.getDefault().post(new DiscoveryDefaultUpdateEvent());
-                loadToplist(countryCode);
+                loadData();
             }
 
             @Override
@@ -178,7 +188,7 @@ public class DiscoveryFragment extends Fragment {
         butRetry = root.findViewById(R.id.butRetry);
         txtvEmpty = root.findViewById(android.R.id.empty);
 
-        loadToplist(countryCode);
+        loadData();
         return root;
     }
 
@@ -224,7 +234,7 @@ public class DiscoveryFragment extends Fragment {
                         progressBar.setVisibility(View.GONE);
                         txtvError.setText(error.getMessage());
                         txtvError.setVisibility(View.VISIBLE);
-                        butRetry.setOnClickListener(v -> loadToplist(country));
+                        butRetry.setOnClickListener(v -> loadData());
                         butRetry.setVisibility(View.VISIBLE);
                     });
         }

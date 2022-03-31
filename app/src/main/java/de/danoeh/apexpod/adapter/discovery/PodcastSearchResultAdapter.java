@@ -30,10 +30,8 @@ import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
 import de.danoeh.apexpod.activity.discovery.FeedDownloader;
 import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
-import de.danoeh.apexpod.core.service.download.DownloadStatus;
 import de.danoeh.apexpod.core.storage.DownloadRequestException;
 import de.danoeh.apexpod.core.storage.DownloadRequester;
-import de.danoeh.apexpod.core.util.DownloadError;
 import de.danoeh.apexpod.discovery.PodcastSearchResult;
 import de.danoeh.apexpod.model.feed.Feed;
 import de.danoeh.apexpod.parser.feed.FeedHandler;
@@ -60,19 +58,19 @@ public class PodcastSearchResultAdapter extends
      */
     private final List<PodcastSearchResult> data;
     private final List<Feed> subscribedFeeds;
-    private Set<String> subscribedFeedsUrls;
+    private Set<String> subscribedFeedTitles;
     private FeedDownloader feedDownloader;
 
-    public PodcastSearchResultAdapter(MainActivity mainActivity, Context context, List<PodcastSearchResult> data/*,List<Feed> subscribedFeeds*/) {
+    public PodcastSearchResultAdapter(MainActivity mainActivity, Context context, List<PodcastSearchResult> data, List<Feed> subscribedFeeds) {
         this.context = context;
         this.data = data;
         this.activity = mainActivity;
         this.feedDownloader = new FeedDownloader(mainActivity);
-        this.subscribedFeeds = null;
-        this.subscribedFeedsUrls = new HashSet<>();
+        this.subscribedFeeds = subscribedFeeds;
+        this.subscribedFeedTitles = new HashSet<>();
         if (subscribedFeeds != null) {
             for (Feed f : subscribedFeeds) {
-                subscribedFeedsUrls.add(f.getDownload_url());
+                subscribedFeedTitles.add(f.getTitle());
             }
         }
     }
@@ -89,7 +87,7 @@ public class PodcastSearchResultAdapter extends
         PodcastSearchResult podcastSearchResult = data.get(position);
         holder.onBind(podcastSearchResult);
         holder.quickSubBtn.setOnClickListener(v -> {
-            if (!subscribedFeedsUrls.contains(podcastSearchResult)) {
+            if (!subscribedFeedTitles.contains(podcastSearchResult.title)) {
                 feedDownloader.lookupUrl(
                         podcastSearchResult.feedUrl,
                         "",
@@ -107,6 +105,7 @@ public class PodcastSearchResultAdapter extends
                                             public void onSuccess(@NonNull FeedHandlerResult result) {
                                                 try {
                                                     DownloadRequester.getInstance().downloadFeed(v.getContext(), result.feed);
+                                                    notifyItemChanged(holder.getBindingAdapterPosition());
                                                 } catch (DownloadRequestException e) {
                                                     Log.e(TAG, Log.getStackTraceString(e));
                                                     DownloadRequestErrorDialogCreator.newRequestErrorDialog(v.getContext(), e.getMessage());
@@ -143,11 +142,11 @@ public class PodcastSearchResultAdapter extends
     }
 
     public void subscribe(PodcastSearchResult result) {
-        subscribedFeedsUrls.add(result.feedUrl);
+        subscribedFeedTitles.add(result.feedUrl);
     }
 
     public void unSubscribe(PodcastSearchResult result) {
-        subscribedFeedsUrls.remove(result.feedUrl);
+        subscribedFeedTitles.remove(result.feedUrl);
     }
 
     public class PodcastRecyclerViewHolder extends RecyclerView.ViewHolder {
@@ -177,7 +176,7 @@ public class PodcastSearchResultAdapter extends
         }
 
         public void onBind(@NonNull PodcastSearchResult podcastSearchResult) {
-            if (subscribedFeedsUrls.contains(podcastSearchResult.feedUrl)) {
+            if (subscribedFeedTitles.contains(podcastSearchResult.title)) {
                 quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_check));
             } else {
                 quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_add));
