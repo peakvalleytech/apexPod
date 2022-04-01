@@ -58,7 +58,8 @@ public class PodcastSearchResultAdapter extends
      */
     private final List<PodcastSearchResult> data;
     private final List<Feed> subscribedFeeds;
-    private Set<String> subscribedFeedTitles;
+    private Set<String> subscribedFeedAuthors;
+    private Set<String> subscribedFeedTitle;
     private FeedDownloader feedDownloader;
 
     public PodcastSearchResultAdapter(MainActivity mainActivity, Context context, List<PodcastSearchResult> data, List<Feed> subscribedFeeds) {
@@ -67,11 +68,12 @@ public class PodcastSearchResultAdapter extends
         this.activity = mainActivity;
         this.feedDownloader = new FeedDownloader(mainActivity);
         this.subscribedFeeds = subscribedFeeds;
-        this.subscribedFeedTitles = new HashSet<>();
+        this.subscribedFeedAuthors = new HashSet<>();
         if (subscribedFeeds != null) {
             for (Feed f : subscribedFeeds) {
-                subscribedFeedTitles.add(f.getTitle());
+                subscribedFeedAuthors.add(f.getAuthor());
             }
+
         }
     }
 
@@ -87,7 +89,7 @@ public class PodcastSearchResultAdapter extends
         PodcastSearchResult podcastSearchResult = data.get(position);
         holder.onBind(podcastSearchResult);
         holder.quickSubBtn.setOnClickListener(v -> {
-            if (!subscribedFeedTitles.contains(podcastSearchResult.title)) {
+            if (!isSubscribed(podcastSearchResult)) {
                 feedDownloader.lookupUrl(
                         podcastSearchResult.feedUrl,
                         "",
@@ -136,17 +138,21 @@ public class PodcastSearchResultAdapter extends
 
     }
 
+    private boolean isSubscribed(PodcastSearchResult podcastSearchResult) {
+        return subscribedFeedAuthors.contains(podcastSearchResult.author);
+    }
+
     @Override
     public int getItemCount() {
         return data.size();
     }
 
     public void subscribe(PodcastSearchResult result) {
-        subscribedFeedTitles.add(result.feedUrl);
+        subscribedFeedAuthors.add(result.feedUrl);
     }
 
     public void unSubscribe(PodcastSearchResult result) {
-        subscribedFeedTitles.remove(result.feedUrl);
+        subscribedFeedAuthors.remove(result.feedUrl);
     }
 
     public class PodcastRecyclerViewHolder extends RecyclerView.ViewHolder {
@@ -176,7 +182,7 @@ public class PodcastSearchResultAdapter extends
         }
 
         public void onBind(@NonNull PodcastSearchResult podcastSearchResult) {
-            if (subscribedFeedTitles.contains(podcastSearchResult.title)) {
+            if (isSubscribed(podcastSearchResult)) {
                 quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_check));
             } else {
                 quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_add));
