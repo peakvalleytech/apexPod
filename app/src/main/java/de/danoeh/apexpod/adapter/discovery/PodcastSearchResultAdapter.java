@@ -57,7 +57,7 @@ public class PodcastSearchResultAdapter extends
      * List holding the podcasts found in the search
      */
     private final List<PodcastSearchResult> data;
-    private final List<Feed> subscribedFeeds;
+    private List<Feed> subscribedFeeds;
     private Set<String> subscribedFeedAuthors;
     private Set<String> subscribedFeedTitle;
     private FeedDownloader feedDownloader;
@@ -153,6 +153,17 @@ public class PodcastSearchResultAdapter extends
 
     public void unSubscribe(PodcastSearchResult result) {
         subscribedFeedAuthors.remove(result.feedUrl);
+    }
+
+    public void updateSubcribedList(List<Feed> subscribedFeeds) {
+        this.subscribedFeeds = subscribedFeeds;
+        if (subscribedFeeds != null) {
+            for (Feed f : subscribedFeeds) {
+                subscribedFeedAuthors.add(f.getAuthor());
+            }
+
+        }
+        notifyDataSetChanged();
     }
 
     public class PodcastRecyclerViewHolder extends RecyclerView.ViewHolder {

@@ -75,12 +75,18 @@ public class DiscoveryFragment extends Fragment {
      * @param result List of Podcast objects containing search results
      */
     private void updateData(List<PodcastSearchResult> result) {
-        this.searchResults = result;
         if (result != null && result.size() > 0) {
             recyclerView.setVisibility(View.VISIBLE);
             txtvEmpty.setVisibility(View.GONE);
-            adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), result, subscribedFeeds);
-            recyclerView.setAdapter(adapter);
+            if (adapter == null) {
+                this.searchResults = result;
+
+                adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), result, subscribedFeeds);
+                recyclerView.setAdapter(adapter);
+            }
+            else
+                adapter.updateSubcribedList(subscribedFeeds);
+
         } else {
             recyclerView.setVisibility(View.GONE);
             txtvEmpty.setVisibility(View.VISIBLE);
@@ -117,7 +123,7 @@ public class DiscoveryFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), new ArrayList<>(), new ArrayList<>());
+        adapter = null;
         recyclerView.setAdapter(adapter);
         Toolbar toolbar = root.findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
@@ -178,7 +184,6 @@ public class DiscoveryFragment extends Fragment {
                         .apply();
 
                 EventBus.getDefault().post(new DiscoveryDefaultUpdateEvent());
-                loadData();
             }
 
             @Override
@@ -215,6 +220,12 @@ public class DiscoveryFragment extends Fragment {
 
     @Subscribe
     public void onFeedListChanged(FeedListUpdateEvent event) {
+        loadData();
+    }
+
+    @Subscribe
+    public void onDiscoveryDefaultUpdateEvent(DiscoveryDefaultUpdateEvent event) {
+        adapter = null; // new adapter needs to be created for new search results
         loadData();
     }
     private void loadToplist(String country) {
