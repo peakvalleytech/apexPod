@@ -81,7 +81,7 @@ public class DiscoveryFragment extends Fragment {
             if (adapter == null) {
                 this.searchResults = result;
 
-                adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), result, subscribedFeeds);
+                adapter = new PodcastSearchResultAdapter(getActivity(), result, subscribedFeeds);
                 recyclerView.setAdapter(adapter);
             }
             else
@@ -102,7 +102,6 @@ public class DiscoveryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         prefs = getActivity().getSharedPreferences(ItunesTopListLoader.PREFS, MODE_PRIVATE);
         countryCode = prefs.getString(ItunesTopListLoader.PREF_KEY_COUNTRY_CODE, Locale.getDefault().getCountry());
-        loadData();
     }
 
     private void loadData() {
@@ -194,7 +193,6 @@ public class DiscoveryFragment extends Fragment {
         txtvError = root.findViewById(R.id.txtvError);
         butRetry = root.findViewById(R.id.butRetry);
         txtvEmpty = root.findViewById(android.R.id.empty);
-
         loadData();
         return root;
     }
@@ -220,13 +218,18 @@ public class DiscoveryFragment extends Fragment {
 
     @Subscribe
     public void onFeedListChanged(FeedListUpdateEvent event) {
-        loadData();
+        // Adapter is sometimes null not after being created,
+        // but somtimes after afterwards when lifecycle state changes
+        if (adapter != null)
+            loadData();
     }
 
     @Subscribe
     public void onDiscoveryDefaultUpdateEvent(DiscoveryDefaultUpdateEvent event) {
-        adapter = null; // new adapter needs to be created for new search results
-        loadData();
+        if (adapter != null) {
+            adapter = null; // new adapter needs to be created for new search results
+            loadData();
+        }
     }
     private void loadToplist(String country) {
         if (disposable != null) {

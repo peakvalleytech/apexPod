@@ -1,13 +1,11 @@
 package de.danoeh.apexpod.activity.discovery
 
+import android.content.Context
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import de.danoeh.apexpod.activity.OnlineFeedViewActivity
 import de.danoeh.apexpod.core.service.download.DownloadStatus
 import de.danoeh.apexpod.core.service.download.Downloader
 import de.danoeh.apexpod.core.service.download.HttpDownloader
 import de.danoeh.apexpod.core.storage.DBReader
-import de.danoeh.apexpod.core.util.DownloadError
 import de.danoeh.apexpod.core.util.URLChecker
 import de.danoeh.apexpod.discovery.PodcastSearcherRegistry
 import de.danoeh.apexpod.model.feed.Feed
@@ -16,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class FeedDownloader(val activity : AppCompatActivity) {
+class FeedDownloader(var context : Context) {
     private val TAG = "SubscribeHelper"
     private var downloader: Downloader? = null
     private var download: Disposable? = null
@@ -61,7 +59,7 @@ class FeedDownloader(val activity : AppCompatActivity) {
         Log.d(TAG, "Starting feed download")
         url = URLChecker.prepareURL(url!!)
         val downlaodRequestFactory = DownlaodRequestFactory()
-        val request = activity.getExternalCacheDir()?.let {
+        val request = context.getExternalCacheDir()?.let {
             downlaodRequestFactory.create(
                 url, it, username, password
             )

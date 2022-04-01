@@ -47,7 +47,6 @@ import io.reactivex.schedulers.Schedulers;
 public class PodcastSearchResultAdapter extends
         RecyclerView.Adapter<PodcastSearchResultAdapter.PodcastRecyclerViewHolder> {
     private static final String TAG = "PodcastSearchResultAtr";
-    private MainActivity activity;
     /**
      * Related Context
      */
@@ -62,11 +61,10 @@ public class PodcastSearchResultAdapter extends
     private Set<String> subscribedFeedTitle;
     private FeedDownloader feedDownloader;
 
-    public PodcastSearchResultAdapter(MainActivity mainActivity, Context context, List<PodcastSearchResult> data, List<Feed> subscribedFeeds) {
+    public PodcastSearchResultAdapter(Context context, List<PodcastSearchResult> data, List<Feed> subscribedFeeds) {
         this.context = context;
         this.data = data;
-        this.activity = mainActivity;
-        this.feedDownloader = new FeedDownloader(mainActivity);
+        this.feedDownloader = new FeedDownloader(context);
         this.subscribedFeeds = subscribedFeeds;
         this.subscribedFeedAuthors = new HashSet<>();
         if (subscribedFeeds != null) {
@@ -89,7 +87,10 @@ public class PodcastSearchResultAdapter extends
         PodcastSearchResult podcastSearchResult = data.get(position);
         holder.onBind(podcastSearchResult);
         holder.quickSubBtn.setOnClickListener(v -> {
-            if (!isSubscribed(podcastSearchResult)) {
+            if (isSubscribed(podcastSearchResult)) {
+
+            }
+            else {
                 feedDownloader.lookupUrl(
                         podcastSearchResult.feedUrl,
                         "",
@@ -131,8 +132,6 @@ public class PodcastSearchResultAdapter extends
                             return null;
                         }
                 );
-            } else {
-
             }
         });
 
@@ -186,9 +185,9 @@ public class PodcastSearchResultAdapter extends
 
         public void onBind(@NonNull PodcastSearchResult podcastSearchResult) {
             if (isSubscribed(podcastSearchResult)) {
-                quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_check));
+                quickSubIcon.setBackground(AppCompatResources.getDrawable(context, R.drawable.ic_check));
             } else {
-                quickSubIcon.setBackground(AppCompatResources.getDrawable(activity, R.drawable.ic_add));
+                quickSubIcon.setBackground(AppCompatResources.getDrawable(context, R.drawable.ic_add));
             }
             titleView.setText(podcastSearchResult.title);
             if (podcastSearchResult.author != null && !podcastSearchResult.author.trim().isEmpty()) {
@@ -218,9 +217,9 @@ public class PodcastSearchResultAdapter extends
                 }
                 Intent intent = new Intent(context, OnlineFeedViewActivity.class);
                 intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcastSearchResult.feedUrl);
-                activity.startActivity(intent);
+                context.startActivity(intent);
             });
-            itemView.setBackgroundResource(ThemeUtils.getDrawableFromAttr(activity, R.attr.selectableItemBackground));
+            itemView.setBackgroundResource(ThemeUtils.getDrawableFromAttr(context, R.attr.selectableItemBackground));
 
         }
     }

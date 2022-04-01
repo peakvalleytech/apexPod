@@ -107,7 +107,7 @@ public class OnlineSearchFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_itunes_search, container, false);
         root.findViewById(R.id.spinner_country).setVisibility(INVISIBLE);
         recyclerView = root.findViewById(R.id.recyclerView);
-        adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(), getContext(), new ArrayList<>(), new ArrayList<>());
+        adapter = new PodcastSearchResultAdapter(getActivity().getApplicationContext(), new ArrayList<>(), new ArrayList<>());
         recyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -224,7 +224,7 @@ public class OnlineSearchFragment extends Fragment {
 //            adapter.clear();
 //            adapter.addAll(searchResults);
 //            adapter.notifyDataSetInvalidated();
-            adapter = new PodcastSearchResultAdapter((MainActivity) getActivity(),  getContext(), result, new ArrayList<>());
+            adapter = new PodcastSearchResultAdapter(getActivity().getApplicationContext(), result, new ArrayList<>());
             recyclerView.setAdapter(adapter);
             recyclerView.setVisibility(!searchResults.isEmpty() ? View.VISIBLE : View.GONE);
             txtvEmpty.setVisibility(searchResults.isEmpty() ? View.VISIBLE : View.GONE);
