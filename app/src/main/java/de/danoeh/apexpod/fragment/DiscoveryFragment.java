@@ -19,11 +19,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.discovery.PodcastSearchResultAdapter;
 import de.danoeh.apexpod.core.event.DiscoveryDefaultUpdateEvent;
+import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
 import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.discovery.ItunesTopListLoader;
 import de.danoeh.apexpod.discovery.PodcastSearchResult;
@@ -193,6 +195,13 @@ public class DiscoveryFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (disposable != null) {
@@ -204,6 +213,10 @@ public class DiscoveryFragment extends Fragment {
         }
     }
 
+    @Subscribe
+    public void onFeedListChanged(FeedListUpdateEvent event) {
+        loadData();
+    }
     private void loadToplist(String country) {
         if (disposable != null) {
             disposable.dispose();

@@ -164,6 +164,7 @@ public class OnlineSearchFragment extends Fragment {
                 .subscribe(
                         feeds -> {
 //                            OnlineFeedViewActivity.this.feeds = feeds;
+
                         }, error -> Log.e(TAG, Log.getStackTraceString(error))
                 );
     }
