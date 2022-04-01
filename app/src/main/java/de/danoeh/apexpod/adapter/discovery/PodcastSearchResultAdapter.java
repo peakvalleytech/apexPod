@@ -147,14 +147,6 @@ public class PodcastSearchResultAdapter extends
         return data.size();
     }
 
-    public void subscribe(PodcastSearchResult result) {
-        subscribedFeedAuthors.add(result.feedUrl);
-    }
-
-    public void unSubscribe(PodcastSearchResult result) {
-        subscribedFeedAuthors.remove(result.feedUrl);
-    }
-
     public void updateSubcribedList(List<Feed> subscribedFeeds) {
         this.subscribedFeeds = subscribedFeeds;
         if (subscribedFeeds != null) {
