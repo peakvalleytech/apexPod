@@ -14,8 +14,8 @@ public class LoopPreferences {
     public static final String PREF_KEY_LOOP_END = "loop_end";
 
     public static void init(Context context) {
-        LoopPreferences.context = context;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        LoopPreferences.context = context.getApplicationContext();
+        sharedPreferences = getSharedPreferences();
     }
 
     public static boolean isEnabled() {
