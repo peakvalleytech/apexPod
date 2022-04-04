@@ -164,6 +164,9 @@ public class UserPreferences {
     public static void init(@NonNull Context context) {
         Log.d(TAG, "Creating new instance of UserPreferences");
 
+        if (context == null)
+            throw new IllegalArgumentException("Context cannot be null");
+
         UserPreferences.context = context.getApplicationContext();
         UserPreferences.prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
