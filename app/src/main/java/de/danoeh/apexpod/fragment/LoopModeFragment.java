@@ -54,39 +54,13 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         endField = root.findViewById(R.id.editTxtEnd);
         resetButton = root.findViewById(R.id.resetButton);
 
-        startField.setText(Converter.getDurationStringLong(LoopPreferences.getStart()));
-        endField.setText(Converter.getDurationStringLong(LoopPreferences.getEnd()));
-        // Repeat episode preference allows either to repeat the episode
-        // or optionally to repeat a section (loop) which is set using
-        // LoopPreferences.setEnabled()
-        repeatEnabled= UserPreferences.getShouldRepeatEpisode();
-        setLoopModeView(repeatEnabled, LoopPreferences.isEnabled());
 
-        repeatModeSwitch.setOnClickListener(v -> {
-            boolean isChecked = repeatModeSwitch.isChecked();
-            UserPreferences.setShouldRepeatEpisode(isChecked);
-            setLoopModeView(isChecked, false);
-        });
 
-        repeatEpisodeCheckbox.setOnClickListener(v -> {
-           setLoopModeView(repeatEnabled, !repeatEpisodeCheckbox.isChecked());
-        });
-
-        repeatSectionCheckbox.setOnClickListener(v -> {
-            setLoopModeView(repeatEnabled, repeatSectionCheckbox.isChecked());
-        });
-
-        resetButton.setOnClickListener(v -> {
-            LoopPreferences.setStart(0);
-            LoopPreferences.setEnd(controller.getDuration());
-            startField.setText(Converter.getDurationStringLong(0));
-            endField.setText(Converter.getDurationStringLong(controller.getDuration()));
-        });
-
-        PreferenceManager.getDefaultSharedPreferences(getContext()).registerOnSharedPreferenceChangeListener(this);
 
         return root;
     }
+
+
 
     private void setLoopModeView(boolean repeat, boolean loop) {
         if (!repeat) {
@@ -158,6 +132,37 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        startField.setText(Converter.getDurationStringLong(LoopPreferences.getStart()));
+        endField.setText(Converter.getDurationStringLong(LoopPreferences.getEnd()));
+        // Repeat episode preference allows either to repeat the episode
+        // or optionally to repeat a section (loop) which is set using
+        // LoopPreferences.setEnabled()
+        repeatEnabled= UserPreferences.getShouldRepeatEpisode();
+        setLoopModeView(repeatEnabled, LoopPreferences.isEnabled());
+
+        repeatModeSwitch.setOnClickListener(v -> {
+            boolean isChecked = repeatModeSwitch.isChecked();
+            UserPreferences.setShouldRepeatEpisode(isChecked);
+            setLoopModeView(isChecked, false);
+        });
+
+        repeatEpisodeCheckbox.setOnClickListener(v -> {
+            setLoopModeView(repeatEnabled, !repeatEpisodeCheckbox.isChecked());
+        });
+
+        repeatSectionCheckbox.setOnClickListener(v -> {
+            setLoopModeView(repeatEnabled, repeatSectionCheckbox.isChecked());
+        });
+
+        resetButton.setOnClickListener(v -> {
+            LoopPreferences.setStart(0);
+            LoopPreferences.setEnd(controller.getDuration());
+            startField.setText(Converter.getDurationStringLong(0));
+            endField.setText(Converter.getDurationStringLong(controller.getDuration()));
+        });
+
+        PreferenceManager.getDefaultSharedPreferences(getContext()).registerOnSharedPreferenceChangeListener(this);
+
         startButton.setOnClickListener(v -> {
             int tmpStartPos = controller.getPosition();
             int endPos = LoopPreferences.getEnd();

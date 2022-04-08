@@ -3,7 +3,6 @@ package de.danoeh.apexpod.core;
 import android.content.Context;
 
 import de.danoeh.apexpod.core.preferences.LoopPreferences;
-import de.danoeh.apexpod.net.ssl.SslProviderInstaller;
 
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
@@ -13,6 +12,7 @@ import de.danoeh.apexpod.core.service.download.AntennapodHttpClient;
 import de.danoeh.apexpod.core.storage.PodDBAdapter;
 import de.danoeh.apexpod.core.util.NetworkUtils;
 import de.danoeh.apexpod.core.util.gui.NotificationUtils;
+import de.danoeh.apexpod.net.ssl.SslProviderInstaller;
 
 import java.io.File;
 

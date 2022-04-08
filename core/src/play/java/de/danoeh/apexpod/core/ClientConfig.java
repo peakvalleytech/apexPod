@@ -3,6 +3,7 @@ package de.danoeh.apexpod.core;
 import android.content.Context;
 import android.util.Log;
 import de.danoeh.apexpod.core.cast.CastManager;
+import de.danoeh.apexpod.core.preferences.LoopPreferences;
 import de.danoeh.apexpod.core.preferences.PlaybackPreferences;
 import de.danoeh.apexpod.core.preferences.SleepTimerPreferences;
 import de.danoeh.apexpod.core.preferences.UsageStatistics;
@@ -43,6 +44,7 @@ public class ClientConfig {
         }
         PodDBAdapter.init(context);
         UserPreferences.init(context);
+        LoopPreferences.init(context);
         UsageStatistics.init(context);
         PlaybackPreferences.init(context);
         SslProviderInstaller.install(context);
