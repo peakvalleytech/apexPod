@@ -19,7 +19,6 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.discovery.GpodnetPodcastSearcher;
 import de.danoeh.apexpod.fragment.OnlineSearchFragment;
 
 /**

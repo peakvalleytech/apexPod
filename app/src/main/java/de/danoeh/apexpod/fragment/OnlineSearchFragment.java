@@ -220,7 +220,11 @@ public class OnlineSearchFragment extends Fragment {
         disposable = Observable.fromCallable(DBReader::getFeedList)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(onNext);
+                .subscribe(
+                    onNext,
+                    error -> {
+                        Log.e(TAG, error.getMessage());
+                    });
     }
 
     private void search(String query) {
