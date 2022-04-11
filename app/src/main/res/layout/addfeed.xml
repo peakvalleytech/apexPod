@@ -114,24 +114,6 @@
                     android:text="@string/search_itunes_label"/>
 
             <TextView
-                    android:id="@+id/searchFyydButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:drawableStartCompat="@drawable/ic_search"
-                    app:drawableLeftCompat="@drawable/ic_search"
-                    style="@style/AddPodcastTextView"
-                    android:text="@string/search_fyyd_label"/>
-
-<!--            <TextView-->
-<!--                    android:id="@+id/searchGPodderButton"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:drawableStartCompat="@drawable/ic_search"-->
-<!--                    app:drawableLeftCompat="@drawable/ic_search"-->
-<!--                    style="@style/AddPodcastTextView"-->
-<!--                    android:text="@string/browse_gpoddernet_label"/>-->
-
-            <TextView
                     android:id="@+id/searchPodcastIndexButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
