@@ -40,7 +40,6 @@ import de.danoeh.apexpod.discovery.CombinedSearcher;
 import de.danoeh.apexpod.discovery.FyydPodcastSearcher;
 import de.danoeh.apexpod.discovery.ItunesPodcastSearcher;
 import de.danoeh.apexpod.discovery.PodcastIndexPodcastSearcher;
-import de.danoeh.apexpod.fragment.gpodnet.GpodnetMainFragment;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -84,8 +83,8 @@ public class AddFeedFragment extends Fragment {
                 -> activity.loadChildFragment(OnlineSearchFragment.newInstance(ItunesPodcastSearcher.class)));
         viewBinding.searchFyydButton.setOnClickListener(v
                 -> activity.loadChildFragment(OnlineSearchFragment.newInstance(FyydPodcastSearcher.class)));
-        viewBinding.searchGPodderButton.setOnClickListener(v
-                -> activity.loadChildFragment(new GpodnetMainFragment()));
+//        viewBinding.searchGPodderButton.setOnClickListener(v
+//                -> activity.loadChildFragment(new GpodnetMainFragment()));
         viewBinding.searchPodcastIndexButton.setOnClickListener(v
                 -> activity.loadChildFragment(OnlineSearchFragment.newInstance(PodcastIndexPodcastSearcher.class)));
 
