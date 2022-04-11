@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Set;
 
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
 import de.danoeh.apexpod.activity.discovery.FeedDownloader;
 import de.danoeh.apexpod.core.dialog.DownloadRequestErrorDialogCreator;
@@ -84,7 +83,7 @@ public class PodcastSearchResultAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull PodcastRecyclerViewHolder holder, int position) {
-        PodcastSearchResult podcastSearchResult = data.get(position);
+        PodcastSearchResult podcastSearchResult = data.get(holder.getBindingAdapterPosition());
         holder.onBind(podcastSearchResult);
         holder.quickSubBtn.setOnClickListener(v -> {
             if (isSubscribed(podcastSearchResult)) {
@@ -167,11 +166,8 @@ public class PodcastSearchResultAdapter extends
          * TextView holding the Podcast title
          */
         TextView titleView;
-
         TextView authorView;
-
         View quickSubBtn;
-
         ImageView quickSubIcon;
 
         public PodcastRecyclerViewHolder(@NonNull View itemView) {

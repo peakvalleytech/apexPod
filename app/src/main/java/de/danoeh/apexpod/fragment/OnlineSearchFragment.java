@@ -30,9 +30,11 @@ import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.discovery.PodcastSearchResult;
 import de.danoeh.apexpod.discovery.PodcastSearcher;
 import de.danoeh.apexpod.discovery.PodcastSearcherRegistry;
+import de.danoeh.apexpod.model.feed.Feed;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ import java.util.List;
 
 import static android.view.View.INVISIBLE;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class OnlineSearchFragment extends Fragment {
@@ -63,6 +66,7 @@ public class OnlineSearchFragment extends Fragment {
      * List of podcasts retreived from the search
      */
     private List<PodcastSearchResult> searchResults;
+    private List<Feed> subscribedFeeds;
     private Disposable disposable;
     private Disposable updater;
 
@@ -87,6 +91,12 @@ public class OnlineSearchFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -107,18 +117,8 @@ public class OnlineSearchFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_itunes_search, container, false);
         root.findViewById(R.id.spinner_country).setVisibility(INVISIBLE);
         recyclerView = root.findViewById(R.id.recyclerView);
-        adapter = new PodcastSearchResultAdapter(getActivity().getApplicationContext(), new ArrayList<>(), new ArrayList<>());
-        recyclerView.setAdapter(adapter);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        //Show information about the podcast when the list item is clicked
-//        recyclerView.setOnItemClickListener((parent, view1, position, id) -> {
-//            PodcastSearchResult podcast = searchResults.get(position);
-//            Intent intent = new Intent(getActivity(), OnlineFeedViewActivity.class);
-//            intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcast.feedUrl);
-//            intent.putExtra(MainActivity.EXTRA_STARTED_FROM_SEARCH, true);
-//            startActivity(intent);
-//        });
         progressBar = root.findViewById(R.id.progressBar);
         txtvError = root.findViewById(R.id.txtvError);
         butRetry = root.findViewById(R.id.butRetry);
@@ -154,19 +154,15 @@ public class OnlineSearchFragment extends Fragment {
         if (updater != null) {
             updater.dispose();
         }
+
         adapter = null;
     }
     @Subscribe
     public void onFeedListChanged(FeedListUpdateEvent event) {
-        updater = Observable.fromCallable(DBReader::getFeedList)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        feeds -> {
-//                            OnlineFeedViewActivity.this.feeds = feeds;
-
-                        }, error -> Log.e(TAG, Log.getStackTraceString(error))
-                );
+        loadData(feeds -> {
+            subscribedFeeds = feeds;
+            adapter.updateSubcribedList(subscribedFeeds);
+        });
     }
 
     private void setupToolbar(Toolbar toolbar) {
@@ -180,7 +176,14 @@ public class OnlineSearchFragment extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 sv.clearFocus();
-                search(s);
+                if (subscribedFeeds == null) {
+                    loadData(feeds -> {
+                        subscribedFeeds = feeds;
+                        search(s);
+                    });
+                } else {
+                    search(s);
+                }
                 return true;
             }
 
@@ -213,6 +216,13 @@ public class OnlineSearchFragment extends Fragment {
         }
     }
 
+    private void loadData(Consumer<List<Feed>> onNext) {
+        disposable = Observable.fromCallable(DBReader::getFeedList)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(onNext);
+    }
+
     private void search(String query) {
         if (disposable != null) {
             disposable.dispose();
@@ -221,13 +231,12 @@ public class OnlineSearchFragment extends Fragment {
         disposable = searchProvider.search(query).subscribe(result -> {
             searchResults = result;
             progressBar.setVisibility(View.GONE);
-//            adapter.clear();
-//            adapter.addAll(searchResults);
-//            adapter.notifyDataSetInvalidated();
-            adapter = new PodcastSearchResultAdapter(getActivity().getApplicationContext(), result, new ArrayList<>());
+            adapter = new PodcastSearchResultAdapter(getActivity(), searchResults, new ArrayList<>());
             recyclerView.setAdapter(adapter);
             recyclerView.setVisibility(!searchResults.isEmpty() ? View.VISIBLE : View.GONE);
             txtvEmpty.setVisibility(searchResults.isEmpty() ? View.VISIBLE : View.GONE);
+            adapter.updateSubcribedList(subscribedFeeds);
+            recyclerView.notify();
             txtvEmpty.setText(getString(R.string.no_results_for_query, query));
         }, error -> {
                 Log.e(TAG, Log.getStackTraceString(error));

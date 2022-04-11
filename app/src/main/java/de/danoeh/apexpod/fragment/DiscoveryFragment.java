@@ -80,7 +80,6 @@ public class DiscoveryFragment extends Fragment {
             txtvEmpty.setVisibility(View.GONE);
             if (adapter == null) {
                 this.searchResults = result;
-
                 adapter = new PodcastSearchResultAdapter(getActivity(), result, subscribedFeeds);
                 recyclerView.setAdapter(adapter);
             }
@@ -126,18 +125,6 @@ public class DiscoveryFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         Toolbar toolbar = root.findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
-
-        //Show information about the podcast when the list item is clicked
-//        recyclerView.setOnItemClickListener((parent, view1, position, id) -> {
-//            PodcastSearchResult podcast = searchResults.get(position);
-//            if (podcast.feedUrl == null) {
-//                return;
-//            }
-//            Intent intent = new Intent(getActivity(), OnlineFeedViewActivity.class);
-//            intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcast.feedUrl);
-//            startActivity(intent);
-//        });
-
 
         List<String> countryCodeArray = new ArrayList<String>(Arrays.asList(Locale.getISOCountries()));
         HashMap<String, String> countryCodeNames = new HashMap<String, String>();
