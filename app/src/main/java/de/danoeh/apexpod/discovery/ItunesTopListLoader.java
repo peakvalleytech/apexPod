@@ -51,7 +51,7 @@ public class ItunesTopListLoader {
                 } else {
                     Log.e(TAG, e.getMessage());
                     emitter.onError(e);
-                    return;
+                    throw e;
                 }
             }
 

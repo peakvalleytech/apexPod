@@ -1,6 +1,5 @@
 package de.danoeh.apexpod.fragment;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,23 +9,31 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
-import de.danoeh.apexpod.adapter.itunes.ItunesAdapter;
+import de.danoeh.apexpod.activity.MainActivity;
+import de.danoeh.apexpod.adapter.discovery.PodcastSearchResultAdapter;
 import de.danoeh.apexpod.core.event.DiscoveryDefaultUpdateEvent;
+import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
+import de.danoeh.apexpod.core.storage.DBReader;
 import de.danoeh.apexpod.discovery.ItunesTopListLoader;
 import de.danoeh.apexpod.discovery.PodcastSearchResult;
+import de.danoeh.apexpod.model.feed.Feed;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,8 +55,8 @@ public class DiscoveryFragment extends Fragment {
     /**
      * Adapter responsible with the search results.
      */
-    private ItunesAdapter adapter;
-    private GridView gridView;
+    private PodcastSearchResultAdapter adapter;
+    private RecyclerView recyclerView;
     private ProgressBar progressBar;
     private TextView txtvError;
     private Button butRetry;
@@ -62,23 +69,25 @@ public class DiscoveryFragment extends Fragment {
     private List<PodcastSearchResult> topList;
     private Disposable disposable;
     private String countryCode = "US";
-
+    private List<Feed> subscribedFeeds;
     /**
      * Replace adapter data with provided search results from SearchTask.
      * @param result List of Podcast objects containing search results
      */
     private void updateData(List<PodcastSearchResult> result) {
-        this.searchResults = result;
-        adapter.clear();
         if (result != null && result.size() > 0) {
-            gridView.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.VISIBLE);
             txtvEmpty.setVisibility(View.GONE);
-            for (PodcastSearchResult p : result) {
-                adapter.add(p);
+            if (adapter == null) {
+                this.searchResults = result;
+                adapter = new PodcastSearchResultAdapter(getActivity(), result, subscribedFeeds);
+                recyclerView.setAdapter(adapter);
             }
-            adapter.notifyDataSetInvalidated();
+            else
+                adapter.updateSubcribedList(subscribedFeeds);
+
         } else {
-            gridView.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
             txtvEmpty.setVisibility(View.VISIBLE);
         }
     }
@@ -94,28 +103,28 @@ public class DiscoveryFragment extends Fragment {
         countryCode = prefs.getString(ItunesTopListLoader.PREF_KEY_COUNTRY_CODE, Locale.getDefault().getCountry());
     }
 
+    private void loadData() {
+        disposable = Observable.fromCallable(DBReader::getFeedList)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(feeds -> {
+                    subscribedFeeds = feeds;
+                    loadToplist(countryCode);
+                });
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_itunes_search, container, false);
-        gridView = root.findViewById(R.id.gridView);
-        adapter = new ItunesAdapter(getActivity(), new ArrayList<>());
-        gridView.setAdapter(adapter);
-
+        recyclerView = root.findViewById(R.id.recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = null;
+        recyclerView.setAdapter(adapter);
         Toolbar toolbar = root.findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> getParentFragmentManager().popBackStack());
-
-        //Show information about the podcast when the list item is clicked
-        gridView.setOnItemClickListener((parent, view1, position, id) -> {
-            PodcastSearchResult podcast = searchResults.get(position);
-            if (podcast.feedUrl == null) {
-                return;
-            }
-            Intent intent = new Intent(getActivity(), OnlineFeedViewActivity.class);
-            intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcast.feedUrl);
-            startActivity(intent);
-        });
 
         List<String> countryCodeArray = new ArrayList<String>(Arrays.asList(Locale.getISOCountries()));
         HashMap<String, String> countryCodeNames = new HashMap<String, String>();
@@ -161,7 +170,6 @@ public class DiscoveryFragment extends Fragment {
                         .apply();
 
                 EventBus.getDefault().post(new DiscoveryDefaultUpdateEvent());
-                loadToplist(countryCode);
             }
 
             @Override
@@ -172,10 +180,16 @@ public class DiscoveryFragment extends Fragment {
         txtvError = root.findViewById(R.id.txtvError);
         butRetry = root.findViewById(R.id.butRetry);
         txtvEmpty = root.findViewById(android.R.id.empty);
-
-        loadToplist(countryCode);
+        loadData();
         return root;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
 
     @Override
     public void onDestroy() {
@@ -183,22 +197,40 @@ public class DiscoveryFragment extends Fragment {
         if (disposable != null) {
             disposable.dispose();
         }
-        adapter = null;
+        if (adapter != null) {
+            adapter.dispose();
+            adapter = null;
+        }
     }
 
+    @Subscribe
+    public void onFeedListChanged(FeedListUpdateEvent event) {
+        // Adapter is sometimes null not after being created,
+        // but somtimes after afterwards when lifecycle state changes
+        if (adapter != null)
+            loadData();
+    }
+
+    @Subscribe
+    public void onDiscoveryDefaultUpdateEvent(DiscoveryDefaultUpdateEvent event) {
+        if (adapter != null) {
+            adapter = null; // new adapter needs to be created for new search results
+            loadData();
+        }
+    }
     private void loadToplist(String country) {
         if (disposable != null) {
             disposable.dispose();
         }
 
-        gridView.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.GONE);
         txtvError.setVisibility(View.GONE);
         butRetry.setVisibility(View.GONE);
         txtvEmpty.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
 
         if (country.equals(ItunesTopListLoader.DISCOVER_HIDE_FAKE_COUNTRY_CODE)) {
-            gridView.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.GONE);
             txtvError.setVisibility(View.VISIBLE);
             txtvError.setText(getResources().getString(R.string.discover_is_hidden));
             butRetry.setVisibility(View.GONE);
@@ -216,7 +248,7 @@ public class DiscoveryFragment extends Fragment {
                         progressBar.setVisibility(View.GONE);
                         txtvError.setText(error.getMessage());
                         txtvError.setVisibility(View.VISIBLE);
-                        butRetry.setOnClickListener(v -> loadToplist(country));
+                        butRetry.setOnClickListener(v -> loadData());
                         butRetry.setVisibility(View.VISIBLE);
                     });
         }
