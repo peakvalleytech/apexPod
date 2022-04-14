@@ -213,6 +213,7 @@ public class PodcastSearchResultAdapter extends
                 }
                 Intent intent = new Intent(context, OnlineFeedViewActivity.class);
                 intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcastSearchResult.feedUrl);
+                intent.putExtra(OnlineFeedViewActivity.ARG_IS_SUBSCRIBED, isSubscribed(podcastSearchResult));
                 context.startActivity(intent);
             });
             itemView.setBackgroundResource(ThemeUtils.getDrawableFromAttr(context, R.attr.selectableItemBackground));

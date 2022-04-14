@@ -86,6 +86,7 @@ import java.util.Map;
 public class OnlineFeedViewActivity extends AppCompatActivity {
 
     public static final String ARG_FEEDURL = "arg.feedurl";
+    public static final String ARG_IS_SUBSCRIBED = "arg.isSubscribed";
     // Optional argument: specify a title for the actionbar.
     private static final int RESULT_ERROR = 2;
     private static final String TAG = "OnlineFeedViewActivity";
@@ -390,7 +391,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         description.setText(HtmlToPlainText.getPlainText(feed.getDescription()));
 
         viewBinding.subscribeButton.setOnClickListener(v -> {
-            if (feedInFeedlist(feed)) {
+            if (isSubscribed(feed)) {
                 openFeed();
             } else {
                 Feed f = new Feed(selectedDownloadUrl, null, feed.getTitle());
@@ -486,7 +487,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             if (DownloadRequester.getInstance().isDownloadingFile(feed.getDownload_url())) {
                 viewBinding.subscribeButton.setEnabled(false);
                 viewBinding.subscribeButton.setText(R.string.subscribing_label);
-            } else if (feedInFeedlist(feed)) {
+            } else if (isSubscribed(feed)) {
                 viewBinding.subscribeButton.setEnabled(true);
                 viewBinding.subscribeButton.setText(R.string.open_podcast);
                 if (didPressSubscribe) {
@@ -516,7 +517,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         }
     }
 
-    private boolean feedInFeedlist(Feed feed) {
+    private boolean isSubscribed(Feed feed) {
         if (feeds == null || feed == null) {
             return false;
         }
