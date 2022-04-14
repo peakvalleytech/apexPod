@@ -517,10 +517,10 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private boolean feedInFeedlist(Feed feed) {
-        if (feedDownloader.getFeeds() == null || feed == null) {
+        if (feeds == null || feed == null) {
             return false;
         }
-        for (Feed f : feedDownloader.getFeeds()) {
+        for (Feed f : feeds) {
             if (f.getIdentifyingValue().equals(feed.getIdentifyingValue())) {
                 return true;
             }
@@ -529,10 +529,10 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private long getFeedId(Feed feed) {
-        if (feedDownloader.getFeeds() == null || feed == null) {
+        if (feeds == null || feed == null) {
             return 0;
         }
-        for (Feed f : feedDownloader.getFeeds()) {
+        for (Feed f : feeds) {
             if (f.getIdentifyingValue().equals(feed.getIdentifyingValue())) {
                 return f.getId();
             }

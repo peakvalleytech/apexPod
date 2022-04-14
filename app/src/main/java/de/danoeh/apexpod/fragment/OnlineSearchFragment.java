@@ -156,7 +156,8 @@ public class OnlineSearchFragment extends Fragment {
     public void onFeedListChanged(FeedListUpdateEvent event) {
         loadData(feeds -> {
             subscribedFeeds = feeds;
-            adapter.updateSubscribedList(subscribedFeeds);
+            if (adapter != null)
+                adapter.updateSubscribedList(subscribedFeeds);
         });
     }
 
