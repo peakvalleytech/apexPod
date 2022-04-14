@@ -109,6 +109,9 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     private OnlinefeedviewActivityBinding viewBinding;
 
     FeedDownloader feedDownloader;
+
+    private boolean isSubscribed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(UserPreferences.getTranslucentTheme());
@@ -128,6 +131,10 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
                 || TextUtils.equals(getIntent().getAction(), Intent.ACTION_VIEW)) {
             feedUrl = TextUtils.equals(getIntent().getAction(), Intent.ACTION_SEND)
                     ? getIntent().getStringExtra(Intent.EXTRA_TEXT) : getIntent().getDataString();
+        }
+
+        if (getIntent().hasExtra(ARG_IS_SUBSCRIBED)) {
+            isSubscribed = getIntent().getBooleanExtra(ARG_IS_SUBSCRIBED, false);
         }
 
         if (feedUrl == null) {
@@ -518,6 +525,8 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private boolean isSubscribed(Feed feed) {
+        if (isSubscribed)
+            return true;
         if (feeds == null || feed == null) {
             return false;
         }
