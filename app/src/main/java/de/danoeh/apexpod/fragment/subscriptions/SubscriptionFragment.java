@@ -264,9 +264,11 @@ public class SubscriptionFragment
     }
 
     private void setColumnNumber(int columns) {
-        GridLayoutManager gridLayoutManager = (GridLayoutManager) subscriptionRecycler.getLayoutManager();
-        gridLayoutManager.setSpanCount(columns);
-        subscriptionAdapter.notifyDataSetChanged();
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),
+               columns,
+                RecyclerView.VERTICAL,
+                false);
+        subscriptionRecycler.setLayoutManager(gridLayoutManager);
         prefs.edit().putInt(PREF_NUM_COLUMNS, columns).apply();
     }
 
