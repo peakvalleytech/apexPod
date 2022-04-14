@@ -148,6 +148,7 @@ public class SubscriptionFragment
         prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -160,10 +161,14 @@ public class SubscriptionFragment
         }
         ((MainActivity) getActivity()).setupToolbarToggle(toolbar, displayUpArrow);
         toolbar.inflateMenu(R.menu.subscriptions);
+        int currColumnPref = prefs.getInt(PREF_NUM_COLUMNS, getDefaultNumOfColumns());
         for (int i = 0; i < COLUMN_CHECKBOX_IDS.length; i++) {
             // Do this in Java to localize numbers
-            toolbar.getMenu().findItem(COLUMN_CHECKBOX_IDS[i])
+            MenuItem numColumnsMenuItem = toolbar.getMenu().findItem(COLUMN_CHECKBOX_IDS[i])
                     .setTitle(String.format(Locale.getDefault(), "%d", i + MIN_NUM_COLUMNS));
+            if (currColumnPref - 2 == i) {
+                numColumnsMenuItem.setChecked(true);
+            }
         }
 
         if (getArguments() != null) {
@@ -238,23 +243,24 @@ public class SubscriptionFragment
         } else if (itemId == R.id.subscriptions_sort) {
             FeedSortDialog.showDialog(requireContext());
             return true;
-        } else if (itemId == R.id.subscription_num_columns_2) {
-            setColumnNumber(2);
-            return true;
-        } else if (itemId == R.id.subscription_num_columns_3) {
-            setColumnNumber(3);
-            return true;
-        } else if (itemId == R.id.subscription_num_columns_4) {
-            setColumnNumber(4);
-            return true;
-        } else if (itemId == R.id.subscription_num_columns_5) {
-            setColumnNumber(5);
-            return true;
-        } else if (itemId == R.id.action_search) {
-            ((MainActivity) getActivity()).loadChildFragment(SearchFragment.newInstance());
-            return true;
-        }
-        return false;
+        } else {
+           if (itemId == R.id.subscription_num_columns_2) {
+               setColumnNumber(2);
+           } else if (itemId == R.id.subscription_num_columns_3) {
+               setColumnNumber(3);
+           } else if (itemId == R.id.subscription_num_columns_4) {
+               setColumnNumber(4);
+           } else if (itemId == R.id.subscription_num_columns_5) {
+               setColumnNumber(5);
+           } else if (itemId == R.id.action_search) {
+               ((MainActivity) getActivity()).loadChildFragment(SearchFragment.newInstance());
+               return true;
+           } else {
+               return false;
+           }
+           item.setChecked(true);
+           return true;
+       }
     }
 
     private void setColumnNumber(int columns) {
