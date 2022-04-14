@@ -71,20 +71,20 @@
                 android:focusableInTouchMode="true"
                 android:padding="16dp">
 
-            <androidx.fragment.app.FragmentContainerView
-                    android:id="@+id/quickFeedDiscovery"
-                    android:name="de.danoeh.apexpod.fragment.QuickFeedDiscoveryFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+<!--            <androidx.fragment.app.FragmentContainerView-->
+<!--                    android:id="@+id/quickFeedDiscovery"-->
+<!--                    android:name="de.danoeh.apexpod.fragment.QuickFeedDiscoveryFragment"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"/>-->
 
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/advanced"
-                    android:textSize="18sp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:textColor="?android:attr/textColorPrimary"/>
+<!--            <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/advanced"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginBottom="8dp"-->
+<!--                    android:textColor="?android:attr/textColorPrimary"/>-->
 
             <TextView
                     android:id="@+id/addViaUrlButton"
