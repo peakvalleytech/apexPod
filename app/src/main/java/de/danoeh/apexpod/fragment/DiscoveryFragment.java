@@ -22,7 +22,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.discovery.PodcastSearchResultAdapter;
 import de.danoeh.apexpod.core.event.DiscoveryDefaultUpdateEvent;
 import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
@@ -84,7 +83,7 @@ public class DiscoveryFragment extends Fragment {
                 recyclerView.setAdapter(adapter);
             }
             else
-                adapter.updateSubcribedList(subscribedFeeds);
+                adapter.updateSubscribedList(subscribedFeeds);
 
         } else {
             recyclerView.setVisibility(View.GONE);

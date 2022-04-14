@@ -1,10 +1,8 @@
 package de.danoeh.apexpod.fragment;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
-import android.widget.AbsListView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.SearchView;
@@ -18,12 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import de.danoeh.apexpod.R;
-import de.danoeh.apexpod.activity.MainActivity;
-import de.danoeh.apexpod.activity.OnlineFeedViewActivity;
 import de.danoeh.apexpod.adapter.discovery.PodcastSearchResultAdapter;
 import de.danoeh.apexpod.core.event.FeedListUpdateEvent;
 import de.danoeh.apexpod.core.storage.DBReader;
@@ -161,7 +156,7 @@ public class OnlineSearchFragment extends Fragment {
     public void onFeedListChanged(FeedListUpdateEvent event) {
         loadData(feeds -> {
             subscribedFeeds = feeds;
-            adapter.updateSubcribedList(subscribedFeeds);
+            adapter.updateSubscribedList(subscribedFeeds);
         });
     }
 
@@ -235,7 +230,7 @@ public class OnlineSearchFragment extends Fragment {
             recyclerView.setAdapter(adapter);
             recyclerView.setVisibility(!searchResults.isEmpty() ? View.VISIBLE : View.GONE);
             txtvEmpty.setVisibility(searchResults.isEmpty() ? View.VISIBLE : View.GONE);
-            adapter.updateSubcribedList(subscribedFeeds);
+            adapter.updateSubscribedList(subscribedFeeds);
             recyclerView.notify();
             txtvEmpty.setText(getString(R.string.no_results_for_query, query));
         }, error -> {

@@ -58,6 +58,13 @@ public class PodcastSearchResultAdapter extends
     private List<Feed> subscribedFeeds;
     private Set<String> subscribedFeedAuthors;
     private Set<String> subscribedFeedTitle;
+    /**
+     * The url of the feed
+     * This is thd download_url and feed_url of Feed and PorcastSearchResult, respectively.
+     * Used specifically for the purpose of comparisons which quick subscribe relies on.
+     */
+    private Set<String> feedUrls;
+
     private FeedDownloader feedDownloader;
 
     public PodcastSearchResultAdapter(Context context, List<PodcastSearchResult> data, List<Feed> subscribedFeeds) {
@@ -66,12 +73,9 @@ public class PodcastSearchResultAdapter extends
         this.feedDownloader = new FeedDownloader(context);
         this.subscribedFeeds = subscribedFeeds;
         this.subscribedFeedAuthors = new HashSet<>();
-        if (subscribedFeeds != null) {
-            for (Feed f : subscribedFeeds) {
-                subscribedFeedAuthors.add(f.getAuthor());
-            }
-
-        }
+        this.subscribedFeedTitle = new HashSet<>();
+        this.feedUrls = new HashSet<>();
+        _updateSubscribedList(subscribedFeeds);
     }
 
     @NonNull
@@ -137,7 +141,9 @@ public class PodcastSearchResultAdapter extends
     }
 
     private boolean isSubscribed(PodcastSearchResult podcastSearchResult) {
-        return subscribedFeedAuthors.contains(podcastSearchResult.author);
+        return subscribedFeedAuthors.contains(podcastSearchResult.author)
+                && subscribedFeedTitle.contains(podcastSearchResult.title) &&
+                feedUrls.contains(podcastSearchResult.feedUrl);
     }
 
     @Override
@@ -145,15 +151,20 @@ public class PodcastSearchResultAdapter extends
         return data.size();
     }
 
-    public void updateSubcribedList(List<Feed> subscribedFeeds) {
+    public void updateSubscribedList(List<Feed> subscribedFeeds) {
         this.subscribedFeeds = subscribedFeeds;
+        _updateSubscribedList(subscribedFeeds);
+        notifyDataSetChanged();
+    }
+
+    private void _updateSubscribedList(List<Feed> subscribedFeeds) {
         if (subscribedFeeds != null) {
             for (Feed f : subscribedFeeds) {
                 subscribedFeedAuthors.add(f.getAuthor());
+                subscribedFeedTitle.add(f.getTitle());
+                feedUrls.add(f.getDownload_url());
             }
-
         }
-        notifyDataSetChanged();
     }
 
     public class PodcastRecyclerViewHolder extends RecyclerView.ViewHolder {
@@ -257,4 +268,6 @@ public class PodcastSearchResultAdapter extends
         if (parser != null)
         parser.dispose();
     }
+
+
 }
