@@ -55,8 +55,6 @@ public class QuickFeedDiscoveryFragment extends Fragment implements AdapterView.
         super.onCreateView(inflater, container, savedInstanceState);
         View root = inflater.inflate(R.layout.quick_feed_discovery, container, false);
         View discoverMore = root.findViewById(R.id.discover_more);
-        discoverMore.setOnClickListener(v ->
-                ((MainActivity) getActivity()).loadChildFragment(new DiscoveryFragment()));
 
         discoverGridLayout = root.findViewById(R.id.discover_grid);
         progressBar = root.findViewById(R.id.discover_progress_bar);
