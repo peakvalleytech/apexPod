@@ -55,9 +55,6 @@ public class PodcastSearchResultAdapter extends
      * List holding the podcasts found in the search
      */
     private final List<PodcastSearchResult> data;
-    private List<Feed> subscribedFeeds;
-    private Set<String> subscribedFeedAuthors;
-    private Set<String> subscribedFeedTitle;
     /**
      * The url of the feed
      * This is thd download_url and feed_url of Feed and PorcastSearchResult, respectively.
@@ -71,9 +68,6 @@ public class PodcastSearchResultAdapter extends
         this.context = context;
         this.data = data;
         this.feedDownloader = new FeedDownloader(context);
-        this.subscribedFeeds = subscribedFeeds;
-        this.subscribedFeedAuthors = new HashSet<>();
-        this.subscribedFeedTitle = new HashSet<>();
         this.feedUrls = new HashSet<>();
         _updateSubscribedList(subscribedFeeds);
     }
@@ -141,9 +135,7 @@ public class PodcastSearchResultAdapter extends
     }
 
     private boolean isSubscribed(PodcastSearchResult podcastSearchResult) {
-        return subscribedFeedAuthors.contains(podcastSearchResult.author)
-                && subscribedFeedTitle.contains(podcastSearchResult.title) &&
-                feedUrls.contains(podcastSearchResult.feedUrl);
+        return feedUrls.contains(podcastSearchResult.feedUrl);
     }
 
     @Override
@@ -152,7 +144,6 @@ public class PodcastSearchResultAdapter extends
     }
 
     public void updateSubscribedList(List<Feed> subscribedFeeds) {
-        this.subscribedFeeds = subscribedFeeds;
         _updateSubscribedList(subscribedFeeds);
         notifyDataSetChanged();
     }
@@ -160,8 +151,6 @@ public class PodcastSearchResultAdapter extends
     private void _updateSubscribedList(List<Feed> subscribedFeeds) {
         if (subscribedFeeds != null) {
             for (Feed f : subscribedFeeds) {
-                subscribedFeedAuthors.add(f.getAuthor());
-                subscribedFeedTitle.add(f.getTitle());
                 feedUrls.add(f.getDownload_url());
             }
         }
