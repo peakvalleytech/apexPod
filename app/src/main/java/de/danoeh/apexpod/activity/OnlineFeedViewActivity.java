@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -99,7 +100,6 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     private Downloader downloader;
 
     private boolean isPaused;
-    private boolean didPressSubscribe = false;
 
     private Dialog dialog;
 
@@ -136,6 +136,8 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         if (getIntent().hasExtra(ARG_IS_SUBSCRIBED)) {
             isSubscribed = getIntent().getBooleanExtra(ARG_IS_SUBSCRIBED, false);
         }
+
+
 
         if (feedUrl == null) {
             Log.e(TAG, "feedUrl is null.");
@@ -410,9 +412,24 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
                     Log.e(TAG, Log.getStackTraceString(e));
                     DownloadRequestErrorDialogCreator.newRequestErrorDialog(this, e.getMessage());
                 }
-                didPressSubscribe = true;
                 updateSubscribeButton(feed);
             }
+        });
+
+        CheckBox autoDownloadCheckBox = viewBinding.autoDownloadCheckBox;
+        autoDownloadCheckBox.setVisibility(isSubscribed(feed) ? View.GONE : View.VISIBLE);
+        autoDownloadCheckBox.setChecked(UserPreferences.isEnableAutodownload());
+
+        viewBinding.autoDownloadCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Feed feedTemp = DBReader.getFeed(getFeedId(feed));
+            FeedPreferences feedPreferences = feedTemp.getPreferences();
+            feedPreferences.setAutoDownload(isChecked);
+            DBWriter.setFeedPreferences(feedPreferences);
+
+            SharedPreferences preferences = getSharedPreferences(PREFS, MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean(PREF_LAST_AUTO_DOWNLOAD, isChecked);
+            editor.apply();
         });
 
         viewBinding.stopPreviewButton.setOnClickListener(v -> {
@@ -497,23 +514,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             } else if (isSubscribed(feed)) {
                 viewBinding.subscribeButton.setEnabled(true);
                 viewBinding.subscribeButton.setText(R.string.open_podcast);
-                if (didPressSubscribe) {
-                    didPressSubscribe = false;
-                    if (UserPreferences.isEnableAutodownload()) {
-                        boolean autoDownload = viewBinding.autoDownloadCheckBox.isChecked();
-
-                        Feed feedTemp = DBReader.getFeed(getFeedId(feed));
-                        FeedPreferences feedPreferences = feedTemp.getPreferences();
-                        feedPreferences.setAutoDownload(autoDownload);
-                        DBWriter.setFeedPreferences(feedPreferences);
-
-                        SharedPreferences preferences = getSharedPreferences(PREFS, MODE_PRIVATE);
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putBoolean(PREF_LAST_AUTO_DOWNLOAD, autoDownload);
-                        editor.apply();
-                    }
-                    openFeed();
-                }
+//                    openFeed();
             } else {
                 viewBinding.subscribeButton.setEnabled(true);
                 viewBinding.subscribeButton.setText(R.string.subscribe_label);
