@@ -59,7 +59,7 @@ public class NavDrawerData {
 
     public static class TagDrawerItem extends DrawerItem {
         public final List<DrawerItem> children = new ArrayList<>();
-        public final String name;
+        public String name;
         public boolean isOpen;
 
         public TagDrawerItem(String name) {

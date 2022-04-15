@@ -391,15 +391,17 @@ public class NavDrawerFragment extends Fragment implements SharedPreferences.OnS
 
             if (item.type == NavDrawerData.DrawerItem.Type.TAG) {
                 NavDrawerData.TagDrawerItem tag = ((NavDrawerData.TagDrawerItem) item);
-                if (!tag.name.equals(FeedPreferences.TAG_ROOT)) {
+                if (tag.name.equals(FeedPreferences.TAG_ROOT)) {
+                    tag.name = "All";
+                }
                     flatItems.add(item);
                     tag.isOpen = openFolders.contains(tag.name);
                     if (tag.isOpen) {
                         flatItems.addAll(makeFlatDrawerData(((NavDrawerData.TagDrawerItem) item).children, layer + 1));
                     }
-                }
             } else {
-                flatItems.add(item);
+                if (layer != 0)
+                    flatItems.add(item);
             }
         }
         return flatItems;
