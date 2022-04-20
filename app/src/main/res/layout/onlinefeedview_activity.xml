@@ -133,7 +133,7 @@
                             android:focusable="false"
                             android:text="@string/subscribe_label" />
 
-                    <CheckBox
+                    <!--<CheckBox
                             android:id="@+id/autoDownloadCheckBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                             android:checked="true"
                             android:text="@string/auto_download_label"
                             android:visibility="gone"
-                            tools:visibility="visible" />
+                            tools:visibility="visible" />-->
 
                     <Button
                             android:id="@+id/stopPreviewButton"

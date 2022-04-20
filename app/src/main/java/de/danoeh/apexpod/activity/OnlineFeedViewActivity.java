@@ -403,11 +403,8 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             if (isSubscribed(feed)) {
                 openFeed();
             } else {
-                Feed f = new Feed(selectedDownloadUrl, null, feed.getTitle());
-                f.setPreferences(feed.getPreferences());
-                this.feed = f;
                 try {
-                    DownloadRequester.getInstance().downloadFeed(this, f);
+                    DownloadRequester.getInstance().downloadFeed(this, feed);
                 } catch (DownloadRequestException e) {
                     Log.e(TAG, Log.getStackTraceString(e));
                     DownloadRequestErrorDialogCreator.newRequestErrorDialog(this, e.getMessage());
@@ -416,7 +413,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             }
         });
 
-        CheckBox autoDownloadCheckBox = viewBinding.autoDownloadCheckBox;
+        /*CheckBox autoDownloadCheckBox = viewBinding.autoDownloadCheckBox;
         autoDownloadCheckBox.setVisibility(isSubscribed(feed) ? View.GONE : View.VISIBLE);
         autoDownloadCheckBox.setChecked(UserPreferences.isEnableAutodownload());
 
@@ -430,17 +427,17 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = preferences.edit();
             editor.putBoolean(PREF_LAST_AUTO_DOWNLOAD, isChecked);
             editor.apply();
-        });
+        });*/
 
         viewBinding.stopPreviewButton.setOnClickListener(v -> {
             PlaybackPreferences.writeNoMediaPlaying();
             IntentUtils.sendLocalBroadcast(this, PlaybackService.ACTION_SHUTDOWN_PLAYBACK_SERVICE);
         });
 
-        if (UserPreferences.isEnableAutodownload()) {
+       /* if (UserPreferences.isEnableAutodownload()) {
             SharedPreferences preferences = getSharedPreferences(PREFS, MODE_PRIVATE);
             viewBinding.autoDownloadCheckBox.setChecked(preferences.getBoolean(PREF_LAST_AUTO_DOWNLOAD, true));
-        }
+        }*/
 
         final int MAX_LINES_COLLAPSED = 10;
         description.setMaxLines(MAX_LINES_COLLAPSED);
@@ -518,9 +515,9 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
             } else {
                 viewBinding.subscribeButton.setEnabled(true);
                 viewBinding.subscribeButton.setText(R.string.subscribe_label);
-                if (UserPreferences.isEnableAutodownload()) {
+               /* if (UserPreferences.isEnableAutodownload()) {
                     viewBinding.autoDownloadCheckBox.setVisibility(View.VISIBLE);
-                }
+                }*/
             }
         }
     }
@@ -540,9 +537,12 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private long getFeedId(Feed feed) {
-        if (feeds == null || feed == null) {
+        if (feeds == null && feed == null) {
             return 0;
         }
+
+        if
+
         for (Feed f : feeds) {
             if (f.getIdentifyingValue().equals(feed.getIdentifyingValue())) {
                 return f.getId();
