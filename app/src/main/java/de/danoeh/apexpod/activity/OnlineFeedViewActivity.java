@@ -88,6 +88,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
 
     public static final String ARG_FEEDURL = "arg.feedurl";
     public static final String ARG_IS_SUBSCRIBED = "arg.isSubscribed";
+    public static final String ARG_SUBSCRIBED_FEED_ID = "arg.subscribedFeedId";
     // Optional argument: specify a title for the actionbar.
     private static final int RESULT_ERROR = 2;
     private static final String TAG = "OnlineFeedViewActivity";
@@ -96,6 +97,10 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
 
     private volatile List<Feed> feeds;
     private Feed feed;
+    /*
+        Id passed using intent. Used so that already subscribed feeds can be opened.
+     */
+    private Long subscribedFeedId = 0L;
     private String selectedDownloadUrl;
     private Downloader downloader;
 
@@ -110,8 +115,6 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
 
     FeedDownloader feedDownloader;
 
-    private boolean isSubscribed;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(UserPreferences.getTranslucentTheme());
@@ -125,16 +128,17 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
         viewBinding.card.setOnClickListener(null);
 
         String feedUrl = null;
-        if (getIntent().hasExtra(ARG_FEEDURL)) {
-            feedUrl = getIntent().getStringExtra(ARG_FEEDURL);
-        } else if (TextUtils.equals(getIntent().getAction(), Intent.ACTION_SEND)
-                || TextUtils.equals(getIntent().getAction(), Intent.ACTION_VIEW)) {
-            feedUrl = TextUtils.equals(getIntent().getAction(), Intent.ACTION_SEND)
-                    ? getIntent().getStringExtra(Intent.EXTRA_TEXT) : getIntent().getDataString();
+        Intent intent = getIntent();
+        if (intent.hasExtra(ARG_FEEDURL)) {
+            feedUrl = intent.getStringExtra(ARG_FEEDURL);
+        } else if (TextUtils.equals(intent.getAction(), Intent.ACTION_SEND)
+                || TextUtils.equals(intent.getAction(), Intent.ACTION_VIEW)) {
+            feedUrl = TextUtils.equals(intent.getAction(), Intent.ACTION_SEND)
+                    ? intent.getStringExtra(Intent.EXTRA_TEXT) : intent.getDataString();
         }
 
-        if (getIntent().hasExtra(ARG_IS_SUBSCRIBED)) {
-            isSubscribed = getIntent().getBooleanExtra(ARG_IS_SUBSCRIBED, false);
+        if (intent.hasExtra(ARG_SUBSCRIBED_FEED_ID)) {
+            subscribedFeedId = intent.getLongExtra(ARG_SUBSCRIBED_FEED_ID, 0L);
         }
 
 
@@ -523,7 +527,7 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private boolean isSubscribed(Feed feed) {
-        if (isSubscribed)
+        if (subscribedFeedId > 0)
             return true;
         if (feeds == null || feed == null) {
             return false;
@@ -537,18 +541,19 @@ public class OnlineFeedViewActivity extends AppCompatActivity {
     }
 
     private long getFeedId(Feed feed) {
-        if (feeds == null && feed == null) {
-            return 0;
-        }
-
-        if
-
-        for (Feed f : feeds) {
-            if (f.getIdentifyingValue().equals(feed.getIdentifyingValue())) {
-                return f.getId();
+        if (subscribedFeedId == 0) {
+            // Feeds is only non null when it activity recieves a feed changed event due to
+            // subscribe button being press
+            if (feeds != null) {
+                for (Feed f : feeds) {
+                    if (f.getIdentifyingValue().equals(feed.getIdentifyingValue())) {
+                        return f.getId();
+                    }
+                }
             }
         }
-        return 0;
+
+        return subscribedFeedId;
     }
 
     @UiThread

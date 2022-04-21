@@ -55,6 +55,8 @@ public class PodcastSearchResultAdapter extends
      * List holding the podcasts found in the search
      */
     private final List<PodcastSearchResult> data;
+
+    private List<Feed> subscribedFeeds;
     /**
      * The url of the feed
      * This is thd download_url and feed_url of Feed and PorcastSearchResult, respectively.
@@ -149,6 +151,8 @@ public class PodcastSearchResultAdapter extends
     }
 
     private void _updateSubscribedList(List<Feed> subscribedFeeds) {
+        this.subscribedFeeds = subscribedFeeds;
+        feedUrls.clear();
         if (subscribedFeeds != null) {
             for (Feed f : subscribedFeeds) {
                 feedUrls.add(f.getDownload_url());
@@ -213,7 +217,14 @@ public class PodcastSearchResultAdapter extends
                 }
                 Intent intent = new Intent(context, OnlineFeedViewActivity.class);
                 intent.putExtra(OnlineFeedViewActivity.ARG_FEEDURL, podcastSearchResult.feedUrl);
-                intent.putExtra(OnlineFeedViewActivity.ARG_IS_SUBSCRIBED, isSubscribed(podcastSearchResult));
+                if (isSubscribed(podcastSearchResult)) {
+                    for (Feed feed : subscribedFeeds) {
+                        if (feed.getDownload_url().equals(podcastSearchResult.feedUrl)) {
+                            intent.putExtra(OnlineFeedViewActivity.ARG_SUBSCRIBED_FEED_ID, feed.getId());
+                        }
+                    }
+                }
+
                 context.startActivity(intent);
             });
             itemView.setBackgroundResource(ThemeUtils.getDrawableFromAttr(context, R.attr.selectableItemBackground));
