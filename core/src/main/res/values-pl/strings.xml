@@ -441,8 +441,7 @@
   <string name="pref_automatic_download_on_battery_title">Pobieraj, gdy nie ładuje</string>
   <string name="pref_automatic_download_on_battery_sum">Zezwól na automatyczne pobieranie, gdy bateria nie jest ładowana.</string>
   <string name="pref_parallel_downloads_title">Liczba równoległych pobierań</string>
-  <string name="pref_episode_cache_title">Pamięć podręczna odcinków</string>
-  <string name="pref_episode_cache_summary">Całkowita liczba odcinków zapisanych na urządzeniu. Automatyczne pobieranie zostanie przerwane, jeśli zostanie ona osiągnięta.</string>
+    <string name="pref_episode_cache_summary">Całkowita liczba odcinków zapisanych na urządzeniu. Automatyczne pobieranie zostanie przerwane, jeśli zostanie ona osiągnięta.</string>
   <string name="pref_episode_cover_title">Użyj okładek odcinków</string>
   <string name="pref_episode_cover_summary">Użyj okładek konkretnych odcinków na listach, kiedy to możliwe. Odznaczenie spowoduje, że aplikacja zawsze będzie używała okładki kanału.</string>
   <string name="pref_show_remain_time_title">Pokaż pozostały czas</string>

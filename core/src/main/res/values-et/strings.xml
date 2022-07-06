@@ -400,8 +400,7 @@
   <string name="pref_automatic_download_on_battery_title">Allalaadimine, kui seade ei lae</string>
   <string name="pref_automatic_download_on_battery_sum">Luba automaatne allalaadimine ka siis, kui seade pole laadimas</string>
   <string name="pref_parallel_downloads_title">Samaaegsed allalaadimised</string>
-  <string name="pref_episode_cache_title">Saadete vahemälu</string>
-  <string name="pref_episode_cache_summary">Seadme puhvrisse allalaaditud saadete koguarv. Automaatne allalaadimine peatub, kui selle numbrini jõutakse.</string>
+    <string name="pref_episode_cache_summary">Seadme puhvrisse allalaaditud saadete koguarv. Automaatne allalaadimine peatub, kui selle numbrini jõutakse.</string>
   <string name="pref_episode_cover_title">Kasuta saate kaanepilti</string>
   <string name="pref_episode_cover_summary">Kui võimalik, kasutatakse nimekirjades saate kaanepilti. Kui märkimata, kasutab rakendus alati taskuhäälingu kaanepilti.</string>
   <string name="pref_show_remain_time_title">Näita allesjäänud aega</string>

@@ -440,8 +440,7 @@
   <string name="pref_automatic_download_on_battery_title">להוריד שלא בזמן טעינה</string>
   <string name="pref_automatic_download_on_battery_sum">לאפשר הורדה אוטומטית כאשר הסוללה אינה בטעינה</string>
   <string name="pref_parallel_downloads_title">הורדות במקביל</string>
-  <string name="pref_episode_cache_title">מטמון פרקים</string>
-  <string name="pref_episode_cache_summary">המספר הכולל של פרקים שהורדו ונשמרים במכשיר. הורדה אוטומטית תושבת אם הכמות הזאת הושגה.</string>
+    <string name="pref_episode_cache_summary">המספר הכולל של פרקים שהורדו ונשמרים במכשיר. הורדה אוטומטית תושבת אם הכמות הזאת הושגה.</string>
   <string name="pref_episode_cover_title">להשתמש בעטיפת הפרק</string>
   <string name="pref_episode_cover_summary">להשתמש בעטיפת הפרק ברשימות כאשר ניתן. אם האפשרות לא סומנה היישומון ישתמש בתמונת העטיפה של הפודקאסט.</string>
   <string name="pref_show_remain_time_title">הצגת הזמן שנותר</string>

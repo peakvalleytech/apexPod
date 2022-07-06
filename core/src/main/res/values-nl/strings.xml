@@ -410,8 +410,7 @@
   <string name="pref_automatic_download_on_battery_title">Downloaden als het apparaat niet wordt opgeladen</string>
   <string name="pref_automatic_download_on_battery_sum">Downloaden toestaan als het apparaat niet wordt opgeladen</string>
   <string name="pref_parallel_downloads_title">Gelijktijdige downloads</string>
-  <string name="pref_episode_cache_title">Afleveringscache</string>
-  <string name="pref_episode_cache_summary">Het totaal aantal gedownloade afleveringen dat moet worden opgeslagen op het apparaat. Automatische downloads worden onderbroken als dit aantal wordt bereikt.</string>
+    <string name="pref_episode_cache_summary">Het totaal aantal gedownloade afleveringen dat moet worden opgeslagen op het apparaat. Automatische downloads worden onderbroken als dit aantal wordt bereikt.</string>
   <string name="pref_episode_cover_title">Omslag van aflevering gebruiken</string>
   <string name="pref_episode_cover_summary">Gebruik de bij de aflevering behorende omslag (indien beschikbaar). Als je dit niet inschakelt, dan wordt altijd de omslag van de podcast gebruikt.</string>
   <string name="pref_show_remain_time_title">Resterende tijd tonen</string>

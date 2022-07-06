@@ -440,8 +440,7 @@
   <string name="pref_automatic_download_on_battery_title">Sťahovať keď neprebieha nabíjanie</string>
   <string name="pref_automatic_download_on_battery_sum">Povoliť automatické sťahovanie aj keď nie je batéria nabíjaná</string>
   <string name="pref_parallel_downloads_title">Paralelné sťahovanie</string>
-  <string name="pref_episode_cache_title">Vyrovnávacia pamäť epizód</string>
-  <string name="pref_episode_cache_summary">Celkový počet epizód stiahnutých do zariadenia. Pri dosiahnutí tejto hodnoty sa automatické sťahovanie zastaví.</string>
+    <string name="pref_episode_cache_summary">Celkový počet epizód stiahnutých do zariadenia. Pri dosiahnutí tejto hodnoty sa automatické sťahovanie zastaví.</string>
   <string name="pref_episode_cover_title">Použiť obrázok epizódy</string>
   <string name="pref_episode_cover_summary">Ak je k dispozícií, použiť v zozname obrázok priamo z epizódy. Ak táto možnost nie je zaškrtnutá, tak sa vždy použije obrázok podcastu.</string>
   <string name="pref_show_remain_time_title">Zobraziť zostávajúci čas</string>

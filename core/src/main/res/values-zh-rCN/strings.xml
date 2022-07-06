@@ -395,8 +395,7 @@
   <string name="pref_automatic_download_on_battery_title">未充电时下载</string>
   <string name="pref_automatic_download_on_battery_sum">未充电时允许自动下载</string>
   <string name="pref_parallel_downloads_title">并行下载</string>
-  <string name="pref_episode_cache_title">曲目缓存</string>
-  <string name="pref_episode_cache_summary">缓存在设备上的已下载节目总数
+    <string name="pref_episode_cache_summary">缓存在设备上的已下载节目总数
 若达到此数目，自动下载将被暂停</string>
   <string name="pref_episode_cover_title">使用音频封面</string>
   <string name="pref_episode_cover_summary">勾选后，在列表中使用一期节目特定的封面图。如果不勾选，应用程序将始终使用播客封面图像。</string>

@@ -440,8 +440,7 @@
   <string name="pref_automatic_download_on_battery_title">Завантаження без зарядного пристрою</string>
   <string name="pref_automatic_download_on_battery_sum">Дозволити автозавантаження коли зарядний пристрій не підключений</string>
   <string name="pref_parallel_downloads_title">Паралельні завантаження</string>
-  <string name="pref_episode_cache_title">Кеш епізодів</string>
-  <string name="pref_episode_cache_summary">Загальна кількість завантажених епізодів, кешованих на пристрої. Якщо цей номер буде досягнутий, автоматичне завантаження буде призупинено.</string>
+    <string name="pref_episode_cache_summary">Загальна кількість завантажених епізодів, кешованих на пристрої. Якщо цей номер буде досягнутий, автоматичне завантаження буде призупинено.</string>
   <string name="pref_episode_cover_title">Показувати обкладинку епізоду</string>
   <string name="pref_episode_cover_summary">Використовуйте обкладинку для епізоду у списках, коли це можливо. Якщо цей прапорець не встановлено, програма завжди буде використовувати зображення обкладинки подкасту.</string>
   <string name="pref_show_remain_time_title">Показати час, що залишився</string>

@@ -213,8 +213,7 @@
   <string name="pref_download_sum">एपिसोड के स्वत: डाउनलोड विन्यस्त करें.</string>
   <string name="pref_autodl_wifi_filter_title">वाई-फाई फिल्टर सक्षम करें</string>
   <string name="pref_autodl_wifi_filter_sum">केवल चयनित वाई-फाई नेटवर्क के लिए स्वत: डाउनलोड की अनुमति दें.</string>
-  <string name="pref_episode_cache_title">	गुप्त एपिसोड</string>
-  <string name="pref_theme_title_light">हलका</string>
+    <string name="pref_theme_title_light">हलका</string>
   <string name="pref_theme_title_dark">अंधेरा</string>
   <string name="pref_episode_cache_unlimited">असीमित</string>
   <string name="pref_update_interval_hours_plural">घंटे</string>

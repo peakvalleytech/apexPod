@@ -320,8 +320,7 @@
   <string name="pref_automatic_download_on_battery_title">Baxar al nun tar cargando la batería</string>
   <string name="pref_automatic_download_on_battery_sum">Permite la descarga automática cuando la batería nun tea cargando.</string>
   <string name="pref_parallel_downloads_title">Descargues paraleles</string>
-  <string name="pref_episode_cache_title">Caché d\'episodios</string>
-  <string name="pref_episode_cache_summary">El númberu total d\'episodios baxaos y atroxaos na caché del preséu. La descarga automática va suspendese si s\'algama\'l númberu qu\'afites.</string>
+    <string name="pref_episode_cache_summary">El númberu total d\'episodios baxaos y atroxaos na caché del preséu. La descarga automática va suspendese si s\'algama\'l númberu qu\'afites.</string>
   <string name="pref_episode_cover_title">Usar les portaes de los episodios</string>
   <string name="pref_episode_cover_summary">Nes llistes, úsase la portada de los episodios siempres que seya posible. Si nun se marca esta opción, l\'aplicación va usar siempres la portada de los podcasts.</string>
   <string name="pref_show_remain_time_title">Amosar el tiempu que falta</string>

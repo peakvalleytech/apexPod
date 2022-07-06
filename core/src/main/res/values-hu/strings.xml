@@ -410,8 +410,7 @@
   <string name="pref_automatic_download_on_battery_title">Letöltés, ha nincs akkumulátortöltés</string>
   <string name="pref_automatic_download_on_battery_sum">Automatikus letöltés engedélyezése, ha az akkumulátor nem töltődik</string>
   <string name="pref_parallel_downloads_title">Párhuzamos letöltések</string>
-  <string name="pref_episode_cache_title">Epizód tárhely</string>
-  <string name="pref_episode_cache_summary">Az eszközön tárolt letöltött epizódok száma. Az automatikus letöltés felfüggesztésre kerül, ha eléri ezt a számot.</string>
+    <string name="pref_episode_cache_summary">Az eszközön tárolt letöltött epizódok száma. Az automatikus letöltés felfüggesztésre kerül, ha eléri ezt a számot.</string>
   <string name="pref_episode_cover_title">Epizód borítókép használata</string>
   <string name="pref_episode_cover_summary">Epizódspecifikus borító használata, ha lehetséges. Ha nincs bekapcsolva, akkor az alkalmazás mindig a podcast borítóját fogja használni.</string>
   <string name="pref_show_remain_time_title">Hátralévő idő megjelenítése</string>

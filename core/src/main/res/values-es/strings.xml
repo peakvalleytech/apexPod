@@ -410,8 +410,7 @@
   <string name="pref_automatic_download_on_battery_title">Descargar cuando no se está cargando</string>
   <string name="pref_automatic_download_on_battery_sum">Permitir la descarga automática cuando la batería no se esté cargando</string>
   <string name="pref_parallel_downloads_title">Descargas paralelas</string>
-  <string name="pref_episode_cache_title">Almacenamiento de episodios</string>
-  <string name="pref_episode_cache_summary">Número total de episodios cacheados en el dispositivo. La descarga automática se suspenderá si se alcanza este número.</string>
+    <string name="pref_episode_cache_summary">Número total de episodios cacheados en el dispositivo. La descarga automática se suspenderá si se alcanza este número.</string>
   <string name="pref_episode_cover_title">Usar portada del episodio</string>
   <string name="pref_episode_cover_summary">Usar la portada de cada episodio en las listas cuando sea posible. Si se desactiva, la aplicación siempre usará la portada del podcast.</string>
   <string name="pref_show_remain_time_title">Mostrar Tiempo Restante</string>

@@ -440,8 +440,7 @@
   <string name="pref_automatic_download_on_battery_title">Atsiuntimas ne įkrovimo metu</string>
   <string name="pref_automatic_download_on_battery_sum">Leisti automatinį atsiuntimą kai baterija nėra įkraunama</string>
   <string name="pref_parallel_downloads_title">Lygiagretūs atsiuntimai</string>
-  <string name="pref_episode_cache_title">Epizodų podėlis</string>
-  <string name="pref_episode_cache_summary">Bendras podėlyje atsiųstų epizodų skaičius šiame įrenginyje. Pasiekus šį skaičių automatinis atsiuntimas bus pristabdytas.</string>
+    <string name="pref_episode_cache_summary">Bendras podėlyje atsiųstų epizodų skaičius šiame įrenginyje. Pasiekus šį skaičių automatinis atsiuntimas bus pristabdytas.</string>
   <string name="pref_episode_cover_title">Naudoti epizodo viršelį</string>
   <string name="pref_episode_cover_summary">Naudoti epizodo viršelį, kai prieinama. Nepažymėjus, programėlė visada naudos tinklalaidės viršelio paveikslėlį.</string>
   <string name="pref_show_remain_time_title">Rodyti likusį laiką</string>

@@ -410,8 +410,7 @@
   <string name="pref_automatic_download_on_battery_title">Deskargatu kargatzen ari dela</string>
   <string name="pref_automatic_download_on_battery_sum">Onartu deskarga bateria kargatzen ari ez denean</string>
   <string name="pref_parallel_downloads_title">Deskarga paraleloak</string>
-  <string name="pref_episode_cache_title">Saioak gordetzea</string>
-  <string name="pref_episode_cache_summary">Gailuan katxeatutako saioen zenbatekoa. Deskarga automatikoa bertan behera utziko da zenbaki honetara heltzean.</string>
+    <string name="pref_episode_cache_summary">Gailuan katxeatutako saioen zenbatekoa. Deskarga automatikoa bertan behera utziko da zenbaki honetara heltzean.</string>
   <string name="pref_episode_cover_title">Saioaren azala erabili</string>
   <string name="pref_episode_cover_summary">Erabili atalaren azal espezifikoa zerrendetan eskuragarri dagoenean. Desaktibatzen bada, aplikazioak podcastaren azala erabiliko du beti.</string>
   <string name="pref_show_remain_time_title">Erakutsi geratzen den denbora</string>

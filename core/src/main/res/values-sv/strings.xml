@@ -411,8 +411,7 @@
   <string name="pref_automatic_download_on_battery_title">Nedladdning vid batteridrift</string>
   <string name="pref_automatic_download_on_battery_sum">Tillåt automatisk nedladdning när batteriet inte laddas</string>
   <string name="pref_parallel_downloads_title">Parallella nedladdningar</string>
-  <string name="pref_episode_cache_title">Episodcache</string>
-  <string name="pref_episode_cache_summary">Totalt antal nedladdade epidoder som ligger i enhetens cache. Automatisk nedladdning kommer att vänta om detta antal nås.</string>
+    <string name="pref_episode_cache_summary">Totalt antal nedladdade epidoder som ligger i enhetens cache. Automatisk nedladdning kommer att vänta om detta antal nås.</string>
   <string name="pref_episode_cover_title">Använd Episodomslag</string>
   <string name="pref_episode_cover_summary">Använd episodspecifika omslag i listan när de är tillgängliga. Om urkryssat kommer appen alltid använda podcastens omslagsbild.</string>
   <string name="pref_show_remain_time_title">Visa Kvarvarande Tid</string>

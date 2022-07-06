@@ -346,8 +346,7 @@
   <string name="pref_automatic_download_on_battery_title">未充電時下載</string>
   <string name="pref_automatic_download_on_battery_sum">允許未充電時也自動下載</string>
   <string name="pref_parallel_downloads_title">同步下載</string>
-  <string name="pref_episode_cache_title">暫存集數</string>
-  <string name="pref_episode_cache_summary">在本機中可以暫存的集數，若達上限則將停止自動下載。</string>
+    <string name="pref_episode_cache_summary">在本機中可以暫存的集數，若達上限則將停止自動下載。</string>
   <string name="pref_episode_cover_title">使用單集的封面圖</string>
   <string name="pref_episode_cover_summary">在單集有專屬封面的情況下使用該封面圖。如果取消，則一律使用 Podcast 的封面圖</string>
   <string name="pref_show_remain_time_title">顯示剩餘時間</string>

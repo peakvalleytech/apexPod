@@ -429,8 +429,7 @@
   <string name="pref_automatic_download_on_battery_title">Pellgargañ pa ne vez ket o kargañ</string>
   <string name="pref_automatic_download_on_battery_sum">Aotren ar pellgargañ emgefreek pa ne vez ket ar benveg o kargañ</string>
   <string name="pref_parallel_downloads_title">Pellgargadurioù kenstur</string>
-  <string name="pref_episode_cache_title">Niver a rannoù enrollet</string>
-  <string name="pref_episode_cache_summary">Niver hollek a rannoù pellgarget lakaet e krubuilh ar benveg. Diweredekaet e vo ar pellgargañ emgefreek mard eo tizhet an niver-mañ.</string>
+    <string name="pref_episode_cache_summary">Niver hollek a rannoù pellgarget lakaet e krubuilh ar benveg. Diweredekaet e vo ar pellgargañ emgefreek mard eo tizhet an niver-mañ.</string>
   <string name="pref_episode_cover_title">Skeudenn ar rannoù</string>
   <string name="pref_episode_cover_summary">Ober gant golo ar rann e listennoù pa vez dioutañ. Mard eo digevasket e vo graet gant golo ar podskignad.</string>
   <string name="pref_show_remain_time_title">Diskouez amzer a chom</string>

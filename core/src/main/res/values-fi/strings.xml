@@ -343,7 +343,6 @@
   <string name="pref_automatic_download_on_battery_title">Lataa, kun akkua ei ladata</string>
   <string name="pref_automatic_download_on_battery_sum">Salli automaattiset lataukset, kun akku ei ole latautumassa</string>
   <string name="pref_parallel_downloads_title">Yhtäaikaiset lataukset</string>
-  <string name="pref_episode_cache_title">Jaksojen välimuisti</string>
   <string name="pref_episode_cache_summary">Ladattuja jaksoja yhteensä välimuistissa tällä laitteella. Automaattinen lataaminen pysäytetään, jos tämä raja ylittyy.</string>
   <string name="pref_episode_cover_title">Käytä jakson kansikuvaa</string>
   <string name="pref_theme_title_light">Vaalea</string>

@@ -410,7 +410,6 @@
   <string name="pref_automatic_download_on_battery_title">بارگیری زمانی که سیستم شارژ نمیشود مجاز باشد</string>
   <string name="pref_automatic_download_on_battery_sum">وقتی باتری شارژ نمی شود ، امکان بارگیری خودکار وجود داشته باشد</string>
   <string name="pref_parallel_downloads_title">بارگیری موازی</string>
-  <string name="pref_episode_cache_title">قسمت های ذخیره شده</string>
   <string name="pref_episode_cache_summary">تعداد کل قسمتهای قابل بارگیری در ذخیره گاه دستگاه. در صورت رسیدن به این تعداد بارگیری خودکار به حالت تعلیق در می آید.</string>
   <string name="pref_episode_cover_title">استفاده از عکس قسمت</string>
   <string name="pref_episode_cover_summary">هر زمان که جلد مخصوص قسمت در دسترس بود از آن استفاده کن. در صورت لغو انتخاب ، برنامه همیشه از تصویر جلد پادکست استفاده می کند.</string>

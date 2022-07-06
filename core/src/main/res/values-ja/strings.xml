@@ -323,8 +323,7 @@
   <string name="pref_automatic_download_on_battery_title">充電中以外の時にダウンロード</string>
   <string name="pref_automatic_download_on_battery_sum">バッテリーを充電していない時に自動ダウンロードを許可します</string>
   <string name="pref_parallel_downloads_title">パラレル ダウンロード</string>
-  <string name="pref_episode_cache_title">エピソードキャッシュ</string>
-  <string name="pref_episode_cache_summary">デバイスにキャッシュされたダウンロード済エピソードの合計数。この数に達すると自動ダウンロードが抑制されます。</string>
+    <string name="pref_episode_cache_summary">デバイスにキャッシュされたダウンロード済エピソードの合計数。この数に達すると自動ダウンロードが抑制されます。</string>
   <string name="pref_episode_cover_title">エピソードカバーを使用する</string>
   <string name="pref_theme_title_use_system">システムのテーマを使用する</string>
   <string name="pref_theme_title_light">ライト</string>
