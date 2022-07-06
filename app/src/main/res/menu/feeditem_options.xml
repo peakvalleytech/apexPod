@@ -35,9 +35,9 @@
         android:title="@string/remove_from_queue_label">
     </item>
     <item
-        android:id="@+id/remove_from_playlist"
+        android:id="@+id/add_to_playlist"
         custom:showAsAction="collapseActionView"
-        android:title="Remove from Playlist">
+        android:title="@string/add_to_playlist_label">
     </item>
 
     <item
