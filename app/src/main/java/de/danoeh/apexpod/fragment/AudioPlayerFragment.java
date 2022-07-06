@@ -509,6 +509,7 @@ public class AudioPlayerFragment extends Fragment implements
         toolbar.getMenu().findItem(R.id.open_feed_item).setVisible(isFeedMedia);
         if (isFeedMedia) {
             FeedItemMenuHandler.onPrepareMenu(toolbar.getMenu(), ((FeedMedia) media).getItem());
+            FeedItemMenuHandler.setItemVisibility(toolbar.getMenu(), R.id.add_to_playlist, true);
         }
 
         toolbar.getMenu().findItem(R.id.loop_mode).setOnMenuItemClickListener(item -> {

@@ -14,7 +14,11 @@
         android:title="@string/remove_from_favorite_label"
         custom:showAsAction="always">
     </item>
-
+    <item
+        android:id="@+id/add_to_playlist"
+        custom:showAsAction="collapseActionView"
+        android:title="@string/add_to_playlist_label">
+    </item>
     <item
         android:id="@+id/disable_sleeptimer_item"
         android:icon="@drawable/ic_sleep_off"
