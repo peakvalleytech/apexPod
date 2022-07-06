@@ -146,6 +146,7 @@ public class ItemPagerFragment extends Fragment implements Toolbar.OnMenuItemCli
         if (item.hasMedia()) {
             FeedItemMenuHandler.onPrepareMenu(toolbar.getMenu(), item);
             FeedItemMenuHandler.setItemVisibility(toolbar.getMenu(), R.id.add_to_playlist, true);
+            FeedItemMenuHandler.setItemVisibility(toolbar.getMenu(), R.id.open_podcast, false);
 
         } else {
             // these are already available via button1 and button2
