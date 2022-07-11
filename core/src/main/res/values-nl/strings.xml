@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">Downloaden via mobiel internet is uitgeschakeld in de instellingen.\n\nWil je dit tijdelijk toestaan?\n<small>Je keuze wordt 10 minuten onthouden.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Bevestig streamen via mobiel internet</string>
   <string name="confirm_mobile_streaming_notification_message">Streamen via mobiel internet is uitgeschakeld in de instellingen. Druk om tóch te streamen.</string>
-  <string name="confirm_mobile_streaming_button_always">Altijd</string>
+  <string name="always">Altijd</string>
   <string name="confirm_mobile_streaming_button_once">Eenmalig</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Toevoegen aan wachtrij</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Tijdelijk toestaan</string>

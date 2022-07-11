@@ -203,7 +203,7 @@
   <string name="confirm_mobile_download_dialog_message">モバイルデータ接続でのダウンロードは設定で無効になっています。\n\n一時的に有効にしますか?\n\n<small>選択は 10 分間記憶されます。</small></string>
   <string name="confirm_mobile_streaming_notification_title">モバイルストリーミングの確認</string>
   <string name="confirm_mobile_streaming_notification_message">モバイルデータ接続を介したストリーミングは設定で無効になっています。 タップするととにかくストリーミングします。</string>
-  <string name="confirm_mobile_streaming_button_always">常に</string>
+  <string name="always">常に</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">キューに追加するだけ</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">一時的に有効にする</string>
   <!--Mediaplayer messages-->

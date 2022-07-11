@@ -231,7 +231,7 @@
   <string name="confirm_mobile_download_dialog_message">Mobil veri ile indirme ayarlarda devre dışıdır.\n\nGeçici olarak açılsın mı?\n\n<small>Bu tercihiniz 10 dakika boyunca hatırlanacak.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Confirm Mobile streaming</string>
   <string name="confirm_mobile_streaming_notification_message">Streaming over mobile data connection is disabled in the settings. Tap to stream anyway.</string>
-  <string name="confirm_mobile_streaming_button_always">Always</string>
+  <string name="always">Always</string>
   <string name="confirm_mobile_streaming_button_once">Once</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Sadece Kuyruğa ekle</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Geçici olarak aç</string>

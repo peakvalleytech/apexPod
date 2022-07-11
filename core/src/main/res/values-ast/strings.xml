@@ -203,7 +203,7 @@
   <string name="download_type_media">Ficheru multimedia</string>
   <string name="download_request_error_dialog_message_prefix">Asocedió un fallu al tentar de baxar el ficheru:\u0020</string>
   <string name="authentication_notification_msg">El recursu que solicitesti rique un nome d\'usuariu y una contraseña</string>
-  <string name="confirm_mobile_streaming_button_always">Siempres</string>
+  <string name="always">Siempres</string>
   <string name="confirm_mobile_streaming_button_once">Una vegada</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Permitir temporalmente</string>
   <!--Mediaplayer messages-->

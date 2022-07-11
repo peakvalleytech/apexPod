@@ -249,7 +249,7 @@
   <string name="confirm_mobile_download_dialog_message">移动数据连接下载已于设置中被关闭。\n\n您要暂时允许下载吗？。<small>\n\n您的决定将会在10分钟后被遗忘。</small></string>
   <string name="confirm_mobile_streaming_notification_title">确认使用移动数据播放</string>
   <string name="confirm_mobile_streaming_notification_message">通过移动连接播放在设置中未启用。点击以确认您无论如何都要用移动数据来播放</string>
-  <string name="confirm_mobile_streaming_button_always">始终</string>
+  <string name="always">始终</string>
   <string name="confirm_mobile_streaming_button_once">一次</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">队列</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">暂时允许</string>

@@ -291,7 +291,7 @@
   <string name="confirm_mobile_download_dialog_message">Sťahovanie cez mobilné dáta je zakázané v nastaveniach.\n\nChcete dočasne povoliť sťahovanie?\n\n<small>Vaša voľba bude platná počas nasledujúcich 10 minút.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Potvrďtě prosím streamovanie cez mobilné dáta</string>
   <string name="confirm_mobile_streaming_notification_message">Streamovanie cez mobilné dáta je zakázáné v nastaveniach. Ak aj napriek tomu chcete streamovať cez mobilné dáta, môžete ho spustiť dotykom.</string>
-  <string name="confirm_mobile_streaming_button_always">Vždy</string>
+  <string name="always">Vždy</string>
   <string name="confirm_mobile_streaming_button_once">Teraz</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Iba pridať do poradia</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Dočasne povoliť</string>

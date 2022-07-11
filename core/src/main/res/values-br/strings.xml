@@ -279,7 +279,7 @@
   <string name="confirm_mobile_download_dialog_message">Diweredekaet eo ar pellgargadur war ar c\'hennask hezoug en arventennoù.\n\nFellout a ra deoc\'h aotren ent padennek?\n\n<small>Dalc\'het vo soñj eus ho tibab e-pad 10 munutenn.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Kadarnaat ar streaming hezoug</string>
   <string name="confirm_mobile_streaming_notification_message">Diweredekaet eo ar streaming war ar c\'hennask hezoug en arventennoù. Stokit da lenn e streaming memestra.</string>
-  <string name="confirm_mobile_streaming_button_always">Atav</string>
+  <string name="always">Atav</string>
   <string name="confirm_mobile_streaming_button_once">Ur wech</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Lakaat el lost</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Aotren ent padennek</string>

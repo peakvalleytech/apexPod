@@ -258,7 +258,7 @@ public class PreferencesTest {
     public void testDisableUpdateInterval() {
         clickPreference(R.string.network_pref);
         clickPreference(R.string.feed_refresh_title);
-        onView(withText(R.string.feed_refresh_never)).perform(click());
+        onView(withText(R.string.never)).perform(click());
         onView(withId(R.id.disableRadioButton)).perform(click());
         onView(withText(R.string.confirm_label)).perform(click());
         Awaitility.await().atMost(1000, MILLISECONDS)

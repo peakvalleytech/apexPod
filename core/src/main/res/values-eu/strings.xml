@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">Datu mugikorren sareko deskargak desaktibatu dira konfigurazioan.\n\n Deskargak aldi baterako baimendu nahi dituzu?\n\n<small>10 minutura haien aukeraketa gogora araziko da.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Berretsi datu mugikor bidezko zuzenekoa</string>
   <string name="confirm_mobile_streaming_notification_message">Konexioaren datu bidezko zuzenekoa desgaiturik dago ezarpenetan. Sakatu halere ikusteko.</string>
-  <string name="confirm_mobile_streaming_button_always">Beti</string>
+  <string name="always">Beti</string>
   <string name="confirm_mobile_streaming_button_once">Behin</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Gehitu ilaran</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Baimendu aldi baterako</string>

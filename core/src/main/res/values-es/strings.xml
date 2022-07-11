@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">Se desactivaron las descargas por red de datos móviles en la configuración.\n\n¿Quiere permitir las descargas temporalmente?\n\n<small>Se recordará su elección durante 10 minutos.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Confirmar reproducción vía datos móviles</string>
   <string name="confirm_mobile_streaming_notification_message">La reproducción vía datos móviles está deshabilitada en los ajustes. Toca para escuchar en directo todas formas.</string>
-  <string name="confirm_mobile_streaming_button_always">Siempre</string>
+  <string name="always">Siempre</string>
   <string name="confirm_mobile_streaming_button_once">Una vez</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Añadir a la cola</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Permitir temporalmente</string>

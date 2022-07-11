@@ -646,7 +646,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                         getString(R.string.confirm_mobile_streaming_button_once),
                         pendingIntentAllowThisTime)
                 .addAction(R.drawable.ic_notification_stream,
-                        getString(R.string.confirm_mobile_streaming_button_always),
+                        getString(R.string.always),
                         pendingIntentAlwaysAllow)
                 .setAutoCancel(true);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);

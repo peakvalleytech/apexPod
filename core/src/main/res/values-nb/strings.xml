@@ -239,7 +239,7 @@
   <string name="confirm_mobile_download_dialog_message">Nedlasting over mobildata er deaktivert i innstillingene.\n\nVil du tillate nedlasting over mobildata midlertidig?\n\n<small>Valget ditt vil gjelde i 10 minutter.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Bekreft mobil strømming</string>
   <string name="confirm_mobile_streaming_notification_message">Strømming over mobildata er deaktivert i innstillingene. Trykk for å strømme likevel.</string>
-  <string name="confirm_mobile_streaming_button_always">Alltid</string>
+  <string name="always">Alltid</string>
   <string name="confirm_mobile_streaming_button_once">Én gang</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Legg til i kø</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Tillat midlertidig</string>

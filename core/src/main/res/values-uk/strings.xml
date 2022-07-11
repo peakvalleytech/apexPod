@@ -291,7 +291,7 @@
   <string name="confirm_mobile_download_dialog_message">Завантаження через мобільні мережі вимкнено в налаштуваннях.\n\nУвімкнути тимчасово?\n\n<small>Ваш вибір буде дійсним 10 хвилин.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Підтвердьте мобільну потокову передачу</string>
   <string name="confirm_mobile_streaming_notification_message">Потокове передавання даних через мобільне з\'єднання вимкнено в налаштуваннях. Торкніться, щоб все одно передавати.</string>
-  <string name="confirm_mobile_streaming_button_always">Завжди</string>
+  <string name="always">Завжди</string>
   <string name="confirm_mobile_streaming_button_once">Один раз</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Лише додати до черги</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Увімкнути тимчасово</string>

@@ -319,7 +319,7 @@
   <string name="confirm_mobile_download_dialog_message">التنزيل على بيانات الجوال معطل في الاعدادات.\n\nهل تريد السماح بالتنزيل مؤقتا؟\n\n<small>خيارك سيتم تذكره لمدة 10 دقائق.</small></string>
   <string name="confirm_mobile_streaming_notification_title">أكد البث التدفقي على بيانات الجوال</string>
   <string name="confirm_mobile_streaming_notification_message">البث على بيانات الجوال معطل في الاعدادات. اضغط للبث رغم ذلك. </string>
-  <string name="confirm_mobile_streaming_button_always">دائما</string>
+  <string name="always">دائما</string>
   <string name="confirm_mobile_streaming_button_once">مرة</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Enqueue</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">السماح مؤقتا</string>

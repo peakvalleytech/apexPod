@@ -346,7 +346,7 @@
   <string name="confirm_mobile_download_dialog_message">मोबाइल डेटा कनेक्शन पर डाउनलोड करने सेटिंग्स में अक्षम है।  क्या आप अस्थायी रूप से डाउनलोड करने की अनुमति देना चाहते हैं?  <small>हिताने की पसंद 10 मिनट के लिए याद किया जाएगा ।</small></string>
   <string name="confirm_mobile_streaming_notification_title">मोबाइल स्ट्रीमिंग की पुष्टि करें</string>
   <string name="confirm_mobile_streaming_notification_message">मोबाइल डेटा कनेक्शन पर स्ट्रीमिंग सेटिंग्स में अक्षम है। वैसे भी स्ट्रीम करने के लिए टैप करें।</string>
-  <string name="confirm_mobile_streaming_button_always">सदा</string>
+  <string name="always">सदा</string>
   <string name="confirm_mobile_streaming_button_once">एक बार</string>
   <string name="playback_error_unsupported">असमर्थित मीडिया प्रकार</string>
   <string name="playback_error_timeout">ऑपरेशन समय पर</string>

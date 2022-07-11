@@ -12,7 +12,7 @@
   <string name="favorite_episodes_label">Favoritos</string>
   <string name="new_label">Nova</string>
   <string name="settings_label">Configurações</string>
-  <string name="downloads_label">Descargas</string>
+  <string name="downloads_label">downloads</string>
   <string name="open_autodownload_settings">Abrir as configurações</string>
   <string name="downloads_completed_label">Finalizado</string>
   <string name="downloads_log_label">Log</string>
@@ -173,10 +173,10 @@
   </plurals>
   <string name="play_label">Reproduzir</string>
   <string name="pause_label">Pausar</string>
-  <string name="stream_label">Stream</string>
+  <string name="stream_label">Emitir</string>
   <string name="delete_label">Excluir</string>
   <string name="delete_failed">Não foi possível excluir o arquivo. Experimente reiniciar o dispositivo.</string>
-  <string name="delete_episode_label">Excluir o episódio</string>
+  <string name="delete_episode_label">Excluir episódio</string>
   <plurals name="deleted_multi_episode_batch_label">
     <item quantity="one">%d episódio selecionado. %d download excluído.</item>
     <item quantity="other">%d episódios selecionados. %d download(s) excluídos.</item>
@@ -217,7 +217,7 @@
   <string name="removed_item">Item removido</string>
   <string name="no_items_selected">Nenhum item selecionado</string>
   <!--Download messages and labels-->
-  <string name="download_successful">com sucesso</string>
+  <string name="download_successful">Sucesso</string>
   <string name="download_pending">Download pendente</string>
   <string name="download_running">Download em execução</string>
   <string name="download_error_details">Detalhes</string>
@@ -236,12 +236,12 @@
   <string name="download_error_unauthorized">Erro de autenticação</string>
   <string name="download_error_file_type_type">Erro de Tipo de Arquivo</string>
   <string name="download_error_forbidden">O servidor de hospedagem do podcast se recusa a responder.</string>
-  <string name="download_canceled_msg">Download cancelado</string>
+  <string name="download_canceled_msg">Descarga cancelado</string>
   <string name="download_error_wrong_size">A conexão com o servidor foi perdida antes de completar o download</string>
   <string name="download_error_blocked">O download foi bloqueado por outro aplicativo no seu dispositivo.</string>
   <string name="download_error_certificate">Não foi possível estabelecer uma conexão segura. Isso pode significar que outro aplicativo, no seu dispositivo, bloqueou o download, ou que alguma coisa está errada com os certificados do servidor.</string>
-  <string name="download_report_title">Downloads finalizados com erro(s)</string>
-  <string name="auto_download_report_title">Download automático finalizado</string>
+  <string name="download_report_title">downloads finalizados com erro(s)</string>
+  <string name="auto_download_report_title">Downloads automático finalizado</string>
   <string name="download_error_io_error">Erro de IO</string>
   <string name="download_error_request_error">Erro de requisição</string>
   <string name="download_error_db_access">Erro no acesso ao Banco de dados</string>
@@ -252,18 +252,18 @@
   <string name="completing">Completando...</string>
   <string name="download_notification_title">Baixando dados do podcast</string>
   <string name="download_log_title_unknown">Título desconhecido</string>
-  <string name="download_type_feed">Feed</string>
+  <string name="download_type_feed">Fonte</string>
   <string name="download_type_media">Arquivo de mídia</string>
   <string name="download_request_error_dialog_message_prefix">Ocorreu um erro durante download do arquivo:\u0020</string>
   <string name="null_value_podcast_error">Nenhum podcast foi fornecido para ser exibido.</string>
   <string name="authentication_notification_title">Autenticação requerida</string>
   <string name="authentication_notification_msg">O recurso que você solicitou requer um usuário e uma senha</string>
-  <string name="confirm_mobile_download_dialog_title">Confirmar Download utilizando dados móveis</string>
+  <string name="confirm_mobile_download_dialog_title">Confirmar download utilizando dados móveis</string>
   <string name="confirm_mobile_download_dialog_message_not_in_queue">O download utilizando redes móveis foi desabilitado nas configurações.\n\nVocê pode escolher entre apenas adicionar o episódio na fila ou você pode permitir o download temporariamente.\n\n<small>Sua escolha será lembrada por 10 minutos.</small></string>
   <string name="confirm_mobile_download_dialog_message">O download utilizando redes móveis foi desabilitado nas configurações.\n\nVocê deseja permitir o download temporariamente?\n\n<small>Sua escolha será lembrada por 10 minutos</small></string>
   <string name="confirm_mobile_streaming_notification_title">Confirmar streaming móvel</string>
   <string name="confirm_mobile_streaming_notification_message">O streaming pela conexão de dados móveis está desativado nas configurações. Toque para transmitir de qualquer maneira.</string>
-  <string name="confirm_mobile_streaming_button_always">Sempre</string>
+  <string name="always">Sempre</string>
   <string name="confirm_mobile_streaming_button_once">Uma vez</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Adicionar à fila</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Permitir temporariamente</string>
@@ -798,4 +798,5 @@
   <string name="repeat_episode">Episódio de Repetição</string>
   <string name="feed_tags_label">Etiquetas</string>
   <string name="feed_tags_summary">Mude as etiquetas deste podcast para ajudar a organizar as suas subscrições</string>
+    <string name="confirm_mobile_feed_refresh_dialog_message">Descarregar episódios sobre a ligação de dados móveis é desativado nas definições.\n\nAinda pretende atualizar todos os podcasts sobre dados móveis?</string>
 </resources>

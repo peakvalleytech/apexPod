@@ -291,7 +291,7 @@
   <string name="confirm_mobile_download_dialog_message">Atsiuntimas mobiliuoju internetu išjungtas nustatymuose.\n\nAr norite laikinai leisti atsiuntimą?\n\n<small>Jūsų pasirinkimas bus prisimenamas 10 minučių.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Patvirtinkite tiesioginį klausymąsi mobiliuoju internetu</string>
   <string name="confirm_mobile_streaming_notification_message">Tiesioginis klausymasis mobiliuoju internetu išjungtas nustatymuose. Palieskite, jei vis tiek norite klausytis tiesiogiai.</string>
-  <string name="confirm_mobile_streaming_button_always">Visada</string>
+  <string name="always">Visada</string>
   <string name="confirm_mobile_streaming_button_once">Vienąkart</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Pridėti į eilę</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Laikinai leisti</string>

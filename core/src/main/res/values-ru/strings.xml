@@ -272,7 +272,7 @@
   <string name="confirm_mobile_download_dialog_message">Загрузка через мобильное соединение отключена в настройках.\n\nЖелаете временно разрешить загрузку?\n\n<small>Настройка сохранится на 10 минут.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Подтвердите трансляцию через мобильное соединение</string>
   <string name="confirm_mobile_streaming_notification_message">Трансляция через мобильное подключение отключена в настройках. Нажмите, чтобы продолжить трансляцию.</string>
-  <string name="confirm_mobile_streaming_button_always">всегда</string>
+  <string name="always">всегда</string>
   <string name="confirm_mobile_streaming_button_once">Однократно</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Добавить в очередь</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Разрешить временно</string>

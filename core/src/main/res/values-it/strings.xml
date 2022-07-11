@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">Il download tramite rete mobile è disattivato nelle impostazioni.\n\nVuoi abilitare temporaneamente il download?\n\n<small>La scelta sarà valida per 10 minuti.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Conferma streaming su rete mobile</string>
   <string name="confirm_mobile_streaming_notification_message">Lo streaming su rete mobile è disattivato nelle impostazioni. Tocca per avviare comunque.</string>
-  <string name="confirm_mobile_streaming_button_always">Sempre</string>
+  <string name="always">Sempre</string>
   <string name="confirm_mobile_streaming_button_once">Una volta</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Aggiungi alla coda</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Consenti temporaneamente</string>

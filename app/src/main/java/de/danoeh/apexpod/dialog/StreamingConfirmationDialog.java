@@ -21,7 +21,7 @@ public class StreamingConfirmationDialog {
                 .setTitle(R.string.stream_label)
                 .setMessage(R.string.confirm_mobile_streaming_notification_message)
                 .setPositiveButton(R.string.confirm_mobile_streaming_button_once, (dialog, which) -> stream())
-                .setNegativeButton(R.string.confirm_mobile_streaming_button_always, (dialog, which) -> {
+                .setNegativeButton(R.string.always, (dialog, which) -> {
                     UserPreferences.setAllowMobileStreaming(true);
                     stream();
                 })

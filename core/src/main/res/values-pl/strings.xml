@@ -292,7 +292,7 @@
   <string name="confirm_mobile_download_dialog_message">Pobieranie przez sieć komórkową jest wyłączone w ustawieniach.\n\nCzy chcesz tymczasowo zezwolić na pobieranie?\n\n<small>Twój wybór zostanie zapamiętany na 10 minut.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Potwierdź streamowanie przy użyciu danych komórkowych</string>
   <string name="confirm_mobile_streaming_notification_message">Streamowanie przy użyciu danych komórkowych jest wyłączone w ustawieniach. Naciśnij aby streamować mimo to.</string>
-  <string name="confirm_mobile_streaming_button_always">Zawsze</string>
+  <string name="always">Zawsze</string>
   <string name="confirm_mobile_streaming_button_once">Tylko tym razem</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Dodaj do kolejki</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Zezwól tymczasowo</string>

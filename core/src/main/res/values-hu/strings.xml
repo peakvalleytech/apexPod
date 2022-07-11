@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">A mobil adatkapcsolaton történő letöltés ki van kapcsolva a beállításokban.\n\nIdeiglenesen engedélyezi a letöltést?\n\n<small>A választása 10 percig lesz megjegyezve.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Mobil közvetítés megerősítése</string>
   <string name="confirm_mobile_streaming_notification_message">A mobil adatkapcsolaton történő közvetítés ki van kapcsolva a beállításokban. Koppintson ha mindenképp szeretné.</string>
-  <string name="confirm_mobile_streaming_button_always">Mindig</string>
+  <string name="always">Mindig</string>
   <string name="confirm_mobile_streaming_button_once">Egyszer</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Sorbaállítás</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Engedélyezés átmenetileg</string>

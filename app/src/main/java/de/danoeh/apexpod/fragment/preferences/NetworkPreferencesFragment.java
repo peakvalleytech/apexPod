@@ -83,7 +83,7 @@ public class NetworkPreferencesFragment extends PreferenceFragmentCompat
                 val = String.format(context.getString(R.string.feed_refresh_interval_at),
                         timeOfDayStr);
             } else {
-                val = context.getString(R.string.feed_refresh_never);
+                val = context.getString(R.string.never);
             }
         }
         String summary = context.getString(R.string.feed_refresh_sum) + "\n"

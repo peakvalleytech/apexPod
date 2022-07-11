@@ -264,7 +264,7 @@
   <string name="confirm_mobile_download_dialog_message">Nedladdning över mobil dataanslutning är avaktiverat i inställningarna.\n\nVill du tillfälligt tillåta nedladdning?\n\n<small>Ditt val gäller i 10 minuter.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Bekräfta mobil strömning</string>
   <string name="confirm_mobile_streaming_notification_message">Strömning över mobilanslutningar är avaktiverat i inställningarna. Tryck för att strömma ändå.</string>
-  <string name="confirm_mobile_streaming_button_always">Alltid</string>
+  <string name="always">Alltid</string>
   <string name="confirm_mobile_streaming_button_once">En gång</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Köa</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Tillåt tillfälligt</string>

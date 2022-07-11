@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">A descarga con datos móbiles está desactivada nos axustes.\n\nQuere permitir a descarga temporalmente?\n\n <small>A súa decisión lembrarase durante 10 minutos.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Confirmar retransmisión Móbil</string>
   <string name="confirm_mobile_streaming_notification_message">Desactivouse nos axustes Retransmitir mediante a Conexión de datos. Elixe aquí a opción que desexas.</string>
-  <string name="confirm_mobile_streaming_button_always">Sempre</string>
+  <string name="always">Sempre</string>
   <string name="confirm_mobile_streaming_button_once">Unha vez</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Engadir a cola</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Permitir temporalmente</string>

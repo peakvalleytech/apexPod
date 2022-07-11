@@ -233,7 +233,7 @@
     <string name="no_items_selected">No items selected</string>
 
     <!-- Download messages and labels -->
-    <string name="download_successful">successful</string>
+    <string name="download_successful">Successful</string>
     <string name="download_pending">Download pending</string>
     <string name="download_running">Download running</string>
     <string name="download_error_details">Details</string>
@@ -279,7 +279,7 @@
     <string name="confirm_mobile_download_dialog_message">Downloading over mobile data connection is disabled in the settings.\n\nDo you want to allow downloading temporarily?\n\n<small>Your choice will be remembered for 10 minutes.</small></string>
     <string name="confirm_mobile_streaming_notification_title">Confirm Mobile streaming</string>
     <string name="confirm_mobile_streaming_notification_message">Streaming over mobile data connection is disabled in the settings. Tap to stream anyway.</string>
-    <string name="confirm_mobile_streaming_button_always">Always</string>
+    <string name="always">Always</string>
     <string name="confirm_mobile_streaming_button_once">Once</string>
     <string name="confirm_mobile_download_dialog_only_add_to_queue">Enqueue</string>
     <string name="confirm_mobile_download_dialog_enable_temporarily">Allow temporarily</string>

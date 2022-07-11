@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">Le téléchargement avec la connexion mobile est désactivé dans les options.\n\nVoulez-vous autoriser temporairement le téléchargement?\n\n<small>Votre choix sera retenu pour les 10 prochaines minutes.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Toucher pour autoriser le streaming avec la connexion mobile</string>
   <string name="confirm_mobile_streaming_notification_message">Le streaming avec la connexion mobile est désactivé dans les paramètres. Toucher pour streamer quand même.</string>
-  <string name="confirm_mobile_streaming_button_always">Toujours</string>
+  <string name="always">Toujours</string>
   <string name="confirm_mobile_streaming_button_once">Une seule fois</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Rajouter à la liste de lecture</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Autoriser temporairement</string>

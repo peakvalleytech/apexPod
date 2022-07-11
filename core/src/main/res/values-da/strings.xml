@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">Overførsel over mobil dataforbindelse er slået fra i indstillingerne.\n\nVil du tillade overførsel midlertidigt?\n\n<small>Dit valg vil blive husket i 10 minutter.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Bekræft mobil streaming</string>
   <string name="confirm_mobile_streaming_notification_message">Streaming via mobildata er slået fra i indstillingerne. Tryk for at streame alligevel.</string>
-  <string name="confirm_mobile_streaming_button_always">Altid</string>
+  <string name="always">Altid</string>
   <string name="confirm_mobile_streaming_button_once">Én gang</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Sæt i kø</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Tillad midlertidigt</string>

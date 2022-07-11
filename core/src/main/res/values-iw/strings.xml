@@ -291,7 +291,7 @@
   <string name="confirm_mobile_download_dialog_message">הורדה דרך חיבור נתונים של רשת סלולרית מושבת דרך ההגדרות.\n\nלאפשר את ההורדה באופן זמני?\n\n<small>הבחירה שלך תישמר למשך 10 דקות.</small></string>
   <string name="confirm_mobile_streaming_notification_title">אישור הזרמה דרך רשת סלולרית</string>
   <string name="confirm_mobile_streaming_notification_message">הזרמה דרך חיבור רשת סלולרית מושבתת בהגדרות. ניתן לגעת כדי להזרים בכל זאת.</string>
-  <string name="confirm_mobile_streaming_button_always">תמיד</string>
+  <string name="always">תמיד</string>
   <string name="confirm_mobile_streaming_button_once">פעם אחת</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">הוספה לתור</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">לאפשר לבינתיים</string>

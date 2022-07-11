@@ -35,5 +35,5 @@
         android:id="@+id/disableRadioButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/feed_refresh_never" />
+        android:text="@string/never" />
 </RadioGroup>

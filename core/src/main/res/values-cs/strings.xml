@@ -269,7 +269,7 @@
   <string name="confirm_mobile_download_dialog_message">Stahování dat přes mobilní připojení je v nastavení vypnuto.\n\nDočasně povolit?\n\n<small>Tato volba bude platná po dalších 10 minut.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Potvrďtě prosím streamování přes mobilní data</string>
   <string name="confirm_mobile_streaming_notification_message">Streamování přes mobilní data je zakázáno v nastavení. Streamování můžete spustit dotykem, pokud i přesto chcete streamovat přes mobilní data.</string>
-  <string name="confirm_mobile_streaming_button_always">Vždy</string>
+  <string name="always">Vždy</string>
   <string name="confirm_mobile_streaming_button_once">Jednou</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Pouze přidat do fronty</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Dočasně povolit</string>

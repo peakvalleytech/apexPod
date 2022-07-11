@@ -264,7 +264,7 @@ Tippen, um Details anzuzeigen.</string>
   <string name="confirm_mobile_download_dialog_message">Das Herunterladen über die mobile Datenverbindung ist in den Einstellungen deaktiviert.\n\nVorübergehend erlauben?\n\n<small>Deine Entscheidung wird für 10 Minuten gespeichert.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Mobiles Streamen bestätigen</string>
   <string name="confirm_mobile_streaming_notification_message">Streamen über mobile Datenverbindung ist in den Einstellungen deaktiviert. Tippen, um trotzdem zu streamen.</string>
-  <string name="confirm_mobile_streaming_button_always">Immer</string>
+  <string name="always">Immer</string>
   <string name="confirm_mobile_streaming_button_once">Einmalig</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Zur Warteschlange hinzufügen</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Vorübergehend erlauben</string>

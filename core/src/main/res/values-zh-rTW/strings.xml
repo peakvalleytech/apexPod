@@ -211,7 +211,7 @@
   <string name="confirm_mobile_download_dialog_message">您目前設定為不以行動網路下載單集。\n\n是否要暫時允許以行動網路下載呢？\n\n1<small>暫時允許的效期為 10 分鐘</small></string>
   <string name="confirm_mobile_streaming_notification_title">確認以行動網路串流播放</string>
   <string name="confirm_mobile_streaming_notification_message">目前您設定為不可使用行動網路串流播放，輕觸後可強制以串流播放。</string>
-  <string name="confirm_mobile_streaming_button_always">永遠允許</string>
+  <string name="always">永遠允許</string>
   <string name="confirm_mobile_streaming_button_once">允許一次</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">列入待播清單</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">暫時允許</string>

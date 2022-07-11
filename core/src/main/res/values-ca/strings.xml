@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">La baixada amb connexió de dades mòbils està desactivada.\n\nVols permetre la descàrrega de forma temporal?\n\n<small>La teva tria es recordarà durant 10 minuts.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Confirmar streaming per mòbil.</string>
   <string name="confirm_mobile_streaming_notification_message">Streaming per xarxa mòbil està deshabilitat als ajustos. Toca la pantalla per a fer-ho de totes maners.</string>
-  <string name="confirm_mobile_streaming_button_always">Sempre</string>
+  <string name="always">Sempre</string>
   <string name="confirm_mobile_streaming_button_once">Una vegada</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">En cua</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Permetre temporalment</string>

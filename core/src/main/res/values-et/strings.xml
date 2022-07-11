@@ -258,7 +258,7 @@
   <string name="confirm_mobile_download_dialog_message">Allalaadimine mobiilse andmeside kaudu on seadetest keelatud.\n\nKas tahad allalaadimise ajutiselt lubada?\n\n<small>Sinu valikut peetakse meeles 10 minutit.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Kinnita voogedastus andmeside kaudu</string>
   <string name="confirm_mobile_streaming_notification_message">Voogedastus andmeside kaudu on seadetest keelatud. Koputa, et ikka striimida.</string>
-  <string name="confirm_mobile_streaming_button_always">Alati</string>
+  <string name="always">Alati</string>
   <string name="confirm_mobile_streaming_button_once">Üks kord</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Järjekorda</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Luba ajutiselt</string>

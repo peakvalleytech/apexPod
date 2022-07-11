@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">بارگیری بر روی اتصال داده‌ای همراه در تنظیمات غیر فعال شده است.\n\nمایلید به صورت موقت بارگیری صورت گیرد؟\n\n<small>انتخاب شما برای ۱۰ دقیقهٔ آینده به خاطر سپرده می‌شود.</small></string>
   <string name="confirm_mobile_streaming_notification_title">پخش جریانی همراه</string>
   <string name="confirm_mobile_streaming_notification_message">پخش جریانی بر روی اتصال داده‌ای همراه در تنظیمات غیر فعال شده است. برای پخش جریانی به هر روی کلیک کنید.</string>
-  <string name="confirm_mobile_streaming_button_always">همیشه</string>
+  <string name="always">همیشه</string>
   <string name="confirm_mobile_streaming_button_once">یکبار</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">در صف قرار دادن</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">اجازهٔ موقت</string>

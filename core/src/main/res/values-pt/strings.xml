@@ -217,7 +217,7 @@
   <string name="removed_item">Item removido</string>
   <string name="no_items_selected">Nada selecionado</string>
   <!--Download messages and labels-->
-  <string name="download_successful">sucesso</string>
+  <string name="download_successful">Sucesso</string>
   <string name="download_pending">Descarga pendente</string>
   <string name="download_running">Descarga atual</string>
   <string name="download_error_details">Detalhes</string>
@@ -263,7 +263,7 @@
   <string name="confirm_mobile_download_dialog_message">A descarga através de dados móveis está desativada nas definições.\n\nAtivar temporariamente?\n\n<small>A sua decisão será memorizada durante 10 minutos.</small></string>
   <string name="confirm_mobile_streaming_notification_title">Confirmação de reprodução em dados móveis</string>
   <string name="confirm_mobile_streaming_notification_message">A reprodução de podcasts através de dados móveis está desativada nas definições. Toque para, ainda assim, reproduzir o podcast.</string>
-  <string name="confirm_mobile_streaming_button_always">Sempre</string>
+  <string name="always">Sempre</string>
   <string name="confirm_mobile_streaming_button_once">Uma vez</string>
   <string name="confirm_mobile_download_dialog_only_add_to_queue">Apenas adicionados à fila</string>
   <string name="confirm_mobile_download_dialog_enable_temporarily">Ativar temporariamente</string>
