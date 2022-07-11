@@ -80,7 +80,7 @@
         <item>3</item>
         <item>5</item>
         <item>7</item>
-        <item>@string/episode_cleanup_never</item>
+        <item>@string/never</item>
     </string-array>
 
     <string-array name="button_action_options">
@@ -256,4 +256,5 @@
         <item>SubscriptionFragment</item>
     </string-array>
     <string name="drawer_feed_order_priority">Sort by priority</string>
+    <string name="never">Never</string>
 </resources>

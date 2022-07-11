@@ -37,10 +37,6 @@
   <string name="change_setting">Ændr</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Samlet tid for afspillede udsendelser:</string>
-  <string name="statistics_details_dialog">%1$d af %2$d udsendelser startet.\n\nAfspillet %3$s af %4$s.</string>
-  <string name="statistics_mode">Statistiktilstand</string>
-  <string name="statistics_mode_normal">Beregn den varighed som faktisk blev afspillet. Afspilning af en udsendelse to gange tæller dobbelt, mens en markering som værende afspillet ikke tælles med.</string>
-  <string name="statistics_mode_count_all">Summér alle udsendelser markeret som afspillet</string>
   <string name="statistics_speed_not_counted">Bemærk: Der tages aldrig hensyn til afspilningshastigheden.</string>
   <string name="statistics_reset_data">Nulstil statistik</string>
   <string name="statistics_reset_data_msg">Dette vil slette historikken over hvor meget der er afspillet for alle udsendelser. Er du sikker på, at du vil fortsætte?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d parallelle overførsler</string>
   <string name="feed_auto_download_global">Global standard</string>
   <string name="feed_auto_download_always">Altid</string>
-  <string name="feed_auto_download_never">Aldrig</string>
+  <string name="never">Aldrig</string>
   <string name="send_label">Send…</string>
-  <string name="episode_cleanup_never">Aldrig</string>
   <string name="episode_cleanup_except_favorite_removal">Hvis ikke en foretrukket</string>
   <string name="episode_cleanup_queue_removal">Når ikke i kø</string>
   <string name="episode_cleanup_after_listening">Efter færdig afspilning</string>

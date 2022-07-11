@@ -37,10 +37,6 @@
   <string name="change_setting">Aldatu</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Ikusitako saio denen denbora:</string>
-  <string name="statistics_details_dialog">%1$d kanpo %2$d hasitako saioetatik. %3$s \n\nErreproduzituak %4$setatik.</string>
-  <string name="statistics_mode">Estatistika modua</string>
-  <string name="statistics_mode_normal">Benetan ikusitakoen iraupena kalkulatzea. Bi aldiz ikustean bi aldiz kontatzen da; ikusita bezala markatzea, berriz, ez da kontatzen</string>
-  <string name="statistics_mode_count_all">Ikusita markatutako saio guztien laburpena</string>
   <string name="statistics_speed_not_counted">Oharra: erreprodukzioaren abiadura ez da sekula kontutan hartzen.</string>
   <string name="statistics_reset_data">Estatistikak ezabatu</string>
   <string name="statistics_reset_data_msg">Horrek atal guztien iraupenaren historia ezabatuko du. Ziur zaude egin nahi duzula?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d deskarga paraleloak</string>
   <string name="feed_auto_download_global">Globala aurrez zehaztua</string>
   <string name="feed_auto_download_always">Beti</string>
-  <string name="feed_auto_download_never">Inoiz ez</string>
+  <string name="never">Inoiz ez</string>
   <string name="send_label">Bidali...</string>
-  <string name="episode_cleanup_never">Inoiz ez</string>
   <string name="episode_cleanup_except_favorite_removal">Gogoko ez denean</string>
   <string name="episode_cleanup_queue_removal">Ilaran ez dagoenean</string>
   <string name="episode_cleanup_after_listening">Bukatu ondoren</string>

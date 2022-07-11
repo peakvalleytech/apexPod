@@ -37,10 +37,6 @@
   <string name="change_setting">Zmień </string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Całkowity czas odtwarzania podcastów:</string>
-  <string name="statistics_details_dialog">%1$d z %2$d odcinków rozpoczęto.\n\nOdtworzono %3$s z %4$s.</string>
-  <string name="statistics_mode">Tryb statystyk</string>
-  <string name="statistics_mode_normal">Oblicz łączny czas rzeczywistego odtwarzania. Dwukrotne odtworzenie będzie policzone ale zaznaczenie jako odtworzone nie będzie policzone.</string>
-  <string name="statistics_mode_count_all">Podsumuj wszystkie odcinki oznaczone jako odtworzone</string>
   <string name="statistics_speed_not_counted">Powiadomienie: Prędkość odtwarzania nigdy nie jest uwzględniana.</string>
   <string name="statistics_reset_data">Resetuj statystyki</string>
   <string name="statistics_reset_data_msg">Operacja skasuje historię długości odtwarzania wszystkich odcinków. Czy na pewno chcesz kontynuować?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d równoległych pobierań</string>
   <string name="feed_auto_download_global">Globalnie domyślnie</string>
   <string name="feed_auto_download_always">Zawsze</string>
-  <string name="feed_auto_download_never">Nigdy</string>
+  <string name="never">Nigdy</string>
   <string name="send_label">Wyślij...</string>
-  <string name="episode_cleanup_never">Nigdy</string>
   <string name="episode_cleanup_except_favorite_removal">Gdy nie oznaczone jako ulubione</string>
   <string name="episode_cleanup_queue_removal">Kiedy nie są w kolejce</string>
   <string name="episode_cleanup_after_listening">Po odtworzeniu</string>

@@ -31,10 +31,6 @@
   <!--SwipeActions-->
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Padelezh ar rannoù lennet:</string>
-  <string name="statistics_details_dialog">%1$d war %2$d rann kroget.\n\nLennet %3$s war %4$s.</string>
-  <string name="statistics_mode">Doareoù stadegoù</string>
-  <string name="statistics_mode_normal">Jediñ ar padelezh selaouet e gwirionez. Ar rannoù selaouet div wech a gont doubl hag ar re merket evel anlennet ne gontont ket</string>
-  <string name="statistics_mode_count_all">Sammañ an holl rannoù merket evel lennet</string>
   <string name="statistics_speed_not_counted">Evezhiadenn: tizh al lenn n\'eo morse kemeret e kont.</string>
   <string name="statistics_reset_data">Adderaouekaat ar roadennoù stadegoù</string>
   <string name="statistics_reset_data_msg">Dilemel a raio roll istor ar padelezh lennet evit an holl rannoù. Sur oc\'h e fell deoc\'h kenderc\'hel?</string>
@@ -93,9 +89,8 @@
   <string name="parallel_downloads">%1$d pellgargadur kenstur</string>
   <string name="feed_auto_download_global">Dre ziouer</string>
   <string name="feed_auto_download_always">Bepred</string>
-  <string name="feed_auto_download_never">Morse</string>
+  <string name="never">Morse</string>
   <string name="send_label">Kas...</string>
-  <string name="episode_cleanup_never">Morse</string>
   <string name="episode_cleanup_except_favorite_removal">Pa n\'emañ ket er sinedoù</string>
   <string name="episode_cleanup_queue_removal">Pa n\'emañ ket el lost</string>
   <string name="episode_cleanup_after_listening">Goude bezañ echuet</string>

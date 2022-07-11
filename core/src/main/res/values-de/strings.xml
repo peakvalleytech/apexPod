@@ -37,10 +37,6 @@
   <string name="change_setting">Ändern</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Gesamtzeit aller gespielten Episoden</string>
-  <string name="statistics_details_dialog">%1$d von %2$d Episoden gestartet.\n\n%3$s von %4$s Episoden gespielt.</string>
-  <string name="statistics_mode">Statistik-Modus</string>
-  <string name="statistics_mode_normal">Berechne die tatsächlich gespielte Dauer. Zweimaliges Abspielen wird auch zwei Mal gezählt, als gespielt markierte Episoden jedoch gar nicht</string>
-  <string name="statistics_mode_count_all">Alle als gespielt markierten Episoden summieren</string>
   <string name="statistics_speed_not_counted">Hinweis: Die Abspielgeschwindigkeit wird nicht berücksichtigt.</string>
   <string name="statistics_reset_data">Statistiken zurücksetzen</string>
   <string name="statistics_reset_data_msg">Die Abspieldauer wird für alle Episoden gelöscht. Möchtest du wirklich fortfahren?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d parallele Downloads</string>
   <string name="feed_auto_download_global">Standardwert</string>
   <string name="feed_auto_download_always">Immer</string>
-  <string name="feed_auto_download_never">Nie</string>
+  <string name="never">Nie</string>
   <string name="send_label">Senden…</string>
-  <string name="episode_cleanup_never">Nie</string>
   <string name="episode_cleanup_except_favorite_removal">Wenn nicht favorisiert</string>
   <string name="episode_cleanup_queue_removal">Wenn nicht in der Warteschlange</string>
   <string name="episode_cleanup_after_listening">Wenn fertig gespielt</string>

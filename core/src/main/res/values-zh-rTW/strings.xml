@@ -29,10 +29,6 @@
   <!--SwipeActions-->
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">總播放時長：</string>
-  <string name="statistics_details_dialog">聽過 %1$d/%2$d集。\n\n播過%3$s/%4$s集。</string>
-  <string name="statistics_mode">統計模式</string>
-  <string name="statistics_mode_normal">計算真實的播放時長。如果播放同一劇集兩遍，則會記錄兩遍的時間；如果只是標記為已播放，則不會被計入播放時長</string>
-  <string name="statistics_mode_count_all">累加所有標記為已播放的單集</string>
   <string name="statistics_speed_not_counted">注意：此統計不考慮播放速度影響</string>
   <string name="statistics_reset_data">重設統計數據</string>
   <string name="statistics_reset_data_msg">這會清除過去的播放紀錄，您確定要進行嗎？</string>
@@ -87,9 +83,8 @@
   <string name="parallel_downloads">同時一次下載 %1$d 集</string>
   <string name="feed_auto_download_global">預設值</string>
   <string name="feed_auto_download_always">總是</string>
-  <string name="feed_auto_download_never">不予下載</string>
+  <string name="never">不予下載</string>
   <string name="send_label">發送中…</string>
-  <string name="episode_cleanup_never">不予刪除</string>
   <string name="episode_cleanup_except_favorite_removal">若未標記為最愛</string>
   <string name="episode_cleanup_queue_removal">若未列入待播清單</string>
   <string name="episode_cleanup_after_listening">聽完後</string>

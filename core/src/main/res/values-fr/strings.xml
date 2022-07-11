@@ -37,10 +37,6 @@
   <string name="change_setting">Modifier</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Durée totale d\'écoute :</string>
-  <string name="statistics_details_dialog">%1$d épisodes démarrés sur %2$d\nsoit %3$s de lues sur %4$s.</string>
-  <string name="statistics_mode">Type de statistiques</string>
-  <string name="statistics_mode_normal">Calculer la durée réellement écoutée. Les épisodes écoutés deux fois comptent double alors que ceux simplement marqués lus ne sont pas comptés</string>
-  <string name="statistics_mode_count_all">Compter tous les épisodes marqués comme lus</string>
   <string name="statistics_speed_not_counted">Note : la vitesse de lecture n\'est jamais prise en compte.</string>
   <string name="statistics_reset_data">Réinitialiser les statistiques </string>
   <string name="statistics_reset_data_msg">L\'information des temps de lecture va être effacée. Etes-vous sûr de vouloir continuer ?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d téléchargements simultanés</string>
   <string name="feed_auto_download_global">Option par défaut</string>
   <string name="feed_auto_download_always">Toujours</string>
-  <string name="feed_auto_download_never">Jamais</string>
+  <string name="never">Jamais</string>
   <string name="send_label">Envoyer...</string>
-  <string name="episode_cleanup_never">Jamais</string>
   <string name="episode_cleanup_except_favorite_removal">Quand pas un favori</string>
   <string name="episode_cleanup_queue_removal">Quand pas dans la liste de lecture</string>
   <string name="episode_cleanup_after_listening">Après avoir été écouté</string>

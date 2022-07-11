@@ -37,10 +37,6 @@
   <string name="change_setting">Cambiar</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Duración total dos episodios reproducidos:</string>
-  <string name="statistics_details_dialog">%1$d de %2$d episodios iniciados.\n\nReproducidos %3$s de %4$s.</string>
-  <string name="statistics_mode">Modo de estatísticas</string>
-  <string name="statistics_mode_normal">Calcular a duración que foi realmente reproducida. Reproducir dúas veces conta dobre, mentres que marcar como lido non conta</string>
-  <string name="statistics_mode_count_all">Suma todos os episodios marcados como reproducidos</string>
   <string name="statistics_speed_not_counted">Aviso: A velocidade de reprodución non se ten en conta en ningún caso.</string>
   <string name="statistics_reset_data">Restablecer estatísticas</string>
   <string name="statistics_reset_data_msg">Esto borrará o histórico de escoita de todos os episodios. Seguro que queres borralo?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d descargas en paralelo</string>
   <string name="feed_auto_download_global">Valor xeral por defecto</string>
   <string name="feed_auto_download_always">Sempre</string>
-  <string name="feed_auto_download_never">Nunca</string>
+  <string name="never">Nunca</string>
   <string name="send_label">Enviar...</string>
-  <string name="episode_cleanup_never">Nunca</string>
   <string name="episode_cleanup_except_favorite_removal">Cando non favorito</string>
   <string name="episode_cleanup_queue_removal">Cando non esté na cola</string>
   <string name="episode_cleanup_after_listening">Tras rematar</string>

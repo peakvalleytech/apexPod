@@ -37,10 +37,6 @@
   <string name="change_setting">Ändra</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Total uppspelningstid:</string>
-  <string name="statistics_details_dialog">%1$d av %2$d episoder startade.\n\nSpelat %3$s av %4$s.</string>
-  <string name="statistics_mode">Statistikläge</string>
-  <string name="statistics_mode_normal">Beräkna faktisk speltid. Att spela två gånger räknas två gånger, men att markera som spelad räknas inte</string>
-  <string name="statistics_mode_count_all">Summera alla episoder som är markerade som spelade</string>
   <string name="statistics_speed_not_counted">Notera: Uppspelningshastighet tas inte med i beräkningarna. </string>
   <string name="statistics_reset_data">Återställ statistikdata</string>
   <string name="statistics_reset_data_msg">Detta kommer att radera historiken av spelad tid för alla episoder. Är du säker på att du vill fortsätta?</string>
@@ -101,9 +97,8 @@
   <string name="parallel_downloads">%1$d parallella nedladdningar</string>
   <string name="feed_auto_download_global">Globala standardinställningar</string>
   <string name="feed_auto_download_always">Alltid</string>
-  <string name="feed_auto_download_never">Aldrig</string>
+  <string name="never">Aldrig</string>
   <string name="send_label">Skicka…</string>
-  <string name="episode_cleanup_never">Aldrig</string>
   <string name="episode_cleanup_except_favorite_removal">När ej favorit</string>
   <string name="episode_cleanup_queue_removal">Om inte köad</string>
   <string name="episode_cleanup_after_listening">Efter färdigspelad</string>

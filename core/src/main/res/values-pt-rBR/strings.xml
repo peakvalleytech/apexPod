@@ -12,7 +12,7 @@
   <string name="favorite_episodes_label">Favoritos</string>
   <string name="new_label">Nova</string>
   <string name="settings_label">Configurações</string>
-  <string name="downloads_label">Downloads</string>
+  <string name="downloads_label">Descargas</string>
   <string name="open_autodownload_settings">Abrir as configurações</string>
   <string name="downloads_completed_label">Finalizado</string>
   <string name="downloads_log_label">Log</string>
@@ -37,10 +37,6 @@
   <string name="change_setting">Alterar</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Tempo total de reprodução de episódios:</string>
-  <string name="statistics_details_dialog">%1$d de %2$d episódios iniciados.\n\nReproduzidos %3$s de %4$s.</string>
-  <string name="statistics_mode">Modo Estatística</string>
-  <string name="statistics_mode_normal">Calcular a duração que foi efetivamente reproduzido. Reproduzir duas vezes conta em dobro, enquanto marcar como reproduzido não é contado</string>
-  <string name="statistics_mode_count_all">Somar todos os episódios marcados como reproduzido</string>
   <string name="statistics_speed_not_counted">Nota: A velocidade de reprodução nunca é levada em conta.</string>
   <string name="statistics_reset_data">Limpar dados de estatísticas</string>
   <string name="statistics_reset_data_msg">Isso ira apagar o histórico de duração de reprodução de todos os episódios. Tem certeza que deseja continuar?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d downloads paralelos</string>
   <string name="feed_auto_download_global">Padrão global</string>
   <string name="feed_auto_download_always">Sempre</string>
-  <string name="feed_auto_download_never">Nunca</string>
+  <string name="never">Nunca</string>
   <string name="send_label">Enviar...</string>
-  <string name="episode_cleanup_never">Nunca</string>
   <string name="episode_cleanup_except_favorite_removal">Quando não estiver entre os favoritos</string>
   <string name="episode_cleanup_queue_removal">Quando não está na fila</string>
   <string name="episode_cleanup_after_listening">Depois de concluído</string>

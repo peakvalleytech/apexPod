@@ -37,10 +37,6 @@
   <string name="change_setting">Zmeniť</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Celkový čas prehrávaných podcastov:</string>
-  <string name="statistics_details_dialog">%1$d z %2$d epizód sa začala prehrávať.\n\nPrehrávané %3$s z %4$s.</string>
-  <string name="statistics_mode">Režim štatistík</string>
-  <string name="statistics_mode_normal">Spočítať skutočný čas prehrávania. Opätovné prehrávanie sa započíta znovu, zatiaľ čo označenie ako prehrané sa nepočíta vôbec</string>
-  <string name="statistics_mode_count_all">Súčet všetkých epizód, ktoré boli označené ako prehrané.</string>
   <string name="statistics_speed_not_counted">Poznámka: Rýchlosť prehrávania sa nikdy neberie do úvahy.</string>
   <string name="statistics_reset_data">Vynulovať štatistiky</string>
   <string name="statistics_reset_data_msg">Táto operácia vymaže časovú históriu prehrávania všetkých epizód. Ste si istý že chcete vykonať túto akciu?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d súbežné sťahovania</string>
   <string name="feed_auto_download_global">Globálne predvolené</string>
   <string name="feed_auto_download_always">Vždy</string>
-  <string name="feed_auto_download_never">Nikdy</string>
+  <string name="never">Nikdy</string>
   <string name="send_label">Poslať…</string>
-  <string name="episode_cleanup_never">Nikdy</string>
   <string name="episode_cleanup_except_favorite_removal">Ak nie je medzi obľúbenými</string>
   <string name="episode_cleanup_queue_removal">Ak nie je v poradí</string>
   <string name="episode_cleanup_after_listening">Po dokončení</string>

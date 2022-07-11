@@ -30,9 +30,7 @@
   <string name="swipeactions_label">Aiciones al eslizar</string>
   <string name="swipeactions_summary">Escueyi qué asocede al eslizar un episodiu que tea nuna llista</string>
   <!--Statistics fragment-->
-  <string name="statistics_details_dialog">Aniciáronse %1$d de %2$d episodios.\n\nReproduciéronse %3$s de %4$s.</string>
-  <string name="statistics_mode">Mou de les estadístiques</string>
-  <string name="statistics_speed_not_counted">Avisu: la velocidá de reproducción enxamás se tien en cuenta.</string>
+    <string name="statistics_speed_not_counted">Avisu: la velocidá de reproducción enxamás se tien en cuenta.</string>
   <string name="statistics_reset_data">Reafitar les estadístiques</string>
   <string name="statistics_counting_since">Dende\'l %s,\nreproduxesti</string>
   <!--Download Statistics fragment-->
@@ -83,9 +81,8 @@
   <string name="parallel_downloads">%1$d descargues paraleles</string>
   <string name="feed_auto_download_global">El valor global</string>
   <string name="feed_auto_download_always">Siempres</string>
-  <string name="feed_auto_download_never">Enxamás</string>
+  <string name="never">Enxamás</string>
   <string name="send_label">Unviar…</string>
-  <string name="episode_cleanup_never">Enxamás</string>
   <string name="episode_cleanup_except_favorite_removal">Al nun tar en Favoritos</string>
   <string name="episode_cleanup_queue_removal">Al nun tar na cola</string>
   <string name="episode_cleanup_after_listening">Dempués d\'acabar</string>

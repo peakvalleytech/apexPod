@@ -37,10 +37,6 @@
   <string name="change_setting">تغییر</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">مجموع زمان پادکست‌های پخش‌شده:</string>
-  <string name="statistics_details_dialog">%1$d از %2$d قسمت‌ها شروع شده است.\n\n%3$s از %4$s پخش.</string>
-  <string name="statistics_mode">حالت آمار</string>
-  <string name="statistics_mode_normal">مدت زمان واقعی پخش را محاسبه کنید. دو بار پخش کردن دو بار شمارش می‌شود، در حالیکه علامت‌گذاری‌شده به‌عنوان پخش‌شده محاسبه نمی‌شود.</string>
-  <string name="statistics_mode_count_all">مجموع اپیزودها را به عنوان پخش شده علامت گذاری کن.</string>
   <string name="statistics_speed_not_counted">توجه: سرعت پخش هرگز به حساب نمی‌آید.</string>
   <string name="statistics_reset_data">بازنشانی داده‌های آماری</string>
   <string name="statistics_reset_data_msg">این همهٔ تاریخچهٔ طول پخش همهٔ قسمت‌های را پاک می‌کند. مطمئنید که می‌خواید ادامه دهید؟</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d بارگیری موازی</string>
   <string name="feed_auto_download_global">پیش‌فرض جهانی</string>
   <string name="feed_auto_download_always">همیشه</string>
-  <string name="feed_auto_download_never">هیچگاه</string>
+  <string name="never">هیچگاه</string>
   <string name="send_label">ارسال…</string>
-  <string name="episode_cleanup_never">هرگز</string>
   <string name="episode_cleanup_except_favorite_removal">وقتی که جزو علاقه‌مندی‌ها نباشد</string>
   <string name="episode_cleanup_queue_removal">وقتی که در صف نیست</string>
   <string name="episode_cleanup_after_listening">بعد از تمام شدن</string>

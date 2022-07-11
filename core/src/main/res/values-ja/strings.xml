@@ -30,10 +30,6 @@
   <!--SwipeActions-->
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">エピソード総再生時間:</string>
-  <string name="statistics_details_dialog">%2$d から %1$d のエピソードが開始しました。\n\n%4$s から%3$s を再生しました。</string>
-  <string name="statistics_mode">統計情報モード</string>
-  <string name="statistics_mode_normal">実際に再生された時間を計算します。 2回再生すると2回カウントされ、再生済のマークはカウントされません</string>
-  <string name="statistics_mode_count_all">再生済みとマークされたすべてのポッドキャストを集計する</string>
   <string name="statistics_speed_not_counted">注意: 再生速度は考慮されません。</string>
   <string name="statistics_reset_data">統計情報のデータをリセット</string>
   <string name="statistics_reset_data_msg">これにより、すべてのエピソードを再生した期間の履歴が消去されます。 続行しますか?</string>
@@ -89,9 +85,8 @@
   <string name="parallel_downloads">%1$d個を並列ダウンロード</string>
   <string name="feed_auto_download_global">全般のデフォルト</string>
   <string name="feed_auto_download_always">常に</string>
-  <string name="feed_auto_download_never">しない</string>
+  <string name="never">しない</string>
   <string name="send_label">送信…</string>
-  <string name="episode_cleanup_never">しない</string>
   <string name="episode_cleanup_except_favorite_removal">お気に入りされていない</string>
   <string name="episode_cleanup_queue_removal">キューにない時</string>
   <string name="episode_cleanup_after_listening">完了後</string>

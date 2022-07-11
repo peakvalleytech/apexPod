@@ -37,10 +37,6 @@
   <string name="change_setting">تغيير </string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">الوقت الكلي للحلقات المشغلة:</string>
-  <string name="statistics_details_dialog">%1$d حلقة من  %2$d بدأ.\n\nتشغيلها %3$s من مجموع %4$s.</string>
-  <string name="statistics_mode">نمط الإحصاءات</string>
-  <string name="statistics_mode_normal">أحسب وقت التشغيل الفعلي. التشغيل مرتين يحسب مرتين, بينما التحديد بـ مشغلة لا يحتسب</string>
-  <string name="statistics_mode_count_all">أحسب كل الحلقات المحددة بـ مشغلة</string>
   <string name="statistics_speed_not_counted">ملاحظة: سرعة التشغيل لن تأخذ بالاعتبار.</string>
   <string name="statistics_reset_data">صفر الاحصاءات</string>
   <string name="statistics_reset_data_msg">هذا سيمسح سجل وقت التشغيل لكل الحلقات. هل أنت متأكد؟</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d تنزيلات متوازية</string>
   <string name="feed_auto_download_global">اعدادات افتراضية شاملة</string>
   <string name="feed_auto_download_always">دائما</string>
-  <string name="feed_auto_download_never">ابدا</string>
+  <string name="never">ابدا</string>
   <string name="send_label">ارسال ...</string>
-  <string name="episode_cleanup_never">ابدا</string>
   <string name="episode_cleanup_except_favorite_removal">عند عدم التفضيل</string>
   <string name="episode_cleanup_queue_removal">إذا لم يكن في لائحة الاستماع</string>
   <string name="episode_cleanup_after_listening">بعد الانتهاء</string>

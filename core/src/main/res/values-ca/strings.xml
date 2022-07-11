@@ -37,10 +37,6 @@
   <string name="change_setting">Canvia</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Temps total d\'episodis reproduïts:</string>
-  <string name="statistics_details_dialog">%1$d de %2$depisodis començats.\n\nReproduïts %3$s de %4$s.</string>
-  <string name="statistics_mode">Mode d\'estadístiques</string>
-  <string name="statistics_mode_normal">Calcula el temps que realment s\'ha reproduït. La reproducció repetida es comptarà repetides vegades, mentre que no es tindrà en compte si s\'ha marcat com a reproduït.  </string>
-  <string name="statistics_mode_count_all">Suma tots els episodis marcats com a reproduïts</string>
   <string name="statistics_speed_not_counted">Avís: la velocitat de reproducció mai no es té en compte.</string>
   <string name="statistics_reset_data">Resetejar dades estadístiques</string>
   <string name="statistics_reset_data_msg">Açò esborrarà l\'històric de la duració reproduïda per a tots els episodis. ¿Segur que vols continuar?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d descàrregues paral·leles</string>
   <string name="feed_auto_download_global">Valor predeterminat global</string>
   <string name="feed_auto_download_always">Sempre</string>
-  <string name="feed_auto_download_never">Mai</string>
+  <string name="never">Mai</string>
   <string name="send_label">Enviar...</string>
-  <string name="episode_cleanup_never">Mai</string>
   <string name="episode_cleanup_except_favorite_removal">Quan no és favorit</string>
   <string name="episode_cleanup_queue_removal">Quan no està a la cua</string>
   <string name="episode_cleanup_after_listening">Després d\'acabar</string>

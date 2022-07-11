@@ -37,10 +37,6 @@
   <string name="change_setting">Muuda</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Saadete kogupikkus:</string>
-  <string name="statistics_details_dialog">%1$d %2$d-st saatest on alustatud.\n\nKuulatud on %3$s saadet %4$s-st.</string>
-  <string name="statistics_mode">Statistika režiim</string>
-  <string name="statistics_mode_normal">Arvuta kuulamise pikkus tegelikult kuulatud aja järgi. Kaks korda kuulatud koht arvestatakse topelt, aga kuulatuks märkimist ei arvestata</string>
-  <string name="statistics_mode_count_all">Kokkuvõte kõigist esitatud saadetest</string>
   <string name="statistics_speed_not_counted">Märkus: taasesituse kiirust ei arvestata kunagi.</string>
   <string name="statistics_reset_data">Lähtesta statistika andmed</string>
   <string name="statistics_reset_data_msg">See lähtestab kõigi esitatud saadete kuulamise pikkuse ajaloo. Kas oled kindel, et tahad jätkata?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d paralleelset allalaadimist</string>
   <string name="feed_auto_download_global">Üldine vaikeväärtus</string>
   <string name="feed_auto_download_always">Alati</string>
-  <string name="feed_auto_download_never">Mitte kunagi</string>
+  <string name="never">Mitte kunagi</string>
   <string name="send_label">Saada...</string>
-  <string name="episode_cleanup_never">Mitte kunagi</string>
   <string name="episode_cleanup_except_favorite_removal">Kui pole lemmik</string>
   <string name="episode_cleanup_queue_removal">Kui pole järjekorras</string>
   <string name="episode_cleanup_after_listening">Pärast lõpetamist</string>

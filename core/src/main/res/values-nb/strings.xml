@@ -37,10 +37,6 @@
   <string name="change_setting">Endre</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Total tid, avspilte episoder</string>
-  <string name="statistics_details_dialog">Startet %1$d av %2$d episoder.\n\nAvspilt %3$s av %4$s.</string>
-  <string name="statistics_mode">Statistikkmodus</string>
-  <string name="statistics_mode_normal">Beregn faktisk avspilt varighet. Dobbel avspilling telles to ganger, mens markering som avspilt telles ikke</string>
-  <string name="statistics_mode_count_all">Oppsummer alle podkaster merket som avspilt</string>
   <string name="statistics_speed_not_counted">Merk: Avspillingshastighet tas aldri med i betraktningen.</string>
   <string name="statistics_reset_data">Tilbakestill statistikkdata</string>
   <string name="statistics_reset_data_msg">Dette vil slette historikk om varighet som er spilt for alle episoder. Er du sikker på at du vil fortsette?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d samtidige nedlastinger</string>
   <string name="feed_auto_download_global">Global standard</string>
   <string name="feed_auto_download_always">Alltid</string>
-  <string name="feed_auto_download_never">Aldri</string>
+  <string name="never">Aldri</string>
   <string name="send_label">Send...</string>
-  <string name="episode_cleanup_never">Aldri</string>
   <string name="episode_cleanup_except_favorite_removal">Hvis ikke favoritt</string>
   <string name="episode_cleanup_queue_removal">Når ikke i kø</string>
   <string name="episode_cleanup_after_listening">Etter fullført avspilling</string>

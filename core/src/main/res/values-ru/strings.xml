@@ -33,10 +33,6 @@
   <string name="swipe_left">Проведите Влево</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Общее время воспроизведения выпусков:</string>
-  <string name="statistics_details_dialog">Начато %1$d выпусков из %2$d.\n\nВоспроизведено %3$s из %4$s.</string>
-  <string name="statistics_mode">Режим подсчета статистики</string>
-  <string name="statistics_mode_normal">Рассчитывать длительность действительного воспроизведения. Повторное воспроизведение засчитывается, а отметка о прослушивании — нет</string>
-  <string name="statistics_mode_count_all">Прибавлять также все выпуски, отмеченные как прослушанные</string>
   <string name="statistics_speed_not_counted">Замечание: Скорость воспроизведения не учитывается никогда.</string>
   <string name="statistics_reset_data">Сбросить статистику</string>
   <string name="statistics_reset_data_msg">Вы уверены, что хотите стереть все записи о продолжительности воспроизведения выпусков?</string>
@@ -95,9 +91,8 @@
   <string name="parallel_downloads">%1$d совместных загрузок</string>
   <string name="feed_auto_download_global">как по умолчанию</string>
   <string name="feed_auto_download_always">всегда</string>
-  <string name="feed_auto_download_never">никогда</string>
+  <string name="never">никогда</string>
   <string name="send_label">Отправить…</string>
-  <string name="episode_cleanup_never">никогда</string>
   <string name="episode_cleanup_except_favorite_removal">Когда не в избранном</string>
   <string name="episode_cleanup_queue_removal">Когда не в очереди</string>
   <string name="episode_cleanup_after_listening">После прослушивания</string>

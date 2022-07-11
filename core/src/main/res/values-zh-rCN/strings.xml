@@ -37,10 +37,6 @@
   <string name="change_setting">更改</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">节目总播放时间:</string>
-  <string name="statistics_details_dialog">听过了总计 %2$d 期播客中的 %1$d 期。\n\n播放了总计 %4$s 中的 %3$s。</string>
-  <string name="statistics_mode">统计模式</string>
-  <string name="statistics_mode_normal">计算实际上的播放次数与时长。播放过两次则将被识别为两次，但是被手动标记为已播放状态的不算。</string>
-  <string name="statistics_mode_count_all">计算所有标记为已播放的节目</string>
   <string name="statistics_speed_not_counted">注意：播放速度不在考虑范围之内。</string>
   <string name="statistics_reset_data">重置统计数据</string>
   <string name="statistics_reset_data_msg">这将抹去总播放时间的历史。您确定要进行该操作吗？</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d 个并行下载</string>
   <string name="feed_auto_download_global">全局默认</string>
   <string name="feed_auto_download_always"> 总是</string>
-  <string name="feed_auto_download_never">从不</string>
+  <string name="never">从不</string>
   <string name="send_label">发送</string>
-  <string name="episode_cleanup_never">从不</string>
   <string name="episode_cleanup_except_favorite_removal">当未收藏时</string>
   <string name="episode_cleanup_queue_removal">当不在队列中</string>
   <string name="episode_cleanup_after_listening">结束后</string>

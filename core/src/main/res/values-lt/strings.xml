@@ -37,10 +37,6 @@
   <string name="change_setting">Keisti</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Bendra perklausytų epizodų trukmė:</string>
-  <string name="statistics_details_dialog">Paleisti %1$d iš %2$d epizodų.\n\nPerklausyta %3$s iš %4$s.</string>
-  <string name="statistics_mode">Statistikos režimas</string>
-  <string name="statistics_mode_normal">Apskaičiuoti tikrąją atkūrimo trukmę. Perklausa dukart skaičiuojama dvigubai, o pažymėjimas perklausytu neskaičiuojamas</string>
-  <string name="statistics_mode_count_all">Sumuoti visus epizodus, pažymėtus kaip perklausytus</string>
   <string name="statistics_speed_not_counted">Atkreipkite dėmesį: į atkūrimo spartą neatsižvelgiama.</string>
   <string name="statistics_reset_data">Nustatyti statistikos duomenis iš naujo</string>
   <string name="statistics_reset_data_msg">Bus išvalyta visų epizodų perklausytos trukmės istorija. Ar tikrai norite tęsti?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d lygiagretūs atsiuntimai</string>
   <string name="feed_auto_download_global">Globali numatytoji</string>
   <string name="feed_auto_download_always">Visada</string>
-  <string name="feed_auto_download_never">Niekada</string>
+  <string name="never">Niekada</string>
   <string name="send_label">Siųsti...</string>
-  <string name="episode_cleanup_never">Niekada</string>
   <string name="episode_cleanup_except_favorite_removal">Kai nėra mėgstamas</string>
   <string name="episode_cleanup_queue_removal">Jei nėra eilėje</string>
   <string name="episode_cleanup_after_listening">Pabaigus klausyti</string>

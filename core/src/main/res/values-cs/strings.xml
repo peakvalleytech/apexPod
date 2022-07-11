@@ -31,10 +31,6 @@
   <!--SwipeActions-->
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Celkový čas přehraných epizod:</string>
-  <string name="statistics_details_dialog">%1$d z %2$d započatých epizod.\n\nPřehraných %3$s z %4$s.</string>
-  <string name="statistics_mode">Režim statistik</string>
-  <string name="statistics_mode_normal">Počítat skutečně přehraný čas. Tj. 5 minutová epizoda poslechnutá dvakrát je 10 minut, 7 minutová epizoda pouze označená jako poslechnutá je 0 minut.</string>
-  <string name="statistics_mode_count_all">Sečíst délky všech epizod označených jako poslechnuté</string>
   <string name="statistics_speed_not_counted">Upozornění: Rychlost přehrávání se nikdy nebere v potaz.</string>
   <string name="statistics_reset_data">Vynulovat statistiky</string>
   <string name="statistics_reset_data_msg">Toto smaže veškerou historii přehrávání pro všechny epizody. Vážně chcete pokračovat?</string>
@@ -95,9 +91,8 @@
   <string name="parallel_downloads">%1$d souběžných stahování</string>
   <string name="feed_auto_download_global">Globální nastavení</string>
   <string name="feed_auto_download_always">Vždy</string>
-  <string name="feed_auto_download_never">Nikdy</string>
+  <string name="never">Nikdy</string>
   <string name="send_label">Odeslat</string>
-  <string name="episode_cleanup_never">Nikdy</string>
   <string name="episode_cleanup_except_favorite_removal">Pokud není mezi oblíbenými</string>
   <string name="episode_cleanup_queue_removal">Pokud není ve frontě</string>
   <string name="episode_cleanup_after_listening">Po dokončení</string>

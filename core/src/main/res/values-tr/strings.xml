@@ -31,10 +31,6 @@
   <!--SwipeActions-->
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Oynatılan bölümlerin toplam süresi:</string>
-  <string name="statistics_details_dialog">%1$d out of %2$d episodes started.\n\nPlayed %3$s out of %4$s.</string>
-  <string name="statistics_mode">İstatistik modu</string>
-  <string name="statistics_mode_normal">Gerçek oynatılan süreyi hesaplayın. Oynatıldı olarak işaretlemeler sayılmazken, iki kez oynatılan iki kez sayılır</string>
-  <string name="statistics_mode_count_all">Sum up all episodes marked as played</string>
   <string name="statistics_speed_not_counted">Uyarı: Oynatma hızı asla hesaba katılmaz.</string>
   <string name="statistics_reset_data">İstatistik verilerini sıfırla</string>
   <string name="statistics_reset_data_msg">Bu işlem, tüm bölümler için oynanan süre geçmişini siler. Devam etmek istediğinizden emin misiniz?</string>
@@ -93,9 +89,8 @@
   <string name="parallel_downloads">%1$d eşzamanlı indirmeler</string>
   <string name="feed_auto_download_global">Varsayılan ayarlar</string>
   <string name="feed_auto_download_always">Her zaman</string>
-  <string name="feed_auto_download_never">Hiçbir zaman</string>
+  <string name="never">Hiçbir zaman</string>
   <string name="send_label">Gönder...</string>
-  <string name="episode_cleanup_never">Hiçbir zaman</string>
   <string name="episode_cleanup_except_favorite_removal">Favorilenmemişken</string>
   <string name="episode_cleanup_queue_removal">Sırada değilse</string>
   <string name="episode_cleanup_after_listening">Bittikten sonra</string>

@@ -37,10 +37,6 @@
   <string name="change_setting">Módosítás</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">A lejátszott epizódok összideje:</string>
-  <string name="statistics_details_dialog">%1$d/%2$d epizód elindítva.\n\n%3$s/%4$s lejátszva.</string>
-  <string name="statistics_mode">Statisztikai mód</string>
-  <string name="statistics_mode_normal">A tényleges lejátszási idő számítása. A kétszeri lejátszás kétszer lesz számolva, míg a lejátszottként megjelölés nem számít bele</string>
-  <string name="statistics_mode_count_all">Az összes lejátszottnak jelölt epizód összeszámolása</string>
   <string name="statistics_speed_not_counted">Megjegyzés: a lejátszási sebesség nem lesz beleszámítva.</string>
   <string name="statistics_reset_data">Statisztikai adatok alaphelyzetbe állítása</string>
   <string name="statistics_reset_data_msg">Ez törli az összes epizód lejátszási hosszát. Biztos, hogy folytatja?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d párhuzamos letöltés</string>
   <string name="feed_auto_download_global">Globális alapértelmezett</string>
   <string name="feed_auto_download_always">Mindig</string>
-  <string name="feed_auto_download_never">Soha</string>
+  <string name="never">Soha</string>
   <string name="send_label">Küldés…</string>
-  <string name="episode_cleanup_never">Soha</string>
   <string name="episode_cleanup_except_favorite_removal">Ha nincs felvéve a kedvencek közé</string>
   <string name="episode_cleanup_queue_removal">Ha nincs sorbaállítva</string>
   <string name="episode_cleanup_after_listening">Befejezés után</string>

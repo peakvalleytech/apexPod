@@ -37,10 +37,6 @@
   <string name="change_setting">Wijzigen</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Totaalduur van afgespeelde afleveringen:</string>
-  <string name="statistics_details_dialog">%1$d van %2$d afleveringen gestart.\n\n%3$s van %4$s afgespeeld.</string>
-  <string name="statistics_mode">Rekenmethode</string>
-  <string name="statistics_mode_normal">Bereken de daadwerkelijke speeltijd. Tweemaal afspelen wordt twee keer gerekend; gemarkeerd als \'afgespeeld\' wordt niet meegeteld.</string>
-  <string name="statistics_mode_count_all">Alle afgespeelde afleveringen opsommen</string>
   <string name="statistics_speed_not_counted">Let op: er wordt geen rekening gehouden met de afspeelsnelheid.</string>
   <string name="statistics_reset_data">Statistieken op nul zetten</string>
   <string name="statistics_reset_data_msg">Dit wist alle luistertijden van alle afleveringen. Weet je zeker dat je wilt doorgaan?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d gelijktijdige downloads</string>
   <string name="feed_auto_download_global">Standaardinstelling</string>
   <string name="feed_auto_download_always">Altijd</string>
-  <string name="feed_auto_download_never">Nooit</string>
+  <string name="never">Nooit</string>
   <string name="send_label">Versturen...</string>
-  <string name="episode_cleanup_never">Nooit</string>
   <string name="episode_cleanup_except_favorite_removal">Indien niet in favorieten</string>
   <string name="episode_cleanup_queue_removal">Indien niet in wachtrij</string>
   <string name="episode_cleanup_after_listening">Als aflevering volledig is afgespeeld</string>

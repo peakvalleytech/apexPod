@@ -37,10 +37,6 @@
   <string name="change_setting">Змінити</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">Загальний час прослуханих подкастів:</string>
-  <string name="statistics_details_dialog">%1$d з %2$d епізодів почато.\n\nПрослухано %3$s з %4$s.</string>
-  <string name="statistics_mode">Режим статистики</string>
-  <string name="statistics_mode_normal">Обчислити тривалість дійсно прослуханого. Прослухане двічі враховується двічі, але просто позначене як прослухане не враховується </string>
-  <string name="statistics_mode_count_all">Підсумок всіх епізодів, позначених як відтворені</string>
   <string name="statistics_speed_not_counted">Зауваження: Швидкість програвання не береться до уваги.</string>
   <string name="statistics_reset_data">Cкинути статистику</string>
   <string name="statistics_reset_data_msg">Це зітре історію тривалості відтворення всіх епізодів. Ви впевнені, що хочете продовжити?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d паралельні завантаження </string>
   <string name="feed_auto_download_global">За замовчуванням</string>
   <string name="feed_auto_download_always">Завжди</string>
-  <string name="feed_auto_download_never">Ніколи</string>
+  <string name="never">Ніколи</string>
   <string name="send_label">Відправити…</string>
-  <string name="episode_cleanup_never">Ніколи</string>
   <string name="episode_cleanup_except_favorite_removal">Коли не вибрано</string>
   <string name="episode_cleanup_queue_removal">Якщо не в черзі</string>
   <string name="episode_cleanup_after_listening">Після закінчення</string>

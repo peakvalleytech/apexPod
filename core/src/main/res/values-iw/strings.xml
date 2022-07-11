@@ -37,10 +37,6 @@
   <string name="change_setting">שינוי</string>
   <!--Statistics fragment-->
   <string name="total_time_listened_to_podcasts">זמן הנגינה הכולל של הפרקים:</string>
-  <string name="statistics_details_dialog">%1$d מתוך %2$d פרקים החלו.\n\nנוגנו %3$s מתוך %4$s.</string>
-  <string name="statistics_mode">מצב סטטיסטיקה</string>
-  <string name="statistics_mode_normal">חישוב זמן שנוגן בפועל. נגינה כפולה נספרת פעמיים, בעוד שסימון כנוגן לא נחשב.</string>
-  <string name="statistics_mode_count_all">סכימת כל הפרקים שסומנו שהושמעו</string>
   <string name="statistics_speed_not_counted">לתשומת לבך: אין התייחסות למהירות הנגינה.</string>
   <string name="statistics_reset_data">איפוס נתונים סטטיסטיים</string>
   <string name="statistics_reset_data_msg">פעולה זו תמחק את משך הנגינה של כל הפרקים. להמשיך?</string>
@@ -100,9 +96,8 @@
   <string name="parallel_downloads">%1$d הורדות במקביל</string>
   <string name="feed_auto_download_global">בררת מחדל גלובלית</string>
   <string name="feed_auto_download_always">תמיד</string>
-  <string name="feed_auto_download_never">אף פעם</string>
+  <string name="never">אף פעם</string>
   <string name="send_label">שליחה…</string>
-  <string name="episode_cleanup_never">אף פעם</string>
   <string name="episode_cleanup_except_favorite_removal">כאשר לא במועדפים</string>
   <string name="episode_cleanup_queue_removal">כאשר לא בתור</string>
   <string name="episode_cleanup_after_listening">אחרי סיום</string>

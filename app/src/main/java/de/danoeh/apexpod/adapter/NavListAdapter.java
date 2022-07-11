@@ -257,7 +257,7 @@ public class NavListAdapter extends RecyclerView.Adapter<NavListAdapter.Holder>
                             .setTitle(R.string.episode_cache_full_title)
                             .setMessage(R.string.episode_cache_full_message)
                             .setPositiveButton(android.R.string.ok, null)
-                            .setNeutralButton(R.string.open_autodownload_settings, (dialog, which) -> {
+                            .setNeutralButton(R.string.auto_download_settings_label, (dialog, which) -> {
                                 Intent intent = new Intent(context, PreferenceActivity.class);
                                 intent.putExtra(PreferenceActivity.OPEN_AUTO_DOWNLOAD_SETTINGS, true);
                                 context.startActivity(intent);
