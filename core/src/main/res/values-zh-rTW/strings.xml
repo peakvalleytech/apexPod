@@ -311,8 +311,7 @@
   <string name="playback_pref_sum">耳機線控、快轉時間、待播清單</string>
   <string name="network_pref">網路</string>
   <string name="network_pref_sum">更新週期、下載控制、行動網路</string>
-  <string name="pref_followQueue_title">連續播放</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">耳機或藍牙裝置拔除時</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">耳機或藍牙裝置拔除時</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">接上耳機時繼續播放</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">連上藍牙時繼續播放</string>
   <string name="pref_stream_over_download_title">偏好串流</string>
@@ -350,8 +349,7 @@
   <string name="pref_theme_title_light">淡色</string>
   <string name="pref_theme_title_dark">深色</string>
   <string name="pref_theme_title_trueblack">黑色 (適用 AMOLED 螢幕)</string>
-  <string name="pref_episode_cache_unlimited">無限</string>
-  <string name="pref_gpodnet_authenticate_title">登入</string>
+    <string name="pref_gpodnet_authenticate_title">登入</string>
   <string name="pref_gpodnet_authenticate_sum">登入您的 gpodder.net 帳戶以同步訂閱資訊</string>
   <string name="pref_gpodnet_logout_title">登出</string>
   <string name="pref_gpodnet_logout_toast">成功登出</string>
@@ -394,8 +392,7 @@
   <string name="open_bug_tracker">開啟錯誤追蹤</string>
   <string name="copy_to_clipboard">複製到剪貼簿</string>
   <string name="copied_to_clipboard">已複製到剪貼簿</string>
-  <string name="pref_media_player_message">設定用以播放檔案的媒體播放器</string>
-  <string name="pref_current_value">當前設定：%1$s</string>
+    <string name="pref_current_value">當前設定：%1$s</string>
   <string name="pref_proxy_title">代理伺服器</string>
   <string name="pref_proxy_sum">設定代理伺服器</string>
   <string name="pref_no_browser_found">找不到任何瀏覽器</string>

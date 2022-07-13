@@ -405,8 +405,7 @@
     <item quantity="many">Kas %d valandų</item>
     <item quantity="other">Kas %d valandų</item>
   </plurals>
-  <string name="pref_followQueue_title">Nenutrūkstamas atkūrimas</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Atjungiamos ausinės ar „Bluetooth“</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Atjungiamos ausinės ar „Bluetooth“</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Pakartotinai prijungus ausines</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Pakartotinai prisijungus prie „Bluetooth“</string>
   <string name="pref_stream_over_download_title">Teikti pirmenybę klausymuisi tiesiogiai</string>
@@ -444,8 +443,7 @@
   <string name="pref_theme_title_light">Šviesi</string>
   <string name="pref_theme_title_dark">Tamsi</string>
   <string name="pref_theme_title_trueblack">Juoda (paruošta AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Neribojamas</string>
-  <string name="pref_gpodnet_authenticate_title">Prisijungimas</string>
+    <string name="pref_gpodnet_authenticate_title">Prisijungimas</string>
   <string name="pref_gpodnet_authenticate_sum">Norėdami sinchronizuoti prenumeratas, prisijunkite prie savo „gpodder.net“ paskyros.</string>
   <string name="pref_gpodnet_logout_title">Atsijungti</string>
   <string name="pref_gpodnet_logout_toast">Sėkmingai atsijungta</string>
@@ -488,8 +486,7 @@
   <string name="open_bug_tracker">Atverti klaidų sekimo sistemą</string>
   <string name="copy_to_clipboard">Kopijuoti į iškarpinę</string>
   <string name="copied_to_clipboard">Nukopijuotas į iškarpinę</string>
-  <string name="pref_media_player_message">Pasirinkite medijos grotuvą, kuris bus naudojamas atkūrimui</string>
-  <string name="pref_current_value">Dabartinė reikšmė: %1$s</string>
+    <string name="pref_current_value">Dabartinė reikšmė: %1$s</string>
   <string name="pref_proxy_title">Įgaliotasis serveris</string>
   <string name="pref_proxy_sum">Nustatyti įgaliotąjį tinklo serverį</string>
   <string name="pref_no_browser_found">Nerasta jokia interneto naršyklė.</string>

@@ -290,8 +290,7 @@
   <string name="playback_pref_sum">ヘッドフォン制御、スキップ間隔、キュー</string>
   <string name="network_pref">ネットワーク</string>
   <string name="network_pref_sum">更新間隔、ダウンロード制御、モバイル通信</string>
-  <string name="pref_followQueue_title">連続再生</string>
-  <string name="pref_unpauseOnHeadsetReconnect_title">ヘッドフォン再接続</string>
+    <string name="pref_unpauseOnHeadsetReconnect_title">ヘッドフォン再接続</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Bluetooth再接続</string>
   <string name="pref_stream_over_download_title">ストリーミングを優先する</string>
   <string name="pref_stream_over_download_sum">ダウンロードボタンの代わりにストリームボタンをリストに表示します。</string>
@@ -324,8 +323,7 @@
   <string name="pref_theme_title_light">ライト</string>
   <string name="pref_theme_title_dark">ダーク</string>
   <string name="pref_theme_title_trueblack">黒 (AMOLED 対応)</string>
-  <string name="pref_episode_cache_unlimited">無制限</string>
-  <string name="pref_gpodnet_authenticate_title">ログイン</string>
+    <string name="pref_gpodnet_authenticate_title">ログイン</string>
   <string name="pref_gpodnet_authenticate_sum">購読を同期するために、あなたのgpodder.netアカウントにログインします。</string>
   <string name="pref_gpodnet_logout_title">ログアウト</string>
   <string name="pref_gpodnet_logout_toast">ログアウトしました</string>
@@ -358,8 +356,7 @@
   <string name="open_bug_tracker">バグトラッカーを開く</string>
   <string name="copy_to_clipboard">クリップボードにコピー</string>
   <string name="copied_to_clipboard">クリップボードにコピーしました</string>
-    <string name="pref_media_player_message">ファイルを再生するメディアプレーヤーを選択</string>
-  <string name="pref_current_value">現在の値: %1$s</string>
+    <string name="pref_current_value">現在の値: %1$s</string>
   <string name="pref_proxy_title">プロキシ</string>
   <string name="pref_proxy_sum">ネットワーク プロキシの設定</string>
   <string name="pref_no_browser_found">Webブラウザーが見つかりません。</string>

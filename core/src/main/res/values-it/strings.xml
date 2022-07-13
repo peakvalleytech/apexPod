@@ -375,8 +375,7 @@
     <item quantity="one">Ogni ora</item>
     <item quantity="other">Ogni %d ore </item>
   </plurals>
-  <string name="pref_followQueue_title">Riproduzione continua</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Disconnessione cuffie o Bluetooth</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Disconnessione cuffie o Bluetooth</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Riconnessione cuffie</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Riconnessione Bluetooth</string>
   <string name="pref_stream_over_download_title">Preferisci streaming</string>
@@ -414,8 +413,7 @@
   <string name="pref_theme_title_light">Chiaro</string>
   <string name="pref_theme_title_dark">Scuro</string>
   <string name="pref_theme_title_trueblack">Nero (AMOLED ready)</string>
-  <string name="pref_episode_cache_unlimited">Illimitato</string>
-  <string name="pref_gpodnet_authenticate_title">Login</string>
+    <string name="pref_gpodnet_authenticate_title">Login</string>
   <string name="pref_gpodnet_authenticate_sum">Effettua il login con il tuo account gpodder.net per sincronizzare le tue sottoscrizioni.</string>
   <string name="pref_gpodnet_logout_title">Logout</string>
   <string name="pref_gpodnet_logout_toast">Logout effettuato</string>
@@ -458,8 +456,7 @@
   <string name="open_bug_tracker">Apri il bug tracker</string>
   <string name="copy_to_clipboard">Copia negli appunti</string>
   <string name="copied_to_clipboard">Copiato negli appunti</string>
-  <string name="pref_media_player_message">Seleziona il media player da usare per riprodurre i file</string>
-  <string name="pref_current_value">Impostazione attuale: %1$s</string>
+    <string name="pref_current_value">Impostazione attuale: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Imposta proxy di rete</string>
   <string name="pref_no_browser_found">Nessun browser web trovato.</string>

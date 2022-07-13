@@ -375,8 +375,7 @@
     <item quantity="one">Cada hora</item>
     <item quantity="other">Cada %d horas</item>
   </plurals>
-  <string name="pref_followQueue_title">Reproducción continua</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Desconexión de los auricuales o Bluetooth</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Desconexión de los auricuales o Bluetooth</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Reconectar con los auriculares</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Reconectar con Bluetooth</string>
   <string name="pref_stream_over_download_title">Preferir escuchar en directo</string>
@@ -414,8 +413,7 @@
   <string name="pref_theme_title_light">Claro</string>
   <string name="pref_theme_title_dark">Oscuro</string>
   <string name="pref_theme_title_trueblack">Negro (para AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Ilimitado</string>
-  <string name="pref_gpodnet_authenticate_title">Iniciar sesión</string>
+    <string name="pref_gpodnet_authenticate_title">Iniciar sesión</string>
   <string name="pref_gpodnet_authenticate_sum">Iniciar sesión en su cuenta de gpodder.net para sincronizar sus suscripciones.</string>
   <string name="pref_gpodnet_logout_title">Cerrar sesión</string>
   <string name="pref_gpodnet_logout_toast">Ha cerrado la sesión correctamente</string>
@@ -458,8 +456,7 @@
   <string name="open_bug_tracker">Abrir bug tracker</string>
   <string name="copy_to_clipboard">Copiar al portapapeles</string>
   <string name="copied_to_clipboard">Copiado al portapapeles</string>
-  <string name="pref_media_player_message">Seleccione qué reproductor multimedia usar para reproducir archivos</string>
-  <string name="pref_current_value">Valor actual: %1$s</string>
+    <string name="pref_current_value">Valor actual: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Configurar proxy de red</string>
   <string name="pref_no_browser_found">No se ha encontrado un navegador web.</string>

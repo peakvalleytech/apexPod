@@ -375,8 +375,7 @@
     <item quantity="one">%d óránként</item>
     <item quantity="other">%d óránként</item>
   </plurals>
-  <string name="pref_followQueue_title">Folyamatos lejátszás</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Fejhallgató vagy Bluetooth leválasztása</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Fejhallgató vagy Bluetooth leválasztása</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Fejhallgató újracsatlakoztatása</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Bluetooth újracsatlakoztatás</string>
   <string name="pref_stream_over_download_title">Közvetítés előnyben részesítése</string>
@@ -414,8 +413,7 @@
   <string name="pref_theme_title_light">Világos</string>
   <string name="pref_theme_title_dark">Sötét</string>
   <string name="pref_theme_title_trueblack">Fekete (AMOLED-hez alkalmas)</string>
-  <string name="pref_episode_cache_unlimited">Korlátlan</string>
-  <string name="pref_gpodnet_authenticate_title">Bejelentkezés</string>
+    <string name="pref_gpodnet_authenticate_title">Bejelentkezés</string>
   <string name="pref_gpodnet_authenticate_sum">Jelentkezzen be a gpodder.net fiókjába a feliratkozásai szinkronizálásához.</string>
   <string name="pref_gpodnet_logout_title">Kijelentkezés</string>
   <string name="pref_gpodnet_logout_toast">Kijelentkezés sikeres</string>
@@ -458,8 +456,7 @@
   <string name="open_bug_tracker">Hibakövető megnyitása</string>
   <string name="copy_to_clipboard">Másolás vágólapra</string>
   <string name="copied_to_clipboard">Vágólapra másolva</string>
-  <string name="pref_media_player_message">Válassza ki a fájlok lejátszásához használt médialejátszót</string>
-  <string name="pref_current_value">Jelenlegi érték: %1$s</string>
+    <string name="pref_current_value">Jelenlegi érték: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Hálózati proxy beállítása</string>
   <string name="pref_no_browser_found">Nem található webböngésző.</string>

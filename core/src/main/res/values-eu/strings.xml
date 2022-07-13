@@ -375,8 +375,7 @@
     <item quantity="one">%d orduro</item>
     <item quantity="other">%d orduro</item>
   </plurals>
-  <string name="pref_followQueue_title">Etengabeko erreprodukzioa</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Entzungailu edo Bluetootharen deskonexioa</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Entzungailu edo Bluetootharen deskonexioa</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Birkonektatu entzungailuez</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Birkonektatu bluetooth bidez</string>
   <string name="pref_stream_over_download_title">Nahiago zuzenean</string>
@@ -414,8 +413,7 @@
   <string name="pref_theme_title_light">Argia</string>
   <string name="pref_theme_title_dark">Iluna</string>
   <string name="pref_theme_title_trueblack">Beltza (AMOLEDentzako)</string>
-  <string name="pref_episode_cache_unlimited">Neurri gabe</string>
-  <string name="pref_gpodnet_authenticate_title">Hasi saioa</string>
+    <string name="pref_gpodnet_authenticate_title">Hasi saioa</string>
   <string name="pref_gpodnet_authenticate_sum">Hasi saioa zure gpodder.net kontuan zure harpidetzak sinkronizatzeko</string>
   <string name="pref_gpodnet_logout_title">Itxi saioa</string>
   <string name="pref_gpodnet_logout_toast">Saioa ongi itxi duzu</string>
@@ -460,8 +458,7 @@
   <string name="open_bug_tracker">Erroreen bilatzailea irekirik</string>
   <string name="copy_to_clipboard">Kopiatu arbelean</string>
   <string name="copied_to_clipboard">Arbelean kopiatu da</string>
-  <string name="pref_media_player_message">Aukeratu zein erreprozitzeko gailua erabili artxibategiak erreproduzitzeko</string>
-  <string name="pref_current_value">Egungo balioa: %1$s</string>
+    <string name="pref_current_value">Egungo balioa: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Konfiguratu sareko proxya</string>
   <string name="pref_no_browser_found">Ez da web nabigatzailea aurkitu</string>

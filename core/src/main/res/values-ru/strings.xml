@@ -386,8 +386,7 @@
     <item quantity="many">Каждые %d часов</item>
     <item quantity="other">Каждые %d часов</item>
   </plurals>
-  <string name="pref_followQueue_title">Непрерывное воспроизведение</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Отключение наушников или Bluetooth</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Отключение наушников или Bluetooth</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">При подключении наушников</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">При подключении Bluetooth</string>
   <string name="pref_stream_over_download_title">Трансляция вместо загрузки</string>
@@ -425,8 +424,7 @@
   <string name="pref_theme_title_light">Светлая</string>
   <string name="pref_theme_title_dark">Темная</string>
   <string name="pref_theme_title_trueblack">Черная (для AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Неограничен</string>
-  <string name="pref_gpodnet_authenticate_title">Войти</string>
+    <string name="pref_gpodnet_authenticate_title">Войти</string>
   <string name="pref_gpodnet_authenticate_sum">Вход в ваш аккаунт gpodder.net для синхронизации подписок.</string>
   <string name="pref_gpodnet_logout_title">Выход из gpodder.net</string>
   <string name="pref_gpodnet_logout_toast">Выход успешно выполнен</string>
@@ -469,8 +467,7 @@
   <string name="open_bug_tracker">Перейти в систему отслеживания ошибок</string>
   <string name="copy_to_clipboard">Скопировать в буфер</string>
   <string name="copied_to_clipboard">Скопировано в буфер</string>
-  <string name="pref_media_player_message">Выбрать проигрыватель</string>
-  <string name="pref_current_value">Текущее значение: %1$s</string>
+    <string name="pref_current_value">Текущее значение: %1$s</string>
   <string name="pref_proxy_title">Прокси</string>
   <string name="pref_proxy_sum">Настройки прокси</string>
   <string name="pref_no_browser_found">Веб-браузер не обнаружен.</string>

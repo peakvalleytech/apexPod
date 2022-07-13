@@ -375,8 +375,7 @@
     <item quantity="one">Cada hora</item>
     <item quantity="other">Cada %d horas</item>
   </plurals>
-  <string name="pref_followQueue_title">Reprodución continua</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Auriculares ou Bluetooth desconectados</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Auriculares ou Bluetooth desconectados</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Reconexión de auriculares</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Reconexión bluetooth</string>
   <string name="pref_stream_over_download_title">Preferir Difusión</string>
@@ -414,8 +413,7 @@
   <string name="pref_theme_title_light">Claro</string>
   <string name="pref_theme_title_dark">Escuro</string>
   <string name="pref_theme_title_trueblack">Negro (listo para AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Ilimitado</string>
-  <string name="pref_gpodnet_authenticate_title">Conexión</string>
+    <string name="pref_gpodnet_authenticate_title">Conexión</string>
   <string name="pref_gpodnet_authenticate_sum">Conecte coa súa conta gpodder.net para sincronizar as súas subscricións.</string>
   <string name="pref_gpodnet_logout_title">Desconectar</string>
   <string name="pref_gpodnet_logout_toast">Desconectouse correctamente</string>
@@ -458,8 +456,7 @@
   <string name="open_bug_tracker">Abrir seguimento de fallos</string>
   <string name="copy_to_clipboard">Copiar ó portapapeis</string>
   <string name="copied_to_clipboard">Copiado ó portapapeis</string>
-  <string name="pref_media_player_message">Escolle o reprodutor de medios para reproducir ficheiros</string>
-  <string name="pref_current_value">Valor actual: %1$s</string>
+    <string name="pref_current_value">Valor actual: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Establecer un proxy para a rede</string>
   <string name="pref_no_browser_found">Non se atopou un navegador web</string>

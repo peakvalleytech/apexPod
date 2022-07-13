@@ -394,8 +394,7 @@
     <item quantity="many">Bep %d eur</item>
     <item quantity="other">Bep %d eur</item>
   </plurals>
-  <string name="pref_followQueue_title">Lenn kendalc\'hus</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Digennask ar selaouelloù pe ar bluetooth</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Digennask ar selaouelloù pe ar bluetooth</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Lugañ ar selaouelloù</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Adkennaskañ ar bluetooth</string>
   <string name="pref_stream_over_download_title">Ober gant ar streaming da gentañ</string>
@@ -433,8 +432,7 @@
   <string name="pref_theme_title_light">Sklaer</string>
   <string name="pref_theme_title_dark">Teñval</string>
   <string name="pref_theme_title_trueblack">Du (evit ar skrammoù AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Divevenn</string>
-  <string name="pref_gpodnet_authenticate_title">Anv arveriad</string>
+    <string name="pref_gpodnet_authenticate_title">Anv arveriad</string>
   <string name="pref_gpodnet_authenticate_sum">Kennaskit gant ho kont gpodder evit goubredañ ho koumanantoù.</string>
   <string name="pref_gpodnet_logout_title">Digennaskañ</string>
   <string name="pref_gpodnet_logout_toast">Digennasket gant berzh</string>
@@ -477,8 +475,7 @@
   <string name="open_bug_tracker">Digeriñ heulier ar beugoù</string>
   <string name="copy_to_clipboard">Eilañ er golver</string>
   <string name="copied_to_clipboard">Eilet er golver</string>
-  <string name="pref_media_player_message">Dibab al lenner da implij evit lenn ar restroù</string>
-  <string name="pref_current_value">Talvoud bremanel: %1$s</string>
+    <string name="pref_current_value">Talvoud bremanel: %1$s</string>
   <string name="pref_proxy_title">Proksi</string>
   <string name="pref_proxy_sum">Arventennañ ur rouedad proksi</string>
   <string name="pref_no_browser_found">N\'eus bet kavet merdeer ebet.</string>

@@ -375,8 +375,7 @@
     <item quantity="one">هر </item>
     <item quantity="other">هر %d ساعت</item>
   </plurals>
-  <string name="pref_followQueue_title">پخش مداوم</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">قطع اتصال هدفون یا بلوتوث</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">قطع اتصال هدفون یا بلوتوث</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">وصل دوباره هدفون</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">وصل دوباره وصل دوباره</string>
   <string name="pref_stream_over_download_title">ترجیح به پخش جریانی</string>
@@ -414,8 +413,7 @@
   <string name="pref_theme_title_light">روشن</string>
   <string name="pref_theme_title_dark">تاریک</string>
   <string name="pref_theme_title_trueblack">سیاه (مناسب AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">نامحدود</string>
-  <string name="pref_gpodnet_authenticate_title">ورود</string>
+    <string name="pref_gpodnet_authenticate_title">ورود</string>
   <string name="pref_gpodnet_authenticate_sum">برای همگام‌سازی اشتراک‌های خود با حساب gpodder.net وارد شوید.</string>
   <string name="pref_gpodnet_logout_title">خروج</string>
   <string name="pref_gpodnet_logout_toast">خروج موفقیت‌آمیز بود</string>
@@ -458,8 +456,7 @@
   <string name="open_bug_tracker">باز کردن ردیاب اشکال</string>
   <string name="copy_to_clipboard">کپی به کلیپ بورد</string>
   <string name="copied_to_clipboard">در کلیپ بورد کپی شد</string>
-  <string name="pref_media_player_message">انتخاب کنید از کدام دستگاه پخش کننده رسانه برای پخش فایلها استفاده شود</string>
-  <string name="pref_current_value">مقدار فعلی: %1$s</string>
+    <string name="pref_current_value">مقدار فعلی: %1$s</string>
   <string name="pref_proxy_title">پروکسی</string>
   <string name="pref_proxy_sum">تنظیم پروکسی شبکه</string>
   <string name="pref_no_browser_found">مرورگر وب پیدا نشد.</string>

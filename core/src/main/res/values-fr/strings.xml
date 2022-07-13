@@ -375,8 +375,7 @@
     <item quantity="one">Toutes les heures</item>
     <item quantity="other">Toutes les %d heures</item>
   </plurals>
-  <string name="pref_followQueue_title">Lecture continue</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Déconnexion des écouteurs ou du Bluetooth</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Déconnexion des écouteurs ou du Bluetooth</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Connexion des écouteurs</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Connexion du Bluetooth</string>
   <string name="pref_stream_over_download_title">Préférer le streaming</string>
@@ -414,8 +413,7 @@
   <string name="pref_theme_title_light">Clair</string>
   <string name="pref_theme_title_dark">Sombre</string>
   <string name="pref_theme_title_trueblack">Noir (pour écran AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Illimité</string>
-  <string name="pref_gpodnet_authenticate_title">Identifiant</string>
+    <string name="pref_gpodnet_authenticate_title">Identifiant</string>
   <string name="pref_gpodnet_authenticate_sum">Identifiez vous avec votre compte gpodder.net afin de synchroniser vos abonnements</string>
   <string name="pref_gpodnet_logout_title">Se déconnecter</string>
   <string name="pref_gpodnet_logout_toast">Vous êtes maintenant déconnecté</string>
@@ -458,8 +456,7 @@
   <string name="open_bug_tracker">Ouvrir le suivi des bugs</string>
   <string name="copy_to_clipboard">Copier dans le presse-papier</string>
   <string name="copied_to_clipboard">Copié dans le presse-papier</string>
-  <string name="pref_media_player_message">Choisir le lecteur à utiliser pour lire les fichiers</string>
-  <string name="pref_current_value">Valeur actuelle : %1$s</string>
+    <string name="pref_current_value">Valeur actuelle : %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Paramétrer un réseau proxy</string>
   <string name="pref_no_browser_found">Aucun navigateur trouvé.</string>

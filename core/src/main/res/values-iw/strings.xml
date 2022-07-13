@@ -405,8 +405,7 @@
     <item quantity="many">כל %d שעות</item>
     <item quantity="other">כל %d שעות</item>
   </plurals>
-  <string name="pref_followQueue_title">ניגון מתמשך</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">ניתוק אוזניות או Bluetooth</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">ניתוק אוזניות או Bluetooth</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">חיבור אוזניות מחדש</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">חיבור Bluetooth מחדש</string>
   <string name="pref_stream_over_download_title">הזרמה עדיפה</string>
@@ -444,8 +443,7 @@
   <string name="pref_theme_title_light">בהיר</string>
   <string name="pref_theme_title_dark">כהה</string>
   <string name="pref_theme_title_trueblack">שחור (תואם AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">בלתי מוגבל</string>
-  <string name="pref_gpodnet_authenticate_title">כניסה</string>
+    <string name="pref_gpodnet_authenticate_title">כניסה</string>
   <string name="pref_gpodnet_authenticate_sum">ניתן להיכנס לחשבונך ב־gpodder.net כדי לסנכרן את המינויים שלך.</string>
   <string name="pref_gpodnet_logout_title">יציאה</string>
   <string name="pref_gpodnet_logout_toast">הצלחת לצאת</string>
@@ -488,8 +486,7 @@
   <string name="open_bug_tracker">פתיחת מערכת מעקב התקלות</string>
   <string name="copy_to_clipboard">העתקה ללוח הגזירים</string>
   <string name="copied_to_clipboard">הועתק ללוח הגזירים</string>
-  <string name="pref_media_player_message">נא לבחור באיזה נגן מדיה להשתמש כדי לנגן קבצים</string>
-  <string name="pref_current_value">ערך נוכחי: %1$s</string>
+    <string name="pref_current_value">ערך נוכחי: %1$s</string>
   <string name="pref_proxy_title">מתווך</string>
   <string name="pref_proxy_sum">הגדרת מתווך רשת</string>
   <string name="pref_no_browser_found">לא נמצא דפדפן.</string>

@@ -200,8 +200,7 @@
   <string name="pref_autoUpdateIntervallOrTime_TimeOfDay">दिन का समय निर्धारित करें</string>
   <string name="pref_autoUpdateIntervallOrTime_every">प्रति %1$s</string>
   <string name="pref_autoUpdateIntervallOrTime_at">%1$s बजे </string>
-  <string name="pref_followQueue_title">सतत प्लेबैक</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">headphones काटना</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">headphones काटना</string>
   <string name="pref_mobileUpdate_title">मोबाइल अपडेट</string>
   <string name="user_interface_label">यूजर इंटरफेस</string>
   <string name="pref_set_theme_title">थीम का चयन करें</string>
@@ -212,8 +211,7 @@
   <string name="pref_autodl_wifi_filter_sum">केवल चयनित वाई-फाई नेटवर्क के लिए स्वत: डाउनलोड की अनुमति दें.</string>
     <string name="pref_theme_title_light">हलका</string>
   <string name="pref_theme_title_dark">अंधेरा</string>
-  <string name="pref_episode_cache_unlimited">असीमित</string>
-  <string name="pref_update_interval_hours_plural">घंटे</string>
+    <string name="pref_update_interval_hours_plural">घंटे</string>
   <string name="pref_update_interval_hours_singular">घंटा</string>
   <string name="pref_update_interval_hours_manual">मैनुअल</string>
   <string name="pref_gpodnet_authenticate_title">लॉगिन</string>
@@ -491,8 +489,7 @@
   <string name="open_bug_tracker">ओपन बग ट्रैकर</string>
   <string name="copy_to_clipboard">क्लिपबोर्ड पर कॉपी करें</string>
   <string name="copied_to_clipboard">क्लिपबोर्ड पर कॉपी किया गया</string>
-  <string name="pref_media_player_message">फ़ाइलों को खेलने के लिए किस मीडिया प्लेयर का उपयोग करना है, यह चुनें</string>
-  <string name="pref_current_value">वर्तमान मूल्य: %1$s</string>
+    <string name="pref_current_value">वर्तमान मूल्य: %1$s</string>
   <string name="pref_proxy_title">प्रतिनिधि</string>
   <string name="pref_proxy_sum">एक नेटवर्क प्रॉक्सी सेट करें</string>
   <string name="pref_no_browser_found">कोई वेब ब्राउज़र नहीं मिला।</string>

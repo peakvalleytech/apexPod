@@ -291,8 +291,7 @@
     <item quantity="one">Cada hora</item>
     <item quantity="other">Cada %d hores</item>
   </plurals>
-  <string name="pref_followQueue_title">Reproducción continua</string>
-  <string name="pref_unpauseOnHeadsetReconnect_title">Conexón d\'auriculares</string>
+    <string name="pref_unpauseOnHeadsetReconnect_title">Conexón d\'auriculares</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Conexón Bluetooth</string>
   <string name="pref_mobileUpdate_title">Anovamientos cola rede móvil</string>
   <string name="pref_mobileUpdate_sum">Esbilla qué habría permitise cola conexón a la rede móvil</string>
@@ -326,8 +325,7 @@
   <string name="pref_theme_title_light">Claridá</string>
   <string name="pref_theme_title_dark">Escuridá</string>
   <string name="pref_theme_title_trueblack">Escuridá (AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Ensin llende</string>
-  <string name="pref_gpodnet_authenticate_title">Aniciar sesión</string>
+    <string name="pref_gpodnet_authenticate_title">Aniciar sesión</string>
   <string name="pref_gpodnet_authenticate_sum">Anicia sesión en gpodder.net pa sincronizar les soscripciones.</string>
   <string name="pref_gpodnet_logout_title">Zarrar sesión</string>
   <string name="pref_gpodnet_logout_toast">Zarresti sesión correutamente</string>
@@ -361,8 +359,7 @@
   <string name="open_bug_tracker">Abrir el rastrexador de fallos</string>
   <string name="copy_to_clipboard">Copiar al cartafueyu</string>
   <string name="copied_to_clipboard">Copióse al cartafueyu</string>
-    <string name="pref_media_player_message">Esbilla\'l reproductor multimedia que s\'usa pa reproducir ficheros</string>
-  <string name="pref_current_value">El valor actual: %1$s</string>
+    <string name="pref_current_value">El valor actual: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Afita un proxy de rede</string>
   <string name="pref_no_browser_found">Nun s\'atopó nengún restolador web.</string>

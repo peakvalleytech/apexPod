@@ -360,8 +360,7 @@
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="other">每隔 %d 小时</item>
   </plurals>
-  <string name="pref_followQueue_title">连续播放</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">耳机或蓝牙断开</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">耳机或蓝牙断开</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">耳机重新连接</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">蓝牙重新连接</string>
   <string name="pref_stream_over_download_title">偏好在线播放</string>
@@ -400,8 +399,7 @@
   <string name="pref_theme_title_light">浅色</string>
   <string name="pref_theme_title_dark">暗色</string>
   <string name="pref_theme_title_trueblack">纯黑（适用于 AMOLED 设备）</string>
-  <string name="pref_episode_cache_unlimited">无限</string>
-  <string name="pref_gpodnet_authenticate_title">登录</string>
+    <string name="pref_gpodnet_authenticate_title">登录</string>
   <string name="pref_gpodnet_authenticate_sum">登录 gpodder.net 账户同步订阅</string>
   <string name="pref_gpodnet_logout_title">注销</string>
   <string name="pref_gpodnet_logout_toast">注销成功</string>
@@ -444,8 +442,7 @@
   <string name="open_bug_tracker">打开Bug跟踪器</string>
   <string name="copy_to_clipboard">复制到剪贴板</string>
   <string name="copied_to_clipboard">已复制到剪贴板</string>
-  <string name="pref_media_player_message">选择使用哪个媒体播放器来播放文件</string>
-  <string name="pref_current_value">当前值：%1$s</string>
+    <string name="pref_current_value">当前值：%1$s</string>
   <string name="pref_proxy_title">代理</string>
   <string name="pref_proxy_sum">选择一个网络代理</string>
   <string name="pref_no_browser_found">无网络浏览器</string>

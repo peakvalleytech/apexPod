@@ -383,8 +383,7 @@
     <item quantity="many">Každých %d hodin</item>
     <item quantity="other">Každých %d hodin</item>
   </plurals>
-  <string name="pref_followQueue_title">Kontinuální přehrávání</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Sluchátka nebo Bluetooth odpojeno</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Sluchátka nebo Bluetooth odpojeno</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Sluchátka připojena</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Bluetooth připojeno</string>
   <string name="pref_stream_over_download_title">Upřednostnit streamování</string>
@@ -422,8 +421,7 @@
   <string name="pref_theme_title_light">Světlý</string>
   <string name="pref_theme_title_dark">Tmavý</string>
   <string name="pref_theme_title_trueblack">Černá (vhodná pro AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Bez omezení</string>
-  <string name="pref_gpodnet_authenticate_title">Přihlásit</string>
+    <string name="pref_gpodnet_authenticate_title">Přihlásit</string>
   <string name="pref_gpodnet_authenticate_sum">Přihlašte se pomocí vašeho gpodder.net účtu pro synchronizaci odebíraných podcastů. </string>
   <string name="pref_gpodnet_logout_title">Odhlásit</string>
   <string name="pref_gpodnet_logout_toast">Úspěšně odhlášeno</string>
@@ -466,8 +464,7 @@
   <string name="open_bug_tracker">Otevřít systém pro sledování a hlášení chyb</string>
   <string name="copy_to_clipboard">Zkopírovat do schránky</string>
   <string name="copied_to_clipboard">Zkopírováno do schránky</string>
-  <string name="pref_media_player_message">Vybrat přehrávač pro přehrávání souborů</string>
-  <string name="pref_current_value">Aktuální hodnota: %1$s</string>
+    <string name="pref_current_value">Aktuální hodnota: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Nastavit síťovou proxy</string>
   <string name="pref_no_browser_found">Webový prohlížeč nenalezen.</string>

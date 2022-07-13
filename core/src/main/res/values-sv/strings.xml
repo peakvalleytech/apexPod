@@ -376,8 +376,7 @@
     <item quantity="one">Var timme</item>
     <item quantity="other">Var %dtimmar</item>
   </plurals>
-  <string name="pref_followQueue_title">Kontinuerlig uppspelning</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Hörlurar eller Bluetooth kopplas bort</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Hörlurar eller Bluetooth kopplas bort</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Hörlurar återanslutna</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Blutetooth återansluts</string>
   <string name="pref_stream_over_download_title">Föredra Strömmning</string>
@@ -415,8 +414,7 @@
   <string name="pref_theme_title_light">Ljust</string>
   <string name="pref_theme_title_dark">Mörkt</string>
   <string name="pref_theme_title_trueblack">Svart (AMOLED redo)</string>
-  <string name="pref_episode_cache_unlimited">Obegränsat</string>
-  <string name="pref_gpodnet_authenticate_title">Logga in</string>
+    <string name="pref_gpodnet_authenticate_title">Logga in</string>
   <string name="pref_gpodnet_authenticate_sum">Logga in med ditt gpodder.net konto för att synkronisera dina prenumerationer.</string>
   <string name="pref_gpodnet_logout_title">Logga ut</string>
   <string name="pref_gpodnet_logout_toast">Utloggning lyckades</string>
@@ -459,8 +457,7 @@
   <string name="open_bug_tracker">Öppna buggtrackern</string>
   <string name="copy_to_clipboard">Kopiera till urklipp</string>
   <string name="copied_to_clipboard">Kopierat till urklipp</string>
-  <string name="pref_media_player_message">Välj vilken mediaspelare som ska spela filer</string>
-  <string name="pref_current_value">Nuvarande värde: %1$s</string>
+    <string name="pref_current_value">Nuvarande värde: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Använd en nätverksproxy</string>
   <string name="pref_no_browser_found">Ingen webbläsare hittades.</string>

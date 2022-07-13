@@ -365,8 +365,7 @@
   <string name="feed_refresh_time">Aeg</string>
   <string name="feed_refresh_never">Mitte kunagi</string>
   <string name="feed_refresh_interval_at">%1$s tagant</string>
-  <string name="pref_followQueue_title">Pidev esitamine</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Peakomplekti või Bluetoothi lahti ühendamisel</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Peakomplekti või Bluetoothi lahti ühendamisel</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Kõrvaklappide uuesti ühendamine</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Bluetoothi uuesti ühendamine</string>
   <string name="pref_stream_over_download_title">Eelista voogedastust</string>
@@ -404,8 +403,7 @@
   <string name="pref_theme_title_light">Hele</string>
   <string name="pref_theme_title_dark">Tume</string>
   <string name="pref_theme_title_trueblack">Must (AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Piiramatult</string>
-  <string name="pref_gpodnet_authenticate_title">Logi sisse</string>
+    <string name="pref_gpodnet_authenticate_title">Logi sisse</string>
   <string name="pref_gpodnet_authenticate_sum">Logi sisse oma gpodder.net kontoga, et oma tellimused sünkroonida.</string>
   <string name="pref_gpodnet_logout_title">Logi välja</string>
   <string name="pref_gpodnet_logout_toast">Väljalogimine oli edukas</string>
@@ -448,8 +446,7 @@
   <string name="open_bug_tracker">Ava vigade loetelu</string>
   <string name="copy_to_clipboard">Kopeeri lõikelauale</string>
   <string name="copied_to_clipboard">Kopeeritud lõikelauale</string>
-  <string name="pref_media_player_message">Vali, millise meediaesitajaga faile mängitakse</string>
-  <string name="pref_current_value">Praegune väärtus: %1$s</string>
+    <string name="pref_current_value">Praegune väärtus: %1$s</string>
   <string name="pref_proxy_title">Vaheserver</string>
   <string name="pref_proxy_sum">Määra võrgu vaheserver</string>
   <string name="pref_no_browser_found">Veebilehitsejat ei leitud.</string>

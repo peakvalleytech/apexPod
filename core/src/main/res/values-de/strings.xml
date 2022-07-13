@@ -376,8 +376,7 @@ Tippen, um Details anzuzeigen.</string>
     <item quantity="one">Jede Stunde</item>
     <item quantity="other">Alle %d Stunden</item>
   </plurals>
-  <string name="pref_followQueue_title">Durchgehendes Abspielen</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Kopfhörer oder Bluetooth getrennt</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Kopfhörer oder Bluetooth getrennt</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Kopfhörer wieder eingesteckt</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Bluetooth wieder verbunden</string>
   <string name="pref_stream_over_download_title">Streamen bevorzugen</string>
@@ -415,8 +414,7 @@ Tippen, um Details anzuzeigen.</string>
   <string name="pref_theme_title_light">Hell</string>
   <string name="pref_theme_title_dark">Dunkel</string>
   <string name="pref_theme_title_trueblack">Schwarz (für AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Unbegrenzt</string>
-  <string name="pref_gpodnet_authenticate_title">Anmelden</string>
+    <string name="pref_gpodnet_authenticate_title">Anmelden</string>
   <string name="pref_gpodnet_authenticate_sum">Melde dich mit deinem gpodder.net Profil an, um deine Abonnements zu synchronisieren</string>
   <string name="pref_gpodnet_logout_title">Abmelden</string>
   <string name="pref_gpodnet_logout_toast">Abmeldung war erfolgreich</string>
@@ -459,7 +457,6 @@ Tippen, um Details anzuzeigen.</string>
   <string name="open_bug_tracker">Bug-Tracker öffnen</string>
   <string name="copy_to_clipboard">In die Zwischenablage kopieren</string>
   <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
-  <string name="pref_media_player_message">Wähle, welcher Medienabspieler benutzt werden soll, um Dateien abzuspielen</string>
   <string name="pref_current_value">Aktueller Wert: %1$s</string>
   <string name="pref_proxy_title">Stellvertreter</string>
   <string name="pref_proxy_sum">Richte einen Netzwerk-Proxy ein</string>

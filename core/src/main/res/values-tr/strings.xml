@@ -326,8 +326,7 @@
   <string name="playback_pref_sum">Headphone controls, Skip intervals, Queue</string>
   <string name="network_pref">Ağ</string>
   <string name="network_pref_sum">Update interval, Download controls, Mobile data</string>
-  <string name="pref_followQueue_title">Devamlı çalma</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Headphones or Bluetooth disconnect</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Headphones or Bluetooth disconnect</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Kulaklıklar yeniden bağlı</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Bluetooth yeniden bağlandı</string>
   <string name="pref_stream_over_download_title">Prefer Streaming</string>
@@ -362,8 +361,7 @@
   <string name="pref_theme_title_light">Aydınlık</string>
   <string name="pref_theme_title_dark">Karanlık</string>
   <string name="pref_theme_title_trueblack">Black (AMOLED ready)</string>
-  <string name="pref_episode_cache_unlimited">Sınırsız</string>
-  <string name="pref_gpodnet_authenticate_title">Giriş</string>
+    <string name="pref_gpodnet_authenticate_title">Giriş</string>
   <string name="pref_gpodnet_authenticate_sum">Üyeliklerinizi senkronize etmek için gpodder.net hesabınızla oturum açın.</string>
   <string name="pref_gpodnet_logout_title">Çıkış</string>
   <string name="pref_gpodnet_logout_toast">Çıkış başarılı</string>
@@ -405,8 +403,7 @@
   <string name="open_bug_tracker">Open bug tracker</string>
   <string name="copy_to_clipboard">Copy to clipboard</string>
   <string name="copied_to_clipboard">Copied to clipboard</string>
-  <string name="pref_media_player_message">Select which media player to use to play files</string>
-  <string name="pref_current_value">Current value: %1$s</string>
+    <string name="pref_current_value">Current value: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Set a network proxy</string>
   <string name="pref_no_browser_found">No web browser found.</string>

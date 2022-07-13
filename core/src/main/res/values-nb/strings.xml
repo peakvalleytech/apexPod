@@ -347,8 +347,7 @@
   <string name="feed_refresh_time">Tid</string>
   <string name="feed_refresh_never">Aldri</string>
   <string name="feed_refresh_interval_at">på %1$s</string>
-  <string name="pref_followQueue_title">Kontinuerlig avspilling</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Koblet fra hodetelefoner eller Bluetooth</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Koblet fra hodetelefoner eller Bluetooth</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Gjeninnkopling av hodetelefoner</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Blutetooth tilkoblet igjen</string>
   <string name="pref_stream_over_download_title">Foretrekk strømming</string>
@@ -386,8 +385,7 @@
   <string name="pref_theme_title_light">Lyst</string>
   <string name="pref_theme_title_dark">Mørkt</string>
   <string name="pref_theme_title_trueblack">Sort (AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Ulimitert</string>
-  <string name="pref_gpodnet_authenticate_title">Logg inn</string>
+    <string name="pref_gpodnet_authenticate_title">Logg inn</string>
   <string name="pref_gpodnet_authenticate_sum">Logg inn med din gpodder.net konto for å synkronisere dine abonnementer.</string>
   <string name="pref_gpodnet_logout_title">Logg ut</string>
   <string name="pref_gpodnet_logout_toast">Utloggelse lyktes</string>
@@ -430,8 +428,7 @@
   <string name="open_bug_tracker">Åpne bug-tracker</string>
   <string name="copy_to_clipboard">Kopier til utklippstavle</string>
   <string name="copied_to_clipboard">Kopiert til utklippstavlen</string>
-  <string name="pref_media_player_message">Velg hvilken mediespiller som skal brukes for å spille filer</string>
-  <string name="pref_current_value">Valgt: %1$s</string>
+    <string name="pref_current_value">Valgt: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Velg en nettverk-proxy</string>
   <string name="pref_no_browser_found">Ingen nettleser funnet.</string>

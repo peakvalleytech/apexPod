@@ -375,8 +375,7 @@
     <item quantity="one">Elk uur</item>
     <item quantity="other">Elke%d uur</item>
   </plurals>
-  <string name="pref_followQueue_title">Doorlopend afspelen</string>
-  <string name="pref_pauseOnHeadsetDisconnect_title">Koptelefoon- of bluetoothverbinding verbroken</string>
+    <string name="pref_pauseOnHeadsetDisconnect_title">Koptelefoon- of bluetoothverbinding verbroken</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Opnieuw aansluiten van hoofdtelefoon</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Opnieuw verbinden met bluetooth</string>
   <string name="pref_stream_over_download_title">Voorkeur geven aan streaming</string>
@@ -414,8 +413,7 @@
   <string name="pref_theme_title_light">Licht</string>
   <string name="pref_theme_title_dark">Donker</string>
   <string name="pref_theme_title_trueblack">Zwart (geschikt voor AMOLED)</string>
-  <string name="pref_episode_cache_unlimited">Onbeperkt</string>
-  <string name="pref_gpodnet_authenticate_title">Inloggen</string>
+    <string name="pref_gpodnet_authenticate_title">Inloggen</string>
   <string name="pref_gpodnet_authenticate_sum">Log in met je gpodder.net-account om je abonnementen te synchroniseren.</string>
   <string name="pref_gpodnet_logout_title">Uitloggen</string>
   <string name="pref_gpodnet_logout_toast">Uitgelogd</string>
@@ -458,8 +456,7 @@
   <string name="open_bug_tracker">Bugtracker openen</string>
   <string name="copy_to_clipboard">Kopiëren naar klembord</string>
   <string name="copied_to_clipboard">Gekopieerd naar het klembord</string>
-  <string name="pref_media_player_message">Kies welke mediaspeler gebruikt moet worden voor het afspelen van bestanden</string>
-  <string name="pref_current_value">Huidige instelling: %1$s</string>
+    <string name="pref_current_value">Huidige instelling: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Netwerkproxy instellen</string>
   <string name="pref_no_browser_found">Geen browser aangetroffen.</string>

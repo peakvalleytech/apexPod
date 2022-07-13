@@ -311,8 +311,7 @@
   <string name="playback_pref_sum">Kuulokkeiden ohjaimet, ohitusaikavälit, jono</string>
   <string name="network_pref">Verkko</string>
   <string name="network_pref_sum">Päivitysaikaväli, latauksen ohjaimet, mobiilidata</string>
-  <string name="pref_followQueue_title">Jatkuva toisto</string>
-  <string name="pref_unpauseOnHeadsetReconnect_title">Kuulokkeiden uudelleenyhdistyminen</string>
+    <string name="pref_unpauseOnHeadsetReconnect_title">Kuulokkeiden uudelleenyhdistyminen</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Bluetooth uudelleenyhdistyminen</string>
   <string name="pref_stream_over_download_title">Suosi suoratoistoa</string>
   <string name="pref_stream_over_download_sum">Näytä suoratoistonappi latausnapin sijaan listauksissa</string>
@@ -344,8 +343,7 @@
   <string name="pref_theme_title_light">Vaalea</string>
   <string name="pref_theme_title_dark">Tumma</string>
   <string name="pref_theme_title_trueblack">Musta (AMOLED valmis)</string>
-  <string name="pref_episode_cache_unlimited">Ei rajoitettu</string>
-  <string name="pref_gpodnet_authenticate_title">Sisäänkirjautuminen</string>
+    <string name="pref_gpodnet_authenticate_title">Sisäänkirjautuminen</string>
   <string name="pref_gpodnet_authenticate_sum">Kirjaudu gpodder.net tililläsi jotta voit synkronoida tilauksesi.</string>
   <string name="pref_gpodnet_logout_title">Kirjaudu ulos</string>
   <string name="pref_gpodnet_logout_toast">Uloskirjautuminen onnistui</string>
@@ -367,8 +365,7 @@
   <string name="pref_lockscreen_background_title">Aseta lukitusruudun taustakuva</string>
   <string name="pref_lockscreen_background_sum">Aseta lukitusruudun taustakuva nykyisen jakson kuvaan. Tämä kuva näkyy kolmannen osapuolen sovelluksissa.</string>
   <string name="pref_smart_mark_as_played_disabled">Poissa käytöstä</string>
-    <string name="pref_media_player_message">Valitse mediasovellus jolla soitetaan tiedostot</string>
-  <string name="pref_current_value">Nykyinen arvo: %1$s</string>
+    <string name="pref_current_value">Nykyinen arvo: %1$s</string>
   <string name="pref_proxy_title">Proxy</string>
   <string name="pref_proxy_sum">Aseta verkkoproxy</string>
   <string name="pref_no_browser_found">Selainta ei löydetty</string>
