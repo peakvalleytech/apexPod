@@ -443,13 +443,8 @@
   <string name="pref_theme_title_light">Šviesi</string>
   <string name="pref_theme_title_dark">Tamsi</string>
   <string name="pref_theme_title_trueblack">Juoda (paruošta AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">Prisijungimas</string>
-  <string name="pref_gpodnet_authenticate_sum">Norėdami sinchronizuoti prenumeratas, prisijunkite prie savo „gpodder.net“ paskyros.</string>
-  <string name="pref_gpodnet_logout_title">Atsijungti</string>
-  <string name="pref_gpodnet_logout_toast">Sėkmingai atsijungta</string>
   <string name="pref_gpodnet_setlogin_information_title">Keisti prisijungimo duomenis</string>
   <string name="pref_gpodnet_setlogin_information_sum">Keisti prisijungimo prie „gpodder.net“ paskyros duomenis.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Prisijungta kaip <i>%1$s</i> naudojant įrenginį <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Derinkite prieinamas garso atkūrimo spartas</string>
   <string name="pref_feed_playback_speed_sum">Atkūrimo sparta, naudojama pradedant šios tinklalaidės epizodų atkūrimą</string>
   <string name="pref_feed_skip">Automatinis praleidimas</string>

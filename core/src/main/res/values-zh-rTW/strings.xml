@@ -349,13 +349,8 @@
   <string name="pref_theme_title_light">淡色</string>
   <string name="pref_theme_title_dark">深色</string>
   <string name="pref_theme_title_trueblack">黑色 (適用 AMOLED 螢幕)</string>
-    <string name="pref_gpodnet_authenticate_title">登入</string>
-  <string name="pref_gpodnet_authenticate_sum">登入您的 gpodder.net 帳戶以同步訂閱資訊</string>
-  <string name="pref_gpodnet_logout_title">登出</string>
-  <string name="pref_gpodnet_logout_toast">成功登出</string>
   <string name="pref_gpodnet_setlogin_information_title">變更登入資訊</string>
   <string name="pref_gpodnet_setlogin_information_sum">修改您的 gpodder.net 帳號登入資訊</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[以 <i>%1$s</i> 登入，設備為 <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">自訂可選用的播放速度</string>
   <string name="pref_feed_playback_speed_sum">播放此 Podcast 中各單集時的播放速度</string>
   <string name="pref_feed_skip">自動跳過</string>

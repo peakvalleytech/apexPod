@@ -424,13 +424,8 @@
   <string name="pref_theme_title_light">Светлая</string>
   <string name="pref_theme_title_dark">Темная</string>
   <string name="pref_theme_title_trueblack">Черная (для AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">Войти</string>
-  <string name="pref_gpodnet_authenticate_sum">Вход в ваш аккаунт gpodder.net для синхронизации подписок.</string>
-  <string name="pref_gpodnet_logout_title">Выход из gpodder.net</string>
-  <string name="pref_gpodnet_logout_toast">Выход успешно выполнен</string>
   <string name="pref_gpodnet_setlogin_information_title">Изменить информацию авторизации</string>
   <string name="pref_gpodnet_setlogin_information_sum">Изменить информацию авторизации для аккаунта gpodder.net</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Вход как <i>%1$s</i> с устройства <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Выбрать значения скорости, доступные при воспроизведении</string>
   <string name="pref_feed_playback_speed_sum">Скорость, с которой будут изначально воспроизводиться выпуски этого подкаста</string>
   <string name="pref_feed_skip">Автоматический пропуск</string>

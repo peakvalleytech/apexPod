@@ -63,8 +63,7 @@
   <string name="close_label">बंद करें</string>
   <string name="retry_label">पुन: प्रयास</string>
   <string name="auto_download_label">ऑटो डाउनलोड में शामिल करें</string>
-  <string name="auto_download_apply_to_items_title">पिछले एपिसोड पर लागू करें</string>
-  <string name="auto_delete_label">ऑटो डिलीट एपिसोड</string>
+    <string name="auto_delete_label">ऑटो डिलीट एपिसोड</string>
   <string name="feed_auto_download_global">सार्वभौमिक डिफ़ॉल्ट</string>
   <string name="feed_auto_download_always">हमेशा</string>
   <string name="never">कभी नहीँ</string>
@@ -88,7 +87,6 @@
   <string name="load_complete_feed">सारे पॉडकास्ट को रिफ्रेश करें</string>
   <string name="hide_paused_episodes_label">रोके गए</string>
   <string name="hide_played_episodes_label">चलाए गए</string>
-  <string name="hide_not_queued_episodes_label">क़तार नही किए गए</string>
   <string name="hide_downloaded_episodes_label">डाउनलोड किये गए</string>
   <string name="hide_not_downloaded_episodes_label">नहीं डाउनलोड किये गए</string>
   <string name="hide_is_favorite_label">पसंदीदा है</string>
@@ -111,7 +109,6 @@
   <string name="remove_from_favorite_label">पसंदीदा सूची से हटाए</string>
   <string name="visit_website_label">वेबसाइट पर जाएँ</string>
   <string name="skip_episode_label">एपिसोड छोङें</string>
-  <string name="deactivate_auto_download">ऑटो डाउनलोड निष्क्रिय करें</string>
   <string name="reset_position">प्लेबैक स्थिति रीसेट करें</string>
   <string name="removed_item">आइटम हटया गया</string>
   <!--Download messages and labels-->
@@ -133,7 +130,6 @@
   <string name="download_error_forbidden">निषिद्ध</string>
   <string name="download_canceled_msg">डाउनलोड रद्द</string>
   <string name="download_report_title">त्रुटि के साथ डाउनलोड संपन्न हुए</string>
-  <string name="download_report_content_title">रिपोर्ट डाउनलोड करे</string>
   <string name="download_error_io_error">आईओ त्रुटि</string>
   <string name="download_error_request_error">अनुरोध त्रुटि</string>
   <string name="download_error_db_access">डेटाबेस का उपयोग त्रुटि</string>
@@ -153,10 +149,6 @@
   <string name="confirm_mobile_download_dialog_enable_temporarily">अस्थायी रूप से अनुमति दें</string>
   <!--Mediaplayer messages-->
   <string name="player_error_msg">त्रुटि!</string>
-  <string name="player_stopped_msg">मीडिया नहीं चल रहा</string>
-  <string name="player_preparing_msg">तैयार किया जा रहा है</string>
-  <string name="player_ready_msg">तैयार</string>
-  <string name="player_seeking_msg">मांग</string>
   <string name="playback_error_server_died">सर्वर निरस्त</string>
   <string name="playback_error_unknown">अज्ञात त्रुटि</string>
   <string name="no_media_playing_label">मीडिया नहीं चल रहा</string>
@@ -175,12 +167,8 @@
   <string name="clear_queue_confirmation_msg">कृपया पुष्टि करें कि आप सारे एपिसोड के इस कतार को हटाना चाहते हैं</string>
   <string name="time_left_label">समय बचा है:\u0020</string>
   <!--Variable Speed-->
-  <string name="download_plugin_label">प्लगइन डाउनलोड करें</string>
-  <string name="no_playback_plugin_title">प्लगइन स्थापित नहीं हुआ</string>
-  <string name="set_playback_speed_label">प्लेबैक गति</string>
   <!--Empty list labels-->
   <string name="no_shownotes_label">इस एपिसोड में कोई शोनोट्स नहीं है।</string>
-  <string name="no_chapters_label">इस एपिसोड में कोई अध्याय नहीं है।</string>
   <!--Preferences-->
   <string name="storage_pref">स्टोरेज</string>
   <string name="project_pref">परियोजना</string>
@@ -195,12 +183,7 @@
   <string name="pref_followQueue_sum">प्लेबैक के पूरा होने पर अगली पंक्ति आइटम के लिए जाएँ</string>
   <string name="playback_pref">प्लेबैक</string>
   <string name="network_pref">संजाल</string>
-  <string name="pref_autoUpdateIntervallOrTime_Disable">अक्षम करें</string>
-  <string name="pref_autoUpdateIntervallOrTime_Interval">अंतराल निर्धारित करें</string>
-  <string name="pref_autoUpdateIntervallOrTime_TimeOfDay">दिन का समय निर्धारित करें</string>
-  <string name="pref_autoUpdateIntervallOrTime_every">प्रति %1$s</string>
-  <string name="pref_autoUpdateIntervallOrTime_at">%1$s बजे </string>
-    <string name="pref_pauseOnHeadsetDisconnect_title">headphones काटना</string>
+  <string name="pref_pauseOnHeadsetDisconnect_title">headphones काटना</string>
   <string name="pref_mobileUpdate_title">मोबाइल अपडेट</string>
   <string name="user_interface_label">यूजर इंटरफेस</string>
   <string name="pref_set_theme_title">थीम का चयन करें</string>
@@ -211,16 +194,8 @@
   <string name="pref_autodl_wifi_filter_sum">केवल चयनित वाई-फाई नेटवर्क के लिए स्वत: डाउनलोड की अनुमति दें.</string>
     <string name="pref_theme_title_light">हलका</string>
   <string name="pref_theme_title_dark">अंधेरा</string>
-    <string name="pref_update_interval_hours_plural">घंटे</string>
-  <string name="pref_update_interval_hours_singular">घंटा</string>
-  <string name="pref_update_interval_hours_manual">मैनुअल</string>
-  <string name="pref_gpodnet_authenticate_title">लॉगिन</string>
-  <string name="pref_gpodnet_authenticate_sum">अपनी सदस्यता सिंक करने के क्रम में अपने gpodder.net खाते के साथ लॉगिन करें .</string>
-  <string name="pref_gpodnet_logout_title">लॉगआउट</string>
-  <string name="pref_gpodnet_logout_toast">लॉगआउट सफल रहा था</string>
   <string name="pref_gpodnet_setlogin_information_title">प्रवेश जानकारी बदलें</string>
   <string name="pref_gpodnet_setlogin_information_sum">अपने gpodder.net खाते के लिए प्रवेश जानकारी बदलें.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[ <i>%1$s</i> के रूप में <i>%2$s</i> डिवाइस के साथ लॉगिन किया गया ]]></string>
   <string name="pref_playback_speed_sum">चर गति ऑडियो प्लेबैक के लिए उपलब्ध गति बनाइए</string>
   <!--About screen-->
   <string name="about_pref">के बारे में</string>
@@ -242,26 +217,16 @@
   <!--gpodder.net-->
   <string name="gpodnet_taglist_header">श्रेणियाँ</string>
   <string name="gpodnet_toplist_header">शीर्ष पॉडकास्ट</string>
-  <string name="gpodnet_suggestions_header">सुझाव</string>
   <string name="gpodnet_search_hint">gpodder.net खोज</string>
-  <string name="gpodnetauth_login_descr">Gpodder.net प्रवेश प्रक्रिया में आपका स्वागत है.पहले, अपनी प्रवेश जानकारी टाइप करें:</string>
   <string name="gpodnetauth_login_butLabel">लॉगिन</string>
   <string name="username_label">प्रयोक्ता नाम</string>
   <string name="password_label">पासवर्ड</string>
-  <string name="gpodnetauth_device_descr">अपने gpodder.net खाते के उपयोग के लिए एक नई डिवाइस बनाएँ या एक मौजूदा डिवाइस का चयन करें:</string>
-  <string name="gpodnetauth_device_deviceID">डिवाइस आईडी:\u0020</string>
-  <string name="gpodnetauth_device_caption">शीर्षक</string>
-  <string name="gpodnetauth_device_butCreateNewDevice">नई डिवाइस बनाएँ</string>
-  <string name="gpodnetauth_device_errorEmpty">डिवाइस आईडी खाली नहीं होना चाहिए</string>
-  <string name="gpodnetauth_device_butChoose">चुनें</string>
   <string name="gpodnetauth_finish_descr">बधाई हो! आपकी gpodder.net खाता अब आपके डिवाइस के साथ जुड़ा हुआ है. ApexPod अब से स्वचालित रूप से आपके gpodder.net खाते के साथ अपने डिवाइस पर सदस्यता सिंक जाएगा.</string>
   <string name="gpodnetauth_finish_butsyncnow">अब सिंक प्रारंभ करें</string>
-  <string name="gpodnetauth_finish_butgomainscreen">मुख्य स्क्रीन पर जाएं</string>
   <string name="gpodnetsync_error_title">gpodder.net सिंक त्रुटि</string>
   <string name="gpodnetsync_error_descr">एक त्रुटि सिंक्रनाइज़ के दौरान हुई:\u0020</string>
   <!--Directory chooser-->
   <string name="choose_data_directory">डेटा फ़ोल्डर चुनें</string>
-  <string name="set_to_default_folder">डिफ़ॉल्ट फ़ोल्डर चुनें</string>
   <string name="pref_pausePlaybackForFocusLoss_sum">प्लेबैक रोकें बजाय ध्वनियों को कम करने के अगर कोई  अन्य अनुप्रयोग इसे बजाना चाहता है </string>
   <string name="pref_pausePlaybackForFocusLoss_title">रुकावटो के लिए रोकें</string>
   <!--Online feed view-->

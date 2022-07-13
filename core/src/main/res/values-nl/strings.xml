@@ -413,13 +413,8 @@
   <string name="pref_theme_title_light">Licht</string>
   <string name="pref_theme_title_dark">Donker</string>
   <string name="pref_theme_title_trueblack">Zwart (geschikt voor AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">Inloggen</string>
-  <string name="pref_gpodnet_authenticate_sum">Log in met je gpodder.net-account om je abonnementen te synchroniseren.</string>
-  <string name="pref_gpodnet_logout_title">Uitloggen</string>
-  <string name="pref_gpodnet_logout_toast">Uitgelogd</string>
   <string name="pref_gpodnet_setlogin_information_title">Inloggegevens wijzigen</string>
   <string name="pref_gpodnet_setlogin_information_sum">Wijzig de inloggegevens van je gpodder.net-account.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Ingelogd als <i>%1$s</i> met apparaat <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Pas de beschikbare snelheden aan voor de variabele afspeelsnelheid</string>
   <string name="pref_feed_playback_speed_sum">De te gebruiken snelheid bij het afspelen van afleveringen in deze podcast</string>
   <string name="pref_feed_skip">Automatisch overslaan</string>

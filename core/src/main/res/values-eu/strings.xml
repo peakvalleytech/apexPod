@@ -413,13 +413,8 @@
   <string name="pref_theme_title_light">Argia</string>
   <string name="pref_theme_title_dark">Iluna</string>
   <string name="pref_theme_title_trueblack">Beltza (AMOLEDentzako)</string>
-    <string name="pref_gpodnet_authenticate_title">Hasi saioa</string>
-  <string name="pref_gpodnet_authenticate_sum">Hasi saioa zure gpodder.net kontuan zure harpidetzak sinkronizatzeko</string>
-  <string name="pref_gpodnet_logout_title">Itxi saioa</string>
-  <string name="pref_gpodnet_logout_toast">Saioa ongi itxi duzu</string>
   <string name="pref_gpodnet_setlogin_information_title">Aldatu saio hasieraren informazioa</string>
   <string name="pref_gpodnet_setlogin_information_sum">Aldatu saio hasierako datuak zure gpodder.net-en kontuan.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Horrela hasi du saioa <i>%1$s</i> gailu honekin <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Pertsonalizatu abiadura aldakorreko erreprodukzioan dauden abiadurak</string>
   <string name="pref_feed_playback_speed_sum">Podcast hauen berezko irakurtze abiadura</string>
   <string name="pref_feed_skip">Salto automatikoa</string>

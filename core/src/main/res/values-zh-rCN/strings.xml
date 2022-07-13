@@ -399,13 +399,8 @@
   <string name="pref_theme_title_light">浅色</string>
   <string name="pref_theme_title_dark">暗色</string>
   <string name="pref_theme_title_trueblack">纯黑（适用于 AMOLED 设备）</string>
-    <string name="pref_gpodnet_authenticate_title">登录</string>
-  <string name="pref_gpodnet_authenticate_sum">登录 gpodder.net 账户同步订阅</string>
-  <string name="pref_gpodnet_logout_title">注销</string>
-  <string name="pref_gpodnet_logout_toast">注销成功</string>
   <string name="pref_gpodnet_setlogin_information_title">改变登录信息</string>
   <string name="pref_gpodnet_setlogin_information_sum">改变 gpodder.net 账户登录信息.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[在设备 <i>%2$s</i> 上以 <i>%1$s</i> 身份登录]]></string>
   <string name="pref_playback_speed_sum">自定义可用于变速播放的速度</string>
   <string name="pref_feed_playback_speed_sum">开始播放此播客中剧集时使用的速度</string>
   <string name="pref_feed_skip">自动跳过</string>

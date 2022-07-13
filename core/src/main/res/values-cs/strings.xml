@@ -421,13 +421,8 @@
   <string name="pref_theme_title_light">Světlý</string>
   <string name="pref_theme_title_dark">Tmavý</string>
   <string name="pref_theme_title_trueblack">Černá (vhodná pro AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">Přihlásit</string>
-  <string name="pref_gpodnet_authenticate_sum">Přihlašte se pomocí vašeho gpodder.net účtu pro synchronizaci odebíraných podcastů. </string>
-  <string name="pref_gpodnet_logout_title">Odhlásit</string>
-  <string name="pref_gpodnet_logout_toast">Úspěšně odhlášeno</string>
   <string name="pref_gpodnet_setlogin_information_title">Změna přihlašovacích údajů</string>
   <string name="pref_gpodnet_setlogin_information_sum">Změní přihlašovací údaje k vašemu gpodder.net účtu.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Přihlášen jako <i>%1$s</i> z přístroje <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Upravit předvybrané možnosti pro přehrávání zvuku různými rychlostmi</string>
   <string name="pref_feed_playback_speed_sum">Rychlost, která bude použita při zahájení přehrávání epizod tohoto podcastu</string>
   <string name="pref_feed_skip">Automatické přeskočení</string>

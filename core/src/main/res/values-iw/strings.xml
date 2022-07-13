@@ -443,13 +443,8 @@
   <string name="pref_theme_title_light">בהיר</string>
   <string name="pref_theme_title_dark">כהה</string>
   <string name="pref_theme_title_trueblack">שחור (תואם AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">כניסה</string>
-  <string name="pref_gpodnet_authenticate_sum">ניתן להיכנס לחשבונך ב־gpodder.net כדי לסנכרן את המינויים שלך.</string>
-  <string name="pref_gpodnet_logout_title">יציאה</string>
-  <string name="pref_gpodnet_logout_toast">הצלחת לצאת</string>
   <string name="pref_gpodnet_setlogin_information_title">שינוי פרטי הכניסה</string>
   <string name="pref_gpodnet_setlogin_information_sum">שינוי פרטי הכניסה לחשבון ה־gpodder.net שלך.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[נכנסת בשם <i>%1$s</i> עם ההתקן <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">התאמת המהירויות הזמינות למהירות נגינה משתנה</string>
   <string name="pref_feed_playback_speed_sum">המהירות שתחול על פרקים בפודקאסט זה כשאלו מתחילים להתנגן</string>
   <string name="pref_feed_skip">לדלג אוטומטית</string>

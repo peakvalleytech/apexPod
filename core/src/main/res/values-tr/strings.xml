@@ -361,13 +361,8 @@
   <string name="pref_theme_title_light">Aydınlık</string>
   <string name="pref_theme_title_dark">Karanlık</string>
   <string name="pref_theme_title_trueblack">Black (AMOLED ready)</string>
-    <string name="pref_gpodnet_authenticate_title">Giriş</string>
-  <string name="pref_gpodnet_authenticate_sum">Üyeliklerinizi senkronize etmek için gpodder.net hesabınızla oturum açın.</string>
-  <string name="pref_gpodnet_logout_title">Çıkış</string>
-  <string name="pref_gpodnet_logout_toast">Çıkış başarılı</string>
   <string name="pref_gpodnet_setlogin_information_title">Giriş bilgisini değiştir</string>
   <string name="pref_gpodnet_setlogin_information_sum">gpodder.net hesabınız için giriş bilgisini değiştirin.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Logged in as <i>%1$s</i> with device <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Customize the speeds available for variable speed playback</string>
   <string name="pref_feed_playback_speed_sum">The speed to use when starting audio playback for episodes in this podcast</string>
   <string name="pref_feed_skip">Auto Skip</string>

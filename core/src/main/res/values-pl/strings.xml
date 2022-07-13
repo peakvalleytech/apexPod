@@ -444,13 +444,8 @@
   <string name="pref_theme_title_light">Jasny</string>
   <string name="pref_theme_title_dark">Ciemny</string>
   <string name="pref_theme_title_trueblack">Czarny (dla ekranów AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">Zaloguj</string>
-  <string name="pref_gpodnet_authenticate_sum">Zaloguj się swoim kontem na gpodder.net w celu synchronizacji Twoich subskrypcji.</string>
-  <string name="pref_gpodnet_logout_title">Wyloguj</string>
-  <string name="pref_gpodnet_logout_toast">Wylogowanie się powiodło</string>
   <string name="pref_gpodnet_setlogin_information_title">Zmień informacje logowania</string>
   <string name="pref_gpodnet_setlogin_information_sum">Zmień dane logowania konta gpodder.net.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Zalogowano jako <i>%1$s</i> na urządzeniu <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Dostosuj prędkości dostępne dla odtwarzania o zmiennej prędkości</string>
   <string name="pref_feed_playback_speed_sum">Prędkość używana podczas odtwarzania odcinków z tego kanału</string>
   <string name="pref_feed_skip">Automatyczne pomijanie</string>

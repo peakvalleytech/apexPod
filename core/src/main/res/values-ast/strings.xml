@@ -325,13 +325,8 @@
   <string name="pref_theme_title_light">Claridá</string>
   <string name="pref_theme_title_dark">Escuridá</string>
   <string name="pref_theme_title_trueblack">Escuridá (AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">Aniciar sesión</string>
-  <string name="pref_gpodnet_authenticate_sum">Anicia sesión en gpodder.net pa sincronizar les soscripciones.</string>
-  <string name="pref_gpodnet_logout_title">Zarrar sesión</string>
-  <string name="pref_gpodnet_logout_toast">Zarresti sesión correutamente</string>
   <string name="pref_gpodnet_setlogin_information_title">Camudar la información del aniciu de sesión</string>
   <string name="pref_gpodnet_setlogin_information_sum">Camuda la información d\'aniciu de sesión de la to cuenta de gpodder.net .</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Aniciesti sesión como <i>%1$s</i> col preséu <i>%2$s</i>]]></string>
   <string name="pref_feed_playback_speed_sum">La velocidá que s\'usa al aniciar la reproducción de los episodios d\'esti podcast</string>
   <string name="pref_feed_skip">Saltu automáticu</string>
   <string name="pref_feed_skip_sum">Salta les introducciones y los creitos del final</string>

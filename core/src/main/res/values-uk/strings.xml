@@ -443,13 +443,8 @@
   <string name="pref_theme_title_light">Світла</string>
   <string name="pref_theme_title_dark">Темна</string>
   <string name="pref_theme_title_trueblack">Чорна (для AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">Логін</string>
-  <string name="pref_gpodnet_authenticate_sum">Увійти до свого облікового запису gpodder.net для сінхронізації ваших каналів</string>
-  <string name="pref_gpodnet_logout_title">Вихід</string>
-  <string name="pref_gpodnet_logout_toast">Успішно закрили доступ</string>
   <string name="pref_gpodnet_setlogin_information_title">Змінити інформацію для входу</string>
   <string name="pref_gpodnet_setlogin_information_sum">Змінити інформацію щодо облікового запису gpodder.net</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Ви увійшли як <i>%1$s</i> з пристрою <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Налаштування доступних швидкостей для відтворення зі зміненою швидкістю</string>
   <string name="pref_feed_playback_speed_sum">Швидкість, яку слід використовувати при запуску відтворення аудіо для епізодів у цьому подкасті</string>
   <string name="pref_feed_skip">Автоматичний пропуск</string>

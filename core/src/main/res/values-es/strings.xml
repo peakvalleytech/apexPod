@@ -413,13 +413,8 @@
   <string name="pref_theme_title_light">Claro</string>
   <string name="pref_theme_title_dark">Oscuro</string>
   <string name="pref_theme_title_trueblack">Negro (para AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">Iniciar sesión</string>
-  <string name="pref_gpodnet_authenticate_sum">Iniciar sesión en su cuenta de gpodder.net para sincronizar sus suscripciones.</string>
-  <string name="pref_gpodnet_logout_title">Cerrar sesión</string>
-  <string name="pref_gpodnet_logout_toast">Ha cerrado la sesión correctamente</string>
   <string name="pref_gpodnet_setlogin_information_title">Cambiar información de inicio de sesión</string>
   <string name="pref_gpodnet_setlogin_information_sum">Modificar datos de inicio de sesión en gpodder.net.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Identificado como <i>%1$s</i> con dispositivo <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Personalice las velocidades disponibles en la reproducción a velocidad variable</string>
   <string name="pref_feed_playback_speed_sum">La velocidad a la que comenzarán los episodios de este podcast</string>
   <string name="pref_feed_skip">Saltar automático</string>

@@ -300,7 +300,7 @@
   <string name="clear_queue_confirmation_msg">Por favor confirme que você deseja limpar TODOS os episódios da fila</string>
   <string name="time_left_label">Tempo restante:\u0020</string>
   <!--Variable Speed-->
-  <string name="speed_presets">Presets</string>
+  <string name="speed_presets"></string>
   <string name="preset_already_exists">%1$.2fx foi salvo com um preset.</string>
   <!--Empty list labels-->
   <string name="no_items_header_label">Nenhum episódio na fila</string>
@@ -413,13 +413,8 @@
   <string name="pref_theme_title_light">Claro</string>
   <string name="pref_theme_title_dark">Escuro</string>
   <string name="pref_theme_title_trueblack">Preto (preparado para AMOLED)</string>
-  <string name="pref_gpodnet_authenticate_title">Login</string>
-  <string name="pref_gpodnet_authenticate_sum">Faça o login na sua conta gpodder.net para sincronizar suas assinaturas.</string>
-  <string name="pref_gpodnet_logout_title">Sair</string>
-  <string name="pref_gpodnet_logout_toast">Saiu com sucesso</string>
   <string name="pref_gpodnet_setlogin_information_title">Alterar informações de login</string>
   <string name="pref_gpodnet_setlogin_information_sum">Alterar informações de login da sua conta gpodder.net</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Entrou como <i>%1$s</i> com o dispositivo <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Personalize as velocidades disponíveis para reprodução de áudio.</string>
   <string name="pref_feed_playback_speed_sum">A velocidade a ser usada ao iniciar a reprodução de áudio para episódios neste podcast</string>
   <string name="pref_feed_skip">Salto automático</string>

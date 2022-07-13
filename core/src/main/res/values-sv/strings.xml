@@ -414,13 +414,8 @@
   <string name="pref_theme_title_light">Ljust</string>
   <string name="pref_theme_title_dark">Mörkt</string>
   <string name="pref_theme_title_trueblack">Svart (AMOLED redo)</string>
-    <string name="pref_gpodnet_authenticate_title">Logga in</string>
-  <string name="pref_gpodnet_authenticate_sum">Logga in med ditt gpodder.net konto för att synkronisera dina prenumerationer.</string>
-  <string name="pref_gpodnet_logout_title">Logga ut</string>
-  <string name="pref_gpodnet_logout_toast">Utloggning lyckades</string>
   <string name="pref_gpodnet_setlogin_information_title">Ändra inloggningsinformation</string>
   <string name="pref_gpodnet_setlogin_information_sum">Ändra inloggningsinformationen för ditt gpodder.net konto.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Inloggad som <i>%1$s</i> med enhet <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Anpassa de tillgängliga hastigheterna för variabel uppspelningshastighet</string>
   <string name="pref_feed_playback_speed_sum">Uppspelningshastigheten att använda för episoder i denna podcast</string>
   <string name="pref_feed_skip">Automatisk överhoppning</string>

@@ -343,13 +343,8 @@
   <string name="pref_theme_title_light">Vaalea</string>
   <string name="pref_theme_title_dark">Tumma</string>
   <string name="pref_theme_title_trueblack">Musta (AMOLED valmis)</string>
-    <string name="pref_gpodnet_authenticate_title">Sisäänkirjautuminen</string>
-  <string name="pref_gpodnet_authenticate_sum">Kirjaudu gpodder.net tililläsi jotta voit synkronoida tilauksesi.</string>
-  <string name="pref_gpodnet_logout_title">Kirjaudu ulos</string>
-  <string name="pref_gpodnet_logout_toast">Uloskirjautuminen onnistui</string>
   <string name="pref_gpodnet_setlogin_information_title">Vaihda kirjautumistietoja</string>
   <string name="pref_gpodnet_setlogin_information_sum">Vaihda kirjautumistietoja gpodder.net tiliisi.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Kirjauduttu <i>%1$s</i> laitteella <i>%2$s</i>]]></string>
   <string name="pref_playback_time_respects_speed_title">Mukauta mediatietoja soiton nopeuteen</string>
   <string name="pref_playback_time_respects_speed_sum">Näytetty aika ja kesto mukautuvat soiton nopeuteen</string>
   <string name="pref_fast_forward">Seuraava skippaa aikaa</string>

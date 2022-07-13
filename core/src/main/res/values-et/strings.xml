@@ -403,13 +403,8 @@
   <string name="pref_theme_title_light">Hele</string>
   <string name="pref_theme_title_dark">Tume</string>
   <string name="pref_theme_title_trueblack">Must (AMOLED)</string>
-    <string name="pref_gpodnet_authenticate_title">Logi sisse</string>
-  <string name="pref_gpodnet_authenticate_sum">Logi sisse oma gpodder.net kontoga, et oma tellimused sünkroonida.</string>
-  <string name="pref_gpodnet_logout_title">Logi välja</string>
-  <string name="pref_gpodnet_logout_toast">Väljalogimine oli edukas</string>
   <string name="pref_gpodnet_setlogin_information_title">Muuda kasutajakonto infot</string>
   <string name="pref_gpodnet_setlogin_information_sum">Muuda oma gpodder.net konto sisselogimise andmeid.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[Sisseloginud kui <i>%1$s</i> seadmega <i>%2$s</i>]]></string>
   <string name="pref_playback_speed_sum">Kohanda kiiruseid, mis on esitamisel saadaval</string>
   <string name="pref_feed_playback_speed_sum">Millise kiirusega esitatakse selle tellimuse saadete heli</string>
   <string name="pref_feed_skip">Automaatne vahelejätmine</string>

@@ -354,13 +354,8 @@
   <string name="pref_theme_title_light">밝게</string>
   <string name="pref_theme_title_dark">어둡게</string>
   <string name="pref_theme_title_trueblack">검정 (AMOLED 화면에 좋음)</string>
-    <string name="pref_gpodnet_authenticate_title">로그인</string>
-  <string name="pref_gpodnet_authenticate_sum">gpodder.net 계정으로 로그인해서 구독 정보를 동기화</string>
-  <string name="pref_gpodnet_logout_title">로그아웃</string>
-  <string name="pref_gpodnet_logout_toast">로그아웃 성공</string>
   <string name="pref_gpodnet_setlogin_information_title">로그인 정보 바꾸기</string>
   <string name="pref_gpodnet_setlogin_information_sum">gpodder.net 계정의 로그인 정보를 바꿉니다.</string>
-  <string name="pref_gpodnet_login_status"><![CDATA[<i>%1$s</i> 사용자로 로그인, <i>%2$s</i> 장치]]></string>
   <string name="pref_playback_speed_sum">재생 속도를 다양하게 할 경우 속도를 직접 설정</string>
   <string name="pref_feed_playback_speed_sum">이 팟캐스트의 에피소드를 재생할 때 사용할 오디오 재생 속도</string>
   <string name="pref_feed_skip">자동 건너뛰기</string>
