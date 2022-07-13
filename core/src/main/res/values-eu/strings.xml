@@ -369,8 +369,7 @@
   <string name="feed_refresh_sum">Zehaztu tarte bat edo denbora zehatz bat atal berriak automatikoki bilatzeko</string>
   <string name="feed_refresh_interval">Tartea</string>
   <string name="feed_refresh_time">Ordua</string>
-  <string name="feed_refresh_never">Inoiz ez</string>
-  <string name="feed_refresh_interval_at">%1$setan</string>
+    <string name="feed_refresh_interval_at">%1$setan</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">%d orduro</item>
     <item quantity="other">%d orduro</item>

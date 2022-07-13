@@ -385,8 +385,7 @@
   <string name="feed_refresh_sum">Lakit un etremez pe un eur resis evit klask rannoù nevez ent emgefreek</string>
   <string name="feed_refresh_interval">Etremez</string>
   <string name="feed_refresh_time">Eur</string>
-  <string name="feed_refresh_never">Morse</string>
-  <string name="feed_refresh_interval_at">da %1$s</string>
+    <string name="feed_refresh_interval_at">da %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Bep eur</item>
     <item quantity="two">Bep 2 eur</item>

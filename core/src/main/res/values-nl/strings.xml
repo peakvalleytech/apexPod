@@ -369,8 +369,7 @@
   <string name="feed_refresh_sum">Stel een tussenpoos of tijdstip in waarop automatisch nieuwe afleveringen worden opgehaald</string>
   <string name="feed_refresh_interval">Met tussenpozen&lt;br&gt;</string>
   <string name="feed_refresh_time">Op tijdstip</string>
-  <string name="feed_refresh_never">Nooit</string>
-  <string name="feed_refresh_interval_at">om %1$s</string>
+    <string name="feed_refresh_interval_at">om %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Elk uur</item>
     <item quantity="other">Elke%d uur</item>

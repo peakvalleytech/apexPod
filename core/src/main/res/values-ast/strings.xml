@@ -286,8 +286,7 @@
   <string name="network_pref_sum">Intervalu d\'anovamientu, controles de descarga y rede móvil</string>
   <string name="feed_refresh_interval">Intervalu</string>
   <string name="feed_refresh_time">Tiempu</string>
-  <string name="feed_refresh_never">Enxamás</string>
-  <plurals name="feed_refresh_every_x_hours">
+    <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Cada hora</item>
     <item quantity="other">Cada %d hores</item>
   </plurals>

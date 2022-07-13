@@ -369,8 +369,7 @@
   <string name="feed_refresh_sum">Indiquer la récurrence ou l\'heure de mise à jour des listes d\'épisodes</string>
   <string name="feed_refresh_interval">Intervalle</string>
   <string name="feed_refresh_time">Heure</string>
-  <string name="feed_refresh_never">Jamais</string>
-  <string name="feed_refresh_interval_at">à %1$s</string>
+    <string name="feed_refresh_interval_at">à %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Toutes les heures</item>
     <item quantity="other">Toutes les %d heures</item>

@@ -355,8 +355,7 @@
   <string name="feed_refresh_sum">指定一个间隔或特定的时间来自动寻找播客的新节目</string>
   <string name="feed_refresh_interval">间隔</string>
   <string name="feed_refresh_time">时间</string>
-  <string name="feed_refresh_never">永不</string>
-  <string name="feed_refresh_interval_at">在 %1$s</string>
+    <string name="feed_refresh_interval_at">在 %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="other">每隔 %d 小时</item>
   </plurals>

@@ -375,8 +375,7 @@
   <string name="feed_refresh_sum">Zvolit interval nebo čas pro automatické hledání nových epizod</string>
   <string name="feed_refresh_interval">Interval</string>
   <string name="feed_refresh_time">Čas</string>
-  <string name="feed_refresh_never">Nikdy</string>
-  <string name="feed_refresh_interval_at">na %1$s</string>
+    <string name="feed_refresh_interval_at">na %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Každou hodinu</item>
     <item quantity="few">Každé %d hodiny</item>

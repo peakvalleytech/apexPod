@@ -15,11 +15,11 @@
             android:id="@+id/statistics_mode_normal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/statistics_mode_normal"/>
+            android:text=""/>
 
     <RadioButton
             android:id="@+id/statistics_mode_count_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/statistics_mode_count_all"/>
+            android:text=""/>
 </RadioGroup>

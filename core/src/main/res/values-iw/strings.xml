@@ -397,8 +397,7 @@
   <string name="feed_refresh_sum">יש לציין הפרש או מועד מסוים לחיפוש פרקים אוטומטית</string>
   <string name="feed_refresh_interval">הפרש</string>
   <string name="feed_refresh_time">מועד</string>
-  <string name="feed_refresh_never">אף פעם לא</string>
-  <string name="feed_refresh_interval_at">ב־%1$s</string>
+    <string name="feed_refresh_interval_at">ב־%1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">כל שעה</item>
     <item quantity="two">כל שעתיים</item>

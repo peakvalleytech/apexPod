@@ -392,7 +392,6 @@
     <string name="feed_refresh_sum">Specify an interval or a specific time to look for new episodes automatically</string>
     <string name="feed_refresh_interval">Interval</string>
     <string name="feed_refresh_time">Time</string>
-    <string name="feed_refresh_never">Never</string>
     <string name="feed_refresh_interval_at">at %1$s</string>
     <plurals name="feed_refresh_every_x_hours">
         <item quantity="one">Every hour</item>
@@ -856,4 +855,5 @@
     <string name="repeat_section">Repeat Section</string>
     <string name="feed_settings_other_title">Other</string>
     <string name="feed_settings_player_title">Playback</string>
+    <string name="statistics_details_dialog">%1$d out of %2$d episodes started.\n\nPlayed %3$s out of %4$s.</string>
 </resources>

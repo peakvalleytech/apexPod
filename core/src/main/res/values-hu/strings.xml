@@ -369,8 +369,7 @@
   <string name="feed_refresh_sum">Adjon meg egy intervallumot vagy egy adott időpontot az új epizódok automatikus kereséséhez</string>
   <string name="feed_refresh_interval">Intervallum</string>
   <string name="feed_refresh_time">Idő</string>
-  <string name="feed_refresh_never">Soha</string>
-  <string name="feed_refresh_interval_at">ekkor: %1$s</string>
+    <string name="feed_refresh_interval_at">ekkor: %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">%d óránként</item>
     <item quantity="other">%d óránként</item>

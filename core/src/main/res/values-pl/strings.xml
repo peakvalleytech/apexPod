@@ -398,8 +398,7 @@
   <string name="feed_refresh_sum">Określ częstotliwość lub czas dnia automatycznego szukania nowych odcinków</string>
   <string name="feed_refresh_interval">Częstotliwość</string>
   <string name="feed_refresh_time">Czas</string>
-  <string name="feed_refresh_never">Nigdy</string>
-  <string name="feed_refresh_interval_at">o %1$s</string>
+    <string name="feed_refresh_interval_at">o %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Co godzinę</item>
     <item quantity="few">Co %d godziny</item>

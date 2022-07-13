@@ -369,8 +369,7 @@
   <string name="feed_refresh_sum">یک بازه یا زمان مشخص از روز را برای بروزرسازی خودکار پادکست ها مشخص کنید</string>
   <string name="feed_refresh_interval">تنظیم بازه</string>
   <string name="feed_refresh_time">زمان</string>
-  <string name="feed_refresh_never">هرگز</string>
-  <string name="feed_refresh_interval_at">در %1$s</string>
+    <string name="feed_refresh_interval_at">در %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">هر </item>
     <item quantity="other">هر %d ساعت</item>

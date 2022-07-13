@@ -369,8 +369,7 @@
   <string name="feed_refresh_sum">Specificer et interval eller et bestemt tidspunkt at automatisk tjekke for nye udsendelser</string>
   <string name="feed_refresh_interval">Interval</string>
   <string name="feed_refresh_time">Tid</string>
-  <string name="feed_refresh_never">Aldrig</string>
-  <string name="feed_refresh_interval_at">kl. %1$s</string>
+    <string name="feed_refresh_interval_at">kl. %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Hver time</item>
     <item quantity="other">Hver %d time</item>

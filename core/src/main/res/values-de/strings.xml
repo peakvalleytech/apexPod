@@ -370,8 +370,7 @@ Tippen, um Details anzuzeigen.</string>
   <string name="feed_refresh_sum">Lege ein Intervall oder eine Tageszeit zur automatischen Aktualisierung der Podcasts fest</string>
   <string name="feed_refresh_interval">Intervall</string>
   <string name="feed_refresh_time">Zeit</string>
-  <string name="feed_refresh_never">Niemals</string>
-  <string name="feed_refresh_interval_at">um %1$s</string>
+    <string name="feed_refresh_interval_at">um %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Jede Stunde</item>
     <item quantity="other">Alle %d Stunden</item>

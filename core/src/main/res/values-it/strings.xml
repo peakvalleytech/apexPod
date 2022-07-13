@@ -369,8 +369,7 @@
   <string name="feed_refresh_sum">Specifica un intervallo di tempo oppure un orario in cui verificare automaticamente la disponibilità di nuovi episodi</string>
   <string name="feed_refresh_interval">Intervallo</string>
   <string name="feed_refresh_time">Orario</string>
-  <string name="feed_refresh_never">Mai</string>
-  <string name="feed_refresh_interval_at">alle %1$s</string>
+    <string name="feed_refresh_interval_at">alle %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Ogni ora</item>
     <item quantity="other">Ogni %d ore </item>

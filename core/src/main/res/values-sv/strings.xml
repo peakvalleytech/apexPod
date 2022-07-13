@@ -370,8 +370,7 @@
   <string name="feed_refresh_sum">Ange ett intervall eller en specifik tid på dagen för att söka efter nya episoder automatiskt</string>
   <string name="feed_refresh_interval">Intervall</string>
   <string name="feed_refresh_time">Tid</string>
-  <string name="feed_refresh_never">Aldrig</string>
-  <string name="feed_refresh_interval_at">vid %1$s</string>
+    <string name="feed_refresh_interval_at">vid %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Var timme</item>
     <item quantity="other">Var %dtimmar</item>

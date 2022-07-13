@@ -369,8 +369,7 @@
   <string name="feed_refresh_sum">Indicar un intervalo ou hora concreta na que comprobar se hai novos episodios</string>
   <string name="feed_refresh_interval">Intervalo</string>
   <string name="feed_refresh_time">Hora</string>
-  <string name="feed_refresh_never">Nunca</string>
-  <string name="feed_refresh_interval_at">ás %1$s</string>
+    <string name="feed_refresh_interval_at">ás %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Cada hora</item>
     <item quantity="other">Cada %d horas</item>

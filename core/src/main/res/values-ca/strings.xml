@@ -369,8 +369,7 @@
   <string name="feed_refresh_sum">Especifiqueu un interval o una hora específica per buscar episodis nous automàticament</string>
   <string name="feed_refresh_interval">Interval</string>
   <string name="feed_refresh_time">Temps</string>
-  <string name="feed_refresh_never">Mai</string>
-  <string name="feed_refresh_interval_at">a les %1$s</string>
+    <string name="feed_refresh_interval_at">a les %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Cada hora</item>
     <item quantity="other">Cada %d hores</item>

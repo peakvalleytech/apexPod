@@ -378,8 +378,7 @@
   <string name="feed_refresh_sum">Укажите интервал или время автоматического обновления выпусков</string>
   <string name="feed_refresh_interval">Интервал</string>
   <string name="feed_refresh_time">Время</string>
-  <string name="feed_refresh_never">никогда</string>
-  <string name="feed_refresh_interval_at">в %1$s</string>
+    <string name="feed_refresh_interval_at">в %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Каждый час</item>
     <item quantity="few">Каждые %d часа</item>

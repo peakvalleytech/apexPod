@@ -397,8 +397,7 @@
   <string name="feed_refresh_sum">Вкажіть інтервал або певний час для автоматичного пошуку нових епізодів</string>
   <string name="feed_refresh_interval">Інтервал</string>
   <string name="feed_refresh_time">Час</string>
-  <string name="feed_refresh_never">Ніколи</string>
-  <string name="feed_refresh_interval_at">в %1$s</string>
+    <string name="feed_refresh_interval_at">в %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">Every hour</item>
     <item quantity="few">Every %d hours</item>

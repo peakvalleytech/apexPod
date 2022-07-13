@@ -378,8 +378,7 @@
   <string name="feed_refresh_sum">अपने आप नए एपिसोड की तलाश करने के लिए अंतराल या एक विशिष्ट समय निर्दिष्ट करें</string>
   <string name="feed_refresh_interval">अंतराल</string>
   <string name="feed_refresh_time">समय</string>
-  <string name="feed_refresh_never">कभी नहीं</string>
-  <string name="feed_refresh_interval_at">%1$ एस पर</string>
+    <string name="feed_refresh_interval_at">%1$ एस पर</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">हेडफोन फिर से कनेक्ट</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">ब्लूटूथ रीकनेक्ट</string>
   <string name="pref_stream_over_download_title">स्ट्रीमिंग पसंद करते हैं</string>

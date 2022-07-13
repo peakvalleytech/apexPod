@@ -345,8 +345,7 @@
   <string name="feed_refresh_sum">Spesifiser en intervall eller et spesifikt tidspunkt når det skal sjekkes automatisk for nye episoder</string>
   <string name="feed_refresh_interval">Intervall</string>
   <string name="feed_refresh_time">Tid</string>
-  <string name="feed_refresh_never">Aldri</string>
-  <string name="feed_refresh_interval_at">på %1$s</string>
+    <string name="feed_refresh_interval_at">på %1$s</string>
     <string name="pref_pauseOnHeadsetDisconnect_title">Koblet fra hodetelefoner eller Bluetooth</string>
   <string name="pref_unpauseOnHeadsetReconnect_title">Gjeninnkopling av hodetelefoner</string>
   <string name="pref_unpauseOnBluetoothReconnect_title">Blutetooth tilkoblet igjen</string>

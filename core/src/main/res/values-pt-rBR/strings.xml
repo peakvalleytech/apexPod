@@ -369,7 +369,6 @@
   <string name="feed_refresh_sum">Especifique um intervalo ou um horário específico para procurar por novos episódios automaticamente</string>
   <string name="feed_refresh_interval">Intervalo</string>
   <string name="feed_refresh_time">Horário</string>
-  <string name="feed_refresh_never">Nunca</string>
   <string name="feed_refresh_interval_at">às %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="one">A cada hora</item>
@@ -791,4 +790,6 @@
   <string name="feed_tags_label">Etiquetas</string>
   <string name="feed_tags_summary">Mude as etiquetas deste podcast para ajudar a organizar as suas subscrições</string>
     <string name="confirm_mobile_feed_refresh_dialog_message">Descarregar episódios sobre a ligação de dados móveis é desativado nas definições.\n\nAinda pretende atualizar todos os podcasts sobre dados móveis?</string>
+  <string name="sync_status_wait_for_downloads">À espera que os downloads preencham...</string>
+  <string name="statistics_details_dialog">Começou a %1$d de %2$d episódios.\\n\\nJogou %3$s de %4$s.</string>
 </resources>

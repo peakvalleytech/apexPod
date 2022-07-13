@@ -428,8 +428,7 @@
   <string name="feed_refresh_sum">حدد مدة  زمنية أو وقتًا محددًا للبحث عن الحلقات الجديدة تلقائيًا</string>
   <string name="feed_refresh_interval">مدة</string>
   <string name="feed_refresh_time">الوقت</string>
-  <string name="feed_refresh_never">أبداً</string>
-  <string name="feed_refresh_interval_at">عند %1$s</string>
+    <string name="feed_refresh_interval_at">عند %1$s</string>
   <plurals name="feed_refresh_every_x_hours">
     <item quantity="zero"> </item>
     <item quantity="one">كل ساعة</item>

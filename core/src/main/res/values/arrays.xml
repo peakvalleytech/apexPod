@@ -39,7 +39,6 @@
         <item>50</item>
         <item>100</item>
         <item>500</item>
-        <item>@string/pref_episode_cache_unlimited</item>
     </string-array>
 
     <string-array name="episode_cache_size_values">
@@ -53,7 +52,7 @@
     </string-array>
 
     <string-array name="mobile_update_entries">
-        <item>@string/pref_mobileUpdate_refresh</item>
+        <item>@string/pref_mobileUpdate_refresh</item>1
         <item>@string/pref_mobileUpdate_episode_download</item>
         <item>@string/pref_mobileUpdate_auto_download</item>
         <item>@string/pref_mobileUpdate_streaming</item>
@@ -256,5 +255,4 @@
         <item>SubscriptionFragment</item>
     </string-array>
     <string name="drawer_feed_order_priority">Sort by priority</string>
-    <string name="never">Never</string>
 </resources>
