@@ -43,15 +43,15 @@ public class SynchronizationPreferencesFragment extends PreferenceFragmentCompat
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.preferences_synchronization);
-        setupScreen();
-        updateScreen();
+//        setupScreen();
+//        updateScreen();
     }
 
     @Override
     public void onStart() {
         super.onStart();
         ((PreferenceActivity) getActivity()).getSupportActionBar().setTitle(R.string.synchronization_pref);
-        updateScreen();
+//        updateScreen();
         EventBus.getDefault().register(this);
     }
 
@@ -64,17 +64,17 @@ public class SynchronizationPreferencesFragment extends PreferenceFragmentCompat
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void syncStatusChanged(SyncServiceEvent event) {
-        if (!SynchronizationSettings.isProviderConnected()) {
-            return;
-        }
-        updateScreen();
-        if (event.getMessageResId() == R.string.sync_status_error
-                || event.getMessageResId() == R.string.sync_status_success) {
-            updateLastSyncReport(SynchronizationSettings.isLastSyncSuccessful(),
-                    SynchronizationSettings.getLastSyncAttempt());
-        } else {
-            ((PreferenceActivity) getActivity()).getSupportActionBar().setSubtitle(event.getMessageResId());
-        }
+//        if (!SynchronizationSettings.isProviderConnected()) {
+//            return;
+//        }
+//        updateScreen();
+//        if (event.getMessageResId() == R.string.sync_status_error
+//                || event.getMessageResId() == R.string.sync_status_success) {
+//            updateLastSyncReport(SynchronizationSettings.isLastSyncSuccessful(),
+//                    SynchronizationSettings.getLastSyncAttempt());
+//        } else {
+//            ((PreferenceActivity) getActivity()).getSupportActionBar().setSubtitle(event.getMessageResId());
+//        }
     }
 
     private void setupScreen() {

@@ -856,4 +856,5 @@
     <string name="feed_settings_other_title">Other</string>
     <string name="feed_settings_player_title">Playback</string>
     <string name="statistics_details_dialog">%1$d out of %2$d episodes started.\n\nPlayed %3$s out of %4$s.</string>
+    <string name="synchronization_under_construction">The current synchronization feature will be replaced soon. When complete, synchronization will occur through your google account, providing a more reliable and easier user experience.</string>
 </resources>
