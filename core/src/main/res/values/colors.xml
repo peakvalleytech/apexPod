@@ -35,8 +35,8 @@
     <color name="accent_light">#f00</color>
     <color name="accent_dark">#f00</color>
 
-    <color name="icon_background_gradient_start">#FF3636</color>
-    <color name="icon_background_gradient_end">#D50000</color>
+    <color name="icon_background_gradient_start">#f00</color>
+    <color name="icon_background_gradient_end">#f00</color>
 
     <color name="master_switch_background_light">#DDDDDD</color>
     <color name="master_switch_background_dark">#191919</color>
