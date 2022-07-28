@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name" translate="false">ApexPod</string>
     <string name="title_loop_mode">Loop Mode</string>
+    <string name="title_show_notes">Show Notes</string>
 </resources>

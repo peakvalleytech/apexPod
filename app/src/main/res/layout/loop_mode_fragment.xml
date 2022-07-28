@@ -11,26 +11,25 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="24dp">
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/txtLoopModeTitle"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:text="@string/title_loop_mode"
             android:textSize="18sp"
             app:layout_constraintTop_toTopOf="parent"
-
             tools:layout_editor_absoluteX="16dp" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switch_enable_repeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Enabled"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Enabled"></androidx.appcompat.widget.SwitchCompat>
+            app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.SwitchCompat>
 
         <CheckBox
             android:id="@+id/checkbox_repeat_episode"

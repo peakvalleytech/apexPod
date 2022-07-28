@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <de.danoeh.apexpod.view.NestedScrollableHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,9 +8,29 @@
     app:preferVertical="10"
     android:nestedScrollingEnabled="true">
 
-    <de.danoeh.apexpod.view.ShownotesWebView
-        android:id="@+id/webview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:nestedScrollingEnabled="true">-->
+
+        <TextView
+            android:id="@+id/txtShowNotesTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/title_show_notes"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/webview"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="24dp" />
+
+        <de.danoeh.apexpod.view.ShownotesWebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            />
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </de.danoeh.apexpod.view.NestedScrollableHost>
