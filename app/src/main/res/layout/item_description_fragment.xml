@@ -13,23 +13,23 @@
 <!--        android:layout_height="wrap_content"-->
 <!--        android:nestedScrollingEnabled="true">-->
 
-        <TextView
-            android:id="@+id/txtShowNotesTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/title_show_notes"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@id/webview"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="24dp" />
+<!--        <TextView-->
+<!--            android:id="@+id/txtShowNotesTitle"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:text="@string/title_show_notes"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/webview"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:layout_editor_absoluteX="24dp" />-->
 
         <de.danoeh.apexpod.view.ShownotesWebView
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="16dp"
             />
 <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
