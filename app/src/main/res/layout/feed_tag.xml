@@ -9,5 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:checkable="true" />
+        android:checkable="true"
+        android:textAlignment="center" />
 </LinearLayout>

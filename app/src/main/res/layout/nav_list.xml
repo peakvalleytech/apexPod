@@ -48,26 +48,24 @@
             tools:background="@android:color/holo_green_light" />
     </LinearLayout>
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@id/nav_settings"
-        android:layout_centerVertical="true"
-        android:background="?android:attr/listDivider"
-        tools:background="@android:color/holo_red_dark" />
+<!--    <View-->
+<!--        android:id="@+id/divider"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_above="@id/nav_settings"-->
+<!--        android:layout_centerVertical="true"-->
+<!--        android:background="?android:attr/listDivider"-->
+<!--        tools:background="@android:color/holo_red_dark" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nav_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/divider"
+        android:layout_above="@id/nav_settings"
         android:choiceMode="singleChoice"
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
-        android:layout_alignParentTop="true"
         android:dividerHeight="0dp"
-        android:paddingBottom="@dimen/list_vertical_padding"
         android:paddingTop="8dp"
         android:scrollbarStyle="outsideOverlay"
         tools:listitem="@layout/nav_listitem" />

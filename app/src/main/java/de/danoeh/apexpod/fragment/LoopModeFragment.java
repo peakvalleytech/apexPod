@@ -194,6 +194,11 @@ public class LoopModeFragment extends Fragment implements SharedPreferences.OnSh
         super();
         this.controller = controller;
     }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Override
     public void onDestroy() {
