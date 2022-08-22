@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
@@ -60,7 +61,10 @@ public class AddToPlayListDialog extends DialogFragment {
         displayedPlayLists = dbAdapter.getPlaylListsByFeedId(feedItem.getId());
 
         viewBinding = EditPlaylistsDialogBinding.inflate(getLayoutInflater());
-        viewBinding.playlistsRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        viewBinding.playlistsRecycler.setLayoutManager(layoutManager);
+        viewBinding.playlistsRecycler.setHasFixedSize(true);
         viewBinding.playlistsRecycler.addItemDecoration(new ItemOffsetDecoration(getContext(), 4));
         adapter = new PlaystListSelectionAdapter();
         adapter.setHasStableIds(true);
