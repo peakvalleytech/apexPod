@@ -8,19 +8,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.chip.Chip;
-
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.core.storage.ApexDBAdapter;
@@ -36,8 +36,8 @@ import io.reactivex.schedulers.Schedulers;
 public class AddToPlayListDialog extends DialogFragment {
     public static final String TAG = "AddToPlayListDialog";
     private static final String ARG_FEEDITEM = "feeditem";
-    private List<Playlist> displayedPlayLists = new ArrayList<>();
-    private List<Playlist> createdPlayLists = new ArrayList<>();
+    private Set<Playlist> selectedPlaylists = new HashSet<>();
+    private List<Playlist> allPlaylists = new ArrayList<>();
     private EditPlaylistsDialogBinding viewBinding;
     private PlaystListSelectionAdapter adapter;
     private ApexDBAdapter dbAdapter;
@@ -58,7 +58,7 @@ public class AddToPlayListDialog extends DialogFragment {
         playListItemDao = new PlayListItemDao();
         feedItem = (FeedItem) getArguments().getSerializable(ARG_FEEDITEM);
 
-        displayedPlayLists = dbAdapter.getPlaylListsByFeedId(feedItem.getId());
+        selectedPlaylists = new HashSet<>(dbAdapter.getPlaylListsByFeedId(feedItem.getId()));
 
         viewBinding = EditPlaylistsDialogBinding.inflate(getLayoutInflater());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -67,12 +67,13 @@ public class AddToPlayListDialog extends DialogFragment {
         viewBinding.playlistsRecycler.setHasFixedSize(true);
         viewBinding.playlistsRecycler.addItemDecoration(new ItemOffsetDecoration(getContext(), 4));
         adapter = new PlaystListSelectionAdapter();
+
         adapter.setHasStableIds(true);
         viewBinding.playlistsRecycler.setAdapter(adapter);
 
         viewBinding.newPlaylistButton.setOnClickListener(v -> {
                     String playListName = viewBinding.newPlaylistEditText.getText().toString().trim();
-                    addPlayList(playListName);
+                    createPlaylist(playListName);
                 });
 
         loadPlaylists();
@@ -91,7 +92,7 @@ public class AddToPlayListDialog extends DialogFragment {
         dialog.setTitle(R.string.playlists_label);
         dialog.setPositiveButton(android.R.string.ok, (d, input) -> {
             String playListName = viewBinding.newPlaylistEditText.getText().toString().trim();
-            addPlayList(playListName);
+            createPlaylist(playListName);
         });
         dialog.setNegativeButton(R.string.cancel_label, null);
         return dialog.create();
@@ -106,7 +107,7 @@ public class AddToPlayListDialog extends DialogFragment {
                         playListTitles.add(p.getName());
                     }
 
-                    createdPlayLists = playlists;
+                    allPlaylists = playlists;
                     return playListTitles;
                 })
                 .subscribeOn(Schedulers.io())
@@ -125,7 +126,7 @@ public class AddToPlayListDialog extends DialogFragment {
         if (TextUtils.isEmpty(playlistName)) {
             return false;
         }
-        for (Playlist playlist : displayedPlayLists) {
+        for (Playlist playlist : selectedPlaylists) {
             if (playlist.getName().equals(playlistName)) {
                 return false;
             }
@@ -133,28 +134,24 @@ public class AddToPlayListDialog extends DialogFragment {
         return true;
     }
 
-    private void addPlayList(String playListName) {
+    private void selectPlaylist(Playlist playlist) {
+        selectedPlaylists.add(playlist);
+        ArrayList<FeedItem> feedItems = new ArrayList<>();
+        feedItems.add(feedItem);
+        playListItemDao.addItemsByPlayistId(playlist.getId(), feedItems);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void createPlaylist(String playListName) {
         if (!isValidInput(playListName)) {
             return;
         }
         Playlist playList = null;
         viewBinding.newPlaylistEditText.setText("");
-        boolean playlistExists = false;
-        for (Playlist pIter : createdPlayLists) {
-            if (pIter.getName().equals(playListName)) {
-                playlistExists = true;
-                playList = pIter;
-            }
-        }
-        if (!playlistExists) {
-            playList = new Playlist(playListName);
-            long id = dbAdapter.createPlaylist(playList);
-            playList.setId(id);
-        }
-        displayedPlayLists.add(playList);
-        ArrayList<FeedItem> feedItems = new ArrayList<>();
-        feedItems.add(feedItem);
-        playListItemDao.addItemsByPlayistId(playList.getId(), feedItems);
+        playList = new Playlist(playListName);
+        long id = dbAdapter.createPlaylist(playList);
+        playList.setId(id);
+        selectPlaylist(playList);
         adapter.notifyDataSetChanged();
     }
 
@@ -162,39 +159,43 @@ public class AddToPlayListDialog extends DialogFragment {
         @Override
         @NonNull
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            Chip chip = new Chip(getContext());
-            chip.setCloseIconVisible(true);
-            chip.setCloseIconResource(R.drawable.ic_delete);
-            return new ViewHolder(chip);
+            CheckBox checkBox = new CheckBox(getContext());
+            return new ViewHolder(checkBox);
         }
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.chip.setText(displayedPlayLists.get(position).getName());
-            holder.chip.setOnCloseIconClickListener(v -> {
-                Playlist playlist = displayedPlayLists.get(position);
-                displayedPlayLists.remove(position);
-                playListItemDao.deleteItemByPlayListId(playlist.getId(), feedItem);
-                notifyDataSetChanged();
+            Playlist playlist = allPlaylists.get(holder.getBindingAdapterPosition());
+            holder.checkBox.setChecked(selectedPlaylists.contains(playlist));
+            holder.checkBox.setText(playlist.getName());
+            holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if (isChecked) {
+                    selectPlaylist(playlist);
+                    selectedPlaylists.add(playlist);
+                } else {
+                    selectedPlaylists.remove(playlist);
+                    playListItemDao.deleteItemByPlayListId(playlist.getId(), feedItem);
+                }
+
             });
         }
 
         @Override
         public int getItemCount() {
-            return displayedPlayLists.size();
+            return allPlaylists.size();
         }
 
         @Override
         public long getItemId(int position) {
-            return displayedPlayLists.get(position).hashCode();
+            return allPlaylists.get(position).hashCode();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            Chip chip;
+            CheckBox checkBox;
 
-            ViewHolder(Chip itemView) {
+            ViewHolder(CheckBox itemView) {
                 super(itemView);
-                chip = itemView;
+                checkBox = itemView;
             }
         }
     }

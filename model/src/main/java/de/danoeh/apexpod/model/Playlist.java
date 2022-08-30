@@ -40,4 +40,9 @@ public class Playlist implements Serializable {
 
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return (int)this.id + this.name.hashCode();
+    }
 }
