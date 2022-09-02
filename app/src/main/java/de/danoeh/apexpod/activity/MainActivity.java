@@ -323,9 +323,9 @@ public class MainActivity extends AppCompatActivity {
     public void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         // clear back stack
-        for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++) {
-            fragmentManager.popBackStack();
-        }
+//        for (int i = 0; i < fragmentManager.getBackStackEntryCount(); i++) {
+//            fragmentManager.popBackStack();
+//        }
         FragmentTransaction t = fragmentManager.beginTransaction();
         t.replace(R.id.main_view, fragment, MAIN_FRAGMENT_TAG);
 //        fragmentManager.popBackStack();
@@ -475,36 +475,41 @@ public class MainActivity extends AppCompatActivity {
         } else if (getSupportFragmentManager().getBackStackEntryCount() != 0) {
             super.onBackPressed();
         } else {
-            switch (UserPreferences.getBackButtonBehavior()) {
-                case OPEN_DRAWER:
-                    if (drawerLayout != null) { // Tablet layout does not have drawer
-                        drawerLayout.openDrawer(navDrawer);
-                    }
-                    break;
-                case SHOW_PROMPT:
-                    new AlertDialog.Builder(this)
-                        .setMessage(R.string.close_prompt)
-                        .setPositiveButton(R.string.yes, (dialogInterface, i) -> MainActivity.super.onBackPressed())
-                        .setNegativeButton(R.string.no, null)
-                        .setCancelable(false)
-                        .show();
-                    break;
-                case DOUBLE_TAP:
-                    if (lastBackButtonPressTime < System.currentTimeMillis() - 2000) {
-                        Toast.makeText(this, R.string.double_tap_toast, Toast.LENGTH_SHORT).show();
-                        lastBackButtonPressTime = System.currentTimeMillis();
-                    } else {
+            if(NavDrawerFragment.getLastNavFragment(this).equals(PlayListItemFragment.TAG)) {
+                loadFragment(PlaylistFragment.TAG, null);
+            } else {
+                switch (UserPreferences.getBackButtonBehavior()) {
+                    case OPEN_DRAWER:
+                        if (drawerLayout != null) { // Tablet layout does not have drawer
+                            drawerLayout.openDrawer(navDrawer);
+                        }
+                        break;
+                    case SHOW_PROMPT:
+                        new AlertDialog.Builder(this)
+                                .setMessage(R.string.close_prompt)
+                                .setPositiveButton(R.string.yes, (dialogInterface, i) -> MainActivity.super.onBackPressed())
+                                .setNegativeButton(R.string.no, null)
+                                .setCancelable(false)
+                                .show();
+                        break;
+                    case DOUBLE_TAP:
+                        if (lastBackButtonPressTime < System.currentTimeMillis() - 2000) {
+                            Toast.makeText(this, R.string.double_tap_toast, Toast.LENGTH_SHORT).show();
+                            lastBackButtonPressTime = System.currentTimeMillis();
+                        } else {
+                            super.onBackPressed();
+                        }
+                        break;
+                    case GO_TO_PAGE:
+                        if (NavDrawerFragment.getLastNavFragment(this).equals(UserPreferences.getBackButtonGoToPage())) {
+                            super.onBackPressed();
+                        } else {
+                            loadFragment(UserPreferences.getBackButtonGoToPage(), null);
+                        }
+                        break;
+                    default:
                         super.onBackPressed();
-                    }
-                    break;
-                case GO_TO_PAGE:
-                    if (NavDrawerFragment.getLastNavFragment(this).equals(UserPreferences.getBackButtonGoToPage())) {
-                        super.onBackPressed();
-                    } else {
-                        loadFragment(UserPreferences.getBackButtonGoToPage(), null);
-                    }
-                    break;
-                default: super.onBackPressed();
+                }
             }
         }
     }
