@@ -10,14 +10,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playlistsRecycler"
         android:layout_width="match_parent"
-        android:layout_height="400dp" />
+        android:layout_height="256dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/newPlaylistEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

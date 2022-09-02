@@ -77,15 +77,6 @@ public class AddToPlayListDialog extends DialogFragment {
                 });
 
         loadPlaylists();
-        viewBinding.newPlaylistEditText.setThreshold(1);
-        viewBinding.newPlaylistEditText.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                viewBinding.newPlaylistEditText.showDropDown();
-                viewBinding.newPlaylistEditText.requestFocus();
-                return false;
-            }
-        });
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
         dialog.setView(viewBinding.getRoot());
@@ -114,9 +105,6 @@ public class AddToPlayListDialog extends DialogFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         result -> {
-                            ArrayAdapter<String> acAdapter = new ArrayAdapter<String>(getContext(),
-                                    R.layout.single_tag_text_view, result);
-                            viewBinding.newPlaylistEditText.setAdapter(acAdapter);
                         }, error -> {
                             Log.e(TAG, Log.getStackTraceString(error));
                         });
@@ -151,8 +139,10 @@ public class AddToPlayListDialog extends DialogFragment {
         playList = new Playlist(playListName);
         long id = dbAdapter.createPlaylist(playList);
         playList.setId(id);
+        allPlaylists.add(playList);
         selectPlaylist(playList);
         adapter.notifyDataSetChanged();
+        viewBinding.playlistsRecycler.scrollToPosition(allPlaylists.size() - 1);
     }
 
     public class PlaystListSelectionAdapter extends RecyclerView.Adapter<PlaystListSelectionAdapter.ViewHolder> {
