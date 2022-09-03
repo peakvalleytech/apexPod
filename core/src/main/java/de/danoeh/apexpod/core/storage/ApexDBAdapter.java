@@ -7,9 +7,12 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import de.danoeh.apexpod.core.event.PlayListArrayUpdated;
 import de.danoeh.apexpod.model.Playlist;
 
 public class ApexDBAdapter extends PodDBAdapter {
@@ -48,6 +51,7 @@ public class ApexDBAdapter extends PodDBAdapter {
             values.put(KEY_PLAYLIST_NAME, playlist.getName());
             id = db.insertWithOnConflict(TABLE_NAME_PLAYLIST, null, values, SQLiteDatabase.CONFLICT_REPLACE);
             db.setTransactionSuccessful();
+            EventBus.getDefault().post(new PlayListArrayUpdated());
         } catch (SQLException e) {
             Log.e(TAG, Log.getStackTraceString(e));
         } finally {

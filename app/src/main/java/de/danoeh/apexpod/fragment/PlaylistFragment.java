@@ -15,12 +15,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import de.danoeh.apexpod.R;
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.adapter.PlayListsListAdapter;
+import de.danoeh.apexpod.core.event.PlayListArrayUpdated;
 import de.danoeh.apexpod.core.storage.repository.PlaylistRepository;
 import de.danoeh.apexpod.core.storage.repository.impl.PlaylistRepositoryImpl;
 import de.danoeh.apexpod.model.Playlist;
@@ -93,11 +98,15 @@ public class PlaylistFragment extends Fragment {
     public void onStart() {
         super.onStart();
         loadItems();
+        EventBus.getDefault().register(this);
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        EventBus.getDefault().unregister(this);
+
     }
 
     @Override
@@ -139,6 +148,12 @@ public class PlaylistFragment extends Fragment {
 
         playlistRepository =  new PlaylistRepositoryImpl(getContext());
         List<Playlist> playlists = playlistRepository.getPlaylists();
+
         return playlists;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onPlayListArrayUpdated(PlayListArrayUpdated playListArrayUpdated) {
+        loadItems();
     }
 }

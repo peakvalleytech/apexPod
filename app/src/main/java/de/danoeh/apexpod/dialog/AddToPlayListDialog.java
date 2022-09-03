@@ -141,7 +141,6 @@ public class AddToPlayListDialog extends DialogFragment {
         playList.setId(id);
         allPlaylists.add(playList);
         selectPlaylist(playList);
-        adapter.notifyDataSetChanged();
         viewBinding.playlistsRecycler.scrollToPosition(allPlaylists.size() - 1);
     }
 
