@@ -5,10 +5,12 @@ import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
+import de.danoeh.apexpod.core.event.PlayListItemUpdate
 import de.danoeh.apexpod.core.storage.ApexDBAdapter
 import de.danoeh.apexpod.core.storage.DBReader
 import de.danoeh.apexpod.core.storage.PodDBAdapter
 import de.danoeh.apexpod.model.feed.FeedItem
+import org.greenrobot.eventbus.EventBus
 
 class PlayListItemDao() {
     private lateinit var db: SQLiteDatabase
@@ -33,6 +35,7 @@ class PlayListItemDao() {
                 )
             }
 
+            EventBus.getDefault().post(PlayListItemUpdate())
             db.setTransactionSuccessful()
         } catch (e: SQLException) {
             Log.e(this.javaClass.canonicalName, Log.getStackTraceString(e))
@@ -62,7 +65,6 @@ class PlayListItemDao() {
             cursor?.close()
         }
 
-
         return items
     }
 
@@ -72,6 +74,7 @@ class PlayListItemDao() {
             db.delete(PodDBAdapter.TABLE_NAME_PLAYLIST_ITEMS, PodDBAdapter.KEY_PLAYLIST + " = ?" +
             " AND " + PodDBAdapter.KEY_FEEDITEM + " IN (?)", arrayOf<String>(id.toString(), item.id.toString()) )
             db.setTransactionSuccessful()
+            EventBus.getDefault().post(PlayListItemUpdate())
         } catch (e : SQLException) {
             android.util.Log.e(this.javaClass.canonicalName, android.util.Log.getStackTraceString(e))
             throw(e)
