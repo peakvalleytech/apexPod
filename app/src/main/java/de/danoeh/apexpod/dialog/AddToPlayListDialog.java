@@ -127,7 +127,6 @@ public class AddToPlayListDialog extends DialogFragment {
         ArrayList<FeedItem> feedItems = new ArrayList<>();
         feedItems.add(feedItem);
         playListItemDao.addItemsByPlayistId(playlist.getId(), feedItems);
-        adapter.notifyDataSetChanged();
     }
 
     private void createPlaylist(String playListName) {
