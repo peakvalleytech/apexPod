@@ -57,7 +57,6 @@ public class TagSettingsDialog extends DialogFragment {
         adapter = new TagSelectionAdapter();
         adapter.setHasStableIds(true);
         viewBinding.tagsRecycler.setAdapter(adapter);
-        viewBinding.rootFolderCheckbox.setChecked(preferences.getTags().contains(FeedPreferences.TAG_ROOT));
 
         viewBinding.newTagButton.setOnClickListener(v ->
                 addTag(viewBinding.newTagEditText.getText().toString().trim()));
@@ -80,9 +79,6 @@ public class TagSettingsDialog extends DialogFragment {
             addTag(viewBinding.newTagEditText.getText().toString().trim());
             preferences.getTags().clear();
             preferences.getTags().addAll(displayedTags);
-            if (viewBinding.rootFolderCheckbox.isChecked()) {
-                preferences.getTags().add(FeedPreferences.TAG_ROOT);
-            }
             DBWriter.setFeedPreferences(preferences);
         });
         dialog.setNegativeButton(R.string.cancel_label, null);
