@@ -67,11 +67,9 @@ public class TagSettingsDialog extends DialogFragment {
                 addTag(viewBinding.newTagEditText.getText().toString().trim()));
 
         loadTags();
-        viewBinding.newTagEditText.setThreshold(1);
         viewBinding.newTagEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                viewBinding.newTagEditText.showDropDown();
                 viewBinding.newTagEditText.requestFocus();
                 return false;
             }
@@ -124,6 +122,7 @@ public class TagSettingsDialog extends DialogFragment {
             return;
         }
         selectedTags.add(name);
+        allTags.add(name);
         viewBinding.newTagEditText.setText("");
         adapter.notifyDataSetChanged();
     }

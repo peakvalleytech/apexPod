@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/newTagEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
