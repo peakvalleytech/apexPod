@@ -36,7 +36,7 @@ public class TagSettingsDialog extends DialogFragment {
     public static final String TAG = "TagSettingsDialog";
     private static final String ARG_FEED_PREFERENCES = "feed_preferences";
     private List<String> selectedTags;
-    private List<String> allTags;
+    private List<String> allTags = new ArrayList<>();
     private EditTagsDialogBinding viewBinding;
     private TagSelectionAdapter adapter;
 
@@ -83,6 +83,7 @@ public class TagSettingsDialog extends DialogFragment {
         dialog.setPositiveButton(android.R.string.ok, (d, input) -> {
             addTag(viewBinding.newTagEditText.getText().toString().trim());
             preferences.getTags().clear();
+            preferences.getTags().add(FeedPreferences.TAG_ROOT);
             preferences.getTags().addAll(selectedTags);
             DBWriter.setFeedPreferences(preferences);
         });
@@ -111,9 +112,8 @@ public class TagSettingsDialog extends DialogFragment {
                 .subscribe(
                         result -> {
 
-                            ArrayAdapter<String> acAdapter = new ArrayAdapter<String>(getContext(),
-                                    R.layout.single_tag_text_view, result);
-                            viewBinding.newTagEditText.setAdapter(acAdapter);
+                            allTags = new ArrayList<>(result);
+                            adapter.notifyDataSetChanged();
                         }, error -> {
                             Log.e(TAG, Log.getStackTraceString(error));
                         });
@@ -129,7 +129,6 @@ public class TagSettingsDialog extends DialogFragment {
     }
 
     public class TagSelectionAdapter extends RecyclerView.Adapter<TagSelectionAdapter.ViewHolder> {
-
         @Override
         @NonNull
         public TagSelectionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -139,21 +138,27 @@ public class TagSettingsDialog extends DialogFragment {
 
         @Override
         public void onBindViewHolder(@NonNull TagSelectionAdapter.ViewHolder holder, int position) {
-            holder.checkbox.setText(selectedTags.get(position));
+            String tag = allTags.get(holder.getBindingAdapterPosition());
+            holder.checkbox.setChecked(selectedTags.contains(tag));
+            holder.checkbox.setText(tag);
             holder.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                selectedTags.remove(position);
+                if (isChecked) {
+                    selectedTags.add(allTags.get(holder.getBindingAdapterPosition()));
+                } else {
+                    selectedTags.remove(allTags.get(holder.getBindingAdapterPosition()));
+                }
                 notifyDataSetChanged();
             });
         }
 
         @Override
         public int getItemCount() {
-            return selectedTags.size();
+            return allTags.size();
         }
 
         @Override
         public long getItemId(int position) {
-            return selectedTags.get(position).hashCode();
+            return allTags.get(position).hashCode();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
