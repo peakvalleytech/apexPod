@@ -8,11 +8,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.chip.Chip;
 import de.danoeh.apexpod.R;
@@ -32,7 +35,8 @@ import java.util.List;
 public class TagSettingsDialog extends DialogFragment {
     public static final String TAG = "TagSettingsDialog";
     private static final String ARG_FEED_PREFERENCES = "feed_preferences";
-    private List<String> displayedTags;
+    private List<String> selectedTags;
+    private List<String> allTags;
     private EditTagsDialogBinding viewBinding;
     private TagSelectionAdapter adapter;
 
@@ -48,11 +52,12 @@ public class TagSettingsDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         FeedPreferences preferences = (FeedPreferences) getArguments().getSerializable(ARG_FEED_PREFERENCES);
-        displayedTags = new ArrayList<>(preferences.getTags());
-        displayedTags.remove(FeedPreferences.TAG_ROOT);
+        selectedTags = new ArrayList<>(preferences.getTags());
+        selectedTags.remove(FeedPreferences.TAG_ROOT);
 
         viewBinding = EditTagsDialogBinding.inflate(getLayoutInflater());
-        viewBinding.tagsRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        viewBinding.tagsRecycler.setLayoutManager(layoutManager);
         viewBinding.tagsRecycler.addItemDecoration(new ItemOffsetDecoration(getContext(), 4));
         adapter = new TagSelectionAdapter();
         adapter.setHasStableIds(true);
@@ -78,7 +83,7 @@ public class TagSettingsDialog extends DialogFragment {
         dialog.setPositiveButton(android.R.string.ok, (d, input) -> {
             addTag(viewBinding.newTagEditText.getText().toString().trim());
             preferences.getTags().clear();
-            preferences.getTags().addAll(displayedTags);
+            preferences.getTags().addAll(selectedTags);
             DBWriter.setFeedPreferences(preferences);
         });
         dialog.setNegativeButton(R.string.cancel_label, null);
@@ -115,10 +120,10 @@ public class TagSettingsDialog extends DialogFragment {
     }
 
     private void addTag(String name) {
-        if (TextUtils.isEmpty(name) || displayedTags.contains(name)) {
+        if (TextUtils.isEmpty(name) || selectedTags.contains(name)) {
             return;
         }
-        displayedTags.add(name);
+        selectedTags.add(name);
         viewBinding.newTagEditText.setText("");
         adapter.notifyDataSetChanged();
     }
@@ -128,37 +133,35 @@ public class TagSettingsDialog extends DialogFragment {
         @Override
         @NonNull
         public TagSelectionAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            Chip chip = new Chip(getContext());
-            chip.setCloseIconVisible(true);
-            chip.setCloseIconResource(R.drawable.ic_delete);
-            return new TagSelectionAdapter.ViewHolder(chip);
+            CheckBox checkbox = new CheckBox(getContext());
+            return new TagSelectionAdapter.ViewHolder(checkbox);
         }
 
         @Override
         public void onBindViewHolder(@NonNull TagSelectionAdapter.ViewHolder holder, int position) {
-            holder.chip.setText(displayedTags.get(position));
-            holder.chip.setOnCloseIconClickListener(v -> {
-                displayedTags.remove(position);
+            holder.checkbox.setText(selectedTags.get(position));
+            holder.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                selectedTags.remove(position);
                 notifyDataSetChanged();
             });
         }
 
         @Override
         public int getItemCount() {
-            return displayedTags.size();
+            return selectedTags.size();
         }
 
         @Override
         public long getItemId(int position) {
-            return displayedTags.get(position).hashCode();
+            return selectedTags.get(position).hashCode();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            Chip chip;
+            CheckBox checkbox;
 
-            ViewHolder(Chip itemView) {
+            ViewHolder(CheckBox itemView) {
                 super(itemView);
-                chip = itemView;
+                checkbox = itemView;
             }
         }
     }
