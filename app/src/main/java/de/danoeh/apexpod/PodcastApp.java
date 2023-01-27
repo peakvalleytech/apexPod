@@ -1,17 +1,29 @@
 package de.danoeh.apexpod;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.StrictMode;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.ProcessLifecycleOwner;
+
+import com.google.android.gms.ads.MobileAds;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.fonts.MaterialModule;
 
 import org.greenrobot.eventbus.EventBus;
 
+import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.SplashActivity;
+import de.danoeh.apexpod.ads.AppOpenAdManager;
 import de.danoeh.apexpod.core.ApCoreEventBusIndex;
 import de.danoeh.apexpod.core.BuildConfig;
 import de.danoeh.apexpod.core.ClientConfig;
@@ -19,8 +31,15 @@ import de.danoeh.apexpod.util.RxJavaErrorHandlerSetup;
 import de.danoeh.apexpod.spa.SPAUtil;
 
 /** Main application class. */
-public class PodcastApp extends Application {
-
+public class PodcastApp extends Application
+        implements
+            Application.ActivityLifecycleCallbacks,
+        LifecycleObserver
+{
+    /** Interface definition for a callback to be invoked when an app open ad is complete. */
+    public interface OnShowAdCompleteListener {
+        void onShowAdComplete();
+    }
     // make sure that ClientConfigurator executes its static code
     static {
         try {
@@ -32,6 +51,9 @@ public class PodcastApp extends Application {
 
     private static PodcastApp singleton;
 
+    private AppOpenAdManager appOpenAdManager;
+    private Activity currentActivity;
+
     public static PodcastApp getInstance() {
         return singleton;
     }
@@ -39,7 +61,14 @@ public class PodcastApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        this.registerActivityLifecycleCallbacks(this);
+        ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
 
+        MobileAds.initialize(this, initializationStatus -> {
+
+        });
+
+        appOpenAdManager = new AppOpenAdManager();
         RxJavaErrorHandlerSetup.setupRxJavaErrorHandler();
 
         if (BuildConfig.DEBUG) {
@@ -77,4 +106,57 @@ public class PodcastApp extends Application {
         Runtime.getRuntime().exit(0);
     }
 
+    @Override
+    public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onActivityStarted(@NonNull Activity activity) {
+// Updating the currentActivity only when an ad is not showing.
+        if (!appOpenAdManager.isShowingAd && activity.getLocalClassName().equals("de.danoeh.apexpod.activity.SplashActivity")) {
+            currentActivity = activity;
+        }
+    }
+
+    @Override
+    public void onActivityResumed(@NonNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityPaused(@NonNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityStopped(@NonNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {
+
+    }
+
+    @Override
+    public void onActivityDestroyed(@NonNull Activity activity) {
+
+    }
+
+    /** LifecycleObserver method that shows the app open ad when the app moves to foreground. */
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    protected void onMoveToForeground() {
+        // Show the ad (if available) when the app moves to foreground.
+        appOpenAdManager.showAdIfAvailable(
+                currentActivity,
+                new OnShowAdCompleteListener() {
+                    @Override
+                    public void onShowAdComplete() {
+                        // Empty because the user will go back to the activity that shows the ad.
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+    }
 }

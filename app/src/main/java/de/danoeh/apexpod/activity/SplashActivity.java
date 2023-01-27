@@ -46,8 +46,7 @@ public class SplashActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     () -> {
-                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                        startActivity(intent);
+
                         overridePendingTransition(0, 0);
                         finish();
                     }, error -> {

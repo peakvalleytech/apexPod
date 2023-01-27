@@ -355,6 +355,10 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/actions" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3142101706002267~7369982304"/>
     </application>
 
     <queries>

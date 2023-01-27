@@ -15,8 +15,8 @@ android {
         // Version code schema:
         // "1.2.3-beta4"    -> 1020304
         // "1.2.3"          -> 1020395
-        versionCode 25
-        versionName "0.6.4"
+        versionCode 26
+        versionName "0.6.5"
 
         def commit = ""
         try {
@@ -182,6 +182,16 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Ads
+    implementation 'com.google.android.gms:play-services-ads:20.0.0'
+
+    def lifecycle_version = "2.1.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+
 }
 
 if (project.hasProperty("antennaPodPlayPublisherCredentials")) {

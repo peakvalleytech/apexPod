@@ -128,7 +128,7 @@ public class SubscriptionFragment
     private List<NavDrawerData.DrawerItem> tagFilteredFeeds;
     private NavDrawerData.TagDrawerItem rootFolder;
     private RecyclerView tagRecycler;
-    private FeedTagAdapter feedTagAdapter;
+    private FeedTagAdapter feedTagAdapter= null;
 
 
     public static SubscriptionFragment newInstance(String folderTitle) {
@@ -223,6 +223,8 @@ public class SubscriptionFragment
         LinearLayoutManager linearLayoutManager =
                 new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
         tagRecycler.setLayoutManager(linearLayoutManager);
+        feedTagAdapter= new FeedTagAdapter(getContext(), new ArrayList<>());
+        tagRecycler.setAdapter(feedTagAdapter);
 
 
         return root;
@@ -542,15 +544,16 @@ public class SubscriptionFragment
         return tagFilteredFeeds;
     }
     private void initTagViews(List<NavDrawerData.TagDrawerItem> tags) {
-        feedTagAdapter = new FeedTagAdapter(getContext(), new ArrayList<>());
+
 //        Set<String> tagFilterIds = tagFilterId();
 
+        feedTagAdapter.clear();
         for (NavDrawerData.TagDrawerItem folder : tags) {
             if (!folder.name.equals(FeedPreferences.TAG_ROOT))
                 feedTagAdapter.addItem(folder);
         }
+        feedTagAdapter.notifyDataSetChanged();
 
-        tagRecycler.setAdapter(feedTagAdapter);
     }
 
     private void updateDisplayedSubscriptions(Long filteredTagId) {

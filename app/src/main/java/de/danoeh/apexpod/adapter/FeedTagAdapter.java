@@ -74,6 +74,11 @@ public class FeedTagAdapter extends RecyclerView.Adapter<FeedTagAdapter.TagViewH
         feedFolders.add(tagDrawerItem);
     }
 
+    public void clear() {
+        feedFolders.clear();
+        this.feedFolders.add(defaultAll);
+    }
+
     public class TagViewHolder extends RecyclerView.ViewHolder {
         private Chip chip;
 
