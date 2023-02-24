@@ -69,13 +69,13 @@ public class AppOpenAdManager {
     public boolean isAdAvailable() {
         return appOpenAd != null;
     }
-
     /**
      * Shows the ad if one isn't already showing.
      */
     public void showAdIfAvailable(
             @NonNull final Activity activity,
             @NonNull PodcastApp.OnShowAdCompleteListener onShowAdCompleteListener) {
+
         // If the app open ad is already showing, do not show the ad again.
         if (isShowingAd) {
             Log.d(LOG_TAG, "The app open ad is already showing.");

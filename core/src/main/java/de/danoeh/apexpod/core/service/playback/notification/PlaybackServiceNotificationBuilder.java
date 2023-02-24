@@ -172,7 +172,7 @@ public class PlaybackServiceNotificationBuilder {
 
     private PendingIntent getPlayerActivityPendingIntent() {
         return PendingIntent.getActivity(context, R.id.pending_intent_player_activity,
-                PlaybackService.getPlayerActivityIntent(context), PendingIntent.FLAG_UPDATE_CURRENT);
+                PlaybackService.getPlayerActivityIntent(context), PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 
     private void addActions(NotificationCompat.Builder notification, MediaSessionCompat.Token mediaSessionToken,
@@ -185,7 +185,7 @@ public class PlaybackServiceNotificationBuilder {
             Intent stopCastingIntent = new Intent(context, PlaybackService.class);
             stopCastingIntent.putExtra(PlaybackService.EXTRA_CAST_DISCONNECT, true);
             PendingIntent stopCastingPendingIntent = PendingIntent.getService(context,
-                    numActions, stopCastingIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    numActions, stopCastingIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             notification.addAction(R.drawable.ic_notification_cast_off,
                     context.getString(R.string.cast_disconnect_label),
                     stopCastingPendingIntent);
@@ -254,9 +254,9 @@ public class PlaybackServiceNotificationBuilder {
         intent.putExtra(MediaButtonReceiver.EXTRA_KEYCODE, keycodeValue);
 
         if (Build.VERSION.SDK_INT >= 26) {
-            return PendingIntent.getForegroundService(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            return PendingIntent.getForegroundService(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         } else {
-            return PendingIntent.getService(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            return PendingIntent.getService(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         }
     }
 

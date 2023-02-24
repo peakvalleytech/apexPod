@@ -148,6 +148,7 @@ public class PodcastApp extends Application
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     protected void onMoveToForeground() {
         // Show the ad (if available) when the app moves to foreground.
+        if (currentActivity != null)
         appOpenAdManager.showAdIfAvailable(
                 currentActivity,
                 new OnShowAdCompleteListener() {
@@ -155,6 +156,7 @@ public class PodcastApp extends Application
                     public void onShowAdComplete() {
                         // Empty because the user will go back to the activity that shows the ad.
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
                 });

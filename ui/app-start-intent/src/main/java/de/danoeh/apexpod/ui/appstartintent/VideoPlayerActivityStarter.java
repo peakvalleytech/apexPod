@@ -29,7 +29,7 @@ public class VideoPlayerActivityStarter {
 
     public PendingIntent getPendingIntent() {
         return PendingIntent.getActivity(context, R.id.pending_intent_video_player,
-                getIntent(), PendingIntent.FLAG_UPDATE_CURRENT);
+                getIntent(), PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 
     public void start() {
