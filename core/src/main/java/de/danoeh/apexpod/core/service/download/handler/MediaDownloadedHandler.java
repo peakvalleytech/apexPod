@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 
 import de.danoeh.apexpod.core.event.UnreadItemsUpdateEvent;
@@ -73,7 +74,11 @@ public class MediaDownloadedHandler implements Runnable {
         } catch (Exception e) {
             Log.e(TAG, "Get duration failed", e);
         } finally {
-            mmr.release();
+            try {
+                mmr.release();
+            } catch (IOException e) {
+                Log.d(TAG, e.getMessage());
+            }
         }
 
         final FeedItem item = media.getItem();

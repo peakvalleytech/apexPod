@@ -5,6 +5,8 @@ import android.content.Context;
 import android.media.MediaMetadataRetriever;
 
 import android.net.Uri;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DataSource;
@@ -42,7 +44,11 @@ class AudioCoverFetcher implements DataFetcher<InputStream> {
                 return;
             }
         } finally {
-            retriever.release();
+            try {
+                retriever.release();
+            } catch (IOException e) {
+                Log.d(TAG, e.getMessage());
+            }
         }
         callback.onLoadFailed(new IOException("Loading embedded cover did not work"));
     }

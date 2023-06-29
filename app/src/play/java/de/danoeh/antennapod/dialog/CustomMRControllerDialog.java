@@ -18,7 +18,7 @@ import androidx.core.util.Pair;
 import androidx.core.view.MarginLayoutParamsCompat;
 import androidx.core.view.accessibility.AccessibilityEventCompat;
 import androidx.mediarouter.app.MediaRouteControllerDialog;
-import androidx.palette.graphics.Palette;
+import androidx.palette.graphicsapi.Palette;
 import androidx.mediarouter.media.MediaRouter;
 import androidx.appcompat.widget.AppCompatImageView;
 import android.text.TextUtils;
@@ -177,7 +177,6 @@ public class CustomMRControllerDialog extends MediaRouteControllerDialog {
         View.OnClickListener onClickListener = v -> {
             if (mediaController != null) {
                 PendingIntent pi = mediaController.getSessionActivity();
-                pi
                 if (pi != null) {
                     try {
                         pi.send();
