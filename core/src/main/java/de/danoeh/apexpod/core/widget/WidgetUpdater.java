@@ -212,7 +212,7 @@ public abstract class WidgetUpdater {
         startingIntent.setAction(MediaButtonReceiver.NOTIFY_BUTTON_RECEIVER);
         startingIntent.putExtra(Intent.EXTRA_KEY_EVENT, event);
 
-        return PendingIntent.getBroadcast(context, eventCode, startingIntent, 0);
+        return PendingIntent.getBroadcast(context, eventCode, startingIntent, PendingIntent.FLAG_IMMUTABLE);
     }
 
     private static String getProgressString(int position, int duration, float speed) {

@@ -177,6 +177,7 @@ public class CustomMRControllerDialog extends MediaRouteControllerDialog {
         View.OnClickListener onClickListener = v -> {
             if (mediaController != null) {
                 PendingIntent pi = mediaController.getSessionActivity();
+                pi
                 if (pi != null) {
                     try {
                         pi.send();

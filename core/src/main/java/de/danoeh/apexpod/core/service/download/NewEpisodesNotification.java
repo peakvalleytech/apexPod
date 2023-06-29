@@ -68,7 +68,7 @@ public class NewEpisodesNotification {
         intent.setComponent(new ComponentName(context, "de.danoeh.apexpod.activity.MainActivity"));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("fragment_feed_id", feed.getId());
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         Notification notification = new NotificationCompat.Builder(
                 context, NotificationUtils.CHANNEL_ID_EPISODE_NOTIFICATIONS)
@@ -93,7 +93,7 @@ public class NewEpisodesNotification {
         intent.setComponent(new ComponentName(context, "de.danoeh.apexpod.activity.MainActivity"));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("fragment_tag", "EpisodesFragment");
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         Notification notificationGroupSummary = new NotificationCompat.Builder(
                 context, NotificationUtils.CHANNEL_ID_EPISODE_NOTIFICATIONS)

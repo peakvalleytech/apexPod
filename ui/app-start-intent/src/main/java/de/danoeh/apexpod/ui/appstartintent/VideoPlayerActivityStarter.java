@@ -20,6 +20,7 @@ public class VideoPlayerActivityStarter {
         intent.setPackage(context.getPackageName());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+
         }
     }
 
