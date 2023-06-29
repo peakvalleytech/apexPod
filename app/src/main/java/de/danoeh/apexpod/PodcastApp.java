@@ -114,7 +114,8 @@ public class PodcastApp extends Application
     @Override
     public void onActivityStarted(@NonNull Activity activity) {
 // Updating the currentActivity only when an ad is not showing.
-        if (!appOpenAdManager.isShowingAd && activity.getLocalClassName().equals("de.danoeh.apexpod.activity.SplashActivity")) {
+        if (appOpenAdManager != null &&
+                !appOpenAdManager.isShowingAd && activity.getLocalClassName().equals("de.danoeh.apexpod.activity.SplashActivity")) {
             currentActivity = activity;
         }
     }

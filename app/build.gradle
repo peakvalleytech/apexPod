@@ -15,8 +15,8 @@ android {
         // Version code schema:
         // "1.2.3-beta4"    -> 1020304
         // "1.2.3"          -> 1020395
-        versionCode 31
-        versionName "0.6.10"
+        versionCode 35
+        versionName "1.0.2"
 
         def commit = ""
         try {
@@ -191,6 +191,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+
+    implementation 'androidx.palette:palette:1.0.0'
+
 
 }
 

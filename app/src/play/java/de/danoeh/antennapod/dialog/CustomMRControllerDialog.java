@@ -8,19 +8,11 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
-import androidx.annotation.NonNull;
 import android.support.v4.media.MediaDescriptionCompat;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
-import androidx.core.util.Pair;
-import androidx.core.view.MarginLayoutParamsCompat;
-import androidx.core.view.accessibility.AccessibilityEventCompat;
-import androidx.mediarouter.app.MediaRouteControllerDialog;
-import androidx.palette.graphicsapi.Palette;
-import androidx.mediarouter.media.MediaRouter;
-import androidx.appcompat.widget.AppCompatImageView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
@@ -33,6 +25,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.util.Pair;
+import androidx.core.view.MarginLayoutParamsCompat;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
+import androidx.mediarouter.app.MediaRouteControllerDialog;
+import androidx.mediarouter.media.MediaRouter;
+import androidx.palette.graphics.Palette;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -74,12 +75,8 @@ public class CustomMRControllerDialog extends MediaRouteControllerDialog {
         super(context, theme);
         mediaRouter = MediaRouter.getInstance(getContext());
         token = mediaRouter.getMediaSessionToken();
-        try {
-            if (token != null) {
-                mediaController = new MediaControllerCompat(getContext(), token);
-            }
-        } catch (RemoteException e) {
-            Log.e(TAG, "Error creating media controller", e);
+        if (token != null) {
+            mediaController = new MediaControllerCompat(getContext(), token);
         }
 
         if (mediaController != null) {
