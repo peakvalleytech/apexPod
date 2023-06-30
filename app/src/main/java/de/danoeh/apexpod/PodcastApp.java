@@ -68,7 +68,7 @@ public class PodcastApp extends Application
 
         });
 
-        appOpenAdManager = new AppOpenAdManager();
+//        appOpenAdManager = new AppOpenAdManager();
         RxJavaErrorHandlerSetup.setupRxJavaErrorHandler();
 
         if (BuildConfig.DEBUG) {
@@ -99,11 +99,11 @@ public class PodcastApp extends Application
     }
 
     public static void forceRestart() {
-        Intent intent = new Intent(getInstance(), SplashActivity.class);
-        ComponentName cn = intent.getComponent();
-        Intent mainIntent = Intent.makeRestartActivityTask(cn);
-        getInstance().startActivity(mainIntent);
-        Runtime.getRuntime().exit(0);
+//        Intent intent = new Intent(getInstance(), SplashActivity.class);
+//        ComponentName cn = intent.getComponent();
+//        Intent mainIntent = Intent.makeRestartActivityTask(cn);
+//        getInstance().startActivity(mainIntent);
+//        Runtime.getRuntime().exit(0);
     }
 
     @Override
@@ -149,9 +149,10 @@ public class PodcastApp extends Application
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     protected void onMoveToForeground() {
         // Show the ad (if available) when the app moves to foreground.
-        if (currentActivity != null)
-        appOpenAdManager.showAdIfAvailable(
+        if (currentActivity != null && appOpenAdManager != null)
+            appOpenAdManager.showAdIfAvailable(
                 currentActivity,
+
                 new OnShowAdCompleteListener() {
                     @Override
                     public void onShowAdComplete() {
