@@ -156,17 +156,6 @@ public class MainActivity extends AppCompatActivity {
         sheetBehavior.setPeekHeight((int) getResources().getDimension(R.dimen.external_player_height));
         sheetBehavior.setHideable(false);
         sheetBehavior.setBottomSheetCallback(bottomSheetCallback);
-        Button crashButton = new Button(this);
-        crashButton.setText("Test Crash");
-        crashButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                throw new RuntimeException("Test Crash"); // Force a crash
-            }
-        });
-
-        addContentView(crashButton, new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
     /**
@@ -187,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_GENERATED_VIEW_ID, ViewCompat.generateViewId());
     }
-
+z
     private final BottomSheetBehavior.BottomSheetCallback bottomSheetCallback =
             new BottomSheetBehavior.BottomSheetCallback() {
         @Override
