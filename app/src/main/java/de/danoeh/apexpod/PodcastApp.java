@@ -15,6 +15,8 @@ import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
 import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.fonts.MaterialModule;
@@ -57,21 +59,24 @@ public class PodcastApp extends Application
     public static PodcastApp getInstance() {
         return singleton;
     }
-
+    public FirebaseAnalytics firebaseAnalytics;
     @Override
     public void onCreate() {
         super.onCreate();
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        firebaseAnalytics.logEvent("regiestering_lifecycle_callbacks", null);
         this.registerActivityLifecycleCallbacks(this);
         ProcessLifecycleOwner.get().getLifecycle().addObserver(this);
 
         MobileAds.initialize(this, initializationStatus -> {
-
+            firebaseAnalytics.logEvent("initialized_mobile_ads", null);
         });
 
 //        appOpenAdManager = new AppOpenAdManager();
         RxJavaErrorHandlerSetup.setupRxJavaErrorHandler();
 
         if (BuildConfig.DEBUG) {
+            firebaseAnalytics.logEvent("setting_vmPolicy", null);
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder()
                     .detectLeakedSqlLiteObjects()
                     .penaltyLog()
@@ -83,13 +88,14 @@ public class PodcastApp extends Application
         }
 
         singleton = this;
-
+        firebaseAnalytics.logEvent("init_client_config", null);
         ClientConfig.initialize(this);
 
         Iconify.with(new FontAwesomeModule());
         Iconify.with(new MaterialModule());
 
         SPAUtil.sendSPAppsQueryFeedsIntent(this);
+        firebaseAnalytics.logEvent("init_event_bus", null);
         EventBus.builder()
                 .addIndex(new ApEventBusIndex())
                 .addIndex(new ApCoreEventBusIndex())
@@ -99,11 +105,11 @@ public class PodcastApp extends Application
     }
 
     public static void forceRestart() {
-//        Intent intent = new Intent(getInstance(), SplashActivity.class);
-//        ComponentName cn = intent.getComponent();
-//        Intent mainIntent = Intent.makeRestartActivityTask(cn);
-//        getInstance().startActivity(mainIntent);
-//        Runtime.getRuntime().exit(0);
+        Intent intent = new Intent(getInstance(), SplashActivity.class);
+        ComponentName cn = intent.getComponent();
+        Intent mainIntent = Intent.makeRestartActivityTask(cn);
+        getInstance().startActivity(mainIntent);
+        Runtime.getRuntime().exit(0);
     }
 
     @Override
@@ -114,10 +120,10 @@ public class PodcastApp extends Application
     @Override
     public void onActivityStarted(@NonNull Activity activity) {
 // Updating the currentActivity only when an ad is not showing.
-        if (appOpenAdManager != null &&
-                !appOpenAdManager.isShowingAd && activity.getLocalClassName().equals("de.danoeh.apexpod.activity.SplashActivity")) {
-            currentActivity = activity;
-        }
+//        if (appOpenAdManager != null &&
+//                !appOpenAdManager.isShowingAd && activity.getLocalClassName().equals("de.danoeh.apexpod.activity.SplashActivity")) {
+//            currentActivity = activity;
+//        }
     }
 
     @Override
@@ -149,18 +155,18 @@ public class PodcastApp extends Application
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     protected void onMoveToForeground() {
         // Show the ad (if available) when the app moves to foreground.
-        if (currentActivity != null && appOpenAdManager != null)
-            appOpenAdManager.showAdIfAvailable(
-                currentActivity,
-
-                new OnShowAdCompleteListener() {
-                    @Override
-                    public void onShowAdComplete() {
-                        // Empty because the user will go back to the activity that shows the ad.
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                    }
-                });
+//        if (currentActivity != null && appOpenAdManager != null)
+//            appOpenAdManager.showAdIfAvailable(
+//                currentActivity,
+//
+//                new OnShowAdCompleteListener() {
+//                    @Override
+//                    public void onShowAdComplete() {
+//                        // Empty because the user will go back to the activity that shows the ad.
+//                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        startActivity(intent);
+//                    }
+//                });
     }
 }
