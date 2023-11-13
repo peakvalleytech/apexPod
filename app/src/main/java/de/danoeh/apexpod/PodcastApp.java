@@ -25,7 +25,6 @@ import org.greenrobot.eventbus.EventBus;
 
 import de.danoeh.apexpod.activity.MainActivity;
 import de.danoeh.apexpod.activity.SplashActivity;
-import de.danoeh.apexpod.ads.AppOpenAdManager;
 import de.danoeh.apexpod.core.ApCoreEventBusIndex;
 import de.danoeh.apexpod.core.BuildConfig;
 import de.danoeh.apexpod.core.ClientConfig;
@@ -53,9 +52,6 @@ public class PodcastApp extends Application
 
     private static PodcastApp singleton;
 
-    private AppOpenAdManager appOpenAdManager;
-    private Activity currentActivity;
-
     public static PodcastApp getInstance() {
         return singleton;
     }
@@ -72,7 +68,6 @@ public class PodcastApp extends Application
             firebaseAnalytics.logEvent("initialized_mobile_ads", null);
         });
 
-//        appOpenAdManager = new AppOpenAdManager();
         RxJavaErrorHandlerSetup.setupRxJavaErrorHandler();
 
         if (BuildConfig.DEBUG) {
@@ -119,11 +114,6 @@ public class PodcastApp extends Application
 
     @Override
     public void onActivityStarted(@NonNull Activity activity) {
-// Updating the currentActivity only when an ad is not showing.
-//        if (appOpenAdManager != null &&
-//                !appOpenAdManager.isShowingAd && activity.getLocalClassName().equals("de.danoeh.apexpod.activity.SplashActivity")) {
-//            currentActivity = activity;
-//        }
     }
 
     @Override
@@ -154,19 +144,5 @@ public class PodcastApp extends Application
     /** LifecycleObserver method that shows the app open ad when the app moves to foreground. */
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     protected void onMoveToForeground() {
-        // Show the ad (if available) when the app moves to foreground.
-//        if (currentActivity != null && appOpenAdManager != null)
-//            appOpenAdManager.showAdIfAvailable(
-//                currentActivity,
-//
-//                new OnShowAdCompleteListener() {
-//                    @Override
-//                    public void onShowAdComplete() {
-//                        // Empty because the user will go back to the activity that shows the ad.
-//                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        startActivity(intent);
-//                    }
-//                });
     }
 }
